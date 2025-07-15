@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: customer.porky.zbpcontactcreate
+type: application
+framework:
+  name: SAPUI5
+  version: 1.108.28
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ushell
+    - name: themelib_sap_horizon
+server:
+  customMiddleware:
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        backend:
+          - path: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
+            destination: DE2
+            authenticationType: BasicAuthentication
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZODATA_WEBEXDASH_BPCONTACT_SRV
+            metadataPath: ./webapp/localService/metadata.xml
+            mockdataPath: ./webapp/localService/data
+            generateMockData: true
+        annotations: []
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: customer.porky.zbpcontactcreate
+        ui5Theme: sap_horizon

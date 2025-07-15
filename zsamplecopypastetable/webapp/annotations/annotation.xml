@@ -1,0 +1,35 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata4/sap/zsb_r_preordermulti/srvd/sap/zsv_r_preordermulti/0001/$metadata">
+        <edmx:Include Namespace="com.sap.gateway.srvd.zsv_r_preordermulti.v0001" Alias="SAP__self"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+
+        <Annotations Target="SAP__self.ZCSD_PreOrderMultiType/LeadTimeMon">
+    <Annotation Term="Capabilities.FilterRestrictions">
+        <Record Type="Capabilities.FilterRestrictionsType">
+            <PropertyValue Property="FilterExpressionRestrictions">
+                <Collection>
+                    <Record Type="Capabilities.FilterExpressionRestrictionType">
+                        <PropertyValue Property="AllowedExpressions" String="Interval"/>
+                    </Record>
+                </Collection>
+            </PropertyValue>
+        </Record>
+</Annotation>
+ </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

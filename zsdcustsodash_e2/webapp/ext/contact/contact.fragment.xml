@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:smartTable="sap.ui.comp.smarttable" 
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+
+                    <smartTable:SmartTable
+				tableType="Table"
+				initiallyVisibleFields="ContactPersonName,ContactPhone,Contactemail,ContactPersonFunctionName,ContactPersonDepartmentName"
+				id="smartContacts"
+				entitySet="ZRSD_CUSTSODASHCONTACTS"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="Contacts"
+				showRowCount="true"
+				persistencyKey="tablecontacts"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				growingThreshold="20"
+				showFullScreenButton = "true"
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+					<SearchField width="200px" search="onSearchContacts"/>
+
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+		</smartTable:SmartTable>
+
+
+</core:FragmentDefinition>

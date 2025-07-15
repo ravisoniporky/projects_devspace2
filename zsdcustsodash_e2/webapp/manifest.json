@@ -1,0 +1,350 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "customer.porky.zsdcustsodashe2",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:ovp",
+            "version": "1.14.3",
+            "toolsId": "feb32b2a-09ba-4146-9ba3-7091dee5f2f8"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZSB_C_ORDERDASHBOARD_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZSB_C_ORDERDASHBOARD_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_ORDERDASHBOARD_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/mainService/ZSB_C_ORDERDASHBOARD_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            },
+            "ZRMM_FRVISITV2_CDS_Annotation": {
+                "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRMM_FRVISITV2_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_Annotation.xml"
+                }
+            },
+            "ZRMM_FRVISITV2_CDS": {
+                "uri": "/sap/opu/odata/sap/ZRMM_FRVISITV2_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZRMM_FRVISITV2_CDS_Annotation"
+                    ],
+                    "localUri": "localService/ZRMM_FRVISITV2_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZODATA_FR_SRV_Annotation": {
+                "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZODATA_FR_SRV/ZODATA_FR_SRV_Annotation.xml"
+                }
+            },
+            "ZODATA_FR_SRV": {
+                "uri": "/sap/opu/odata/sap/ZODATA_FR_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZODATA_FR_SRV_Annotation"
+                    ],
+                    "localUri": "localService/ZODATA_FR_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.108.28",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ovp": {},
+                "sap.ui.rta": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "customer.porky.zsdcustsodashe2.i18n.i18n"
+                }
+            },
+            "filterModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "mainModel": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "useBatch": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "ZRMM_FRVISITV2_CDS": {
+                "dataSource": "ZRMM_FRVISITV2_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
+            },
+            "ZODATA_FR_SRV": {
+                "dataSource": "ZODATA_FR_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.ovp.app.Main": {
+                        "controllerName": "customer.porky.zsdcustsodashe2.ext.controller.extension"
+                    }
+                }
+            }
+        }
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainModel",
+        "globalFilterEntityType": "ZCSD_CUSTSODASHType",
+        "containerLayout": "fixed",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": true,
+        "showDateInRelativeFormat": true,
+        "cards": {
+            "a1custinfo": {
+                "template": "customer.porky.zsdcustsodashe2.ext.custinfo",
+                "settings": {
+                    "title": "Customer Info",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 6
+                    }
+                }
+            },
+            "a93zcustinfo": {
+                "template": "sap.ovp.cards.table",
+                "model": "mainModel",
+                "settings": {
+                    "entitySet": "ZBSD_CUSTSODASH",
+                    "title": "Customer Info",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#custInfo",
+                    "defaultSpan": {
+                        "cols": 1,
+                        "rows": 5
+                    }
+                }
+            },
+            "deliverycard": {
+                "template": "customer.porky.zsdcustsodashe2.ext.deliverycard",
+                "settings": {
+                    "title": "Delivery",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 6
+                    }
+                }
+            },
+            "a4deliverycard1": {
+                "template": "customer.porky.zsdcustsodashe2.ext.delivery1",
+                "settings": {
+                    "title": "Delivery Card",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 6
+                    }
+                }
+            },
+            "a2salescard": {
+                "template": "customer.porky.zsdcustsodashe2.ext.salescard",
+                "settings": {
+                    "title": "Sales Card",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 6
+                    }
+                }
+            },
+            "a7specialpricecard": {
+                "template": "customer.porky.zsdcustsodashe2.ext.specialprice",
+                "settings": {
+                    "title": "Special Price",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 6
+                    }
+                }
+            },
+            "a80adpricecard": {
+                "template": "customer.porky.zsdcustsodashe2.ext.adprice",
+                "settings": {
+                    "title": "Ad Price",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 6
+                    }
+                }
+            },
+            "a3recentOrderTabCard": {
+                "template": "customer.porky.zsdcustsodashe2.ext.recentorders",
+                "settings": {
+                    "title": "Recent Orders",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 7
+                    }
+                }
+            },
+            "a5customarprofit": {
+                "template": "customer.porky.zsdcustsodashe2.ext.customarprofit",
+                "settings": {
+                    "title": "AR Profit",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 6
+                    }
+                }
+            },
+            "a6returnorder": {
+                "template": "customer.porky.zsdcustsodashe2.ext.returnorder",
+                "settings": {
+                    "title": "Return Orders",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 7
+                    }
+                }
+            },
+            "a83blocks": {
+                "template": "customer.porky.zsdcustsodashe2.ext.blocks",
+                "settings": {
+                    "title": "Customer Blocks",
+                    "defaultSpan": {
+                        "cols": 2,
+                        "rows": 5
+                    }
+                }
+            },
+            "a81ZVIP": {
+                "template": "customer.porky.zsdcustsodashe2.ext.ZVIP",
+                "settings": {
+                    "title": "ZVIP",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 5
+                    }
+                }
+            },
+            "a82contactcard": {
+                "template": "customer.porky.zsdcustsodashe2.ext.contact",
+                "settings": {
+                    "title": "Contacts",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 10
+                    }
+                }
+            },
+            "a82cqmap": {
+                "template": "customer.porky.zsdcustsodashe2.ext.map",
+                "settings": {
+                    "title": "Map Card",
+                    "defaultSpan": {
+                        "cols": 25,
+                        "rows": 5
+                    }
+                }
+            },
+            "recentvisits": {
+                "template": "customer.porky.zsdcustsodashe2.ext.recentvisits",
+                "settings": {
+                    "title": "Recent Visits",
+                    "defaultSpan": {
+                        "cols": 3,
+                        "rows": 5
+                    }
+                }
+            }
+        },
+        "chartSettings": {},
+        "disableTableCardFlexibility": true,
+        "bHeaderExpanded": true
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    }
+}

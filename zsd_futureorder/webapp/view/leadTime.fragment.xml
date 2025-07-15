@@ -1,0 +1,221 @@
+<core:FragmentDefinition
+xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m">
+	<Dialog
+		title="Update Schedule for {calendarWeekModel>/MaterialDescription} {calendarWeekModel>/Material}" >
+		<content>
+
+		<Table   >
+	<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Future Order" level="H2"/>
+					<ToolbarSpacer />
+					
+					
+					<!-- <Button 
+						text="Validate"
+						press="validateFutureOrder" icon="sap-icon://validate"/> -->
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		
+	
+		<columns>
+			<Column>
+            <Text />
+			</Column>
+			<Column>
+				<Text text="Sunday"/>
+			</Column>
+			<Column>
+				<Text   text="Monday"/>
+			</Column>
+			<Column>
+				<Text text="Tuesday"/>
+			</Column>
+			<Column>
+				<Text text="Wednesday"/>
+			</Column>
+			<Column>
+				<Text text="Thursday"/>
+			</Column>
+			<Column>
+				<Text text="Friday"/>
+			</Column>
+			<Column>
+				<Text text="Saturday"/>
+			</Column>
+			
+			
+		</columns>
+		<items>
+
+		<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true" title="Order Day"/>
+			
+					<CheckBox selected="{path:'calendarWeekModel>/FlagSun'}" editable="{= !${calendarWeekModel>/validated}}" />
+					<CheckBox selected="{path:'calendarWeekModel>/FlagMon'}"  editable="{= !${calendarWeekModel>/validated}}" />
+					 <CheckBox selected="{path:'calendarWeekModel>/FlagTue'}"  editable="{= !${calendarWeekModel>/validated}}" />
+					<CheckBox selected="{path:'calendarWeekModel>/FlagWed'}"  editable="{= !${calendarWeekModel>/validated}}" />
+					<CheckBox selected="{path:'calendarWeekModel>/FlagThu'}"  editable="{= !${calendarWeekModel>/validated}}" />
+					<CheckBox selected="{path:'calendarWeekModel>/FlagFri'}"  editable="{= !${calendarWeekModel>/validated}}" />
+					<CheckBox selected="{path:'calendarWeekModel>/FlagSat'}"  editable="{= !${calendarWeekModel>/validated}}" /> 
+
+				</cells>
+			</ColumnListItem>
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true" title="Cutoff Time"/>
+			
+					<TimePicker value="{path:'calendarWeekModel>/CutOffTimeSun',type:'sap.ui.model.odata.type.Time'}" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="sun"/>
+					<TimePicker value="{path:'calendarWeekModel>/CutOffTimeMon',type:'sap.ui.model.odata.type.Time'}" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="mon" />
+					 <TimePicker value="{path:'calendarWeekModel>/CutOffTimeTue',type:'sap.ui.model.odata.type.Time'}" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="tue" />
+					<TimePicker value="{path:'calendarWeekModel>/CutOffTimeWed',type:'sap.ui.model.odata.type.Time'}"  editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="wed"/>
+					<TimePicker value="{path:'calendarWeekModel>/CutOffTimeThu',type:'sap.ui.model.odata.type.Time'}"  editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="thu"/>
+					<TimePicker value="{path:'calendarWeekModel>/CutOffTimeFri',type:'sap.ui.model.odata.type.Time'}"  editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="fri"/>
+					<TimePicker value="{path:'calendarWeekModel>/CutOffTimeSat',type:'sap.ui.model.odata.type.Time'}"  editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="sat"/> 
+
+				</cells>
+			</ColumnListItem>
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true" title="Lead Days"/>
+
+			
+					<Input valueHelpRequest="onOpenDateRangeSelection" showValueHelp="false" value="{calendarWeekModel>/LeadTimeSun}" type="Number" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="sun" />
+					<Input valueHelpRequest="onOpenDateRangeSelection" showValueHelp="false" value="{calendarWeekModel>/LeadTimeMon}" type="Number" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="mon"/>
+					<Input valueHelpRequest="onOpenDateRangeSelection" showValueHelp="false" value="{calendarWeekModel>/LeadTimeTue}" type="Number" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="tue"/>
+					<Input valueHelpRequest="onOpenDateRangeSelection" showValueHelp="false" value="{calendarWeekModel>/LeadTimeWed}" type="Number" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="wed"/>
+					<Input valueHelpRequest="onOpenDateRangeSelection" showValueHelp="false" value="{calendarWeekModel>/LeadTimeThu}" type="Number" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="thu"/>
+					<Input valueHelpRequest="onOpenDateRangeSelection" showValueHelp="false" value="{calendarWeekModel>/LeadTimeFri}" type="Number" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="fri"/>
+					<Input valueHelpRequest="onOpenDateRangeSelection" showValueHelp="false" value="{calendarWeekModel>/LeadTimeSat}" type="Number" editable="{= !${calendarWeekModel>/validated}}" change="onChangeLeadTime" app:mydata="sat"/>
+
+				</cells>
+			</ColumnListItem>
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true" title="Delivery Day"/>
+
+			
+					<Text valueHelpRequest="onOpenDateRangeSelection"  text="{= Number(${calendarWeekModel>/LeadTimeSun})%7 === 1 ? 'Monday': Number(${calendarWeekModel>/LeadTimeSun})%7 === 2 ? 'Tuesday' : Number(${calendarWeekModel>/LeadTimeSun})%7 === 3 ? 'Wednesday' : Number(${calendarWeekModel>/LeadTimeSun})%7 === 4 ? 'Thursday' : Number(${calendarWeekModel>/LeadTimeSun})%7 === 5 ? 'Friday' :  Number(${calendarWeekModel>/LeadTimeSun})%7 === 6 ? 'Saturday': Number(${calendarWeekModel>/LeadTimeSun})%7 === 0 ? 'Sunday' : '' }" />
+					<Text valueHelpRequest="onOpenDateRangeSelection"  text="{= Number(${calendarWeekModel>/LeadTimeMon})%7 === 1 ? 'Tuesday': Number(${calendarWeekModel>/LeadTimeMon})%7 === 2 ? 'Wednesday' : Number(${calendarWeekModel>/LeadTimeMon})%7 === 3 ? 'Thursday' : Number(${calendarWeekModel>/LeadTimeMon})%7 === 4 ? 'Friday' : Number(${calendarWeekModel>/LeadTimeMon})%7 === 5 ? 'Saturday' :  Number(${calendarWeekModel>/LeadTimeMon})%7 === 6 ? 'Sunday': Number(${calendarWeekModel>/LeadTimeMon})%7 === 0 ? 'Monday' : '' }" />
+					<Text valueHelpRequest="onOpenDateRangeSelection" text="{= Number(${calendarWeekModel>/LeadTimeTue})%7 === 1 ? 'Wednesday': Number(${calendarWeekModel>/LeadTimeTue})%7 === 2 ? 'Thursday' : Number(${calendarWeekModel>/LeadTimeTue})%7 === 3 ? 'Friday' : Number(${calendarWeekModel>/LeadTimeTue})%7 === 4 ? 'Saturday' : Number(${calendarWeekModel>/LeadTimeTue})%7 === 5 ? 'Sunday' :  Number(${calendarWeekModel>/LeadTimeTue})%7 === 6 ? 'Monday': Number(${calendarWeekModel>/LeadTimeTue})%7 === 0 ? 'Tuesday' : '' }" />
+					<Text valueHelpRequest="onOpenDateRangeSelection"  text="{= Number(${calendarWeekModel>/LeadTimeWed})%7 === 1 ? 'Thursday': Number(${calendarWeekModel>/LeadTimeWed})%7 === 2 ? 'Friday' : Number(${calendarWeekModel>/LeadTimeWed})%7 === 3 ? 'Saturday' : Number(${calendarWeekModel>/LeadTimeWed})%7 === 4 ? 'Sunday' : Number(${calendarWeekModel>/LeadTimeWed})%7 === 5 ? 'Monday' :  Number(${calendarWeekModel>/LeadTimeWed})%7 === 6 ? 'Tuesday': Number(${calendarWeekModel>/LeadTimeWed})%7 === 0 ? 'Wednesday' : ''  }" />
+					<Text valueHelpRequest="onOpenDateRangeSelection"  text="{= Number(${calendarWeekModel>/LeadTimeThu})%7 === 1 ? 'Friday': Number(${calendarWeekModel>/LeadTimeThu})%7 === 2 ? 'Saturday' : Number(${calendarWeekModel>/LeadTimeThu})%7 === 3 ? 'Sunday' : Number(${calendarWeekModel>/LeadTimeThu})%7 === 4 ? 'Monday' : Number(${calendarWeekModel>/LeadTimeThu})%7 === 5 ? 'Tuesday' :  Number(${calendarWeekModel>/LeadTimeThu})%7 === 6 ? 'Wednesday': Number(${calendarWeekModel>/LeadTimeThu})%7 === 0 ? 'Thursday' : ''  }" />
+					<Text valueHelpRequest="onOpenDateRangeSelection"  text="{= Number(${calendarWeekModel>/LeadTimeFri})%7 === 1 ? 'Saturday': Number(${calendarWeekModel>/LeadTimeFri})%7 === 2 ? 'Sunday' : Number(${calendarWeekModel>/LeadTimeFri})%7 === 3 ? 'Monday' : Number(${calendarWeekModel>/LeadTimeFri})%7 === 4 ? 'Tuesday' : Number(${calendarWeekModel>/LeadTimeFri})%7 === 5 ? 'Wednesday' :  Number(${calendarWeekModel>/LeadTimeFri})%7 === 6 ? 'Thursday': Number(${calendarWeekModel>/LeadTimeFri})%7 === 0 ? 'Friday' : ''  }" />
+					<Text valueHelpRequest="onOpenDateRangeSelection"  text="{= Number(${calendarWeekModel>/LeadTimeSat})%7 === 1 ? 'Sunday': Number(${calendarWeekModel>/LeadTimeSat})%7 === 2 ? 'Monday' : Number(${calendarWeekModel>/LeadTimeSat})%7 === 3 ? 'Tuesday' : Number(${calendarWeekModel>/LeadTimeSat})%7 === 4 ? 'Wednesday' : Number(${calendarWeekModel>/LeadTimeSat})%7 === 5 ? 'Thursday' :  Number(${calendarWeekModel>/LeadTimeSat})%7 === 6 ? 'Friday': Number(${calendarWeekModel>/LeadTimeSat})%7 === 0 ? 'Saturday' : ''  }" />
+
+				</cells>
+			</ColumnListItem>
+
+			
+
+
+
+			
+				
+		</items>
+	</Table>
+
+
+		<f:SimpleForm 
+			visible="false"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{selectedMOEPeople>/ContactPersonName}"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+
+				<Label text="Select Date Range" />
+				<DateRangeSelection
+			id="DRS2"
+			change="handleChange"
+			value= "{
+				'type': 'sap.ui.model.type.DateInterval',
+				'parts': [
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': '/oDRS2Start'
+					},
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': '/oDRS2End'
+					}
+				]
+			}"/>
+
+
+				<Label text="Cut Off Time" />
+				<TimePicker
+				id="TP3"
+				change="handleChange"
+				value="{
+					'path':'/timePickers/TP3/value',
+					'type': 'sap.ui.model.type.Time',
+					'formatOptions': {
+							'pattern': 'hh:mm a'
+					}
+				}"
+				maskMode="{= ${/maskMode/state} ? 'On' : 'Off'}"
+				placeholder="{/timePickers/TP3/placeholder}" />
+
+				
+
+		
+			</f:content>
+		</f:SimpleForm>
+		</content>
+		<buttons>
+		<Button 
+						text="Change"
+						press="updateMaterialValidateChange" icon="sap-icon://edit" visible="{calendarWeekModel>/validated}"/>
+		<Button 
+						text="Validate"
+						press="updateMaterialValidate" icon="sap-icon://validate" visible="{= !${calendarWeekModel>/validated}}"/>
+
+		
+
+						<Button tooltip="Save"
+			 icon="sap-icon://accept"  type="Accept"
+			  press="updateMaterial"
+			  enabled="{calendarWeekModel>/validated}"
+			   text="Submit" />
+			   			<Button tooltip="Close" icon="sap-icon://cancel"  type="Reject" press="onDialogCloseKeyPeople" text="Close" />
+
+		</buttons>
+
+        <beginButton>
+
+			<Button tooltip="Save"
+			 icon="sap-icon://accept"  type="Accept"
+			  press="updateMaterial"
+			   text="Submit" enabled="{= ${chageModeModel>/valueStateMobile} === 'Error' ? false: true }"/>
+		</beginButton>
+		
+		<endButton>
+			<Button tooltip="Close" icon="sap-icon://cancel"  type="Reject" press="onDialogCloseKeyPeople" text="Close" />
+		</endButton>
+		
+	</Dialog>
+</core:FragmentDefinition>

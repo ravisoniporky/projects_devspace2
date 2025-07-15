@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zsb_trv2/$metadata">
+        <edmx:Include Namespace="ZSB_TRV2" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zsb_trv2_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsv_tr.ZCSD_TRBROKERAGEINFOType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Brokerage Vendor"/>
+                            <PropertyValue Property="ID" String="BrokerageVendor"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Brokerage Vendor"/>
+                        <PropertyValue Property="TypeNamePlural" String="Brokerage Vendors"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor"/>
+                            <PropertyValue Property="Value" Path="Vendor"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor Name"/>
+                            <PropertyValue Property="Value" Path="VendorName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Brokerage Amount"/>
+                            <PropertyValue Property="Value" Path="ConditionValue"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor"/>
+                            <PropertyValue Property="Value" Path="Vendor"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor Name"/>
+                            <PropertyValue Property="Value" Path="VendorName"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Brokerage Amount"/>
+                            <PropertyValue Property="Value" Path="ConditionValue"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_tr.ZCSD_TRFREIGHTINFOType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Freight Vendor"/>
+                            <PropertyValue Property="ID" String="FreightVendor"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Freight Vendor"/>
+                        <PropertyValue Property="TypeNamePlural" String="Freight Vendors"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor"/>
+                            <PropertyValue Property="Value" Path="Vendor"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor Name"/>
+                            <PropertyValue Property="Value" Path="VendorName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Freight Amount"/>
+                            <PropertyValue Property="Value" Path="ConditionValue"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor"/>
+                            <PropertyValue Property="Value" Path="Vendor"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor Name"/>
+                            <PropertyValue Property="Value" Path="VendorName"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Freight Amount"/>
+                            <PropertyValue Property="Value" Path="ConditionValue"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_tr.ZCSD_TRHeaderType/approve_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_tr.ZCSD_TRHeaderType/reject_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_tr.ZCSD_TRHeaderType/ztrw_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_tr.ZCSD_TRHeaderType">
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="PREINVOICE TRANSACTION REPORT"/>
+                            <PropertyValue Property="ID" String="idHeader"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#hdReport"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Header"/>
+                            <PropertyValue Property="ID" String="COLLFAC1"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="Document1"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgdocument1"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="Document2"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgdocument2"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Summary"/>
+                            <PropertyValue Property="ID" String="COLLFACCO"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Total"/>
+                                        <PropertyValue Property="ID" String="CONTROLCL"/>
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="ID" String="CO1"/>
+                                                    <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgTotal1"/>
+                                                </Record>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="ID" String="CO2"/>
+                                                    <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgTotal2"/>
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Gross Profit"/>
+                                        <PropertyValue Property="ID" String="GROSSPROFIT"/>
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="ID" String="GROSSPROFITFG"/>
+                                                    <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgGross"/>
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Freight"/>
+                            <PropertyValue Property="ID" String="idFreight"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_Freight/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Brokerage"/>
+                            <PropertyValue Property="ID" String="idBrokerage"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_Brokerage/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Items"/>
+                            <PropertyValue Property="ID" String="idLineItem"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_Child/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgGross">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="$"/>
+                                    <PropertyValue Property="Value" Path="GrossProfit"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="LB"/>
+                                    <PropertyValue Property="Value" Path="GrossProfitLB"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="%"/>
+                                    <PropertyValue Property="Value" Path="GrossProfitPerc"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgTotal1">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Total Cases"/>
+                                    <PropertyValue Property="Value" Path="BilledCS"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Total Weight"/>
+                                    <PropertyValue Property="Value" Path="ItemNetWeight"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Ext Freight"/>
+                                    <PropertyValue Property="Value" Path="ExtFreight"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Ext Brokerage"/>
+                                    <PropertyValue Property="Value" Path="ExtBrokerage"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Ext Storage"/>
+                                    <PropertyValue Property="Value" Path="ExtStorage"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Ext Addln"/>
+                                    <PropertyValue Property="Value" Path="ExtRecur"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgTotal2">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Ext. Total Cost"/>
+                                    <PropertyValue Property="Value" Path="CostAmount"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Ext. Total Price"/>
+                                    <PropertyValue Property="Value" Path="NetAmount"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgdocument1">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Sales Order"/>
+                                    <PropertyValue Property="Value" Path="SalesDocument"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Delivery"/>
+                                    <PropertyValue Property="Value" Path="Delivery"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Invoice"/>
+                                    <PropertyValue Property="Value" Path="BillingDocument"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Invoice Date"/>
+                                    <PropertyValue Property="Value" Path="BillingDocumentDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Customer PO"/>
+                                    <PropertyValue Property="Value" Path="CustomerPO"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Delivery Date"/>
+                                    <PropertyValue Property="Value" Path="DeliveryDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SoldToParty"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="StreetName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CityName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PostalCode"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Region"/>
+                                </Record>
+                                <Record Type="UI.DataFieldWithUrl">
+                                    <PropertyValue Property="Label" String="PDF"/>
+                                    <PropertyValue Property="Value" Path="showPDF"/>
+                                    <PropertyValue Property="Url" Path="LinkToPDF"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="hdReport">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SalesOrganization"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Sales Lead"/>
+                                    <PropertyValue Property="Value" Path="HeaderTitle"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Sales Support"/>
+                                    <PropertyValue Property="Value" Path="SalesSupport"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Approval Status"/>
+                                    <PropertyValue Property="Value" Path="ApprovalStatus"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="PREINVOICE TRANSACTION REPORT"/>
+                    </Record>
+                    <Annotation Term="Core.Messages">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="message" String="UI.HEADERINFO: TypeNamePlural is mandatory"/>
+                                <PropertyValue Property="severity" String="error"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Approve"/>
+                            <PropertyValue Property="Action" String="cds_zsv_tr.cds_zsv_tr_Entities/approve"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Reject"/>
+                            <PropertyValue Property="Action" String="cds_zsv_tr.cds_zsv_tr_Entities/reject"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrganization"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice"/>
+                            <PropertyValue Property="Value" Path="BillingDocument"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice"/>
+                            <PropertyValue Property="Value" Path="BillingDocument"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Approve"/>
+                            <PropertyValue Property="Action" String="cds_zsv_tr.cds_zsv_tr_Entities/approve"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Sales Organization"/>
+                            <PropertyValue Property="Value" Path="SalesOrganization"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Reject"/>
+                            <PropertyValue Property="Action" String="cds_zsv_tr.cds_zsv_tr_Entities/reject"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Delivery"/>
+                            <PropertyValue Property="Value" Path="Delivery"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Sales Document"/>
+                            <PropertyValue Property="Value" Path="SalesDocument"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice Date"/>
+                            <PropertyValue Property="Value" Path="BillingDocumentDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Customer PO"/>
+                            <PropertyValue Property="Value" Path="CustomerPO"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Delivery Date"/>
+                            <PropertyValue Property="Value" Path="DeliveryDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Sold-To"/>
+                            <PropertyValue Property="Value" Path="SoldToParty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Sold-To Name"/>
+                            <PropertyValue Property="Value" Path="CustomerName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Salesman"/>
+                            <PropertyValue Property="Value" Path="SalesLead"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor"/>
+                            <PropertyValue Property="Value" Path="Vendor"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor Name"/>
+                            <PropertyValue Property="Value" Path="VendorName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor Street"/>
+                            <PropertyValue Property="Value" Path="VendorStreet"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor City"/>
+                            <PropertyValue Property="Value" Path="VendorCity"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Vendor Postal"/>
+                            <PropertyValue Property="Value" Path="VendorPostal"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Brokerage"/>
+                            <PropertyValue Property="Value" Path="InBrokerValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Freight"/>
+                            <PropertyValue Property="Value" Path="InFreightValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Product"/>
+                            <PropertyValue Property="Value" Path="InProductValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Additional"/>
+                            <PropertyValue Property="Value" Path="InRecurValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Storage"/>
+                            <PropertyValue Property="Value" Path="InStorageValue"/>
+                        </Record>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Label" String="PDF"/>
+                            <PropertyValue Property="Value" Path="showPDF"/>
+                            <PropertyValue Property="Url" Path="LinkToPDF"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Brokerage"/>
+                            <PropertyValue Property="Value" Path="OutBrokerValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Freight"/>
+                            <PropertyValue Property="Value" Path="OutFreightValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Additional"/>
+                            <PropertyValue Property="Value" Path="OutRecurValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Storage"/>
+                            <PropertyValue Property="Value" Path="OutStorageValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Transaction Currency"/>
+                            <PropertyValue Property="Value" Path="TransactionCurrency"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Ext. Total Price"/>
+                            <PropertyValue Property="Value" Path="NetAmount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Ext. Total Cost"/>
+                            <PropertyValue Property="Value" Path="CostAmount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Total Cases"/>
+                            <PropertyValue Property="Value" Path="BilledCS"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Total Weight"/>
+                            <PropertyValue Property="Value" Path="ItemNetWeight"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Gross Profit"/>
+                            <PropertyValue Property="Value" Path="GrossProfit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Gross Profit LB"/>
+                            <PropertyValue Property="Value" Path="GrossProfitLB"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Gross Profit %"/>
+                            <PropertyValue Property="Value" Path="GrossProfitPerc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Approval Status"/>
+                            <PropertyValue Property="Value" Path="ApprovalStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="PDF"/>
+                            <PropertyValue Property="Value" Path="LinkToPDF"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="15rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_tr.ZCSD_TRITEMType">
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Item Detail"/>
+                            <PropertyValue Property="ID" String="idItem"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ItReport"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Item"/>
+                            <PropertyValue Property="ID" String="COLLFAC1"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="Material1"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgmaterial1"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="Material2"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgmaterial2"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Conditions"/>
+                            <PropertyValue Property="ID" String="COLLFAC2"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="Condition1"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgcondition1"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="Condition2"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgcondition2"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="In"/>
+                            <PropertyValue Property="ID" String="COLLFAC3"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="InCondition1"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgincondition1"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="InCondition2"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgincondition2"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Out"/>
+                            <PropertyValue Property="ID" String="COLLFAC4"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="OutCondition1"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgoutcondition1"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="OutCondition2"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgoutcondition2"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="ItReport">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Item"/>
+                                    <PropertyValue Property="Value" Path="BillingDocumentItem"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Material"/>
+                                    <PropertyValue Property="Value" Path="Material"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgcondition1">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Total Cost"/>
+                                    <PropertyValue Property="Value" Path="TotalCost"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Price"/>
+                                    <PropertyValue Property="Value" Path="Price"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Ext.Cost"/>
+                                    <PropertyValue Property="Value" Path="CostAmount"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Ext.Price"/>
+                                    <PropertyValue Property="Value" Path="NetAmount"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Gross Profit"/>
+                                    <PropertyValue Property="Value" Path="GrossProfit"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Gross Profit LB"/>
+                                    <PropertyValue Property="Value" Path="GrossProfitLB"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Gross Profit %"/>
+                                    <PropertyValue Property="Value" Path="GrossProfitPerc"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Rebate Amount"/>
+                                    <PropertyValue Property="Value" Path="ZRA7Price"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Rebate Value"/>
+                                    <PropertyValue Property="Value" Path="ZRA7Value"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgincondition1">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Product"/>
+                                    <PropertyValue Property="Value" Path="InProductPrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Product Value"/>
+                                    <PropertyValue Property="Value" Path="InProductValue"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Freight"/>
+                                    <PropertyValue Property="Value" Path="InFreightPrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Freight Value"/>
+                                    <PropertyValue Property="Value" Path="InFreightValue"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Brokerage"/>
+                                    <PropertyValue Property="Value" Path="InBrokerPrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Brokerage Value"/>
+                                    <PropertyValue Property="Value" Path="InBrokerValue"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="In Storage"/>
+                                    <PropertyValue Property="Value" Path="InStoragePrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Storage Value"/>
+                                    <PropertyValue Property="Value" Path="InStorageValue"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="In Addln"/>
+                                    <PropertyValue Property="Value" Path="InRecurPrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Addln Value"/>
+                                    <PropertyValue Property="Value" Path="InRecurValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgmaterial1">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CS"/>
+                                    <PropertyValue Property="Value" Path="BilledCS"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Weight"/>
+                                    <PropertyValue Property="Value" Path="ItemNetWeight"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Batch"/>
+                                    <PropertyValue Property="Value" Path="Batch"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Storage Location"/>
+                                    <PropertyValue Property="Value" Path="StorageLocation"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgoutcondition1">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Freight"/>
+                                    <PropertyValue Property="Value" Path="OutFreightPrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Freight Value"/>
+                                    <PropertyValue Property="Value" Path="OutFreightValue"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Brokerage"/>
+                                    <PropertyValue Property="Value" Path="OutBrokerPrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Brokerage Value"/>
+                                    <PropertyValue Property="Value" Path="OutBrokerageValue"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Storage"/>
+                                    <PropertyValue Property="Value" Path="OutStoragePrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Storage Value"/>
+                                    <PropertyValue Property="Value" Path="OutStorageValue"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Addln"/>
+                                    <PropertyValue Property="Value" Path="OutRecurPrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Addln Value"/>
+                                    <PropertyValue Property="Value" Path="OutRecurValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Item"/>
+                        <PropertyValue Property="TypeNamePlural" String="Items"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice"/>
+                            <PropertyValue Property="Value" Path="BillingDocument"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice Item"/>
+                            <PropertyValue Property="Value" Path="BillingDocumentItem"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice Date"/>
+                            <PropertyValue Property="Value" Path="BillingDocumentDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Material"/>
+                            <PropertyValue Property="Value" Path="Material"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice"/>
+                            <PropertyValue Property="Value" Path="BillingDocument"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice Item"/>
+                            <PropertyValue Property="Value" Path="BillingDocumentItem"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Invoice Date"/>
+                            <PropertyValue Property="Value" Path="BillingDocumentDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Material"/>
+                            <PropertyValue Property="Value" Path="Material"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Cases"/>
+                            <PropertyValue Property="Value" Path="BilledCS"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Weight"/>
+                            <PropertyValue Property="Value" Path="ItemNetWeight"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Ext.Cost"/>
+                            <PropertyValue Property="Value" Path="CostAmount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Ext.Price"/>
+                            <PropertyValue Property="Value" Path="NetAmount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Gross Profit"/>
+                            <PropertyValue Property="Value" Path="GrossProfit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Gross Profit LB"/>
+                            <PropertyValue Property="Value" Path="GrossProfitLB"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Gross Profit %"/>
+                            <PropertyValue Property="Value" Path="GrossProfitPerc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Product"/>
+                            <PropertyValue Property="Value" Path="InProductPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Total Cost"/>
+                            <PropertyValue Property="Value" Path="TotalCost"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Product Unit"/>
+                            <PropertyValue Property="Value" Path="InProductUnit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Price"/>
+                            <PropertyValue Property="Value" Path="Price"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Product Value"/>
+                            <PropertyValue Property="Value" Path="InProductValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Freight"/>
+                            <PropertyValue Property="Value" Path="InFreightPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Freight Unit"/>
+                            <PropertyValue Property="Value" Path="InFreightUnit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Freight Value"/>
+                            <PropertyValue Property="Value" Path="InFreightValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Broker"/>
+                            <PropertyValue Property="Value" Path="InBrokerPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Broker Unit"/>
+                            <PropertyValue Property="Value" Path="InBrokertUnit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Rebate Amount"/>
+                            <PropertyValue Property="Value" Path="ZRA7Price"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Broker Value"/>
+                            <PropertyValue Property="Value" Path="InBrokerValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Rebate Price UoM"/>
+                            <PropertyValue Property="Value" Path="ZRA7PriceUnit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Storage"/>
+                            <PropertyValue Property="Value" Path="InStoragePrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Rebate Value"/>
+                            <PropertyValue Property="Value" Path="ZRA7Value"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Storage Unit"/>
+                            <PropertyValue Property="Value" Path="InStoragetUnit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Rebate Currency"/>
+                            <PropertyValue Property="Value" Path="ZRA7Currency"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Storage Value"/>
+                            <PropertyValue Property="Value" Path="InStorageValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Addl"/>
+                            <PropertyValue Property="Value" Path="InRecurPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Addl Unit"/>
+                            <PropertyValue Property="Value" Path="InRecurUnit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="In Addl Value"/>
+                            <PropertyValue Property="Value" Path="InRecurValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Discount"/>
+                            <PropertyValue Property="Value" Path="DiscountPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Discount Unit"/>
+                            <PropertyValue Property="Value" Path="DiscountUnit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Discount Value"/>
+                            <PropertyValue Property="Value" Path="DiscountValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Freight"/>
+                            <PropertyValue Property="Value" Path="OutFreightPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Freight Value"/>
+                            <PropertyValue Property="Value" Path="OutFreightValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Broker"/>
+                            <PropertyValue Property="Value" Path="OutBrokerPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Broker Value"/>
+                            <PropertyValue Property="Value" Path="OutBrokerageValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Storage"/>
+                            <PropertyValue Property="Value" Path="OutStoragePrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Storage Value"/>
+                            <PropertyValue Property="Value" Path="OutStorageValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Addln"/>
+                            <PropertyValue Property="Value" Path="OutRecurPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Out Addln Value"/>
+                            <PropertyValue Property="Value" Path="OutRecurValue"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="BillingDocumentItem"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

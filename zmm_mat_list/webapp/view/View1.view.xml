@@ -1,0 +1,59 @@
+<mvc:View controllerName="customer.porky.zmmmatlist.controller.View1" xmlns:smartTable="sap.ui.comp.smarttable"  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns:uitable="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+
+	<smartFilterBar:SmartFilterBar id="sm_matlist" entitySet="ZCMM_MATERIALDASHBOARD"
+			   enableBasicSearch="true" useToolbar="true" persistencyKey="smarttableCustF4_filter">
+				
+				
+			</smartFilterBar:SmartFilterBar>
+<smartTable:SmartTable
+				tableType="Table"
+				initiallyVisibleFields="Material"
+				requestAtLeastFields="Material"
+				id="sm_matlist_smarttable"
+				entitySet="ZCMM_MATERIALDASHBOARD"
+				smartFilterId="sm_matlist"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="Material List"
+				showRowCount="true"
+				persistencyKey="ZCMM_MATERIALDASHBOARD"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				showFullScreenButton = "true"
+				onAfterRendering ="onAfterRenderingTable"
+				
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			
+			
+		</smartTable:customToolbar>
+<uitable:Table id="table1"
+				selectionBehavior="Row"
+				
+				
+				selectionMode="Single"
+				ariaLabelledBy="title"
+				rowSelectionChange="onRowSelectionChange"
+				/>
+
+
+		
+
+		</smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>

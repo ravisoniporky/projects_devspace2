@@ -1,0 +1,67 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:smartTable="sap.ui.comp.smarttable" 
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+
+
+            <smartTable:SmartTable
+				tableType="Table"
+				id="billback"
+                initiallyVisibleFields="Vendor,CompanyCode,ProfitCenter,DocumentNumber,Amount,DocumentType,Text,HouseBank,DocumentDate,WeekendingDate"
+				                requestAtLeastFields="Vendor,CompanyCode,ProfitCenter,DocumentNumber,Amount,DocumentType,Text,HouseBank,DocumentDate,WeekendingDate,FiscalYear"
+
+				entitySet="ZCFI_VENDORDASH_BILLBACKS"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="Vendor Billbacks"
+				showRowCount="true"
+				persistencyKey="billback"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				growingThreshold="20"
+				showFullScreenButton = "true"
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			<!-- <OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+					<SearchField width="200px" search="onSearchContacts"/>
+
+			</OverflowToolbar> -->
+		</smartTable:customToolbar>
+
+ <Table growing="true"  >
+				
+				
+				<columns>
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "DocumentNumber", "autoColumnWidth": \{ "visibleProperty": "DocumentNumber" }, "columnIndex": 0, "leadingProperty": "DocumentNumber", "sortProperty": "DocumentNumber", "additionalProperty": "DocumentNumber", "additionalSortProperty": "DocumentNumber","type": "String"}' />
+					</customData>
+					<Text text="Document Number" />
+				</Column>
+				
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{DocumentNumber}" titleActive="true" titlePress="onClickPO"/>
+					</cells>
+					
+				</ColumnListItem>
+			</items>
+				
+                </Table>
+
+		</smartTable:SmartTable>
+</core:FragmentDefinition>

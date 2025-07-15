@@ -1,0 +1,238 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+           	<!-- <VBox class="sapUiSmallMargin" height="80%"> -->
+
+			<Table headerText="Customer Details" >
+		
+			<headerToolbar>
+			<OverflowToolbar>
+				<content>
+							<Title text="Customer Details - {customerData>/CustomerName}"  />
+					<ToolbarSpacer />
+					
+					<Button icon="sap-icon://action"
+						press="onClickHeader" />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text  />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			<Column>
+				<Text  />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			
+			
+		</columns>
+		<items>
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+
+
+					<ObjectIdentifier
+					titleActive="true"
+						title="Customer"
+						/>
+					<Text
+						text="{customerData>/Customer}" />
+						
+						
+						<ObjectIdentifier titleActive="true"
+						title="Customer Name"
+						/>
+					<Text
+						text="{customerData>/CustomerName}" />
+
+
+				</cells>
+			</ColumnListItem>
+
+
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+
+
+					<ObjectIdentifier
+					titleActive="true"
+						title="Store No"
+						/>
+					<Text
+						text="{customerData>/StoreNo}" />
+						
+						
+						<ObjectIdentifier titleActive="true"
+						title="Previous Account"
+						/>
+					<Text
+						text="{customerData>/PrevAcct}" />
+
+
+				</cells>
+			</ColumnListItem>
+				
+				<ColumnListItem vAlign="Middle">
+				<cells>
+
+
+					<ObjectIdentifier titleActive="true"
+						title="Address"
+						/>
+					<Text
+						text="{customerData>/Address}" />
+							
+							
+							<ObjectIdentifier titleActive="true"
+						title="Payment Terms"
+						/>
+					<Text
+						text="{customerData>/PmntTerms}" />
+
+
+				</cells>
+			</ColumnListItem>
+				<ColumnListItem vAlign="Middle">
+				<cells>
+
+
+				<ObjectIdentifier titleActive="true"
+						title="Phone Number"
+						/>
+					<Text
+						text="{customerData>/Telephone}" />
+
+
+					<ObjectIdentifier titleActive="true"
+						title="Customer Hierarchy"
+						/>
+					<Text
+						text="{customerData>/CustHierL1}" />
+
+
+				</cells>
+			</ColumnListItem>
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+
+
+
+
+					<ObjectIdentifier titleActive="true"
+						title="Email ID"
+						/>
+					<Text
+						text="{customerData>/EmailId}" />
+
+
+					<ObjectIdentifier titleActive="true"
+						title="Sales Support"
+						/>
+					<Text
+						text="{customerData>/SalesSupport}" />
+
+
+
+
+				</cells>
+			</ColumnListItem>
+
+
+
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="Sales Lead"
+						/>
+					<Text
+						text="{customerData>/SalesLead}" />
+
+						
+						
+
+
+				</cells>
+			</ColumnListItem>
+				
+			
+				
+		</items>
+	</Table>
+		<f:SimpleForm 
+		visible="false"
+			editable="true"
+				
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="12"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="2"
+			columnsM="2"
+			singleContainerFullSize="false" >
+			<f:content>
+				<ObjectIdentifier title="Customer" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text  text="{customerData>/Customer}" />
+			
+				
+				<ObjectIdentifier title="Customer Name" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text  text="{customerData>/CustomerName}" />
+<ObjectIdentifier title="Previous Account" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/PrevAcct}"/>
+
+				<ObjectIdentifier title="Store Number" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/StoreNo}"/>
+
+				<ObjectIdentifier title="Customer Hierarchy" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/CustHierL1}"/>
+
+						<ObjectIdentifier title="Sales Lead" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/SalesLead}"/>
+
+						<ObjectIdentifier title="Sales Support" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/SalesSupport}"/>
+
+				
+
+							<ObjectIdentifier title="Address" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/Address}"/>
+
+						
+
+
+						<ObjectIdentifier title="Email" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/EmailId}"/>
+
+
+						<ObjectIdentifier title="Phone Number" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/Telephone}"/>
+
+
+				<ObjectIdentifier title="Payment Terms" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiTinyMarginTop"/>
+				<Text text="{customerData>/PmntTerms}"/>
+
+
+			
+			</f:content>
+		</f:SimpleForm>
+	
+</core:FragmentDefinition>

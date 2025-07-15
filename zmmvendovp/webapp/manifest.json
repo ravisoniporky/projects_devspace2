@@ -1,0 +1,231 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "customer.porky.zmmvendovp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:ovp",
+            "version": "1.15.1",
+            "toolsId": "68748dd0-ecbb-4eb4-b401-bc7b5f5c92e8"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZSB_VENDORDASH/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZSB_VENDORDASH_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZSB_VENDORDASH_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_VENDORDASH_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZSB_VENDORDASH_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.108.28",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ovp": {},
+                "sap.ui.rta": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "customer.porky.zmmvendovp.i18n.i18n"
+                }
+            },
+            "mainModel": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        }
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainModel",
+        "globalFilterEntityType": "ZCFI_VENDORDASH_FILTERSType",
+        "containerLayout": "resizable",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": false,
+        "cards": {
+            "a1endordetails": {
+                "template": "customer.porky.zmmvendovp.ext.vendordetails",
+                "settings": {
+                    "title": "Vendor Details",
+                    "defaultSpan": {
+                        "cols": 3,
+                        "rows": 7
+                    }
+                }
+            },
+            "a2openBalance": {
+                "template": "customer.porky.zmmvendovp.ext.openBalance",
+                "settings": {
+                    "title": "Open Balance",
+                    "defaultSpan": {
+                        "cols": 1,
+                        "rows": 7
+                    }
+                }
+            },
+            "a40contacts": {
+                "template": "customer.porky.zmmvendovp.ext.contact",
+                "settings": {
+                    "title": "Contacts",
+                    "defaultSpan": {
+                        "cols": 3,
+                        "rows": 7
+                    }
+                }
+            },
+            "a51recentpayment": {
+                "template": "customer.porky.zmmvendovp.ext.recentpayment",
+                "settings": {
+                    "title": "Recent Payment",
+                    "defaultSpan": {
+                        "cols": 3,
+                        "rows": 7
+                    }
+                }
+            },
+            "a50openitems": {
+                "template": "customer.porky.zmmvendovp.ext.openitems",
+                "settings": {
+                    "title": "open Items",
+                    "defaultSpan": {
+                        "cols": 3,
+                        "rows": 7
+                    }
+                }
+            },
+            "a6recentsales": {
+                "template": "customer.porky.zmmvendovp.ext.recentsales",
+                "settings": {
+                    "title": "Recent Sales",
+                    "defaultSpan": {
+                        "cols": 3,
+                        "rows": 7
+                    }
+                }
+            },
+            "a3paymentinfo": {
+                "template": "customer.porky.zmmvendovp.ext.paymentinfo",
+                "settings": {
+                    "title": "Payment Info",
+                    "defaultSpan": {
+                        "cols": 1,
+                        "rows": 7
+                    }
+                }
+            },
+            "a9Chart13WK": {
+                "template": "sap.ovp.cards.charts.analytical",
+                "model": "mainModel",
+                "settings": {
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#vendor3wkchart",
+                    "entitySet": "ZCFI_VENDORAPDAYS_3WK",
+                    "title": "13 Week AP Days",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#vendor3wkchartpq"
+                }
+            },
+            "a7BILLBACK": {
+                "template": "customer.porky.zmmvendovp.ext.BILLBACK",
+                "settings": {
+                    "title": "Vendor Billbacks",
+                    "defaultSpan": {
+                        "cols": 2,
+                        "rows": 7
+                    }
+                }
+            },
+            "a8VendorCredits": {
+                "template": "customer.porky.zmmvendovp.ext.VendorCredits",
+                "settings": {
+                    "title": "Vendor Credits",
+                    "defaultSpan": {
+                        "cols": 2,
+                        "rows": 7
+                    }
+                }
+            }
+        },
+        "chartSettings": {}
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    }
+}

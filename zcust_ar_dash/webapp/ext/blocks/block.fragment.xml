@@ -1,0 +1,241 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+            <VBox class="sapUiSmallMargin">
+		<f:SimpleForm 
+		visible="false"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Customer Blocks"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<ObjectIdentifier title="Customer" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text text="{customerData>/Customer}" />
+		
+				
+				<ObjectIdentifier title="" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiSmallMarginTop"/>
+				<ObjectStatus text="{customerData>/CentralBlock}" state="Error" inverted="true"/>
+
+				<ObjectIdentifier title="" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiSmallMarginTop"/>
+				<ObjectStatus  text="{customerData>/CoCodeBlock}" state="Error" inverted="true"/>
+
+                	<ObjectIdentifier title="" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiSmallMarginTop"/>
+				<ObjectStatus  text="{customerData>/SorgBlock}" state="Error" inverted="true"/>
+
+			
+			</f:content>
+		</f:SimpleForm>
+
+		<Table headerText="Customer Blocks" >
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Customer Blocks" level="H2"/>
+				<ToolbarSpacer/>
+<Switch state="{blockModel>/editMode}" change="onChangeSwitchState" >
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</Switch>			</OverflowToolbar>
+		</headerToolbar>
+	
+		<columns>
+			<Column>
+				<Text  />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			<!-- <Column>
+				<Text  />
+			</Column>
+			<Column>
+				<Text />
+			</Column> -->
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/cblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/cblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/cblock} === 'X' ? 'Error' : 'Success' : 'None'}" 
+						inverted="true"
+						icon="{= ${customerData>/cblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/cblock} === 'X' ? 'Unblock' : 'Block'}" press="pressBlockButton"
+						/> -->
+					
+				</cells>
+			</ColumnListItem>
+				
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/ccblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/ccblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/ccblock} === 'X' ? 'Error' : 'Success': 'None'}" inverted="true" icon="{= ${customerData>/ccblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/ccblock} === 'X' ? 'Unblock' : 'Block'}" press="pressBlockButton"
+						/> -->
+					
+					
+				</cells>
+			</ColumnListItem>
+				<ColumnListItem vAlign="Middle">
+				<cells>
+				<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/orgblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/orgblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/orgblock} === 'X' ? 'Error' : 'Success': 'None'}" inverted="true" icon="{= ${customerData>/orgblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/orgblock} === 'X' ? 'Unblock' : 'Block'}"  press="pressBlockButton"
+						/> -->
+					
+				</cells>
+			</ColumnListItem>
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/cordblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/cordblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/cordblock} === 'X' ? 'Error' : 'Success': 'None'}" inverted="true" icon="{= ${customerData>/cordblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/cordblock} === 'X' ? 'Unblock' : 'Block'}" press="pressBlockButton"
+						/> -->
+					
+
+
+				</cells>
+			</ColumnListItem>
+
+
+
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/cpostblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/cpostblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/cpostblock} === 'X' ? 'Error' : 'Success': 'None'}" inverted="true" icon="{= ${customerData>/cpostblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/cpostblock} === 'X' ? 'Unblock' : 'Block'}" press="pressBlockButton"
+						/> -->
+				</cells>
+			</ColumnListItem>
+
+
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/archblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/archblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/archblock} === 'X' ? 'Error' : 'Success': 'None'}" inverted="true" icon="{= ${customerData>/archblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/archblock} === 'X' ? 'Unblock' : 'Block'}" press="pressBlockButton"
+						/> -->
+				</cells>
+			</ColumnListItem>
+				
+
+
+
+
+					<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/ccpostblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/ccpostblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/ccpostblock} === 'X' ? 'Error' : 'Success': 'None'}" inverted="true" icon="{= ${customerData>/ccpostblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/ccpostblock} === 'X' ? 'Unblock' : 'Block'}" press="pressBlockButton"
+						/> -->
+				</cells>
+			</ColumnListItem>
+
+
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/orgordblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/orgordblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/orgordblock} === 'X' ? 'Error' : 'Success': 'None'}" inverted="true" icon="{= ${customerData>/orgordblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/orgordblock} === 'X' ? 'Unblock' : 'Block'}" press="pressBlockButton"
+						/> -->
+						<!-- <Button icon="{= ${customerData>/orgordblock} === 'X' ? 'Success' : 'Accept'}"
+						type="{= ${customerData>/orgordblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"
+						text="{= ${customerData>/orgordblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						 press="pressBlockButton"
+						/> -->
+				</cells>
+			</ColumnListItem>
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{customerData>/creditblock_but}"
+						/>
+					<ObjectStatus press="pressBlockButton_Credit" active="{blockModel>/editMode}" 
+						text="{= ${customerData>/CreditBlock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						state="{= ${blockModel>/editMode} === true ?  ${customerData>/CreditBlock} === 'X' ? 'Error' : 'Success': 'None'}" inverted="true" icon="{= ${customerData>/CreditBlock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+						<!-- <Button 
+						text="{= ${customerData>/orgordblock} === 'X' ? 'Unblock' : 'Block'}" press="pressBlockButton"
+						/> -->
+						<!-- <Button icon="{= ${customerData>/orgordblock} === 'X' ? 'Success' : 'Accept'}"
+						type="{= ${customerData>/orgordblock} === 'X' ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"
+						text="{= ${customerData>/orgordblock} === 'X' ? 'Blocked' : 'Unblocked'}"  
+						 press="pressBlockButton"
+						/> -->
+				</cells>
+			</ColumnListItem>
+				
+				
+			
+				
+		</items>
+	</Table>
+	</VBox>
+</core:FragmentDefinition>

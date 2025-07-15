@@ -1,0 +1,67 @@
+specVersion: "3.1"
+metadata:
+  name: customer.porky.zsdcustsodashe2
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD/
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZODATA_FR_SRV
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/metadata.xml
+            mockdataRootPath: ./webapp/localService/data
+          - urlPath: /sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD/
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
+            mockdataRootPath: ./webapp/localService/mockdata
+          - urlPath: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/mockdata
+          - urlPath: /sap/opu/odata/sap/ZODATA_FR_SRV
+            metadataPath: ./webapp/localService/ZODATA_FR_SRV/metadata.xml
+            mockdataPath: ./webapp/localService/ZODATA_FR_SRV/mockdata
+            generateMockData: true
+        annotations:
+          - localPath: ./webapp/localService/mainService/ZSB_C_ORDERDASHBOARD_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_ORDERDASHBOARD_VAN',Version='0001')/$value/
+          - localPath: ./webapp/annotations/annotation.xml
+            urlPath: annotations/annotation.xml
+          - localPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRMM_FRVISITV2_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZODATA_FR_SRV/ZODATA_FR_SRV_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/

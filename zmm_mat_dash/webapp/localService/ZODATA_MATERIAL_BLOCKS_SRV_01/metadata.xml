@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZODATA_MATERIAL_BLOCKS_SRV_01" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="matblockhead" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Companydivision" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Company Divisions" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Division" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Allblock" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Purchstatus" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Material Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Purchstatusvaldt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid From" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salesstatus" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salesstatusvaldt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid from" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="matblockheadSet" Relationship="ZODATA_MATERIAL_BLOCKS_SRV_01.HeadtoItem" FromRole="FromRole_HeadtoItem" ToRole="ToRole_HeadtoItem"/>
+                <NavigationProperty Name="HeadtoItem" Relationship="ZODATA_MATERIAL_BLOCKS_SRV_01.HeadtoItem" FromRole="FromRole_HeadtoItem" ToRole="ToRole_HeadtoItem"/>
+            </EntityType>
+            <EntityType Name="matblockitem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Salesorg"/>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salesorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales Org." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Centralblock" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Deletion Ind." sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plantblock" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Deletion Ind." sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salesorgblock" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Deletion Ind." sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Purchstatus" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Material Status" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Purchstatusvaldt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid From" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salesstatus" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Status" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salesstatusvaldt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid from" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Followupmat" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Follow-Up Matl" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Effectivedt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="HeadtoItem" sap:content-version="1">
+                <End Type="ZODATA_MATERIAL_BLOCKS_SRV_01.matblockhead" Multiplicity="1" Role="FromRole_HeadtoItem"/>
+                <End Type="ZODATA_MATERIAL_BLOCKS_SRV_01.matblockitem" Multiplicity="*" Role="ToRole_HeadtoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_HeadtoItem">
+                        <PropertyRef Name="Material"/>
+                    </Principal>
+                    <Dependent Role="ToRole_HeadtoItem">
+                        <PropertyRef Name="Material"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZODATA_MATERIAL_BLOCKS_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="matblockheadSet" EntityType="ZODATA_MATERIAL_BLOCKS_SRV_01.matblockhead" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="matblockitemSet" EntityType="ZODATA_MATERIAL_BLOCKS_SRV_01.matblockitem" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="HeadtoItemSet" Association="ZODATA_MATERIAL_BLOCKS_SRV_01.HeadtoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="matblockheadSet" Role="FromRole_HeadtoItem"/>
+                    <End EntitySet="matblockitemSet" Role="ToRole_HeadtoItem"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_MATERIAL_BLOCKS_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_MATERIAL_BLOCKS_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

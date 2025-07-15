@@ -1,0 +1,908 @@
+<mvc:View
+    controllerName="customer.porky.zpgprojection.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:m="sap.m"
+    xmlns:sf="sap.ui.comp.smartfilterbar"
+    xmlns:core="sap.ui.core"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ui="sap.m"
+     xmlns:uit="sap.ui.table"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <content>
+            <sf:SmartFilterBar
+                id="smartFilterBar"
+                entitySet="ZCSD_PG_PROJECTON"
+                persistencyKey="UniqueAndStablePersistencyKey"
+                beforeVariantFetch="onBeforeVariantFetch"
+                search="onFilterApply"
+                afterVariantLoad="onAfterVariantLoad"
+            />
+               <smartTable:SmartTable
+                initiallyVisibleFields="AS01,AS02,AS03,AS04,AS05,AS06,AS07,AS08,AS09,AS10,AS11,AS12,Vkorg,Salesman,Attribute"
+                requestAtLeastFields="AS01,AS02,AS03,AS04,AS05,AS06,AS07,AS08,AS09,AS10,AS11,AS12,Vkorg,Salesman,Attribute"
+                id="LineItemsSmartTable1"
+                entitySet="ZCSD_PG_PROJECTON"
+                smartFilterId="smartFilterBar"
+                tableType="AnalyticalTable"
+                useExportToExcel="true"
+                beforeExport="onBeforeExport"
+                useVariantManagement="true"
+                useTablePersonalisation="true"
+                header="Lines"
+                showRowCount="true"
+                persistencyKey="SmartTableAnalytical_Explored"
+                enableAutoBinding="false"
+                class="sapUiResponsiveContentPadding"
+                enableAutoColumnWidth="true"
+            >
+
+            <uit:AnalyticalTable visibleRowCountMode="Auto">
+
+            <uit:columns>
+            <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS01" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS01", 
+                                  "leadingProperty": "AS01", "columnIndex": "0"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS01/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/0/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path:'AS01' ,type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS02" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS02", 
+                                  "leadingProperty": "AS02", "columnIndex": "1"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS02/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/1/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS02' ,type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS03" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS03", 
+                                  "leadingProperty": "AS03", "columnIndex": "2"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS03/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/2/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS03',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS04" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS04", 
+                                  "leadingProperty": "AS04", "columnIndex": "3"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS04/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/3/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS04',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS05" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS05", 
+                                  "leadingProperty": "AS05", "columnIndex": "4"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS05/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/4/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS05',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS06" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS06", 
+                                  "leadingProperty": "AS06", "columnIndex": "5"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS06/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/5/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS06',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS07" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS07", 
+                                  "leadingProperty": "AS07", "columnIndex": "6"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS07/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/6/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path:'AS07',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS08" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS08", 
+                                  "leadingProperty": "AS08", "columnIndex": "7"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS08/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/7/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS08',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS09" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS09", 
+                                  "leadingProperty": "AS09", "columnIndex": "8"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS09/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/8/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path:'AS09',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS10" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS10", 
+                                  "leadingProperty": "AS10", "columnIndex": "9"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS10/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/9/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS10',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+   <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS11" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS11", 
+                                  "leadingProperty": "AS11", "columnIndex": "10"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS11/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/10/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS11',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+
+
+ <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="AS12" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "AS12", 
+                                  "leadingProperty": "AS11", "columnIndex": "11"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS12/@sap:label}{= isNaN(${calendarData>/results/0/Gjahr}) === false ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/11/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  #     ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{path: 'AS12',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn>
+
+<!-- <uit:AnalyticalColumn visible="true" summed="true"  autoResizable="true" resizable="true" 
+                                                leadingProperty="Vkorg" width="90px">
+        <uit:customData>
+            <core:CustomData key="p13nData" value='\{"columnKey": "Vkorg", 
+                                  "leadingProperty": "AS11", "columnIndex": "12"}'/>
+        </uit:customData>
+       <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/Vkorg/@sap:label}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+
+          <uit:template>
+                                <m:Text
+                                    text="{Vkorg}"
+                                    wrapping="false"
+                                />
+                            </uit:template> 
+</uit:AnalyticalColumn> -->
+                       
+                </uit:columns>
+                        </uit:AnalyticalTable>
+             </smartTable:SmartTable>
+            <smartTable:SmartTable
+                visible="false"
+                initiallyVisibleFields="Vkorg,Salesman,Attribute"
+                requestAtLeastFields="Vkorg,Salesman,Attribute"
+                id="LineItemsSmartTable"
+                entitySet="ZCSD_PG_PROJECTON"
+                smartFilterId="smartFilterBar"
+                tableType="Table"
+                useExportToExcel="true"
+                beforeExport="onBeforeExport"
+                useVariantManagement="true"
+                useTablePersonalisation="true"
+                header="Line Items"
+                showRowCount="true"
+                persistencyKey="SmartTableAnalytical_Explored"
+                enableAutoBinding="false"
+                class="sapUiResponsiveContentPadding"
+                enableAutoColumnWidth="true"
+                editTogglable="true"
+            >
+                <!-- layout data used to make the table growing but the filter bar fixed -->
+
+                <ui:Table growing="true" >
+                    <ui:columns>
+
+
+                        <ui:Column hAlign="Center" width="6rem" >
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS01","leadingProperty": "AS01","sortProperty": "AS01","filterProperty": "AS01", "type": "number"}'
+                                />
+                            </ui:customData>
+                            <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS01/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/0/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/0/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/0/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                           
+
+                            <!-- <VBox>
+                                <Text
+                                    text="{/#ZCSD_PG_PROJECTONType/AS01/@sap:label}"
+                                />
+
+                                <Text text="Second Column" />
+                            </VBox> -->
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS01}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS02","leadingProperty": "AS02","sortProperty": "AS02","filterProperty": "AS02", "type": "number"}'
+                                />
+                            </ui:customData>
+                           
+<ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS02/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/1/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/1/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/1/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS02}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS03","leadingProperty": "AS03","sortProperty": "AS03","filterProperty": "AS03", "type": "number"}'
+                                />
+                            </ui:customData>
+                            <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS03/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/2/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/2/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/2/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS03}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS04","leadingProperty": "AS04","sortProperty": "AS04","filterProperty": "AS04", "type": "number"}'
+                                />
+                            </ui:customData>
+                           <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS04/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/3/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/3/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/3/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS04}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS05","leadingProperty": "AS05","sortProperty": "AS05","filterProperty": "AS05", "type": "number"}'
+                                />
+                            </ui:customData>
+                          <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS05/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/4/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/4/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/4/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS05}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS06","leadingProperty": "AS06","sortProperty": "AS06","filterProperty": "AS06", "type": "number"}'
+                                />
+                            </ui:customData>
+                            <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS06/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/5/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/5/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/5/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS06}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS07","leadingProperty": "AS07","sortProperty": "AS07","filterProperty": "AS07", "type": "number"}'
+                                />
+                            </ui:customData>
+                            <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS07/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/6/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/6/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/6/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS07}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS08","leadingProperty": "AS08","sortProperty": "AS08","filterProperty": "AS08", "type": "number"}'
+                                />
+                            </ui:customData>
+                           <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS08/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/7/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/7/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/7/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS08}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS09","leadingProperty": "AS09","sortProperty": "AS09","filterProperty": "AS09", "type": "number"}'
+                                />
+                            </ui:customData>
+                            <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS09/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/8/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/8/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/8/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS09}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS10","leadingProperty": "AS10","sortProperty": "AS10","filterProperty": "AS10", "type": "number"}'
+                                />
+                            </ui:customData>
+                             <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS10/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/9/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/9/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/9/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS10}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS11","leadingProperty": "AS11","sortProperty": "AS11","filterProperty": "AS11", "type": "number"}'
+                                />
+                            </ui:customData>
+                            <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS11/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/10/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/10/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/10/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS11}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "AS12","leadingProperty": "AS12","sortProperty": "AS12","filterProperty": "AS12", "type": "number"}'
+                                />
+                            </ui:customData>
+                           <ObjectIdentifier title="{/#ZCSD_PG_PROJECTONType/AS12/@sap:label}{= ${calendarData>/results/0/Gjahr} !== '' ? '-'+Number(${calendarData>/results/0/Gjahr}).toString().substring(2,4) : ''}" text="{path:'calendarData>/results/11/Zwkend', type : 'sap.ui.model.type.Date',formatOptions:
+                             { style : 'short', UTC: true}}  {= typeof ${calendarData>/results/11/Week} !== 'undefined' ?  '  # ' + ${calendarData>/results/11/Week} : ''}" titleActive="true" titlePress="titleClicked"/>
+
+                            <!-- <ui:template>
+                                <m:Text
+                                    text="{AS12}"
+                                    wrapping="false"
+                                />
+                            </ui:template> -->
+                        </ui:Column>
+
+                        <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "Vkorg","leadingProperty": "Vkorg","sortProperty": "Vkorg","filterProperty": "Vkorg", "type": "string"}'
+                                />
+                            </ui:customData>
+                           <ObjectIdentifier title="" text="{/#ZCSD_PG_PROJECTONType/Vkorg/@sap:label}"  titleActive="true" titlePress="titleClicked"/>
+
+                          
+                        </ui:Column>
+
+
+                          <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "Salesman","leadingProperty": "Salesman","sortProperty": "Salesman","filterProperty": "Salesman", "type": "string"}'
+                                />
+                            </ui:customData>
+                           <ObjectIdentifier title="" text="{/#ZCSD_PG_PROJECTONType/Salesman/@sap:label}"   titleActive="true" titlePress="titleClicked"/>
+
+                          
+                        </ui:Column>
+
+
+                          <ui:Column hAlign="Center" width="6rem">
+                            <ui:customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "Attribute","leadingProperty": "Attribute","sortProperty": "Attribute","filterProperty": "Attribute", "type": "string"}'
+                                />
+                            </ui:customData>
+                           <ObjectIdentifier title="" text="{/#ZCSD_PG_PROJECTONType/Attribute/@sap:label}"  titleActive="true" titlePress="titleClicked"/>
+
+                          
+                        </ui:Column>
+
+
+
+
+                        
+
+
+                         
+                    </ui:columns>
+
+                     <items>
+				<ColumnListItem>
+                	
+                   
+                    <cells>
+                           <m:ObjectStatus  text="{path: 'AS01',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+
+					</cells>
+
+
+					<cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS02',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                    <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS03',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                    <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS04',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                    <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS05',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                    <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS06',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                    <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS07',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                    <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS08',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                    <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS09',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                    <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS10',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                     <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS11',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells>
+
+                     <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'AS12',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells> 
+
+
+                     <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'Vkorg',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells> 
+
+
+                     <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'Salesman',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }" />
+            
+					</cells> 
+
+
+                     <cells>
+                    
+                        <m:ObjectStatus  text="{path: 'Attribute'}" />
+            
+					</cells> 
+                    
+
+                    </ColumnListItem> 
+                     </items>
+                </ui:Table>
+            </smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>

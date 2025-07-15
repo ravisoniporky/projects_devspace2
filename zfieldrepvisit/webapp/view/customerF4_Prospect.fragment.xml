@@ -1,0 +1,135 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+		xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog contentHeight="80%"
+		id="myDialog1_customer_prospect"
+		noDataText="No Prospects Found"
+		title="Select Prospect"
+		search=".handleSearchCustomer"
+		confirm=".handleConfirm"
+        selectionChange="handleSelectCustomer"
+		cancel=".handleClose"
+        growing="true"
+        growingThreshold="20"
+		>
+
+			<smartFilterBar:SmartFilterBar id="smartFilter_custF4_prospect" entitySet="ZBSD_PropectVH"
+			   enableBasicSearch="true" useToolbar="false" persistencyKey="smarttableCustF4_filter">
+				
+				
+			</smartFilterBar:SmartFilterBar>
+			<smartTable:SmartTable id="smartTable_custF4_prospect" entitySet="ZBSD_PropectVH" smartFilterId="smartFilter_custF4_prospect"
+				requestAtLeastFields="Customer,CustomerName,StreetName,CityName,Region,PhoneNumber,EmailAddress,SalesOrganization"
+				beforeRebindTable="onBeforeRebindCustomerF4_prospect"
+			 tableType="ResponsiveTable" useExportToExcel="true"
+			
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 header="Prospects" showRowCount="true" persistencyKey="smarttableCustF4"
+			  enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+			  enableAutoColumnWidth="true"  app:useSmartToggle="true">
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+			
+
+				<Table mode="SingleSelectMaster"  itemPress="handleSelectCustomer_Prospect" selectionChange="handleSelectCustomer_Prospect"></Table>
+
+
+
+					</smartTable:SmartTable>
+
+
+
+		
+		<endButton>
+		<Button text="Close" press="onCloseDialogBox" type="Reject"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+
+<!-- <core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		id="myDialog1_customer1"
+		noDataText="No Customer Prospects Found"
+		title="Select Customer Prospect"
+		search=".handleSearchCustomer_Prospect"
+		confirm=".handleConfirm"
+        selectionChange="handleSelectCustomer_Prospect"
+		cancel=".handleClose"
+        growing="true"
+        growingThreshold="20"
+		items="{
+			path : 'ZODATA_FR_SRV>/ZBSD_PropectVH'
+		}">
+		<ColumnListItem vAlign="Middle">
+			<cells>
+<Text text="{ZODATA_FR_SRV>Customer}"></Text>
+<Text text="{ZODATA_FR_SRV>CustomerName}"></Text>
+<Text text="{ZODATA_FR_SRV>StreetName}"></Text>
+<Text text="{ZODATA_FR_SRV>CityName}"></Text>
+<Text text="{ZODATA_FR_SRV>Region}"></Text>
+<Text text="{ZODATA_FR_SRV>PhoneNumber}"></Text>
+<Text text="{ZODATA_FR_SRV>EmailAddress}"></Text>	
+<Text text="{ZODATA_FR_SRV>SalesOrganization}"></Text>				
+
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em" hAlign="Center">
+				<header>
+					<Text text="Customer No." />
+				</header>
+			</Column>
+			<Column width="12em" hAlign="Center">
+				<header>
+					<Text text="Customer Name" />
+				</header>
+			</Column>
+			<Column hAlign="Center" >
+				<header>
+					<Text text="Street Name" />
+				</header>
+			</Column>
+				<Column hAlign="Center" >
+				<header>
+					<Text text="City Name" />
+				</header>
+			</Column>
+
+			<Column hAlign="Center" >
+				<header>
+					<Text text="Region" />
+				</header>
+			</Column>
+
+
+			<Column hAlign="Center">
+				<header>
+					<Text text="Telephone" />
+				</header>
+			</Column>
+
+			<Column hAlign="Center">
+				<header>
+					<Text text="Email" />
+				</header>
+			</Column>
+			
+			
+			
+			<Column hAlign="Center">
+				<header>
+					<Text text="Sales Org" />
+				</header>
+			</Column>
+
+			
+
+
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition> -->

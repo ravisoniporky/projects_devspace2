@@ -1,0 +1,161 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "customer.porky.zsdinfoovpc",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.2",
+            "toolsId": "86c4db4a-b857-45a4-8cdb-fc76836a21c0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZODATA_T_ORDSTATUS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZODATA_T_ORDSTATUS_SRV_Annotation","annotation0"
+                    ],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation0.xml",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
+                }
+            },
+            "ZODATA_T_ORDSTATUS_SRV_Annotation": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_T_ORDSTATUS_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZODATA_T_ORDSTATUS_SRV/ZODATA_T_ORDSTATUS_SRV_Annotation.xml"
+                }
+            },
+            "ZODATA_T_ORDSTATUS_SRV": {
+                "uri": "/sap/opu/odata/sap/ZODATA_T_ORDSTATUS_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZODATA_T_ORDSTATUS_SRV_Annotation"
+                    ],
+                    "localUri": "localService/ZODATA_T_ORDSTATUS_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5","fullWidth": "true",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "fullWidth": "true",
+        "dependencies": {
+            "minUI5Version": "1.108.28",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "customer.porky.zsdinfoovpc.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "ZODATA_T_ORDSTATUS_SRV": {
+                "dataSource": "ZODATA_T_ORDSTATUS_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "customer.porky.zsdinfoovpc.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetView1"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View1",
+                    "viewName": "View1"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "customer.porky.zsdinfoovpc.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

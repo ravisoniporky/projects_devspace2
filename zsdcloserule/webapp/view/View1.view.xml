@@ -1,0 +1,68 @@
+<mvc:View controllerName="customer.porky.zsdcloserule.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:sf="sap.ui.comp.smartfilterbar"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+
+
+	<sf:SmartFilterBar
+				entitySet="ZCSD_CloserRule"
+				smartVariant="true"
+                considerSelectionVariants="true" 
+				persistencyKey="edifulfillsf"
+                basicSearch="true"
+                filterBarExpanded="true"
+				liveMode="true"
+                enableBasicSearch="true"
+				showGoOnFB="false"
+				id="smartFilterBar"
+				afterVariantLoad ="afterVariantLoadSF"
+				initialized ="afterVariantLoadSF"
+                
+			>
+            
+			
+			</sf:SmartFilterBar>
+
+            <smartTable:SmartTable
+				tableType="ResponsiveTable"
+				initiallyVisibleFields="zrule,zrule_desc,CreatedBy,LastChangedBy,Createdatetime,Changedatetime"
+				requestAtLeastFields="zrule"
+				id="smarttable"
+				entitySet="ZCSD_CloserRule"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="Rules"
+				showRowCount="true"
+				persistencyKey="tablecustomer"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				growingThreshold="20"
+								showFullScreenButton = "true"
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+			 <ToolbarSpacer/>
+					<Button text="Set Deletion Indicator" press="OnDeleteRule"></Button> 
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+        <Table itemPress="onItemPress" mode="SingleSelectLeft">
+        <ColumnListItem type="Navigation" ></ColumnListItem>
+        </Table>
+		</smartTable:SmartTable>
+
+
+
+        </content>
+    </Page>
+</mvc:View>

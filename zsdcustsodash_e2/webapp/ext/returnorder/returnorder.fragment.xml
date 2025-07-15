@@ -1,0 +1,140 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+
+            <HBox>
+<Title text="Recent Return Orders" class="sapUiSmallMargin"></Title>
+
+	</HBox>
+            <IconTabBar
+		
+		
+		class="sapUiResponsiveContentPadding"
+        items="{recentOrdersModel>/results}">
+		<items>
+			<IconTabFilter
+				text="{recentOrdersModel>SalesDocument}"
+				key="{recentOrdersModel>SalesDocument}"
+				count="({recentOrdersModel>to_Item/results/length})"
+               >
+
+<ScrollContainer  width="100%" horizontal="true" vertical="true" focusable="true">
+
+<HBox width="300px" height="300px">
+
+                 <Table  items="{path: 'recentOrdersModel>to_Item/results', sorter: {path: 'recentOrdersModel>SalesDocumentItem'}}" width="65rem" headerText="Order Items" sticky="ColumnHeaders,HeaderToolbar" visible="true">
+		<!-- <headerToolbar>
+				<OverflowToolbar>
+					<Title text="Order Items1" level="H2"/>
+					<ToolbarSpacer/>
+					<ObjectIdentifier title="{recentOrdersModel>SalesDocument}" titlePress="onOpenZSales"></ObjectIdentifier>
+
+					
+				</OverflowToolbar>
+			</headerToolbar> -->
+				<headerToolbar>
+				<OverflowToolbar>
+					<Title text="Order : " level="H2"/>
+					<ObjectIdentifier title="{recentOrdersModel>SalesDocument}" titlePress="onOpenZSales" titleActive="true"></ObjectIdentifier>
+					<ObjectIdentifier title="Delivery Date: " titleActive="false"></ObjectIdentifier>
+					<ObjectIdentifier title="{ path:'recentOrdersModel>DeliveryDate', type:'sap.ui.model.odata.type.Date'}" titleActive="false"></ObjectIdentifier>
+					<ObjectIdentifier title="Order Type: " titleActive="false"></ObjectIdentifier>
+					<ObjectIdentifier title="{ path:'recentOrdersModel>Ordertype'}" titleActive="false"></ObjectIdentifier>
+					<ToolbarSpacer/>
+					<SearchField width="250px" search="onSearchReturnOrders" enabled="true" enableSuggestions="true"></SearchField>
+					<!-- <Button
+						tooltip="Sort"
+						icon="sap-icon://sort"
+						press="handleSortButtonPressed"/>
+					<Button
+						tooltip="Filter"
+						icon="sap-icon://filter"
+						press="handleFilterButtonPressed"/>
+					<Button
+						tooltip="Group"
+						icon="sap-icon://group-2"
+						press="handleGroupButtonPressed"/>
+					<ToggleButton icon="sap-icon://menu" tooltip="Enable Custom Context Menu" press="onToggleContextMenu" /> -->
+				</OverflowToolbar>
+			</headerToolbar>
+	
+		<columns>
+        	<Column width="20px">
+				<Text text="{/#ZCSD_CUSTSOITEMDASHType/SalesDocumentItem/@sap:label}" />
+			</Column>
+			<Column width="170px">
+				<Text text="{/#ZCSD_CUSTSOITEMDASHType/Material/@sap:label}" />
+			</Column>
+			
+			
+			<Column width="50px">
+				<Text text="{/#ZCSD_CUSTSOITEMDASHType/OldMaterialId/@sap:label}" />
+			</Column>
+			
+               <Column width="50px">
+				<Text text="{/#ZCSD_CUSTSOITEMDASHType/ShipQtyCS/@sap:label}" />
+			</Column>
+           
+			
+				<Column width="50px">
+				<Text text="{/#ZCSD_CUSTSOITEMDASHType/Sales/@sap:label}" />
+			</Column>
+            <Column width="50px">
+				<Text text="{/#ZCSD_CUSTSOITEMDASHType/PriceUoM/@sap:label}" />
+			</Column>
+			 <Column width="50px">
+				<Text text="{/#ZCSD_CUSTSOITEMDASHType/NetWtLB/@sap:label}" />
+			</Column>
+			 <!-- <Column width="50px">
+				<Text text="{/#ZCSD_CUSTSOITEMDASHType/cu_hier3/@sap:label}" />
+			</Column> -->
+			
+			
+         
+         
+            
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Text text="{= Number(${recentOrdersModel>SalesDocumentItem}) }"/>
+                    <HBox>
+                    <ObjectIdentifier titleActive="true" title="{recentOrdersModel>Material}" class="sapUiTinyMarginEnd" titlePress="onPressMaterial"></ObjectIdentifier>
+					<Text text=" ({recentOrdersModel>MaterialDescription})" />
+                    </HBox>
+					<Text text="{recentOrdersModel>OldMaterialId}"/>
+                    					<Text text="{recentOrdersModel>ShipQtyCS} {recentOrdersModel>SalesUnit}"/>
+
+					<Text text="{recentOrdersModel>Sales} {recentOrdersModel>Currency}"/>
+					<Text text="{recentOrdersModel>PriceUoM}" />
+										<Text text="{recentOrdersModel>NetWtLB} {recentOrdersModel>WeightUnit}" />
+
+					<!-- <Text text="{recentOrdersModel>cu_hier3} / {recentOrdersModel>hier3_name}" /> -->
+		
+
+						
+
+                        
+				</cells>
+			</ColumnListItem>		
+				
+		</items>
+	</Table>
+
+
+
+
+
+
+
+      
+    </HBox>
+    </ScrollContainer>
+			</IconTabFilter>
+			
+		</items>
+	</IconTabBar>
+</core:FragmentDefinition>

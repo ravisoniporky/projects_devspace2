@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZODATA_T_ORDSTATUS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="C_BusinessSolutionOrderStdVHType" sap:label="Solution Order Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessSolutionOrder"/>
+                </Key>
+                <Property Name="BusinessSolutionOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Solution Order ID" sap:quickinfo="Transaction ID"/>
+                <Property Name="BusSolnOrdDescription" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Transaction Description"/>
+            </EntityType>
+            <EntityType Name="C_CurrencyValueHelpType" sap:label="Currency Value help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="Currency"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="CurrencyName" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="CurrencyName" Type="Edm.String" MaxLength="40" sap:label="Description"/>
+                <Property Name="CurrencyShortName" Type="Edm.String" MaxLength="15" sap:label="Short text"/>
+            </EntityType>
+            <EntityType Name="C_DischannelvaluehelpType" sap:label="Distribution Channel by Sales Org" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="DistributionChannelName" sap:label="Distribution Channel"/>
+                <Property Name="DistributionChannelName" Type="Edm.String" MaxLength="20" sap:label="Distribution Channel Description"/>
+            </EntityType>
+            <EntityType Name="C_OrgDivisionValueHelpType" sap:label="Division by Distribution Chain" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="Division"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="DivisionName" sap:label="Division"/>
+                <Property Name="DivisionName" Type="Edm.String" MaxLength="20" sap:label="Division Description"/>
+            </EntityType>
+            <EntityType Name="C_SalesDocSalesOrganizationVHType" sap:label="Sales Organization" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="SalesOrganization_Text" sap:label="Sales Organization"/>
+                <Property Name="SalesOrganization_Text" Type="Edm.String" MaxLength="20" sap:label="Sales Organization Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="C_SalesDocumentUserVHType" sap:label="Sales Document User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="User ID"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description"/>
+            </EntityType>
+            <EntityType Name="C_SalesGroupValueHelpType" sap:label="Sales Office specific Sales Group" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOffice"/>
+                    <PropertyRef Name="SalesGroup"/>
+                </Key>
+                <Property Name="SalesOffice" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Office"/>
+                <Property Name="SalesGroup" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="SalesGroupName" sap:label="Sales Group"/>
+                <Property Name="SalesGroupName" Type="Edm.String" MaxLength="20" sap:label="Sales Group Description"/>
+            </EntityType>
+            <EntityType Name="C_SalesOfficeValueHelpType" sap:label="Sales Area specific Sales Office" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="OrganizationDivision"/>
+                    <PropertyRef Name="SalesOffice"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="OrganizationDivision" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="SalesOffice" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="SalesOfficeName" sap:label="Sales Office"/>
+                <Property Name="SalesOfficeName" Type="Edm.String" MaxLength="20" sap:label="Sales Office Description"/>
+            </EntityType>
+            <EntityType Name="C_SlsDocFlfmtSlsDocCatVHType" sap:label="SD Document Category" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SDDocumentCategory"/>
+                </Key>
+                <Property Name="SDDocumentCategory" Type="Edm.String" Nullable="false" MaxLength="4" sap:text="SDDocumentCategory_Text" sap:label="SD Document Category"/>
+                <Property Name="SDDocumentCategory_Text" Type="Edm.String" MaxLength="60" sap:label="SD Document Category Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="C_SlsDocFlfmtSlsDocTypeVHType" sap:label="Sales Document Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesDocumentType"/>
+                </Key>
+                <Property Name="SalesDocumentType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="SalesDocumentType_Text" sap:label="Sales Document Type"/>
+                <Property Name="SalesDocumentType_Text" Type="Edm.String" MaxLength="20" sap:label="Description" sap:quickinfo="Sales Document Type Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesDocumentTypeLangDepdnt" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Language key" sap:quickinfo="Language key for sales document type"/>
+            </EntityType>
+            <EntityType Name="C_SoldToValueHelpType" sap:label="Sold-to Party" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="BusinessPartnerImageURL" Type="Edm.String" MaxLength="255"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code" sap:quickinfo="City postal code"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:label="Street"/>
+                <Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:label="House Number"/>
+                <Property Name="InternationalPhoneNumber" Type="Edm.String" MaxLength="30" sap:semantics="tel"/>
+                <Property Name="InternationalMobilePhoneNumber" Type="Edm.String" MaxLength="30" sap:semantics="tel"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:semantics="email"/>
+            </EntityType>
+            <EntityType Name="I_CrdtMSegmentVHType" sap:label="Value Help for Credit Segment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditSegment"/>
+                </Key>
+                <Property Name="CreditSegment" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CreditSegment_Text" sap:label="Credit Segment"/>
+                <Property Name="CreditSegment_Text" Type="Edm.String" MaxLength="50" sap:label="Name" sap:quickinfo="Name of Credit Segment" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_CreditManagementSegmentType" sap:label="Credit Management Segment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditSegment"/>
+                </Key>
+                <Property Name="CreditSegment" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CreditSegment_Text" sap:label="Credit Segment"/>
+                <Property Name="CreditSegment_Text" Type="Edm.String" MaxLength="50" sap:label="Name" sap:quickinfo="Name of Credit Segment" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreditSegmentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Credit Segment Currency" sap:semantics="currency-code"/>
+                <Property Name="ExchangeRateType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Exchange Rate Type"/>
+                <Property Name="CrdtSgmtIsMainCreditSegment" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Main Credit Segmt" sap:quickinfo="Indicator for Main Credit Segment"/>
+                <Property Name="CrdtSgmtIsAddedToMainSgmt" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Add. Main Cr. Segmt" sap:quickinfo="Additive Contribution to Main Credit Segment"/>
+            </EntityType>
+            <EntityType Name="I_CustomerClassificationType" sap:label="Customer Classification" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomerClassification"/>
+                </Key>
+                <Property Name="CustomerClassification" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="CustomerClassification_Text" sap:label="Customer Classific." sap:quickinfo="Customer Classification"/>
+                <Property Name="CustomerClassification_Text" Type="Edm.String" MaxLength="20" sap:label="Customer Classification Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_CustomerProjectStdVHType" sap:label="Customer Project Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomerProject"/>
+                </Key>
+                <Property Name="CustomerProject" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="CustomerProjectName" sap:label="Customer Project ID"/>
+                <Property Name="CustomerProjectName" Type="Edm.String" MaxLength="40" sap:label="Customer Proj Name" sap:quickinfo="Customer Project Name"/>
+            </EntityType>
+            <EntityType Name="I_Customer_VHType" sap:label="Customer" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region" sap:quickinfo="Country/Region Key"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Customer Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Complete Flag" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="IsCompetitor" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Competitors" sap:quickinfo="Indicator: Competitor"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Partner Type"/>
+            </EntityType>
+            <EntityType Name="I_DeliveryDocumentStdVHType" sap:label="Delivery Document" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DeliveryDocument"/>
+                </Key>
+                <Property Name="DeliveryDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery"/>
+            </EntityType>
+            <EntityType Name="I_PersWrkAgrmtSrchHelp_1Type" sap:label="Search Help for WorkAgreements" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PersonWorkAgreement"/>
+                </Key>
+                <Property Name="PersonWorkAgreement" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel number"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
+                <Property Name="FamilyName" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Family Name"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
+                <Property Name="GivenName" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Given Name"/>
+                <Property Name="PersonExternalID" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="ID Number" sap:quickinfo="Identification Number"/>
+                <Property Name="UserID" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User ID"/>
+                <Property Name="PersonFullName" Type="Edm.String" MaxLength="80" sap:label="Full Name"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="CostCenterName" Type="Edm.String" MaxLength="20" sap:label="Cost Center Name"/>
+                <Property Name="Job" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Job key" sap:quickinfo="Job"/>
+                <Property Name="JobName" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:label="Job Name" sap:quickinfo="Job Title"/>
+                <Property Name="OrganizationalUnitName" Type="Edm.String" MaxLength="40" sap:label="Organizational Unit Name"/>
+                <Property Name="PersonWorkAgrmtAuthznGrpg" Type="Edm.String" MaxLength="14" sap:display-format="UpperCase" sap:label="Organizational key" sap:quickinfo="Organizational Key"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.Boolean" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+            </EntityType>
+            <EntityType Name="ZBSD_BlockedSalesOrdersType" sap:label="ZORDINFO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                    <PropertyRef Name="Rundt"/>
+                    <PropertyRef Name="TimeRollup"/>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order"/>
+                <Property Name="Rundt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Run Date"/>
+                <Property Name="TimeRollup" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="TotalNetAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="TransactionCurrency" sap:label="Net Value" sap:quickinfo="Net Value of the Sales Order in Document Currency"/>
+                <Property Name="TotalBlockStatusDesc" Type="Edm.String" MaxLength="20" sap:label="Description" sap:quickinfo="Status Description"/>
+                <Property Name="TotalBlockStatus" Type="Edm.String" MaxLength="1"/>
+                <Property Name="BlockStatus" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="RequestedDeliveryDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Requested Delivery Date"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sold-to Party"/>
+                <Property Name="SoldToPartyName" Type="Edm.String" MaxLength="80" sap:label="Name of Customer"/>
+                <Property Name="CriticalityCode" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative"/>
+                <Property Name="SalesOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Order Type"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="OrganizationDivision" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Last Changed By" sap:quickinfo="User Who Last Changed the Business Document"/>
+                <Property Name="SalesOffice" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Office"/>
+                <Property Name="SalesGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Sales Group"/>
+                <Property Name="BillingCompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="CCode to Be Billed" sap:quickinfo="Company Code to Be Billed"/>
+            </EntityType>
+            <EntityType Name="ZBSD_SalesOrganizationType" sap:label="Sales Organization" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="ltext" sap:label="Sales Organization"/>
+                <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing" sap:value-list="standard"/>
+                <Property Name="ltext" Type="Edm.String" MaxLength="40" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="salesorgname" Type="Edm.String" MaxLength="20" sap:attribute-for="SalesOrganization" sap:label="Name"/>
+            </EntityType>
+            <EntityType Name="ZBSD_TIMEROLLUPType" sap:label="Time Rollup Text" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="timerollup"/>
+                </Key>
+                <Property Name="timerollup" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="timerolluptext" sap:label="Time Rollup Key"/>
+                <Property Name="timerolluptext" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Field Name"/>
+            </EntityType>
+            <EntityType Name="ZCSD_GlobalFilters_ORDINFOType" sap:label="Sales Order Info App Global Filters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SoldToParty"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="OrganizationDivision"/>
+                    <PropertyRef Name="CustomerClassification"/>
+                    <PropertyRef Name="CreatedByUser"/>
+                    <PropertyRef Name="LastChangedByUser"/>
+                    <PropertyRef Name="SalesOffice"/>
+                    <PropertyRef Name="SalesGroup"/>
+                </Key>
+                <Property Name="SoldToParty" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sold-to Party" sap:value-list="standard"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:required-in-filter="true" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="OrganizationDivision" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="CustomerClassification" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Customer Classification"/>
+                <Property Name="CreatedByUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Last Changed By" sap:quickinfo="User Who Last Changed the Business Document"/>
+                <Property Name="SalesOffice" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Office"/>
+                <Property Name="SalesGroup" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Sales Group"/>
+                <Property Name="RequestedDeliveryDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="single-value" sap:label="Requested Delivery Date"/>
+                <Property Name="Rundt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:required-in-filter="true" sap:label="Run Date"/>
+                <Property Name="TimeRollup" Type="Edm.String" MaxLength="3" sap:required-in-filter="true" sap:value-list="standard"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:required-in-filter="true" sap:label="CCode to Be Billed" sap:quickinfo="Company Code to Be Billed"/>
+            </EntityType>
+            <EntityType Name="ZCSD_MoniOpenOrdersType" sap:semantics="aggregate" sap:label="Monitor Order Status" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sales Document"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="TimeRollup" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension"/>
+                <Property Name="Rundt" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Run Date"/>
+                <Property Name="DeliveryDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Reference Document" sap:quickinfo="Document Number of Reference Document"/>
+                <Property Name="BillingDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Billing Document"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sold-to Party"/>
+                <Property Name="ShipToParty" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="SoldToPartyName" Type="Edm.String" MaxLength="80" sap:aggregation-role="dimension" sap:label="Name of Customer"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension"/>
+                <Property Name="StatusName" Type="Edm.String" MaxLength="60" sap:aggregation-role="dimension" sap:label="Issue Description"/>
+                <Property Name="RequestedDeliveryDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Requested Delivery Date"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="NumberofOpenOrders" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Open" sap:filterable="false"/>
+                <Property Name="Numberofinvoice" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Invoice" sap:filterable="false"/>
+                <Property Name="Numberoftoinvoice" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Pre-Invoiced" sap:filterable="false"/>
+                <Property Name="Numberofallstatus" Type="Edm.Int32" sap:aggregation-role="measure" sap:filterable="false"/>
+                <Property Name="ItemNetWeight" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="measure" sap:unit="ItemWeightUnit" sap:label="Net Weight" sap:filterable="false"/>
+                <Property Name="ItemWeightUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="Quantity" Type="Edm.Double" sap:aggregation-role="dimension" sap:label="Quantity CS"/>
+                <Property Name="NetAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:aggregation-role="dimension" sap:unit="TransactionCurrency" sap:label="Amount"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityType Name="ZCSD_ORDINFOINVType" sap:label="Order Info GP by Sales Lead" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BillingDocument"/>
+                </Key>
+                <Property Name="BillingDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Billing Document"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sold-to Party"/>
+                <Property Name="CostAmount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="TransactionCurrency" sap:label="Cost"/>
+                <Property Name="ConditionAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="TransactionCurrency" sap:label="Sales Price"/>
+                <Property Name="GP" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="TransactionCurrency" sap:label="GP"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="SalesLeadName" Type="Edm.String" MaxLength="80" sap:label="Sales Lead"/>
+                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead"/>
+            </EntityType>
+            <EntityType Name="ZC_OrderStatusVHType" sap:label="Sales Order Status Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Status"/>
+                </Key>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="StatusName" sap:label="Issue"/>
+                <Property Name="StatusName" Type="Edm.String" MaxLength="60" sap:label="Issue Description"/>
+            </EntityType>
+            <EntityType Name="ZRSD_MoniOpenOrdersType" sap:semantics="aggregate" sap:label="Monitor Open Orders" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sales Document"/>
+                <Property Name="DeliveryDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Reference Document" sap:quickinfo="Document Number of Reference Document"/>
+                <Property Name="BillingDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Billing Document"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sold-to Party"/>
+                <Property Name="ShipToParty" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="SoldToPartyName" Type="Edm.String" MaxLength="80" sap:aggregation-role="dimension" sap:label="Name of Customer"/>
+                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension"/>
+                <Property Name="StatusName" Type="Edm.String" MaxLength="60" sap:label="Issue Description"/>
+                <Property Name="RequestedDeliveryDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Requested Delivery Date"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="NumberofOpenOrders" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Open" sap:filterable="false"/>
+                <Property Name="Numberofinvoice" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Invoiced" sap:filterable="false"/>
+                <Property Name="Numberoftoinvoice" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Pre-Invoiced" sap:filterable="false"/>
+                <Property Name="Numberofallstatus" Type="Edm.Int32" sap:aggregation-role="measure" sap:filterable="false"/>
+                <Property Name="ItemNetWeight" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="measure" sap:unit="ItemWeightUnit" sap:filterable="false"/>
+                <Property Name="ItemWeightUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="dimension" sap:unit="QtyUnit" sap:label="Quantity"/>
+                <Property Name="QtyUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="QuantityInCS" Type="Edm.Double" sap:aggregation-role="measure" sap:label="Quantity CS" sap:filterable="false"/>
+                <Property Name="NetAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:aggregation-role="measure" sap:unit="TransactionCurrency" sap:filterable="false"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Company Code"/>
+            </EntityType>
+            <EntityContainer Name="ZODATA_T_ORDSTATUS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="C_BusinessSolutionOrderStdVH" EntityType="ZODATA_T_ORDSTATUS_SRV.C_BusinessSolutionOrderStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_CurrencyValueHelp" EntityType="ZODATA_T_ORDSTATUS_SRV.C_CurrencyValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_Dischannelvaluehelp" EntityType="ZODATA_T_ORDSTATUS_SRV.C_DischannelvaluehelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_OrgDivisionValueHelp" EntityType="ZODATA_T_ORDSTATUS_SRV.C_OrgDivisionValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_SalesDocSalesOrganizationVH" EntityType="ZODATA_T_ORDSTATUS_SRV.C_SalesDocSalesOrganizationVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_SalesDocumentUserVH" EntityType="ZODATA_T_ORDSTATUS_SRV.C_SalesDocumentUserVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_SalesGroupValueHelp" EntityType="ZODATA_T_ORDSTATUS_SRV.C_SalesGroupValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_SalesOfficeValueHelp" EntityType="ZODATA_T_ORDSTATUS_SRV.C_SalesOfficeValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_SlsDocFlfmtSlsDocCatVH" EntityType="ZODATA_T_ORDSTATUS_SRV.C_SlsDocFlfmtSlsDocCatVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_SlsDocFlfmtSlsDocTypeVH" EntityType="ZODATA_T_ORDSTATUS_SRV.C_SlsDocFlfmtSlsDocTypeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_SoldToValueHelp" EntityType="ZODATA_T_ORDSTATUS_SRV.C_SoldToValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CrdtMSegmentVH" EntityType="ZODATA_T_ORDSTATUS_SRV.I_CrdtMSegmentVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CreditManagementSegment" EntityType="ZODATA_T_ORDSTATUS_SRV.I_CreditManagementSegmentType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_CustomerClassification" EntityType="ZODATA_T_ORDSTATUS_SRV.I_CustomerClassificationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_CustomerProjectStdVH" EntityType="ZODATA_T_ORDSTATUS_SRV.I_CustomerProjectStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Customer_VH" EntityType="ZODATA_T_ORDSTATUS_SRV.I_Customer_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_DeliveryDocumentStdVH" EntityType="ZODATA_T_ORDSTATUS_SRV.I_DeliveryDocumentStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_PersWrkAgrmtSrchHelp_1" EntityType="ZODATA_T_ORDSTATUS_SRV.I_PersWrkAgrmtSrchHelp_1Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_BlockedSalesOrders" EntityType="ZODATA_T_ORDSTATUS_SRV.ZBSD_BlockedSalesOrdersType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_SalesOrganization" EntityType="ZODATA_T_ORDSTATUS_SRV.ZBSD_SalesOrganizationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_TIMEROLLUP" EntityType="ZODATA_T_ORDSTATUS_SRV.ZBSD_TIMEROLLUPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_GlobalFilters_ORDINFO" EntityType="ZODATA_T_ORDSTATUS_SRV.ZCSD_GlobalFilters_ORDINFOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_MoniOpenOrders" EntityType="ZODATA_T_ORDSTATUS_SRV.ZCSD_MoniOpenOrdersType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_ORDINFOINV" EntityType="ZODATA_T_ORDSTATUS_SRV.ZCSD_ORDINFOINVType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_OrderStatusVH" EntityType="ZODATA_T_ORDSTATUS_SRV.ZC_OrderStatusVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZRSD_MoniOpenOrders" EntityType="ZODATA_T_ORDSTATUS_SRV.ZRSD_MoniOpenOrdersType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZBSD_SalesOrganizationType/IntercompanyBillingCustomer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="I_Customer_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="IntercompanyBillingCustomer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StreetName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PostalCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZCSD_GlobalFilters_ORDINFOType/SoldToParty" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sold-to Party"/>
+                        <PropertyValue Property="CollectionPath" String="C_SoldToValueHelp"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SoldToParty"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PostalCode"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StreetName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZCSD_GlobalFilters_ORDINFOType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZCSD_GlobalFilters_ORDINFOType/TimeRollup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Time Rollup Text"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_TIMEROLLUP"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TimeRollup"/>
+                                    <PropertyValue Property="ValueListProperty" String="timerollup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="timerolluptext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZCSD_MoniOpenOrdersType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZODATA_T_ORDSTATUS_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZODATA_T_ORDSTATUS_SRV_Entities/ZCSD_GlobalFilters_ORDINFO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiresFilter" Bool="true"/>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>SalesOrganization</PropertyPath>
+                                <PropertyPath>Rundt</PropertyPath>
+                                <PropertyPath>TimeRollup</PropertyPath>
+                                <PropertyPath>CompanyCode</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="RequestedDeliveryDate"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZODATA_T_ORDSTATUS_SRV_Entities/ZCSD_MoniOpenOrders" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>NumberofOpenOrders</PropertyPath>
+                                <PropertyPath>Numberofinvoice</PropertyPath>
+                                <PropertyPath>Numberoftoinvoice</PropertyPath>
+                                <PropertyPath>Numberofallstatus</PropertyPath>
+                                <PropertyPath>ItemNetWeight</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.ZODATA_T_ORDSTATUS_SRV_Entities/ZRSD_MoniOpenOrders" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>NumberofOpenOrders</PropertyPath>
+                                <PropertyPath>Numberofinvoice</PropertyPath>
+                                <PropertyPath>Numberoftoinvoice</PropertyPath>
+                                <PropertyPath>Numberofallstatus</PropertyPath>
+                                <PropertyPath>ItemNetWeight</PropertyPath>
+                                <PropertyPath>QuantityInCS</PropertyPath>
+                                <PropertyPath>NetAmount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_T_ORDSTATUS_SRV.I_CrdtMSegmentVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>CreditSegment</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_T_ORDSTATUS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_T_ORDSTATUS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,130 @@
+specVersion: "3.1"
+metadata:
+  name: customer.porky.zfieldrepvisit
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+          - path: /sap
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+          - path: /sap/opu/odata/sap/ZODATA_FR_SRV
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZBMM_FRVISITDEFSUPP_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+          - path: /sap/opu/odata/sap/ZCXA_USERAUTH_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+          - path: /sap/opu/odata/sap/ZODATA_FIELDREP_IMAGES_V2_SRV
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZI_DEFAULTSHVH_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZSB_C_FRVISIT2
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZODATA_FR_SRV
+            metadataPath: ./webapp/localService/ZODATA_FR_SRV/metadata.xml
+            mockdataPath: ./webapp/localService/mainService/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZBSD_MOE_CDS
+            metadataPath: ./webapp/localService/ZBSD_MOE_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZBSD_MOE_CDS/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZODATA_FR_SRV
+            metadataPath: ./webapp/localService/ZODATA_FR_SRV/metadata.xml
+            mockdataPath: ./webapp/localService/ZODATA_FR_SRV/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
+            metadataPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZBMM_FRVISITDEFSUPP_CDS
+            metadataPath: ./webapp/localService/ZBMM_FRVISITDEFSUPP_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZBMM_FRVISITDEFSUPP_CDS/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS
+            metadataPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZCXA_USERAUTH_CDS
+            metadataPath: ./webapp/localService/ZCXA_USERAUTH_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZCXA_USERAUTH_CDS/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZODATA_FIELDREP_IMAGES_V2_SRV
+            metadataPath: ./webapp/localService/ZODATA_FIELDREP_IMAGES_V2_SRV/metadata.xml
+            mockdataPath: ./webapp/localService/ZODATA_FIELDREP_IMAGES_V2_SRV/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZI_DEFAULTSHVH_CDS
+            metadataPath: ./webapp/localService/ZI_DEFAULTSHVH_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZI_DEFAULTSHVH_CDS/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZSB_C_FRVISIT2
+            metadataPath: ./webapp/localService/ZSB_C_FRVISIT2/metadata.xml
+            mockdataPath: ./webapp/localService/ZSB_C_FRVISIT2/data
+            generateMockData: true
+        annotations:
+          - localPath: ./webapp/localService/ZBSD_MOE_CDS/ZBSD_MOE_CDS_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBSD_MOE_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZODATA_FR_SRV/ZODATA_FR_SRV_Annotation.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZBMM_FRVISITDEFSUPP_CDS/ZBMM_FRVISITDEFSUPP_CDS_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBMM_FRVISITDEFSUPP_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZCXA_USERAUTH_CDS/ZCXA_USERAUTH_CDS_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERAUTH_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZI_DEFAULTSHVH_CDS/ZI_DEFAULTSHVH_CDS_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZI_DEFAULTSHVH_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZSB_C_FRVISIT2/ZSB_C_FRVISIT2_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_FRVISIT2_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRMM_FRVISITV2_CDS_VAN',Version='0001')/$value/

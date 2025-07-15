@@ -1,0 +1,60 @@
+specVersion: "3.1"
+metadata:
+  name: customer.porky.zmmpurchdash
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap/opu/odata/sap/ZCMM_POITEMMONI_CDS/
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZCMM_POITEMMONI_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZCMM_POITEMMONI_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZCMM_POITEMMONI_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZCMM_POITEMMONI_CDS
+            metadataPath: ./webapp/localService/ZCMM_POITEMMONI_CDS2/metadata.xml
+            mockdataPath: ./webapp/localService/ZCMM_POITEMMONI_CDS2/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZCMM_POITEMMONI_CDS/
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
+            mockdataRootPath: ./webapp/localService/mainService/mockdata
+        annotations:
+          - localPath: ./webapp/annotations/annotation0.xml
+            urlPath: annotations/annotation0.xml
+          - localPath: ./webapp/localService/ZCMM_POITEMMONI_CDS2/ZCMM_POITEMMONI_CDS2_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCMM_POITEMMONI_CDS_VAN',Version='0001')/$value/

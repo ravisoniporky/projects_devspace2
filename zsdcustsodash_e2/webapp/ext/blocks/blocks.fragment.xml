@@ -1,0 +1,152 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+            <Table  headerText="Customer Blocks" >
+
+		
+	
+		<columns>
+			<Column>
+            <Text />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			<Column>
+				<Text  />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/loevm_ordblock/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/loevm_ordblock}" /> -->
+                        	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/loevm_ordblock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/loevm_ordblock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/loevm_ordblock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+
+
+						<ObjectIdentifier titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/loevm_postblock/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/loevm_postblock}" /> -->
+                         	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/loevm_postblock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/loevm_postblock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/loevm_postblock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+				</cells>
+			</ColumnListItem>
+
+
+	<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/loevm_archblock/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/loevm_archblock}" /> -->
+                          	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/loevm_archblock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/loevm_archblock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/loevm_archblock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+
+
+						<ObjectIdentifier titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/loevm_companypostblock/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/loevm_companypostblock}" /> -->
+
+                              	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/loevm_companypostblock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/loevm_companypostblock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/loevm_companypostblock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+				</cells>
+			</ColumnListItem>
+
+
+
+	<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/loevm_orgordblock/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/loevm_orgordblock}" /> -->
+
+                             	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/loevm_orgordblock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/loevm_orgordblock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/loevm_orgordblock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+
+
+						<ObjectIdentifier titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/CentralBlock/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/CentralBlock}" /> -->
+
+                                 	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/CentralBlock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/CentralBlock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/CentralBlock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+				</cells>
+			</ColumnListItem>
+
+
+	<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/loevm_c/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/loevm_c}" /> -->
+                            	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/loevm_c} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/loevm_c} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/loevm_c} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+		<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/SalesOrganizationBlock/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/loevm_c}" /> -->
+                            	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/SalesOrganizationBlock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/SalesOrganizationBlock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/SalesOrganizationBlock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+
+						
+				</cells>
+			</ColumnListItem>
+
+	<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZBSD_CUSTSODASHType/CreditBLock/@sap:label}"
+						/>
+					<!-- <Text
+						text="{customerData>/loevm_c}" /> -->
+                            	<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/CreditBLock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/CreditBLock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/CreditBLock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+
+						
+				</cells>
+			</ColumnListItem>
+				
+			
+				
+		</items>
+	</Table>
+
+</core:FragmentDefinition>

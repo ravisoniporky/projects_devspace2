@@ -1,0 +1,265 @@
+<mvc:View controllerName="customer.porky.zmmpurchdash.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 	xmlns:mc="sap.suite.ui.microchart"	xmlns:sf="sap.ui.comp.smartfilterbar" 	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:core="sap.ui.core"
+    	xmlns:f="sap.f" 	xmlns:card="sap.f.cards" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"  xmlns:viz.data="sap.viz.ui5.data"
+        xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:smartchart="sap.ui.comp.smartchart" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+
+	<sf:SmartFilterBar
+					id="smartFilterBar"
+					entitySet="ZCMM_POITEMMONI1"
+					persistencyKey="UniqueAndStablePersistencyKey"
+					beforeVariantFetch="onBeforeVariantFetch"
+					search="onFilterApply"
+					liveMode="true"
+					afterVariantLoad="onAfterVariantLoad"
+					metadataContexts="true"
+					useProvidedNavigationProperties="true"
+					navigationProperties="Plant"
+					>
+
+					
+				
+				</sf:SmartFilterBar>
+               
+
+                	
+<VBox fitContainer="true" height="100%">
+		
+		<IconTabBar class="sapUiResponsiveContentPadding">
+			<items>
+					<IconTabFilter text="Cards View">
+					<content>
+					<HBox>
+						<f:Card class="sapUiMediumMargin" width="300px">
+		<f:header>
+			<card:Header title="Overview PO" subtitle="{subTitlePlant>/Plant} {subTitleTime>/Time}" id="POSubHeader" />
+
+		</f:header>
+		<f:content>
+			<List
+				class="sapUiSmallMarginBottom"
+				showSeparators="None"
+				>
+
+
+				<CustomListItem>
+					<HBox alignItems="Center" justifyContent="SpaceBetween">
+						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+							<Title level="H3" text="Highest PO Price" />
+							<Text text="{highestValuePO>/PurchaseOrder}" />
+						</VBox>
+						<ObjectStatus
+							class="sapUiTinyMargin sapUiSmallMarginEnd"
+							text="{path: 'highestValuePO>/NetAmount',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+							state="Success" />
+					</HBox>
+				</CustomListItem>
+
+
+                <CustomListItem>
+					<HBox alignItems="Center" justifyContent="SpaceBetween">
+						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+							<Title level="H3" text="Lowest PO Price" />
+							<Text text="{lowestValuePO>/PurchaseOrder}" />
+						</VBox>
+						<ObjectStatus
+							class="sapUiTinyMargin sapUiSmallMarginEnd"
+							text="{path: 'lowestValuePO>/NetAmount',type:'sap.ui.model.type.Float',formatOptions: {currencyCode: false }}"
+							state="Success" />
+					</HBox>
+				</CustomListItem>
+
+
+
+				<CustomListItem>
+					<HBox alignItems="Center" justifyContent="SpaceBetween">
+						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+							<Title level="H3" text="Highest PO Qty" />
+							<Text text="{highestValueQty>/PurchaseOrder}" />
+						</VBox>
+						<ObjectStatus
+							class="sapUiTinyMargin sapUiSmallMarginEnd"
+							text="{path: 'highestValueQty>/OrderQuantity',type:'sap.ui.model.type.Float',
+    formatOptions: {
+      showMeasure: false
+    } }"
+							state="Success" />
+					</HBox>
+				</CustomListItem>
+
+
+                <CustomListItem>
+					<HBox alignItems="Center" justifyContent="SpaceBetween">
+						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+							<Title level="H3" text="Lowest PO Qty" />
+							<Text text="{lowestValueQty>/PurchaseOrder}" />
+						</VBox>
+						<ObjectStatus
+							class="sapUiTinyMargin sapUiSmallMarginEnd"
+							text="{path: 'lowestValueQty>/OrderQuantity',type:'sap.ui.model.type.Float',formatOptions: {currencyCode: false }}"
+							state="Success" />
+					</HBox>
+				</CustomListItem>
+
+
+
+               
+			</List>
+		</f:content>
+	</f:Card>
+
+
+
+
+
+
+
+		<f:Card class="sapUiMediumMargin" width="300px">
+		<f:header>
+			<card:Header title="Open Vs Received" subtitle="{subTitlePlant>/Plant} {subTitleTime>/Time}"  />
+
+		</f:header>
+		<f:content>
+		<VBox height="300px">
+		<mc:ComparisonMicroChart size="M"  class="sapUiSmallMargin" press="press" width="16rem" shrinkable="true">
+		<mc:data>
+			<mc:ComparisonMicroChartData	title="Open POs" value="{= Number(${POComparisonChartModel>/OpenPOs})}" displayValue="{path: 'POComparisonChartModel>/OpenPOs',type:'sap.ui.model.type.Float',formatOptions: {currencyCode: false }}" color="Error"/>
+			<mc:ComparisonMicroChartData	title="Close POs" value="{= Number(${POComparisonChartModel>/ClosePOs})}" displayValue="{path: 'POComparisonChartModel>/ClosePOs',type:'sap.ui.model.type.Float',formatOptions: {currencyCode: false }}" color="Good"/>
+		
+		</mc:data>
+	</mc:ComparisonMicroChart>
+
+						</VBox>
+		</f:content>
+	</f:Card>
+			
+	</HBox>
+					</content>
+				</IconTabFilter>
+				<IconTabFilter text="Net Amount vs Plant">
+					<content>
+					<VBox height="500px">
+						<smartchart:SmartChart enableAutoBinding="false"
+							entitySet="ZCMM_POITEMMONI1" useVariantManagement="true"
+							persistencyKey="PKeyChartExample9" useChartPersonalisation="true"
+							showFullScreenButton="true" selectionMode="Multi"
+							showChartTooltip="true" showDrillBreadcrumbs="false"
+							showDetailsButton="false" showDrillButtons="true"
+							showSemanticNavigationButton="true" smartFilterId="smartFilterBar">
+						</smartchart:SmartChart>
+						</VBox>
+					</content>
+				</IconTabFilter>
+				<IconTabFilter text="Qty vs Plant">
+					<content>
+					<VBox height="500px">
+						<smartchart:SmartChart enableAutoBinding="false"
+							entitySet="ZCMM_POITEMMONI1" useVariantManagement="true"
+							persistencyKey="PKeyChartExample9" useChartPersonalisation="true"
+							showFullScreenButton="true" selectionMode="Multi"
+							showChartTooltip="true" showDrillBreadcrumbs="false"
+							showDetailsButton="false" showDrillButtons="true"
+							showSemanticNavigationButton="true" smartFilterId="smartFilterBar" data:chartQualifier="Quantity_Chart">
+						</smartchart:SmartChart>
+						</VBox>
+					</content>
+				</IconTabFilter>
+				<IconTabFilter text="Net Amount vs Mat Group">
+					<content>
+						<VBox height="500px">
+						<smartchart:SmartChart enableAutoBinding="false"
+							entitySet="ZCMM_POITEMMONI1" useVariantManagement="true"
+							persistencyKey="PKeyChartExample9" useChartPersonalisation="true"
+							showFullScreenButton="true" selectionMode="Multi"
+							showChartTooltip="true" showDrillBreadcrumbs="false"
+							showDetailsButton="false" showDrillButtons="true"
+							showSemanticNavigationButton="true" smartFilterId="smartFilterBar" data:chartQualifier="POsNetAmntVsMatGroup">
+						</smartchart:SmartChart>
+						</VBox>
+					</content>
+				</IconTabFilter>
+
+					<IconTabFilter text="Qty vs Mat Group">
+					<content>
+						<VBox height="500px">
+						<smartchart:SmartChart enableAutoBinding="false"
+							entitySet="ZCMM_POITEMMONI1" useVariantManagement="true"
+							persistencyKey="PKeyChartExample9" useChartPersonalisation="true"
+							showFullScreenButton="true" selectionMode="Multi"
+							showChartTooltip="true" showDrillBreadcrumbs="false"
+							showDetailsButton="false" showDrillButtons="true"
+							showSemanticNavigationButton="true" smartFilterId="smartFilterBar" data:chartQualifier="POsQtyVsMatGroup">
+						</smartchart:SmartChart>
+						</VBox>
+					</content>
+				</IconTabFilter>
+
+
+				<IconTabFilter text="POs vs Mat Group">
+					<content>
+						<VBox height="500px">
+						<smartchart:SmartChart enableAutoBinding="false"
+							entitySet="ZCMM_POITEMMONI1" useVariantManagement="true"
+							persistencyKey="PKeyChartExample9" useChartPersonalisation="true"
+							showFullScreenButton="true" selectionMode="Multi"
+							showChartTooltip="true" showDrillBreadcrumbs="false"
+							showDetailsButton="false" showDrillButtons="true"
+							showSemanticNavigationButton="true" smartFilterId="smartFilterBar" data:chartQualifier="POVsMatGroup">
+						</smartchart:SmartChart>
+						</VBox>
+					</content>
+				</IconTabFilter>
+
+
+				<IconTabFilter text="POs vs Plant">
+					<content>
+						<VBox height="500px">
+						<smartchart:SmartChart enableAutoBinding="false"
+							entitySet="ZCMM_POITEMMONI1" useVariantManagement="true"
+							persistencyKey="PKeyChartExample9" useChartPersonalisation="true"
+							showFullScreenButton="true" selectionMode="Multi"
+							showChartTooltip="true" showDrillBreadcrumbs="false"
+							showDetailsButton="false" showDrillButtons="true"
+							showSemanticNavigationButton="true" smartFilterId="smartFilterBar" data:chartQualifier="POVsPlant">
+						</smartchart:SmartChart>
+						</VBox>
+					</content>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	
+
+
+
+    	<smartTable:SmartTable id="LineItemsSmartTable" entitySet="ZCMM_POITEMMONI1" smartFilterId="smartFilterBar" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport"
+		requestAtLeastFields="PurchaseOrder,PurchaseOrderItem,PurchasingOrganization,PurchaseOrderDate,CreatedByUser,CreationDate,OrderQuantity,PurchaseOrderQuantityUnit,NetAmount,DisplayCurrency,PurchaseOrderStatus,Rundt"
+		initiallyVisibleFields="PurchaseOrder,PurchaseOrderItem,PurchasingOrganization,PurchaseOrderDate,CreatedByUser,CreationDate,OrderQuantity,PurchaseOrderQuantityUnit,NetAmount,DisplayCurrency,PurchaseOrderStatus,Rundt"
+         useVariantManagement="true" useTablePersonalisation="true" header="Line Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="false" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true" >
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+                <Table growing="true"  >
+
+				
+                </Table>
+				
+			</smartTable:SmartTable>
+
+
+			<smartTable:SmartTable id="LineItemsSmartTable1" entitySet="ZCMM_POITEMMONI1"  tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport"
+         useVariantManagement="true" useTablePersonalisation="true" header="Line Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored1" enableAutoBinding="false" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true" >
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+                <Table growing="true"  >
+
+				
+                </Table>
+				
+			</smartTable:SmartTable>
+</VBox>
+        </content>
+    </Page>
+</mvc:View>

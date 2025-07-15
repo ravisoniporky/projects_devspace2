@@ -1,0 +1,303 @@
+<mvc:View controllerName="customer.porky.zsdfutureorder.controller.View1"  xmlns:smartTable="sap.ui.comp.smarttable"  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core"
+    xmlns="sap.m"  xmlns:m="sap.m"	xmlns:ui="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+         <content >
+
+	<smartFilterBar:SmartFilterBar id="sm_matlist" entitySet="ZCSD_PREORDER"
+			   enableBasicSearch="true" useToolbar="true" persistencyKey="smarttableCustF4_filter">
+				
+				
+			</smartFilterBar:SmartFilterBar>
+
+				<IconTabBar
+		id="idIconTabBarNoIcons"
+		expanded="{device>/isNoPhone}"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter text="All Materials" key="existing">
+
+<smartTable:SmartTable
+				tableType="Table"
+				id="sm_matlist_smarttable"
+				initiallyVisibleFields="Plant,MaterialDescription"
+				requestAtLeastFields="Material,Plant,MaterialDescription,
+				LeadTimeSun,CutOffTimeSun,LeadTimeMon,CutOffTimeMon,LeadTimeTue,
+				CutOffTimeTue,LeadTimeWed,CutOffTimeWed,LeadTimeThu,CutOffTimeThu,
+				LeadTimeFri,CutOffTimeFri,LeadTimeSat,CutOffTimeSat,FlagSun,FlagMon,FlagTue,FlagWed,FlagThu,FlagFri,FlagSat"
+				entitySet="ZCSD_PREORDER"
+				smartFilterId="sm_matlist"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="Material List"
+				showRowCount="true"
+				persistencyKey="ZCSD_PREORDER"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				showFullScreenButton = "true"
+				onAfterRendering ="onAfterRenderingTable"
+				
+							
+			>
+
+			<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://edit" tooltip="Update Lead Time" press="openUpdateLeadTimeDialogn" text="Update Lead Time"/>
+				
+			</OverflowToolbar>
+			
+		</smartTable:customToolbar>
+
+		  <Table growing="true" mode="MultiSelect" >
+				
+				
+				<columns>
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "ScheduleExists", "autoColumnWidth": \{ "visibleProperty": "ScheduleExists" }, "columnIndex": 5, "leadingProperty": "ScheduleExists", "sortProperty": "ScheduleExists", "additionalProperty": "ScheduleExists", "additionalSortProperty": "ScheduleExists","type": "String"}' />
+					</customData>
+					<Label text="Schedule Exist?" />
+				</Column>
+
+
+
+				
+				
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						
+						<ObjectIdentifier title="{= ${ScheduleExists} === true ?  'Yes' : 'No'}" titleActive="true" titlePress="openUpdateLeadTimeDialogn"/>
+					</cells>
+					
+				</ColumnListItem>
+			</items> 
+				
+                </Table>  
+
+		</smartTable:SmartTable>
+
+			</IconTabFilter>
+
+
+
+			<IconTabFilter text="New Materials" key="new" visible="false">
+
+
+
+
+				 <ui:Table id="table" growing="true" mode="MultiSelect" rows="{newMaterialModel>/materials}" paste="onPaste">
+	<ui:plugins>
+					<ui:plugins.MultiSelectionPlugin limit="100" enableNotification="true" selectionMode="MultiToggle"/>
+				</ui:plugins>
+						<ui:extension>
+					<m:OverflowToolbar id="toolbar" style="Clear">
+						<m:Title id="title" text="Products"/>
+						<m:ToolbarSpacer/>
+						
+						<m:Button text="Validate Data" press="validateData"/>
+						<m:Button >
+							<m:dependents>
+								<m:plugins.PasteProvider pasteFor="table" />
+							</m:dependents>
+						</m:Button>
+					</m:OverflowToolbar>
+				</ui:extension>
+
+				<ui:columns>
+				<ui:Column hAlign="Begin" width="10rem">
+				
+
+					<Label text="Material" />
+					<ui:template>
+							<Input value="{newMaterialModel>Material}" valueState="{=  !${newMaterialModel>MaterialDescription}  ? 'None' : ${newMaterialModel>MaterialDescription} === 'No Material Found' ? 'Error' : 'Success'}"/>
+						</ui:template>
+				</ui:Column>
+
+				<ui:Column hAlign="Begin" width="10rem">
+				
+				<Label text="Material Description" />
+					<ui:template>
+							<Label text="{newMaterialModel>MaterialDescription}" />
+						</ui:template>
+				</ui:Column>
+
+					<ui:Column hAlign="Begin" width="10rem">
+				
+
+					<Label text="Plant" />
+					<ui:template>
+							<Input value="{newMaterialModel>Plant}"/>
+						</ui:template>
+				</ui:Column>
+
+				<ui:Column hAlign="Begin" width="10rem">
+				
+
+					<Label text="ScheduleExists" />
+					<ui:template>
+											<ObjectIdentifier title="{= ${newMaterialModel>ScheduleExists} === true ?  'Yes' : ${newMaterialModel>ScheduleExists} === false ?  'No' : ${newMaterialModel>ScheduleExists} }" titleActive="true" titlePress="openUpdateLeadTimeDialogn"/>
+
+						</ui:template>
+				</ui:Column>
+
+				<!-- <ui:Column hAlign="Begin" width="15rem">
+					
+					
+
+					<Label text="Sunday - Lead Time /Cut Off Time" />
+					<ui:template>
+							<HBox>
+						<Input value="{LeadTimeSun}" width="4rem"/>
+						<TimePicker dateValue="{
+        type: 'sap.ui.model.type.Time',
+        path:'/CutOffTimeSun'
+		
+    }" />
+						</HBox>
+						</ui:template>
+				</ui:Column>
+
+
+
+				<ui:Column hAlign="Begin" width="15rem">
+					<Label text="Monday - Lead Time /Cut Off Time" />
+					<ui:template>
+							<HBox>
+						<Input value="{LeadTimeMon}" width="4rem"/>
+						<TimePicker dateValue="{
+        type: 'sap.ui.model.type.Time',
+		
+        path:'/CutOffTimeMon'
+    }" />
+						</HBox>
+						</ui:template>
+				</ui:Column>
+
+				<ui:Column hAlign="Begin" width="15rem">
+					<Label text="Tuesday - Lead Time /Cut Off Time" />
+					<ui:template>
+							<HBox>
+						<Input value="{LeadTimeTue}" width="4rem"/>
+						<TimePicker dateValue="{
+        type: 'sap.ui.model.type.Time',
+        path:'/CutOffTimeTue'
+    }" />
+						</HBox>
+						</ui:template>
+				</ui:Column>
+
+				<ui:Column hAlign="Begin" width="15rem">
+					<Label text="Wednesday - Lead Time /Cut Off Time" />
+					<ui:template>
+							<HBox>
+						<Input value="{LeadTimeWed}" width="4rem"/>
+						<TimePicker dateValue="{
+        type: 'sap.ui.model.type.Time',
+        path:'/CutOffTimeWed'
+    }" />
+						</HBox>
+						</ui:template>
+				</ui:Column>
+
+				<ui:Column hAlign="Begin" width="15rem">
+					<Label text="Thursday - Lead Time /Cut Off Time" />
+					<ui:template>
+							<HBox>
+						<Input value="{LeadTimeThu}" width="4rem"/>
+						<TimePicker dateValue="{
+        type: 'sap.ui.model.type.Time',
+        path:'/CutOffTimeSun'
+    }" />
+						</HBox>
+						</ui:template>
+				</ui:Column>
+
+				<ui:Column hAlign="Begin" width="15rem">
+					<Label text="Friday - Lead Time /Cut Off Time" />
+					<ui:template>
+							<HBox>
+						<Input value="{LeadTimeSun}" width="4rem"/>
+						<TimePicker dateValue="{
+        type: 'sap.ui.model.type.Time',
+        path:'/CutOffTimeSun'
+    }" />
+						</HBox>
+						</ui:template>
+				</ui:Column>
+
+
+				<ui:Column hAlign="Begin" width="15rem">
+					<Label text="Saturday - Lead Time /Cut Off Time" />
+					<ui:template>
+							<HBox>
+						<Input value="{LeadTimeSun}" width="4rem"/>
+						<TimePicker dateValue="{
+        type: 'sap.ui.model.type.Time',
+        path:'/CutOffTimeSun'
+    }" />
+						</HBox>
+						</ui:template>
+				</ui:Column> -->
+
+			</ui:columns>
+			<!-- <items>
+				<ColumnListItem>
+					<cells>
+					<Input />
+						
+
+						<HBox>
+						<Input />
+						<TimePicker />
+						</HBox>
+
+						<HBox>
+						<Input />
+						<TimePicker />
+						</HBox>
+
+						<HBox>
+						<Input />
+						<TimePicker />
+						</HBox>
+
+						<HBox>
+						<Input />
+						<TimePicker />
+						</HBox>
+
+						<HBox>
+						<Input />
+						<TimePicker />
+						</HBox>
+
+
+
+
+					</cells>
+					
+				</ColumnListItem>
+			</items>  -->
+				
+                </ui:Table> 
+
+
+
+
+			</IconTabFilter>
+			
+		</items>
+	</IconTabBar>
+
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,82 @@
+specVersion: "3.1"
+metadata:
+  name: customer.porky.zcustardash
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap/opu/odata/sap/ZCFI_CUSTARDASH_CDS/
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZCFI_CUSTARDASH_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZSB_CUSTARDASH/
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+          - path: /sap/opu/odata/sap/ZCFI_WKNDARVAL_CDS
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZCFI_CUSTARDASH_CDS
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/ZCFI_CUSTARDASH_CDS/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZCFI_CUSTARDASH_CDS/data
+          - urlPath: /sap/opu/odata/sap/ZCFI_CUSTARDASH_CDS/
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
+            mockdataRootPath: ./webapp/localService/mockdata
+          - urlPath: /sap/opu/odata/sap/ZSB_CUSTARDASH
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/ZSB_CUSTARDASH/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZSB_CUSTARDASH/mockdata
+          - urlPath: /sap/opu/odata/sap/ZSB_CUSTARDASH/
+            metadataPath: ./webapp/localService/mainService/metadata.xml
+            mockdataPath: ./webapp/localService/mainService/mockdata
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/ZODATA_CUSTOMER_BLOCKS_SRV/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZODATA_CUSTOMER_BLOCKS_SRV/mockdata
+        annotations:
+          - localPath: ./webapp/annotations/annotation.xml
+            urlPath: annotations/annotation.xml
+          - localPath: ./webapp/localService/ZSB_CUSTARDASH/ZSB_CUSTARDASH_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_CUSTARDASH_VAN',Version='0001')/$value/

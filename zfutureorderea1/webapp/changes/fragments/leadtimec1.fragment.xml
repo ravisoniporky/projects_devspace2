@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:table="sap.ui.mdc.table">
+    <table:Column
+        id="column-0f1d49b0"
+        width="10%"
+        header="Schedule Exist?">
+        <ObjectIdentifier id="text-0f1d49b0" titleActive="true" titlePress=".extension.customer.zfutureorderea1.leadtime.setLeadtime"  title="{ScheduleExists}"/>
+    </table:Column>
+</core:FragmentDefinition>

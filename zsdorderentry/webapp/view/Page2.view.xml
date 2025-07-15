@@ -1,0 +1,625 @@
+<mvc:View controllerName="customer.porky.zsdorderentry.controller.Page2"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:smartList="sap.ui.comp.smartlist"
+    xmlns="sap.m" 	xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:f="sap.f"  xmlns:m="sap.m"
+	xmlns:core="sap.ui.core" xmlns:uitable="sap.ui.table"
+	xmlns:t="sap.tnt" id="view2">
+    <Page id="page2" title="Item Selection" showNavButton="true" navButtonTooltip="Go To Home" navButtonPress="onNavButtonPress">
+	<headerContent>
+	<Toolbar >
+	
+			
+				<!-- <Button
+						icon="sap-icon://cart"
+					text=""
+					type="Emphasized"
+					press=".openCart" /> -->
+					<Button
+					type="Emphasized"
+					press=".openCart"
+					id="BadgedButton"
+					class="sapUiTinyMarginBeginEnd"
+					icon="sap-icon://cart"
+					>
+					<customData>
+						<BadgeCustomData
+							key="badge"
+							value="{countModel>/cartItemsCount}"
+							visible="true"
+							animation="Full"/>
+					</customData>
+				</Button>
+			</Toolbar>
+		</headerContent>
+        <content >
+
+        	<IconTabBar
+		id="idIconTabBarNoIcons"
+		expanded="{device>/isNoPhone}"
+		class="sapUiResponsiveContentPadding"
+        headerMode="Inline">
+		<items>
+			<IconTabFilter text="Proposed" key="Proposed">
+				<!-- <Text text="Proposed" /> -->
+					
+					<SearchField
+			
+			width="50%"
+			placeholder="Search for items"
+			enableSuggestions="true"
+			search=".onSuggestItemsProposed"
+			suggest=".onSuggestItemsProposed"
+			change=".onSuggestItemsProposed"
+			>
+			<!-- <SuggestionItem text="{MaterialDescription}" description="{path:'Material'} {path:'MaterialDescription'}" key="{OldMaterial}" /> -->
+		</SearchField>
+
+					 <!-- <smartList:SmartList id="smartListAllItemsProposal" listType="List" beforeRebindList="onBeforeRebindList"  entitySet="ZCSD_OENT_ITEMPROPOSALSet" header="Item Proposals"
+				showRowCount="false" showFullScreenButton="true" enableAutoBinding="true"
+				selectFields="MaterialDescription,ExternalMaterialGroup,OldMaterial,Quantity,ImageURL,ThumbnailURL,Stock">
+				<smartList:listItemTemplate> -->
+					<!-- <StandardListItem title="{MaterialDescription}" info="{OldMaterial}"
+						description="{OldMaterial}" /> -->
+	 
+						
+				<!-- </smartList:listItemTemplate> -->
+			<!-- </smartList:SmartList>  -->
+			<f:GridList
+			id="gridList1"
+			headerText="Proposed Items"
+			items="{path:'proposedModel>/results',
+			
+				sorter: {
+					path: 'isAddedToCart',
+					descending: false,
+					group: true
+				}}">
+				<f:customLayout>
+				<grid:GridBoxLayout boxMinWidth="17rem"/>
+			</f:customLayout>
+
+							<f:GridListItem class="sapUiSmallMargin"
+							counter="{proposedModel>CartQuantity}" 	highlight="{= ${proposedModel>isAddedToCart} === true ? 'Warning' : 'None'}">
+								
+	<VBox>
+							
+					<VBox height="100%" justifyContent="SpaceBetween">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0" /><!-- Don't shrink below minimum size. Fill space if available. -->
+					</layoutData>
+
+					<VBox class="sapUiSmallMargin">
+						<Title text=" {proposedModel>ExternalMaterialGroup} {proposedModel>Material} {proposedModel>OldMaterial} {proposedModel>MaterialDescription}" wrapping="true" width="100%" titleStyle="H6" />
+						<HBox >
+						<Image
+					
+					src="{proposedModel>ThumbnailURL}"
+					decorative="true"
+					densityAware="false"
+					class="sapUiTinyMargin"
+					width="80px"
+					height="80px">
+					<detailBox>
+						<LightBox id="lightBox">
+							<imageContent>
+								<LightBoxItem
+									imageSrc="{proposedModel>ImageURL}"
+									title="{proposedModel>MaterialDescription}"/>
+							</imageContent>
+						</LightBox>
+					</detailBox>
+				</Image>
+				<VBox class="sapUiTinyMargin">
+
+						<HBox>
+						<Label text="Stock:" class="sapUiTinyMarginEnd sapUiTinyMarginTop"></Label>
+						<HBox>
+						<Label text="{proposedModel>Stock} {proposedModel>SalesUnit}" vAlign="Inherit" class="sapUiTinyMarginTop sapUiTinyMarginEnd"></Label>
+						
+						</HBox>
+						</HBox>
+
+						<HBox>
+						<Label text="Current Price:" class="sapUiTinyMarginEnd"></Label>
+						<Label text="{proposedModel>CurrentPrice} {proposedModel>CurrentPriceUnit}" vAlign="Inherit"></Label>
+						</HBox>
+
+						<HBox>
+						<Label text="Price:" class="sapUiTinyMarginEnd sapUiTinyMarginTop" vAlign="Middle"></Label>
+						<Input value="{proposedModel>CurrentPrice}" />
+						</HBox>
+						<!-- <Label text="{proposedModel>OldMaterial}" wrapping="true" class="sapUiTinyMarginBottom" width="100%"/>
+						<Text text="{proposedModel>ExternalMaterialGroup} - Stock ({proposedModel>Stock} {proposedModel>SalesUnit})" wrapping="true" width="100%"/>
+						<ObjectStatus text="{= ${proposedModel>isAddedToCart} === true ? 'Added To Cart' : ''}  {proposedModel>CartQuantity}" 
+						state="{= ${proposedModel>isAddedToCart} === true ? 'Warning' : 'Success'}"  />  -->
+						</VBox>
+						</HBox>
+						<TextArea value="{proposedModel>ItemNotes}" width="100%" placeholder="Item Notes"/>
+						
+					</VBox>
+					
+				</VBox>
+				
+
+	<OverflowToolbar >
+				<ToolbarSpacer/>
+					<HBox class="sapUiSmallMargin">
+				<StepInput
+						value="{proposedModel>Quantity}"
+						min="0"
+						max="9999"
+						width="100px"
+						step="1"
+						
+						largerStep="{largerStep}"
+						stepMode="{stepMode}"
+						valueState="{valueState}"
+						enabled="{enabled}"
+						editable="{editable}"
+						description="{description}"
+						fieldWidth="{fieldWidth}"
+						textAlign="{textAlign}"
+						validationMode="{validationMode}"
+						change="onChange"/>
+						<m:ComboBox items ="{proposedModel>to_SalesUnit/results}" selectedKey="{proposedModel>SalesUnit}" width="50px" class="sapUiTinyMarginBegin sapUiMediumMarginEnd">
+									<core:Item key="{proposedModel>SalesUnit}" text="{proposedModel>SalesUnit}" />
+
+						</m:ComboBox >
+						<!-- <Label text="{proposedModel>SalesUnit}" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop" design="Bold"></Label> -->
+				<Button
+						icon="sap-icon://cart-4"
+					text=""
+					type="Emphasized"
+					press=".onAddToCart" >
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				</HBox>
+					
+				</OverflowToolbar>
+				</VBox>
+						
+					
+					
+			</f:GridListItem>
+
+			</f:GridList>
+			</IconTabFilter>
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<IconTabFilter text="Item Search" key="search">
+				
+					<SearchField
+			
+			width="50%"
+			placeholder="Search for items"
+			enableSuggestions="true"
+			search=".onSearchItemSearch"
+			change=".onSearchItemSearch"
+			suggest=".onSearchItemSearch1"
+			>
+			<!-- <SuggestionItem text="{MaterialDescription}" description="{path:'Material'} {path:'MaterialDescription'}" key="{OldMaterial}" /> -->
+		</SearchField>
+				<!-- <smartList:SmartList  id="smartListAllItems" beforeRebindList="onBeforeRebindList1"  entitySet="ZCSD_OENT_AVAILABLETOSELL" header="All Item"
+				showRowCount="false" showFullScreenButton="true" enableAutoBinding="true"
+				selectFields="Material,OldMaterial,MaterialDescription,Plant,ExternalMaterialGroup,SalesOrgMaterial,VariableSalesUnitNotAllowed,Quantity,SalesUnit,PurchaseDate,Stock,PurchaseQuantity,CWTMaterial,ImageURL,ThumbnailURL">
+				<smartList:listItemTemplate> -->
+					<f:GridList
+			id="gridList2"
+			headerText="Available To Sell "
+			items="{path:'itemSearchModel>/results',
+			
+				sorter: {
+					path: 'isAddedToCart',
+					descending: false,
+					group: true
+				}}">
+				<f:customLayout>
+				<grid:GridBoxLayout boxMinWidth="17rem"/>
+			</f:customLayout>
+
+
+
+				
+					<f:GridListItem class="sapUiSmallMargin" counter="{itemSearchModel>CartQuantity}" 	highlight="{= ${itemSearchModel>isAddedToCart} === true ? 'Warning' : 'None'}">
+								
+
+
+
+<VBox>
+
+<VBox height="100%" justifyContent="SpaceBetween">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0" /><!-- Don't shrink below minimum size. Fill space if available. -->
+					</layoutData><VBox class="sapUiSmallMargin">
+<Title text=" {itemSearchModel>ExternalMaterialGroup} {itemSearchModel>Material} {itemSearchModel>OldMaterial} {itemSearchModel>MaterialDescription}" wrapping="true" width="100%" titleStyle="H6" />
+						<HBox >
+						<Image
+					
+					src="{itemSearchModel>ThumbnailURL}"
+					decorative="true"
+					densityAware="false"
+					class="sapUiTinyMargin"
+					width="80px"
+					height="80px">
+					<detailBox>
+						<LightBox >
+							<imageContent>
+								<LightBoxItem
+									imageSrc="{itemSearchModel>ImageURL}"
+									title="{itemSearchModel>MaterialDescription}"/>
+							</imageContent>
+						</LightBox>
+					</detailBox>
+				</Image>
+				<VBox class="sapUiTinyMargin">
+
+						<HBox>
+
+						<Label text="Stock:" class="sapUiTinyMarginEnd"></Label>
+						<Label text="{itemSearchModel>Stock} {itemSearchModel>SalesUnit}" vAlign="Inherit"></Label>
+						</HBox>
+
+						<HBox>
+						<Label text="Current Price:" class="sapUiTinyMarginEnd"></Label>
+						<Label text="{itemSearchModel>CurrentPrice} {itemSearchModel>CurrentPriceUnit}" vAlign="Inherit"></Label>
+						</HBox>
+
+						<HBox>
+						<Label text="Price:" class="sapUiTinyMarginEnd" vAlign="Middle"></Label>
+						<Input value="{itemSearchModel>CurrentPrice}" />
+						</HBox>
+						<!-- <Label text="{proposedModel>OldMaterial}" wrapping="true" class="sapUiTinyMarginBottom" width="100%"/>
+						<Text text="{proposedModel>ExternalMaterialGroup} - Stock ({proposedModel>Stock} {proposedModel>SalesUnit})" wrapping="true" width="100%"/>
+						<ObjectStatus text="{= ${proposedModel>isAddedToCart} === true ? 'Added To Cart' : ''}  {proposedModel>CartQuantity}" 
+						state="{= ${proposedModel>isAddedToCart} === true ? 'Warning' : 'Success'}"  />  -->
+						</VBox>
+						</HBox>
+
+						<TextArea value="{itemSearchModel>ItemNotes}" width="100%" placeholder="Item Notes"/>
+					</VBox>
+					</VBox>	
+			
+					
+					
+				
+
+	<OverflowToolbar >
+				<ToolbarSpacer/>
+				<HBox class="sapUiSmallMargin">
+				<StepInput
+						value="{itemSearchModel>Quantity}"
+						min="0"
+						max="9999"
+						width="100px"
+						step="1"
+						
+						largerStep="{largerStep}"
+						stepMode="{stepMode}"
+						valueState="{valueState}"
+						enabled="{enabled}"
+						editable="{editable}"
+						description="{description}"
+						fieldWidth="{fieldWidth}"
+						textAlign="{textAlign}"
+						validationMode="{validationMode}"
+						change="onChange"/>
+						<Label text="{itemSearchModel>SalesUnit}" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop" design="Bold"></Label>
+				<Button
+						icon="sap-icon://cart-4"
+					text=""
+					type="Emphasized"
+					press=".onAddToCart" >
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				</HBox>
+				</OverflowToolbar>
+
+</VBox>
+			</f:GridListItem>
+						
+				<!-- </smartList:listItemTemplate> -->
+			<!-- </smartList:SmartList>  -->
+			</f:GridList>
+			<!-- <f:GridList visible="true"
+			growing="true"
+			growingThreshold="20"
+			growingScrollToLoad="true"
+			growingTriggerText="Show More"
+			id="gridList2"
+			headerText="All Items"
+			
+			items="{path:'mainService>/ZCSD_OENT_AVAILABLETOSELL'}">
+				<f:customLayout>
+				<grid:GridBoxLayout boxMinWidth="17rem"/>
+			</f:customLayout>
+
+							<f:GridListItem class="sapUiSmallMargin" >
+								
+	<VBox>
+							<HBox class="sapUiMediumMargin"
+				height="100%" justifyContent="SpaceBetween">
+				<Image
+					
+					src="{mainService>ThumbnailURL}"
+					decorative="true"
+					densityAware="false"
+					class="sapUiSmallMargin"
+					width="100%"
+					height="100%">
+					<detailBox>
+						<LightBox >
+							<imageContent>
+								<LightBoxItem
+									imageSrc="{mainService>ImageURL}"
+									title="{mainService>MaterialDescription}"/>
+							</imageContent>
+						</LightBox>
+					</detailBox>
+				</Image>
+			
+					<VBox height="100%" justifyContent="SpaceBetween">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0" />
+					</layoutData>
+
+					<VBox class="sapUiSmallMargin">
+						<Title text="{mainService>Material} {mainService>MaterialDescription}" wrapping="true" width="6rem" titleStyle="H6" />
+						<Label text="{mainService>OldMaterial}" wrapping="true" class="sapUiTinyMarginBottom" width="6rem"/>
+						<Text text="Stock - {mainService>Stock}; Purchase Qty - {mainService>PurchaseQuantity}" wrapping="true" width="6rem" />
+						
+					</VBox>
+					
+				</VBox>
+					
+				</HBox>
+
+	<OverflowToolbar >
+				<ToolbarSpacer/>
+				<Button
+						icon="sap-icon://cart-4"
+					text=""
+					type="Emphasized"
+					press=".onAddToCart" >
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				</OverflowToolbar>
+				</VBox>
+						
+					
+					
+			</f:GridListItem>
+
+			</f:GridList> -->
+			</IconTabFilter>
+
+
+			<IconTabFilter text="Fast Entry" key="fastentry">
+
+	<VBox >
+	<uitable:Table id="table1"
+					
+				rows="{cartModel>/materials}"
+				visibleRowCount="30"
+				selectionMode="MultiToggle"
+				title="Materials ({cartModel>/materials/length})"
+				ariaLabelledBy="title">
+				<uitable:extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title text="Fast Entry Materials" />
+						<!-- <m:ToolbarSpacer/>
+						<m:Input
+							id="inputColumn"
+							width="20%"
+							placeholder="fixed column count"
+							tooltip="fixed column count"/>
+						<m:Input
+							id="inputRow"
+							width="20%"
+							placeholder="fixed row count"
+							tooltip="fixed row count"/>
+						<m:Input
+							id="inputBottomRow"
+							width="20%"
+							placeholder="fixed bottom row count"
+							tooltip="fixed bottom row count"/> -->
+							<m:ToolbarSpacer/>
+							
+							<m:Button id="button" text="Add +2" press="onAddTwo"/>
+						<m:Button id="addItemsCart" text="Add to Cart" press="AddFastItemsToCart"/>
+					</m:OverflowToolbar>
+				</uitable:extension>
+				
+				<uitable:columns>
+					<uitable:Column width="11rem">
+						<m:Label text="Material" />
+						<uitable:template>
+							<!-- <m:Input value="{cartModel>Material}" showValueHelp="true" /> -->
+							<Label text="Customer" />
+				<Input  editable="true"  showValueHelp="true" value="{cartModel>Material}" valueHelpRequest="openCustomerF4" 	
+				showSuggestion="true"
+			showTableSuggestionValueHelp="false"
+			suggestionRows="{mainService>/ZI_MATERIAL_VALUEHELP}"
+			suggestionItemSelected=".onSuggestionItemSelected"
+			maxSuggestionWidth="600px"
+			suggest="onSuggestMaterials"
+			enableSuggestionsHighlighting="true"
+			change="onChangeMaterial"
+			>
+			<suggestionColumns>
+				<Column
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Material" />
+				</Column>
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					demandPopin="true"
+					minScreenWidth="Tablet">
+					<Label text="MaterialDescription" />
+				</Column>
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					minScreenWidth="Tablet">
+					<Label text="Plant" />
+				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="OldMaterial" />
+				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="ManufPartNo" />
+				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Sales Org Material" />
+				</Column>
+			</suggestionColumns>
+
+			<suggestionRows>
+				<ColumnListItem>
+					<Label text="{mainService>Material}" />
+					<Label text="{mainService>MaterialDescription}" />
+					<Label text="{mainService>Plant}" />
+					<Label text="{mainService>OldMaterial}" />
+					<Label text="{mainService>ManufPartNo}" />
+					<Label text="{mainService>SalesOrgMaterial}" />
+				</ColumnListItem>
+			</suggestionRows>
+			</Input>
+						</uitable:template>
+					</uitable:Column>
+					<uitable:Column width="11rem" visible="false">
+						<m:Label text="Icon" />
+						<uitable:template>
+						<Image
+
+						visible="{= ${cartModel>OldMaterial} ? true : false}"
+					
+					src="https://api.porky.com/images/{cartModel>OldMaterial}.png"
+					decorative="true"
+					densityAware="false"
+					class="sapUiSmallMargin"
+					width="80px"
+					height="80px">
+					<detailBox>
+						<LightBox>
+							<imageContent>
+								<LightBoxItem
+									imageSrc="https://api.porky.com/images/{cartModel>OldMaterial}.png"
+									title="{cartModel>MaterialDescription}"/>
+							</imageContent>
+						</LightBox>
+					</detailBox>
+				</Image>
+							<!-- <m:Input value="https://api.porky.com/thumbnails/{cartModel>OldMaterial}.png" editable="false"/> -->
+						</uitable:template>
+					</uitable:Column>
+					<uitable:Column width="11rem">
+						<m:Label text="Description" />
+						<uitable:template>
+							<m:Label text="{cartModel>MaterialDescription}" editable="false"/>
+						</uitable:template>
+					</uitable:Column>
+					<uitable:Column width="6rem" hAlign="End">
+						<m:Label text="Old Material" />
+						<uitable:template>
+							<m:Label text="{cartModel>OldMaterial}" />
+						</uitable:template>
+					</uitable:Column>
+					<uitable:Column width="9rem">
+						<m:Label text="Quantity" />
+						<uitable:template>
+							<m:Input value="{cartModel>Quantity}" type="Number"/>
+						</uitable:template>
+					</uitable:Column>
+
+		<uitable:Column width="9rem">
+						<m:Label text="Unit" />
+						<uitable:template>
+						<HBox>
+								<m:Label text="{cartModel>SalesUnit}"  visible="{= ${cartModel>source} === 'P' ? true : ${cartModel>source} === 'S' ? true : false }"/>
+								<m:ComboBox items ="{mainService>/ZI_MATERIAL_SALESUOM}"  selectedKey="{cartModel>SalesUnit}" visible="{= ${cartModel>source} === ('P') ? false : ${cartModel>source} === ('S') ? false : ${cartModel>Material} === '' ? false : true   }">
+									<core:Item key="{mainService>SalesUnit}" text="{mainService>SalesUnit}" />
+
+								</m:ComboBox >
+						</HBox>		
+						</uitable:template>
+					</uitable:Column>
+
+
+
+					<uitable:Column width="9rem">
+						<m:Label text="Price" />
+						<uitable:template>
+							<m:Input value="{cartModel>CurrentPrice}" type="Number"/>
+						</uitable:template>
+					</uitable:Column>
+
+
+
+
+
+					<uitable:Column width="9rem">
+						<m:Label text="Price UoM" />
+						<uitable:template>
+							<m:Label value="{cartModel>CurrentPriceUnit}" />
+							<m:ComboBox items ="{mainService>/ZI_MATERIAL_PRICEUOM}"  selectedKey="{cartModel>CurrentPriceUnit}" visible="{= ${cartModel>source} === ('P') ? false : ${cartModel>source} === ('S') ? false : ${cartModel>Material} === '' ? false : true   }">
+									<core:Item key="{mainService>PriceUnit}" text="{mainService>PriceUnit}" />
+
+								</m:ComboBox >
+						</uitable:template>
+					</uitable:Column>
+
+
+
+
+					<uitable:Column width="12rem">
+						<m:Label text="Item Notes" />
+						<uitable:template>
+							<m:Input value="{cartModel>ItemNotes}" />
+						</uitable:template>
+					</uitable:Column>
+					
+			
+
+
+					<uitable:Column width="9rem">
+						<m:Label text="Remove" />
+						<uitable:template>
+							<m:Button icon="sap-icon://sys-cancel" type="Reject" press="onClearValues"/>
+						</uitable:template>
+					</uitable:Column>
+					
+				</uitable:columns>
+			</uitable:Table>
+
+			</VBox>
+			</IconTabFilter>
+			
+		</items>
+	</IconTabBar>
+
+
+        </content>
+    </Page>
+</mvc:View>

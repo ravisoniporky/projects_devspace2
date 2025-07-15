@@ -1,0 +1,828 @@
+<mvc:View controllerName="customer.porky.zfieldrepvisit.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:sf="sap.ui.comp.smartfilterbar" xmlns:core="sap.ui.core" 
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m"  xmlns:m="sap.m"  xmlns:custom="customer.porky.zfieldrepvisit.custom">
+    <Page id="page" title="{i18n>title}" floatingFooter="true" >
+	<headerContent>
+	<SegmentedButton selectedKey="{userValues>/currentMode}" id="segmentButtonProspectMode">
+				<items>
+					<SegmentedButtonItem text="{= ${device>/system/phone} === false ? 'Customer' : 'C'}" key="Customer"  icon="sap-icon://customer"/>
+					<SegmentedButtonItem text="{= ${device>/system/phone} === false ? 'Prospect' : 'P'}" key="Prospect" icon="sap-icon://customer-and-supplier"/>
+				</items>
+			</SegmentedButton>
+					<Button icon="sap-icon://clear-all" text="Show All" tooltip="Resets Location"  press="onShowAll" visible="{= ${userValues>/location}}"/>		
+             <Button press="openNewVisit" icon="sap-icon://add" type="Emphasized"  visible="{= ${userValues>/currentMode} === 'Prospect' ? false : true}"/>
+			 <Button press="onAddProspect" text="P" icon="sap-icon://add" type="Emphasized" visible="{= ${userValues>/currentMode} === 'Prospect' ? true : false}" />
+
+<!-- <Button
+                    text="Change SalesOrg"
+                    icon="sap-icon://org-chart"
+                    press="onChangeSalesOrg"
+                    visible="{= ${visitModel>/Visitid} === 'NEW'? false: true}"
+                /> -->
+				<Button press="openMap"  icon="sap-icon://map" type="Emphasized" visible="{= ${userValues>/currentMode} === 'Prospect' ? false : true}"/>
+				<Button icon="sap-icon://overflow" press="openSettings"></Button>
+
+		</headerContent>
+			<!-- <subHeader visible="false">
+			<OverflowToolbar visible="false">
+				<SearchField liveChange=".onSearchVisit" width="100%" id="searchField" visible="false"/>
+			</OverflowToolbar>
+		</subHeader> -->
+ 
+        <content >
+
+
+			
+			
+
+		<!-- <IconTabFilter key="main" text="Active" count="{countModel>/countList}">
+
+			<content>
+			<VBox height="100%">
+
+
+
+
+
+				<List
+		id="idList"
+		growing="true"
+		growingThreshold="20"
+		headerText="Visit List {countModel>/countList}"
+		items="{
+			path: 'ZODATA_FR_SRV>/ZBMM_FieldRepNearby',
+			sorter: { path: 'ZODATA_FR_SRV>Createdatetime', descending: true}
+		}"
+		updateFinished="onUpdateFinishedList">
+			<infoToolbar>
+			<OverflowToolbar
+				active="true"
+				press="handleInfobarPress" >
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/milesSet} === '' ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+			</OverflowToolbar>
+		</infoToolbar>
+		
+		
+				<ObjectListItem
+			title="{ZODATA_FR_SRV>CustomerPreviousAccount} {
+  path: 'ZODATA_FR_SRV>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }"
+  
+  icon="{= ${ZODATA_FR_SRV>Visittype} === 'N' ? 'sap-icon://visits' : ${ZODATA_FR_SRV>Visittype} === 'F' ? 'sap-icon://checklist-2': ${ZODATA_FR_SRV>Visittype} === 'R' ? 'sap-icon://reset' : ${ZODATA_FR_SRV>Visittype}}"
+			type="Navigation"
+			press="onClickItemVisitList"
+			number="{ZODATA_FR_SRV>VisitDescription}"
+			numberState="{= ${ZODATA_FR_SRV>Visittype} === 'N' ? 'Success': ${ZODATA_FR_SRV>Visittype} === 'F' ? 'Warning': 'None'}"
+			numberUnit="{CurrencyCode}">
+			<firstStatus>
+				<ObjectStatus
+					text="Visit by {ZODATA_FR_SRV>CreatedFullName}"
+					state="{= ${ZODATA_FR_SRV>Visittype} === 'N' ? 'Success': ${ZODATA_FR_SRV>Visittype} === 'F' ? 'Warning': 'None'}"  />
+			</firstStatus>
+				<secondStatus>
+				<ObjectStatus
+					text="{ZODATA_FR_SRV>CHL1Name}"
+					state="Information" />
+			</secondStatus>
+			
+  <ObjectAttribute text="{ZODATA_FR_SRV>CustomerFullName}" active="true"/>
+  
+			<ObjectAttribute text="{ZODATA_FR_SRV>StreetName}, {ZODATA_FR_SRV>CityName}, {ZODATA_FR_SRV>PostalCode}" active="true"/>
+
+									<ObjectAttribute text="{ZODATA_FR_SRV>SalesLeadName} {ZODATA_FR_SRV>SaleSupportName}"/>
+
+						<ObjectAttribute text="Visit No. - {= isNaN(${ZODATA_FR_SRV>Visitid}) ? 'NEW': Number(${ZODATA_FR_SRV>Visitid})}" active="true"/>
+
+		</ObjectListItem>
+	</List>
+</VBox>
+	</content>
+			</IconTabFilter> -->
+
+
+<smartFilterBar:SmartFilterBar id="smartFilter_visitF4" entitySet="ZBMM_FieldRepNearbySet"
+			 persistencyKey="smarttableCustF4_filter1"   enableBasicSearch="true" useToolbar="true"  >
+				<smartFilterBar:controlConfiguration>
+				 <smartFilterBar:ControlConfiguration
+						key="p_lat"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 	
+
+
+				  <smartFilterBar:ControlConfiguration
+						key="p_long"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 
+
+
+
+				  <smartFilterBar:ControlConfiguration
+						key="p_distinm"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 
+				 	
+				 		</smartFilterBar:controlConfiguration>
+
+			</smartFilterBar:SmartFilterBar> 
+
+<IconTabBar >
+		<items>
+			<IconTabFilter key="main" text="Active" count="{countModel>/countList}" visible="{= ${userValues>/currentMode} === 'Prospect' ? false : true}">
+
+			<content>
+			<VBox height="100%">
+
+			
+			<smartTable:SmartTable id="smartTable_visitF4" entitySet="ZBMM_FieldRepNearbySet"  smartFilterId="smartFilter_visitF4"
+			initiallyVisibleFields="CustomerPreviousAccount,StreetName,VisitDescription,CustomerFullName,Createdatetime,CreatedFullName,Vkorg,CHL1Name,SalesLeadName,SaleSupportName"
+				requestAtLeastFields="Visitid,Customer,Visittype,VisitDescription,Createdatetime,Ernam,Vkorg,StreetName,CityName,PostalCode,Region"
+				beforeRebindTable="onBeforeRebindVisit_F4"
+				demandPopin="true"
+				displayInline="true"
+				showTablePersonalisation="true"
+				afterVariantSave="onAfterVariantSaveVisit"
+			
+				
+			 tableType="ResponsiveTable" useExportToExcel="true"
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 enableAutoColumnWidth="true" 
+			 header="Visits" showRowCount="true" persistencyKey="smarttableCustF41_visit"
+			   class="sapUiResponsiveContentPadding" 
+			    >
+			
+				<Table mode="SingleSelectMaster" sticky="ColumnHeaders,HeaderToolbar" updateFinished="onFinishedVisits"  itemPress="onClickItemVisitList" 
+				growing="true"
+    growingThreshold="100"
+    growingScrollToLoad="false" >
+				<infoToolbar>
+			<OverflowToolbar
+				active="true"
+				press="handleInfobarPress" >
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesOrgString} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+			</OverflowToolbar>
+			
+		</infoToolbar>
+				<columns>
+
+
+			<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "Visitid", "autoColumnWidth": \{ "visibleProperty": "Visitid" }, "columnIndex": 10, "leadingProperty": "Visitid", "sortProperty": "Visitid", "additionalProperty": "Visitid", "additionalSortProperty": "Visitid", "width": "100px"}' />
+					</customData>
+					<Text text="Visit Number" />
+				</Column>
+
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "VisitDescription", "autoColumnWidth": \{ "visibleProperty": "VisitDescription" }, "columnIndex": 0, "leadingProperty": "VisitDescription", "sortProperty": "VisitDescription", "additionalProperty": "VisitDescription", "additionalSortProperty": "VisitDescription", "width": "360px"}' />
+					</customData>
+					<Text text="Visit Type" />
+				</Column>
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "StreetName", "autoColumnWidth": \{ "visibleProperty": "StreetName" }, "columnIndex": 4, "leadingProperty": "StreetName", "sortProperty": "StreetName", "additionalProperty": "StreetName", "additionalSortProperty": "StreetName", "width": "360px"}' />
+					</customData>
+					<Text text="Address" />
+				</Column>
+
+
+					<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "CustomerFullName", "autoColumnWidth": \{ "visibleProperty": "CustomerFullName" }, "columnIndex": 3, "leadingProperty": "CustomerFullName", "sortProperty": "CustomerFullName", "additionalProperty": "CustomerFullName", "additionalSortProperty": "CustomerFullName", "width": "360px"}' />
+					</customData>
+					<Text text="Customer Name" />
+				</Column>
+				
+			</columns>
+			<items>
+				<ColumnListItem press="onClickItemVisitList" type="Navigation">
+					<cells>
+					<Title text="{= Number(${Visitid})}" titleStyle="H6" level="H6"/>
+						<HBox>
+						<ObjectStatus text="{VisitDescription}"  icon="{= ${Visittype} === 'N' ? 'sap-icon://visits' : ${Visittype} === 'F' ? 'sap-icon://checklist-2': ${Visittype} === 'R' ? 'sap-icon://reset' : ${Visittype} === 'SR' ? 'sap-icon://opportunities' : ${Visittype}}"
+						state="{= ${Visittype} === 'N' ? 'Success': ${Visittype} === 'F' ? 'Warning': 'None'}"/>
+						</HBox>
+						<Title text="{StreetName} {CityName} {Region} {PostalCode}" />
+						<Title text="{CustomerFullName}" titleStyle="H6" level="H6"/>
+
+					</cells>
+					
+				</ColumnListItem>
+			</items>
+
+
+				
+				</Table>
+
+
+
+					</smartTable:SmartTable>
+
+
+
+				<List
+				visible="false"
+		id="idList"
+		growing="true"
+		growingThreshold="20"
+		headerText="Visit List {countModel>/countList}"
+		items="{
+			path: 'ZRMM_FRVISITV2_CDS>/ZRMM_FRVISITV2',
+			sorter: { path: 'ZRMM_FRVISITV2_CDS>Createdatetime', descending: true}
+		}"
+		updateFinished="onUpdateFinishedList">
+			<infoToolbar>
+			<OverflowToolbar
+				active="true"
+				press="handleInfobarPress" >
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${salesorgModel>/salesorg} + ''}. {= ${userValues>/milesSet} === '' ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+			</OverflowToolbar>
+		</infoToolbar>
+		
+		
+				<ObjectListItem
+			title="{ZRMM_FRVISITV2_CDS>CustomerPreviousAccount} {
+  path: 'ZRMM_FRVISITV2_CDS>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }"
+  
+  icon="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'sap-icon://visits' : ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'sap-icon://checklist-2': ${ZRMM_FRVISITV2_CDS>Visittype} === 'R' ? 'sap-icon://reset' : ${ZRMM_FRVISITV2_CDS>Visittype}}"
+			type="Navigation"
+			press="onClickItemVisitList"
+			number="{ZRMM_FRVISITV2_CDS>VisitDescription}"
+			numberState="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'Success': ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'Warning': 'None'}"
+			numberUnit="{CurrencyCode}">
+			<firstStatus>
+				<ObjectStatus
+					text="Visit by {ZRMM_FRVISITV2_CDS>CreatedFullName}"
+					state="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'Success': ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'Warning': 'None'}"  />
+			</firstStatus>
+				<secondStatus>
+				<ObjectStatus
+					text="{ZRMM_FRVISITV2_CDS>CHL1Name}"
+					state="Information" />
+			</secondStatus>
+			
+  <ObjectAttribute text="{ZRMM_FRVISITV2_CDS>CustomerFullName}" active="true"/>
+  
+			<ObjectAttribute text="{ZRMM_FRVISITV2_CDS>StreetName}, {ZRMM_FRVISITV2_CDS>CityName}, {ZRMM_FRVISITV2_CDS>Region}, {ZRMM_FRVISITV2_CDS>PostalCode}" active="true"/>
+
+									<ObjectAttribute text="{ZRMM_FRVISITV2_CDS>SalesLeadName} {ZRMM_FRVISITV2_CDS>SaleSupportName}"/>
+
+						<ObjectAttribute text="Visit No. - {= isNaN(${ZRMM_FRVISITV2_CDS>Visitid}) ? 'NEW': Number(${ZRMM_FRVISITV2_CDS>Visitid})}" active="true"/>
+
+		</ObjectListItem>
+	</List>
+</VBox>
+	</content>
+			</IconTabFilter>
+
+
+
+
+
+
+
+
+
+<!-- Number(${countModel>/countList_draft}) === 0 ? false :  -->
+
+				<IconTabFilter key="draft" text="Draft" count="{countModel>/countList_draft}" visible="{=  ${userValues>/currentMode} === 'Prospect' ? false : true}" >
+
+				<content>
+
+				<smartTable:SmartTable id="smartTable_visitF4_draft" entitySet="ZBMM_FieldRepNearbySet"  smartFilterId="smartFilter_visitF4"
+			initiallyVisibleFields="CustomerPreviousAccount,StreetName,VisitDescription,CustomerFullName,Createdatetime,CreatedFullName,Vkorg,CHL1Name,SalesLeadName,SaleSupportName"
+				requestAtLeastFields="Visitid,Customer,Visittype,VisitDescription,Createdatetime,Ernam,Vkorg,StreetName,CityName,PostalCode,Region"
+				beforeRebindTable="onBeforeRebindVisit_F4_draft"
+			 tableType="ResponsiveTable" useExportToExcel="true"
+			 enableCopy = "false"
+			 
+			
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 header="Draft Visits" showRowCount="true" persistencyKey="smarttableCustF41_visit"
+			  enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+			  enableAutoColumnWidth="true"  app:useSmartToggle="true">
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+		
+
+<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<Button press="onDeleteDraft_ask" text="Delete" id="deleteDraft" enabled="false"/>
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+<Table mode="MultiSelect" sticky="ColumnHeaders,HeaderToolbar"
+ selectionChange="onSelectionChangeDraftTable" updateFinished="onFinishedVisits_draft"
+ growing="true"
+    growingThreshold="100"
+    growingScrollToLoad="false"
+ 
+   itemPress="onClickItemVisitList" >
+				
+				<infoToolbar>
+			<OverflowToolbar
+				active="true"
+				press="handleInfobarPress" >
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+
+			
+			</OverflowToolbar>
+		</infoToolbar>
+		<!-- <smartTable:SmartTable.customToolbar>
+		<OverflowToolbar
+				 >
+
+				<ToolbarSpacer/>
+				<Button press="onDeleteDraft" text="Delete"/>
+			</OverflowToolbar>
+</smartTable:SmartTablecustomToolbar> -->
+	<!-- <smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<OverflowToolbarButton icon="sap-icon://activate" tooltip="Apply UI state changes" press="applyUiState"/>
+				<OverflowToolbarButton icon="sap-icon://sort" tooltip="Sort" text="Sort" press="onSort"/>
+				<OverflowToolbarButton icon="sap-icon://filter" tooltip="Filter" text="Filter" press="onFilter"/>
+				<OverflowToolbarButton icon="sap-icon://group-2" tooltip="Group" text="Group" press="onGroup"/>
+				<OverflowToolbarButton icon="sap-icon://action-settings" tooltip="Column Settings" text="Column Settings" press="onColumns"/>
+			</OverflowToolbar>
+		</smartTable:customToolbar> -->
+
+
+
+		
+				<columns>
+
+
+	<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "Visitid", "autoColumnWidth": \{ "visibleProperty": "Visitid" }, "columnIndex": 10, "leadingProperty": "Visitid", "sortProperty": "Visitid", "additionalProperty": "Visitid", "additionalSortProperty": "Visitid", "width": "100px"}' />
+					</customData>
+					<Text text="Visit Number" />
+				</Column>
+
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "VisitDescription", "autoColumnWidth": \{ "visibleProperty": "VisitDescription" }, "columnIndex": 0, 
+										 "leadingProperty": "VisitDescription", "sortProperty": "VisitDescription", "additionalProperty": "VisitDescription",
+										  "additionalSortProperty": "VisitDescription", "width": "360px"}' />
+					</customData>
+					<Text text="Visit Type" />
+				</Column>
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "StreetName", "autoColumnWidth": \{ "visibleProperty": "StreetName" }, "columnIndex": 4, "leadingProperty": "StreetName", "sortProperty": "StreetName", "additionalProperty": "StreetName", "additionalSortProperty": "StreetName", "width": "360px"}' />
+					</customData>
+					<Text text="Address" />
+				</Column>
+
+
+					<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "CustomerFullName", "autoColumnWidth": \{ "visibleProperty": "CustomerFullName" }, "columnIndex": 3, "leadingProperty": "CustomerFullName", "sortProperty": "CustomerFullName", "additionalProperty": "CustomerFullName", "additionalSortProperty": "CustomerFullName", "width": "360px"}' />
+					</customData>
+					<Text text="Customer Name" />
+				</Column>
+				
+			</columns>
+			<items>
+				<ColumnListItem press="onClickItemVisitList" type="Navigation">
+					<cells>
+										<Title text="{= Number(${Visitid})}" titleStyle="H6" level="H6"/>
+
+						<HBox>
+						<ObjectStatus text="{VisitDescription}"  icon="{= ${Visittype} === 'N' ? 'sap-icon://visits' : ${Visittype} === 'F' ? 'sap-icon://checklist-2': ${Visittype} === 'R' ? 'sap-icon://reset' : ${Visittype}}"
+						state="{= ${Visittype} === 'N' ? 'Success': ${Visittype} === 'F' ? 'Warning': 'None'}"/>
+						</HBox>
+						<Title text="{StreetName} {CityName} {Region} {PostalCode}" />
+												<Title text="{CustomerFullName}" titleStyle="H6" level="H6"/>
+
+					</cells>
+					
+				</ColumnListItem>
+			</items>
+
+
+				
+				</Table>
+
+
+
+					</smartTable:SmartTable>
+
+					<List
+					visible="false"
+		id="idList_draft"
+		growing="true"
+		growingThreshold="100"
+		headerText="Visit List {countModel>/countList_draft}"
+		items="{
+			path: 'ZRMM_FRVISITV2_CDS>/ZRMM_FRVISITV2',
+			sorter: { path: 'ZRMM_FRVISITV2_CDS>Createdatetime', descending: true}
+		}"
+		updateFinished="onUpdateFinishedList_draft">
+			<infoToolbar>
+			<OverflowToolbar
+				active="true"
+				press="handleInfobarPress" >
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/milesSet} === '' ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+			</OverflowToolbar>
+		</infoToolbar>
+		
+		
+				<ObjectListItem
+				visible="{= ${chageModeModel>/changeMode} === true ? true: ${currentUserModel>/currentUser} === ${ZRMM_FRVISITV2_CDS>Ernam} ? true : false}"
+			title="{ZRMM_FRVISITV2_CDS>CustomerPreviousAccount} {
+  path: 'ZRMM_FRVISITV2_CDS>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }"
+  
+  icon="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'sap-icon://visits' : ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'sap-icon://checklist-2': ${ZRMM_FRVISITV2_CDS>Visittype} === 'R' ? 'sap-icon://reset' : ${ZRMM_FRVISITV2_CDS>Visittype}}"
+			type="Navigation"
+			press="onClickItemVisitList"
+			number="{ZRMM_FRVISITV2_CDS>VisitDescription}"
+			numberState="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'Success': ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'Warning': 'None'}"
+			numberUnit="{CurrencyCode}">
+			<firstStatus>
+				<ObjectStatus
+					text="Visit by {ZRMM_FRVISITV2_CDS>CreatedFullName}"
+					state="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'Success': ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'Warning': 'None'}"  />
+			</firstStatus>
+				<secondStatus>
+				<ObjectStatus
+					text="{ZRMM_FRVISITV2_CDS>CHL1Name}"
+					state="Information" />
+			</secondStatus>
+			
+  <ObjectAttribute text="{ZRMM_FRVISITV2_CDS>CustomerFullName}" active="true"/>
+  
+			<ObjectAttribute text="{ZRMM_FRVISITV2_CDS>StreetName}, {ZRMM_FRVISITV2_CDS>CityName}, {ZRMM_FRVISITV2_CDS>Region}, {ZRMM_FRVISITV2_CDS>PostalCode}" active="true"/>
+
+									<ObjectAttribute text="{ZRMM_FRVISITV2_CDS>SalesLeadName} {ZRMM_FRVISITV2_CDS>SaleSupportName}"/>
+
+						<ObjectAttribute text="Visit No. - {= isNaN(${ZRMM_FRVISITV2_CDS>Visitid}) ? 'NEW': Number(${ZRMM_FRVISITV2_CDS>Visitid})}" active="true"/>
+
+		</ObjectListItem>
+	</List>
+
+</content>
+				</IconTabFilter >
+
+
+
+
+
+							<!-- <IconTabFilter key="prospect"  text="Prospects" count="{countModel>/countList_prospect}" visible="{ =  Number(${countModel>/countList_prospect}) === 0 ? false : true}"> -->
+							<IconTabFilter key="prospect"  text="Prospects" count="{countModel>/countList_prospect}" visible="{= ${userValues>/currentMode} === 'Prospect' ? true : false}">
+
+				<content>
+				<smartTable:SmartTable id="smartTable_visitF4_prospect" entitySet="ZBMM_FieldRepNearbySet"  smartFilterId="smartFilter_visitF4"
+			initiallyVisibleFields="CustomerPreviousAccount,StreetName,VisitDescription,CustomerFullName,Createdatetime,CreatedFullName,Vkorg,CHL1Name,SalesLeadName,SaleSupportName"
+				requestAtLeastFields="Visitid,Customer,Visittype,VisitDescription,Createdatetime,Ernam,Vkorg,StreetName,CityName,PostalCode,Region"
+				beforeRebindTable="onBeforeRebindVisit_F4_prospect"
+			 tableType="ResponsiveTable" useExportToExcel="true"
+			 
+			enableCopy= "false"
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 header="Prospect Visits" showRowCount="true" persistencyKey="smarttableCustF41_visit"
+			  enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+			  enableAutoColumnWidth="true"  app:useSmartToggle="true">
+			
+
+
+
+
+
+
+<Table mode="SingleSelectMaster" sticky="ColumnHeaders,HeaderToolbar"
+ updateFinished="onFinishedVisits_prospect"  itemPress="onClickItemVisitList" selectionChange="onClickItemVisitList"
+ growing="true"
+    growingThreshold="100"
+    growingScrollToLoad="false">
+				
+				<infoToolbar>
+			<OverflowToolbar
+				active="true"
+				press="handleInfobarPress" >
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+			</OverflowToolbar>
+		</infoToolbar>
+
+		
+				<columns>
+
+
+	<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "Visitid", "autoColumnWidth": \{ "visibleProperty": "Visitid" }, "columnIndex": 10, "leadingProperty": "Visitid", "sortProperty": "Visitid", "additionalProperty": "Visitid", "additionalSortProperty": "Visitid", "width": "100px"}' />
+					</customData>
+					<Text text="Visit Number" />
+				</Column>
+
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "VisitDescription", "autoColumnWidth": \{ "visibleProperty": "VisitDescription" }, "columnIndex": 0, 
+										 "leadingProperty": "VisitDescription", "sortProperty": "VisitDescription", "additionalProperty": "VisitDescription",
+										  "additionalSortProperty": "VisitDescription", "width": "360px"}' />
+					</customData>
+					<Text text="Visit Type" />
+				</Column>
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "StreetName", "autoColumnWidth": \{ "visibleProperty": "StreetName" }, "columnIndex": 4, "leadingProperty": "StreetName", "sortProperty": "StreetName", "additionalProperty": "StreetName", "additionalSortProperty": "StreetName", "width": "360px"}' />
+					</customData>
+					<Text text="Address" />
+				</Column>
+
+
+					<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "CustomerFullName", "autoColumnWidth": \{ "visibleProperty": "CustomerFullName" }, "columnIndex": 3, "leadingProperty": "CustomerFullName", "sortProperty": "CustomerFullName", "additionalProperty": "CustomerFullName", "additionalSortProperty": "CustomerFullName", "width": "360px"}' />
+					</customData>
+					<Text text="Customer Name" />
+				</Column>
+				
+			</columns>
+			<items>
+				<ColumnListItem press="onClickItemVisitList" type="Navigation">
+					<cells>
+										<Title text="{= Number(${Visitid})}" titleStyle="H6" level="H6"/>
+
+						<HBox>
+						<ObjectStatus text="{VisitDescription}"  icon="{= ${Visittype} === 'N' ? 'sap-icon://visits' : ${Visittype} === 'F' ? 'sap-icon://checklist-2': ${Visittype} === 'R' ? 'sap-icon://reset' : ${Visittype}}"
+						state="{= ${Visittype} === 'N' ? 'Success': ${Visittype} === 'F' ? 'Warning': 'None'}"/>
+						</HBox>
+						<Title text="{StreetName} {CityName} {Region} {PostalCode}" />
+												<Title text="{CustomerFullName}" titleStyle="H6" level="H6"/>
+
+					</cells>
+					
+				</ColumnListItem>
+			</items>
+
+
+				
+				</Table>
+
+
+
+					</smartTable:SmartTable>
+
+					<List
+					visible="false"
+		id="idList_prospect"
+		growing="true"
+		growingThreshold="20"
+		headerText="Visit List {countModel>/countList_prospect}"
+		items="{
+			path: 'ZRMM_FRVISITV2_CDS>/ZRMM_FRVISITV2',
+			sorter: { path: 'ZRMM_FRVISITV2_CDS>Createdatetime', descending: true}
+		}"
+		updateFinished="onUpdateFinishedList_prospect">
+			<infoToolbar>
+			<OverflowToolbar
+				active="true"
+				press="handleInfobarPress" >
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/milesSet} === '' ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+			</OverflowToolbar>
+		</infoToolbar>
+		
+		
+				<ObjectListItem
+			title="{ZRMM_FRVISITV2_CDS>CustomerPreviousAccount} {
+  path: 'ZRMM_FRVISITV2_CDS>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }"
+  
+  icon="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'sap-icon://visits' : ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'sap-icon://checklist-2': ${ZRMM_FRVISITV2_CDS>Visittype} === 'R' ? 'sap-icon://reset' : ${ZRMM_FRVISITV2_CDS>Visittype}}"
+			type="Navigation"
+			press="onClickItemVisitList"
+			number="{ZRMM_FRVISITV2_CDS>VisitDescription}"
+			numberState="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'Success': ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'Warning': 'None'}"
+			numberUnit="{CurrencyCode}">
+			<firstStatus>
+				<ObjectStatus
+					text="Visit by {ZRMM_FRVISITV2_CDS>CreatedFullName}"
+					state="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'Success': ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'Warning': 'None'}"  />
+			</firstStatus>
+				<secondStatus>
+				<ObjectStatus
+					text="{ZRMM_FRVISITV2_CDS>CHL1Name}"
+					state="Information" />
+			</secondStatus>
+			
+  <ObjectAttribute text="{ZRMM_FRVISITV2_CDS>CustomerFullName}" active="true"/>
+  
+			<ObjectAttribute text="{ZRMM_FRVISITV2_CDS>StreetName}, {ZRMM_FRVISITV2_CDS>CityName} , {ZRMM_FRVISITV2_CDS>Region} , {ZRMM_FRVISITV2_CDS>PostalCode}" active="true"/>
+
+									<ObjectAttribute text="{ZRMM_FRVISITV2_CDS>SalesLeadName} {ZRMM_FRVISITV2_CDS>SaleSupportName}"/>
+
+						<ObjectAttribute text="Visit No. - {= isNaN(${ZRMM_FRVISITV2_CDS>Visitid}) ? 'NEW': Number(${ZRMM_FRVISITV2_CDS>Visitid})}" active="true"/>
+
+		</ObjectListItem>
+	</List>
+
+</content>
+				</IconTabFilter >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<IconTabFilter key="prospect_draft"  text="Prospects Draft" count="{countModel>/countList_prospect_draft}" visible="{= ${userValues>/currentMode} === 'Prospect' ? true : false}">
+
+				<content>
+				<smartTable:SmartTable id="smartTable_visitF4_prospect_draft" entitySet="ZBMM_FieldRepNearbySet"  smartFilterId="smartFilter_visitF4"
+			initiallyVisibleFields="CustomerPreviousAccount,StreetName,VisitDescription,CustomerFullName,Createdatetime,CreatedFullName,Vkorg,CHL1Name,SalesLeadName,SaleSupportName"
+				requestAtLeastFields="Visitid,Customer,Visittype,VisitDescription,Createdatetime,Ernam,Vkorg,StreetName,CityName,PostalCode,Region"
+				beforeRebindTable="onBeforeRebindVisit_F4_prospect_draft"
+			 tableType="ResponsiveTable" useExportToExcel="true"
+			 
+			
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 header="Prospect Visit Drafts" showRowCount="true" persistencyKey="smarttableCustF41_visit"
+			  enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+			  enableAutoColumnWidth="true"  app:useSmartToggle="true">
+
+
+			  <smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<Button press="onDeleteDraft_p_ask" text="Delete" id="deleteDraft_p" enabled="false"/>
+				
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+				
+
+
+
+
+
+
+<Table mode="MultiSelect" sticky="ColumnHeaders,HeaderToolbar"
+ selectionChange="onSelectionChangeDraftTable" updateFinished="onFinishedVisits_prospect_draft"
+ growing="true"
+    growingThreshold="100"
+    growingScrollToLoad="false"
+ 
+   itemPress="onClickItemVisitList" >
+				
+				<infoToolbar>
+			<OverflowToolbar
+				active="true"
+				press="handleInfobarPress" >
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+			</OverflowToolbar>
+		</infoToolbar>
+
+		
+				<columns>
+
+
+	<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "Visitid", "autoColumnWidth": \{ "visibleProperty": "Visitid" }, "columnIndex": 10, "leadingProperty": "Visitid", "sortProperty": "Visitid", "additionalProperty": "Visitid", "additionalSortProperty": "Visitid", "width": "100px"}' />
+					</customData>
+					<Text text="Visit Number" />
+				</Column>
+
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "VisitDescription", "autoColumnWidth": \{ "visibleProperty": "VisitDescription" }, "columnIndex": 0, 
+										 "leadingProperty": "VisitDescription", "sortProperty": "VisitDescription", "additionalProperty": "VisitDescription",
+										  "additionalSortProperty": "VisitDescription", "width": "360px"}' />
+					</customData>
+					<Text text="Visit Type" />
+				</Column>
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "StreetName", "autoColumnWidth": \{ "visibleProperty": "StreetName" }, "columnIndex": 4, "leadingProperty": "StreetName", "sortProperty": "StreetName", "additionalProperty": "StreetName", "additionalSortProperty": "StreetName", "width": "360px"}' />
+					</customData>
+					<Text text="Address" />
+				</Column>
+
+
+					<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "CustomerFullName", "autoColumnWidth": \{ "visibleProperty": "CustomerFullName" }, "columnIndex": 3, "leadingProperty": "CustomerFullName", "sortProperty": "CustomerFullName", "additionalProperty": "CustomerFullName", "additionalSortProperty": "CustomerFullName", "width": "360px"}' />
+					</customData>
+					<Text text="Customer Name" />
+				</Column>
+				
+			</columns>
+			<items>
+				<ColumnListItem press="onClickItemVisitList" type="Navigation">
+					<cells>
+										<Title text="{= Number(${Visitid})}" titleStyle="H6" level="H6"/>
+
+						<HBox>
+						<ObjectStatus text="{VisitDescription}"  icon="{= ${Visittype} === 'N' ? 'sap-icon://visits' : ${Visittype} === 'F' ? 'sap-icon://checklist-2': ${Visittype} === 'R' ? 'sap-icon://reset' : ${Visittype}}"
+						state="{= ${Visittype} === 'N' ? 'Success': ${Visittype} === 'F' ? 'Warning': 'None'}"/>
+						</HBox>
+						<Title text="{StreetName} {CityName} {Region} {PostalCode}" />
+												<Title text="{CustomerFullName}" titleStyle="H6" level="H6"/>
+
+					</cells>
+					
+				</ColumnListItem>
+			</items>
+
+
+				
+				</Table>
+
+
+
+					</smartTable:SmartTable>
+
+					
+  
+</content>
+				</IconTabFilter >
+
+
+		</items>
+	</IconTabBar>
+
+             
+        </content>
+	
+    </Page>
+</mvc:View>

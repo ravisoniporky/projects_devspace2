@@ -1,0 +1,190 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "customer.porky.zmmpurchdash",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.1",
+            "toolsId": "1ed903e7-76af-4856-aa56-410d84a8f52f"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZCMM_POITEMMONI1_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZCMM_POITEMMONI1_CDS2_Annotation",
+                        "annotation0"
+                    ],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation0.xml",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
+                }
+            },
+            "ZCMM_POITEMMONI1_CDS2_Annotation": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCMM_POITEMMONI1_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZCMM_POITEMMONI_CDS2/ZCMM_POITEMMONI_CDS2_Annotation.xml"
+                }
+            },
+            "ZCMM_POITEMMONI_CDS2": {
+                "uri": "/sap/opu/odata/sap/ZCMM_POITEMMONI1_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZCMM_POITEMMONI1_CDS2_Annotation"
+                    ],
+                    "localUri": "localService/ZCMM_POITEMMONI1_CDS2/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+
+            "ZODATA_CUSTOMER_BLOCKS_SRV": {
+                "uri": "/sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZODATA_CUSTOMER_BLOCKS_SRV_Annotation"
+                    ],
+                    "localUri": "localService/ZODATA_CUSTOMER_BLOCKS_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "fullWidth": "true",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "fullWidth": "true",
+        "dependencies": {
+            "minUI5Version": "1.108.28",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "customer.porky.zmmpurchdash.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "useBatch": false
+                }
+            },
+            "ZCMM_POITEMMONI_CDS2": {
+                "dataSource": "ZCMM_POITEMMONI_CDS2",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+
+            "ZODATA_CUSTOMER_BLOCKS_SRV": {
+                "dataSource": "ZODATA_CUSTOMER_BLOCKS_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "customer.porky.zmmpurchdash.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetView1"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View1",
+                    "viewName": "View1"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "customer.porky.zmmpurchdash.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

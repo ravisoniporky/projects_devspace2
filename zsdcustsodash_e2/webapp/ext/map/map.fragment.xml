@@ -1,0 +1,202 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:vk="sap.ui.vk" xmlns:l="sap.ui.layout"  xmlns:vbm="sap.ui.vbm"  xmlns:commons="sap.ui.commons"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+<Toolbar>
+				<Title text="Nearby Customers">
+					<layoutData>
+							<ToolbarLayoutData shrinkable="false" />
+					</layoutData>
+				</Title>
+				
+				<ToolbarSpacer ></ToolbarSpacer>
+				<StepInput
+						editable="true"
+						stepMode="AdditionAndSubtraction"
+						value="5"
+						min="0"
+						max="50"
+						width="200px"
+						step="5"
+						description="Miles"
+						
+						change="onChangeDistance"/>
+				<VBox class="sapUiSmallMargin">
+					
+</VBox>
+						
+			</Toolbar>
+            <IconTabBar
+		id="idIconTabBarFiori2"
+		expanded="{device>/isNoPhone}"
+		width="100%"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				key="map"
+				icon="sap-icon://geographic-bubble-chart"
+				>
+				<VBox width="100%" >
+			<VBox class="sapUiMediumMarginBottom" width="100%" visible="false"> 
+			<Text text="Select Distance:" class="sapUiSmallMarginBottom"/>
+			<StepInput
+						editable="true"
+						stepMode="AdditionAndSubtraction"
+						value="5"
+						min="0"
+						max="50"
+						width="200px"
+						step="5"
+						description="Miles"
+						
+						change="onChangeDistance"/>
+				<Slider visible="false" min="0" max="30" enableTickmarks="true" class="sapUiSmallMarginBottom" width="100%" value="3" liveChange="onChangeDistance" id="mapSlider" enabled="{userValues>/location}">
+			<ResponsiveScale tickmarksBetweenLabels="3"/>
+		</Slider>
+		</VBox>
+		<VBox height="500px">
+			<vk:MapContainer  showFullScreen="true" showSettings="false" >
+				<vk:content>
+					<vk:ContainerContent title="Geo Map"
+						icon="sap-icon://map-2" >
+						<vk:content>
+						
+						<Panel height="100%">
+						
+<vbm:GeoMap id="vbi" width="100%" 
+				height="1200px" initialZoom="12" openWindow="onOpenDetail" closeWindow="onCloseDetail"  scaleVisible="false">
+				
+				<vbm:vos>
+					<vbm:Spots click="onClickItem" posChangeable="true"
+						scaleChangeable="false" contextMenu="onContextMenuItem" items="{latlongModel>/Spots/items}">
+						<vbm:items>
+							<vbm:Spot id="Spot" position="{latlongModel>pos}" tooltip="{latlongModel>altkn} - {latlongModel>stras} - {latlongModel>tooltip}" scale="{latlongModel>scale}"
+								type="{latlongModel>type}" text="{latlongModel>text}" contentOffset="{latlongModel>contentOffset}"
+								click="handlePopoverPress" contextMenu="onContextMenuSpot">
+							</vbm:Spot>
+						</vbm:items>
+					</vbm:Spots>
+				
+				</vbm:vos>
+			
+			</vbm:GeoMap>
+				
+			</Panel>
+				</vk:content>
+					</vk:ContainerContent>
+				</vk:content>
+			</vk:MapContainer>
+			</VBox>
+			</VBox>
+			</IconTabFilter>
+			<IconTabFilter
+				key="attachments"
+				icon="sap-icon://table-view"
+				count="{userValues>/countShipTo}">
+				<VBox width="100%" >
+
+<ScrollContainer  height="500px" vertical="true">
+
+
+			
+
+				<Table id="idProductsTable" autoPopinMode="true" contextualWidth="Auto" popinChanged=".onPopinChanged" items="{ path: 'latlongModel>/Spots/items' , sorter: [{ path: 'distance' ,descending: false }] }" selectionChange="onSelectionChange" >
+		<headerToolbar>
+			<OverflowToolbar>
+				 <Title text="Ship To ({userValues>/countShipTo})" level="H2" />
+		
+					<ToolbarSpacer/>
+						<SearchField
+							placeholder="Filter"
+							value="{ui>/globalFilter}"
+							search="filterGlobally"
+							width="10rem"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+		<Column width="4em" importance="High">
+				<CheckBox select="selectAllFunction"></CheckBox>
+			</Column>
+			<Column width="14em" importance="Low">
+				<Text text="Ship to" />
+			</Column>
+			
+			<Column width="10em" importance="Low">
+				<Text text="Address" />
+			</Column>
+				<Column width="8em" importance="High">
+				<Text text="City" />
+			</Column>
+				<Column width="8em" importance="Low">
+				<Text text="CHL1 Name" />
+			</Column>
+			
+			<Column width="8rem" importance="High">
+				<Text text="Sales Lead" />
+			</Column>
+			<Column width="7rem" importance="High">
+				<Text text="Prev. Cust." />
+			</Column>
+			<Column width="5em" importance="High">
+				<Text text="Miles" />
+			</Column>
+			<Column width="4em" importance="None">
+				<Text text="Share" />
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle" selected="true" >
+				<cells>
+				<CheckBox selected="{latlongModel>selected}" select="onSelectionChange1"></CheckBox>
+					<ObjectIdentifier title="{latlongModel>ShiptoName}" text="{latlongModel>Shipto}" />
+					<Text text="{latlongModel>stras}" />
+										<Text text="{latlongModel>city}" />
+										<Text text="{latlongModel>level}" />
+
+					<Text text="{latlongModel>Salesman}" />
+						<Text text="{latlongModel>altkn}" />
+					
+					<Text text="{latlongModel>distance}" />
+					<Button text="Share" press="shareMapDirection" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</ScrollContainer>
+			</VBox>
+			</IconTabFilter>
+			<!-- <IconTabFilter
+				key="attachments1"
+				icon="sap-icon://table-view"
+				count="{userValues>/countShipTo}">
+	<l:FixFlex class="fixFlexVertical">
+		
+		<l:flexContent>
+			<vk:MapContainer autoAdjustHeight="true">
+				<vk:content>					
+					<vk:ContainerContent title="Geo Map"
+						icon="sap-icon://map-2">
+						<vk:content>
+							<vbm:GeoMap id="vbi1" height="600px">
+							</vbm:GeoMap>
+						</vk:content>
+					</vk:ContainerContent>
+					<vk:ContainerContent title="Analytic Map"
+						icon="sap-icon://choropleth-chart">
+						<vk:content>
+							<vbm:AnalyticMap id="vbi2">
+							</vbm:AnalyticMap>
+						</vk:content>
+					</vk:ContainerContent>
+				</vk:content>
+			</vk:MapContainer>
+		</l:flexContent>
+	</l:FixFlex>
+				</IconTabFilter> -->
+		</items>
+	</IconTabBar>
+
+
+
+</core:FragmentDefinition>

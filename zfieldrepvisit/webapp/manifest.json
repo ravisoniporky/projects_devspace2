@@ -1,0 +1,434 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "customer.porky.zfieldrepvisit",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.12.1",
+      "toolsId": "b013edaf-b58e-49ed-8e82-9411842ab09b"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZODATA_FR_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZODATA_FR_SRV_Annotation",
+            "annotation_ZODATA_FR_SRV"
+          ],
+          "localUri": "localService/ZODATA_FR_SRV/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZBSD_MOE_CDS_Annotation": {
+        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBSD_MOE_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZBSD_MOE_CDS/ZBSD_MOE_CDS_Annotation.xml"
+        }
+      },
+      "ZBSD_MOE_CDS": {
+        "uri": "/sap/opu/odata/sap/ZBSD_MOE_CDS",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZBSD_MOE_CDS_Annotation"
+          ],
+          "localUri": "localService/ZBSD_MOE_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZODATA_FR_SRV_Annotation": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZODATA_FR_SRV/ZODATA_FR_SRV_Annotation.xml"
+        }
+      },
+      "ZODATA_FR_SRV": {
+        "uri": "/sap/opu/odata/sap/ZODATA_FR_SRV",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZODATA_FR_SRV_Annotation"
+          ],
+          "localUri": "localService/ZODATA_FR_SRV/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZRMM_FRVISITV2_CDS": {
+        "uri": "/sap/opu/odata/sap/ZRMM_FRVISITV2_CDS/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZRMM_FRVISITV2_CDS_VAN"
+          ],
+          "localUri": "localService/ZRMM_FRVISITV2_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZBMM_FRVISITDEFSUPP_CDS_Annotation": {
+        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBMM_FRVISITDEFSUPP_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZBMM_FRVISITDEFSUPP_CDS/ZBMM_FRVISITDEFSUPP_CDS_Annotation.xml"
+        }
+      },
+      "ZBMM_FRVISITDEFSUPP_CDS": {
+        "uri": "/sap/opu/odata/sap/ZBMM_FRVISITDEFSUPP_CDS",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZBMM_FRVISITDEFSUPP_CDS_Annotation"
+          ],
+          "localUri": "localService/ZBMM_FRVISITDEFSUPP_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZCXA_USERDEFAULT_CDS_Annotation": {
+        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_Annotation.xml"
+        }
+      },
+      "ZCXA_USERDEFAULT_CDS": {
+        "uri": "/sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZCXA_USERDEFAULT_CDS_Annotation"
+          ],
+          "localUri": "localService/ZCXA_USERDEFAULT_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZCXA_USERAUTH_CDS_Annotation": {
+        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERAUTH_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZCXA_USERAUTH_CDS/ZCXA_USERAUTH_CDS_Annotation.xml"
+        }
+      },
+      "ZCXA_USERAUTH_CDS": {
+        "uri": "/sap/opu/odata/sap/ZCXA_USERAUTH_CDS",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZCXA_USERAUTH_CDS_Annotation"
+          ],
+          "localUri": "localService/ZCXA_USERAUTH_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZODATA_FIELDREP_IMAGES_V2_SRV": {
+        "uri": "/sap/opu/odata/sap/ZODATA_FIELDREP_IMAGES_V2_SRV",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/ZODATA_FIELDREP_IMAGES_V2_SRV/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZI_DEFAULTSHVH_CDS_Annotation": {
+        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZI_DEFAULTSHVH_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZI_DEFAULTSHVH_CDS/ZI_DEFAULTSHVH_CDS_Annotation.xml"
+        }
+      },
+      "ZI_DEFAULTSHVH_CDS": {
+        "uri": "/sap/opu/odata/sap/ZI_DEFAULTSHVH_CDS",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZI_DEFAULTSHVH_CDS_Annotation"
+          ],
+          "localUri": "localService/ZI_DEFAULTSHVH_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "annotation_ZODATA_FR_SRV": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation_ZODATA_FR_SRV.xml",
+        "settings": {
+          "localUri": "annotations/annotation_ZODATA_FR_SRV.xml"
+        }
+      },
+      "ZSB_C_FRVISIT2_Annotation": {
+        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_FRVISIT2_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZSB_C_FRVISIT2/ZSB_C_FRVISIT2_Annotation.xml"
+        }
+      },
+      "ZSB_C_FRVISIT2": {
+        "uri": "/sap/opu/odata/sap/ZSB_C_FRVISIT2",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZSB_C_FRVISIT2_Annotation"
+          ],
+          "localUri": "localService/ZSB_C_FRVISIT2/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZRMM_FRVISITV2_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRMM_FRVISITV2_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_VAN.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "services": {
+      "ShellUIService": {
+        "factoryName": "sap.ushell.ui5service.ShellUIService"
+      }
+    },
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "services": {
+      "ShellUIService": {
+        "factoryName": "sap.ushell.ui5service.ShellUIService"
+      }
+    },
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.21",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zfieldrepvisit.i18n.i18n"
+        }
+      },
+      "defaultValuesModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "salesOrgCentralModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "prospectModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "useBatch": false
+        }
+      },
+      "ZBSD_MOE_CDS": {
+        "dataSource": "ZBSD_MOE_CDS",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "useBatch": true,
+          "refreshAfterChange": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "ZODATA_FR_SRV": {
+        "dataSource": "ZODATA_FR_SRV",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultUpdateMethod": "PUT",
+          "defaultCountMode": "Inline",
+          "useBatch": false,
+          "refreshAfterChange": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "ZRMM_FRVISITV2_CDS": {
+        "dataSource": "ZRMM_FRVISITV2_CDS",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": true,
+          "useBatch": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "ZBMM_FRVISITDEFSUPP_CDS": {
+        "dataSource": "ZBMM_FRVISITDEFSUPP_CDS",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "useBatch": true,
+          "refreshAfterChange": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "ZCXA_USERDEFAULT_CDS": {
+        "dataSource": "ZCXA_USERDEFAULT_CDS",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": true,
+          "useBatch": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "ZCXA_USERAUTH_CDS": {
+        "dataSource": "ZCXA_USERAUTH_CDS",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": true,
+          "useBatch": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "ZODATA_FIELDREP_IMAGES_V2_SRV": {
+        "dataSource": "ZODATA_FIELDREP_IMAGES_V2_SRV",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "ZI_DEFAULTSHVH_CDS": {
+        "dataSource": "ZI_DEFAULTSHVH_CDS",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "ZSB_C_FRVISIT2": {
+        "dataSource": "ZSB_C_FRVISIT2",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": true,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "customer.porky.zfieldrepvisit.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "name": "newvisit",
+          "pattern": "newvisit/:visitid::,::shipto::,::vkorg::,::isnew::,::prospect:",
+          "target": [
+            "newvisit"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "View1",
+          "viewName": "View1"
+        },
+        "newvisit": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "newvisit",
+          "viewName": "newvisit"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "customer.porky.zfieldrepvisit.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

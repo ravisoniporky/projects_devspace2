@@ -1,0 +1,72 @@
+/* Enter your custom styles here */
+
+
+/* 
+h5[id$='titleid']{
+    height:0px
+} */
+
+/* div[id*='titleid'] >h5{
+    color:#1a5ba6!important;
+    border-bottom: 1px solid #1a5ba6!important; */
+  /*  height: 0px!important; */
+/* } */
+ .textAreaTranslateSP >div{
+ /*   background: #fff7ea!important; */
+    border-color: #dfaa54!important;
+    border-width: 2px !important;
+    border-style: solid !important;
+
+ }
+ .textAreaTranslateEN >div{
+  /*  background: #eaf9ff!important; */
+  border-color: #40acd7!important;
+  border-width: 2px !important;
+  border-style: solid !important;
+
+ }
+
+/* .porkythemebg div{
+    
+    background: #eaf4ff!important; */
+  /* border: 1px solid #0d243c; */
+   /* padding: -2px;  */
+/* } */
+/* .porkythemebg {
+    
+    background: #eaf4ff!important;
+    border: 1px solid #0d243c!important; */
+    /* padding: 2px; */
+    /* border-radius: 5px;
+} */
+/* .sapMInput .sapMInputBaseContentWrapper .porkythemebg div{
+    border: 1px solid #0d243c!important;
+} */
+
+/* .sapMListBGTranslucent .sapMListTblHeader, .sapMListBGTranslucent .sapMListTblFooter {
+    
+    background: #0d243c!important;
+} */
+/* .sapMListTblRow .sapMListTblHeader .sapMLIBFocusable .sapMTableRowCustomFocus [id*='keyTablezfieldrep'] {
+    padding: 0;
+    background-color: #1a5ba6!important;
+    color:white
+}
+.sapMTableTH [id*='keyTablezfieldrep'] {
+    background-color: #1a5ba6!important;
+  
+}
+.sapUiTableHeaderDataCell .sapMText, .sapMColumnHeader .sapMText [id*='keyTablezfieldrep'] {
+    font-weight: bold;
+    font-size: .875rem;
+    color: #fff;
+}
+.porkythemelabel {
+    text-align: left;
+    color: #1a5ba6!important;
+    font-weight: bold;
+}
+.cssTableTest >div {
+    background-color: #1a5ba6!important;
+    color:white
+} */

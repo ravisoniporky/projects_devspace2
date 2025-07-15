@@ -1,0 +1,79 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog >
+	<content>
+	<Table
+		id="myDialog1_notes"
+		noDataText="No Notes Found"
+		mode="MultiSelect"
+		multiSelect="true"
+		title="Select Customer"
+		search=".handleSearchNotes"
+		confirm=".handleConfirmNotes"
+        selectionChange="handleSelectNotes"
+		cancel=".handleClose"
+        growing="true"
+        growingThreshold="20"
+		items="{path:'notesModel>/results', sorter: { path: 'visitid_new', descending: true, group: '.getCounty'}}">
+	
+		<ColumnListItem vAlign="Middle" >
+			<cells>
+				<ObjectIdentifier title="{= Number(${notesModel>Visitid})}" />
+					<ExpandableText class="sapUiTinyMarginBottom sapUiTinyMarginTop" text="{notesModel>Notes}" overflowMode="{overflowMode}" />
+				<Text text="{
+  path: 'notesModel>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }" />
+				
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column >
+				<header>
+					<Text text="Visit ID" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Note" />
+				</header>
+			</Column>
+			<Column
+				>
+				<header>
+					<Text text="Date" />
+				</header>
+			</Column>
+			
+		</columns>
+		
+	</Table>
+	</content>
+			<buttons>
+
+			<Button id="translateEn"
+						text="Share In EN"
+						type="Attention"
+						press=".onTranslateShareNotesEng"
+						ariaHasPopup="Dialog" />
+			
+			<Button id="translateSp"
+						text="Share In ES"
+						type="Emphasized"
+						press=".onTranslateShareNotesSpn"
+						ariaHasPopup="Dialog" />
+				
+					<Button type="Accept"
+							text="Share"
+							press=".handleConfirmNotes" />
+					<Button id="cancel"
+						text="Cancel"
+						type="Reject"
+						press=".onCancelShareNotes"
+						ariaHasPopup="Dialog" />
+				
+		</buttons>
+	</Dialog>
+	
+</core:FragmentDefinition>

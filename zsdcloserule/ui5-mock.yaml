@@ -1,0 +1,43 @@
+specVersion: "3.1"
+metadata:
+  name: customer.porky.zsdcloserule
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+          - path: /sap
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: "100"
+            destination: DE2
+            authenticationType: BasicAuthentication
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZSB_C_CLOSERRULE
+            metadataPath: ./webapp/localService/ZSB_C_CLOSERRULE/metadata.xml
+            mockdataPath: ./webapp/localService/ZSB_C_CLOSERRULE/data
+            generateMockData: true
+        annotations:
+          - localPath: ./webapp/localService/ZSB_C_CLOSERRULE/ZSB_C_CLOSERRULE_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_CLOSERRULE_VAN',Version='0001')/$value/

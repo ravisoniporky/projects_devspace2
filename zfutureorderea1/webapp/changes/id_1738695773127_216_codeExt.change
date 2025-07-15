@@ -1,0 +1,23 @@
+{
+  "changeType": "codeExt",
+  "reference": "customer.zfutureorderea1",
+  "namespace": "apps/customer.zfutureorderea1/changes/",
+  "projectId": "customer.zfutureorderea1",
+  "moduleName": "customer/zfutureorderea1/changes/coding/leadtime",
+  "support": {
+    "generator": "rta.service.ControllerExtension",
+    "sapui5Version": "1.108.25"
+  },
+  "originalLanguage": "EN",
+  "layer": "CUSTOMER_BASE",
+  "fileType": "change",
+  "fileName": "id_1738695773127_216_codeExt",
+  "content": {
+    "codeRef": "coding/leadtime.js"
+  },
+  "texts": {},
+  "selector": {
+    "controllerName": "sap.fe.templates.ListReport.ListReportController"
+  },
+  "creation": "2025-02-04T19:02:53.128Z"
+}

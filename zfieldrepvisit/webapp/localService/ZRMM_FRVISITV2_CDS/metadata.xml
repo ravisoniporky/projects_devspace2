@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZRMM_FRVISITV2_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="I_AddressType" sap:label="Address" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AddressID"/>
+                </Key>
+                <Property Name="AddressID" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Address Number"/>
+                <Property Name="AddressUUID" Type="Edm.Guid" sap:label="Address UUID" sap:quickinfo="UUID Used in the Address"/>
+                <Property Name="CareOfName" Type="Edm.String" MaxLength="40" sap:label="c/o" sap:quickinfo="c/o name"/>
+                <Property Name="AdditionalStreetSuffixName" Type="Edm.String" MaxLength="40" sap:label="Street 5"/>
+                <Property Name="CorrespondenceLanguage" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="PrfrdCommMediumType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Comm. Method" sap:quickinfo="Communication Method (Key) (Business Address Services)"/>
+                <Property Name="POBox" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="PO Box"/>
+                <Property Name="POBoxIsWithoutNumber" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="PO Box w/o No." sap:quickinfo="Flag: PO Box Without Number"/>
+                <Property Name="POBoxPostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="PO Box Postal Code"/>
+                <Property Name="POBoxLobbyName" Type="Edm.String" MaxLength="40" sap:label="PO Box Lobby"/>
+                <Property Name="POBoxDeviatingCityName" Type="Edm.String" MaxLength="40" sap:label="PO Box City" sap:quickinfo="PO Box city"/>
+                <Property Name="POBoxDeviatingRegion" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="PO Box Region" sap:quickinfo="Region for PO Box (Country/Region, State, Province, ...)"/>
+                <Property Name="POBoxDeviatingCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="PO Box Ctry/Region" sap:quickinfo="PO Box of Country/Region"/>
+                <Property Name="DeliveryServiceTypeCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Delvry Serv Type" sap:quickinfo="Type of Delivery Service"/>
+                <Property Name="DeliveryServiceNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery Service No." sap:quickinfo="Number of Delivery Service"/>
+                <Property Name="AddressTimeZone" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Time Zone" sap:quickinfo="Address Time Zone"/>
+                <Property Name="CityFileTestStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Test stat./City file" sap:quickinfo="City file test status"/>
+                <Property Name="AddressStreetUnusable" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Undeliverable" sap:quickinfo="Street Address Undeliverable Flag"/>
+                <Property Name="AddressPostBoxUnusable" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Undeliverable" sap:quickinfo="PO Box Address Undeliverable Flag"/>
+                <Property Name="FullName" Type="Edm.String" MaxLength="80" sap:label="Full Name" sap:quickinfo="Full name of a party (Bus. Partner, Org. Unit, Doc. address)"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/>
+                <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
+                <Property Name="CityCode" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="City Code" sap:quickinfo="City code for city/street file"/>
+                <Property Name="HomeCityName" Type="Edm.String" MaxLength="40" sap:label="Different City" sap:quickinfo="City (different from postal city)"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code" sap:quickinfo="City postal code"/>
+                <Property Name="CompanyPostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Company Postal Code" sap:quickinfo="Company Postal Code (for Large Customers)"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:label="Street"/>
+                <Property Name="StreetPrefixName" Type="Edm.String" MaxLength="40" sap:label="Street 2"/>
+                <Property Name="AdditionalStreetPrefixName" Type="Edm.String" MaxLength="40" sap:label="Street 3"/>
+                <Property Name="StreetSuffixName" Type="Edm.String" MaxLength="40" sap:label="Street 4"/>
+                <Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:label="House Number"/>
+                <Property Name="HouseNumberSupplementText" Type="Edm.String" MaxLength="10" sap:label="Supplement" sap:quickinfo="House number supplement"/>
+                <Property Name="Building" Type="Edm.String" MaxLength="20" sap:label="Building Code" sap:quickinfo="Building (Number or Code)"/>
+                <Property Name="Floor" Type="Edm.String" MaxLength="10" sap:label="Floor" sap:quickinfo="Floor in building"/>
+                <Property Name="RoomNumber" Type="Edm.String" MaxLength="10" sap:label="Room Number" sap:quickinfo="Room or Apartment Number"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="County" Type="Edm.String" MaxLength="40" sap:label="County"/>
+                <Property Name="CountyCode" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="County code" sap:quickinfo="County code for county"/>
+                <Property Name="TownshipCode" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Township code" sap:quickinfo="Township code for Township"/>
+                <Property Name="TownshipName" Type="Edm.String" MaxLength="40" sap:label="Township"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Title" sap:quickinfo="Form-of-Address Key"/>
+                <Property Name="BusinessPartnerName1" Type="Edm.String" MaxLength="40" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="BusinessPartnerName2" Type="Edm.String" MaxLength="40" sap:label="Name 2"/>
+                <Property Name="Nation" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Address Version" sap:quickinfo="Version ID for International Addresses"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="First Telephone No.: Dialing Code + Number"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Fax" sap:quickinfo="First Fax No.: Area Code + Number"/>
+                <Property Name="SearchTerm1" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Search Term 1"/>
+                <Property Name="SearchTerm2" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Search Term 2"/>
+                <Property Name="StreetSearch" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Street" sap:quickinfo="Street Name in Uppercase for Search Help"/>
+                <Property Name="CitySearch" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="City" sap:quickinfo="City name in Uppercase for Search Help"/>
+                <Property Name="BusinessPartnerName3" Type="Edm.String" MaxLength="40" sap:label="Name 3"/>
+                <Property Name="BusinessPartnerName4" Type="Edm.String" MaxLength="40" sap:label="Name 4"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="TransportZone" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Transportation Zone" sap:quickinfo="Transportation zone to or from which the goods are delivered"/>
+                <Property Name="AddressCityPostBoxCode" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="City Code" sap:quickinfo="City PO box code (City file)"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Person Number"/>
+            </EntityType>
+            <EntityType Name="I_CompanyCodeStdVHType" sap:label="Company Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+            </EntityType>
+            <EntityType Name="I_CustomerType" sap:label="Customer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Name of Customer"/>
+                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Customer Name" sap:quickinfo="Customer Full Name"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Created On"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="CustomerClassification" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:text="CustomerClassification_Text" sap:label="Customer Classific." sap:quickinfo="Customer Classification" sap:value-list="standard"/>
+                <Property Name="CustomerClassification_Text" Type="Edm.String" MaxLength="20" sap:label="Customer Classification Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="VAT Registration No." sap:quickinfo="VAT Registration Number"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="DeliveryIsBlocked" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Delivery block" sap:quickinfo="Central delivery block for the customer"/>
+                <Property Name="PostingIsBlocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Posting Block" sap:quickinfo="Central posting block"/>
+                <Property Name="BillingIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Billing block" sap:quickinfo="Central billing block for customer"/>
+                <Property Name="OrderIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Order block" sap:quickinfo="Central order block for customer"/>
+                <Property Name="InternationalLocationNumber1" Type="Edm.String" MaxLength="7" sap:display-format="NonNegative" sap:label="Int. location no. 1" sap:quickinfo="International location number  (part 1)"/>
+                <Property Name="IsOneTimeAccount" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="One-time account" sap:quickinfo="Indicator: Is the account a one-time account?"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Industry" sap:quickinfo="Industry key"/>
+                <Property Name="TaxNumberType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax number type" sap:quickinfo="Tax Number Type"/>
+                <Property Name="TaxNumber1" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Tax Number 1"/>
+                <Property Name="TaxNumber2" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="Tax Number 2"/>
+                <Property Name="TaxNumber3" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 3"/>
+                <Property Name="TaxNumber4" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 4"/>
+                <Property Name="TaxNumber5" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Tax Number 5"/>
+                <Property Name="TaxNumber6" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Tax Number 6"/>
+                <Property Name="CustomerCorporateGroup" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Group key"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="NielsenRegion" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Nielsen indicator" sap:quickinfo="Nielsen ID"/>
+                <Property Name="IndustryCode1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 1"/>
+                <Property Name="IndustryCode2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 2"/>
+                <Property Name="IndustryCode3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 3"/>
+                <Property Name="IndustryCode4" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 4"/>
+                <Property Name="IndustryCode5" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 5"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="SortField" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Search term" sap:quickinfo="Sort field"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="31" sap:label="Fax Number"/>
+                <Property Name="BR_SUFRAMACode" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Suframa Code"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="TelephoneNumber1" Type="Edm.String" MaxLength="16" sap:label="Telephone 1" sap:quickinfo="First telephone number"/>
+                <Property Name="TelephoneNumber2" Type="Edm.String" MaxLength="16" sap:label="Telephone 2" sap:quickinfo="Second telephone number"/>
+                <Property Name="AlternativePayerAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Alternative Payer" sap:quickinfo="Account Number of an Alternative Payer"/>
+                <Property Name="DataMediumExchangeIndicator" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="DME Recipient Code" sap:quickinfo="Recipient Code for Data Medium Exchange"/>
+                <Property Name="VATLiability" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Liable for VAT"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Type"/>
+                <Property Name="FiscalAddress" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fiscal address" sap:quickinfo="Account number of the master record with the fiscal address"/>
+                <Property Name="NFPartnerIsNaturalPerson" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Natural Person"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deletion Flag" sap:quickinfo="Central Deletion Flag for Master Record"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="TradingPartner" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:text="to_GlobalCompany/CompanyName" sap:label="Trading Partner No." sap:quickinfo="Company ID of Trading Partner" sap:value-list="standard"/>
+                <Property Name="DeliveryDateTypeRule" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Deliv Date Rule" sap:quickinfo="Delivery Date Rule"/>
+                <Property Name="ExpressTrainStationName" Type="Edm.String" MaxLength="25" sap:label="Express station" sap:quickinfo="Express train station"/>
+                <Property Name="TrainStationName" Type="Edm.String" MaxLength="25" sap:label="Train station"/>
+                <Property Name="InternationalLocationNumber2" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Int. location no. 2" sap:quickinfo="International location number (Part 2)"/>
+                <Property Name="InternationalLocationNumber3" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Check digit" sap:quickinfo="Check digit for the international location number"/>
+                <Property Name="CityCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="City Code"/>
+                <Property Name="County" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="County Code"/>
+                <Property Name="CustomerHasUnloadingPoint" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Unloading points" sap:quickinfo="Indicator: Unloading points exist"/>
+                <Property Name="CustomerWorkingTimeCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Working times" sap:quickinfo="Working Time Calendar"/>
+                <Property Name="IsCompetitor" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Competitors" sap:quickinfo="Indicator: Competitor"/>
+                <Property Name="TaxInvoiceRepresentativeName" Type="Edm.String" MaxLength="10" sap:label="Rep's Name" sap:quickinfo="Name of Representative"/>
+                <Property Name="BusinessType" Type="Edm.String" MaxLength="30" sap:label="Type of Business"/>
+                <Property Name="IndustryType" Type="Edm.String" MaxLength="30" sap:label="Type of Industry"/>
+                <Property Name="TW_CollvBillingIsSupported" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Consolidated Invoic." sap:quickinfo="Consolidated Invoicing for Taiwan"/>
+                <Property Name="AlternativePayeeIsAllowed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Alt.payer in doc?" sap:quickinfo="Indicator: Is an alternative payer allowed in document?"/>
+                <Property Name="FreeDefinedAttribute01" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 1"/>
+                <Property Name="FreeDefinedAttribute02" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 2"/>
+                <Property Name="FreeDefinedAttribute03" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 3"/>
+                <Property Name="FreeDefinedAttribute04" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 4"/>
+                <Property Name="FreeDefinedAttribute05" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 5"/>
+                <Property Name="FreeDefinedAttribute06" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 6"/>
+                <Property Name="FreeDefinedAttribute07" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 7"/>
+                <Property Name="FreeDefinedAttribute08" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 8"/>
+                <Property Name="FreeDefinedAttribute09" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 9"/>
+                <Property Name="FreeDefinedAttribute10" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 10"/>
+                <Property Name="PaymentReason" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Payment Reason"/>
+                <Property Name="IsSalesProspect" Type="Edm.Boolean" sap:label="Prospect" sap:quickinfo="Indicator: Sales prospect"/>
+                <Property Name="PaymentIsBlockedForCustomer" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Payment block" sap:quickinfo="Payment Block"/>
+                <Property Name="zzlatitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Latitude" sap:quickinfo="Geo location latitude"/>
+                <Property Name="zzlongitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Longitude" sap:quickinfo="Geo location longitude"/>
+                <Property Name="zzord_typ" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Sales Order type" sap:quickinfo="Sales order type for order entry"/>
+                <Property Name="zdel_split" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Deliv by Ord Typ" sap:quickinfo="Separate Deliveries by Order Type"/>
+                <Property Name="zzorig_shipto" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="zzstore_no" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Store No" sap:quickinfo="Customer Store Number"/>
+                <Property Name="zotypgrp" Type="Edm.String" MaxLength="2" sap:label="ordertype grp c." sap:quickinfo="groups of  valid ordertypes (cust. specified)"/>
+                <Property Name="zzinv_copies" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="No of Copies" sap:quickinfo="No of Invoice Copies for customer"/>
+                <Property Name="zzlgort_ad" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="StorLoc SalesEmpl." sap:quickinfo="it.trade: Stor.Loc. for SalesEmpl."/>
+                <Property Name="zzmpno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="M#" sap:quickinfo="Meat Processing Number"/>
+                <Property Name="zzord_inst" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Order Instructions" sap:quickinfo="Order Instructions for Order entry"/>
+                <Property Name="zzoverride" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Override Lat and Log" sap:quickinfo="Override Lat. and Long."/>
+                <Property Name="zzprint_ea" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Pr Inv with EA UPC" sap:quickinfo="Print Invoices with EA UPC"/>
+                <Property Name="zzsd_sledt" Type="Edm.String" MaxLength="1" sap:label="Shelf Life Exp Dt" sap:quickinfo="Include Shelf Life Exp. Date"/>
+                <Property Name="zzsrp_zinv" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Print Invoices with SRP Y/N"/>
+                <NavigationProperty Name="to_CustomerClassification" Relationship="ZRMM_FRVISITV2_CDS.assoc_C9CD836CFC89E1433FB2649E56D3AA66" FromRole="FromRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66" ToRole="ToRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                <NavigationProperty Name="to_GlobalCompany" Relationship="ZRMM_FRVISITV2_CDS.assoc_116DF44D92A0493A401259DEA0CF7F53" FromRole="FromRole_assoc_116DF44D92A0493A401259DEA0CF7F53" ToRole="ToRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+            </EntityType>
+            <EntityType Name="I_CustomerClassificationType" sap:label="Customer Classification" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomerClassification"/>
+                </Key>
+                <Property Name="CustomerClassification" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="CustomerClassification_Text" sap:label="Customer Classific." sap:quickinfo="Customer Classification"/>
+                <Property Name="CustomerClassification_Text" Type="Edm.String" MaxLength="20" sap:label="Customer Classification Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_Customer_VHType" sap:label="Customer" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region" sap:quickinfo="Country/Region Key"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Customer Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Complete Flag" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="IsCompetitor" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Competitors" sap:quickinfo="Indicator: Competitor"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Partner Type"/>
+            </EntityType>
+            <EntityType Name="I_GlobalcompanyType" sap:label="Global Company" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Company"/>
+                </Key>
+                <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:text="CompanyName" sap:label="Company"/>
+                <Property Name="CompanyName" Type="Edm.String" MaxLength="30" sap:label="Name of the company" sap:quickinfo="Company name"/>
+                <Property Name="CompanyCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Local Currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyLanguage" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+            </EntityType>
+            <EntityType Name="I_LanguageType" sap:label="Language" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Language_Text" sap:label="Language Key"/>
+                <Property Name="Language_Text" Type="Edm.String" MaxLength="16" sap:label="Name" sap:quickinfo="Name of Language" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LanguageISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Language Code" sap:quickinfo="2-Character SAP Language Code"/>
+            </EntityType>
+            <EntityType Name="I_SalesOrganizationType" sap:label="Sales Organization" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="SalesOrganization_Text" sap:label="Sales Organization"/>
+                <Property Name="SalesOrganization_Text" Type="Edm.String" MaxLength="20" sap:label="Sales Organization Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization" sap:value-list="standard"/>
+                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing" sap:value-list="standard"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <NavigationProperty Name="to_Address" Relationship="ZRMM_FRVISITV2_CDS.assoc_DB904894788DBE9AF78F0C4A87E3F20A" FromRole="FromRole_assoc_DB904894788DBE9AF78F0C4A87E3F20A" ToRole="ToRole_assoc_DB904894788DBE9AF78F0C4A87E3F20A"/>
+            </EntityType>
+            <EntityType Name="ZBMM_FRTMVHType" sap:label="Value Help for Team Members" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+                <Property Name="Function" Type="Edm.String" MaxLength="40" sap:label="Function"/>
+            </EntityType>
+            <EntityType Name="ZBMM_VISITNOTESTYPEType" sap:label="Field Rep Visit Notes Comments Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Value"/>
+                </Key>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZBMM_VISITSTATUSType" sap:label="Visit(Draft)Status" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Value"/>
+                </Key>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZBMM_VISITTYPEType" sap:label="Field Rep Visit Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Value"/>
+                </Key>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZBSD_GETDEFAULTSHMOREType" sap:label="Get Ship-tos from Customer Rollup" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="kunnr"/>
+                    <PropertyRef Name="vkorg"/>
+                </Key>
+                <Property Name="kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="name1" sap:label="Ship-to" sap:quickinfo="Customer Number"/>
+                <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="altkn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
+                <Property Name="cu_hier1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L1" sap:quickinfo="Customer Number"/>
+                <Property Name="sm" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer Number"/>
+                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name1" sap:quickinfo="Name 1"/>
+                <Property Name="name2" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name2" sap:quickinfo="Name 1"/>
+                <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Ship-to Address" sap:quickinfo="Street and House Number"/>
+                <Property Name="ort01" Type="Edm.String" MaxLength="40" sap:label="Ship-to City" sap:quickinfo="City"/>
+                <Property Name="regio" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Ship-to Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="pstlz" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Postal Code" sap:quickinfo="Postal Code"/>
+                <Property Name="telf1" Type="Edm.String" MaxLength="16" sap:label="Ship-to Telephone" sap:quickinfo="First telephone number"/>
+                <Property Name="hier1_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L1 Name" sap:quickinfo="Name 1"/>
+                <Property Name="zzlongitude" Type="Edm.String" MaxLength="20" sap:label="Longitude"/>
+                <Property Name="zzlatitude" Type="Edm.String" MaxLength="20" sap:label="Latitude"/>
+                <Property Name="storeno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Store Number" sap:quickinfo="Customer Store Number"/>
+                <Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="ss" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SS Partner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="zzorig_shipto" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="cu_hier3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L3" sap:quickinfo="Customer Number"/>
+                <Property Name="hier3_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L3 Name" sap:quickinfo="Name 1"/>
+                <Property Name="cu_hier2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L2" sap:quickinfo="Customer Number"/>
+                <Property Name="hier2_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L2 Name" sap:quickinfo="Name 1"/>
+                <Property Name="ow" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Owner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address"/>
+                <Property Name="smvkorg" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="ADRNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+            </EntityType>
+            <EntityType Name="ZBXA_USERType" sap:label="User Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="ZRMM_FRVISITV2Type" sap:label="Field Rep Visit Info" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Visitid"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_notes_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_team_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Visitid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Visit Id" sap:quickinfo="Visitor/Customer Id" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party" sap:value-list="standard"/>
+                <Property Name="Vkorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="Visittype" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Visit Type" sap:value-list="standard"/>
+                <Property Name="VisitDescription" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Createdatetime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Changedatetime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Locallastchangedat" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time"/>
+                <Property Name="status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Visit Status" sap:quickinfo="Field Rep Visit Status" sap:value-list="standard"/>
+                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="CustomerFullName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="CustomerPreviousAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account No." sap:quickinfo="Previous Master Record Number"/>
+                <Property Name="StoreNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Store No" sap:quickinfo="Customer Store Number"/>
+                <Property Name="CreatedFullName" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+                <Property Name="ChangedFullName" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+                <Property Name="CHL1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CHL1Name" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="SalesLeadName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="SalesLeadName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="SaleSupportName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="SalesSupport" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="SaleSupportName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <NavigationProperty Name="to_customer" Relationship="ZRMM_FRVISITV2_CDS.assoc_FAA42A23C8A23DE5136340D0534323CB" FromRole="FromRole_assoc_FAA42A23C8A23DE5136340D0534323CB" ToRole="ToRole_assoc_FAA42A23C8A23DE5136340D0534323CB"/>
+                <NavigationProperty Name="to_images" Relationship="ZRMM_FRVISITV2_CDS.assoc_B923D4D7E2FDD978FB70A24A56A994D9" FromRole="FromRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9" ToRole="ToRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9"/>
+                <NavigationProperty Name="to_notes" Relationship="ZRMM_FRVISITV2_CDS.assoc_9BD52B6693B6B891C239E142F3315620" FromRole="FromRole_assoc_9BD52B6693B6B891C239E142F3315620" ToRole="ToRole_assoc_9BD52B6693B6B891C239E142F3315620"/>
+                <NavigationProperty Name="to_salesOrganization" Relationship="ZRMM_FRVISITV2_CDS.assoc_F6078F03323F773CAC46DB95F821B73B" FromRole="FromRole_assoc_F6078F03323F773CAC46DB95F821B73B" ToRole="ToRole_assoc_F6078F03323F773CAC46DB95F821B73B"/>
+                <NavigationProperty Name="to_team" Relationship="ZRMM_FRVISITV2_CDS.assoc_612151DDBCE94ED54D5935C17822741F" FromRole="FromRole_assoc_612151DDBCE94ED54D5935C17822741F" ToRole="ToRole_assoc_612151DDBCE94ED54D5935C17822741F"/>
+                <NavigationProperty Name="to_visitstat" Relationship="ZRMM_FRVISITV2_CDS.assoc_1D3FD2743908479D5AB4881D220128C3" FromRole="FromRole_assoc_1D3FD2743908479D5AB4881D220128C3" ToRole="ToRole_assoc_1D3FD2743908479D5AB4881D220128C3"/>
+                <NavigationProperty Name="to_visittype" Relationship="ZRMM_FRVISITV2_CDS.assoc_98C357A9687DF758B7793067DC166CEF" FromRole="FromRole_assoc_98C357A9687DF758B7793067DC166CEF" ToRole="ToRole_assoc_98C357A9687DF758B7793067DC166CEF"/>
+            </EntityType>
+            <EntityType Name="ZRMM_FRVISITV2IMAGESType" sap:label="Field Rep Images" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Visitid"/>
+                    <PropertyRef Name="Lineid"/>
+                </Key>
+                <Property Name="Visitid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Visit Id" sap:quickinfo="Visitor/Customer Id"/>
+                <Property Name="Lineid" Type="Edm.Int32" Nullable="false" sap:label="Line Id" sap:quickinfo="4 Byte Signed Integer"/>
+                <Property Name="ImageUrl" Type="Edm.String" MaxLength="200" sap:label="Image Internal URL" sap:quickinfo="File Name"/>
+                <Property Name="ImageName" Type="Edm.String" MaxLength="50" sap:label="Image Name"/>
+                <Property Name="Mimetype" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:label="Mime Type" sap:quickinfo="Character 100"/>
+                <Property Name="FileSize" Type="Edm.Int32" sap:label="File Size" sap:quickinfo="4 Byte Signed Integer"/>
+                <Property Name="ThumpnailUrl" Type="Edm.String" MaxLength="200" sap:label="ThumpNail Internal URL" sap:quickinfo="File Name"/>
+                <Property Name="GetUrl" Type="Edm.String" MaxLength="187" sap:label="Image URL"/>
+                <Property Name="GetThumpUrl" Type="Edm.String" MaxLength="195" sap:label="ThumpNail URL"/>
+                <NavigationProperty Name="to_visitor" Relationship="ZRMM_FRVISITV2_CDS.assoc_B923D4D7E2FDD978FB70A24A56A994D9" FromRole="ToRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9" ToRole="FromRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9"/>
+            </EntityType>
+            <EntityType Name="ZRMM_FRVISITV2NOTESType" sap:label="Field Rep Visit V2 Notes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Visitid"/>
+                    <PropertyRef Name="Lineid"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Visitid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Id" sap:quickinfo="Visitor/Customer Id" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Lineid" Type="Edm.Int32" Nullable="false" sap:label="INT4" sap:quickinfo="4 Byte Signed Integer" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Spras" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Field Rep Notes/Comment" sap:heading="" sap:value-list="standard"/>
+                <Property Name="Createdatetime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Kunnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="Vkorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="Notes" Type="Edm.String"/>
+                <Property Name="Loevm" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deletion Indicator"/>
+                <Property Name="Ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
+                <Property Name="status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Visit Status" sap:quickinfo="Field Rep Visit Status"/>
+                <Property Name="Createdby" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+                <NavigationProperty Name="to_visitor" Relationship="ZRMM_FRVISITV2_CDS.assoc_9BD52B6693B6B891C239E142F3315620" FromRole="ToRole_assoc_9BD52B6693B6B891C239E142F3315620" ToRole="FromRole_assoc_9BD52B6693B6B891C239E142F3315620"/>
+                <NavigationProperty Name="to_notetype" Relationship="ZRMM_FRVISITV2_CDS.assoc_780CA10A7F5437A2D1B4259C55F033C7" FromRole="FromRole_assoc_780CA10A7F5437A2D1B4259C55F033C7" ToRole="ToRole_assoc_780CA10A7F5437A2D1B4259C55F033C7"/>
+            </EntityType>
+            <EntityType Name="ZRMM_FRVISITV2TMType" sap:label="Field Rep Visit Team Member Assignment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Visitid"/>
+                    <PropertyRef Name="Lineid"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Visitid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Id" sap:quickinfo="Visitor/Customer Id" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Lineid" Type="Edm.Int32" Nullable="false" sap:label="INT4" sap:quickinfo="4 Byte Signed Integer" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Kunnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="Vkorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="Bname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name" sap:value-list="standard"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
+                <Property Name="Aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Last Changed By User"/>
+                <Property Name="Createdatetime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Changedatetime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Locallastchangedat" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time"/>
+                <Property Name="Function" Type="Edm.String" MaxLength="40" sap:label="Function"/>
+                <NavigationProperty Name="to_visitor" Relationship="ZRMM_FRVISITV2_CDS.assoc_612151DDBCE94ED54D5935C17822741F" FromRole="ToRole_assoc_612151DDBCE94ED54D5935C17822741F" ToRole="FromRole_assoc_612151DDBCE94ED54D5935C17822741F"/>
+                <NavigationProperty Name="to_user" Relationship="ZRMM_FRVISITV2_CDS.assoc_EA3FD326391064247D408990D9E14E60" FromRole="FromRole_assoc_EA3FD326391064247D408990D9E14E60" ToRole="ToRole_assoc_EA3FD326391064247D408990D9E14E60"/>
+            </EntityType>
+            <Association Name="assoc_116DF44D92A0493A401259DEA0CF7F53" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.I_CustomerType" Multiplicity="1" Role="FromRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+                <End Type="ZRMM_FRVISITV2_CDS.I_GlobalcompanyType" Multiplicity="0..1" Role="ToRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_116DF44D92A0493A401259DEA0CF7F53">
+                        <PropertyRef Name="Company"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_116DF44D92A0493A401259DEA0CF7F53">
+                        <PropertyRef Name="TradingPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_C9CD836CFC89E1433FB2649E56D3AA66" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.I_CustomerType" Multiplicity="1" Role="FromRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                <End Type="ZRMM_FRVISITV2_CDS.I_CustomerClassificationType" Multiplicity="0..1" Role="ToRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66">
+                        <PropertyRef Name="CustomerClassification"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66">
+                        <PropertyRef Name="CustomerClassification"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_780CA10A7F5437A2D1B4259C55F033C7" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2NOTESType" Multiplicity="1" Role="FromRole_assoc_780CA10A7F5437A2D1B4259C55F033C7"/>
+                <End Type="ZRMM_FRVISITV2_CDS.ZBMM_VISITNOTESTYPEType" Multiplicity="0..1" Role="ToRole_assoc_780CA10A7F5437A2D1B4259C55F033C7"/>
+            </Association>
+            <Association Name="assoc_FAA42A23C8A23DE5136340D0534323CB" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type" Multiplicity="1" Role="FromRole_assoc_FAA42A23C8A23DE5136340D0534323CB"/>
+                <End Type="ZRMM_FRVISITV2_CDS.I_CustomerType" Multiplicity="0..1" Role="ToRole_assoc_FAA42A23C8A23DE5136340D0534323CB"/>
+            </Association>
+            <Association Name="assoc_B923D4D7E2FDD978FB70A24A56A994D9" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type" Multiplicity="1" Role="FromRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2IMAGESType" Multiplicity="*" Role="ToRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9">
+                        <PropertyRef Name="Visitid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9">
+                        <PropertyRef Name="Visitid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_9BD52B6693B6B891C239E142F3315620" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type" Multiplicity="1" Role="FromRole_assoc_9BD52B6693B6B891C239E142F3315620">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2NOTESType" Multiplicity="*" Role="ToRole_assoc_9BD52B6693B6B891C239E142F3315620"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_9BD52B6693B6B891C239E142F3315620">
+                        <PropertyRef Name="Visitid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_9BD52B6693B6B891C239E142F3315620">
+                        <PropertyRef Name="Visitid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_F6078F03323F773CAC46DB95F821B73B" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type" Multiplicity="1" Role="FromRole_assoc_F6078F03323F773CAC46DB95F821B73B"/>
+                <End Type="ZRMM_FRVISITV2_CDS.I_SalesOrganizationType" Multiplicity="0..1" Role="ToRole_assoc_F6078F03323F773CAC46DB95F821B73B"/>
+            </Association>
+            <Association Name="assoc_612151DDBCE94ED54D5935C17822741F" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type" Multiplicity="1" Role="FromRole_assoc_612151DDBCE94ED54D5935C17822741F">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2TMType" Multiplicity="*" Role="ToRole_assoc_612151DDBCE94ED54D5935C17822741F"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_612151DDBCE94ED54D5935C17822741F">
+                        <PropertyRef Name="Visitid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_612151DDBCE94ED54D5935C17822741F">
+                        <PropertyRef Name="Visitid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_1D3FD2743908479D5AB4881D220128C3" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type" Multiplicity="1" Role="FromRole_assoc_1D3FD2743908479D5AB4881D220128C3"/>
+                <End Type="ZRMM_FRVISITV2_CDS.ZBMM_VISITSTATUSType" Multiplicity="0..1" Role="ToRole_assoc_1D3FD2743908479D5AB4881D220128C3"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_1D3FD2743908479D5AB4881D220128C3">
+                        <PropertyRef Name="Value"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_1D3FD2743908479D5AB4881D220128C3">
+                        <PropertyRef Name="status"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_98C357A9687DF758B7793067DC166CEF" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type" Multiplicity="1" Role="FromRole_assoc_98C357A9687DF758B7793067DC166CEF"/>
+                <End Type="ZRMM_FRVISITV2_CDS.ZBMM_VISITTYPEType" Multiplicity="0..1" Role="ToRole_assoc_98C357A9687DF758B7793067DC166CEF"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_98C357A9687DF758B7793067DC166CEF">
+                        <PropertyRef Name="Value"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_98C357A9687DF758B7793067DC166CEF">
+                        <PropertyRef Name="Visittype"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_DB904894788DBE9AF78F0C4A87E3F20A" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.I_SalesOrganizationType" Multiplicity="1" Role="FromRole_assoc_DB904894788DBE9AF78F0C4A87E3F20A"/>
+                <End Type="ZRMM_FRVISITV2_CDS.I_AddressType" Multiplicity="0..1" Role="ToRole_assoc_DB904894788DBE9AF78F0C4A87E3F20A"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_DB904894788DBE9AF78F0C4A87E3F20A">
+                        <PropertyRef Name="AddressID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_DB904894788DBE9AF78F0C4A87E3F20A">
+                        <PropertyRef Name="AddressID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_EA3FD326391064247D408990D9E14E60" sap:content-version="1">
+                <End Type="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2TMType" Multiplicity="1" Role="FromRole_assoc_EA3FD326391064247D408990D9E14E60"/>
+                <End Type="ZRMM_FRVISITV2_CDS.ZBXA_USERType" Multiplicity="1" Role="ToRole_assoc_EA3FD326391064247D408990D9E14E60"/>
+            </Association>
+            <EntityContainer Name="ZRMM_FRVISITV2_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_Address" EntityType="ZRMM_FRVISITV2_CDS.I_AddressType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="I_CompanyCodeStdVH" EntityType="ZRMM_FRVISITV2_CDS.I_CompanyCodeStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Customer" EntityType="ZRMM_FRVISITV2_CDS.I_CustomerType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_CustomerClassification" EntityType="ZRMM_FRVISITV2_CDS.I_CustomerClassificationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_Customer_VH" EntityType="ZRMM_FRVISITV2_CDS.I_Customer_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Globalcompany" EntityType="ZRMM_FRVISITV2_CDS.I_GlobalcompanyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Language" EntityType="ZRMM_FRVISITV2_CDS.I_LanguageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_SalesOrganization" EntityType="ZRMM_FRVISITV2_CDS.I_SalesOrganizationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBMM_FRTMVH" EntityType="ZRMM_FRVISITV2_CDS.ZBMM_FRTMVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBMM_VISITNOTESTYPE" EntityType="ZRMM_FRVISITV2_CDS.ZBMM_VISITNOTESTYPEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBMM_VISITSTATUS" EntityType="ZRMM_FRVISITV2_CDS.ZBMM_VISITSTATUSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBMM_VISITTYPE" EntityType="ZRMM_FRVISITV2_CDS.ZBMM_VISITTYPEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_GETDEFAULTSHMORE" EntityType="ZRMM_FRVISITV2_CDS.ZBSD_GETDEFAULTSHMOREType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBXA_USER" EntityType="ZRMM_FRVISITV2_CDS.ZBXA_USERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZRMM_FRVISITV2" EntityType="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZRMM_FRVISITV2IMAGES" EntityType="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2IMAGESType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZRMM_FRVISITV2NOTES" EntityType="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2NOTESType" sap:creatable="false" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZRMM_FRVISITV2TM" EntityType="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2TMType" sap:creatable="false" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <AssociationSet Name="assoc_C9CD836CFC89E1433FB2649E56D3AA66" Association="ZRMM_FRVISITV2_CDS.assoc_C9CD836CFC89E1433FB2649E56D3AA66" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_Customer" Role="FromRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                    <End EntitySet="I_CustomerClassification" Role="ToRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F6078F03323F773CAC46DB95F821B73B" Association="ZRMM_FRVISITV2_CDS.assoc_F6078F03323F773CAC46DB95F821B73B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2" Role="FromRole_assoc_F6078F03323F773CAC46DB95F821B73B"/>
+                    <End EntitySet="I_SalesOrganization" Role="ToRole_assoc_F6078F03323F773CAC46DB95F821B73B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_780CA10A7F5437A2D1B4259C55F033C7" Association="ZRMM_FRVISITV2_CDS.assoc_780CA10A7F5437A2D1B4259C55F033C7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2NOTES" Role="FromRole_assoc_780CA10A7F5437A2D1B4259C55F033C7"/>
+                    <End EntitySet="ZBMM_VISITNOTESTYPE" Role="ToRole_assoc_780CA10A7F5437A2D1B4259C55F033C7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EA3FD326391064247D408990D9E14E60" Association="ZRMM_FRVISITV2_CDS.assoc_EA3FD326391064247D408990D9E14E60" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2TM" Role="FromRole_assoc_EA3FD326391064247D408990D9E14E60"/>
+                    <End EntitySet="ZBXA_USER" Role="ToRole_assoc_EA3FD326391064247D408990D9E14E60"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_612151DDBCE94ED54D5935C17822741F" Association="ZRMM_FRVISITV2_CDS.assoc_612151DDBCE94ED54D5935C17822741F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2" Role="FromRole_assoc_612151DDBCE94ED54D5935C17822741F"/>
+                    <End EntitySet="ZRMM_FRVISITV2TM" Role="ToRole_assoc_612151DDBCE94ED54D5935C17822741F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_FAA42A23C8A23DE5136340D0534323CB" Association="ZRMM_FRVISITV2_CDS.assoc_FAA42A23C8A23DE5136340D0534323CB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2" Role="FromRole_assoc_FAA42A23C8A23DE5136340D0534323CB"/>
+                    <End EntitySet="I_Customer" Role="ToRole_assoc_FAA42A23C8A23DE5136340D0534323CB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_116DF44D92A0493A401259DEA0CF7F53" Association="ZRMM_FRVISITV2_CDS.assoc_116DF44D92A0493A401259DEA0CF7F53" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_Customer" Role="FromRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+                    <End EntitySet="I_Globalcompany" Role="ToRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1D3FD2743908479D5AB4881D220128C3" Association="ZRMM_FRVISITV2_CDS.assoc_1D3FD2743908479D5AB4881D220128C3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2" Role="FromRole_assoc_1D3FD2743908479D5AB4881D220128C3"/>
+                    <End EntitySet="ZBMM_VISITSTATUS" Role="ToRole_assoc_1D3FD2743908479D5AB4881D220128C3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B923D4D7E2FDD978FB70A24A56A994D9" Association="ZRMM_FRVISITV2_CDS.assoc_B923D4D7E2FDD978FB70A24A56A994D9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2" Role="FromRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9"/>
+                    <End EntitySet="ZRMM_FRVISITV2IMAGES" Role="ToRole_assoc_B923D4D7E2FDD978FB70A24A56A994D9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_98C357A9687DF758B7793067DC166CEF" Association="ZRMM_FRVISITV2_CDS.assoc_98C357A9687DF758B7793067DC166CEF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2" Role="FromRole_assoc_98C357A9687DF758B7793067DC166CEF"/>
+                    <End EntitySet="ZBMM_VISITTYPE" Role="ToRole_assoc_98C357A9687DF758B7793067DC166CEF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9BD52B6693B6B891C239E142F3315620" Association="ZRMM_FRVISITV2_CDS.assoc_9BD52B6693B6B891C239E142F3315620" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZRMM_FRVISITV2" Role="FromRole_assoc_9BD52B6693B6B891C239E142F3315620"/>
+                    <End EntitySet="ZRMM_FRVISITV2NOTES" Role="ToRole_assoc_9BD52B6693B6B891C239E142F3315620"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_DB904894788DBE9AF78F0C4A87E3F20A" Association="ZRMM_FRVISITV2_CDS.assoc_DB904894788DBE9AF78F0C4A87E3F20A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_SalesOrganization" Role="FromRole_assoc_DB904894788DBE9AF78F0C4A87E3F20A"/>
+                    <End EntitySet="I_Address" Role="ToRole_assoc_DB904894788DBE9AF78F0C4A87E3F20A"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/CustomerClassification" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer Classification"/>
+                        <PropertyValue Property="CollectionPath" String="I_CustomerClassification"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerClassification"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerClassification"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerClassification_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/TradingPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Global Company"/>
+                        <PropertyValue Property="CollectionPath" String="I_Globalcompany"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TradingPartner"/>
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_SalesOrganizationType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_SalesOrganizationType/IntercompanyBillingCustomer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="I_Customer_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="IntercompanyBillingCustomer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StreetName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PostalCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type/Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Get Ship-tos from Customer Rollup"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_GETDEFAULTSHMORE"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
+                                    <PropertyValue Property="ValueListProperty" String="kunnr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="altkn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="storeno"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="stras"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ort01"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="regio"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="pstlz"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="telf1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="sm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ss"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier1_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier2_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier3_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ow"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="bukrs"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="smvkorg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmailAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ADRNR"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzorig_shipto"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzlatitude"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzlongitude"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Vkorg"/>
+                                    <PropertyValue Property="ValueListProperty" String="vkorg"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type/Vkorg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Vkorg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type/Visittype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Field Rep Visit Type"/>
+                        <PropertyValue Property="CollectionPath" String="ZBMM_VISITTYPE"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Visittype"/>
+                                    <PropertyValue Property="ValueListProperty" String="Value"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type/status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Visit(Draft)Status"/>
+                        <PropertyValue Property="CollectionPath" String="ZBMM_VISITSTATUS"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="status"/>
+                                    <PropertyValue Property="ValueListProperty" String="Value"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2NOTESType/Spras" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Language"/>
+                        <PropertyValue Property="CollectionPath" String="I_Language"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Spras"/>
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LanguageISOCode"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2NOTESType/Type" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Field Rep Visit Notes Comments Type"/>
+                        <PropertyValue Property="CollectionPath" String="ZBMM_VISITNOTESTYPE"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Type"/>
+                                    <PropertyValue Property="ValueListProperty" String="Value"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2TMType/Bname" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Team Members"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZBMM_FRTMVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Bname"/>
+                                    <PropertyValue Property="ValueListProperty" String="UserID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UserDescription"/>
+                                    <PropertyValue Property="ValueListProperty" String="UserDescription"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Function"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type/to_images" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type/to_notes" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type/to_team" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2_CDS_Entities/ZRMM_FRVISITV2" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_notes_oc</PropertyPath>
+                                <PropertyPath>to_team_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_customer"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_images"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_notes"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="to_notes_oc"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_salesOrganization"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_team"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="to_team_oc"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_visitstat"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_visittype"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>Locallastchangedat</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_notes_oc</PropertyPath>
+                                <PropertyPath>to_team_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2_CDS_Entities/ZRMM_FRVISITV2NOTES" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Notes"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_notetype"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_visitor"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>Notes</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2_CDS_Entities/ZRMM_FRVISITV2TM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_user"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_visitor"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>Locallastchangedat</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2_CDS_Entities/I_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerClassification"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_GlobalCompany"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2_CDS_Entities/I_SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Address"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2_CDS_Entities/ZRMM_FRVISITV2IMAGES" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_visitor"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.ZBSD_GETDEFAULTSHMOREType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Shipto"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZRMM_FRVISITV2_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZRMM_FRVISITV2_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,83 @@
+<mvc:View controllerName="customer.porky.zsdcloserule.controller.CloseRuleMaint"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:sf="sap.ui.comp.smartfilterbar" xmlns:uitable="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+
+
+	<ObjectHeader
+		id="oh1"
+		responsive="true"
+		fullScreenOptimized="false"
+		binding="{/ProductCollection/0}"
+		intro="{Description}"
+		title="Long title truncated to 80 chars on all devices and to 50 chars on phone portrait"
+		number="{
+			parts:[{path:'Price'},{path:'CurrencyCode'}],
+			type: 'sap.ui.model.type.Currency',
+			formatOptions: {showMeasure: false}
+		}"
+		numberUnit="{CurrencyCode}"
+		numberState="Success"
+		backgroundDesign="Translucent"
+		class="sapUiResponsivePadding--header" >
+		<ObjectAttribute
+			title="Manufacturer"
+			text="{SupplierName}"/>
+		<statuses>
+			<ObjectStatus
+				title="Approval"
+				text="Pending"
+				state="Warning"/>
+		</statuses>
+		<markers>
+			<ObjectMarker type="Flagged"/>
+			<ObjectMarker type="Favorite"/>
+		</markers>
+		<headerContainer>
+			
+		</headerContainer>
+	</ObjectHeader>
+
+            <smartTable:SmartTable
+				tableType="Table"
+				initiallyVisibleFields="Zrule,Lineid,MaterialName,MaterialGroup,CreatedBy,Matnr,Ph01,Ph02"
+				requestAtLeastFields="Zrule,Lineid,MaterialName,MaterialGroup,CreatedBy,Matnr,Ph01,Ph02"
+				id="smarttableEDI"
+				entitySet="ZCSD_CLOSERULEASSIGN"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="EDI Orders"
+				showRowCount="true"
+				persistencyKey="tablecustomer"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				growingThreshold="20"
+								showFullScreenButton = "true"
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				 <ToolbarSpacer/>
+					<Button text="Set Deletion Indicator"></Button> 
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+        <uitable:Table rowSelectionChange="onItemPress">
+        <!-- <uitable:ColumnListItem type="Navigation"></uitable:ColumnListItem> -->
+        </uitable:Table>
+		</smartTable:SmartTable>
+
+
+
+        </content>
+    </Page>
+</mvc:View>

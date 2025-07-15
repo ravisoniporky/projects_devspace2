@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+            <VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Last Payment for {customerData>/Customer}"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:toolbar>
+			<Toolbar  >
+
+			
+
+			<Title text="Last Payment"  />
+					<ToolbarSpacer />
+					
+					<Button icon="sap-icon://action"
+						press="onLastPaymentClick" />
+						</Toolbar>
+			</f:toolbar>
+			<f:content>
+				<ObjectIdentifier title="Last Payment Date"  emptyIndicatorMode= "Auto" titleActive="true"/>
+				<Text id="name" text="{
+				        path: 'customerData>/LastPmntDt',
+				        type: 'sap.ui.model.type.Date', constraints:{displayFormat:'Date'}}" />
+				
+				<ObjectIdentifier title="Last Payment Check Amount" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiSmallMarginTop"/>
+				<Text id="name1" text="$ {path:'customerData>/LastPmntChkAmt', type:'sap.ui.model.type.Float'}" />
+
+				
+
+				
+			</f:content>
+		</f:SimpleForm>
+
+      
+	</VBox>
+
+</core:FragmentDefinition>

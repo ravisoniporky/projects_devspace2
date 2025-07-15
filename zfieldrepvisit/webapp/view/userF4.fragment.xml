@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		id="myDialogTeamUserF4"
+		noDataText="No Team Members Found"
+		title="Select Team Member"
+		search=".handleSearchTeam"
+		confirm=".handleConfirm"
+        selectionChange="handleSelectTeam"
+		cancel=".handleClose"
+        growing="true"
+        growingThreshold="20"
+		items="{
+			path : 'ZRMM_FRVISITV2_CDS>/ZBMM_FRTMVH'
+		}">
+		<ColumnListItem vAlign="Middle">
+			<cells>
+				<ObjectIdentifier title="{ZRMM_FRVISITV2_CDS>UserID}" />
+				<Text text="{ZRMM_FRVISITV2_CDS>UserDescription}" />
+				<Text text="{ZRMM_FRVISITV2_CDS>Function}" />
+				
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em">
+				<header>
+					<Text text="User ID" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="User Description" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Fuction" />
+				</header>
+			</Column>
+			
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

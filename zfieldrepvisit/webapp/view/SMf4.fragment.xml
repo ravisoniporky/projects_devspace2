@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		noDataText="No SM Partner Found"
+		title="Select  SM Partner"
+		search=".handleSMPartnerSearch"
+		searchPlaceholder="Search SM Partner"
+		confirm=".handleConfirmSMPartner"
+		cancel=".handleValueHelpCloseSMPartner"
+		showClearButton="true"
+		items="{
+			path : 'ZODATA_FR_SRV>/ZRMM_USER_SMPARTNER_VH'
+		}">
+		<ColumnListItem >
+			<cells>
+				<ObjectIdentifier title="{ZODATA_FR_SRV>Username} ({ZODATA_FR_SRV>UserID})"  />
+					<!-- <Text text="{ZSB_C_FRVISIT2>Saleslead}" /> -->
+					<!-- <ObjectIdentifier title="{ZSB_C_FRVISIT2>Username}"  /> -->
+					<Text text="{ZODATA_FR_SRV>SalesleadName} ({ZODATA_FR_SRV>Saleslead})" />
+					<Text text="{ZODATA_FR_SRV>SalesOrganization}" />
+
+					<!-- <Text text="{ZSB_C_FRVISIT2>SalesOrganization}" /> -->
+			</cells>
+		</ColumnListItem>
+
+		<columns>
+			<Column minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Begin">
+				<header>
+					<Text text="User ID" />
+				</header>
+			</Column>
+					
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Begin">
+				<header>
+					<Text text="Sales Lead" />
+				</header>
+			</Column>
+
+
+			<!-- <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<header>
+					<Text text="Username" />
+				</header>
+			</Column>
+
+
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<header>
+					<Text text="Sales Lead Name" />
+				</header>
+			</Column> -->
+
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Begin">
+				<header>
+					<Text text="Sales Org" />
+				</header>
+			</Column>
+			
+			
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

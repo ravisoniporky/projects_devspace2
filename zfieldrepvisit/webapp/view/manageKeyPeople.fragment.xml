@@ -1,0 +1,124 @@
+<core:FragmentDefinition
+xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Dialog
+		title="{selectedKeyPeople>/DepartmentName} {selectedKeyPeople>/Customer}" stretch="true">
+		<content>
+		<f:SimpleForm 
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{selectedKeyPeople>/ContactPersonName}"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<!-- <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Department/@sap:label}" />
+				<Input  value="{selectedKeyPeople>/Department}" />  
+				<Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Customer/@sap:label}" />
+				<Input value="{selectedKeyPeople>/Customer}"/> -->
+				<!-- <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/DepartmentName/@sap:label}" />
+				<Input value="{selectedKeyPeople>/DepartmentName}"/> -->
+                <Label text="Department" />
+				<ComboBox selectedKey="{selectedKeyPeople>/Department}" items="{ZODATA_FR_SRV>/ZBMM_CUSTOMERDEPARTMENT}" editable="{chageModeModel>/changeMode}" selectionChange="onSelectedDepartmentEvent">
+						<core:Item key="{ZODATA_FR_SRV>Value}" text="{ZODATA_FR_SRV>Description}" />
+				</ComboBox>
+
+				 <Label text="Property" visible="{= ${selectedKeyPeople>/Department} === 'D' ? true : ${selectedKeyPeople>/Department} === 'S' ? true : false}" />
+				<!-- <ComboBox id="idSelectedProperties" selectedKey="{= ${selectedKeyPeople>/Department} === 'D' ? 'ZSERVICECO' : ${selectedKeyPeople>/Department} === 'S' ? 'ZCONCESSIO' : ''}"  visible="{= ${selectedKeyPeople>/Department} === 'D' ? true : ${selectedKeyPeople>/Department} === 'S' ? true : false}" items="{ZODATA_FR_SRV>/ZBMM_DEPPROPVH}" editable="false"> -->
+				<ComboBox  selectedKey="{selectedKeyPeople>/Property}" items="{ZODATA_FR_SRV>/ZBMM_DEPPROPVH}" editable="false" visible="{= ${selectedKeyPeople>/Department} === 'D' ? true : ${selectedKeyPeople>/Department} === 'S' ? true : false}" >
+
+						<core:Item key="{ZODATA_FR_SRV>zproperty}" text="{ZODATA_FR_SRV>Description}" />
+				</ComboBox>
+				<Label text="Property Value" visible="{= ${selectedKeyPeople>/Department} === 'D' ? true : ${selectedKeyPeople>/Department} === 'S' ? true : false}"/>
+				<ComboBox selectedKey="{selectedKeyPeople>/PropertyIntValue}" editable="{chageModeModel>/changeMode}" visible="{= ${selectedKeyPeople>/Department} === 'D' ? true : ${selectedKeyPeople>/Department} === 'S' ? true : false}">
+						<core:Item key="Y" text="Yes" />
+						<core:Item key="N" text="No" />
+				</ComboBox>
+               <Label text="First Name" />
+				<Input value="{selectedKeyPeople>/ContactFirstName}" editable="{chageModeModel>/changeMode}"/>
+				<Label text="Last Name" />
+				<Input value="{selectedKeyPeople>/ContactLastName}" editable="{chageModeModel>/changeMode}"/>
+				
+                <!-- <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPerson/@sap:label}" />
+				<Input value="{selectedKeyPeople>/ContactPerson}"/> -->
+                <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPersonName/@sap:label}" visible="false" />
+				<Input value="{selectedKeyPeople>/ContactPersonName}" editable="false" visible="false" />
+                <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPersonAddressId/@sap:label}" visible="false" />
+				<Input value="{selectedKeyPeople>/ContactPersonAddressId}" editable="false" visible="false" />
+
+                 <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Email/@sap:label}" />
+				<!-- <Input value="{selectedKeyPeople>/Email}" editable="{= ${visitModel>/Visitid} === 'NEW'? true: ${visitModel>/Visitid} === ''? true : false}"/> -->
+				<CheckBox selected="{selectedKeyPeople>/Email}"  editable="{chageModeModel>/changeMode}"></CheckBox>
+				<!-- <ComboBox selectedKey="{selectedKeyPeople>/Email}" editable="{chageModeModel>/changeMode}">
+						<core:Item key="01" text="No" />
+						<core:Item key="02" text="Yes" />
+				</ComboBox> -->
+
+                 <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Whatsapp/@sap:label}" />
+				<!-- <Input value="{selectedKeyPeople>/Whatsapp}" editable="{= ${visitModel>/Visitid} === 'NEW'? true: ${visitModel>/Visitid} === ''? true : false}"/> -->
+				<CheckBox selected="{selectedKeyPeople>/Whatsapp}" editable="{chageModeModel>/changeMode}"></CheckBox>
+				<!-- <ComboBox selectedKey="{selectedKeyPeople>/Whatsapp}"  editable="{chageModeModel>/changeMode}">
+						<core:Item key="01" text="No" />
+						<core:Item key="02" text="Yes" />
+				</ComboBox> -->
+                 <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPersonEmail/@sap:label}"/>
+				<Input value="{selectedKeyPeople>/ContactPersonEmail}" editable="{chageModeModel>/changeMode}" valueState="{chageModeModel>/valueStateEmail}" type="Email" change="validateEmail" /> 
+				<!-- visible="{= ${selectedKeyPeople>/Email} === '02' ? true : false}" -->
+
+                 <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPersonMobile/@sap:label}"  />
+				<!-- <Input value="{selectedKeyPeople>/ContactPersonMobile}" editable="{= ${visitModel>/Visitid} === 'NEW'? true: ${visitModel>/Visitid} === ''? true : false}" type="Tel"/> -->
+				<MaskInput  value="{selectedKeyPeople>/ContactPersonMobile}" mask="(999) 999 9999" placeholderSymbol="_"
+				 placeholder="Enter 10-digit number" showClearIcon="true" liveChange="validatePhoneNumber"
+				   editable="{chageModeModel>/changeMode}"  valueState="{chageModeModel>/valueStateMobile}"/>
+<!-- visible="{= ${selectedKeyPeople>/Whatsapp} === '02' ? true : false}" -->
+			</f:content>
+		</f:SimpleForm>
+		</content>
+        <beginButton>
+					 <!-- enabled="{= ${chageModeModel>/valueStateMobile} === 'Success' ? true : ${chageModeModel>/valueStateEmail} === 'Success' ? true  : false}" -->
+
+			<Button tooltip="Save"
+			 icon="sap-icon://accept"  type="Accept"
+			  press="onSaveSelectedKeyPeople"
+			   text="{= ${selectedKeyPeople>/BPConactPerson} === '' ? 'Add New' : 'Save'}" enabled="{= ${chageModeModel>/valueStateMobile} === 'Error' ? false: true }" width="150px"/>
+		</beginButton>
+		<endButton>
+			<Button tooltip="Close" icon="sap-icon://cancel"  type="Reject" press="onDialogCloseKeyPeople" text="Close" width="150px"/>
+		</endButton>
+		<!-- <footer>
+			<Toolbar>
+				<content>
+					<Button id="messagePopoverBtn"
+						visible="{= !!${message>/}.length }"
+						icon="{ path: '/', formatter: '.buttonIconFormatter' }"
+						type="{ path: '/', formatter: '.buttonTypeFormatter' }"
+						text="{ path: '/', formatter: '.highestSeverityMessages' }"
+						press=".handleMessagePopoverPress"
+						ariaHasPopup="Dialog" />
+					<ToolbarSpacer />
+					<Button type="Accept"
+							text="Save"
+							press="._generateInvalidUserInput" />
+					<Button id="Reject"
+						text="Reject"
+						type="Reject"
+						press="._closeDialog"
+						ariaHasPopup="Dialog" />
+				</content>
+			</Toolbar>
+		</footer> -->
+	</Dialog>
+</core:FragmentDefinition>

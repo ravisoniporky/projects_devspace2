@@ -1,0 +1,190 @@
+<mvc:View controllerName="customer.porky.zmmxref.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ui="sap.ui.table"
+    	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+xmlns:sf="sap.ui.comp.smartfield"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:m="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+        <smartFilterBar:SmartFilterBar id="smartFilterBar"  enableBasicSearch="false" liveMode="true"
+		entitySet="ZRMM_XREF_GETDETAIL" persistencyKey="SmartFilter_Explored" showFilterConfiguration="true" showAllFilters="true" >
+		
+	</smartFilterBar:SmartFilterBar>
+
+
+
+
+
+
+    <smartTable:SmartTable id="LineItemSmartTable" entitySet="ZRMM_XREF_GETDETAIL"
+		smartFilterId="smartFilterBar" tableType="ResponsiveTable"
+		
+        beforeRebindTable="onBeforeRebindTable"
+		app:p13nDialogSettings="{group:{visible:false}}"
+        requestAtLeastFields="Werks,SAPSalesOrganization,Cimage,Vkorg,Countdt,ProductHierarchyText,Countcs,ProductHierarchy,P_Image_URL,Category,Notes,Productx,Product,Material,Matnr,ProductOldID,ProductHierarchyText,Ind,Barcode,Productprice,CsWght,DfltStorLocForExtProcmt,LongBrand,ProductName,Quantity "
+		useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="true"
+		useTablePersonalisation="true" showTablePersonalisation="true" header="Line Items" showRowCount="true"
+		persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" showFullScreenButton="true"
+		demandPopin="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" uiStateChange="onUiStateChange"
+        >
+		 <smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<CheckBox  text="Missing Materials" select="onSelectEmptyMaterials"/>
+				
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+		<Table growing="true" growingThreshold="20" width="100%">
+			<columns>
+            <Column hAlign="Begin"  width="15%">
+					<customData>
+						<core:CustomData key="p13nData"
+							value='\{"columnKey": "P_Image_URL", "maxLength": "5","columnIndex":"0", "leadingProperty": "P_Image_URL", "sortProperty": "P_Image_URL" }' />
+					</customData>
+					<Text text="{/#ZRMM_XREF_GETDETAIL/P_Image_URL/@sap:label}" />
+                    
+				</Column>
+
+ <Column hAlign="Begin" width="35%">
+					<customData>
+						<core:CustomData key="p13nData"
+							value='\{"columnKey": "Product","columnIndex":"2", "leadingProperty": "Product", "sortProperty": "Product"}' />
+					</customData>
+					<Text text="Product" />
+                   
+				</Column>
+
+        <Column hAlign="Begin" width="15%">
+					<customData>
+						<core:CustomData key="p13nData"
+							value='\{"columnKey": "Matnr","columnIndex":"1", "leadingProperty": "Matnr", "sortProperty": "Matnr" }' />
+					</customData>
+					<Text text="{/#ZRMM_XREF_GETDETAIL/Matnr/@sap:label}" />
+                   
+				</Column>
+
+				
+
+
+
+
+
+
+				<Column hAlign="Begin" width="35%">
+					<customData>
+						<core:CustomData key="p13nData"
+							value='\{"columnKey": "Notes", "maxLength": "5","columnIndex":"4", "leadingProperty": "Notes", "sortProperty": "Notes"}' />
+					</customData>
+					<Text text="{/#ZRMM_XREF_GETDETAIL/Notes/@sap:label}" />
+                   
+				</Column>
+			</columns>
+			 <items>
+				<ColumnListItem>
+					<cells>
+						<Image
+					src="{P_Image_URL}"
+					decorative="true"
+					width="100px"
+                    class="sapUiTinyMargin"
+					densityAware="true">
+					<detailBox>
+						<LightBox>
+							<LightBoxItem
+								imageSrc="{P_Image_URL}"
+								alt="{Notes}"
+								title="{Product} {Productx} {Category}"
+								subtitle="{Matnr} {ProductOldID} {ProductName} {ProductHierarchy} {ProductHierarchyText}" />
+						</LightBox>
+					</detailBox>
+				</Image>
+				
+				<VBox>
+				<HBox>
+				<Label text="{Product}" class="sapUiTinyMarginEnd"/>
+				<Label text="{Productx}" class="sapUiTinyMarginEnd"/>
+				<Label text="{Category}" class="sapUiTinyMarginEnd"/>
+				</HBox>
+				<HBox>
+				<ObjectStatus text="{Matnr} "  state="Information" class="sapUiTinyMarginTop sapUiTinyMarginEnd"></ObjectStatus>
+				<ObjectStatus text=" {ProductOldID} " state="Information" class="sapUiTinyMarginTop sapUiTinyMarginEnd"></ObjectStatus>
+				<ObjectStatus text="{ProductName}" state="Information" class="sapUiTinyMarginTop sapUiTinyMarginEnd"></ObjectStatus>
+				<ObjectStatus text="{ProductHierarchy}" state="Information" class="sapUiTinyMarginTop sapUiTinyMarginEnd"></ObjectStatus>
+				<ObjectStatus text="{ProductHierarchyText}" state="Information" class="sapUiTinyMarginTop sapUiTinyMarginEnd"></ObjectStatus>
+
+				</HBox>
+				<HBox> <ObjectStatus text="{
+  path: 'Countdt',
+  type: 'sap.ui.model.type.Date',
+  
+  formatOptions: {
+				          pattern: 'yyyy-MM-dd',
+						 UTC: true
+				        }
+  }" class="sapUiTinyMarginTop sapUiTinyMarginEnd" /> <ObjectStatus text="{Countcs}" class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+  
+  
+  <HBox>
+  <ObjectStatus text="{Quantity}  " state="Information" class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+  <ObjectStatus text="{DfltStorLocForExtProcmt}" state="Information" class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+  <ObjectStatus text="{LongBrand}" state="Information" class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+
+
+
+  </HBox>
+  
+  
+  </HBox>
+  <HBox>
+				<ObjectStatus text="{Ind} " class="sapUiTinyMarginTop sapUiTinyMarginEnd"></ObjectStatus>
+								<ObjectStatus text="{Barcode}" class="sapUiTinyMarginTop sapUiTinyMarginEnd"></ObjectStatus>
+
+				</HBox>
+
+				</VBox>
+
+
+                <HBox>
+        <!-- <Input value="" valueHelpRequest="onValueHelp" valueHelpOnly="true" showValueHelp="true"/> -->
+                <sf:SmartField change="onSelectMaterial" 
+                showSuggestion="true"
+				placeholder="Select Material"
+                 value="{Matnr}" 
+                 textInEditModeSource="None"
+                  valueListChanged="onSelectMaterial" 
+                  entitySetFound="onSelectMaterial"
+                  changeModelValue ="onSelectMaterial"
+                  editable="{= typeof ${Material} === 'undefined' ?  true  : ${Material} === '' ? true : false}" >
+             <sf:configuration>
+                <sf:Configuration  displayBehaviour="idAndDescription"/>
+            </sf:configuration>
+            	<sf:customData>
+							<core:CustomData key="defaultFilterBarExpanded" value='true'/>
+						</sf:customData>
+                </sf:SmartField>
+                <Button press="onSaveMaterial" icon="sap-icon://sys-enter-2" type="Emphasized" 
+                class="sapUiTinyMarginBegin" visible="{= typeof ${Material} === 'undefined' ?  true  : ${Material} === '' ? true : false}"/>
+                    </HBox>
+
+<HBox>
+<!-- <TextArea value="{Notes}" editable="{= typeof ${Notes} === 'undefined' ?  true  : ${Notes} === '' ? true : false}" placeholder="Enter Note" rows="4" width="300px" /> -->
+<TextArea value="{Notes}" editable="true" placeholder="Enter Note" rows="4" width="300px" />
+
+<!-- <Button press="onSaveNote" icon="sap-icon://sys-enter-2" type="Emphasized" class="sapUiTinyMarginBegin" visible="{= typeof ${Notes} === 'undefined' ?  true  : ${Notes} === '' ? true : false}"/> -->
+<Button press="onSaveNote" icon="sap-icon://sys-enter-2" type="Emphasized" class="sapUiTinyMarginBegin" visible="true"/>
+
+</HBox>
+
+
+					</cells>
+				</ColumnListItem>
+			</items> 
+		</Table>
+	</smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>

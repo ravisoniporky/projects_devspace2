@@ -1,0 +1,209 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "zsamplecopypastetable",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.16.2",
+      "toolsId": "16ad93ab-2b3e-478f-905c-2702b295d801"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_r_preordermulti/srvd/sap/zsv_r_preordermulti/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.28",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zsamplecopypastetable.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZCSD_PreOrderSingletonList",
+          "target": "ZCSD_PreOrderSingletonList"
+        },
+        {
+          "pattern": "ZCSD_PreOrderSingleton({key}):?query:",
+          "name": "ZCSD_PreOrderSingletonObjectPage",
+          "target": "ZCSD_PreOrderSingletonObjectPage"
+        },
+        {
+          "pattern": "ZCSD_PreOrderSingleton({key})/_Multi({key2}):?query:",
+          "name": "ZCSD_PreOrderMultiObjectPage",
+          "target": "ZCSD_PreOrderMultiObjectPage"
+        }
+      ],
+      "targets": {
+        "ZCSD_PreOrderSingletonList": {
+          "type": "Component",
+          "id": "ZCSD_PreOrderSingletonList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZCSD_PreOrderSingleton",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZCSD_PreOrderSingleton": {
+                  "detail": {
+                    "route": "ZCSD_PreOrderSingletonObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "_Multi/@com.sap.vocabularies.UI.v1.LineItem":{
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "creationMode":{
+                      "name": "InlineCreationRows",
+                      "inlineCreationRowsHiddenInEditMode" : true
+                    }
+                  }
+                },
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "creationMode":{
+                      "name": "InlineCreationRows",
+                      "inlineCreationRowsHiddenInEditMode" : true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_PreOrderSingletonObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_PreOrderSingletonObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_PreOrderSingleton",
+              "navigation": {
+                "_Multi": {
+                  "detail": {
+                    "route": "ZCSD_PreOrderMultiObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_PreOrderMultiObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_PreOrderMultiObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_PreOrderSingleton/_Multi",
+              "controlConfiguration": {
+              
+                "_Multi/@com.sap.vocabularies.UI.v1.LineItem":{
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "creationMode":{
+                      "name": "InlineCreationRows",
+                      "inlineCreationRowsHiddenInEditMode" : true
+                    }
+                  }
+                },
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "creationMode":{
+                      "name": "InlineCreationRows",
+                      "inlineCreationRowsHiddenInEditMode" : true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

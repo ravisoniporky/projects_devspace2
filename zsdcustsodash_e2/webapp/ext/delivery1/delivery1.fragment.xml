@@ -1,0 +1,90 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+
+<ScrollContainer  width="100%" horizontal="true" vertical="true" focusable="true">
+
+
+
+            <Table  items="{deliveryModel>/results}"  headerText="Delivery">
+		
+	
+		<columns>
+			<Column width="2rem" visible="false">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/lprio/@sap:label}" />
+			</Column>
+			<Column width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/DeliveryDate/@sap:label}" />
+			</Column>
+			<Column width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/Shipment/@sap:label}" />
+			</Column>
+			
+			
+			<Column width="2.5rem">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/Delivery/@sap:label}" />
+			</Column>
+
+			<Column width="2.5rem">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/SalesDocument/@sap:label}" />
+			</Column>
+
+			<Column width="2.5rem">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/CustomerPO/@sap:label}" />
+			</Column >
+
+				<Column width="2.5rem">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/uatbg/@sap:label}" />
+			</Column>
+
+			<Column width="2.5rem">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/uaten/@sap:label}" />
+			</Column>
+
+            <Column width="3rem">
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/durationdiff/@sap:label}" />
+			</Column>
+
+            <Column width="4rem" visible="false"> 
+				<Text text="{/#ZCSD_CUSTSODASHDELIVERYType/arrivalinsec/@sap:label}" />
+			</Column>
+            
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Text text="{deliveryModel>lprio}"/>
+					<Text text="{ path:'deliveryModel>DeliveryDate', type:'sap.ui.model.odata.type.Date'}"/>
+					<ObjectIdentifier titleActive="true" titlePress="onClickShipment"
+					
+						title="{deliveryModel>Shipment}"
+						/>
+					<!-- <Text text="{deliveryModel>Shipment}"/> -->
+                    					<Text text="{deliveryModel>Delivery}"/>
+
+					<Text text="{deliveryModel>SalesDocument}" />
+						<Text
+						text="{deliveryModel>CustomerPO}" />
+						<Text
+						text="{ path:'deliveryModel>uatbg', type:'sap.ui.model.odata.type.Time'}" />
+                        <Text
+						text="{ path:'deliveryModel>uaten', type:'sap.ui.model.odata.type.Time'}" />
+						<Text
+						text="{deliveryModel>durationdiff}" />
+                        <Text
+						text="{deliveryModel>arrivalinsec}" />
+						
+
+                        
+				</cells>
+			</ColumnListItem>		
+				
+		</items>
+	</Table>
+</ScrollContainer>
+
+
+</core:FragmentDefinition>

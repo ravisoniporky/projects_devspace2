@@ -1,0 +1,1010 @@
+<mvc:View xmlns:sf="sap.ui.comp.smartfield"
+    controllerName="customer.porky.zfieldrepvisit.controller.newvisit"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:ux="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:m="sap.m"
+     xmlns:upload="sap.m.upload"
+     	xmlns:tnt="sap.tnt"
+>
+    <Page id="page"  title="{i18n>title} {= ${visitModel>/Visitid} !== 'NEW' ? ' - Visit#'+Number(${visitModel>/Visitid}) +' on '+  ${path: 'visitModel>/Createdatetime', type:'sap.ui.model.type.Date', constraints:{displayFormat:'Date'}}+' by '+${visitModel>/CreatedFullName} : ' - New Visit' }"
+        enableScrolling="false" >
+    				<!-- <tnt:InfoLabel class="sapUiTinyMarginTopBottom"  text="{= ${visitModel>/Visitid} !== 'NEW' ? 'Visit#'+Number(${visitModel>/Visitid}) +' by '+${visitModel>/CreatedFullName} : ' - New Visit' }" renderMode="Loose" colorScheme="6" visible="{= ${visitModel>/Visitid} === 'NEW'? false: true}" width="100%" /> -->
+
+    	<headerContent>
+                <Text text="You are not authorized to view this visit {visitModel>/Visitid}"  visible="{= ${authCustomerModel>/authCustomer} === false ? true : false }"/>
+
+                <Button text="New Visit" press="onCreateVisit_Followup" visible="{= ${visitModel>/Visitid} === 'NEW'? false: ${visitModel>/status} === '2'?  true : false}" /> 
+
+                <Button text="{= ${chageModeModel>/changeMode} === true ? 'Display' : 'Edit' }"  icon="{= ${chageModeModel>/changeMode} === true ? 'sap-icon://display' : 'sap-icon://edit' }"    press="onChangeModeSelected"   visible="{= ${visitModel>/Visitid} === 'NEW'? false: true}" />
+                                   
+
+                <Button text="Save as Draft"  icon="sap-icon://save"   press="onSaveDraft"  visible="{= ${visitModel>/Visitid} === 'NEW'? ${customerModel>/Customer} !== '' ? ${notesModel>/results/0/Notes} !== '' ? true : false : false : false }" />
+
+                <Button    text="Create Visit"    icon="sap-icon://save"    type="Attention"   press="onCreateDraftVisit"    visible="{= ${visitModel>/status} === '1'?  true : false }"/>
+
+                <Button icon="sap-icon://write-new-document" type="Emphasized" text="This is draft" enabled="false" visible="{= ${visitModel>/status} === '1'?  true : false }"></Button>
+
+                <Button icon="sap-icon://visits" type="Emphasized" text="Prospect Visit" enabled="false"  visible="{= ${prospectModel>/prospect} === true ? true : false}"></Button>
+
+                 
+		</headerContent>
+        
+        <content >
+
+            <Title
+			id="WrappingTitle"
+			wrapping="true"
+            titleStyle="H1"
+			text="You are not authorized to view this visit"  visible="{= !${authCustomerModel>/authCustomer} }" />
+
+            
+            <Wizard
+                id="CreateProductWizard"
+                finishButtonText="Finish"
+                currentStep="ProductTypeStep"
+                class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+                complete="onFinishStep"
+                visible="{= ${authCustomerModel>/authCustomer} === false ? false : true }"
+                
+                
+            >
+            
+                <WizardStep
+                    id="ProductTypeStep"
+                    title="Visit Store Info"
+                    
+                    nextStep="keyteamstep"
+                    activate="onActivate"
+                    validated="{= ${customerModel>/Customer} === '' ? false: ${customerModel>/Customer} === 'undefined' ? false: true}"
+                >
+                   
+
+
+                      <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                        id="simpleform_sm"
+                    >
+                        <core:Title
+                            class="porkythemetitle"
+                           id="titleid1"
+                            text="Ship to Information"
+                        />
+
+                        <Label
+                            text="Ship to"
+                            required="true"
+                            class="porkythemelabel"
+                        />
+                        <HBox width="100%">
+                         <Input
+                            valueHelpOnly="true"
+                            showValueHelp="true"
+                            change="onChangeShipTo"
+                            placeholder="Select Customer"
+                            value="{customerModel>/Customer}"
+                            class="porkythemebg"
+                            id="idCustomer"
+                            valueHelpRequest="onOpenCustomerF4"
+                            enabled="{= ${visitModel>/Visitid} === 'NEW'? true: false}"
+                            width="250px"
+                            visible="{= ${prospectModel>/prospect} === true ? false : true}"
+
+                            
+                        /> 
+                        
+                             <Input
+                            valueHelpOnly="true"
+                            showValueHelp="true"
+                            change="onChangeShipTo_Prospect"
+                            placeholder="Select Prospect"
+                            value="{customerModel>/Customer}"
+                            class="porkythemebg"
+                            id="idCustomerProspect"
+                            valueHelpRequest="onOpenCustomerF4_Prospect"
+                            enabled="{= ${visitModel>/Visitid} === 'NEW'? true: false}"
+                            width="200px"
+                            visible="{= ${prospectModel>/prospect} === true ? true : false}"
+
+                            
+                        /> 
+
+                        <Button text="Prospect"                             visible="{= ${prospectModel>/prospect} === true ? ${visitModel>/Visitid} === 'NEW'? true: false : false}"
+ press="onOpenProspect" icon="sap-icon://search" class="sapUiSmallMarginBegin"></Button>
+
+                          </HBox>
+                         </form:SimpleForm>
+
+
+
+                    	<Table id="idProductsTable2"
+		inset="false"
+        visible="{= ${customerModel>/Customer} === '' ? false: true}"
+		>
+		
+		
+		<columns>
+			<Column
+				width="12em">
+			</Column>
+			<Column>
+			</Column>
+		
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="Customer Selected"
+						/>
+					<Text
+						text="{customerModel>/Customer}" />
+					
+				</cells>
+			</ColumnListItem>
+            		<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="Ship to Name"
+						/>
+					<Text
+						text="{customerModel>/CustomerFullName}" />
+					
+				</cells>
+			</ColumnListItem>
+            		<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="Ship to Address"
+						/>
+					<Text
+						text="{customerModel>/StreetName}, {customerModel>/CityName}, {customerModel>/PostalCode}" />
+					
+				</cells>
+			</ColumnListItem>
+            		<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="No. Of Visits"
+						/>
+					<Link
+						text="{customerModel>/TotalVisit}" press="onLinkQuickViewPress"/>
+					
+				</cells>
+			</ColumnListItem>
+ <ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="No. Of Visits (Last 12 Months)"
+						/>
+					<Text
+						text="{customerModel>/Last12Visit}" />
+					
+				</cells>
+			</ColumnListItem>
+            <ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="Sales Lead"
+						/>
+					<Text
+						text="{customerModel>/SalesLeadName}" />
+					
+				</cells>
+			</ColumnListItem>
+
+            <ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="Sales Support"
+						/>
+					<Text
+						text="{customerModel>/SaleSupportName}" />
+					
+				</cells>
+			</ColumnListItem>
+
+           
+		</items>
+	</Table>
+    <HBox justifyContent="End">
+    <Button text="Go Directly To Notes"  press="onEnterNotes1" visible="{= ${customerModel>/Customer} === '' ? false: true}" class="sapUiSmallMargin" type="Attention" icon="sap-icon://notes"/>
+          </HBox>
+                    <!-- <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="4"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="2"
+                        singleContainerFullSize="false"
+                        id="simpleform"
+                    >
+                        <core:Title
+                            class="porkythemetitle"
+                           id="titleid1"
+                            text="Ship to Information"
+                        />
+
+                        <Label
+                            text="Ship to"
+                            required="true"
+                            class="porkythemelabel"
+                        />
+                         <Input
+                            valueHelpOnly="true"
+                            showValueHelp="true"
+                            change="onChangeShipTo"
+                            placeholder="Select Customer"
+                            value="{customerModel>/Customer}"
+                            class="porkythemebg"
+                            id="idCustomer"
+                            valueHelpRequest="onOpenCustomerF4"
+                                                                    enabled="{= ${visitModel>/Visitid} === 'NEW'? true: ${visitModel>/Visitid} === ''? true : false}"
+
+                            
+                        /> 
+            
+                        <Label text="Ship to Name" class="porkythemelabel"/>
+                        <Text text="{customerModel>/CustomerFullName}"  class="porkythemebg "/>
+                        <Label text="Ship to Address" class="porkythemelabel"/>
+                        <Text
+                            text="{customerModel>/StreetName}, {customerModel>/CityName}, {customerModel>/PostalCode}"
+                             class="porkythemebg sapUiTinyMargnBottom"
+                        />
+
+                        <core:Title
+                            class="myCustomTitleSF"
+                            id="titleid"
+                            text="Last Visits Information"
+                        />
+
+                        <Label text="No. Of Visits" class="porkythemelabel"/>
+                        <Text text="{customerModel>/TotalVisit}"  class="porkythemebg " textAlign="Center"/>
+                        <Label text="No. Of Visits (Last 12 Months)" class="porkythemelabel"/>
+                        <Text text="{customerModel>/Last12Visit}"  class="porkythemebg " textAlign="Center"/>
+                        <Label text="Sales Lead" class="porkythemelabel"/>
+                        <Text
+                            text="{customerModel>/SalesLeadName} ({customerModel>/SalesLead})"  class="porkythemebg " textAlign="Center"
+                        />
+                        <Label text="Sales Support" class="porkythemelabel"/>
+                        <Text
+                            text="{customerModel>/SaleSupportName} ({customerModel>/SalesSupport})" class="porkythemebg " textAlign="Center"
+                        />
+                    </form:SimpleForm> -->
+                </WizardStep>
+
+
+                <WizardStep
+                    id="keyteamstep"
+                    title="Key People"
+                    activate="onActivate"
+                >
+                    <!-- <MessageStrip
+                        class="sapUiSmallMarginBottom"
+                        text="Select Key People"
+                        showIcon="true"
+                    /> -->
+
+                    <!-- 
+			<form:SimpleForm
+					editable="true"
+					layout="ResponsiveGridLayout">
+				<Label text="Name" required="true"/>
+				<Input valueStateText="Enter 6 symbols or more"
+						valueState="{/productNameState}" id="ProductName"
+						change="validateProdInfoStep"
+						placeholder="Enter name with length greater than 6" value="{/productName}"/>
+				<Label text="Weight" required="true"/>
+				<Input valueStateText="Enter digits"
+						valueState="{/productWeightState}" id="ProductWeight"
+						change="validateProdInfoStep"
+						type="Number" placeholder="Enter digits"
+						value="{/productWeight}"/>
+				<Label text="Manufacturer"/>
+				<Select selectedKey="{/productManufacturer}">
+					<core:Item key="Apple" text="Apple"/>
+					<core:Item key="Microsoft" text="Microsoft"/>
+					<core:Item key="Google" text="Google"/>
+					<core:Item key="Sony" text="Sony"/>
+					<core:Item key="Samsung" text="Samsung"/>
+					<core:Item key="Logitech" text="Logitech"/>
+				</Select>
+				<Label text="Description"/>
+				<TextArea value="{/productDescription}" rows="8"/>
+			</form:SimpleForm> -->
+                    <Table items="{customerModel>/to_Dep/results}" id="keyTablezfieldrep" class="cssTableTest">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    <Title
+                                        text="Department Key Contacts"
+                                        level="H2"
+                                    />
+                                    <ToolbarSpacer />
+
+                                    <ToggleButton 
+                                        text="Add"
+                                        press="onAddNewKeyPeople"
+                                        
+                                                                                enabled="{chageModeModel>/changeMode}"
+
+                                    />
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+
+                        <columns>
+                            <!-- <Column width="8em">
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/DepartmentName/@sap:label}"
+                                />
+                            </Column> -->
+                            <!-- <Column minScreenWidth="Tablet"
+                                hAlign="End">
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Customer/@sap:label}"
+                                />
+                            </Column> -->
+                            <!-- <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/DepartmentName/@sap:label}" />
+			</Column> -->
+               <Column hAlign="Begin" width="100px">
+                                <Text 
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPersonName/@sap:label}"
+                                />
+                            </Column>
+                             
+
+
+                              <Column hAlign="Begin">
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/IsStandardRelationship/@sap:label}"
+                                />
+                            </Column>
+                             <Column hAlign="Begin" width="100px">
+                                <Text
+                                    text="MOE Request"
+                                />
+                            </Column>
+                            
+                            <Column
+                                minScreenWidth="Tablet"
+                                hAlign="Center"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Property/@sap:label}"
+                                />
+                            </Column>
+
+
+                            <Column
+                                minScreenWidth="Tablet"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/PropertyName/@sap:label}"
+                                />
+                            </Column>
+
+
+                            <Column
+                                minScreenWidth="Tablet"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/PropertyValue/@sap:label}"
+                                />
+                            </Column>
+
+
+                            <Column
+                                minScreenWidth="Tablet"
+                                hAlign="Begin"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPerson/@sap:label}"
+                                />
+                            </Column>
+
+                         
+
+                            <Column
+                                minScreenWidth="Tablet"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPersonAddressId/@sap:label}"
+                                />
+                            </Column>
+
+                            <Column
+                                minScreenWidth="Tablet"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Email/@sap:label}"
+                                />
+                            </Column>
+
+                            <Column
+                                minScreenWidth="Tablet"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Whatsapp/@sap:label}"
+                                />
+                            </Column>
+
+                            <Column
+                                minScreenWidth="Tablet"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPersonEmail/@sap:label}"
+                                />
+                            </Column>
+
+                            <Column
+                               minScreenWidth="Tablet"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/ContactPersonMobile/@sap:label}"
+                                />
+                            </Column>
+
+                            <Column  hAlign="End"/>
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                vAlign="Middle"
+                                press="openKeyPeople"
+                                type="Navigation"
+                            >
+                                <cells>
+                                    <!-- <ObjectIdentifier
+                                        text="{customerModel>DepartmentName}"
+                                    /> -->
+                                    <!-- <Text text="{customerModel>Customer}" /> -->
+                                      <Text
+                                        text="{customerModel>ContactPersonName}"
+                                    />
+                                    <CheckBox enabled="{chageModeModel>/changeMode}" selected="{customerModel>IsStandardRelationship}" select="onUpdateKeyContact"></CheckBox>
+                                    <Button text="{= ${customerModel>RequestMoeStatus} === 'P' ? '#'+Number(${customerModel>RequestMoeTicket}) : 'MOE' }" press="requestMOEForDeptContact" type="Transparent" enabled="{= ${chageModeModel>/changeMode} }" visible="{parts:['customerModel>ContactPersonEmail','customerModel>ContactPersonMobile','customerModel>RequestMoeStatus'], formatter:'.checkWithMOE'}"/>
+                                    <Text text="{customerModel>Property}" />
+                                    <Text text="{customerModel>PropertyName}" />
+                                    <Text
+                                        text="{customerModel>PropertyValue}"
+                                    />
+                                    <Text
+                                        text="{customerModel>BPConactPerson}"
+                                    />
+                                    <!-- <Text
+                                        text="{customerModel>ContactPersonName}"
+                                    /> -->
+                                    <Text
+                                        text="{customerModel>ContactPersonAddressId}"
+                                    />
+                                    <Text text="{= ${customerModel>Email} === '02' ? 'No' : 'Yes'}" />
+                                    <Text text="{= ${customerModel>Whatsapp} === '02' ? 'No' : 'Yes'}" />
+                                    <Text
+                                        text="{customerModel>ContactPersonEmail}"
+                                    />
+                                    <Text
+                                        text="{customerModel>ContactPersonMobile}"
+                                    />
+                                    <Button icon="sap-icon://sys-cancel" type="Reject" press="onApproveDeleteDialogPress" enabled="{chageModeModel>/changeMode}"></Button>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </WizardStep>
+
+                <WizardStep
+                    id="OptionalInfoStep"
+                    title="Other Suppliers"
+                    activate="onActivate"
+                >
+                    <!-- <MessageStrip
+                        class="sapUiSmallMarginBottom"
+                        text="Competition Anlaysis. Please change selections."
+                        showIcon="true"
+                    /> -->
+                    <Table
+                        items="{supplierModel>/results}"
+                        id="idOthSuppliers"
+                        updateFinished="onUpdateFinishedOthSupplier"
+                    >
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    <Title
+                                        text="Other Suppliers"
+                                        level="H2"
+                                    />
+                                    <ToolbarSpacer />
+
+                                    <Button
+                                        icon="sap-icon://add"
+                                        press="addOtherSupplier"
+                                        enabled="{chageModeModel>/changeMode}"
+
+                                    />
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column width="8em">
+                                <Text
+                                    text="{supplierModel>/#ZBMM_FRVISITDEFSUPPType/Name1/@sap:label}"
+                                />
+                            </Column>
+                            <Column>
+                                <Text text="Selected" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                vAlign="Middle"
+                                press="openKeyPeople"
+                                type="Active"
+                            >
+                                <cells>
+                                    <ObjectIdentifier
+                                        text="{supplierModel>Name1}"
+                                    />
+                                    <CheckBox selected="{supplierModel>Selected}" enabled="{chageModeModel>/changeMode}" select="onSupplierSelected"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <Button icon="sap-icon://add" text="Add Additonal Suppliers" press="addOtherSupplier" type="Accept"  enabled="{chageModeModel>/changeMode}"></Button>
+                </WizardStep>
+
+
+
+                <!-- ///// MOE -->
+
+
+                <WizardStep
+                    id="moeStep"
+                    title="Porky Mobile Order Entry "
+                    activate="onActivate"
+                >
+                   
+                    <Table items="{moeModel>/results}" id="moetable" class="cssTableTest" visible="{= ${customerModel>/Customer} === '' ? false : typeof ${customerModel>/Customer} === 'undefined' ? false : true }">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    <Title
+                                        text="MOE List"
+                                        level="H2"
+                                    />
+                                    <ToolbarSpacer />
+                                    <Label text="Active Only " />
+                                    <core:Icon  src="sap-icon://arrow-right"></core:Icon>
+<Switch  customTextOn="On" customTextOff="Off"  change="onFilterActiveMOE" state="{userValues>/moe}" enabled="{chageModeModel>/changeMode}">
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</Switch>	
+                                    <ToggleButton
+                                        text="Request" 
+                                        press="onAddMOEOrder"
+                                        
+                                                                                enabled="{chageModeModel>/changeMode}"
+
+                                    />
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+
+                        <columns>
+                           
+               <!-- <Column hAlign="Begin">
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/kunwe/@sap:label}"
+                                />
+                            </Column> -->
+                            <Column hAlign="Begin" width="5rem">
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/bname/@sap:label}"
+                                />
+                            </Column> 
+
+
+                              <Column hAlign="Begin">
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/smtp_addr/@sap:label}"
+                                />
+                            </Column>
+                            
+                            <Column
+                               
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/device/@sap:label}"
+                                />
+                            </Column>
+
+
+                            <Column
+                               
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/p_vkorg/@sap:label}"
+                                />
+                            </Column>
+
+
+                            <Column
+                               
+                            >
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/mobile/@sap:label}"
+                                />
+                            </Column>
+                             <Column
+                               
+                            >
+                                <Text
+                                    text=""
+                                />
+                            </Column>
+
+
+                         
+
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                vAlign="Middle"
+                                press="openMOEPeople"
+                                type="Navigation"
+                            >
+                                <cells>
+                              
+                                      <!-- <Text
+                                        text="{moeModel>kunwe}"
+                                    /> -->
+                                    <Text
+                                        text="{moeModel>bname}"
+                                    />
+                                    <Text text="{moeModel>smtp_addr}" />
+                                    <Text text="{moeModel>device}" />
+                                    <Text
+                                        text="{moeModel>p_vkorg}"
+                                    />
+                                    <Text
+                                        text="{moeModel>mobile}"
+                                    />
+                                    <Button text="Open Catalog" press="onMOECatalog" type="Transparent" ></Button>
+                               
+                                   
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </WizardStep>
+
+
+
+
+                <!-- /// MOE End -->
+
+
+
+
+
+
+
+
+
+                <WizardStep
+                    id="PricingStep"
+                    title="Visit {= ${visitModel>/Visitid} === 'NEW' ? 'NEW' : isNaN(${visitModel>/Visitid}) ? 'NEW': Number(${visitModel>/Visitid})}"
+                    activate="onActivate"
+                    icon="sap-icon://car-rental"
+
+                >
+                    <!-- <MessageStrip
+                        class="sapUiSmallMarginBottom"
+                        text="Visit Details"
+                        showIcon="true"
+                    /> -->
+                    <form:SimpleForm
+                        id="visitSF"
+                         editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="4"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="2"
+                        singleContainerFullSize="false"
+                    >
+                        <!-- <Label text="Visit ID" class="porkythemelabel" />
+                        <Text text="{visitModel>/Visitid}" class="porkythemebg "/> -->
+                        <Label text="Visit Type" class="porkythemelabel" />
+                        <ComboBox selectedKey="{visitModel>/Visittype}" class="porkythemebg" items="{ZRMM_FRVISITV2_CDS>/ZBMM_VISITTYPE}"  editable="{= ${visitModel>/Visitid} === 'NEW'? true: false}">
+                            <core:Item
+                                key="{ZRMM_FRVISITV2_CDS>Value}"
+                                text="{ZRMM_FRVISITV2_CDS>Description}"
+                            />
+                         
+                        </ComboBox>
+                        <!-- <Label text="Created By" class="porkythemelabel" />
+                        <Text text="{visitModel>/Ernam}" class="porkythemebg "/> -->
+
+						 <Label text="Created At" class="porkythemelabel"/>
+                        <Text text="{visitModel>/Createdatetime}" class="porkythemebg "/>
+
+						  <!-- <Label text="Changed By" class="porkythemelabel"/>
+                        <Text text="{visitModel>/Aenam}" class="porkythemebg " />
+
+						 <Label text="Changed At" class="porkythemelabel"/>
+                        <Text text="{visitModel>/changedatetime}" class="porkythemebg "/> -->
+                    </form:SimpleForm>
+                    <Table
+                        items="{visitModel>/to_team/results}"
+                        id="idOthSuppliers1"
+                        updateFinished="onUpdateFinishedOthSupplier"
+                    >
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    <Title
+                                        text="Team Members"
+                                        level="H2"
+                                    />
+                                    <ToolbarSpacer />
+                                        <!-- enabled="{chageModeModel>/changeMode}" -->
+
+                                    <Button
+                                        text="Add"
+                                        press="onOpenUserF4"
+                                         enabled="{chageModeModel>/changeMode}"
+                                    />
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column width="8em">
+                                <Text
+                                    text="{ZODATA_FR_SRV>/#ZBSD_ZFRVISITTMType/Bname/@sap:label}"
+                                />
+                            </Column>
+                            <Column>
+                                <Text text="Full Name" />
+                            </Column >
+                               <Column width="4em">
+
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                vAlign="Middle"
+                                press="openKeyPeople"
+                                type="Active"
+                            >
+                                <cells>
+                                    <ObjectIdentifier
+                                        text="{visitModel>Bname}"
+                                    />
+                                    <Text text="{visitModel>UserDescription}"/>
+                                    <Button icon="sap-icon://sys-cancel" press="onDeleteTeamMember"   enabled="{chageModeModel>/changeMode}" type="Reject"/>
+
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </WizardStep>
+
+
+                 <WizardStep
+                    id="notes"
+                    title="Notes and Comments"
+                    activate="onActivateNotes"
+                    validationSuccess="onValidationSuccessNotes"
+                                        validated="{= (${notesModel>/results/0/Notes}).length > 10 ? true : false}"
+
+                    
+                >
+
+
+                    	<IconTabBar id="idIconTabBar" class="sapUiResponsiveContentPadding" items="{path:'notesModel>/results', sorter: { path: 'visitid_new', descending: true, group: '.getCounty'}}" select="onVisitNoteSelected">
+
+                            	<items>
+			<IconTabFilter
+				text="Visit ({= isNaN(${notesModel>Visitid}) ? 'NEW': Number(${notesModel>Visitid})}) on {
+  path: 'notesModel>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }"
+  visible="{= ${notesModel>status} === '1' ? Number(${visitModel>/Visitid}) === Number(${notesModel>Visitid}) ? true : false : true}"
+				key="{notesModel>Visitid}"
+				>
+				<TextArea value="{notesModel>Notes}"  editable="{= ${chageModeModel>/changeMode} === true? ${notesModel>editable} === true ? true : false : false}" valueState="{translateModel>valueState}" width="100%" height="200px" liveChange="onCreateVisit_AutoSave" />
+              <HBox>  
+              
+              <Button text="Spanish" press="translateCallES" class="sapUiSmallMarginEnd" enabled="{= ${translateModel>/lang} === 'English' ?  false : true}"></Button>
+                                
+                                
+                <Button text="English" enabled="{= ${translateModel>/lang} === 'Spanish' ?  false : true}" press="translateCallEN" class="sapUiSmallMarginEnd"></Button>
+                <Button text="Original" press="translateCallOrigin" class="sapUiSmallMarginEnd" enabled="{= ${translateModel>/lang} === 'Spanish' ?  true : ${translateModel>/lang} === 'English' ?  true : false}"></Button>
+                <Button text="Share" press="shareNotes" visible="{= ${visitModel>/Visitid} === 'NEW' ? false : true}" class="sapUiSmallMarginEnd" ></Button>
+
+            </HBox>
+                	
+
+			</IconTabFilter>
+            </items>
+                        </IconTabBar>
+
+
+<FeedInput
+		post="onPostComments"
+         visible="{= ${visitModel>/Visitid} === 'NEW'? false: Number(${currentVisitNoteModel>/Visitid}) === Number(${visitModel>/Visitid})? ${visitModel>/status} === '1' ? false : true: false}"
+		icon="test-resources/sap/m/images/dronning_victoria.jpg"
+		class="sapUiSmallMarginTopBottom" />
+	<List
+        visible="{= ${visitModel>/Visitid} === 'NEW'? false:true}"
+		showSeparators="Inner"
+        id="idFeedComments"
+		items="{path:'commentsModel>/results',sorter: { path: '{commentsModel>Createdatetime}', descending: true}}" >
+		<FeedListItem
+			sender="{commentsModel>Createdby} {commentsModel>Ernam}"
+            visible="{= !${commentsModel>Loevm}}"
+			icon="{AuthorPicUrl}"
+			senderPress="onSenderPress"
+			iconPress="onIconPress"
+			iconDensityAware="false"
+			info="{Type}"
+			timestamp="{commentsModel>Createdatetime}"
+			text="{commentsModel>Notes}"
+			convertLinksToAnchorTags="All">
+<FeedListItemAction text="Delete" icon="sap-icon://cancel" key="{Key}" press="onCommentDelete" />
+					<FeedListItemAction text="English" icon="sap-icon://translate" key="{Key}" press="onTranslateCommentPressed" />
+					<FeedListItemAction text="Español" icon="sap-icon://translate" key="{Key}" press="onTranslateCommentPressed" />
+<FeedListItemAction text="Original" icon="sap-icon://undo" key="sap-icon://undo" press="onTranslateCommentPressed" />
+            </FeedListItem>
+         
+	</List>
+
+
+
+                </WizardStep>
+
+
+            
+
+
+
+
+
+             <WizardStep
+                    id="images"
+                    title="{= ${visitModel>/Visitid} === 'NEW'? 'Finish': 'Attachments'}"
+                    activate="onActivateImages"
+              
+
+                >
+                   
+            	<upload:UploadSet
+                visible="{= ${visitModel>/Visitid} === 'NEW'? false: true}"
+				id="UploadSet"
+                
+				instantUpload="true"
+				showIcons="true"
+				maxFileSize="200"
+				mediaTypes="text/plain,application/msword,image/jpeg,image/png,application/pdf"
+				uploadUrl="/sap/opu/odata/sap/ZODATA_FIELDREP_IMAGES_V2_SRV/ZFRVISIT_IMAGESSet"
+				items="{visitModel>/to_images/results}"
+				mode="MultiSelect"
+                multiple="false"
+				selectionChanged="onSelectionChangeUpload"
+                afterItemAdded="onAfterUploadItemAdded"
+                
+                afterItemRemoved="onBeforeImageRemoved"
+                
+                uploadEnabled="{chageModeModel>/changeMode}" 
+   terminationEnabled="true" maxFileNameLength="120"
+   uploadCompleted="onUploadCompleted" 
+   fileTypes="jpg,jpeg,png,pdf" 
+   fileTypeMismatch="onFileTypeMismatch" fileSizeExceeded="onFileSizeExceeded">
+	<upload:toolbar>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<!-- <Button text="Finish Upload" press="onFinishUploadDocuments"   enabled="{chageModeModel>/changeMode}" /> -->
+				</OverflowToolbar>
+			</upload:toolbar>
+			<upload:items>
+				<upload:UploadSetItem
+                
+                visibleEdit="false"
+            enabledRemove = "{chageModeModel>/changeMode}"
+						fileName="{visitModel>ImageName}"
+						mediaType="{visitModel>Mimetype}"
+						url="{visitModel>GetUrl}"
+						thumbnailUrl="{visitModel>GetThumpUrl}"
+                        visibleRemove="{chageModeModel>/changeMode}"
+						
+						>
+					<upload:attributes>
+						<ObjectAttribute
+								title="Type"
+								text="{visitModel>Mimetype}"
+								active="{active}"/>
+					</upload:attributes>
+					<upload:markers>
+						<ObjectMarker
+								type="{type}"
+								visibility="{visibility}"/>
+					</upload:markers>
+					<upload:statuses>
+						<ObjectStatus
+								title="{title}"
+								text="{text}"
+								state="{state}"
+								icon="{icon}"
+								active="{active}"/>
+					</upload:statuses>
+				</upload:UploadSetItem>
+			</upload:items>
+		</upload:UploadSet>
+
+  
+
+
+
+                </WizardStep>
+
+
+
+
+
+
+
+
+
+            </Wizard>
+        </content>
+    </Page>
+</mvc:View>

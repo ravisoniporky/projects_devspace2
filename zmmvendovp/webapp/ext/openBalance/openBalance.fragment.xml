@@ -1,0 +1,90 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+<!-- 
+            <Table  >
+		
+	
+		<columns>
+			<Column>
+				<Title text="Open Balance" />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			<Column>
+				<Text  />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZCFI_VENDOR_OEPNBALType/Vendor/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/Vendor}" />
+
+
+						<ObjectIdentifier titleActive="true"
+						title="{/#ZCFI_VENDOR_OEPNBALType/OpenBalance/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/OpenBalance} {vendorData>/Currency}" />
+				</cells>
+			</ColumnListItem>			
+		</items>
+	</Table> -->
+
+<VBox class="sapUiSmallMargin">
+		<f:SimpleForm 
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Vendor Balance"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+
+
+			<f:toolbar>
+			<Toolbar  >
+							<Title text="Open Balance"  />
+<ToolbarSpacer />
+					
+					<Button icon="sap-icon://action"
+						press="onClickHeader" />
+			</Toolbar>
+			</f:toolbar>
+
+
+			<f:content>
+				<ObjectIdentifier title="{/#ZCFI_VENDOR_OEPNBALType/Vendor/@sap:label}" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text  text="{vendorData>/Vendor}" />
+				<ObjectIdentifier title="{/#ZCFI_VENDOR_OEPNBALType/OpenBalance/@sap:label}" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text text="{path: 'vendorData>/OpenBalance', type:'sap.ui.model.type.Float'} {vendorData>/Currency}" />
+				
+	
+			
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+
+
+</core:FragmentDefinition>

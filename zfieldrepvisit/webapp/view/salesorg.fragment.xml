@@ -1,0 +1,85 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"  xmlns:sf="sap.ui.comp.smartfield">
+	<Dialog
+		id="myPopover"
+		title="Sales Organization Selection"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom"
+		initialFocus="email">
+		<buttons>
+			
+				<Button visible="false"
+					text="Update Sales Org"
+					press="handleSalesOrgPress" />
+					<Button
+					text="Close"
+					press="handleSalesOrgPressClose" />
+
+		</buttons>
+        <VBox class="sapUiSmallMargin">
+    	<Label text="Enter Valid Sales Org"/>
+
+		<!-- <Input type="Number" id="emailField" value="{userValues>/salesorg}" width="15em" /> -->
+		<HBox>
+		 <!-- <sf:SmartField id="idSO"  value="{vkorg}" entitySet="ZI_DefaultSHVH"
+		  width="auto"
+		  change="onChangeSalesOrgField"
+		  showSuggestion="true"
+		  
+		  showLabel="true" >
+
+<sf:configuration>
+<sf:Configuration controlType="dropDownList" displayBehaviour="idAndDescription"  />
+</sf:configuration>
+		  </sf:SmartField> -->
+		  	<ComboBox
+				change="onAddSalesOrg"
+				id="idSalesOrgSelec"
+				selectedKey=""
+				items="{
+					path: 'ZI_DEFAULTSHVH_CDS>/ZBSD_SalesOrganization'
+				}">
+
+				<core:Item key="{ZI_DEFAULTSHVH_CDS>/SalesOrganization}" text="{ZI_DEFAULTSHVH_CDS>SalesOrganization} - {ZI_DEFAULTSHVH_CDS>salesorgname}" />
+			</ComboBox>
+		  <!-- <Input  id="idSalesOrgValue" width="15em" showSuggestion="true" valueHelpRequest="onShowSalesOrgVH"
+			suggestionItems="{ZI_DEFAULTSHVH_CDS>/ZBSD_SalesOrganization}">
+
+		  	<suggestionItems>
+				<core:Item text="{ZI_DEFAULTSHVH_CDS>SalesOrganization} - {ZI_DEFAULTSHVH_CDS>salesorgname}" />
+			</suggestionItems>
+		  </Input>  -->
+           
+
+		<Button text="Add Sales Org" icon="sap-icon://add" class="sapUiSmallMarginBegin" press="onAddSalesOrg" visible="false"></Button>
+		</HBox>
+		<List
+		headerText="Sales Org List"
+		mode="MultiSelect"
+		delete="onDelete"
+		selectionChange="onSelectionChangeSalesOrg"
+		
+		headerLevel="H2"
+		items="{
+			path: 'userValues>/salesOrgList'
+		}" >
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Sales org" level="H2"/>
+					<ToolbarSpacer />
+					<Button press="onDeleteSalesOrg" icon="sap-icon://delete" visible="false"/>
+					
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<StandardListItem selected="true"
+			title="{userValues>}"
+			
+			/>
+	</List>
+
+		    </VBox>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,89 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+
+             <Table  >
+		
+	
+		<columns>
+			<Column>
+				<Title text="Material Details" />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZCMM_MATDASH_HEADERType/Material/@sap:label}"
+						/>
+					<Text
+						text="{materialData>/Material}" />
+
+
+						
+				</cells>
+			</ColumnListItem>
+
+
+
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_MATDASH_HEADERType/OldMaterial/@sap:label}"
+						/>
+					<Text
+						text="{materialData>/OldMaterial}" />
+				</cells>
+			</ColumnListItem>
+
+
+
+           
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_MATDASH_HEADERType/MaterialDescription/@sap:label}"
+						/>
+					<Text
+						text="{materialData>/MaterialDescription}" />
+				</cells>
+			</ColumnListItem>
+		
+
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_MATDASH_HEADERType/MaterialGroup/@sap:label}"
+						/>
+					<Text
+						text="{materialData>/MaterialGroup}" />
+				</cells>
+			</ColumnListItem>				
+			
+
+	
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_MATDASH_HEADERType/MaterialType/@sap:label}"
+						/>
+					<Text
+						text="{materialData>/MaterialType}" />
+				</cells>
+			</ColumnListItem>			
+		</items>
+	</Table>
+
+
+</core:FragmentDefinition>

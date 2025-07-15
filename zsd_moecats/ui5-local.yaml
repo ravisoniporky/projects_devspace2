@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: customer.porky.zsdmoecats
+type: application
+framework:
+  name: SAPUI5
+  version: 1.108.28
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ushell
+    - name: themelib_sap_horizon
+server:
+  customMiddleware:
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: customer.porky.zsdmoecats
+        ui5Theme: sap_horizon
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        backend:
+          - path: /sap
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            destination: DE2
+          - url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
+            authenticationType: BasicAuthentication
+            destination: DE2
+            path: /sap/opu/odata/sap/ZSB_C_FRVISIT2/
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZODATA_FR_SRV
+            metadataPath: ./webapp/localService/mainService/metadata.xml
+            mockdataPath: ./webapp/localService/mainService/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZSB_C_FRVISIT2
+            metadataPath: ./webapp/localService/ZSB_C_FRVISIT2/metadata.xml
+            mockdataPath: ./webapp/localService/ZSB_C_FRVISIT2/data
+            generateMockData: true
+        annotations:
+          - localPath: ./webapp/localService/mainService/ZODATA_FR_ANNO_MDL.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/

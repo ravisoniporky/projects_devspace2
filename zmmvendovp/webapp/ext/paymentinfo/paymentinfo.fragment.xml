@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:f="sap.ui.layout.form"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+            <VBox class="sapUiSmallMargin">
+		<f:SimpleForm 
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Payment Info"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+
+
+			<f:toolbar>
+			<Toolbar  >
+							<Title text="Payment Info"  />
+<ToolbarSpacer />
+					
+					<Button icon="sap-icon://action"
+						press="onClickHeader" />
+			</Toolbar>
+			</f:toolbar>
+
+
+			<f:content>
+				<ObjectIdentifier title="{/#ZCFI_VENDORDASH_YTDPMNTSType/YearToDatePayment/@sap:label}" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text  text="{path: 'vendorData>/YearToDatePayment', type:'sap.ui.model.type.Float'} {vendorData>/Currency}" />
+				<ObjectIdentifier title="{/#ZCFI_VENDORDASH_YTDPMNTSType/LastPayment/@sap:label}" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text text="{path: 'vendorData>/LastPayment', type:'sap.ui.model.type.Float'} {vendorData>/Currency}" />
+				<ObjectIdentifier title="{/#ZCFI_VENDORDASH_YTDPMNTSType/LastPaymentDate/@sap:label}" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text text="{path: 'vendorData>/LastPaymentDate', type:'sap.ui.model.type.Date',
+				formatOptions: {pattern: 'MM/dd/yyyy', strictParsing: true , UTC: true} } " />				
+	
+			
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

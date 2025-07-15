@@ -1,0 +1,222 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:m="sap.m"
+		xmlns:f="sap.ui.layout.form"
+			xmlns:l="sap.ui.layout"
+			xmlns:sf="sap.ui.comp.smartfield"
+	xmlns:core="sap.ui.core">
+	<Dialog  contentHeight="100%" contentWidth="80%" title="Find Prospect">
+	<content>
+	<IconTabBar>
+		<items>
+
+	<IconTabFilter
+				icon="sap-icon://search"
+				iconColor="Positive"
+				text="Search"
+				key="Ok" >
+				<HBox>
+<m:SearchField
+							placeholder="Google Search Customers"
+							search="handleSearchCustomer_prspct"
+							width="15rem" id="searchBoxGoogle"/>	
+							
+			</HBox>		
+<Table
+		id="prospectF4Dialog"
+		noDataText="No Customer Found"
+		title="Select Customer"
+		search=".handleSearchCustomer_prspct"
+		confirm=".handleConfirm_prospectcust"
+        selectionChange="handleSelectCustomer_prospectcust"
+		cancel=".handleClose"
+        growing="true"
+        growingThreshold="10"
+		items="{
+			path : 'prospectModelPlaces>/places'
+		}">
+			<headerToolbar>
+					<m:OverflowToolbar style="Clear">
+						<m:Title text="Prospects Found"/>
+						<m:ToolbarSpacer/>
+						
+						<m:SearchField
+						visible="false"
+							placeholder="Google Search Customers"
+							search="handleSearchCustomer_prspct"
+							width="20rem"/>
+							<ComboBox class="sapUiTinyMarginBegin" width="100px" placeholder="Select Type"
+							selectedKey="{googlePlacesModel>/selectedType}"
+				>
+				<core:Item key="" text="" />
+				<core:Item key="store" text="Store" />
+				<core:Item key="restaurant" text="Restaurant" />
+				<core:Item key="deli" text="Deli" />
+				<core:Item key="bakery" text="Bakery" />
+				<core:Item key="bar" text="Bar" />
+				<core:Item key="cafe" text="Cafe" />
+			</ComboBox>	
+					</m:OverflowToolbar>
+				</headerToolbar>
+		<ColumnListItem vAlign="Middle" type="Navigation" press="onClickProspectGoogleSearch"> 
+			<cells>
+			<Image
+					src="https://places.googleapis.com/v1/{prospectModelPlaces>photos/0/name}/media?maxHeightPx=400&#38;maxWidthPx=400&#38;key=AIzaSyARq_VIDUxAl-xrs9bV_921ZzSggNjHAzE"
+					decorative="true"
+					width="100px"
+                    class="sapUiTinyMargin"
+					densityAware="true">
+					<detailBox>
+					<LightBox>
+							<LightBoxItem
+								imageSrc="https://places.googleapis.com/v1/{prospectModelPlaces>photos/0/name}/media?maxHeightPx=400&#38;maxWidthPx=400&#38;key=AIzaSyARq_VIDUxAl-xrs9bV_921ZzSggNjHAzE"
+								alt="{prospectModelPlaces>displayName/text}"
+								title="{prospectModelPlaces>displayName/text}"
+								subtitle="{prospectModelPlaces>displayName/text}" />
+						</LightBox>
+					</detailBox>
+				</Image>
+				
+				<ObjectIdentifier title="{prospectModelPlaces>displayName/text}" />
+				<Text text="{prospectModelPlaces>formattedAddress}" />
+				<Text text="{prospectModelPlaces>nationalPhoneNumber}" />
+				<Link text="{prospectModelPlaces>websiteUri}" href="{prospectModelPlaces>websiteUri}" target="_blank"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+		<Column width="5em">
+				
+			</Column>
+			<Column width="12em">
+				<header>
+					<Text text="Customer Name" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Address" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Phone Number" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Website" />
+				</header>
+			</Column>
+		
+		</columns>
+	</Table>
+				</IconTabFilter>
+			<IconTabFilter
+				icon="sap-icon://create"
+				iconColor="Critical"
+				text="Create"
+				key="Heavy" >
+<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Create Prospect"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Name1" />
+				<Input  value="{newProspect>/Name1}" maxLength="35"/>
+				<Label text="Name2" />
+				<Input  value="{newProspect>/Name2}" maxLength="35"/>		
+
+				<Label text="Street" />
+				<Input  value="{newProspect>/Street}" maxLength="40"/>
+				<Label text="City" />
+				<Input  value="{newProspect>/Ort01}" maxLength="35"/>	
+					<Label text="Zip" />
+				<Input  value="{newProspect>/Pstlz}" maxLength="15" type="Number"/>		
+
+					<Label text="Region" />
+				<!-- <Input  value="{newProspect>/Regio}" maxLength="3"/> -->
+				<ComboBox id="regionDropDown" selectedKey="{newProspect>/Regio}" class="porkythemebg" items="{ZODATA_FR_SRV>/I_Region}"  >
+                            <core:Item
+                                key="{ZODATA_FR_SRV>Region}"
+                                text="{ZODATA_FR_SRV>Region} - {ZODATA_FR_SRV>Region_Text}"
+                            />
+                         
+                        </ComboBox>
+				<Label text="Country" />
+				<Input  value="{newProspect>/Land1}" maxLength="3" editable="false"/>			
+
+				<Label text="Telephone Extension" />
+				<Input  value="{newProspect>/TelExtens}"  maxLength="10" type="Number"/>
+				<Label text="Telephone" />
+				<!-- <Input  value="{newProspect>/TelNumber}" maxLength="30"/> -->
+				<MaskInput  value="{newProspect>/TelNumber}" mask="(999) 999 9999" placeholderSymbol="_"
+				 placeholder="Enter 10-digit number" showClearIcon="true" liveChange="validatePhoneNumber_prospect"
+				      />
+				<Label text="Telephone2" />
+				<!-- <Input  value="{newProspect>/Telf2}" maxLength="16" /> -->
+				<MaskInput  value="{newProspect>/Telf2}" mask="(999) 999 9999" placeholderSymbol="_"
+				 placeholder="Enter 10-digit number" showClearIcon="true" liveChange="validatePhoneNumber_prospect"
+				     />
+				<Label text="Email" />
+				<!-- <Input  value="{newProspect>/SmtpAddr}" maxLength="241"/> -->
+								<Input maxLength="241" value="{newProspect>/SmtpAddr}"  type="Email" change="validateEmail_prospect" /> 
+
+								<Label text="Sales Lead" required="true"/>
+				<!-- <Input  value="{newProspect>/SmtpAddr}" maxLength="241"/> -->
+				 <!-- <sf:SmartField 
+				 change="onSelectCustomer" showSuggestion="true" id="idMaterial" textInEditModeSource="ValueList" 
+				 value="{Matnr}" entitySet="ZRMM_XREF_GETDETAIL" valueListChanged="onSelectMaterial" width="auto" showLabel="true"
+				  editable="true" uomEditable="true" contextEditable="true">
+            <sf:configuration>
+                <sf:Configuration preventInitialDataFetchInValueHelpDialog="false" displayBehaviour="idAndDescription"/>
+            </sf:configuration>
+        </sf:SmartField> -->
+								<!-- <sf:SmartField id="idSO"  value="{Saleslead}" entitySet="ZRMM_USER_SMPARTNER_VH"
+		  width="auto"
+		  change="onChangeSalesOrgField"
+		  showSuggestion="true"
+		  showLabel="true"
+				  editable="true" uomEditable="true" contextEditable="true" >
+
+<sf:configuration>
+                <sf:Configuration preventInitialDataFetchInValueHelpDialog="false" displayBehaviour="idAndDescription"/>
+            </sf:configuration>
+		  </sf:SmartField> -->
+		  <Input valueHelpRequest="onOpenSMF4Help" value="{newProspect>/Kunn2_name} {newProspect>/Kunn2}" valueHelpOnly="true" showValueHelp="true" id="idInputSM"></Input>
+
+		<Label text="Sales Org For Prospect" />
+		  <Input editable="false" value="{newProspect>/Vkorg}"></Input>
+
+<Label text="Parvw" visible="false"/>
+		  <Input editable="false" value="{newProspect>/Parvw}" visible="false"></Input>
+
+
+		  
+
+				<Label text="" />
+				<Button  text="Create Prospect" width="50%" press="onCreateProspect"/>
+			</f:content>
+		</f:SimpleForm>
+				</IconTabFilter>
+</items>
+	</IconTabBar>
+		</content>
+	<endButton>
+			<Button tooltip="Close" icon="sap-icon://cancel"  type="Reject" press="onDialogCloseKeyPeople" text="Close" width="150px"/>
+		</endButton>
+	</Dialog >
+	
+</core:FragmentDefinition>

@@ -1,0 +1,233 @@
+<mvc:View controllerName="customer.porky.zsdorderentry.controller.View1" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:sf="sap.ui.comp.smartfield"
+    xmlns="sap.m">
+    <Page id="page" title="Customer Details">
+        <content >
+<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+
+
+
+		<Label text="Sales Org" />
+				<!-- <Input  showValueHelp="true" value="{userValues>/salesorg}" /> -->
+				 <!-- <sf:SmartField 
+				 change="onSelectSalesOrg" showSuggestion="true" id="idSalesOrg" textInEditModeSource="ValueList" 
+				 value="{SalesOrganization}" entitySet="ZCSD_OENT_FILTERS" valueListChanged="onSelectMaterial" width="auto" showLabel="true"
+				  editable="true" uomEditable="true" contextEditable="true">
+            <sf:configuration>
+                <sf:Configuration preventInitialDataFetchInValueHelpDialog="false" displayBehaviour="idAndDescription"/>
+            </sf:configuration>
+        </sf:SmartField>   -->
+
+<HBox>
+
+
+		<ComboBox id="idInputSalesOrg" items="{mainService>/I_SalesOrganization}" selectionChange=".onSuggestionItemSelectedSalesOrg"  selectedKey="{userValues>/SalesOrganization}">
+		
+		<core:Item key="{mainService>SalesOrganization}" text="{mainService>SalesOrganization_Text} - {mainService>SalesOrganization}" ></core:Item>
+		</ComboBox>
+		<!-- <Input id="idInputSalesOrg"   showValueHelp="true" value="{userValues>/SalesOrganization}" valueHelpRequest="openSalesOrgF4" 	
+				showSuggestion="true"
+			showTableSuggestionValueHelp="true"
+			suggestionRows="{mainService>/I_SalesOrganization}"
+			suggestionItemSelected=".onSuggestionItemSelectedSalesOrg"
+			suggest=".onSuggestSalesOrg"
+			>
+			<suggestionColumns>
+				<Column
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Sales Org" />
+				</Column>
+			
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					minScreenWidth="Tablet">
+					<Label text="Sales Org Desc" />
+				</Column>
+				
+			</suggestionColumns>
+
+			<suggestionRows>
+				<ColumnListItem>
+					<Label text="{mainService>SalesOrganization}" />
+					<Label text="{mainService>SalesOrganization_Text}" />
+				
+				</ColumnListItem>
+			</suggestionRows>
+			</Input>  -->
+
+			<Label text=" {userValues>/salesorgname}" class="sapUiTinyMargin"></Label>
+			</HBox>
+
+
+
+
+				<Label text="Customer" />
+				<HBox >
+				<Input id="idInputCustomer" enabled="false"  showValueHelp="true" value="{userValues>/Customer}" valueHelpRequest="openCustomerF4" 	
+				showSuggestion="true"
+			showTableSuggestionValueHelp="true"
+			suggestionRows="{/zi_customer_valuehelp}"
+			suggestionItemSelected=".onSuggestionItemSelected"
+			suggest="onSuggestCustomer"
+			maxSuggestionWidth="600px"
+			width="150px">
+			<suggestionColumns>
+				<Column
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Customer" />
+				</Column>
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					demandPopin="true"
+					minScreenWidth="Tablet">
+					<Label text="Name" />
+				</Column>
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					minScreenWidth="Tablet">
+					<Label text="Sales Org" />
+				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Address" />
+				</Column>
+			</suggestionColumns>
+
+			<suggestionRows>
+				<ColumnListItem>
+					<Label text="{Customer}" />
+					<Label text="{CustomerName}" />
+					<Label text="{SalesOrg}" />
+					<Label text="{Street} {City} " />
+				</ColumnListItem>
+			</suggestionRows>
+			</Input>
+			<Label text=" {userValues>/customername}" class="sapUiTinyMargin"></Label>
+			</HBox>
+
+				<!-- <sf:SmartField changeModelValue="onSelectCustomer" modelContextChange="onSelectCustomer"
+				 change="onSelectCustomer" showSuggestion="true" id="idCust" textInEditModeSource="ValueList" 
+				 value="{Customer}" entitySet="ZCSD_OENT_FILTERS" valueListChanged="onSelectMaterial" width="auto" showLabel="true"
+				  editable="true" uomEditable="true" contextEditable="true" >
+            <sf:configuration>
+                <sf:Configuration preventInitialDataFetchInValueHelpDialog="false" displayBehaviour="idAndDescription"/>
+            </sf:configuration>
+        </sf:SmartField>  -->
+
+				
+
+				<Label text="Plant" />
+				<!-- <Input  showValueHelp="true" value="{userValues>/plant}" /> -->
+				<!-- <sf:SmartField 
+				 change="onSelectPlant" showSuggestion="true" id="idPlant" textInEditModeSource="ValueList" 
+				 value="{Plant}" entitySet="ZCSD_OENT_FILTERS" valueListChanged="onSelectMaterial" width="auto" showLabel="true"
+				  editable="true" uomEditable="true" contextEditable="true">
+            <sf:configuration>
+                <sf:Configuration preventInitialDataFetchInValueHelpDialog="false" displayBehaviour="idAndDescription"/>
+            </sf:configuration>
+        </sf:SmartField>  -->
+
+
+
+			<HBox>
+			<Select id="idInputPlant" items="{plantModel>/plants}" selectionChange=".onSuggestionItemSelectedPlant"  selectedKey="{userValues>/Plant}">
+		
+		<core:Item key="{plantModel>Plant}" text="{plantModel>Plant} - {plantModel>PlantName}" ></core:Item>
+		</Select>
+			<!-- <Input id="idInputPlant"   showValueHelp="true" value="{userValues>/Plant}" valueHelpRequest="openSalesOrgF4" 	
+				showSuggestion="true"
+			showTableSuggestionValueHelp="true"
+			suggestionRows="{mainService>/I_Plant}"
+			suggestionItemSelected=".onSuggestionItemSelectedPlant"
+			>
+			<suggestionColumns>
+				<Column
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Plant" />
+				</Column>
+			
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					minScreenWidth="Tablet">
+					<Label text="Plant Name" />
+				</Column>
+				
+			</suggestionColumns>
+
+			<suggestionRows>
+				<ColumnListItem>
+					<Label text="{mainService>Plant}" />
+					<Label text="{mainService>PlantName}" />
+				
+				</ColumnListItem>
+			</suggestionRows>
+			</Input>  -->
+			<Label text=" {userValues>/plantname}" class="sapUiTinyMargin"></Label>
+			</HBox>
+
+
+
+
+
+
+				<Label text="PO Number" />
+				<Input  showValueHelp="true" value="{userValues>/ponumber}" id="idPonumber" />
+
+				<Label text="Delivery Date"  />
+				<DatePicker value="{path: 'userValues>/deldate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MM/dd/yyyy', strictParsing: false , UTC: true}}"  id="idDelDate" />
+
+<Label text=""  />
+<HBox alignContent="Center" alignItems="Center" width="100%" justifyContent="Center">
+				<Button
+					icon="sap-icon://begin"
+					text="Start Order Entry"
+					type="Success"
+					press=".showAddMaterials" 
+					class="sapUiTinyMargin">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+
+				<Button
+					icon="sap-icon://reset"
+					text="Reset"
+					type="Reject"
+					class="sapUiTinyMargin"
+					press=".ResetMaterialSelection" >
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+
+				</HBox>
+
+			
+			</f:content>
+		</f:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

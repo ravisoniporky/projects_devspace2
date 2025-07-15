@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZCSD_PGTIMEPERIODTRENDSV1_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZCSD_PGTIMEPERIODTRENDSV1Type" sap:label="Porky Global Time Period Trends" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CalendarYear" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Calendar Year" sap:quickinfo="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Material" sap:quickinfo="Material Number" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:filter-restriction="single-value" sap:required-in-filter="false" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="BillingType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:filter-restriction="single-value" sap:required-in-filter="false" sap:label="Billing Type" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:filter-restriction="single-value" sap:required-in-filter="false" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Sold-to Party" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="1333" sap:label="Customer (Description)" sap:quickinfo="Sold-to Party" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="WeekEnd" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:text="WeekEnd_T" sap:label="Week Ending" sap:quickinfo="Calendar Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="WeekEnd_T" Type="Edm.String" MaxLength="10" sap:label="Week Ending (Description)" sap:quickinfo="Calendar Date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="CalendarWeek" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:super-ordinate="CompanyCode" sap:label="Calendar Week" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="MatRollupCategory" Type="Edm.String" MaxLength="30" sap:aggregation-role="dimension" sap:label="Material Group Category" sap:quickinfo="Category Key/ Descripton" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="YearWeek" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:label="Year Week" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Salesman" sap:quickinfo="Customer Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="WeekBegin" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:text="WeekBegin_T" sap:label="Week Begining" sap:quickinfo="Calendar Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="WeekBegin_T" Type="Edm.String" MaxLength="10" sap:label="Week Begining (Description)" sap:quickinfo="Calendar Date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Sales" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="Sales_F" sap:updatable="false" sap:label="Sales" sap:creatable="false"/>
+                <Property Name="Sales_F" Type="Edm.String" MaxLength="60" sap:label="Sales (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Weght" Type="Edm.Decimal" Precision="42" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:text="Weght_F" sap:updatable="false" sap:label="Weight" sap:creatable="false"/>
+                <Property Name="Weght_F" Type="Edm.String" MaxLength="60" sap:label="Weight (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="42" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:text="Quantity_F" sap:updatable="false" sap:label="Quantity" sap:creatable="false"/>
+                <Property Name="Quantity_F" Type="Edm.String" MaxLength="60" sap:label="Quantity (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="extval11" Type="Edm.Decimal" Precision="42" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:text="extval11_F" sap:updatable="false" sap:label="Ext. Market Cost Adjustment" sap:creatable="false"/>
+                <Property Name="extval11_F" Type="Edm.String" MaxLength="60" sap:label="Ext. Market Cost Adjustment (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Matchlb" Type="Edm.Decimal" Precision="42" Scale="4" sap:aggregation-role="measure" sap:filterable="false" sap:text="Matchlb_F" sap:updatable="false" sap:label="Total Matched LB" sap:creatable="false"/>
+                <Property Name="Matchlb_F" Type="Edm.String" MaxLength="60" sap:label="Total Matched LB (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Unmatchedlb" Type="Edm.Decimal" Precision="42" Scale="4" sap:aggregation-role="measure" sap:filterable="false" sap:text="Unmatchedlb_F" sap:updatable="false" sap:label="Total UnMatched LB" sap:creatable="false"/>
+                <Property Name="Unmatchedlb_F" Type="Edm.String" MaxLength="60" sap:label="Total UnMatched LB (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="zwavwr16" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="zwavwr16_F" sap:updatable="false" sap:label="Item Gross Profit $" sap:creatable="false"/>
+                <Property Name="zwavwr16_F" Type="Edm.String" MaxLength="60" sap:label="Item Gross Profit $ (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="TP" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="TP_F" sap:updatable="false" sap:label="True Profit $" sap:creatable="false"/>
+                <Property Name="TP_F" Type="Edm.String" MaxLength="60" sap:label="True Profit $ (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="ItemExtTotCost" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="ItemExtTotCost_F" sap:updatable="false" sap:label="Item Ext Total Cost" sap:creatable="false"/>
+                <Property Name="ItemExtTotCost_F" Type="Edm.String" MaxLength="60" sap:label="Item Ext Total Cost (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="ExtInProduct" Type="Edm.Decimal" Precision="42" Scale="9" sap:aggregation-role="measure" sap:filterable="false" sap:text="ExtInProduct_F" sap:updatable="false" sap:label="Ext In Product" sap:creatable="false"/>
+                <Property Name="ExtInProduct_F" Type="Edm.String" MaxLength="60" sap:label="Ext In Product (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="SalesPerLB" Type="Edm.Decimal" Precision="42" Scale="4" sap:aggregation-role="measure" sap:filterable="false" sap:text="SalesPerLB_F" sap:updatable="false" sap:label="Sales $/LB" sap:creatable="false"/>
+                <Property Name="SalesPerLB_F" Type="Edm.String" MaxLength="60" sap:label="Sales $/LB (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="ItemTotCostLB" Type="Edm.Decimal" Precision="42" Scale="4" sap:aggregation-role="measure" sap:filterable="false" sap:text="ItemTotCostLB_F" sap:updatable="false" sap:label="Item Total Cost LB" sap:creatable="false"/>
+                <Property Name="ItemTotCostLB_F" Type="Edm.String" MaxLength="60" sap:label="Item Total Cost LB (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="InProduct" Type="Edm.Decimal" Precision="42" Scale="4" sap:aggregation-role="measure" sap:filterable="false" sap:text="InProduct_F" sap:updatable="false" sap:label="In Product" sap:creatable="false"/>
+                <Property Name="InProduct_F" Type="Edm.String" MaxLength="60" sap:label="In Product (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="TPPerLB" Type="Edm.Decimal" Precision="42" Scale="4" sap:aggregation-role="measure" sap:filterable="false" sap:text="TPPerLB_F" sap:updatable="false" sap:label="True Profit $/LB" sap:creatable="false"/>
+                <Property Name="TPPerLB_F" Type="Edm.String" MaxLength="60" sap:label="True Profit $/LB (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <NavigationProperty Name="CustomerDetails" Relationship="ZCSD_PGTIMEPERIODTRENDSV1_CDS.CustomerToListOfValues" FromRole="ToRole_CustomerToListOfValues" ToRole="FromRole_CustomerToListOfValues"/>
+                <NavigationProperty Name="BillingTypeDetails" Relationship="ZCSD_PGTIMEPERIODTRENDSV1_CDS.BillingTypeToListOfValues" FromRole="ToRole_BillingTypeToListOfValues" ToRole="FromRole_BillingTypeToListOfValues"/>
+                <NavigationProperty Name="MaterialGroupDetails" Relationship="ZCSD_PGTIMEPERIODTRENDSV1_CDS.MaterialGroupToListOfValues" FromRole="ToRole_MaterialGroupToListOfValues" ToRole="FromRole_MaterialGroupToListOfValues"/>
+            </EntityType>
+            <EntityType Name="Customer" sap:label="Customer" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" sap:parameter="optional" sap:text="CustomerText" sap:label="Customer"/>
+                <Property Name="CustomerText" Type="Edm.String" MaxLength="60" sap:label="Customer (Description) "/>
+            </EntityType>
+            <EntityType Name="BillingType" sap:label="Billing Type" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BillingType"/>
+                </Key>
+                <Property Name="BillingType" Type="Edm.String" Nullable="false" sap:parameter="optional" sap:text="BillingTypeText" sap:label="Billing Type"/>
+                <Property Name="BillingTypeText" Type="Edm.String" MaxLength="60" sap:label="Billing Type (Description) "/>
+            </EntityType>
+            <EntityType Name="MaterialGroup" sap:label="Material Group" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialGroup"/>
+                </Key>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" sap:parameter="optional" sap:text="MaterialGroupText" sap:label="Material Group"/>
+                <Property Name="MaterialGroupText" Type="Edm.String" MaxLength="60" sap:label="Material Group (Description) "/>
+            </EntityType>
+            <EntityType Name="CalendarYear" sap:label="Calendar Year (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CalendarYear_ID"/>
+                </Key>
+                <Property Name="CalendarYear_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Calendar Year" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CalendarYearResult" sap:label="Calendar Year (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CalendarYear"/>
+                </Key>
+                <Property Name="CalendarYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Calendar Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BillingType" Type="Edm.String" MaxLength="4" sap:label="Billing Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:text="CustomerName" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CustomerName" Type="Edm.String" sap:label="Customer (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeekEnd" Type="Edm.String" MaxLength="10" sap:text="WeekEnd_T" sap:label="Week Ending" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekEnd_T" Type="Edm.String" sap:label="Week Ending (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CalendarWeek" Type="Edm.String" MaxLength="2" sap:super-ordinate="CompanyCode" sap:label="Calendar Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MatRollupCategory" Type="Edm.String" MaxLength="30" sap:label="Material Group Category" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="YearWeek" Type="Edm.String" MaxLength="6" sap:label="Year Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:label="Salesman" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekBegin" Type="Edm.String" MaxLength="10" sap:text="WeekBegin_T" sap:label="Week Begining" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekBegin_T" Type="Edm.String" sap:label="Week Begining (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CompanyCode" sap:label="Company Code (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode_ID"/>
+                </Key>
+                <Property Name="CompanyCode_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:text="CompanyCodeText" sap:label="Company Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CompanyCodeText" Type="Edm.String" sap:label="Company Code (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CompanyCodeResult" sap:label="Company Code (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Company Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CalendarYear" Type="Edm.String" MaxLength="4" sap:label="Calendar Year" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BillingType" Type="Edm.String" MaxLength="4" sap:label="Billing Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:text="CustomerName" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CustomerName" Type="Edm.String" sap:label="Customer (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeekEnd" Type="Edm.String" MaxLength="10" sap:text="WeekEnd_T" sap:label="Week Ending" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekEnd_T" Type="Edm.String" sap:label="Week Ending (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CalendarWeek" Type="Edm.String" MaxLength="2" sap:super-ordinate="CompanyCode" sap:label="Calendar Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MatRollupCategory" Type="Edm.String" MaxLength="30" sap:label="Material Group Category" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="YearWeek" Type="Edm.String" MaxLength="6" sap:label="Year Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:label="Salesman" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekBegin" Type="Edm.String" MaxLength="10" sap:text="WeekBegin_T" sap:label="Week Begining" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekBegin_T" Type="Edm.String" sap:label="Week Begining (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Material" sap:label="Material (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material_ID"/>
+                </Key>
+                <Property Name="Material_ID" Type="Edm.String" Nullable="false" MaxLength="40" sap:text="MaterialText" sap:label="Material" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MaterialText" Type="Edm.String" sap:label="Material (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="MaterialResult" sap:label="Material (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Material" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CalendarYear" Type="Edm.String" MaxLength="4" sap:label="Calendar Year" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BillingType" Type="Edm.String" MaxLength="4" sap:label="Billing Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:text="CustomerName" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CustomerName" Type="Edm.String" sap:label="Customer (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeekEnd" Type="Edm.String" MaxLength="10" sap:text="WeekEnd_T" sap:label="Week Ending" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekEnd_T" Type="Edm.String" sap:label="Week Ending (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CalendarWeek" Type="Edm.String" MaxLength="2" sap:super-ordinate="CompanyCode" sap:label="Calendar Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MatRollupCategory" Type="Edm.String" MaxLength="30" sap:label="Material Group Category" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="YearWeek" Type="Edm.String" MaxLength="6" sap:label="Year Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:label="Salesman" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekBegin" Type="Edm.String" MaxLength="10" sap:text="WeekBegin_T" sap:label="Week Begining" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekBegin_T" Type="Edm.String" sap:label="Week Begining (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CalendarWeek" sap:label="Calendar Week (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CalendarWeek_ID"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="CalendarYear"/>
+                    <PropertyRef Name="WeekBegin"/>
+                    <PropertyRef Name="WeekEnd"/>
+                </Key>
+                <Property Name="CalendarWeek_ID" Type="Edm.String" Nullable="false" MaxLength="2" sap:super-ordinate="CompanyCode" sap:label="Calendar Week" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Calendar Week (Company Code)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CalendarYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Calendar Week (Calendar Year)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WeekBegin" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Calendar Week (Week Begining)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WeekBegin_T" Type="Edm.String" sap:label="Week Begining (Description) (Parent Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeekEnd" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Calendar Week (Week Ending)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WeekEnd_T" Type="Edm.String" sap:label="Week Ending (Description) (Parent Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CalendarWeekResult" sap:label="Calendar Week (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CalendarWeek"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="CalendarYear"/>
+                    <PropertyRef Name="WeekBegin"/>
+                    <PropertyRef Name="WeekEnd"/>
+                </Key>
+                <Property Name="CalendarWeek" Type="Edm.String" Nullable="false" MaxLength="2" sap:super-ordinate="CompanyCode" sap:label="Calendar Week" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Calendar Week (Company Code)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CalendarYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Calendar Week (Calendar Year)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WeekBegin" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Calendar Week (Week Begining)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WeekBegin_T" Type="Edm.String" sap:label="Week Begining (Description) (Parent Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeekEnd" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Calendar Week (Week Ending)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WeekEnd_T" Type="Edm.String" sap:label="Week Ending (Description) (Parent Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BillingType" Type="Edm.String" MaxLength="4" sap:label="Billing Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:text="CustomerName" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CustomerName" Type="Edm.String" sap:label="Customer (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatRollupCategory" Type="Edm.String" MaxLength="30" sap:label="Material Group Category" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="YearWeek" Type="Edm.String" MaxLength="6" sap:label="Year Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:label="Salesman" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="SalesOrganization" sap:label="Sales Organization (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization_ID"/>
+                </Key>
+                <Property Name="SalesOrganization_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:text="SalesOrganizationText" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesOrganizationText" Type="Edm.String" sap:label="Sales Organization (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="SalesOrganizationResult" sap:label="Sales Organization (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CalendarYear" Type="Edm.String" MaxLength="4" sap:label="Calendar Year" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BillingType" Type="Edm.String" MaxLength="4" sap:label="Billing Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:text="CustomerName" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CustomerName" Type="Edm.String" sap:label="Customer (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeekEnd" Type="Edm.String" MaxLength="10" sap:text="WeekEnd_T" sap:label="Week Ending" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekEnd_T" Type="Edm.String" sap:label="Week Ending (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CalendarWeek" Type="Edm.String" MaxLength="2" sap:super-ordinate="CompanyCode" sap:label="Calendar Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MatRollupCategory" Type="Edm.String" MaxLength="30" sap:label="Material Group Category" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="YearWeek" Type="Edm.String" MaxLength="6" sap:label="Year Week" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:label="Salesman" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekBegin" Type="Edm.String" MaxLength="10" sap:text="WeekBegin_T" sap:label="Week Begining" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WeekBegin_T" Type="Edm.String" sap:label="Week Begining (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="BillingTypeToListOfValues" sap:content-version="1">
+                <End Type="ZCSD_PGTIMEPERIODTRENDSV1_CDS.BillingType" Multiplicity="1" Role="FromRole_BillingTypeToListOfValues"/>
+                <End Type="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type" Multiplicity="*" Role="ToRole_BillingTypeToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_BillingTypeToListOfValues">
+                        <PropertyRef Name="BillingType"/>
+                    </Principal>
+                    <Dependent Role="ToRole_BillingTypeToListOfValues">
+                        <PropertyRef Name="BillingType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CustomerToListOfValues" sap:content-version="1">
+                <End Type="ZCSD_PGTIMEPERIODTRENDSV1_CDS.Customer" Multiplicity="1" Role="FromRole_CustomerToListOfValues"/>
+                <End Type="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type" Multiplicity="*" Role="ToRole_CustomerToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CustomerToListOfValues">
+                        <PropertyRef Name="Customer"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CustomerToListOfValues">
+                        <PropertyRef Name="Customer"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaterialGroupToListOfValues" sap:content-version="1">
+                <End Type="ZCSD_PGTIMEPERIODTRENDSV1_CDS.MaterialGroup" Multiplicity="1" Role="FromRole_MaterialGroupToListOfValues"/>
+                <End Type="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type" Multiplicity="*" Role="ToRole_MaterialGroupToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_MaterialGroupToListOfValues">
+                        <PropertyRef Name="MaterialGroup"/>
+                    </Principal>
+                    <Dependent Role="ToRole_MaterialGroupToListOfValues">
+                        <PropertyRef Name="MaterialGroup"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZCSD_PGTIMEPERIODTRENDSV1_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="BillingType" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.BillingType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialGroup" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.MaterialGroup" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CalendarYear" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.CalendarYear" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CalendarYearResults" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.CalendarYearResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CompanyCode" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.CompanyCode" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CompanyCodeResults" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.CompanyCodeResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Material" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.Material" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialResults" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.MaterialResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CalendarWeek" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.CalendarWeek" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CalendarWeekResults" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.CalendarWeekResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="SalesOrganization" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.SalesOrganization" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="SalesOrganizationResults" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.SalesOrganizationResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_PGTIMEPERIODTRENDSV1" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Customer" EntityType="ZCSD_PGTIMEPERIODTRENDSV1_CDS.Customer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="CustomerToListOfValues_AssocSet" Association="ZCSD_PGTIMEPERIODTRENDSV1_CDS.CustomerToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Customer" Role="FromRole_CustomerToListOfValues"/>
+                    <End EntitySet="ZCSD_PGTIMEPERIODTRENDSV1" Role="ToRole_CustomerToListOfValues"/>
+                </AssociationSet>
+                <AssociationSet Name="MaterialGroupToListOfValues_AssocSet" Association="ZCSD_PGTIMEPERIODTRENDSV1_CDS.MaterialGroupToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MaterialGroup" Role="FromRole_MaterialGroupToListOfValues"/>
+                    <End EntitySet="ZCSD_PGTIMEPERIODTRENDSV1" Role="ToRole_MaterialGroupToListOfValues"/>
+                </AssociationSet>
+                <AssociationSet Name="BillingTypeToListOfValues_AssocSet" Association="ZCSD_PGTIMEPERIODTRENDSV1_CDS.BillingTypeToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BillingType" Role="FromRole_BillingTypeToListOfValues"/>
+                    <End EntitySet="ZCSD_PGTIMEPERIODTRENDSV1" Role="ToRole_BillingTypeToListOfValues"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type/Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="Customer"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type/BillingType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Billing Type"/>
+                        <PropertyValue Property="CollectionPath" String="BillingType"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BillingType"/>
+                                    <PropertyValue Property="ValueListProperty" String="BillingType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BillingTypeText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type/MaterialGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Group"/>
+                        <PropertyValue Property="CollectionPath" String="MaterialGroup"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MaterialGroup"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroupText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type/CalendarYear" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Calendar Year ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="CalendarYear"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CalendarYear"/>
+                                    <PropertyValue Property="ValueListProperty" String="CalendarYear_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CalendarYearText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="CompanyCode"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Material"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type/CalendarWeek" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Calendar Week ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="CalendarWeek"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CalendarWeek"/>
+                                    <PropertyValue Property="ValueListProperty" String="CalendarWeek_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CalendarWeekText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CalendarYear"/>
+                                    <PropertyValue Property="ValueListProperty" String="CalendarYear"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WeekBegin"/>
+                                    <PropertyValue Property="ValueListProperty" String="WeekBegin"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WeekEnd"/>
+                                    <PropertyValue Property="ValueListProperty" String="WeekEnd"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_PGTIMEPERIODTRENDSV1_CDS.ZCSD_PGTIMEPERIODTRENDSV1Type/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZCSD_PGTIMEPERIODTRENDSV1_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZCSD_PGTIMEPERIODTRENDSV1_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

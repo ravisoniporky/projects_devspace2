@@ -1,0 +1,23 @@
+{
+  "type": "abaprep",
+  "BSPName": "ZSDCLOSERULE_V2",
+  "component": "ZSDCLOSERULE_V2%2fComponent.js",
+  "manifest": "ZSDCLOSERULE_V2%2fmanifest.json",
+  "controllers": {
+    "ObjectPageExt": "ZSDCLOSERULE_V2%2fext%2fcontroller%2fObjectPageExt.controller.js"
+  },
+  "system": {
+    "name": "DE2",
+    "proxyUrlPrefix": "/destinations/DE2",
+    "path": "/sap/bc/adt",
+    "url": "/destinations/DE2/sap/bc/adt",
+    "wattUsage": "odata_abap,dev_abap",
+    "entryPath": "/sap/bc/adt",
+    "additionalData": []
+  },
+  "minUI5Version": "1.108.28",
+  "namespace": "customer.porky.zsdcloserulev2",
+  "parentResourceRootUrl": "/destinations/DE2/sap/bc/ui5_ui5/sap/ZSDCLOSERULE_V2",
+  "resourceBundle": "i18n/i18n.properties",
+  "shouldLinkComponentToManifest": true
+}

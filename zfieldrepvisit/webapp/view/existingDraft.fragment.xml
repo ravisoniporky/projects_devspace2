@@ -1,0 +1,92 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Dialog
+		
+		title="There is already {existingDraftModel>/items/length} existing draft visit for this customer. Please select action below."
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		contentWidth="80%"
+        contentHeight="80%"
+		>
+		
+        <content>
+        
+		<List
+		
+		growing="true"
+		growingThreshold="20"
+		items="{
+			path: 'existingDraftModel>/items'
+			
+		}"
+		updateFinished="onUpdateFinishedList">
+
+		
+				<ObjectListItem
+			title="{existingDraftModel>CustomerPreviousAccount} {
+  path: 'existingDraftModel>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }"
+  
+  icon="{= ${existingDraftModel>Visittype} === 'N' ? 'sap-icon://visits' : ${existingDraftModel>Visittype} === 'F' ? 'sap-icon://checklist-2': ${existingDraftModel>Visittype}}"
+			type="Navigation"
+			press="onClickItemVisitList_delete"
+			number="{existingDraftModel>VisitDescription}"
+			numberState="{= ${existingDraftModel>Visittype} === 'N' ? 'Success': ${existingDraftModel>Visittype} === 'F' ? 'Warning': 'None'}"
+			numberUnit="{CurrencyCode}">
+			<firstStatus>
+				<ObjectStatus
+					text="Visit by {existingDraftModel>CreatedFullName}"
+					state="{= ${existingDraftModel>Visittype} === 'N' ? 'Success': ${existingDraftModel>Visittype} === 'F' ? 'Warning': 'None'}"  />
+			</firstStatus>
+				<secondStatus>
+				<ObjectStatus
+					text="{existingDraftModel>CHL1Name}"
+					state="Information" />
+			</secondStatus>
+			<!-- <ObjectAttribute text="Visit On {
+  path: 'existingDraftModel>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }" /> -->
+  <ObjectAttribute text="{existingDraftModel>CustomerFullName}" active="true"/>
+  
+			<ObjectAttribute text="{existingDraftModel>StreetName}, {existingDraftModel>CityName}, {existingDraftModel>PostalCode}" active="true"/>
+
+									<ObjectAttribute text="{existingDraftModel>SalesLeadName} {existingDraftModel>SaleSupportName}"/>
+
+						<ObjectAttribute text="Visit No. - {= isNaN(${existingDraftModel>Visitid}) ? 'NEW': Number(${existingDraftModel>Visitid})}" active="true"/>
+
+		</ObjectListItem>
+	</List>
+    </content>
+
+
+    <buttons>
+
+			<Button 
+						text="Delete Draft"
+						type="Attention"
+						press=".onDeleteDraft_ask"
+						ariaHasPopup="Dialog" />
+			
+			<Button 
+						text="Save As Visit"
+						type="Emphasized"
+						press=".covertDraftToVisit_ask"
+						ariaHasPopup="Dialog" />
+				
+					
+					<Button 
+						text="Cancel"
+						type="Reject"
+						press=".onCloseCurrentDialog"
+						ariaHasPopup="Dialog" />
+				
+		</buttons>
+
+
+	</Dialog>
+</core:FragmentDefinition>

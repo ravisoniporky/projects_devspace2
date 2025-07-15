@@ -1,0 +1,170 @@
+<mvc:View controllerName="customer.porky.zsdinfoovpc.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 	xmlns:mc="sap.suite.ui.microchart"	xmlns:sf="sap.ui.comp.smartfilterbar" 	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:core="sap.ui.core"
+    	xmlns:f="sap.f" 	xmlns:card="sap.f.cards" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"  xmlns:viz.data="sap.viz.ui5.data"
+        xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:smartchart="sap.ui.comp.smartchart" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+
+
+	<sf:SmartFilterBar
+					id="smartFilterBar"
+					entitySet="ZCSD_ORDINFOINV"
+					persistencyKey="UniqueAndStablePersistencyKey933"
+					beforeVariantFetch="onBeforeVariantFetch"
+					search="onFilterApply"
+					liveMode="true"
+					afterVariantLoad="onAfterVariantLoad">
+
+					
+				
+				</sf:SmartFilterBar>
+
+
+                	
+<VBox fitContainer="true" height="100%">
+		
+		<IconTabBar class="sapUiResponsiveContentPadding">
+			<items>
+					<IconTabFilter text="Cards View">
+					<content>
+					<ScrollContainer horizontal="true" height="550px" focusable="true" vertical="true">
+
+
+<HBox>
+						<f:Card class="sapUiMediumMargin" width="500px">
+		<f:header>
+			<card:Header title="Sales Amount vs Lead" subtitle="{subTitlePlant>/Plant} {subTitleTime>/Time}" id="POSubHeader" />
+
+		</f:header>
+		<f:content>
+		<VBox height="400px" width="400px">
+	<smartchart:SmartChart  height="400px" width="400px" enableAutoBinding="true"
+							entitySet="ZCSD_ORDINFOINV" 
+							persistencyKey="PKeyChartExample9" 
+							showFullScreenButton="true" 
+							showChartTooltip="true" 
+							showDimensionsTitle="true"
+							showMeasuresTitle="true"
+							showDetailsButton="false"
+							showDrillBreadcrumbs="false"
+							showDownloadButton="false"
+							showLegendButton="false"
+							showDrillButtons="false"
+							showSemanticNavigationButton="false"
+							showChartTypeSelectionButton="true"
+							
+							 smartFilterId="smartFilterBar" data:chartQualifier="salesamountvslead">
+						</smartchart:SmartChart>
+
+</VBox>
+
+		</f:content>
+	</f:Card>
+
+
+						<f:Card class="sapUiMediumMargin" width="500px">
+		<f:header>
+			<card:Header title="Sales Orders Status"  />
+
+		</f:header>
+		<f:content>
+		<VBox height="400px" width="400px">
+	<smartchart:SmartChart  height="400px" width="400px" enableAutoBinding="true"
+							entitySet="ZCSD_MoniOpenOrders" 
+							persistencyKey="PKeyChartExample9" 
+							
+							showFullScreenButton="true" 
+							showChartTooltip="true" 
+							showDimensionsTitle="true"
+							showMeasuresTitle="true"
+							showDetailsButton="false"
+							showDrillBreadcrumbs="false"
+							showDownloadButton="false"
+							showLegendButton="false"
+							showDrillButtons="false"
+							showSemanticNavigationButton="false"
+							showChartTypeSelectionButton="true"
+							 smartFilterId="smartFilterBar" data:chartQualifier="salesstatuschart" >
+						</smartchart:SmartChart>
+
+</VBox>
+
+		</f:content>
+	</f:Card>
+
+
+	<f:Card class="sapUiMediumMargin" width="500px">
+		<f:header>
+			<card:Header title="Open Orders This Week"  />
+
+		</f:header>
+		<f:content>
+		<VBox height="400px" width="400px">
+	<smartTable:SmartTable enableAutoBinding="true"  id="openOrders" showRowCount="true"
+							entitySet="ZCSD_MoniOpenOrders" useVariantManagement="true"
+							header="Open Orders"
+							beforeRebindTable="onBeforeOrdersThisWeek"
+							persistencyKey="PKeyChartExample9" 
+							showFullScreenButton="true" 
+							showDetailsButton="false" 
+							smartFilterId="smartFilterBar" data:lineItemQualifier="OpenSalesOrders" data:selectionPresentationVariantQualifier="filtertoday1">
+						</smartTable:SmartTable>
+
+</VBox>
+
+		</f:content>
+	</f:Card>
+
+
+		<f:Card class="sapUiMediumMargin" width="500px">
+		<f:header>
+			<card:Header title="Blocked Orders This Week"  />
+
+		</f:header>
+		<f:content>
+		<VBox height="400px" width="400px">
+	<smartTable:SmartTable enableAutoBinding="true" id="blockedOrders" showRowCount="true"
+							entitySet="ZBSD_BlockedSalesOrders" useVariantManagement="true"
+ 							persistencyKey="PKeyChartExample9" 
+							showFullScreenButton="true" 
+							showDetailsButton="false" 
+							 header="Blocked Orders"
+							smartFilterId="smartFilterBar" data:lineItemQualifier="blockedSOQ1" >
+						</smartTable:SmartTable>
+
+</VBox>
+
+		</f:content>
+	</f:Card>
+
+	</HBox>
+
+
+
+			
+	</ScrollContainer>
+					</content>
+				</IconTabFilter>
+				
+			</items>
+		</IconTabBar>
+	
+
+
+
+    	<smartTable:SmartTable id="LineItemsSmartTable" entitySet="ZCSD_ORDINFOINV" smartFilterId="smartFilterBar" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport"
+		
+         useVariantManagement="true" useTablePersonalisation="true" header="Sales Orders" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored435" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true"  >
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+                <Table growing="true"  >
+
+				
+                </Table>
+				
+			</smartTable:SmartTable>
+</VBox>
+        </content>
+    </Page>
+</mvc:View>

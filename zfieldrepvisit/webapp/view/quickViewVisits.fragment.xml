@@ -1,0 +1,68 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="myPopover"
+		title="Quick View Visits"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom"
+		initialFocus="email">
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<!-- <Button
+					id="email"
+					text="Email"
+					press="handleEmailPress" /> -->
+			</OverflowToolbar>
+		</footer>
+		<List
+		id="idListPopup"
+		growing="true"
+		growingThreshold="20"
+		headerText="Visit List {countModel>/countList}"
+		items="{
+			path: 'ZRMM_FRVISITV2_CDS>/ZRMM_FRVISITV2',
+			sorter: { path: 'ZRMM_FRVISITV2_CDS>Createdatetime', descending: true}
+		}"
+		updateFinished="onUpdateFinishedList">
+
+		
+				<ObjectListItem
+			title="{ZRMM_FRVISITV2_CDS>CustomerPreviousAccount} {
+  path: 'ZRMM_FRVISITV2_CDS>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }"
+  
+  icon="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'sap-icon://visits' : ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'sap-icon://checklist-2': ${ZRMM_FRVISITV2_CDS>Visittype}}"
+			type="Navigation"
+			press="onClickItemVisitList"
+			number="{ZRMM_FRVISITV2_CDS>VisitDescription}"
+			numberState="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'Success': ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'Warning': 'None'}"
+			numberUnit="{CurrencyCode}">
+			<firstStatus>
+				<ObjectStatus
+					text="Visit by {ZRMM_FRVISITV2_CDS>CreatedFullName}"
+					state="{= ${ZRMM_FRVISITV2_CDS>Visittype} === 'N' ? 'Success': ${ZRMM_FRVISITV2_CDS>Visittype} === 'F' ? 'Warning': 'None'}"  />
+			</firstStatus>
+				<secondStatus>
+				<ObjectStatus
+					text="{ZRMM_FRVISITV2_CDS>CHL1Name}"
+					state="Information" />
+			</secondStatus>
+			<!-- <ObjectAttribute text="Visit On {
+  path: 'ZRMM_FRVISITV2_CDS>Createdatetime',
+  type: 'sap.ui.model.type.Date'
+  }" /> -->
+  <ObjectAttribute text="{ZRMM_FRVISITV2_CDS>CustomerFullName}" active="true"/>
+  
+			<ObjectAttribute text="{ZRMM_FRVISITV2_CDS>StreetName}, {ZRMM_FRVISITV2_CDS>CityName}, {ZRMM_FRVISITV2_CDS>PostalCode}" active="true"/>
+
+									<ObjectAttribute text="{ZRMM_FRVISITV2_CDS>SalesLeadName} {ZRMM_FRVISITV2_CDS>SaleSupportName}"/>
+
+						<ObjectAttribute text="Visit No. - {= isNaN(${ZRMM_FRVISITV2_CDS>Visitid}) ? 'NEW': Number(${ZRMM_FRVISITV2_CDS>Visitid})}" active="true"/>
+
+		</ObjectListItem>
+	</List>
+	</Popover>
+</core:FragmentDefinition>

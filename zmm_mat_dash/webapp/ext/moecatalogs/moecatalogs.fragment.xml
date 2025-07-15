@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:smartTable="sap.ui.comp.smarttable" 
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+              <smartTable:SmartTable
+				tableType="Table"
+				initiallyVisibleFields="Material,SalesOrganization,MobileMaterialDescription,PackSize,MaterialHidden,AttributeTags,MaterialCondition"
+				requestAtLeastFields="Material"
+				id="ZCMM_MATDASH_MOBCAT"
+				entitySet="ZCMM_MATDASH_MOBCAT"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="MOE Catalogs"
+				showRowCount="true"
+				persistencyKey="ZCMM_MATDASH_MOBCAT"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				showFullScreenButton = "true"
+				
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			
+			
+		</smartTable:customToolbar>
+        </smartTable:SmartTable>
+</core:FragmentDefinition>

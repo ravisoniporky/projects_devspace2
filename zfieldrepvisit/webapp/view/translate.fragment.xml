@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="myPopover"
+		title="Translation to {translateModel>/lang}"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Auto"
+		width="500px">
+		
+		<TextArea value="{translateModel>/text}" height="300px" width="300px" editable="false"/>
+	</Popover>
+</core:FragmentDefinition>

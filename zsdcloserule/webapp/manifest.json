@@ -1,0 +1,159 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "customer.porky.zsdcloserule",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.15.0",
+            "toolsId": "9defbea1-b34e-4530-a8ff-662aceb13f94"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZSB_C_CLOSERRULE/",
+                "type": "OData",
+                "settings": {
+                    "annotations": ["ZSB_C_CLOSERRULE_Annotation"],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZSB_C_CLOSERRULE_Annotation": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_CLOSERRULE_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZSB_C_CLOSERRULE/ZSB_C_CLOSERRULE_Annotation.xml"
+                }
+            },
+            "ZSB_C_CLOSERRULE": {
+                "uri": "/sap/opu/odata/sap/ZSB_C_CLOSERRULE",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZSB_C_CLOSERRULE_Annotation"
+                    ],
+                    "localUri": "localService/ZSB_C_CLOSERRULE/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.108.28",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "customer.porky.zsdcloserule.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "ZSB_C_CLOSERRULE": {
+                "dataSource": "ZSB_C_CLOSERRULE",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "customer.porky.zsdcloserule.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetView1"
+                    ]
+                },
+                {
+                    "name": "CloseRuleMaint",
+                    "pattern": "CloseRuleMaint/:rule::",
+                    "target": [
+                        "CloseRuleMaint"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View1",
+                    "viewName": "View1"
+                },
+                "CloseRuleMaint": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CloseRuleMaint",
+                    "viewName": "CloseRuleMaint"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "customer.porky.zsdcloserule.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

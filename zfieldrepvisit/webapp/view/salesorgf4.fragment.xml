@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		noDataText="No Sales Org Found"
+		title="Select  Sales Org"
+		search=".handleSalesOrgSearch"
+		searchPlaceholder="Search Sales Org"
+		confirm=".handleValueHelpSalesOrg"
+		cancel=".handleValueHelpClose"
+		showClearButton="true"
+		items="{
+			path : 'ZI_DEFAULTSHVH_CDS>/ZBSD_SalesOrganization'
+		}">
+		<ColumnListItem >
+			<cells>
+				<ObjectIdentifier title="{ZI_DEFAULTSHVH_CDS>SalesOrganization}"  />
+					<Text text="{ZI_DEFAULTSHVH_CDS>salesorgname}" />
+					
+			</cells>
+		</ColumnListItem>
+
+		<columns>
+			<Column width="12em">
+				<header>
+					<Text text="Sales Org" />
+				</header>
+			</Column>
+					
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<header>
+					<Text text="Sales Org Text" />
+				</header>
+			</Column>
+			
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

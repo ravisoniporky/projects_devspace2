@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+                    	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Sales Info for {customerData>/Customer}"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+				<f:toolbar>
+			<Toolbar  >
+
+
+			<Title text="Sales Info"  />
+					<ToolbarSpacer />
+					
+					<Button icon="sap-icon://action"
+						press="onClickHeader" />
+			</Toolbar>
+			</f:toolbar>
+			<f:content>
+				<ObjectIdentifier title="YTD Sales" emptyIndicatorMode= "Auto" titleActive="true" />
+				<Text id="name" text="$ {path:'customerData>/YTDSales',  type:'sap.ui.model.type.Float'}" />
+				
+				<ObjectIdentifier title="Last Sale Date" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiSmallMarginTop"/>
+				<Text id="name1" text="{path: 'customerData>/LastSaleDt',type: 'sap.ui.model.type.Date', constraints:{displayFormat:'Date'}}" />
+
+				<ObjectIdentifier title="Last Sales Amount" emptyIndicatorMode= "Auto" titleActive="true" class="sapUiSmallMarginTop"/>
+				<Text id="name2" text="$ {path: 'customerData>/LastSaleAmt', type:'sap.ui.model.type.Float'}" />
+
+				
+			</f:content>
+		</f:SimpleForm>
+
+      
+	</VBox>
+
+
+</core:FragmentDefinition>

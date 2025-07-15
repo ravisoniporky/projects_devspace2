@@ -1,0 +1,104 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog
+		id="myDialog_mob"
+		title="Phoner Number Matching List of Contacts"
+		
+		contentHeight="100%"
+		>
+		<Table items="{
+			path : 'mobileKeyDeptModel>/results'
+		}" 		noDataText="No Matching Found" >
+		<ColumnListItem vAlign="Middle" type="Inactive">
+			<cells>
+							<ObjectIdentifier title="{mobileKeyDeptModel>CustomerName}" text="{mobileKeyDeptModel>Customer}" />
+				<Text text="{mobileKeyDeptModel>CustomerAddress}" />
+
+				<Text  text="{mobileKeyDeptModel>ContactPeson}" />
+												<Text text="{mobileKeyDeptModel>ContactPersonName}" />
+
+								<!-- <Text text="{mobileKeyDeptModel>DepartmentName}" /> -->
+												<Text text="{mobileKeyDeptModel>Telephone}" />
+												<Text text="{mobileKeyDeptModel>MobilePhone}" />
+												<Text text="{mobileKeyDeptModel>PreferredPhoneNumber}" />
+
+				<Text text="{mobileKeyDeptModel>ContactPersonEmail}" />
+				
+
+				<!-- <Text text="{mobileKeyDeptModel>ContactPersonMobile}" /> -->
+
+<VBox>
+								<Button icon="sap-icon://journey-change" text="Reassign" type="Emphasized" press="onRemoveMobileAssignment" width="120px" visible="{= ${mobileKeyDeptModel>CustomerName} === '' ? false : typeof ${mobileKeyDeptModel>CustomerName} === 'undefined' ? false : true }"/>
+
+								<Button icon="sap-icon://undo" text="Assign" type="Emphasized" press="onAssignMobileAssignment" width="120px" />
+
+</VBox>
+			</cells>
+		</ColumnListItem>
+		<columns>
+		<Column width="6rem">
+				<header>
+					<Text text="Customer" />
+				</header>
+			</Column>
+			<Column width="6rem">
+				<header>
+					<Text text="Customer Address" />
+				</header>
+			</Column>
+			<Column width="6rem">
+				<header>
+					<Text text="Customer Contact"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" width="6rem">
+				<header>
+					<Text text="Contact Person Fullname" />
+				</header>
+			</Column>
+
+			<Column width="6rem">
+				<header>
+					<Text text="Telephone"/>
+				</header>
+			</Column>
+			<Column width="6rem">
+				<header>
+					<Text text="Mobile Phone"/>
+				</header>
+			</Column>
+			<Column width="6rem">
+				<header>
+					<Text text="Preferred Phone Number"/>
+				</header>
+			</Column>
+			<!-- <Column >
+				<header>
+					<Text text="Department" />
+				</header>
+			</Column> -->
+				<Column minScreenWidth="Tablet" demandPopin="true" width="6rem">
+				<header>
+					<Text text="Email" />
+				</header>
+			</Column>
+			<!-- <Column minScreenWidth="Tablet" demandPopin="true" width="8rem">
+				<header>
+					<Text text="Mobile Number" />
+				</header>
+			</Column> -->
+			
+				<Column  width="6rem">
+				<header>
+					<Text text="" />
+				</header>
+			</Column>
+			
+		</columns>
+		</Table>
+		<endButton>
+			<Button text="Cancel" type="Emphasized" press="onClickCancel"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

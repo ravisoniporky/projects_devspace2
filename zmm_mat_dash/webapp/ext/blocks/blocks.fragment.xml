@@ -1,0 +1,320 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:sf="sap.ui.comp.smartfield"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:ui="sap.ui.table" xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+	<!-- Card's Content area code goes here -->
+
+	<f:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+		emptySpanL="2" emptySpanM="2" emptySpanXL="2"
+		labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"  columnsXL="2" columnsL="2" columnsM="2" xmlns:ui="sap.ui.table">
+		<f:content>
+			<core:Title />
+			<!-- <Label text="Mark for Deletion" /> -->
+			<!-- <CheckBox select="onCheckBoxSelected1" selected="{mainModel>/allBlock}"/> -->
+			<!-- <Switch state="{mainModel>/allBlock}" type="AcceptReject"/> -->
+
+			<!-- <Label text="All Purchasing Status" /> -->
+			<!-- <Input value="{Street}" showValueHelp="true">
+				</Input> -->
+			<!-- <ComboBox selectionChange="onPurchStatusSelection1" items="{
+					path: '/ZI_MAT_PURCHSTATUS2_VH'
+				}" selectedKey="{mainModel>/purchStatus}">
+				<core:Item key="{PurchasingMaterialStatus}" text="{PurchasingMaterialStatusText}" />
+			</ComboBox> -->
+
+			<!-- <SegmentedButton selectedKey="{mainModel>/purchStatus}" items="{
+					path: '/ZI_MAT_PURCHSTATUS2_VH'
+				}">
+					<items>
+						<SegmentedButtonItem key="{PurchasingMaterialStatus}" text="{PurchasingMaterialStatusText}"  />
+						
+					</items>
+				</SegmentedButton> -->
+				<Label text="Central Block" />
+				<Button  press="pressBlockButtonC" active="true"  width="150px"
+				
+				text="{= ${mainModel>/CentralBlock} !== false ? 'Blocked' : 'Unblocked'}"  type="{= ${mainModel>/CentralBlock} !== false ? 'Negative' : 'Accept'}" inverted="true" icon="{= ${mainModel>/CentralBlock}  !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+		
+		<Label text="X-Plant Block" />
+				<Button  press="pressBlockButtonXP" active="true" width="150px"
+				
+				text="{= ${mainModel>/CrossPlantBlock} !== false ? 'Blocked' : 'Unblocked'}"  type="{= ${mainModel>/CrossPlantBlock} !== false ? 'Negative' : 'Accept'}" inverted="true" icon="{= ${mainModel>/CrossPlantBlock}  !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+		
+
+			<Label text="X-Plant Status Validity Date" />
+			<DatePicker  dateValue="{mainModel>/CrossPlantStatusValidityDate}" width="150px" />
+
+			<Label text="X-Sales Org Block" />
+				<Button  press="pressBlockButtonXS" active="true" width="150px"
+				
+				text="{= ${mainModel>/CrossSalesorgBlock} !== false ? 'Blocked' : 'Unblocked'}"  type="{= ${mainModel>/CrossSalesorgBlock} !== false ? 'Negative' : 'Accept'}" inverted="true" icon="{= ${mainModel>/CrossSalesorgBlock}  !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+		
+
+			<Label text="X-Sales Org Status Validity Date" />
+			<DatePicker  dateValue="{mainModel>/CrossSorgStatusValidityDate}" width="150px"/>
+
+
+<core:Title />
+			<Label text="Block Type" />
+			<ComboBox width="150px" items="{
+					path: '/ZI_MATBLOCKS_VH'
+				}" selectedKey="{mainModel>/Blocktype}">
+				<core:Item key="{Blocktype}" text="{Blocktype}" />
+			</ComboBox>
+
+
+			<Label text="Division" />
+			<ComboBox width="150px" items="{
+					path: '/ZI_SALESDIVISIONS_VH'
+				}" selectedKey="{mainModel>/Companydivision}">
+				<core:Item key="{companyDivision}" text="{companyDivision} {Division}" />
+			</ComboBox> 
+
+<Label text="Valid Sales Date" />
+			<DatePicker width="150px" change="onValidSalesDate1" dateValue="{mainModel>/Salesstatusvaldt}" />
+
+			<Label text="Valid Purchase Date" />
+			<DatePicker width="150px" change="onValidPurchaseDate1" dateValue="{mainModel>/Purchstatusvaldt}" />
+
+
+			
+		
+
+			
+			<Label text="" />
+			<HBox width="100%" justifyContent="Center">
+				<Button text="Apply" press="onValidateBlockMaterials" class="sapUiTinyMargin" width="80px" >
+
+	<customData>
+     <core:CustomData key="Validate"/>
+   </customData>
+				</Button>
+				<Button text="Submit" press="onSubmitBlockMaterials1" class="sapUiTinyMargin" width="80px" >
+				<customData>
+     <core:CustomData key="Submit"/>
+   </customData>
+				</Button>
+			</HBox>
+
+		</f:content>
+	</f:SimpleForm>
+	<!-- <smartTable:SmartTable
+				tableType="Table"
+				initiallyVisibleFields="Material,Plant,Plant,SalesOrganization,CentralBlock,PlantBlock,SalesOrgBlock"
+				id="ZCMM_MATDASH_BLOCKSType"
+				entitySet="ZCMM_MATDASH_BLOCKS"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="Material Blocks"
+				showRowCount="true"
+				persistencyKey="ZCMM_MATDASH_BLOCKS"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				showFullScreenButton = "true"
+				
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			
+			
+		</smartTable:customToolbar> -->
+
+	<ui:Table growing="true" rows="{/ZCMM_MATDASH_BLOCKS}" id="ZCMM_MATDASH_BLOCKSTable">
+
+
+
+
+		<ui:columns>
+		<ui:Column hAlign="Begin" width="150px">
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "Statusmessage", "autoColumnWidth": \{ "visibleProperty": "Statusmessage" }, "columnIndex": 1, "leadingProperty": "Statusmessage", "sortProperty": "Statusmessage", "additionalProperty": "Statusmessage", "additionalSortProperty": "Statusmessage","type": "String"}' />
+				</ui:customData>
+				<Text text="Status Message" />
+				<ui:template>
+					<Text text="{Statusmessage}" />
+				</ui:template>
+			</ui:Column>
+
+			<ui:Column hAlign="Begin" width="150px">
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "Material", "autoColumnWidth": \{ "visibleProperty": "Material" }, "columnIndex": 1, "leadingProperty": "Material", "sortProperty": "Material", "additionalProperty": "Material", "additionalSortProperty": "Material","type": "String"}' />
+				</ui:customData>
+				<Text text="Material" />
+				<ui:template>
+					<Text text="{Material}" />
+				</ui:template>
+			</ui:Column>
+
+
+			
+			<ui:Column hAlign="Begin" width="130px" visible="false">
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "CentralBlock", "autoColumnWidth": \{ "visibleProperty": "CentralBlock" }, "columnIndex": 1, "leadingProperty": "CentralBlock", "sortProperty": "CentralBlock", "additionalProperty": "CentralBlock", "additionalSortProperty": "CentralBlock","type": "String"}' />
+				</ui:customData>
+				<Text text="Central Block" />
+				<ui:template>
+					<!-- <CheckBox selected="{CentralBlock}" /> -->
+					<!-- <Switch state="{CentralBlock}" type="AcceptReject" customTextOn="Central" customTextOff="Central"/> -->
+						<Button enabled="{Editable}"  press="pressBlockButtonC" active="true" 
+						text="{= ${CentralBlock} !== false ? 'Blocked' : 'Unblocked'}"   type="{= ${CentralBlock} !== false ? 'Negative' : 'Accept'}"  inverted="true" icon="{= ${CentralBlock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+		
+					<!-- <Switch state="{PlantBlock}" type="Default" customTextOn="Plant" customTextOff="Plant"/>
+					<Switch state="{SalesOrgBlock}" type="Default" customTextOn="Sales" customTextOff="Sales"/> -->
+				</ui:template>
+			</ui:Column>
+
+			<ui:Column hAlign="Begin" width="130px" >
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "PlantBlock", "autoColumnWidth": \{ "visibleProperty": "PlantBlock" }, "columnIndex": 2, "leadingProperty": "PlantBlock", "sortProperty": "PlantBlock", "additionalProperty": "PlantBlock", "additionalSortProperty": "PlantBlock","type": "String"}' />
+				</ui:customData>
+				<Text text="Plant Block" />
+				<ui:template>
+					<!-- <CheckBox selected="{PlantBlock}" editable="true" /> -->
+<!-- <Switch state="{PlantBlock}" type="AcceptReject" visible="true"/> -->
+<Button press="pressBlockButtonP" enabled="{Editable}"  active="true" 
+						text="{= ${PlantBlock} !== false ? 'Blocked' : 'Unblocked'}"   type="{= ${PlantBlock} !== false ? 'Negative' : 'Accept'}"  inverted="true" icon="{= ${PlantBlock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+			
+				</ui:template>
+			</ui:Column>
+
+			<ui:Column hAlign="Begin" width="130px" >
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "SalesOrgBlock", "autoColumnWidth": \{ "visibleProperty": "SalesOrgBlock" }, "columnIndex": 3, "leadingProperty": "SalesOrgBlock", "sortProperty": "SalesOrgBlock", "additionalProperty": "SalesOrgBlock", "additionalSortProperty": "SalesOrgBlock","type": "String"}' />
+				</ui:customData>
+				<Text text="SalesOrg Block" />
+				<ui:template>
+				<!-- <Switch state="{SalesOrgBlock}" type="AcceptReject"/> -->
+				<Button enabled="{Editable}" press="pressBlockButtonS" active="true" 
+						text="{= ${SalesOrgBlock} !== false ? 'Blocked' : 'Unblocked'}"  type="{= ${SalesOrgBlock} !== false ? 'Negative' : 'Accept'}" inverted="true" icon="{= ${SalesOrgBlock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/>
+		
+					<!-- <CheckBox selected="{SalesOrgBlock}" editable="true" /> -->
+
+				</ui:template>
+			</ui:Column>
+
+
+
+			<ui:Column hAlign="Begin" width="250px">
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "PurchasingStatus", "autoColumnWidth": \{ "visibleProperty": "PurchasingStatus" }, "columnIndex": 5, "leadingProperty": "PurchasingStatus", "sortProperty": "PurchasingStatus", "additionalProperty": "PurchasingStatus", "additionalSortProperty": "PurchasingStatus","type": "String"}' />
+				</ui:customData>
+				<Text text="Purchasing Status" />
+				<ui:template>
+					<!-- <CheckBox selected="{AllPurchStatus}" /> -->
+					<ComboBox selectedKey="{PurchasingStatus}" editable="{Editable}" items="{
+					path: '/ZI_MAT_PURCHSTATUS_VH'
+				}">
+						<core:Item key="{PurchasingMaterialStatus}" text="{PurchasingMaterialStatusText}" />
+					</ComboBox>
+					<!-- <SegmentedButton selectedKey="{PurchasingStatus}" items="{
+					path: '/ZI_MAT_PURCHSTATUS2_VH'
+				}">
+					<items>
+						<SegmentedButtonItem key="{PurchasingMaterialStatus}" text="{PurchasingMaterialStatusText}"  />
+						
+					</items>
+				</SegmentedButton> -->
+				</ui:template>
+			</ui:Column>
+
+			<ui:Column hAlign="Begin" width="150px">
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "PurchStatusValidityDate", "autoColumnWidth": \{ "visibleProperty": "PurchStatusValidityDate" }, "columnIndex": 6, "leadingProperty": "PurchStatusValidityDate", "sortProperty": "PurchStatusValidityDate", "additionalProperty": "PurchStatusValidityDate", "additionalSortProperty": "PurchStatusValidityDate","type": "datetime"}' />
+				</ui:customData>
+				<Text text="Purch Status Validity Date" />
+				<ui:template>
+					<DatePicker editable="{Editable}"  value = "{ path: 'PurchStatusValidityDate', type: 'sap.ui.model.type.DateTime', formatOptions: {  UTC: true } }" />
+				</ui:template>
+			</ui:Column>
+
+
+
+			<ui:Column hAlign="Begin" width="150px">
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "SalesMaterialStatus", "autoColumnWidth": \{ "visibleProperty": "SalesMaterialStatus" }, "columnIndex": 7, "leadingProperty": "SalesMaterialStatus", "sortProperty": "SalesMaterialStatus", "additionalProperty": "SalesMaterialStatus", "additionalSortProperty": "SalesMaterialStatus","type": "String"}' />
+				</ui:customData>
+				<Text text="Sales Status" />
+				<ui:template>
+					<!-- <Input selected="{AllSalesStatus}" showValueHelp="true"/> -->
+
+
+
+					<ComboBox selectedKey="{SalesStatus}" editable="{Editable}" items="{
+					path: '/ZI_MAT_SALESSTATUS_VH'
+				}">
+						<core:Item key="{SalesMaterialStatus}" text="{SalesMaterialStatusText}" />
+					</ComboBox>
+
+
+				</ui:template>
+
+
+
+			</ui:Column>
+
+
+
+
+
+			<ui:Column hAlign="Begin" width="150px">
+				<ui:customData>
+					<core:CustomData key="p13nData"
+						value='\{"columnKey": "SalesStatusValidityDate", "autoColumnWidth": \{ "visibleProperty": "SalesStatusValidityDate" }, "columnIndex": 8, "leadingProperty": "SalesStatusValidityDate", "sortProperty": "SalesStatusValidityDate", "additionalProperty": "SalesStatusValidityDate", "additionalSortProperty": "SalesStatusValidityDate","type": "datetime"}' />
+				</ui:customData>
+				<Text text="Sales Status Validity Date" />
+				<ui:template>
+					<DatePicker editable="{Editable}" dateValue="{SalesStatusValidityDate}" />
+				</ui:template>
+			</ui:Column>
+
+
+			<ui:Column hAlign="Begin" width="150px">
+
+				<Text text="Plant" />
+				<ui:template>
+					<Text text="{Plant}" />
+				</ui:template>
+			</ui:Column>
+
+			<ui:Column hAlign="Begin" width="150px">
+
+				<Text text="Sales Organization" />
+				<ui:template>
+					<Text text="{SalesOrganization}" />
+				</ui:template>
+			</ui:Column>
+
+
+
+
+		</ui:columns>
+		<!-- <items>
+				<ColumnListItem>
+					<cells>
+					</cells>
+					
+				</ColumnListItem>
+			</items> -->
+
+	</ui:Table>
+
+	<!-- </smartTable:SmartTable> -->
+
+
+</core:FragmentDefinition>

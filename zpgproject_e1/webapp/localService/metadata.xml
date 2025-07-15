@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZODATA_PGCOMPARESALES_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZCSD_PG_PROJECTONType" sap:semantics="aggregate" sap:label="PG Porjection Vs Actual" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vkorg" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sales Org." sap:quickinfo="Sales Organization"/>
+                <Property Name="Gjahr" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:filter-restriction="single-value" sap:required-in-filter="true" sap:label="Year" sap:quickinfo="Fiscal Year"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer Number"/>
+                <Property Name="Attribute" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Attribute"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="AS01" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:heading="Jan" sap:filterable="false"/>
+                <Property Name="AS02" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Feb" sap:filterable="false"/>
+                <Property Name="AS03" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Mar" sap:filterable="false"/>
+                <Property Name="AS04" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Apr" sap:filterable="false"/>
+                <Property Name="AS05" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="May" sap:filterable="false"/>
+                <Property Name="AS06" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Jun" sap:filterable="false"/>
+                <Property Name="AS07" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Jul" sap:filterable="false"/>
+                <Property Name="AS08" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Aug" sap:filterable="false"/>
+                <Property Name="AS09" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Sep" sap:filterable="false"/>
+                <Property Name="AS10" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Oct" sap:filterable="false"/>
+                <Property Name="AS11" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Nov" sap:filterable="false"/>
+                <Property Name="AS12" Type="Edm.Decimal" Precision="22" Scale="2" sap:aggregation-role="measure" sap:label="Dec" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZODATA_PGCOMPARESALES_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZCSD_PG_PROJECTON" EntityType="ZODATA_PGCOMPARESALES_SRV.ZCSD_PG_PROJECTONType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:requires-filter="true" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZODATA_PGCOMPARESALES_SRV.ZODATA_PGCOMPARESALES_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZODATA_PGCOMPARESALES_SRV.ZODATA_PGCOMPARESALES_SRV_Entities/ZCSD_PG_PROJECTON" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiresFilter" Bool="true"/>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>AS01</PropertyPath>
+                                <PropertyPath>AS02</PropertyPath>
+                                <PropertyPath>AS03</PropertyPath>
+                                <PropertyPath>AS04</PropertyPath>
+                                <PropertyPath>AS05</PropertyPath>
+                                <PropertyPath>AS06</PropertyPath>
+                                <PropertyPath>AS07</PropertyPath>
+                                <PropertyPath>AS08</PropertyPath>
+                                <PropertyPath>AS09</PropertyPath>
+                                <PropertyPath>AS10</PropertyPath>
+                                <PropertyPath>AS11</PropertyPath>
+                                <PropertyPath>AS12</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>Gjahr</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Gjahr"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_PGCOMPARESALES_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_PGCOMPARESALES_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

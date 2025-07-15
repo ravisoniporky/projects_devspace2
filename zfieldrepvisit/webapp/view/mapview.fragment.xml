@@ -1,0 +1,343 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:vbm="sap.ui.vbm"
+xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	 xmlns:l="sap.ui.layout" xmlns:commons="sap.ui.commons">
+ <Dialog id="idDialogMapView" title="Geo Location - Ship to Accounts {userValues>/baselineShipTo}" contentHeight="100%" contentWidth="100%" showHeader="true" closeOnNavigation="true" subHeader="userValues>/baselineShipTo" xmlns:vk="sap.ui.vk" xmlns:l="sap.ui.layout">
+    <subHeader >
+			 <OverflowToolbar >
+				<ToolbarSpacer/> 
+			<!-- <Switch state="{userValues>/location}" change="onChangeSwitchState1" >
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</Switch> -->
+			<Button icon="sap-icon://employee-lookup"   text="{= ${device>/system/phone} ? 'Cust.' : 'Search Customers'}" press="onSearchCustomersMapCenter" />
+				<Button icon="sap-icon://reset"  text="{= ${device>/system/phone} ? 'Reset' : 'Reset Map'}" press="onResetMap" />
+								<Label  text="{= ${device>/system/phone} ? 'Loc' : 'Location'}" ></Label>
+
+			<CheckBox selected="{userValues>/location}" select="onChangeSwitchState1" >
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</CheckBox>
+								<!-- <Button text="FullScreen" press="setFullScreen" icon="sap-icon://accept"  type="Success" /> -->
+
+				<Button text="Close" icon="sap-icon://decline" press="closeDialog" type="Reject" />
+			
+
+			
+			</OverflowToolbar>
+		</subHeader>
+	<content>
+		
+
+			<IconTabBar
+		id="idIconTabBarFiori2"
+		expanded="{device>/isNoPhone}"
+		width="100%"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				key="map"
+				icon="sap-icon://geographic-bubble-chart"
+				>
+				<VBox width="100%">
+			<VBox class="sapUiMediumMarginBottom" width="100%">
+			<Text text="Select Distance:" class="sapUiSmallMarginBottom"/>
+				<Slider min="0" max="30" enableTickmarks="true" class="sapUiSmallMarginBottom" width="100%" value="{= Number(${userValues>/milesSet})}" liveChange="onChangeDistance" id="mapSlider" enabled="{userValues>/location}">
+			<ResponsiveScale tickmarksBetweenLabels="3"/>
+		</Slider>
+		</VBox>
+		<VBox height="1000px">
+			<vk:MapContainer  showFullScreen="true" showSettings="false" height="1000px">
+				<vk:content>
+					<vk:ContainerContent title="Geo Map"
+						icon="sap-icon://map-2" height="1000px">
+						<vk:content>
+						
+						<Panel height="1000px">
+						
+<vbm:GeoMap id="vbi" width="100%" 
+				height="1000px" initialZoom="12" openWindow="onOpenDetail" closeWindow="onCloseDetail"  scaleVisible="false">
+				
+				<vbm:vos>
+					<vbm:Spots click="onClickItem" posChangeable="true"
+						scaleChangeable="false" contextMenu="onContextMenuItem" items="{latlongModel>/Spots/items}" id="idSpots">
+						<vbm:items>
+							<vbm:Spot id="Spot" position="{latlongModel>pos}"
+							type="{= ${latlongModel>sorg} === '3000' ? 'Error' : ${latlongModel>sorg} === '3100' ? 'Default'  : ${latlongModel>sorg} === '4000' ? 'Inactive' : ${latlongModel>sorg} === '4100' ?   'Success' : 'Warning' }"
+							
+							 tooltip="{latlongModel>sorg} - {latlongModel>Shipto} - {latlongModel>stras} - {latlongModel>tooltip}" scale="{latlongModel>scale}"
+								 text="{latlongModel>text}" contentOffset="{latlongModel>contentOffset}"
+								click="handlePopoverPress" contextMenu="onContextMenuSpot">
+							</vbm:Spot>
+						</vbm:items>
+					</vbm:Spots>
+				
+				</vbm:vos>
+			
+			</vbm:GeoMap>
+				
+			</Panel>
+				</vk:content>
+					</vk:ContainerContent>
+				</vk:content>
+			</vk:MapContainer>
+			</VBox>
+			</VBox>
+			</IconTabFilter>
+
+			<IconTabFilter
+				key="attachments"
+				icon="sap-icon://table-view"
+				count="{userValues>/countShipTo}">
+				<VBox width="100%" >
+
+<ScrollContainer  height="1000px" vertical="true">
+
+
+
+
+	 <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" entitySet="ZBMM_FieldRepNearbyCustomerSet" useToolbar="false"
+			 persistencyKey="smarttableCustF4_filter1"   enableBasicSearch="true" advancedMode="false" filterBarExpanded="false" >
+				<smartFilterBar:controlConfiguration>
+				 <smartFilterBar:ControlConfiguration
+						key="p_lat"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 	
+
+
+				  <smartFilterBar:ControlConfiguration
+						key="p_long"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 
+
+
+
+				  <smartFilterBar:ControlConfiguration
+						key="p_distinm"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 
+				 	
+				 		</smartFilterBar:controlConfiguration>
+
+			</smartFilterBar:SmartFilterBar> 
+			<smartTable:SmartTable id="smartTable_custF4_map" entitySet="ZBMM_FieldRepNearbyCustomerSet"  smartFilterId="smartFilter_custF4_map"
+				requestAtLeastFields="altkn, storeno,kunnr,stras,ort01,regio,pstlz,DistanceInMiles,vkorg,hier1_name,sm,ss,altkn, kunnr,vkorg, zzlongitude,zzlatitude,name1,DistanceInMiles,kunnr,stras,sm,ort01,hier1_name,vkorg,CreditBLock,Deleted"
+				beforeRebindTable="onBeforeRebindCustomerF4_map"
+			 tableType="ResponsiveTable" useExportToExcel="true"
+			 
+			
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 header="Customers" showRowCount="true" persistencyKey="smarttableCustF41_new1map"
+			  enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+			  enableAutoColumnWidth="true"  app:useSmartToggle="true">
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+			
+
+				<Table mode="SingleSelectMaster" updateFinished="onFinishedCustomers"  itemPress="handleSelectCustomer" selectionChange="handleSelectCustomer" sticky="ColumnHeaders,HeaderToolbar">
+				
+				
+				<columns>
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "altkn1",  "columnIndex": 8}' />
+					</customData>
+					<Label text="Direction" />
+				</Column>
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "altkn2", "columnIndex": 9}' />
+					</customData>
+					<Label text="New Visit" />
+				</Column>
+				
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+					<Button text="Directions" press="shareMapDirection" icon="sap-icon://map-2" width="120px" type="Emphasized"/>
+					<Button text="New Visit" press="shareNewVisit" icon="sap-icon://visits" width="120px" type="Emphasized"/>
+
+					</cells>
+					
+				</ColumnListItem>
+			</items>
+
+				
+				
+				</Table>
+
+
+
+					</smartTable:SmartTable>
+
+			
+	<SearchField visible="false"
+							placeholder="Filter"
+							value="{ui>/globalFilter}"
+							search="filterGlobally"
+							width="20rem"
+							id="searchFilterGlobal"
+							class="sapUiSmallMarginBegin"/>
+
+
+
+
+
+
+				<Table id="idProductsTable" autoPopinMode="true" mode="SingleSelectLeft" visible="false"
+				 contextualWidth="Auto" popinChanged=".onPopinChanged"
+				
+				 items="{ path: 'latlongModel>/Spots/items' , sorter: [{ path: 'distance' ,descending: false }] }"
+				  selectionChange="onSelectionChange" >
+		<headerToolbar>
+			<OverflowToolbar>
+				 <Title text="Ship To ({userValues>/countShipTo})" level="H2" />
+		
+					<ToolbarSpacer/>
+						<Button text="Create Visit" press="onClickVisit"/>
+					
+							<CheckBox text="Deleted" selected="{searchModel>/deleted}" select="filterGlobally"/>
+				<CheckBox text="Credit Block" selected="{searchModel>/CreditBLock}" select="filterGlobally"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+		<Column width="4em" importance="High">
+				<CheckBox select="selectAllFunction"></CheckBox>
+			</Column>
+			<Column width="14em" importance="Low">
+				<Text text="Ship to" />
+			</Column>
+			
+			<Column width="10em" importance="Low">
+				<Text text="Address" />
+			</Column>
+				<Column width="8em" importance="High">
+				<Text text="City" />
+			</Column>
+				<Column width="8em" importance="Low">
+				<Text text="CHL1 Name" />
+			</Column>
+			
+			<Column width="8rem" importance="High">
+				<Text text="Sales Lead" />
+			</Column>
+			<Column width="7rem" importance="High">
+				<Text text="Prev. Cust." />
+			</Column>
+			<Column width="5em" importance="High">
+				<Text text="Miles" />
+			</Column>
+			<Column width="5em" importance="High">
+				<Text text="Sales Org" />
+			</Column>
+			<Column width="4em" importance="None">
+				<Text text="Directions" />
+			</Column>
+			<Column width="4em" importance="None">
+				<Text text="Deleted" />
+			</Column>
+			<Column width="4em" importance="None">
+				<Text text="Credit Block" />
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle" selected="true" >
+				<cells>
+				<CheckBox selected="{latlongModel>selected}" select="onSelectionChange1"></CheckBox>
+					<ObjectIdentifier title="{latlongModel>ShiptoName}" text="{latlongModel>Shipto}" />
+					<Text text="{latlongModel>stras}" />
+										<Text text="{latlongModel>city}" />
+										<Text text="{latlongModel>level}" />
+
+					<Text text="{latlongModel>Salesman}" />
+						<Text text="{latlongModel>altkn}" />
+					
+					<Text text="{latlongModel>distance}" />
+					<Text text="{latlongModel>sorg}" />
+
+					<Button text="Directions" press="shareMapDirection" icon="sap-icon://map-2" width="200px"/>
+					<Text text="{latlongModel>Deleted}" />
+					<Text text="{latlongModel>CreditBLock}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</ScrollContainer>
+			</VBox>
+			</IconTabFilter>
+			<!-- <IconTabFilter
+				key="attachments1"
+				icon="sap-icon://table-view"
+				count="{userValues>/countShipTo}">
+	<l:FixFlex class="fixFlexVertical">
+		
+		<l:flexContent>
+			<vk:MapContainer autoAdjustHeight="true">
+				<vk:content>					
+					<vk:ContainerContent title="Geo Map"
+						icon="sap-icon://map-2">
+						<vk:content>
+							<vbm:GeoMap id="vbi1" height="600px">
+							</vbm:GeoMap>
+						</vk:content>
+					</vk:ContainerContent>
+					<vk:ContainerContent title="Analytic Map"
+						icon="sap-icon://choropleth-chart">
+						<vk:content>
+							<vbm:AnalyticMap id="vbi2">
+							</vbm:AnalyticMap>
+						</vk:content>
+					</vk:ContainerContent>
+				</vk:content>
+			</vk:MapContainer>
+		</l:flexContent>
+	</l:FixFlex>
+				</IconTabFilter> -->
+		</items>
+	</IconTabBar>
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			
+			</content>
+				
+    </Dialog>
+</core:FragmentDefinition>

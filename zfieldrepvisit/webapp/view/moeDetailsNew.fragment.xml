@@ -1,0 +1,122 @@
+<core:FragmentDefinition
+xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Dialog
+		title="MOE request for {selectedMOEPeople>/SmtpAddr}" >
+		<content>
+		<f:SimpleForm 
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{selectedMOEPeople>/ContactPersonName}"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<!-- <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Department/@sap:label}" />
+				<Input  value="{selectedMOEPeople>/Department}" />  
+				<Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Customer/@sap:label}" />
+				<Input value="{selectedMOEPeople>/Customer}"/> -->
+				<!-- <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/DepartmentName/@sap:label}" />
+				<Input value="{selectedMOEPeople>/DepartmentName}"/> -->
+
+				<Label text="Firstname" />
+				<Input value="{selectedMOEPeople>/firstName}" >
+
+				</Input>
+
+				<Label text="Lastname" />
+				<Input value="{selectedMOEPeople>/lastName}"  >
+
+				</Input>
+
+                <Label text="{ZODATA_FR_SRV>/#RequestMOE/SmtpAddr/@sap:label}" />
+				<Input value="{selectedMOEPeople>/SmtpAddr}" type="Email" >
+
+				</Input>
+
+				<Label text="{ZODATA_FR_SRV>/#RequestMOE/MobNumber/@sap:label}" />
+				<MaskInput value="{selectedMOEPeople>/MobNumber}" mask="(999) 999 9999" placeholderSymbol="_"  placeholder="Enter 10-digit number" showClearIcon="true"/>
+
+				<Label text="{ZODATA_FR_SRV>/#RequestMOE/Device/@sap:label}" />
+				<ComboBox selectedKey="{selectedMOEPeople>/Device}" >
+						<core:Item key="Android" text="Android" />
+						<core:Item key="iOS" text="iOS" />
+				</ComboBox>			
+                
+ 				<Label text="{ZODATA_FR_SRV>/#RequestMOE/Department/@sap:label}" />
+				<MultiComboBox selectedKeys="{selectedMOEPeople>/Department}" items="{ZODATA_FR_SRV>/ZBMM_CUSTOMERDEPARTMENT}" editable="{selectedMOEPeople>/editable}" >
+						<core:Item key="{ZODATA_FR_SRV>Value}" text="{ZODATA_FR_SRV>Description}" />
+				</MultiComboBox>
+
+				<Label text="{ZODATA_FR_SRV>/#RequestMOE/Kunwe/@sap:label}" />
+				<Input value="{selectedMOEPeople>/Kunwe}" editable="false"/>
+				
+
+					<!-- <Label text="{ZODATA_FR_SRV>/#RequestMOE/customername/@sap:label}" />
+				<Input value="{selectedMOEPeople>/customername}" editable="false"/> -->
+
+				<!-- <Label text="{ZODATA_FR_SRV>/#RequestMOE/p_vkorg/@sap:label}" />
+				<Input value="{selectedMOEPeople>/p_vkorg}" editable="false"/> -->
+
+					<!-- <Label text="{ZODATA_FR_SRV>/#RequestMOE/entitled_shipto/@sap:label}" />
+				<Input value="{selectedMOEPeople>/entitled_shipto}" editable="false"/> -->
+
+					<Label text="{ZODATA_FR_SRV>/#RequestMOE/Emailconfirm/@sap:label}" />
+				<CheckBox selected="{selectedMOEPeople>/Emailconfirm}" />
+
+				<Label text="{ZODATA_FR_SRV>/#RequestMOE/Notes/@sap:label}" />
+				<TextArea value="{selectedMOEPeople>/Notes}" />
+
+
+		
+			</f:content>
+		</f:SimpleForm>
+		</content>
+        <beginButton>
+					 <!-- enabled="{= ${chageModeModel>/valueStateMobile} === 'Success' ? true : ${chageModeModel>/valueStateEmail} === 'Success' ? true  : false}" -->
+
+			<Button tooltip="Save"
+			 icon="sap-icon://accept"  type="Accept"
+			  press="onAddNewMOEContact"
+			   text="Submit" enabled="{= ${chageModeModel>/valueStateMobile} === 'Error' ? false: true }"/>
+		</beginButton>
+		<endButton>
+			<Button tooltip="Close" icon="sap-icon://cancel"  type="Reject" press="onDialogCloseKeyPeople" text="Close" />
+		</endButton>
+		<!-- <footer>
+			<Toolbar>
+				<content>
+					<Button id="messagePopoverBtn"
+						visible="{= !!${message>/}.length }"
+						icon="{ path: '/', formatter: '.buttonIconFormatter' }"
+						type="{ path: '/', formatter: '.buttonTypeFormatter' }"
+						text="{ path: '/', formatter: '.highestSeverityMessages' }"
+						press=".handleMessagePopoverPress"
+						ariaHasPopup="Dialog" />
+					<ToolbarSpacer />
+					<Button type="Accept"
+							text="Save"
+							press="._generateInvalidUserInput" />
+					<Button id="Reject"
+						text="Reject"
+						type="Reject"
+						press="._closeDialog"
+						ariaHasPopup="Dialog" />
+				</content>
+			</Toolbar>
+		</footer> -->
+	</Dialog>
+</core:FragmentDefinition>

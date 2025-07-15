@@ -1,0 +1,167 @@
+<mvc:View controllerName="customer.porky.zsdorderentry.controller.Page3"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+		xmlns:l="sap.ui.layout"
+	xmlns:t="sap.tnt">
+    <Page id="page3" title="Cart Screen">
+		<headerContent>
+			<Toolbar >
+				<Button
+						icon="sap-icon://Order"
+					text="Place Order"
+					type="Emphasized"
+					press=".placeOrder" />
+				<Button
+						icon="sap-icon://close-command-field"
+					text=""
+					type="Reject"
+					press=".closeCart" />
+			</Toolbar>
+		</headerContent>
+        <content >
+		<Label text="Delivery Date" labelFor="DP1"/>
+	<DatePicker
+					editable="false"
+					value="{path: 'userValues>/deldate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MM/dd/yyyy', strictParsing: false , UTC: true}}"
+					id="deliveryDate"
+					placeholder="Enter Date"
+					change="handleChange"
+					class="sapUiSmallMarginBottom"/>
+
+
+<f:GridList
+			id="gridList3"
+			headerText="Cart Items ({countModel>cartItemsCount})"
+			items="{cartModel>/materials}" modeAnimationOn="true" showSeparators="All">
+				<f:customLayout>
+				<grid:GridBoxLayout boxMinWidth="100%" />
+			</f:customLayout>
+			
+
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<f:GridListItem class="sapUiSmallMargin"
+							 	visible="{= ${cartModel>Material} === '' ? false : true}">
+								
+	<VBox>
+							
+					<VBox height="100%" justifyContent="SpaceBetween">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0" /><!-- Don't shrink below minimum size. Fill space if available. -->
+					</layoutData>
+
+					<VBox class="sapUiSmallMargin">
+						<Title text=" {cartModel>ExternalMaterialGroup} {cartModel>Material} {cartModel>OldMaterial} {cartModel>MaterialDescription}" wrapping="true" width="100%" titleStyle="H6" />
+						<HBox >
+						<Image
+					
+					src="{cartModel>ThumbnailURL}"
+					decorative="true"
+					densityAware="false"
+					class="sapUiSmallMargin"
+					width="80px"
+					height="80px">
+					<detailBox>
+						<LightBox id="lightBox">
+							<imageContent>
+								<LightBoxItem
+									imageSrc="{cartModel>ImageURL}"
+									title="{cartModel>MaterialDescription}"/>
+							</imageContent>
+						</LightBox>
+					</detailBox>
+				</Image>
+				<VBox class="sapUiSmallMargin">
+
+						<HBox>
+						<Label text="Stock:" class="sapUiTinyMarginEnd"></Label>
+						<Label text="{cartModel>Stock} {cartModel>SalesUnit}" vAlign="Inherit"></Label>
+						</HBox>
+
+						<HBox>
+						<Label text="Current Price:" class="sapUiTinyMarginEnd"></Label>
+						<Label text="{cartModel>CurrentPrice} {cartModel>CurrentPriceUnit}" vAlign="Inherit"></Label>
+						</HBox>
+
+						<HBox>
+						<Label text="Price:" class="sapUiTinyMarginEnd" vAlign="Middle"></Label>
+						<Input value="{cartModel>CurrentPrice}" />
+						</HBox>
+						<!-- <Label text="{proposedModel>OldMaterial}" wrapping="true" class="sapUiTinyMarginBottom" width="100%"/>
+						<Text text="{proposedModel>ExternalMaterialGroup} - Stock ({proposedModel>Stock} {proposedModel>SalesUnit})" wrapping="true" width="100%"/>
+						<ObjectStatus text="{= ${proposedModel>isAddedToCart} === true ? 'Added To Cart' : ''}  {proposedModel>CartQuantity}" 
+						state="{= ${proposedModel>isAddedToCart} === true ? 'Warning' : 'Success'}"  />  -->
+						</VBox>
+						</HBox>
+						<TextArea value="{cartModel>ItemNotes}" width="100%" placeholder="Item Notes"/>
+						
+					</VBox>
+					
+				</VBox>
+				
+
+	<OverflowToolbar >
+				<ToolbarSpacer/>
+					<HBox class="sapUiSmallMargin">
+				<StepInput
+						value="{cartModel>Quantity}"
+						min="0"
+						max="9999"
+						width="100px"
+						step="1"
+						
+						largerStep="{largerStep}"
+						stepMode="{stepMode}"
+						valueState="{valueState}"
+						enabled="{enabled}"
+						editable="{editable}"
+						description="{description}"
+						fieldWidth="{fieldWidth}"
+						textAlign="{textAlign}"
+						validationMode="{validationMode}"
+						change="onChange"/>
+						<Label text="{cartModel>SalesUnit}" class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiTinyMarginTop" design="Bold"></Label>
+				<Button
+						icon="sap-icon://decline"
+					text=""
+					type="Negative"
+					press=".removeCartItem" >
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+
+
+
+				
+				</HBox>
+					
+				</OverflowToolbar>
+				</VBox>
+						
+					
+					
+			</f:GridListItem>
+
+			</f:GridList>
+
+        </content>
+    </Page>
+</mvc:View>

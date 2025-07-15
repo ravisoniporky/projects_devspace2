@@ -1,0 +1,110 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"  xmlns:sfb="sap.ui.comp.smartfilterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.comp.smartform" xmlns:sf="sap.ui.comp.smartfield" controllerName="customer.porky.zbpcontactcreate.controller.CreateContact" displayBlock="true">
+    <Page xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="page" title="{i18n>title}" cd:w5g.dt.context="ZCFI_WEBEXDASH_BPCONTACT_CDS&gt;/ZCFI_WEBEXDASH_BPCONTACT">
+        <content>
+                <sfb:SmartFilterBar
+				entitySet="ZCFI_WEBEXDASH_BPCONTACT"
+				smartVariant="false"
+                considerSelectionVariants="false" 
+                basicSearch="false"
+                filterBarExpanded="true"
+				liveMode="true"
+                enableBasicSearch="false"
+				showGoOnFB="false"
+				showAllFilters="false"
+				showFilterConfiguration="false"
+				showClearOnFB="false"
+				showRestoreOnFB="false"
+				showMessages="false"
+				search="onSearchBPFilters"
+				id="smartFilterBar"
+				
+                
+			/>
+        <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+			<f:toolbar>
+				<Toolbar id="TB1">
+					<Title  text="Contact Person Form"/>
+					<ToolbarSpacer />
+					<Button icon="sap-icon://reset" text="Reset" press="onResetContact" type="Reject"/>
+
+					<Button icon="sap-icon://message-success" text="{= ${contactModel>/Bpcontactaction} === 'ASSIGN' ? 'Assign' : ${contactModel>/Bpcontactaction} === 'REASSIGN' ? 'Reassign' : 'Submit'}" press="onCreateContact"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:content>
+
+
+			 <Label text="Phone Number"  required="true" />
+
+			
+			 <HBox width="300px">
+			 <VBox>
+				<MaskInput id="telenumber" class="sapUiTinyMarginTop" value="{contactModel>/Bpcontactphone}" mask="(999) 999 9999" placeholderSymbol="_" liveChange="validatePhoneNumber"
+				 placeholder="Enter 10-digit number"   width="250px" valueState="{= ${contactModel>/Bpcontactphone} === '' ?  'None' : 'None'}" />
+				 <ComboBox selectedKey="{contactModel>/Preferredphonetype}" width="160px">
+				<core:Item key="T" text="Telephone" />
+				<core:Item key="M" text="Mobile Number" />
+
+			</ComboBox>
+				 </VBox>
+				 <Button text="Validate" icon="sap-icon://check-availability" press="validatePhoneNumber" id="buttonStatus" width="100px" class="sapUiTinyMarginBegin sapUiTinyMarginTop"/>
+			</HBox>
+
+				<Label text="BP Partner" class="sapUiTinyMarginTop" required="true"/>
+				<HBox>
+				<Input value="{contactModel>/Businesspartner}" id="bpPartner" class="sapUiTinyMarginTop" editable="false" valueState="{= ${contactModel>/Businesspartner} === '' ?  'None' : 'None'}" ></Input>
+				<VBox>
+				<Label text="{customerAddressModel>/CustomerName} " wrapping="true" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+				<Label text="{customerAddressModel>/Street} {customerAddressModel>/City}" wrapping="true" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+
+				</VBox>
+				</HBox>
+
+
+               
+
+				<Label text="First Name" class="sapUiTinyMarginTop" required="true"/>
+				<Input id="firstname" value="{contactModel>/Bpcontactfirstname}" valueState="{= ${contactModel>/contactModel} === '' ?  'None' : 'None'}"  class="sapUiTinyMarginTop"/> 
+
+                <Label text="Last Name" class="sapUiTinyMarginTop" required="true"/>
+				<Input value="{contactModel>/Bpcontactlastname}" class="sapUiTinyMarginTop"/>
+
+   				 <Label text="Email" class="sapUiTinyMarginTop"/>
+				 <HBox>
+				<Input id="idemail" width="250px" value="{contactModel>/Bpcontactemail}" class="sapUiTinyMarginTop"  valueState="{chageModeModel>/valueStateEmail}" type="Email" change="validateEmail"/>
+	 <Button text="Validate" icon="sap-icon://check-availability" press="validateEmail" id="buttonStatus1" width="100px" class="sapUiTinyMarginBegin sapUiTinyMarginTop"/>
+			</HBox>
+   				<Label text="Department" class="sapUiTinyMarginTop" required="true"/>
+				<ComboBox id="deptName" selectedKey="{contactModel>/Bpcontactdepartment}" valueState="{= ${contactModel>/Bpcontactdepartment} === '' ?  'None' : 'None'}"  class="sapUiTinyMarginTop" width="50%"
+
+				items="{
+					path: 'ZCFI_WEBEXDASH_BPCONTACT_CDS>/ZI_BPCONTACTDEPARTMENT_VH',
+					sorter: { path: 'ContactPersonDepartment' }
+				}">
+				<core:Item key="{ZCFI_WEBEXDASH_BPCONTACT_CDS>ContactPersonDepartment}" text="{ZCFI_WEBEXDASH_BPCONTACT_CDS>ContactPersonDepartment} - {ZCFI_WEBEXDASH_BPCONTACT_CDS>ContactPersonDepartmentName}" />
+				</ComboBox>
+
+                <Label text="Function" class="sapUiTinyMarginTop"/>
+				<ComboBox selectedKey="{contactModel>/Bpcontactfunction}" class="sapUiTinyMarginTop" width="50%"
+
+				items="{
+					path: 'ZCFI_WEBEXDASH_BPCONTACT_CDS>/ZI_BPCONTACTFUNCTION_VH',
+					sorter: { path: 'ContactPersonFunction' }
+				}">
+				<core:Item key="{ZCFI_WEBEXDASH_BPCONTACT_CDS>ContactPersonFunction}" text="{ZCFI_WEBEXDASH_BPCONTACT_CDS>ContactPersonFunction} - {ZCFI_WEBEXDASH_BPCONTACT_CDS>ContactPersonFunctionName}" />
+				</ComboBox>
+
+
+            
+				<Label />
+                    
+		
+
+
+		
+			</f:content>
+		</f:SimpleForm>
+
+        </content>
+
+    </Page>
+</mvc:View>

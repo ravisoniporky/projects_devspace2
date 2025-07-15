@@ -1,0 +1,145 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui"  xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+            <Table  >
+		
+	
+		<columns>
+			<Column>
+				<Title text="Customer Details" />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			<Column>
+				<Text  />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="Customer"
+						/>
+					<Text
+						text="{customerData>/Customer}" />
+
+
+						<ObjectIdentifier titleActive="true"
+						title="Customer Name1/Name2"
+						/>
+					<Text
+						text="{customerData>/name1} / {customerData>/name2}" />
+				</cells>
+			</ColumnListItem>
+
+
+
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="Previous Account"
+						/>
+					<Text
+						text="{customerData>/altkn}" />
+							<ObjectIdentifier titleActive="true"
+						title="Sales Lead"
+						/>
+					<Text
+						text="{customerData>/sm}" />
+				</cells>
+			</ColumnListItem>
+			
+				
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="Address"
+						/>
+					<Text
+						text="{customerData>/stras} {customerData>/ort01} {customerData>/regio} {customerData>/pstlz}" />
+							<ObjectIdentifier titleActive="true"
+						title="Sales Support"
+						/>
+					<Text
+						text="{customerData>/ss}" />
+				</cells>
+			</ColumnListItem>
+
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+				<ObjectIdentifier titleActive="true"
+						title="Phone Number"
+						/>
+					<Text
+						text="{customerData>/telf1}" />
+					<ObjectIdentifier titleActive="true"
+						title="Customer Hierarchy 1"
+						/>
+					<Text
+						text="{customerData>/cu_hier1} {customerData>/hier1_name}" />
+				</cells>
+			</ColumnListItem>
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="Email"
+						/>
+					<Text
+						text="{customerData>/EmailAddress}" />
+	<ObjectIdentifier titleActive="true"
+						title="Customer Hierarchy 2"
+						/>
+					<Text
+						text="{customerData>/cu_hier2} {customerData>/hier2_name}" />				
+
+
+				</cells>
+			</ColumnListItem>
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+				<!-- <ObjectIdentifier titleActive="true"
+						title="Central Block"
+						/>
+						
+				
+						<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${customerData>/CentralBlock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${customerData>/CentralBlock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${customerData>/CentralBlock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/> -->
+
+
+						<ObjectIdentifier titleActive="true"
+						title="Customer Hierarchy 3"
+						/>
+						
+					<Text
+						text="{customerData>/cu_hier3} {customerData>/hier3_name}" />	
+					
+
+
+				</cells>
+			</ColumnListItem>
+
+
+
+		
+
+
+				
+			
+				
+		</items>
+	</Table>
+
+</core:FragmentDefinition>

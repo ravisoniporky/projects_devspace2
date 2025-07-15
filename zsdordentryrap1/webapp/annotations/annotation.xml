@@ -1,0 +1,29 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZSB_R_ORDERENTRY/$metadata">
+        <edmx:Include Namespace="cds_zsv_r_orderentry"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+
+
+
+            <Annotations Target="cds_zsv_r_orderentry.cds_zsv_r_orderentry_Entities/ZRSD_Salesorder">
+                 <Annotation Term="Common.DefaultValuesFunction" String="DefaultForHeaderCreate">                                   
+       </Annotation>
+
+
+            </Annotations>
+
+               <Annotations Target="cds_zsv_r_orderentry.cds_zsv_r_orderentry_Entities/ZRSD_Salesorderitem">
+                 <Annotation Term="Common.DefaultValuesFunction" String="DefaultForHeaderCreate">                                   
+       </Annotation>
+
+
+            </Annotations>
+
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,175 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "customer.porky.zbpcontactcreate",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.15.0",
+            "toolsId": "ecf8e7e7-ec02-4694-94ce-bc7d40aa283f"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZODATA_WEBEXDASH_BPCONTACT_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZCFI_WEBEXDASH_BPCONTACT_CDS_Annotation": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCFI_WEBEXDASH_BPCONTACT_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/ZCFI_WEBEXDASH_BPCONTACT_CDS_Annotation.xml"
+                }
+            },
+            "ZCFI_WEBEXDASH_BPCONTACT_CDS": {
+                "uri": "/sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZCFI_WEBEXDASH_BPCONTACT_CDS_Annotation"
+                    ],
+                    "localUri": "localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZCXA_USERDEFAULT_CDS_Annotation": {
+                "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_Annotation.xml"
+                }
+            },
+            "ZCXA_USERDEFAULT_CDS": {
+                "uri": "/sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZCXA_USERDEFAULT_CDS_Annotation"
+                    ],
+                    "localUri": "localService/ZCXA_USERDEFAULT_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.108.28",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "customer.porky.zbpcontactcreate.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "ZCFI_WEBEXDASH_BPCONTACT_CDS": {
+                "dataSource": "ZCFI_WEBEXDASH_BPCONTACT_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "ZCXA_USERDEFAULT_CDS": {
+                "dataSource": "ZCXA_USERDEFAULT_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "customer.porky.zbpcontactcreate.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteCreateContact",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetCreateContact"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetCreateContact": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreateContact",
+                    "viewName": "CreateContact"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "customer.porky.zbpcontactcreate.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

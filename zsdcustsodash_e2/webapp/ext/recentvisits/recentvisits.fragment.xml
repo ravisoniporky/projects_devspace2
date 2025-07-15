@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+
+            <Table items="{visitData>/results}" headerText="No. Visits: {visitCustomerData>/TotalVisit}    Last 12 Months: {visitCustomerData>/Last12Visit}" class="sapUiLargeMarginBottom">
+		
+	
+		<columns>
+			<Column>
+				<Text text="Visit#" />
+			</Column>
+			<Column>
+				<Text text="Visit Type"/>
+			</Column>
+			<Column>
+				<Text  text="Created By"/>
+			</Column>
+			<Column>
+				<Text text="Changed By" />
+			</Column>
+			<Column>
+				<Text text="Sales Lead Name" />
+			</Column>
+			<Column>
+				<Text text="Sale Support Name" />
+			</Column>
+			<Column>
+				<Text text="Visit On" />
+			</Column>
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{= Number(${visitData>Visitid})}" titlePress="onClickVisit"
+						/>
+					<Text
+						text="{= ${visitData>Visittype} === 'N' ? 'New' : ${visitData>Visittype} === 'F' ? 'Follow Up' : 'Reset'}" />
+
+						<Text 
+						text="{visitData>CreatedFullName}"
+						/>
+
+						<Text 
+						text="{visitData>ChangedFullName}"
+						/>
+
+						<Text 
+						text="{visitData>SalesLeadName}"
+						/>
+
+						<Text 
+						text="{visitData>SaleSupportName}"
+						/>
+						<Text 
+						text="{path : 'visitData>Createdatetime', type:'sap.ui.model.type.Date'}"
+						/>
+
+					
+				</cells>
+			</ColumnListItem>
+
+		
+		</items>
+	</Table>
+
+    
+</core:FragmentDefinition>

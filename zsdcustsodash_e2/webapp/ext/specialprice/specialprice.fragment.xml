@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+              <ScrollContainer  width="100%" horizontal="true" vertical="true" focusable="true">
+
+
+
+            <Table width="100%" items="{specialPriceModel>/results}"  headerText="Special Price">
+		
+	
+		<columns>
+			<Column width="3rem">
+				<Text text="{/#ZCSD_CUSTSODASHSPPRICEType/Material/@sap:label}" />
+			</Column>
+			
+			<Column width="4rem">
+				<Text text="{/#ZCSD_CUSTSODASHADPRICEType/OldMaterial/@sap:label}" />
+			</Column>
+			<Column width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHSPPRICEType/ConditionAmount/@sap:label}" />
+			</Column>
+			<Column width="1rem">
+				<Text text="{/#ZCSD_CUSTSODASHSPPRICEType/ConditionUnit/@sap:label}" />
+			</Column>
+			<Column width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHSPPRICEType/ValidStart/@sap:label}" />
+			</Column>
+				<Column width="2rem"> 
+				<Text text="{/#ZCSD_CUSTSODASHSPPRICEType/ValidEnd/@sap:label}" />
+			</Column>
+
+			<Column width="2rem"> 
+				<Text text="{/#ZCSD_CUSTSODASHSPPRICEType/AccessLevel/@sap:label}" />
+			</Column>
+			
+           
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Text text="{specialPriceModel>Material}  ({specialPriceModel>MaterialDescription})"/>
+															<Text text="{specialPriceModel>OldMaterial}"/>
+
+					<Text text="{specialPriceModel>ConditionAmount} {specialPriceModel>Currency}" />
+						<Text
+						text="{specialPriceModel>ConditionUnit}" />
+						<Text
+						text="{ path:'specialPriceModel>ValidStart', type:'sap.ui.model.odata.type.Date'}" />
+
+<Text text="{ path:'specialPriceModel>ValidEnd', type:'sap.ui.model.odata.type.Date'}" />
+						
+<Text
+						text="{specialPriceModel>AccessLevel}" />
+					
+		
+                        
+				</cells>
+			</ColumnListItem>		
+				
+		</items>
+	</Table>
+</ScrollContainer>
+</core:FragmentDefinition>

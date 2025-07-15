@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:smartTable="sap.ui.comp.smarttable" 
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+             <smartTable:SmartTable
+				tableType="AnalyticalTable"
+				initiallyVisibleFields="Weekending,NetSalesVAlue,OpenAmount,NetWeght,CashAdj,DelDays"
+				requestAtLeastFields="currWK"
+				id="LineItemsSmartTable2"
+				entitySet="ZCFI_ARPROFIT_SHIPTO1Results"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="AR Profit"
+				showRowCount="true"
+				persistencyKey="tablearprofit"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				growingThreshold="20"
+								showFullScreenButton = "true"
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+					<ComboBox
+					placeholder="Select Soldto"
+					selectionChange="onSelectSoldTo"
+				items="{
+					path: 'soldtoModel>/results'
+				
+				}">
+				<core:Item key="{soldtoModel>kunnr}" text="{soldtoModel>kunnr} - {soldtoModel>name1}" />
+			</ComboBox>
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+		</smartTable:SmartTable>
+
+
+
+</core:FragmentDefinition>

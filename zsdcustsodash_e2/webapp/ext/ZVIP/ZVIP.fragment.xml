@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:smartTable="sap.ui.comp.smarttable" 
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1" xmlns:html="http://www.w3.org/1999/xhtml">
+            <!-- Card's Content area code goes here -->
+
+
+ <smartTable:SmartTable
+				tableType="Table"
+        id="LineItemsSmartTable3"
+				initiallyVisibleFields="MATNR,PRDHA,VTEXT1,GRPSEQ,CODESEQ,PMATN"
+				requestAtLeastFields="MATNR,PRDHA,VTEXT1,GRPSEQ,CODESEQ,PMATN"
+				entitySet="ZCSD_E_ItemProposalSet"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="Item Proposals"
+				showRowCount="true"
+				persistencyKey="tableVIP"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				growingThreshold="20"
+								showFullScreenButton = "true"
+								
+
+
+			>
+
+				<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+					<ComboBox
+					placeholder="Select Soldto"
+					selectionChange="onSelectSoldTo"
+				items="{
+					path: 'soldtoModel>/results'
+				
+				}">
+				<core:Item key="{soldtoModel>kunnr}" text="{soldtoModel>kunnr} - {soldtoModel>name1}" />
+			</ComboBox>
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+		</smartTable:SmartTable>
+</core:FragmentDefinition>

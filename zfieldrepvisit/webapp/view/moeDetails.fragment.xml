@@ -1,0 +1,113 @@
+<core:FragmentDefinition
+xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Dialog
+		title="{selectedMOEPeople>/smtp_addr}" contentHeight="100%" contentWidth="100%" resizable ="false">
+		<content>
+		<f:SimpleForm 
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{selectedMOEPeople>/ContactPersonName}"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<!-- <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Department/@sap:label}" />
+				<Input  value="{selectedMOEPeople>/Department}" />  
+				<Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/Customer/@sap:label}" />
+				<Input value="{selectedMOEPeople>/Customer}"/> -->
+				<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/bname/@sap:label}" />
+				<Input value="{selectedMOEPeople>/bname}" editable="{selectedMOEPeople>/editable}"/>
+                <Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/smtp_addr/@sap:label}" />
+				<Input value="{selectedMOEPeople>/smtp_addr}" editable="{selectedMOEPeople>/editable}"/>
+
+				<!-- <Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/mobile/@sap:label}" />
+				<Input value="{selectedMOEPeople>/mobile}" editable="{selectedMOEPeople>/editable}"/> -->
+				<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/mobile/@sap:label}" />
+				<Input value="{selectedMOEPeople>/mobile}" editable="{selectedMOEPeople>/editable}"/>
+
+				<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/account_inactive/@sap:label}" />
+				<!-- <ComboBox selectedKey="{selectedMOEPeople>/account_inactive}" editable="{selectedMOEPeople>/editable}">
+						<core:Item key="Android" text="Android" />
+						<core:Item key="iOS" text="iOS" />
+				</ComboBox>	 -->
+				<Switch state="{= ${selectedMOEPeople>/account_inactive} === 'X' ? true : false }" customTextOn="Yes" customTextOff="No"  change="onPressMOEActiveSwitch" enabled="{chageModeModel>/changeMode}">
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</Switch>		
+                
+ 				<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/entitled_department/@sap:label}" />
+				<MultiComboBox selectedKeys="{path: 'selectedMOEPeople>/entitled_department', formatter:'.formatSelectedKeyDepartment'}" items="{ZODATA_FR_SRV>/ZBMM_CUSTOMERDEPARTMENT}" editable="{chageModeModel>/changeMode}" multiple="true">
+						<core:Item key="{ZODATA_FR_SRV>Value}" text="{ZODATA_FR_SRV>Description}" />
+				</MultiComboBox>
+
+				<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/kunwe/@sap:label}" />
+				<Input value="{selectedMOEPeople>/kunwe}" editable="false"/>
+
+					<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/customername/@sap:label}" />
+				<Input value="{selectedMOEPeople>/customername}" editable="false"/>
+
+				<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/p_vkorg/@sap:label}" />
+				<Input value="{selectedMOEPeople>/p_vkorg}" editable="false"/>
+
+					<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/entitled_shipto/@sap:label}" />
+				<Input value="{selectedMOEPeople>/entitled_shipto}" editable="false"/>
+
+					<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/email_conf/@sap:label}" />
+				<CheckBox selected="{= ${selectedMOEPeople>/email_conf} === 'N' ? false: true }" editable="false"/>
+
+
+			<Label text="{ZODATA_FR_SRV>/#ZBSD_MOE_VHType/last_active_date/@sap:label}" />
+				<DatePicker  value="{path: 'selectedMOEPeople>/last_active_date', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MM/dd/yyyy', strictParsing: true , UTC: true}}" displayFormat="MM/dd/yyyy" editable="false"/>
+			</f:content>
+		</f:SimpleForm>
+		</content>
+        <beginButton>
+					 <!-- enabled="{= ${chageModeModel>/valueStateMobile} === 'Success' ? true : ${chageModeModel>/valueStateEmail} === 'Success' ? true  : false}" -->
+
+			<Button tooltip="Save" visible="false"
+			 icon="sap-icon://accept"  type="Accept"
+			  press="onSaveselectedMOEPeople"
+			   text="Add New" enabled="{= ${chageModeModel>/valueStateMobile} === 'Error' ? false: true }"/>
+		</beginButton>
+		<endButton>
+			<Button tooltip="Close" icon="sap-icon://cancel"  type="Reject" press="onDialogCloseKeyPeople" text="Close" />
+		</endButton>
+		<!-- <footer>
+			<Toolbar>
+				<content>
+					<Button id="messagePopoverBtn"
+						visible="{= !!${message>/}.length }"
+						icon="{ path: '/', formatter: '.buttonIconFormatter' }"
+						type="{ path: '/', formatter: '.buttonTypeFormatter' }"
+						text="{ path: '/', formatter: '.highestSeverityMessages' }"
+						press=".handleMessagePopoverPress"
+						ariaHasPopup="Dialog" />
+					<ToolbarSpacer />
+					<Button type="Accept"
+							text="Save"
+							press="._generateInvalidUserInput" />
+					<Button id="Reject"
+						text="Reject"
+						type="Reject"
+						press="._closeDialog"
+						ariaHasPopup="Dialog" />
+				</content>
+			</Toolbar>
+		</footer> -->
+	</Dialog>
+</core:FragmentDefinition>

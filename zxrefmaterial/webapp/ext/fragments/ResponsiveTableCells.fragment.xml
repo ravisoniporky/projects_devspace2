@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:sf="sap.ui.comp.smartfield">
+    <!--Column 1 Cell-->
+    <VBox>
+        <TextArea value=""/>
+        <Button text="Save" press="onSaveNote"/>
+    </VBox>
+    <HBox>
+        <!-- <Input value="" valueHelpRequest="onValueHelp" valueHelpOnly="true" showValueHelp="true"/> -->
+        <sf:SmartField change="onSelectCustomer" showSuggestion="true" id="idMaterial" textInEditModeSource="ValueList" value="{Matnr}" entitySet="ZRMM_XREF_GETDETAIL" valueListChanged="onSelectMaterial" width="auto" showLabel="true" editable="{= typeof ${Material} === 'undefined' ?  true  : ${Material} === '' ? true : false}" uomEditable="true" contextEditable="true">
+            <sf:configuration>
+                <sf:Configuration preventInitialDataFetchInValueHelpDialog="false" displayBehaviour="idAndDescription"/>
+            </sf:configuration>
+        </sf:SmartField>
+        <Button press="onSaveMaterial" icon="sap-icon://sys-enter-2" type="Emphasized" class="sapUiTinyMarginBegin" visible="{= typeof ${Material} === 'undefined' ?  true  : ${Material} === '' ? true : false}"/>
+    </HBox>
+</core:FragmentDefinition>

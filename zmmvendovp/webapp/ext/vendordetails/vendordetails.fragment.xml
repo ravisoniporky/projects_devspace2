@@ -1,0 +1,183 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+            <Table  >
+		
+	
+		<columns>
+			<Column>
+				<Title text="Vendor Details" />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			<Column>
+				<Text  />
+			</Column>
+			<Column>
+				<Text />
+			</Column>
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+					titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/Vendor/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/Vendor}" />
+
+
+						<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/VendorName/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/VendorName}" />
+				</cells>
+			</ColumnListItem>
+
+
+
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/VendorAddress/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/VendorAddress}" />
+
+
+							<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/VendorPhone/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/VendorPhone}" />
+				</cells>
+			</ColumnListItem>
+			
+				
+				<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/VendorEmail/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/VendorEmail}" />
+
+							<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/cpostblock/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/cpostblock}" />
+				</cells>
+			</ColumnListItem>
+
+
+				<ColumnListItem vAlign="Middle">
+				<cells>
+				<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/ccpostblock/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/ccpostblock}" />
+					<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/PaymentTerms/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/PaymentTerms}" />
+				</cells>
+			</ColumnListItem>
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/Bank/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/Bank}" />
+
+
+	<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/PaymentMethod/@sap:label}"
+						/>
+					<Text
+						text="{vendorData>/PaymentMethod}" />				
+
+
+				</cells>
+			</ColumnListItem>
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+				<!-- <ObjectIdentifier titleActive="true"
+						title="Central Block"
+						/>
+						
+				
+						<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${vendorData>/CentralBlock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${vendorData>/CentralBlock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${vendorData>/CentralBlock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/> -->
+
+
+						<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/Remitto/@sap:label}"
+						/>
+						
+					<Text
+						text="{vendorData>/Remitto}" />	
+
+                        <ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/RemitName/@sap:label}"
+						/>
+						
+					<Text
+						text="{vendorData>/RemitName}" />	
+					
+
+
+				</cells>
+			</ColumnListItem>
+
+            		<ColumnListItem vAlign="Middle">
+				<cells>
+				<!-- <ObjectIdentifier titleActive="true"
+						title="Central Block"
+						/>
+						
+				
+						<ObjectStatus press="pressBlockButton" active="true" 
+						text="{= ${vendorData>/CentralBlock} !== false ? 'Blocked' : 'Unblocked'}"  state="{= ${vendorData>/CentralBlock} !== false ? 'Error' : 'Success'}" inverted="true" icon="{= ${vendorData>/CentralBlock} !== false ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"/> -->
+
+
+						<ObjectIdentifier titleActive="true"
+						title="{/#ZCMM_VENDORDASHBOARDType/Remitaddress/@sap:label}"
+						/>
+						
+					<Text
+						text="{vendorData>/Remitaddress}" />	
+
+                      
+					
+
+
+				</cells>
+			</ColumnListItem>
+
+
+
+		
+
+
+				
+			
+				
+		</items>
+	</Table>
+
+
+
+</core:FragmentDefinition>

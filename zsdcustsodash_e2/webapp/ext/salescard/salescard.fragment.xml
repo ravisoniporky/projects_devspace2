@@ -1,0 +1,121 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:smartTable="sap.ui.comp.smarttable" 
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+            <ScrollContainer  horizontal="true" vertical="true" focusable="true">
+
+
+
+            <Table  items="{salesModel>/results}" width="55rem" headerText="Sales Averages" visible="false">
+		
+	
+		<columns>
+			<Column  width="1rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/TimeRollup/@sap:label}" />
+			</Column>
+			
+			
+			<Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/Sales/@sap:label}" />
+			</Column>
+
+			<Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/NetWtLB/@sap:label}" />
+			</Column>
+
+			<Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/ShipQtyCS/@sap:label}" />
+			</Column>
+
+				<Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/NoofDeliveries/@sap:label}" />
+			</Column> 
+
+			<Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/MarketCostGPLB/@sap:label}" />
+			</Column>
+
+            <Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/MarketCostGPPerc/@sap:label}"/>
+			</Column>
+
+
+            <Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/MarketCostGP/@sap:label}"/>
+			</Column>
+
+
+ 			<Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/TrueProfitPerDrop/@sap:label}"/>
+			</Column>
+			<Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/WeightPerDrop/@sap:label}"/>
+			</Column>
+           <Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/WeightPerDrop/@sap:label}"/>
+			</Column>
+			<Column  width="2rem">
+				<Text text="{/#ZCSD_CUSTSODASHAGGRType/TrueProfit/@sap:label}"/>
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier titleActive="true" title="{salesModel>TimeRollup}" titlePress="onPressTimerollup"/>
+					<Text text="{path:'salesModel>Sales',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} USD" />
+						<Text text=" {path:'salesModel>NetWtLB',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} LB" />
+						<Text text=" {path:'salesModel>ShipQtyCS',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} CS" />
+
+<Text text=" {path:'salesModel>NoofDeliveries',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}}" />
+						<Text
+						text="{path:'salesModel>MarketCostGPLB',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} LB" />
+						<Text
+						text=" {path:'salesModel>MarketCostGPPerc',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} %" />
+<Text
+						text=" {path:'salesModel>MarketCostGP',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} " />
+		<Text text=" {path:'salesModel>TrueProfitPerDrop',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} " />			
+		
+ 		<Text text=" {path:'salesModel>WeightPerDrop',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} " />			
+		<Text text=" {path:'salesModel>MarketCostPerDrop',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} " />			
+		<Text text=" {path:'salesModel>TrueProfit',  type:'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 0, roundingMode: 'AWAY_FROM_ZERO', parseAsString: true, style: 'standard'}} " />			
+                       
+				</cells>
+			</ColumnListItem>		
+				
+		</items>
+	</Table>
+
+
+	   <smartTable:SmartTable
+				tableType="Table"
+				initiallyVisibleFields="TimeRollup,Sales,NetWtLB,ShipQtyCS,NoofDeliveries,MarketCostGPLB,MarketCostGP,TrueProfitPerDrop,WeightPerDrop,MarketCostPerDrop,TrueProfit"
+				requestAtLeastFields="TimeRollup,Sales,NetWtLB,ShipQtyCS,NoofDeliveries,MarketCostGPLB,MarketCostGP,TrueProfitPerDrop,WeightPerDrop,MarketCostPerDrop,TrueProfit,LineSequence"
+				id="salesSmartTable"
+				entitySet="ZCSD_CUSTSODASHAGGR"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				useTablePersonalisation="true"
+				header="Sales Averages"
+				showRowCount="true"
+				persistencyKey="tablecustomer"
+				enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding"
+				enableAutoColumnWidth="true"
+				beforeRebindTable="onBeforeRebindTable"
+				afterVariantApply="onAfterVariantApply1"
+				growingThreshold="20"
+								showFullScreenButton = "true"
+								
+
+
+			>
+
+				
+		</smartTable:SmartTable>
+
+</ScrollContainer>
+
+
+</core:FragmentDefinition>
