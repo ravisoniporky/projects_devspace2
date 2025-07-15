@@ -42,7 +42,8 @@ function (Controller,JSONModel,Filter,FilterOperator) {
                     "materials": fastentrylist
                 }
             ), "cartModel");
-            this.getView().setModel(new sap.ui.model.json.JSONModel({cartItemsCount: 0}), "countModel");
+       //     this.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel({cartItemsCount: 0}), "countModel");
+            this.getOwnerComponent().getModel("countModel").setProperty("/cartItemsCount",0);
 
           //  this.onSuggestItems_all();
 
@@ -833,7 +834,10 @@ function (Controller,JSONModel,Filter,FilterOperator) {
             }
             
           });
-          this.getView().setModel(new sap.ui.model.json.JSONModel({cartItemsCount: count}), "countModel");
+          // this.getView().setModel(new sap.ui.model.json.JSONModel({cartItemsCount: count}), "countModel");
+        //  this.getView().setModel(new sap.ui.model.json.JSONModel({cartItemsCount: 0}), "countModel");
+        //  this.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel({cartItemsCount: count}), "countModel");
+          this.getOwnerComponent().getModel("countModel").setProperty("/cartItemsCount",count)
 
           this.onAddOne();
         }

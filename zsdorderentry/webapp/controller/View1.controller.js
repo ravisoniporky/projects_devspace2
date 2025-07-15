@@ -53,16 +53,16 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
             this.getOwnerComponent().getRouter().navTo("detail");
 
 
-            if( this.getView().byId("idInputSalesOrg").getValue() && this.getView().byId("idInputCustomer").getValue() ){
+            if( this.getView().byId("idInputSalesOrg").getSelectedKey() && this.getView().byId("idInputCustomer").getValue() ){
 
-              if(typeof this.getView().byId("idInputPlant").getValue() === 'undefined'){
+              // if(typeof this.getView().byId("idInputPlant").getValue() === 'undefined'){
 
-                this.getOwnerComponent().getModel("userValues").setProperty("/Plant", "");
-              }
+              //   this.getOwnerComponent().getModel("userValues").setProperty("/Plant", "");
+              // }
             
             this.getView().byId("idInputSalesOrg").setEditable(false);
             this.getView().byId("idInputCustomer").setEditable(false);
-            this.getView().byId("idInputPlant").setEditable(false);
+            // this.getView().byId("idInputPlant").setEditable(false);
             this.getView().byId("idPonumber").setEditable(false);
             this.getView().byId("idDelDate").setEditable(false);
             this.getOwnerComponent().getModel("userValues").setProperty("/layout","TwoColumnsMidExpanded");
@@ -87,13 +87,13 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
           this.getView().byId("idPonumber").setEditable(true);
           this.getView().byId("idDelDate").setEditable(true);
 
-          this.getView().getModel("userValues").setProperty("/Customer","");
-          this.getView().getModel("userValues").setProperty("/SalesOrganization","");
-          this.getView().getModel("userValues").setProperty("/salesorgname","");
+          this.getOwnerComponent().getModel("userValues").setProperty("/Customer","");
+          this.getOwnerComponent().getModel("userValues").setProperty("/SalesOrganization","");
+          this.getOwnerComponent().getModel("userValues").setProperty("/salesorgname","");
 
-          this.getView().getModel("userValues").setProperty("/Plant","");
-          this.getView().getModel("userValues").setProperty("/plantname","");
-          this.getView().getModel("userValues").setProperty("/customername","");
+          this.getOwnerComponent().getModel("userValues").setProperty("/Plant","");
+          this.getOwnerComponent().getModel("userValues").setProperty("/plantname","");
+          this.getOwnerComponent().getModel("userValues").setProperty("/customername","");
 
           this.getOwnerComponent().getModel("userValues").setProperty("/layout","OneColumn");
 
@@ -147,7 +147,7 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
             var query = oEvent.getSource().getValue().trim();
             var aFilters = [];
                         // if (this.getView().byId("idSalesOrg").getValue() !== '' && typeof this.getView().byId("idSalesOrg").getValue() !== 'undefined') {
-                            aFilters.push(new Filter({path:'SalesOrg',  operator:'EQ',value1:this.getView().getModel("userValues").getProperty("/SalesOrganization")}));
+                            aFilters.push(new Filter({path:'SalesOrg',  operator:'EQ',value1:this.getOwnerComponent().getModel("userValues").getProperty("/SalesOrganization")}));
                         // }
                         var filterArray = [];
 
@@ -170,16 +170,16 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
           var plant =  oEvent.mParameters.selectedItem.getKey();;
            var plantName =  oEvent.mParameters.selectedItem.getText().split("-")[1].trim();
           
-           this.getView().getModel("userValues").setProperty("/Plant",plant);
-           this.getView().getModel("userValues").setProperty("/plantname",plantName);
+           this.getOwnerComponent().getModel("userValues").setProperty("/Plant",plant);
+           this.getOwnerComponent().getModel("userValues").setProperty("/plantname",plantName);
         },
         onSuggestionItemSelected: function(oEvent){
 
            var customer =  oEvent.mParameters.selectedRow.getBindingContext().getObject().Customer;
            var customername =  oEvent.mParameters.selectedRow.getBindingContext().getObject().CustomerName;
           
-           this.getView().getModel("userValues").setProperty("/Customer",customer);
-           this.getView().getModel("userValues").setProperty("/customername",customername);
+           this.getOwnerComponent().getModel("userValues").setProperty("/Customer",customer);
+           this.getOwnerComponent().getModel("userValues").setProperty("/customername",customername);
         },
 
 
@@ -215,10 +215,10 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
           //  var salesorg =  oEvent.mParameters.selectedRow.getBindingContext("mainService").getObject().SalesOrganization;
           //  var salesorgname =  oEvent.mParameters.selectedRow.getBindingContext("mainService").getObject().SalesOrganization_Text;
           
-           this.getView().getModel("userValues").setProperty("/SalesOrganization",salesorg);
-           this.getView().getModel("userValues").setProperty("/salesorgname",salesorgname);
-           this.getView().getModel("userValues").setProperty("/Customer","");
-           this.getView().getModel("userValues").setProperty("/customername","");
+           this.getOwnerComponent().getModel("userValues").setProperty("/SalesOrganization",salesorg);
+           this.getOwnerComponent().getModel("userValues").setProperty("/salesorgname",salesorgname);
+           this.getOwnerComponent().getModel("userValues").setProperty("/Customer","");
+           this.getOwnerComponent().getModel("userValues").setProperty("/customername","");
 
 
            
@@ -248,7 +248,7 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
         
           
         
-                var oFilter = new sap.ui.model.Filter("SalesOrg", sap.ui.model.FilterOperator.EQ, this.getView().getModel("userValues").getProperty("/SalesOrganization"));
+                var oFilter = new sap.ui.model.Filter("SalesOrg", sap.ui.model.FilterOperator.EQ, this.getOwnerComponent().getModel("userValues").getProperty("/SalesOrganization"));
                 oBindingParams.filters.push(oFilter);              
             
         },
@@ -416,6 +416,25 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
             });
 
 
+        },
+        onCollapseExpandPress() {
+          const oSideNavigation = this.byId("sideNavigation"),
+            bExpanded = oSideNavigation.getExpanded();
+    
+          oSideNavigation.setExpanded(!bExpanded);
+        },
+    
+        onHideShowWalkedPress() {
+          const oNavListItem = this.byId("walked");
+          oNavListItem.setVisible(!oNavListItem.getVisible());
+        },
+        onItemSelect: function(oEvent){
+          var oItem = oEvent.getParameter("item");
+          if(oItem.getKey() === '2'){
+            this.byId("pageContainer").to(this.getView().createId("root2"));
+          }else{
+            this.byId("pageContainer").to(this.getView().createId("root1"));
+          }
         }
 
     });

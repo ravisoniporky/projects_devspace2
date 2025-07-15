@@ -1,0 +1,201 @@
+<mvc:View controllerName="customer.porky.zmmcatalogmnt.controller.View1"
+ xmlns:smartTable="sap.ui.comp.smarttable"  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+
+
+
+ <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" enableAutoBinding="true" entitySet="ZCSD_E_MobileCatalogList" useToolbar="true"
+			 persistencyKey="catalogmaintenance_f1"   enableBasicSearch="true"
+			  advancedMode="false" filterBarExpanded="false" smartVariant="true" showAllFilters="true"
+			  
+			 
+				showFilterConfiguration="true"  >
+
+				<smartFilterBar:controlConfiguration>
+        <smartFilterBar:ControlConfiguration key="ZCATALOG" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
+            
+        </smartFilterBar:ControlConfiguration>
+
+		 <smartFilterBar:ControlConfiguration key="BRAND" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
+            
+        </smartFilterBar:ControlConfiguration>
+
+
+				 <smartFilterBar:ControlConfiguration key="COMMODITY" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
+            
+        </smartFilterBar:ControlConfiguration>
+
+
+		<smartFilterBar:ControlConfiguration key="$parameter.p_vkorg" mandatory="notMandatory" filterType="single" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false">
+            
+        </smartFilterBar:ControlConfiguration>
+    </smartFilterBar:controlConfiguration>
+				
+
+			</smartFilterBar:SmartFilterBar> 
+
+
+<smartTable:SmartTable id="smartTable_custF4_map"  entitySet="ZCSD_E_MobileCatalogList"  smartFilterId="smartFilter_custF4_map"
+				growing="true"
+				growingThreshold ="20"
+				requestAtLeastFields="MATNR,MAKTX,BISMT,ZMOB_MATDESC,ZPACK_SIZE,BRAND,COMMODITY,CATALOG_TXT,SalesOrganization,ZCATALOG,DEPARTMENT"
+				initiallyVisibleFields="MATNR,MAKTX,BISMT,ZMOB_MATDESC,ZPACK_SIZE,BRAND,DEPARTMENT"
+				beforeRebindTable="onBeforeRebindTable"
+			 tableType="Table" useExportToExcel="true"
+			
+			 
+			
+			 
+			
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 header="Materials" showRowCount="true" persistencyKey="catalogmaintenance_1"
+			  enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+			  enableAutoColumnWidth="true" >
+
+              <smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+								<!-- <Button press="onShowExcludingList" text="Exclude" id="excludingList" enabled="true"/> -->
+				<Button press="onMassExclude" text="{= ${GlobalModel>/CatalogType} === 'E' ? 'Include' : 'Exclude'}" id="excludingList2" enabled="true"/>
+
+				<Button press="onShowExcludingList" text="Show {= ${GlobalModel>/CatalogType} === 'E' ? 'Including' : 'Excluding'} List" id="excludingList1" enabled="true"/>
+
+					<MenuButton text="{= ${GlobalModel>/CatalogType} === 'E' ? 'Include' : 'Exclude'}" icon="sap-icon://edit-outside">
+			<menu>
+				<Menu>
+					<MenuItem text="By Brand" icon="sap-icon://customer-and-supplier" press="OnExcludeBrand" >
+						
+					</MenuItem>
+					<!-- <MenuItem text="By Brand Filter" icon="sap-icon://customer-and-supplier" press="onOpenInlusionList" >
+						
+					</MenuItem> -->
+					<MenuItem text="By Old Material" icon="sap-icon://machine" press="onPressExcludeOldMat" />
+					<MenuItem text="By Material Number" icon="sap-icon://product" press="onPressExcludeMat" />
+					<!-- <MenuItem text="By Catalog Description" icon="sap-icon://text" press="onPressExcludeNewMatDesc" /> -->
+					<MenuItem text="By Commodity" icon="sap-icon://text" press="onPressExcludeCOMMODITY" />
+
+				</Menu>
+			</menu>
+		</MenuButton>
+
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+
+
+			  <uitable:Table growing="true" growingThreshold="20" mode="MultiSelect">
+			  
+			  
+				<uitable:columns>
+
+
+	<uitable:Column hAlign="Begin" width="180px">
+					<uitable:customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "BISMT1",  "columnIndex": 1,  "width": "200px"}' />
+					</uitable:customData>
+					<Text text="Image" />
+				
+
+					<uitable:template>
+
+	 <Image
+					
+					src="https://api.porky.com/images/{BISMT}.png"
+					decorative="true"
+					densityAware="false"
+					class="sapUiTinyMargin"
+					width="180px"
+					height="80px">
+					<detailBox>
+						<LightBox >
+							<imageContent>
+								<LightBoxItem
+									imageSrc="https://api.porky.com/images/{BISMT}.png"
+									title="{MAKTX}"/>
+							</imageContent>
+						</LightBox>
+					</detailBox>
+				</Image>
+				
+	</uitable:template>
+	</uitable:Column>
+
+			  </uitable:columns>
+			  <!-- <items>
+			  		<ColumnListItem press="onClickItemVisitList" type="Navigation">
+					<cells>
+			 <Image
+					
+					src="https://api.porky.com/images/{BISMT}.png"
+					decorative="true"
+					densityAware="false"
+					class="sapUiTinyMargin"
+					width="80px"
+					height="80px">
+					<detailBox>
+						<LightBox >
+							<imageContent>
+								<LightBoxItem
+									imageSrc="https://api.porky.com/images/{BISMT}.png"
+									title="{MAKTX}"/>
+							</imageContent>
+						</LightBox>
+					</detailBox>
+				</Image>
+				</cells>
+					
+				</ColumnListItem>
+			
+			  </items> -->
+			  
+			  
+			  </uitable:Table>
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+			
+
+				<!-- <Table mode="SingleSelectMaster" updateFinished="onFinishedCustomers"  itemPress="handleSelectCustomer" selectionChange="handleSelectCustomer" sticky="ColumnHeaders,HeaderToolbar">
+				
+				
+				<columns>
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "altkn1",  "columnIndex": 8}' />
+					</customData>
+					<Label text="Direction" />
+				</Column>
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "altkn2", "columnIndex": 9}' />
+					</customData>
+					<Label text="New Visit" />
+				</Column>
+				
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+					<Button text="Directions" press="shareMapDirection" icon="sap-icon://map-2" width="120px" type="Emphasized"/>
+					<Button text="New Visit" press="shareNewVisit" icon="sap-icon://visits" width="120px" type="Emphasized"/>
+
+					</cells>
+					
+				</ColumnListItem>
+			</items>
+
+				
+				
+				</Table> -->
+
+
+
+					</smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>

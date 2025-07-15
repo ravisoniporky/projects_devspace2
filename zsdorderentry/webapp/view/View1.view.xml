@@ -1,11 +1,78 @@
 <mvc:View controllerName="customer.porky.zsdorderentry.controller.View1" xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform"
-	xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:f="sap.f"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:sf="sap.ui.comp.smartfield"
-    xmlns="sap.m">
-    <Page id="page" title="Customer Details">
-        <content >
-<f:SimpleForm id="SimpleFormChange354"
+    xmlns="sap.m" 	xmlns:tnt="sap.tnt">
+
+		<tnt:ToolPage id="toolPage">
+	<tnt:header>
+			<tnt:ToolHeader>
+					<Button
+					id="sideNavigationToggleButton"
+					icon="sap-icon://menu2"
+					type="Transparent"
+					press=".onCollapseExpandPress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+			</tnt:ToolHeader>
+				</tnt:header>
+			<tnt:sideContent>
+		
+		<tnt:SideNavigation id="sideNavigation" selectedKey="walked" expanded="true"
+			itemSelect="onItemSelect">
+			<tnt:NavigationList>
+					<tnt:NavigationListItem text="Building" icon="sap-icon://building" selectable="false" id="walked" key="1">
+						<tnt:NavigationListItem text="Office 01" />
+						<tnt:NavigationListItem text="Office 02" />
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem text="Mileage" icon="sap-icon://mileage" selectable="false" key="2">
+						<tnt:NavigationListItem text="Driven" />
+						<tnt:NavigationListItem text="Walked"  />
+					</tnt:NavigationListItem>
+				<tnt:NavigationListItem text="Transport" icon="sap-icon://map-2" selectable="false">
+						<tnt:NavigationListItem text="Flight" />
+						<tnt:NavigationListItem text="Train" />
+						<tnt:NavigationListItem text="Taxi" />
+					</tnt:NavigationListItem>
+			</tnt:NavigationList>
+			<tnt:fixedItem>
+				<tnt:NavigationList>
+					<tnt:NavigationListItem text="Bar Chart" icon="sap-icon://bar-chart" />
+					<tnt:NavigationListItem selectable="false" href="https://sap.com" target="_blank" text="External Link" icon="sap-icon://attachment" />
+					<tnt:NavigationListItem text="Compare" icon="sap-icon://compare" />
+				</tnt:NavigationList>
+			</tnt:fixedItem>
+
+		</tnt:SideNavigation>
+		
+		</tnt:sideContent>
+
+
+
+
+
+		<tnt:mainContents>
+
+
+
+			<NavContainer id="pageContainer" initialPage="root1">
+				<pages>
+					<ScrollContainer
+						id="root1"
+						horizontal="false"
+						vertical="true"
+						height="100%">
+						<!-- <Page id="page" title="Customer Details">
+        <content > -->
+
+		
+
+	<f:SidePanel id="mySidePanel11" toggle="onToggle" sidePanelPosition="Left" >
+				<f:mainContent>
+			
+		<form:SimpleForm id="SimpleFormChange354"
 			editable="true"
 			layout="ResponsiveGridLayout"
 			labelSpanXL="3"
@@ -21,7 +88,7 @@
 			columnsL="1"
 			columnsM="1"
 			singleContainerFullSize="false" >
-			<f:content>
+			<form:content>
 
 
 
@@ -154,7 +221,7 @@
 
 
 
-			<HBox>
+			<HBox visible="false">
 			<Select id="idInputPlant" items="{plantModel>/plants}" selectionChange=".onSuggestionItemSelectedPlant"  selectedKey="{userValues>/Plant}">
 		
 		<core:Item key="{plantModel>Plant}" text="{plantModel>Plant} - {plantModel>PlantName}" ></core:Item>
@@ -226,8 +293,100 @@
 				</HBox>
 
 			
-			</f:content>
-		</f:SimpleForm>
-        </content>
-    </Page>
+			</form:content>
+		</form:SimpleForm>
+			 </f:mainContent>
+
+
+				<f:items>
+					<f:SidePanelItem icon="sap-icon://action-settings" text="Settings">
+						<VBox>
+							<Text text="Static Content" class="sapUiSmallMarginBottom" />
+							<Text text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+							<Switch />
+							<Button text="Press me" />
+						</VBox>
+					</f:SidePanelItem>
+
+
+					<f:SidePanelItem icon="sap-icon://addresses" text="Defaults">
+						<VBox>
+							<Text text="Static Content" class="sapUiSmallMarginBottom" />
+							<Button text="Press me" />
+							<Button text="Hit me" />
+							<Button text="Touch me" />
+						</VBox>
+					</f:SidePanelItem>
+
+
+					<f:SidePanelItem icon="sap-icon://building" text="Profile" />
+					<f:SidePanelItem icon="sap-icon://flight" text="Theme" enabled="false" />
+				</f:items>
+			</f:SidePanel> 
+
+        <!-- </content>
+    </Page> -->
+					</ScrollContainer>
+					<ScrollContainer
+						id="root2"
+						horizontal="false"
+						vertical="true"
+						height="100%">
+						<form:SimpleForm 
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<form:content>
+				<Label text="Name" />
+				<Input id="name" value="{SupplierName}" />
+				<Label text="Street/No." />
+				<Input value="{Street}">
+				</Input>
+				<Input value="{HouseNumber}">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+				<Label text="ZIP Code/City" />
+				<Input value="{ZIPCode}">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+				<Input value="{City}" />
+				<Label text="Country" />
+				<Select id="country" selectedKey="{Country}">
+					<items>
+						<core:Item text="England" key="England"/>
+						<core:Item text="Germany" key="Germany"/>
+						<core:Item text="USA" key="USA"/>
+					</items>
+				</Select>
+			</form:content>
+		</form:SimpleForm>
+					</ScrollContainer>
+
+					</pages>
+					</NavContainer>
+
+
+
+
+    
+	</tnt:mainContents>
+
+	</tnt:ToolPage>
 </mvc:View>

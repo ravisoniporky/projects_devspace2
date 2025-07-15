@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1750692743117_224_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "customer.porky.zsdpvme1",
+    "packageName": "",
+    "content": {
+        "property": "visible",
+        "newValue": true
+    },
+    "selector": {
+        "id": "customer.porky.zsdpvme1::sap.suite.ui.generic.template.AnalyticalListPage.view.AnalyticalListPage::ZCSD_GPGPVMResults--template::Share",
+        "idIsLocal": false,
+        "type": "sap.m.Button"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/customer.porky.zsdpvme1/changes/",
+    "projectId": "",
+    "creation": 1750692743117,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": " ",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

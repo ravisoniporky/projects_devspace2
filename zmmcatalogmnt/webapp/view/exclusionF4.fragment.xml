@@ -1,0 +1,68 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:uitable="sap.ui.table"
+		xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog contentHeight="80%"
+		id="myDialog1_customer_e"
+		noDataText="No Items Found"
+		title="{= ${GlobalModel>/CatalogType} === 'E' ? 'Exclusion' : 'Inclusion'} List"
+		search=".handleSearchCustomer"
+		confirm=".handleConfirm"
+        selectionChange="handleSelectCustomer"
+		cancel=".handleClose"
+        growing="true"
+        growingThreshold="20"
+		>
+
+			<smartFilterBar:SmartFilterBar id="exclusionSF"  entitySet="ZCSD_MOBILECATALOGExclusion"
+			   enableBasicSearch="true" useToolbar="false" persistencyKey="catalogexclList_f">
+				
+				
+			</smartFilterBar:SmartFilterBar>
+			<smartTable:SmartTable id="sfTableExclude" entitySet="ZCSD_MOBILECATALOGExclusion" smartFilterId="exclusionSF"
+				requestAtLeastFields="CatalogId,SalesOrganization,CatalogField,Material,OldMaterialNumber"
+				beforeRebindTable="onBeforeRebindExclusion"
+			 tableType="ResponsiveTable" useExportToExcel="true"
+			
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 header="{= ${GlobalModel>/CatalogType} === 'E' ? 'Exclusion' : 'Inclusion'} List" showRowCount="true" persistencyKey="catalogexclList"
+			  enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+			  enableAutoColumnWidth="true"  app:useSmartToggle="true">
+
+			  <smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://delete" text="Mass Remove" press="applyMassRemoval"/>
+				</OverflowToolbar>
+		</smartTable:customToolbar>
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+							<uitable:Table rowActionCount="1" mode="SingleSelectMaster"  itemPress="handleSelectCustomer" selectionChange="handleSelectCustomer">
+
+							<uitable:rowActionTemplate>
+        <uitable:RowAction>
+            <uitable:items>
+                <uitable:RowActionItem  type="Delete" press=".onRemoveExclusionList"/>
+            </uitable:items>
+        </uitable:RowAction>
+    </uitable:rowActionTemplate>
+
+
+
+		
+				</uitable:Table>
+
+
+
+
+					</smartTable:SmartTable>
+
+						
+		<endButton>
+		<Button text="Close" press="onCloseDialogBox" type="Reject"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

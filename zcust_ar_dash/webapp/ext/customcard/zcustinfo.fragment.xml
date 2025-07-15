@@ -159,7 +159,11 @@ xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
 					<Text
 						text="{customerData>/SalesLead}" />
 
-						
+						<ObjectIdentifier titleActive="true"
+						title="Owner Name"
+						/>
+					<Text
+						text="{customerData>/OwnerName}" />
 						
 
 

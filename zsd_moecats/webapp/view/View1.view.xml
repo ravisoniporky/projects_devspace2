@@ -9,7 +9,18 @@
  <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" entitySet="ZCSD_E_MobileItemListSet" useToolbar="true"
 			 persistencyKey="smarttableCustF4_filter144"   enableBasicSearch="true" advancedMode="false" filterBarExpanded="false" smartVariant="true" showAllFilters="true"
 			 
-				showFilterConfiguration="true">
+				showFilterConfiguration="true"  >
+
+				<smartFilterBar:controlConfiguration>
+        <smartFilterBar:ControlConfiguration key="zcatalog" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
+            
+        </smartFilterBar:ControlConfiguration>
+
+
+		<smartFilterBar:ControlConfiguration key="$parameter.p_vkorg" mandatory="notMandatory" filterType="single" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false">
+            
+        </smartFilterBar:ControlConfiguration>
+    </smartFilterBar:controlConfiguration>
 				
 
 			</smartFilterBar:SmartFilterBar> 
@@ -22,6 +33,7 @@
 				initiallyVisibleFields="MATNR,MAKTX,BISMT,ZMOB_MATDESC,ZPACK_SIZE"
 				beforeRebindTable="onBeforeRebindTable"
 			 tableType="Table" useExportToExcel="true"
+			 
 			
 			 
 			

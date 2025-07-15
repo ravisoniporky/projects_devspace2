@@ -1,0 +1,131 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+		xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+		xmlns:uitable="sap.ui.table"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog contentHeight="80%"
+		id="myDialog1_customer_i"
+		noDataText="No Items Found"
+		title="Exclude By Brand"
+		search=".handleSearchCustomer"
+		confirm=".handleConfirm"
+        selectionChange="handleSelectCustomer"
+		cancel=".handleClose"
+        growing="true"
+        growingThreshold="20"
+		>
+
+			<smartFilterBar:SmartFilterBar  entitySet="ZCSD_E_MobileItemListSet"
+			   enableBasicSearch="true" useToolbar="false" persistencyKey="catalogmaintenance_f">
+			   
+				
+				<smartFilterBar:controlConfiguration>
+				 <smartFilterBar:ControlConfiguration
+						key="p_vkorg"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 	
+
+
+				  <smartFilterBar:ControlConfiguration
+						key="p_kunwe"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 
+
+
+
+				  <smartFilterBar:ControlConfiguration
+						key="p_ats"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+
+					> 
+
+				
+				 </smartFilterBar:ControlConfiguration> 
+
+				  <smartFilterBar:ControlConfiguration
+						key="p_itemproposal"
+						visibleInAdvancedArea="false"
+						value="12"
+						visible="false"
+
+					/> 
+					 <smartFilterBar:ControlConfiguration
+						key="BRAND"
+						visibleInAdvancedArea="true"
+						visible="false"
+
+					/> 
+					
+
+
+
+
+				 	
+				 		</smartFilterBar:controlConfiguration>
+			</smartFilterBar:SmartFilterBar>
+			<smartTable:SmartTable  entitySet="ZCSD_E_MobileItemListSet" id="st_brandtable" smartFilterId="smartFilter_custF4"
+				beforeRebindTable="onBeforeRebindInclusion"
+				requestAtLeastFields="MATNR,MAKTX,BISMT,ZMOB_MATDESC,ZPACK_SIZE,BRAND"
+				initiallyVisibleFields="MATNR,MAKTX,BISMT,ZMOB_MATDESC,ZPACK_SIZE,BRAND"
+			 tableType="Table" useExportToExcel="true"
+			
+			 beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" 
+			 header="Exclude By Brand" showRowCount="true" persistencyKey="catalogexclList"
+			  enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+			  enableAutoColumnWidth="true"  app:useSmartToggle="true">
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+			
+
+				<uitable:Table mode="SingleSelectMaster"  itemPress="handleSelectCustomer" selectionChange="handleSelectCustomer">
+				<uitable:columns>
+
+
+			<uitable:Column hAlign="Begin">
+					<uitable:customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "Visitid", "columnIndex": 10 "width": "150px"}' />
+					</uitable:customData>
+					<Text text="Exclude" />
+					<uitable:template>
+					<Switch  state="false" customTextOn="Exclude" customTextOff="Include">
+				<layoutData>
+					<FlexItemData growFactor="2" />
+				</layoutData>
+			</Switch>
+					</uitable:template>
+				</uitable:Column>
+
+				</uitable:columns>
+		
+				</uitable:Table>
+
+
+
+					</smartTable:SmartTable>
+
+
+
+		
+		<beginButton>
+		<Button text="Apply" press="onApplyBrandExclusion" type="Accept"></Button>
+		</beginButton>
+		<endButton>
+		<Button text="Close" press="onCloseDialogBox" type="Reject"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

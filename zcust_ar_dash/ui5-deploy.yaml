@@ -19,6 +19,6 @@ builder:
         app:
           name: ZCUST_AR_DASH
           package: zfiori1
-          transport: DE2K904420
+          transport: DE2K905305
         exclude:
           - /test/

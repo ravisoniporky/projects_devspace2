@@ -65,7 +65,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.108.28",
+      "minUI5Version": "1.108.44",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {}
@@ -101,6 +101,9 @@
         "type": "sap.ui.model.json.JSONModel"
       },
       "cartModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "countModel": {
         "type": "sap.ui.model.json.JSONModel"
       },
       "ZODATA_ORDER_ENTRY_SRV": {

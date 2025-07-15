@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZCSD_GPGPVM_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="I_CompanyCodeStdVHType" sap:label="Company Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+            </EntityType>
+            <EntityType Name="I_CustomerType" sap:label="Customer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Name of Customer"/>
+                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Customer Name" sap:quickinfo="Customer Full Name"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Created On"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="CustomerClassification" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:text="CustomerClassification_Text" sap:label="Customer Classific." sap:quickinfo="Customer Classification" sap:value-list="standard"/>
+                <Property Name="CustomerClassification_Text" Type="Edm.String" MaxLength="20" sap:label="Customer Classification Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="VAT Registration No." sap:quickinfo="VAT Registration Number"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="DeliveryIsBlocked" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Delivery block" sap:quickinfo="Central delivery block for the customer"/>
+                <Property Name="PostingIsBlocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Posting Block" sap:quickinfo="Central posting block"/>
+                <Property Name="BillingIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Billing block" sap:quickinfo="Central billing block for customer"/>
+                <Property Name="OrderIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Order block" sap:quickinfo="Central order block for customer"/>
+                <Property Name="InternationalLocationNumber1" Type="Edm.String" MaxLength="7" sap:display-format="NonNegative" sap:label="Int. location no. 1" sap:quickinfo="International location number  (part 1)"/>
+                <Property Name="IsOneTimeAccount" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="One-time account" sap:quickinfo="Indicator: Is the account a one-time account?"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Industry" sap:quickinfo="Industry key"/>
+                <Property Name="TaxNumberType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax number type" sap:quickinfo="Tax Number Type"/>
+                <Property Name="TaxNumber1" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Tax Number 1"/>
+                <Property Name="TaxNumber2" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="Tax Number 2"/>
+                <Property Name="TaxNumber3" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 3"/>
+                <Property Name="TaxNumber4" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 4"/>
+                <Property Name="TaxNumber5" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Tax Number 5"/>
+                <Property Name="TaxNumber6" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Tax Number 6"/>
+                <Property Name="CustomerCorporateGroup" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Group key"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="NielsenRegion" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Nielsen indicator" sap:quickinfo="Nielsen ID"/>
+                <Property Name="IndustryCode1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 1"/>
+                <Property Name="IndustryCode2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 2"/>
+                <Property Name="IndustryCode3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 3"/>
+                <Property Name="IndustryCode4" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 4"/>
+                <Property Name="IndustryCode5" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry code 5"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="SortField" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Search term" sap:quickinfo="Sort field"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="31" sap:label="Fax Number"/>
+                <Property Name="BR_SUFRAMACode" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Suframa Code"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="TelephoneNumber1" Type="Edm.String" MaxLength="16" sap:label="Telephone 1" sap:quickinfo="First telephone number"/>
+                <Property Name="TelephoneNumber2" Type="Edm.String" MaxLength="16" sap:label="Telephone 2" sap:quickinfo="Second telephone number"/>
+                <Property Name="AlternativePayerAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Alternative Payer" sap:quickinfo="Account Number of an Alternative Payer"/>
+                <Property Name="DataMediumExchangeIndicator" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="DME Recipient Code" sap:quickinfo="Recipient Code for Data Medium Exchange"/>
+                <Property Name="VATLiability" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Liable for VAT"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Type"/>
+                <Property Name="FiscalAddress" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fiscal address" sap:quickinfo="Account number of the master record with the fiscal address"/>
+                <Property Name="NFPartnerIsNaturalPerson" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Natural Person"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deletion Flag" sap:quickinfo="Central Deletion Flag for Master Record"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="TradingPartner" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:text="to_GlobalCompany/CompanyName" sap:label="Trading Partner No." sap:quickinfo="Company ID of Trading Partner" sap:value-list="standard"/>
+                <Property Name="DeliveryDateTypeRule" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Deliv Date Rule" sap:quickinfo="Delivery Date Rule"/>
+                <Property Name="ExpressTrainStationName" Type="Edm.String" MaxLength="25" sap:label="Express station" sap:quickinfo="Express train station"/>
+                <Property Name="TrainStationName" Type="Edm.String" MaxLength="25" sap:label="Train station"/>
+                <Property Name="InternationalLocationNumber2" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Int. location no. 2" sap:quickinfo="International location number (Part 2)"/>
+                <Property Name="InternationalLocationNumber3" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Check digit" sap:quickinfo="Check digit for the international location number"/>
+                <Property Name="CityCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="City Code"/>
+                <Property Name="County" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="County Code"/>
+                <Property Name="CustomerHasUnloadingPoint" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Unloading points" sap:quickinfo="Indicator: Unloading points exist"/>
+                <Property Name="CustomerWorkingTimeCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Working times" sap:quickinfo="Working Time Calendar"/>
+                <Property Name="IsCompetitor" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Competitors" sap:quickinfo="Indicator: Competitor"/>
+                <Property Name="TaxInvoiceRepresentativeName" Type="Edm.String" MaxLength="10" sap:label="Rep's Name" sap:quickinfo="Name of Representative"/>
+                <Property Name="BusinessType" Type="Edm.String" MaxLength="30" sap:label="Type of Business"/>
+                <Property Name="IndustryType" Type="Edm.String" MaxLength="30" sap:label="Type of Industry"/>
+                <Property Name="TW_CollvBillingIsSupported" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Consolidated Invoic." sap:quickinfo="Consolidated Invoicing for Taiwan"/>
+                <Property Name="AlternativePayeeIsAllowed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Alt.payer in doc?" sap:quickinfo="Indicator: Is an alternative payer allowed in document?"/>
+                <Property Name="FreeDefinedAttribute01" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 1"/>
+                <Property Name="FreeDefinedAttribute02" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 2"/>
+                <Property Name="FreeDefinedAttribute03" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 3"/>
+                <Property Name="FreeDefinedAttribute04" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 4"/>
+                <Property Name="FreeDefinedAttribute05" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Attribute 5"/>
+                <Property Name="FreeDefinedAttribute06" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 6"/>
+                <Property Name="FreeDefinedAttribute07" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 7"/>
+                <Property Name="FreeDefinedAttribute08" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 8"/>
+                <Property Name="FreeDefinedAttribute09" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 9"/>
+                <Property Name="FreeDefinedAttribute10" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Attribute 10"/>
+                <Property Name="PaymentReason" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Payment Reason"/>
+                <Property Name="IsSalesProspect" Type="Edm.Boolean" sap:label="Prospect" sap:quickinfo="Indicator: Sales prospect"/>
+                <Property Name="PaymentIsBlockedForCustomer" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Payment block" sap:quickinfo="Payment Block"/>
+                <Property Name="zzlatitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Latitude" sap:quickinfo="Geo location latitude"/>
+                <Property Name="zzlongitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Longitude" sap:quickinfo="Geo location longitude"/>
+                <Property Name="zzord_typ" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Sales Order type" sap:quickinfo="Sales order type for order entry"/>
+                <Property Name="zdel_split" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Deliv by Ord Typ" sap:quickinfo="Separate Deliveries by Order Type"/>
+                <Property Name="zzorig_shipto" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="zzstore_no" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Store No" sap:quickinfo="Customer Store Number"/>
+                <Property Name="zotypgrp" Type="Edm.String" MaxLength="2" sap:label="ordertype grp c." sap:quickinfo="groups of  valid ordertypes (cust. specified)"/>
+                <Property Name="zzinv_copies" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="No of Copies" sap:quickinfo="No of Invoice Copies for customer"/>
+                <Property Name="zzlgort_ad" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="StorLoc SalesEmpl." sap:quickinfo="it.trade: Stor.Loc. for SalesEmpl."/>
+                <Property Name="zzmpno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="M#" sap:quickinfo="Meat Processing Number"/>
+                <Property Name="zzord_inst" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Order Instructions" sap:quickinfo="Order Instructions for Order entry"/>
+                <Property Name="zzoverride" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Override Lat and Log" sap:quickinfo="Override Lat. and Long."/>
+                <Property Name="zzprint_ea" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Pr Inv with EA UPC" sap:quickinfo="Print Invoices with EA UPC"/>
+                <Property Name="zzsd_sledt" Type="Edm.String" MaxLength="1" sap:label="Shelf Life Exp Dt" sap:quickinfo="Include Shelf Life Exp. Date"/>
+                <Property Name="zzsrp_zinv" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Print Invoices with SRP Y/N"/>
+                <NavigationProperty Name="to_CustomerClassification" Relationship="ZCSD_GPGPVM_CDS.assoc_C9CD836CFC89E1433FB2649E56D3AA66" FromRole="FromRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66" ToRole="ToRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                <NavigationProperty Name="to_GlobalCompany" Relationship="ZCSD_GPGPVM_CDS.assoc_116DF44D92A0493A401259DEA0CF7F53" FromRole="FromRole_assoc_116DF44D92A0493A401259DEA0CF7F53" ToRole="ToRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+            </EntityType>
+            <EntityType Name="I_CustomerClassificationType" sap:label="Customer Classification" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomerClassification"/>
+                </Key>
+                <Property Name="CustomerClassification" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="CustomerClassification_Text" sap:label="Customer Classific." sap:quickinfo="Customer Classification"/>
+                <Property Name="CustomerClassification_Text" Type="Edm.String" MaxLength="20" sap:label="Customer Classification Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_Customer_VHType" sap:label="Customer" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region" sap:quickinfo="Country/Region Key"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Customer Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Complete Flag" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="IsCompetitor" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Competitors" sap:quickinfo="Indicator: Competitor"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Partner Type"/>
+            </EntityType>
+            <EntityType Name="I_GlobalcompanyType" sap:label="Global Company" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Company"/>
+                </Key>
+                <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:text="CompanyName" sap:label="Company"/>
+                <Property Name="CompanyName" Type="Edm.String" MaxLength="30" sap:label="Name of the company" sap:quickinfo="Company name"/>
+                <Property Name="CompanyCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Local Currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyLanguage" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+            </EntityType>
+            <EntityType Name="I_MaterialType" sap:label="Material" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="Material_Text" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Material_Text" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MaterialType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material Type"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
+                <Property Name="MaterialBaseUnit" Type="Edm.String" MaxLength="3" sap:text="to_BaseUnit/UnitOfMeasure_Text" sap:label="Base Unit of Measure" sap:value-list="standard" sap:semantics="unit-of-measure"/>
+                <Property Name="MaterialGrossWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="MaterialWeightUnit" sap:label="Gross Weight"/>
+                <Property Name="MaterialNetWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="MaterialWeightUnit" sap:label="Net Weight"/>
+                <Property Name="MaterialWeightUnit" Type="Edm.String" MaxLength="3" sap:text="to_WeightUnit/UnitOfMeasure_Text" sap:label="Unit of Weight" sap:value-list="standard" sap:semantics="unit-of-measure"/>
+                <Property Name="MaterialManufacturerNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Manufacturer" sap:quickinfo="Number of a Manufacturer"/>
+                <Property Name="MaterialManufacturerPartNumber" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Mfr Part Number" sap:quickinfo="Manufacturer Part Number"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+                <Property Name="IsBatchManagementRequired" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Batch Management" sap:quickinfo="Batch Management Requirement Indicator"/>
+                <Property Name="CrossPlantConfigurableProduct" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Cross-plant CM" sap:quickinfo="Cross-Plant Configurable Material"/>
+                <Property Name="ProductCategory" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Material Category"/>
+                <Property Name="ProductCharacteristic1" Type="Edm.String" MaxLength="18" sap:label="Color" sap:quickinfo="Characteristic Value for Colors of Variants"/>
+                <Property Name="ProductCharacteristic2" Type="Edm.String" MaxLength="18" sap:label="Main Size" sap:quickinfo="Characteristic Value for Main Sizes of Variants"/>
+                <Property Name="ProductCharacteristic3" Type="Edm.String" MaxLength="18" sap:label="Second Size" sap:quickinfo="Characteristic Value for Second Size for Variants"/>
+                <Property Name="ProdCharc1InternalNumber" Type="Edm.String" MaxLength="30" sap:display-format="NonNegative" sap:label="Int. Char. Number" sap:quickinfo="Internal Charactieristic Number for Color Characteristics"/>
+                <Property Name="ProdCharc2InternalNumber" Type="Edm.String" MaxLength="30" sap:display-format="NonNegative" sap:label="Int. Char. Number" sap:quickinfo="Internal Char. Number for Characteristics for Main Sizes"/>
+                <Property Name="ProdCharc3InternalNumber" Type="Edm.String" MaxLength="30" sap:display-format="NonNegative" sap:label="Int. Char. Number" sap:quickinfo="Internal Char. Number for Characteristics for Second Sizes"/>
+                <NavigationProperty Name="to_BaseUnit" Relationship="ZCSD_GPGPVM_CDS.assoc_EBF97F0698BDC76F1E3AF501F0F18E9A" FromRole="FromRole_assoc_EBF97F0698BDC76F1E3AF501F0F18E9A" ToRole="ToRole_assoc_EBF97F0698BDC76F1E3AF501F0F18E9A"/>
+                <NavigationProperty Name="to_WeightUnit" Relationship="ZCSD_GPGPVM_CDS.assoc_B46BCF309A9B43CB25FCEFE1CC5B4227" FromRole="FromRole_assoc_B46BCF309A9B43CB25FCEFE1CC5B4227" ToRole="ToRole_assoc_B46BCF309A9B43CB25FCEFE1CC5B4227"/>
+            </EntityType>
+            <EntityType Name="I_MaterialGroupType" sap:label="Material Group" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialGroup"/>
+                </Key>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:text="MaterialGroup_Text" sap:label="Product Group"/>
+                <Property Name="MaterialGroup_Text" Type="Edm.String" MaxLength="20" sap:label="Product Group Desc." sap:quickinfo="Product Group Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_UnitOfMeasureType" sap:label="Unit of Measure" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitOfMeasure"/>
+                </Key>
+                <Property Name="UnitOfMeasure" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="UnitOfMeasure_Text" sap:label="Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="UnitOfMeasure_Text" Type="Edm.String" MaxLength="30" sap:label="Measurement Unit Txt" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="UnitOfMeasureSAPCode" Type="Edm.String" MaxLength="3" sap:label="Internal SAP Code" sap:quickinfo="Unit of Measurement, Internal SAP Code (No Conversion)"/>
+                <Property Name="UnitOfMeasureISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="to_ISOCode/UnitOfMeasureISOCode_Text" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement" sap:value-list="standard"/>
+                <Property Name="IsPrimaryUnitForISOCode" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Primary code" sap:quickinfo="Selection field for conversion from ISO code to int. code"/>
+                <Property Name="UnitOfMeasureNumberOfDecimals" Type="Edm.Int16" sap:label="Decimal Rounding" sap:quickinfo="No. of decimal places for rounding"/>
+                <Property Name="UnitOfMeasureIsCommercial" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Commercial meas.unit" sap:quickinfo="Commercial measurement unit ID"/>
+                <Property Name="UnitOfMeasureDimension" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:text="to_Dimension/UnitOfMeasureDimension_Text" sap:label="Dimension" sap:quickinfo="Dimension key" sap:value-list="standard"/>
+                <Property Name="SIUnitCnvrsnRateNumerator" Type="Edm.Int32" sap:label="Numerator" sap:quickinfo="Numerator for conversion to SI unit"/>
+                <Property Name="SIUnitCnvrsnRateDenominator" Type="Edm.Int32" sap:label="Denominator" sap:quickinfo="Denominator for conversion into SI unit"/>
+                <Property Name="SIUnitCnvrsnRateExponent" Type="Edm.Int16" sap:label="Exponent" sap:quickinfo="base ten exponent for conversion to SI unit"/>
+                <Property Name="SIUnitCnvrsnAdditiveValue" Type="Edm.Decimal" Precision="9" Scale="6" sap:label="Additive constant" sap:quickinfo="Additive constant for conversion to SI unit"/>
+                <Property Name="UnitOfMeasureDspExponent" Type="Edm.Int16" sap:label="Exp. 10 Floating Pt" sap:quickinfo="Exponent of 10 for Floating Point Format"/>
+                <Property Name="UnitOfMeasureDspNmbrOfDcmls" Type="Edm.Int16" sap:label="Decimal Places" sap:quickinfo="Number of Decimal Places for Number Display"/>
+                <Property Name="UnitOfMeasureTemperature" Type="Edm.Double" sap:unit="UnitOfMeasureTemperatureUnit" sap:label="Temperature"/>
+                <Property Name="UnitOfMeasureTemperatureUnit" Type="Edm.String" MaxLength="3" sap:label="Temperature unit" sap:semantics="unit-of-measure"/>
+                <Property Name="UnitOfMeasurePressure" Type="Edm.Double" sap:unit="UnitOfMeasurePressureUnit" sap:label="Pressure Value"/>
+                <Property Name="UnitOfMeasurePressureUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Pressure" sap:semantics="unit-of-measure"/>
+                <NavigationProperty Name="to_Dimension" Relationship="ZCSD_GPGPVM_CDS.assoc_744267C89213C6F0BEAA53E2EB9C8F4F" FromRole="FromRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F" ToRole="ToRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                <NavigationProperty Name="to_ISOCode" Relationship="ZCSD_GPGPVM_CDS.assoc_5E18390584266C106B459BC3FD3D3C50" FromRole="FromRole_assoc_5E18390584266C106B459BC3FD3D3C50" ToRole="ToRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+            </EntityType>
+            <EntityType Name="I_UnitOfMeasureDimensionType" sap:label="Unit of Measure Dimension" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitOfMeasureDimension"/>
+                </Key>
+                <Property Name="UnitOfMeasureDimension" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:text="UnitOfMeasureDimension_Text" sap:label="Dimension" sap:quickinfo="Dimension key"/>
+                <Property Name="UnitOfMeasureDimension_Text" Type="Edm.String" MaxLength="20" sap:label="Dimension text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LengthExponent" Type="Edm.Int16" sap:label="Length" sap:quickinfo="Length exponent"/>
+                <Property Name="MassExponent" Type="Edm.Int16" sap:label="Mass" sap:quickinfo="Mass exponent"/>
+                <Property Name="TimeExponent" Type="Edm.Int16" sap:label="Time" sap:quickinfo="Current exponent"/>
+                <Property Name="ElectricCurrentExponent" Type="Edm.Int16" sap:label="elec. current" sap:quickinfo="Electric current exponent"/>
+                <Property Name="TemperatureExponent" Type="Edm.Int16" sap:label="Temperature" sap:quickinfo="Temperature exponent"/>
+                <Property Name="MoleQuantityExponent" Type="Edm.Int16" sap:label="Mole quantity" sap:quickinfo="Mole quantity exponent"/>
+                <Property Name="LuminosityExponent" Type="Edm.Int16" sap:label="Luminous intensity" sap:quickinfo="Luminosity exponent"/>
+                <Property Name="UnitOFMeasureSiUnit" Type="Edm.String" MaxLength="3" sap:label="SI unit" sap:semantics="unit-of-measure"/>
+                <Property Name="HasUnitsWithTemperatureSpec" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Temperature-Depend." sap:quickinfo="Indicator: Dimension has Unit with Temperature Specification"/>
+                <Property Name="HasUnitsWithPressureSpec" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Pressure-Dependent" sap:quickinfo="Indicator: Dimension has Units with Pressure Specification"/>
+            </EntityType>
+            <EntityType Name="I_UnitOfMeasureISOCodeType" sap:label="Unit of Measure ISO Code" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitOfMeasureISOCode"/>
+                </Key>
+                <Property Name="UnitOfMeasureISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="UnitOfMeasureISOCode_Text" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="UnitOfMeasureISOCode_Text" Type="Edm.String" MaxLength="25" sap:label="ISO code" sap:quickinfo="ISO codes for measurement unit names" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZBSD_SalesOrganizationType" sap:label="Sales Organization" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="salesorgname" sap:label="Sales Organization"/>
+                <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization" sap:value-list="standard"/>
+                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing" sap:value-list="standard"/>
+                <Property Name="ltext" Type="Edm.String" MaxLength="40" sap:attribute-for="SalesOrganization" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="mtext" Type="Edm.String" MaxLength="20" sap:attribute-for="SalesOrganization" sap:display-format="UpperCase" sap:label="Search Term 1"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="salesorgname" Type="Edm.String" MaxLength="20" sap:label="Name"/>
+            </EntityType>
+            <EntityType Name="ZBSD_TIMEROLLUPType" sap:label="Time Rollup Text" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="timerollup"/>
+                </Key>
+                <Property Name="timerollup" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="timerolluptext" sap:label="Time Rollup Key"/>
+                <Property Name="timerolluptext" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Field Name"/>
+            </EntityType>
+            <EntityType Name="ZCSD_GPGPVMResult" sap:semantics="aggregate" sap:label="GPG Product Void Matrix" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:required-in-filter="false" sap:text="SalesOrganizationName" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="to_Material/Material_Text" sap:label="Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="SoldToPartyName" sap:label="Sold-to Party" sap:value-list="standard"/>
+                <Property Name="BillingDocumentDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Billing Date"/>
+                <Property Name="LastSold" Type="Edm.Decimal" Precision="10" Scale="0" sap:aggregation-role="dimension" sap:label="Days Since Last Sold"/>
+                <Property Name="SoldToPartyName" Type="Edm.String" MaxLength="80" sap:label="Sold-to Party Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="to_SM/CustomerName" sap:label="Salesman" sap:quickinfo="Customer Number" sap:value-list="standard"/>
+                <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Material Description"/>
+                <Property Name="SalesmanName" Type="Edm.String" MaxLength="80" sap:aggregation-role="dimension" sap:label="Salesman Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="SalesOrganizationName" Type="Edm.String" MaxLength="20" sap:label="Sales Organization Description"/>
+                <Property Name="SeqNo" Type="Edm.Decimal" Precision="10" Scale="0" sap:aggregation-role="measure" sap:filterable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Material Group" sap:value-list="standard"/>
+                <NavigationProperty Name="to_Material" Relationship="ZCSD_GPGPVM_CDS.assoc_5DCBB74807887D84478E75EE6258BD9F" FromRole="FromRole_assoc_5DCBB74807887D84478E75EE6258BD9F" ToRole="ToRole_assoc_5DCBB74807887D84478E75EE6258BD9F"/>
+                <NavigationProperty Name="to_SM" Relationship="ZCSD_GPGPVM_CDS.assoc_7B1E9F05687DDFA54C4CB39D21F467F9" FromRole="FromRole_assoc_7B1E9F05687DDFA54C4CB39D21F467F9" ToRole="ToRole_assoc_7B1E9F05687DDFA54C4CB39D21F467F9"/>
+                <NavigationProperty Name="to_Soldto" Relationship="ZCSD_GPGPVM_CDS.assoc_88E845244DC4B8AD6A00BFA7318FE62F" FromRole="FromRole_assoc_88E845244DC4B8AD6A00BFA7318FE62F" ToRole="ToRole_assoc_88E845244DC4B8AD6A00BFA7318FE62F"/>
+                <NavigationProperty Name="Parameters" Relationship="ZCSD_GPGPVM_CDS.assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB" FromRole="ToRole_assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB" ToRole="FromRole_assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCSD_GPGPVMParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_bukrs"/>
+                    <PropertyRef Name="p_timerollup"/>
+                    <PropertyRef Name="p_date"/>
+                </Key>
+                <Property Name="p_bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_timerollup" Type="Edm.String" Nullable="false" DefaultValue="YTD" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Time Rollup Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
+                <Property Name="p_date" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZCSD_GPGPVM_CDS.assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB" FromRole="FromRole_assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB" ToRole="ToRole_assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB"/>
+            </EntityType>
+            <EntityType Name="ZI_CUSTOMERSMVHType" sap:label="Customer Value Helo By Org" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="to_SaleOrganization/salesorgname" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Name of Customer"/>
+                <NavigationProperty Name="to_SaleOrganization" Relationship="ZCSD_GPGPVM_CDS.assoc_8D3A20BFDC551791036142B4BAE6F3F3" FromRole="FromRole_assoc_8D3A20BFDC551791036142B4BAE6F3F3" ToRole="ToRole_assoc_8D3A20BFDC551791036142B4BAE6F3F3"/>
+            </EntityType>
+            <EntityType Name="ZI_CUSTOMERVHType" sap:label="Customer Value Helo By Org" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="CustomerAccountGroup"/>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="to_Customer/CustomerName" sap:label="Customer" sap:quickinfo="Customer Number" sap:value-list="standard"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Name of Customer"/>
+                <NavigationProperty Name="to_Customer" Relationship="ZCSD_GPGPVM_CDS.assoc_334B6D6F16CD38DDC9B2618EF108D417" FromRole="FromRole_assoc_334B6D6F16CD38DDC9B2618EF108D417" ToRole="ToRole_assoc_334B6D6F16CD38DDC9B2618EF108D417"/>
+            </EntityType>
+            <Association Name="assoc_744267C89213C6F0BEAA53E2EB9C8F4F" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.I_UnitOfMeasureType" Multiplicity="1" Role="FromRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_UnitOfMeasureDimensionType" Multiplicity="0..1" Role="ToRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F">
+                        <PropertyRef Name="UnitOfMeasureDimension"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F">
+                        <PropertyRef Name="UnitOfMeasureDimension"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_5E18390584266C106B459BC3FD3D3C50" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.I_UnitOfMeasureType" Multiplicity="1" Role="FromRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_UnitOfMeasureISOCodeType" Multiplicity="0..1" Role="ToRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_5E18390584266C106B459BC3FD3D3C50">
+                        <PropertyRef Name="UnitOfMeasureISOCode"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_5E18390584266C106B459BC3FD3D3C50">
+                        <PropertyRef Name="UnitOfMeasureISOCode"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_334B6D6F16CD38DDC9B2618EF108D417" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.ZI_CUSTOMERVHType" Multiplicity="1" Role="FromRole_assoc_334B6D6F16CD38DDC9B2618EF108D417"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_CustomerType" Multiplicity="1" Role="ToRole_assoc_334B6D6F16CD38DDC9B2618EF108D417"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_334B6D6F16CD38DDC9B2618EF108D417">
+                        <PropertyRef Name="Customer"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_334B6D6F16CD38DDC9B2618EF108D417">
+                        <PropertyRef Name="Customer"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_116DF44D92A0493A401259DEA0CF7F53" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.I_CustomerType" Multiplicity="1" Role="FromRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_GlobalcompanyType" Multiplicity="0..1" Role="ToRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_116DF44D92A0493A401259DEA0CF7F53">
+                        <PropertyRef Name="Company"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_116DF44D92A0493A401259DEA0CF7F53">
+                        <PropertyRef Name="TradingPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_C9CD836CFC89E1433FB2649E56D3AA66" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.I_CustomerType" Multiplicity="1" Role="FromRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_CustomerClassificationType" Multiplicity="0..1" Role="ToRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66">
+                        <PropertyRef Name="CustomerClassification"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66">
+                        <PropertyRef Name="CustomerClassification"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_EBF97F0698BDC76F1E3AF501F0F18E9A" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.I_MaterialType" Multiplicity="1" Role="FromRole_assoc_EBF97F0698BDC76F1E3AF501F0F18E9A"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_EBF97F0698BDC76F1E3AF501F0F18E9A"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_EBF97F0698BDC76F1E3AF501F0F18E9A">
+                        <PropertyRef Name="UnitOfMeasure"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_EBF97F0698BDC76F1E3AF501F0F18E9A">
+                        <PropertyRef Name="MaterialBaseUnit"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_B46BCF309A9B43CB25FCEFE1CC5B4227" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.I_MaterialType" Multiplicity="1" Role="FromRole_assoc_B46BCF309A9B43CB25FCEFE1CC5B4227"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_B46BCF309A9B43CB25FCEFE1CC5B4227"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_B46BCF309A9B43CB25FCEFE1CC5B4227">
+                        <PropertyRef Name="UnitOfMeasure"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_B46BCF309A9B43CB25FCEFE1CC5B4227">
+                        <PropertyRef Name="MaterialWeightUnit"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMParameters" Multiplicity="1" Role="FromRole_assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB"/>
+                <End Type="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult" Multiplicity="*" Role="ToRole_assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB"/>
+            </Association>
+            <Association Name="assoc_8D3A20BFDC551791036142B4BAE6F3F3" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.ZI_CUSTOMERSMVHType" Multiplicity="1" Role="FromRole_assoc_8D3A20BFDC551791036142B4BAE6F3F3"/>
+                <End Type="ZCSD_GPGPVM_CDS.ZBSD_SalesOrganizationType" Multiplicity="0..1" Role="ToRole_assoc_8D3A20BFDC551791036142B4BAE6F3F3"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_8D3A20BFDC551791036142B4BAE6F3F3">
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_8D3A20BFDC551791036142B4BAE6F3F3">
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_5DCBB74807887D84478E75EE6258BD9F" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult" Multiplicity="1" Role="FromRole_assoc_5DCBB74807887D84478E75EE6258BD9F"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_MaterialType" Multiplicity="0..1" Role="ToRole_assoc_5DCBB74807887D84478E75EE6258BD9F"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_5DCBB74807887D84478E75EE6258BD9F">
+                        <PropertyRef Name="Material"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_5DCBB74807887D84478E75EE6258BD9F">
+                        <PropertyRef Name="Material"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_7B1E9F05687DDFA54C4CB39D21F467F9" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult" Multiplicity="1" Role="FromRole_assoc_7B1E9F05687DDFA54C4CB39D21F467F9"/>
+                <End Type="ZCSD_GPGPVM_CDS.ZI_CUSTOMERSMVHType" Multiplicity="0..1" Role="ToRole_assoc_7B1E9F05687DDFA54C4CB39D21F467F9"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_7B1E9F05687DDFA54C4CB39D21F467F9">
+                        <PropertyRef Name="Customer"/>
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_7B1E9F05687DDFA54C4CB39D21F467F9">
+                        <PropertyRef Name="Salesman"/>
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_88E845244DC4B8AD6A00BFA7318FE62F" sap:content-version="1">
+                <End Type="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult" Multiplicity="1" Role="FromRole_assoc_88E845244DC4B8AD6A00BFA7318FE62F"/>
+                <End Type="ZCSD_GPGPVM_CDS.I_CustomerType" Multiplicity="0..1" Role="ToRole_assoc_88E845244DC4B8AD6A00BFA7318FE62F"/>
+            </Association>
+            <EntityContainer Name="ZCSD_GPGPVM_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_CompanyCodeStdVH" EntityType="ZCSD_GPGPVM_CDS.I_CompanyCodeStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Customer" EntityType="ZCSD_GPGPVM_CDS.I_CustomerType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_CustomerClassification" EntityType="ZCSD_GPGPVM_CDS.I_CustomerClassificationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_Customer_VH" EntityType="ZCSD_GPGPVM_CDS.I_Customer_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Globalcompany" EntityType="ZCSD_GPGPVM_CDS.I_GlobalcompanyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Material" EntityType="ZCSD_GPGPVM_CDS.I_MaterialType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_MaterialGroup" EntityType="ZCSD_GPGPVM_CDS.I_MaterialGroupType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_UnitOfMeasure" EntityType="ZCSD_GPGPVM_CDS.I_UnitOfMeasureType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_UnitOfMeasureDimension" EntityType="ZCSD_GPGPVM_CDS.I_UnitOfMeasureDimensionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_UnitOfMeasureISOCode" EntityType="ZCSD_GPGPVM_CDS.I_UnitOfMeasureISOCodeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_SalesOrganization" EntityType="ZCSD_GPGPVM_CDS.ZBSD_SalesOrganizationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_TIMEROLLUP" EntityType="ZCSD_GPGPVM_CDS.ZBSD_TIMEROLLUPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_GPGPVMResults" EntityType="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_GPGPVM" EntityType="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_CUSTOMERSMVH" EntityType="ZCSD_GPGPVM_CDS.ZI_CUSTOMERSMVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CUSTOMERVH" EntityType="ZCSD_GPGPVM_CDS.ZI_CUSTOMERVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_5E18390584266C106B459BC3FD3D3C50" Association="ZCSD_GPGPVM_CDS.assoc_5E18390584266C106B459BC3FD3D3C50" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_UnitOfMeasure" Role="FromRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+                    <End EntitySet="I_UnitOfMeasureISOCode" Role="ToRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5DCBB74807887D84478E75EE6258BD9F" Association="ZCSD_GPGPVM_CDS.assoc_5DCBB74807887D84478E75EE6258BD9F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_GPGPVMResults" Role="FromRole_assoc_5DCBB74807887D84478E75EE6258BD9F"/>
+                    <End EntitySet="I_Material" Role="ToRole_assoc_5DCBB74807887D84478E75EE6258BD9F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C9CD836CFC89E1433FB2649E56D3AA66" Association="ZCSD_GPGPVM_CDS.assoc_C9CD836CFC89E1433FB2649E56D3AA66" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_Customer" Role="FromRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                    <End EntitySet="I_CustomerClassification" Role="ToRole_assoc_C9CD836CFC89E1433FB2649E56D3AA66"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B46BCF309A9B43CB25FCEFE1CC5B4227" Association="ZCSD_GPGPVM_CDS.assoc_B46BCF309A9B43CB25FCEFE1CC5B4227" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_Material" Role="FromRole_assoc_B46BCF309A9B43CB25FCEFE1CC5B4227"/>
+                    <End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_B46BCF309A9B43CB25FCEFE1CC5B4227"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_334B6D6F16CD38DDC9B2618EF108D417" Association="ZCSD_GPGPVM_CDS.assoc_334B6D6F16CD38DDC9B2618EF108D417" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_CUSTOMERVH" Role="FromRole_assoc_334B6D6F16CD38DDC9B2618EF108D417"/>
+                    <End EntitySet="I_Customer" Role="ToRole_assoc_334B6D6F16CD38DDC9B2618EF108D417"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB" Association="ZCSD_GPGPVM_CDS.assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_GPGPVM" Role="FromRole_assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB"/>
+                    <End EntitySet="ZCSD_GPGPVMResults" Role="ToRole_assoc_F1D5D1A64FEDE5CBEF5CBF7A711925EB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7B1E9F05687DDFA54C4CB39D21F467F9" Association="ZCSD_GPGPVM_CDS.assoc_7B1E9F05687DDFA54C4CB39D21F467F9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_GPGPVMResults" Role="FromRole_assoc_7B1E9F05687DDFA54C4CB39D21F467F9"/>
+                    <End EntitySet="ZI_CUSTOMERSMVH" Role="ToRole_assoc_7B1E9F05687DDFA54C4CB39D21F467F9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_744267C89213C6F0BEAA53E2EB9C8F4F" Association="ZCSD_GPGPVM_CDS.assoc_744267C89213C6F0BEAA53E2EB9C8F4F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_UnitOfMeasure" Role="FromRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                    <End EntitySet="I_UnitOfMeasureDimension" Role="ToRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8D3A20BFDC551791036142B4BAE6F3F3" Association="ZCSD_GPGPVM_CDS.assoc_8D3A20BFDC551791036142B4BAE6F3F3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_CUSTOMERSMVH" Role="FromRole_assoc_8D3A20BFDC551791036142B4BAE6F3F3"/>
+                    <End EntitySet="ZBSD_SalesOrganization" Role="ToRole_assoc_8D3A20BFDC551791036142B4BAE6F3F3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_116DF44D92A0493A401259DEA0CF7F53" Association="ZCSD_GPGPVM_CDS.assoc_116DF44D92A0493A401259DEA0CF7F53" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_Customer" Role="FromRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+                    <End EntitySet="I_Globalcompany" Role="ToRole_assoc_116DF44D92A0493A401259DEA0CF7F53"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EBF97F0698BDC76F1E3AF501F0F18E9A" Association="ZCSD_GPGPVM_CDS.assoc_EBF97F0698BDC76F1E3AF501F0F18E9A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_Material" Role="FromRole_assoc_EBF97F0698BDC76F1E3AF501F0F18E9A"/>
+                    <End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_EBF97F0698BDC76F1E3AF501F0F18E9A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_88E845244DC4B8AD6A00BFA7318FE62F" Association="ZCSD_GPGPVM_CDS.assoc_88E845244DC4B8AD6A00BFA7318FE62F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_GPGPVMResults" Role="FromRole_assoc_88E845244DC4B8AD6A00BFA7318FE62F"/>
+                    <End EntitySet="I_Customer" Role="ToRole_assoc_88E845244DC4B8AD6A00BFA7318FE62F"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZCSD_GPGPVM_CDS.I_CustomerType/CustomerClassification" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer Classification"/>
+                        <PropertyValue Property="CollectionPath" String="I_CustomerClassification"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerClassification"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerClassification"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerClassification_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.I_CustomerType/TradingPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Global Company"/>
+                        <PropertyValue Property="CollectionPath" String="I_Globalcompany"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TradingPartner"/>
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.I_MaterialType/MaterialBaseUnit" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MaterialBaseUnit"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.I_MaterialType/MaterialWeightUnit" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MaterialWeightUnit"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.I_UnitOfMeasureType/UnitOfMeasureISOCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure ISO Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasureISOCode"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UnitOfMeasureISOCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.I_UnitOfMeasureType/UnitOfMeasureDimension" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure Dimension"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasureDimension"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UnitOfMeasureDimension"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZBSD_SalesOrganizationType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZBSD_SalesOrganizationType/IntercompanyBillingCustomer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="I_Customer_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="IntercompanyBillingCustomer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StreetName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PostalCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="mtext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material"/>
+                        <PropertyValue Property="CollectionPath" String="I_Material"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult/SoldToParty" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer Value Helo By Org"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CUSTOMERVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SoldToParty"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerAccountGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult/Salesman" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer Value Helo By Org"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CUSTOMERSMVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Salesman"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMResult/MaterialGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material Group"/>
+                        <PropertyValue Property="CollectionPath" String="I_MaterialGroup"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MaterialGroup"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroup_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVMParameters/p_timerollup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Time Rollup Text"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_TIMEROLLUP"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_timerollup"/>
+                                    <PropertyValue Property="ValueListProperty" String="timerollup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="timerolluptext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZI_CUSTOMERSMVHType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="mtext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZI_CUSTOMERVHType/Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="I_Customer"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerClassification_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVM_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVM_CDS_Entities/ZCSD_GPGPVM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_bukrs</PropertyPath>
+                                <PropertyPath>p_timerollup</PropertyPath>
+                                <PropertyPath>p_date</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_bukrs</PropertyPath>
+                                <PropertyPath>p_timerollup</PropertyPath>
+                                <PropertyPath>p_date</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVM_CDS_Entities/ZCSD_GPGPVMResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>SeqNo</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Material"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SM"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Soldto"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVM_CDS_Entities/I_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerClassification"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_GlobalCompany"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVM_CDS_Entities/I_Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BaseUnit"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_WeightUnit"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVM_CDS_Entities/I_UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Dimension"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ISOCode"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVM_CDS_Entities/ZI_CUSTOMERSMVH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SaleOrganization"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.ZCSD_GPGPVM_CDS_Entities/ZI_CUSTOMERVH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Customer"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCSD_GPGPVM_CDS.I_UnitOfMeasureType/UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.UnitSpecificScale" Path="UnitOfMeasureDspNmbrOfDcmls"/>
+            </Annotations>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZCSD_GPGPVM_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZCSD_GPGPVM_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

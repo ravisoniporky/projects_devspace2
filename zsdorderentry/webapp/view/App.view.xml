@@ -2,9 +2,11 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:f="sap.f"
+		xmlns:l="sap.ui.layout"
     xmlns="sap.m">
     <App id="app">
-    	<f:FlexibleColumnLayout
+	<f:FlexibleColumnLayout
+		
         layout="{userValues>/layout}"
 			id="layout"
 			busy="{appView>/busy}"
@@ -12,6 +14,39 @@
 			backgroundDesign="Translucent"
 			class="sapUiDemoCart"
 			stateChange=".onStateChange">
+			
 		</f:FlexibleColumnLayout>
+		
+
+	<!-- <f:SidePanel id="mySidePanel" toggle="onToggle" sidePanelPosition="Left" >
+				<f:mainContent height="1000px">
+				
+	
+		</f:mainContent>
+		<f:items>
+					<f:SidePanelItem icon="sap-icon://action-settings" text="Settings" >
+						<VBox>
+							<Text text="Static Content" class="sapUiSmallMarginBottom" />
+							<Text text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+							<Switch />
+							<Button text="Press me" />
+						</VBox>
+					</f:SidePanelItem>
+
+
+					<f:SidePanelItem icon="sap-icon://addresses" text="Defaults">
+						<VBox>
+							<Text text="Static Content" class="sapUiSmallMarginBottom" />
+							<Button text="Press me" />
+							<Button text="Hit me" />
+							<Button text="Touch me" />
+						</VBox>
+					</f:SidePanelItem>
+
+
+					<f:SidePanelItem icon="sap-icon://building" text="Profile" />
+					<f:SidePanelItem icon="sap-icon://flight" text="Theme" enabled="false" />
+				</f:items>
+			</f:SidePanel> -->
     </App>
 </mvc:View>

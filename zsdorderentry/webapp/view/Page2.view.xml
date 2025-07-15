@@ -126,8 +126,10 @@
 
 						<HBox>
 						<Label text="Price:" class="sapUiTinyMarginEnd sapUiTinyMarginTop" vAlign="Middle"></Label>
-						<Input value="{proposedModel>CurrentPrice}" />
+						<Input value="{proposedModel>CurrentPrice_F}" />
 						</HBox>
+
+
 						<!-- <Label text="{proposedModel>OldMaterial}" wrapping="true" class="sapUiTinyMarginBottom" width="100%"/>
 						<Text text="{proposedModel>ExternalMaterialGroup} - Stock ({proposedModel>Stock} {proposedModel>SalesUnit})" wrapping="true" width="100%"/>
 						<ObjectStatus text="{= ${proposedModel>isAddedToCart} === true ? 'Added To Cart' : ''}  {proposedModel>CartQuantity}" 
@@ -277,7 +279,7 @@
 
 						<HBox>
 						<Label text="Price:" class="sapUiTinyMarginEnd" vAlign="Middle"></Label>
-						<Input value="{itemSearchModel>CurrentPrice}" />
+						<Input value="{itemSearchModel>CurrentPrice_F}" />
 						</HBox>
 						<!-- <Label text="{proposedModel>OldMaterial}" wrapping="true" class="sapUiTinyMarginBottom" width="100%"/>
 						<Text text="{proposedModel>ExternalMaterialGroup} - Stock ({proposedModel>Stock} {proposedModel>SalesUnit})" wrapping="true" width="100%"/>

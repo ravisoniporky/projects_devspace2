@@ -6649,13 +6649,17 @@ clean.forEach(element => {
 
         },
         onMOECatalog: function(oEvent){
-          debugger;
+       //   debugger;
 
-          var shipto = oEvent.getSource().getBindingContext("moeModel").getObject().entitled_shipto;
+          var shipto = oEvent.getSource().getBindingContext("moeModel").getObject().kunwe;
           var vkorg = oEvent.getSource().getBindingContext("moeModel").getObject().p_vkorg;
           var catalog =  oEvent.getSource().getBindingContext("moeModel").getObject().catalog_name;
           var item_proposal =  oEvent.getSource().getBindingContext("moeModel").getObject().item_proposal;
           var ats =  oEvent.getSource().getBindingContext("moeModel").getObject().ats;
+
+          if(typeof item_proposal === 'undefined' || item_proposal === ''){
+            item_proposal = "N";
+          }
 
 
             //  debugger;

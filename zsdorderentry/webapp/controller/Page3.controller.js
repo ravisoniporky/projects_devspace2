@@ -83,6 +83,7 @@ function (Controller) {
                  
       
                   sap.m.MessageBox.success("Order " + result.OrderOut.results[0].Entryno + " was created successfully");
+                  that.reset();
                   
       
       
@@ -107,6 +108,27 @@ function (Controller) {
               }
       
               );
+        },
+
+        reset: function(){
+
+          this.getOwnerComponent().getModel("cartModel").setData({"materials":[]});
+          this.getOwnerComponent().getModel("userValues").setProperty("/layout","TwoColumnsMidExpanded");
+          this.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel({cartItemsCount: 0}), "countModel");
+
+          this.getOwnerComponent().getModel("userValues").setProperty("/Customer","");
+           this.getOwnerComponent().getModel("userValues").setProperty("/customername","");
+           this.getOwnerComponent().getModel("userValues").setProperty("/Plant","");
+           this.getOwnerComponent().getModel("userValues").setProperty("/plantname","");
+           this.getOwnerComponent().getModel("userValues").setProperty("/SalesOrganization","");
+
+
+           this.getView().getParent().getParent().getCurrentBeginColumnPage().getController().ResetMaterialSelection();
+
+
+
+
+
         },
 
         triggerDeliveryDateFetch: function(){

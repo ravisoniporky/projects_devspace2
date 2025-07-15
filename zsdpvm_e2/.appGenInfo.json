@@ -1,0 +1,33 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Jun 24 2025 17:17:57 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZCSD_GPGPVM_CDS",
+    "appName": "zsdpvm_e2",
+    "appTitle": "Product Void Matrix",
+    "appDescription": "Product Void Matrix",
+    "appNamespace": "customer.porky",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.108.44",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.18.0",
+    "template": "List Report Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZCSD_GPGPVMResults"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "None"
+      }
+    ],
+    "launchText": "In order to launch the generated app, simply run the following from the generated app root folder:\n\n```\n    npm start\n```"
+  }
+}
