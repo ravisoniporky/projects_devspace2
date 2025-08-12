@@ -41,6 +41,41 @@
                 this.getView().setModel(new sap.ui.model.json.JSONModel({"creditNote": '',"creditNoteNotify":true}), "creditNoteModel");
 
 
+                this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
+
+            },
+
+            onGlobalfilterApply: function(oEvent){
+
+                var that = this;
+                this.getModel().attachRequestCompleted(function(oEvent){
+
+                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")){
+                        return;
+                    } 
+                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")){
+                        return;
+                    }
+                    if(!oEvent.mParameters.url.includes("ZCFI_CUSTARDASH")){
+                        return;
+                    }
+                    var response = JSON.parse(oEvent.getParameter("response").responseText).d.results[0];
+                    if(typeof response === 'undefined')
+                        {
+                            that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData");
+                            return;
+                        }
+               
+
+                    that.getView().setModel(new sap.ui.model.json.JSONModel(response), "customerData");
+                });
+
+                this.getView().setModel(new sap.ui.model.json.JSONModel({"editMode": false}), "blockModel");
+                this.getView().setModel(new sap.ui.model.json.JSONModel({"creditNote": '',"creditNoteNotify":true}), "creditNoteModel");
+
+
+               
             },
     
             onAfterRendering: function (oEvent) {

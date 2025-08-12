@@ -33,6 +33,24 @@
           "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "ZCXA_USERDEFAULT_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_VAN.xml"
+        }
+      },
+      "ZCXA_USERDEFAULT_CDS": {
+        "uri": "/sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZCXA_USERDEFAULT_CDS_VAN"
+          ],
+          "localUri": "localService/ZCXA_USERDEFAULT_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
       }
     }
   },
@@ -82,6 +100,11 @@
       },
       "GlobalModel": {
         "type": "sap.ui.model.json.JSONModel"
+      },
+      "ZCXA_USERDEFAULT_CDS": {
+        "dataSource": "ZCXA_USERDEFAULT_CDS",
+        "preload": true,
+        "settings": {}
       }
     },
     "resources": {

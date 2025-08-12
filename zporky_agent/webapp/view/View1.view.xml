@@ -1,0 +1,26 @@
+<mvc:View controllerName="customer.porky.zporkyagent.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="Sales AI Agent">
+        <VBox height="80%">
+            <ScrollContainer 
+                focusable="false"
+                height="100%"
+                horizontal="false"
+                vertical="true"
+                width="auto"
+            >
+                <content>
+                    
+           
+                <List showSeparators="Inner" items="{/EntryCollection}">
+                    <FeedListItem sender="{Author}" icon="{AuthorPicUrl}" senderPress="onSenderPress" iconPress="onIconPress" info="{Type}" timestamp="{Date}" text="{Text}" convertLinksToAnchorTags="All"/>
+                </List>
+                </content>
+
+              </ScrollContainer>
+        </VBox >
+            <FeedInput height="10%" post="onPost" icon="test-resources/sap/m/images/dronning_victoria.jpg" class="sapUiSmallMarginTopBottom" />
+
+    </Page>
+</mvc:View>

@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<Dialog
+		id="mainDialog"
+		title="Whatsapp Broadcast">
+		<content>
+		
+				<f:SimpleForm id="SimpleFormChangeColumn_twoGroups234"
+					editable="true"
+					layout="ColumnLayout"
+					title=""
+					columnsM="2"
+					columnsL="2"
+					columnsXL="2">
+					<f:content>
+						<Label text="Broadcast Message" />
+						<TextArea required="true"  value="" id="idTextArea"/>
+				
+				
+					</f:content>
+				</f:SimpleForm>
+			
+		
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					
+					<Button type="Accept"
+							text="Broadcast"
+							press=".onPressBroadcastMessage" />
+					<Button id="Reject"
+						text="Reject"
+						type="Reject"
+						press="._closeDialog"
+						ariaHasPopup="Dialog" />
+				</content>
+			</Toolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

@@ -40,6 +40,8 @@ function (Controller) {
 
             materials.forEach(element => {
                 var obj1 = {};
+
+              
                 obj1.Matnr = element.Material;
                 obj1.Kwmeng = element.Quantity+""; //Order quantity
                 obj1.Vrkme =  element.SalesUnit+""; //Sales Unit
@@ -54,6 +56,27 @@ function (Controller) {
 
 
             });
+
+            var isQtyEmpty = false;
+            var isMatEmpty = "";
+
+            varray.forEach(element => {
+              
+              if(element.Kwmeng === 0 || element.Kwmeng === "" ||  element.Kwmeng === "0"){
+
+                isQtyEmpty = true;
+                isMatEmpty = element.Matnr;
+
+               
+               
+               
+              }
+            });
+
+            if(isQtyEmpty){
+              sap.m.MessageBox.error("Please enter quantity for material "+isMatEmpty);
+              return;
+            }
             
 
             var obj1 = {

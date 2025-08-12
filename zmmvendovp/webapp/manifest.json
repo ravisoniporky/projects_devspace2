@@ -118,7 +118,7 @@
         "globalFilterModel": "mainModel",
         "globalFilterEntityType": "ZCFI_VENDORDASH_FILTERSType",
         "containerLayout": "resizable",
-        "enableLiveFilter": true,
+        "enableLiveFilter": false,
         "considerAnalyticalParameters": false,
         "cards": {
             "a1endordetails": {

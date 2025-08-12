@@ -11,14 +11,14 @@
 					id="sideNavigationToggleButton"
 					icon="sap-icon://menu2"
 					type="Transparent"
-					press=".onCollapseExpandPress">
+					press=".handlePopoverPress">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow" />
 					</layoutData>
 				</Button>
 			</tnt:ToolHeader>
 				</tnt:header>
-			<tnt:sideContent>
+			<!-- <tnt:sideContent>
 		
 		<tnt:SideNavigation id="sideNavigation" selectedKey="walked" expanded="true"
 			itemSelect="onItemSelect">
@@ -47,7 +47,7 @@
 
 		</tnt:SideNavigation>
 		
-		</tnt:sideContent>
+		</tnt:sideContent> -->
 
 
 
@@ -69,8 +69,8 @@
 
 		
 
-	<f:SidePanel id="mySidePanel11" toggle="onToggle" sidePanelPosition="Left" >
-				<f:mainContent>
+	<!-- <f:SidePanel id="mySidePanel11" toggle="onToggle" sidePanelPosition="Left" >
+				<f:mainContent> -->
 			
 		<form:SimpleForm id="SimpleFormChange354"
 			editable="true"
@@ -295,7 +295,7 @@
 			
 			</form:content>
 		</form:SimpleForm>
-			 </f:mainContent>
+			 <!-- </f:mainContent>
 
 
 				<f:items>
@@ -322,12 +322,12 @@
 					<f:SidePanelItem icon="sap-icon://building" text="Profile" />
 					<f:SidePanelItem icon="sap-icon://flight" text="Theme" enabled="false" />
 				</f:items>
-			</f:SidePanel> 
+			</f:SidePanel>  -->
 
         <!-- </content>
     </Page> -->
 					</ScrollContainer>
-					<ScrollContainer
+					<!-- <ScrollContainer
 						id="root2"
 						horizontal="false"
 						vertical="true"
@@ -377,7 +377,7 @@
 				</Select>
 			</form:content>
 		</form:SimpleForm>
-					</ScrollContainer>
+					</ScrollContainer> -->
 
 					</pages>
 					</NavContainer>

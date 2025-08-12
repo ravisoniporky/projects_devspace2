@@ -2,7 +2,7 @@ sap.ui.define([], function () {
     "use strict";
     return sap.ui.controller("customer.porky.zcustardash.ext.controller.extension", {
 
-        onAfterRendering: function() {
+        onAfterRendering1: function() {
 			//Get reference of Global FIlter
 
          //   debugger;

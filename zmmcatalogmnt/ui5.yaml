@@ -19,6 +19,11 @@ server:
           - path: /sap
             url: http://pkynj-de2app.porkyproducts.loc:8000
             destination: DE2
+          - url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
+            authenticationType: BasicAuthentication
+            destination: DE2
+            path: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS/
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

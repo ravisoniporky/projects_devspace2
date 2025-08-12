@@ -1,0 +1,87 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+		xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+>
+<Popover
+		id="myPopover"
+		title="Settings"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom"
+		initialFocus="email">
+		<content>
+
+			<f:SimpleForm 
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="6"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="2"
+			
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Order Entry Mode" />
+				<ComboBox selectedKey="{settingsModel>/OrderEntryMode}"  items="{
+					path: '/ZI_OENT_ENTRYMODEVH',
+					sorter: { path: 'OrderEntryModeText' }
+				}">
+				<core:Item key="{OrderEntryMode}" text="{OrderEntryModeText}" />
+			</ComboBox>
+				<Label text="Material Type" />
+				<ComboBox selectedKey="{settingsModel>/MaterialType}" items="{
+					path: '/ZI_OENT_MATTYPEVH',
+					sorter: { path: 'MaterialTypeText' }
+				}">
+				<core:Item key="{MaterialType}" text="{MaterialTypeText}" />
+			</ComboBox>
+				<Label text="Department" />
+				<ComboBox selectedKey="{settingsModel>/Department}" items="{
+					path: '/ZI_DepartmentVH',
+					sorter: { path: 'DeparatmentDescription' }
+				}">
+				<core:Item key="{Deparatment}" text="{DeparatmentDescription}" />
+			</ComboBox>
+				<Label text="Sorting Type" />
+				<ComboBox  selectedKey="{settingsModel>/SortingType}" items="{
+					path: '/ZI_OENT_ITMSORTVH',
+					sorter: { path: 'ItemSortTypeText' }
+				}">
+				<core:Item key="{ItemSortType}" text="{ItemSortTypeText}" />
+				
+
+			</ComboBox>
+
+				<Label text="Start Page" />
+				<ComboBox  selectedKey="{settingsModel>/StartPage}">
+				<core:Item key="PROPOSAL" text="Proposal" />
+				<core:Item key="AVAILABLE" text="Available to Sell" />
+				<core:Item key="FASTENTRY" text="Fastentry" />
+
+			</ComboBox>
+			</f:content>
+		</f:SimpleForm>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					id="email"
+					text="Submit"
+					press=".onSaveDefaults" />
+			</OverflowToolbar>
+		</footer>
+		<Image src="{ProductPicUrl}" width="15em" densityAware="false" />
+	</Popover>
+</c:FragmentDefinition>

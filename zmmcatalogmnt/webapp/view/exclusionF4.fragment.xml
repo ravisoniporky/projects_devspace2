@@ -36,7 +36,7 @@
 			  <smartTable:customToolbar>
 			<OverflowToolbar design="Transparent">
 				<ToolbarSpacer/>
-				<Button icon="sap-icon://delete" text="Mass Remove" press="applyMassRemoval"/>
+				<Button icon="sap-icon://delete" text="{= ${GlobalModel>/CatalogType} === 'E' ? 'Mass Remove' : 'Mass Include'}" press="applyMassRemoval"/>
 				</OverflowToolbar>
 		</smartTable:customToolbar>
 				<!-- layout data used to make the table growing but the filter bar fixed -->
@@ -45,8 +45,10 @@
 							<uitable:rowActionTemplate>
         <uitable:RowAction>
             <uitable:items>
-                <uitable:RowActionItem  type="Delete" press=".onRemoveExclusionList"/>
-            </uitable:items>
+                <uitable:RowActionItem  type="Custom" visible="{=  ${GlobalModel>/isSelectMaterialsSelected} === true ? false : true}" icon= "{= ${GlobalModel>/CatalogType} === 'E' ? 'sap-icon://add' : 'sap-icon://less' }" press=".onRemoveExclusionList"/>
+                            <!-- <uitable:RowActionItem  type="Custom" icon= "sap-icon://add" press=".onRemoveExclusionList"/> -->
+
+			</uitable:items>
         </uitable:RowAction>
     </uitable:rowActionTemplate>
 

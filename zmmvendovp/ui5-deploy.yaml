@@ -21,6 +21,6 @@ builder:
           name: ZMMVENDOVP
           description: Vendor Dashboard
           package: zfiori1
-          transport: DE2K904571
+          transport: DE2K905575
         exclude:
           - /test/

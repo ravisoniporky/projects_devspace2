@@ -581,7 +581,7 @@ function (Controller,JSONModel,Filter,FilterOperator) {
 
      //     debugger;
      oEvent.getSource().getParent().getCells()[4].getItems()[1].getBinding("items").filter([new Filter({path:'Material',  operator:'EQ',value1:obj.Material})]);
-     oEvent.getSource().getParent().getCells()[6].getBinding("items").filter([new Filter({path:'Material',  operator:'EQ',value1:obj.Material})]);
+     oEvent.getSource().getParent().getCells()[6].getItems()[1].getBinding("items").filter([new Filter({path:'Material',  operator:'EQ',value1:obj.Material})]);
 
 
           this.calculateCountCart();

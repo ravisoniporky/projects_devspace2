@@ -585,10 +585,15 @@
 						<m:Label text="Price UoM" />
 						<uitable:template>
 							<m:Label value="{cartModel>CurrentPriceUnit}" />
+
+							<HBox>
+								<m:Label text="{cartModel>PriceUnit}"  visible="{= ${cartModel>source} === 'P' ? true : ${cartModel>source} === 'S' ? true : false }"/>
 							<m:ComboBox items ="{mainService>/ZI_MATERIAL_PRICEUOM}"  selectedKey="{cartModel>CurrentPriceUnit}" visible="{= ${cartModel>source} === ('P') ? false : ${cartModel>source} === ('S') ? false : ${cartModel>Material} === '' ? false : true   }">
 									<core:Item key="{mainService>PriceUnit}" text="{mainService>PriceUnit}" />
 
 								</m:ComboBox >
+						</HBox>	
+							
 						</uitable:template>
 					</uitable:Column>
 

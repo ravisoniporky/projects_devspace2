@@ -29,32 +29,23 @@
             <Annotations Target="cds_zsv_c_mobilecatalog.ZBSD_SalesOrganizationType/AddressID">
                 <Annotation Term="UI.HiddenFilter"/>
             </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_E_MobileItemListType/p_vkorg">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_E_MobileItemListType/p_kunwe">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_E_MobileItemListType/p_ats">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_E_MobileItemListType/p_itemproposal">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_E_MobileItemListType">
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_E_MobileCatalogListType">
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
+                        <PropertyPath>SalesOrganization</PropertyPath>
+                        <PropertyPath>DistributionChannel</PropertyPath>
+                        <PropertyPath>OrganizationDivision</PropertyPath>
                         <PropertyPath>ZCATALOG</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_MobileCatalogType/Delete_mc">
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_MOBILECATALOGExclusionType/Delete_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_MobileCatalogType/Update_mc">
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_MOBILECATALOGExclusionType/Update_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_MobileCatalogType">
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZCSD_MOBILECATALOGExclusionType">
                 <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.CollectionFacet">
@@ -75,12 +66,24 @@
                 <Annotation Term="UI.Identification">
                     <Collection>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Catalog ID"/>
+                            <PropertyValue Property="Value" Path="CatalogId"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Sales Organization"/>
                             <PropertyValue Property="Value" Path="SalesOrganization"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Catalog Attribue"/>
                             <PropertyValue Property="Value" Path="CatalogField"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Line Number"/>
+                            <PropertyValue Property="Value" Path="LineId"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Department"/>
+                            <PropertyValue Property="Value" Path="Department"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Material"/>
@@ -105,6 +108,10 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Brand"/>
                             <PropertyValue Property="Value" Path="Brand"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Catalog Field Value"/>
+                            <PropertyValue Property="Value" Path="CatalogFieldValue"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -123,6 +130,14 @@
                             <PropertyValue Property="Value" Path="CatalogField"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Line Number"/>
+                            <PropertyValue Property="Value" Path="LineId"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Department"/>
+                            <PropertyValue Property="Value" Path="Department"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Material"/>
                             <PropertyValue Property="Value" Path="Material"/>
                         </Record>
@@ -146,22 +161,66 @@
                             <PropertyValue Property="Label" String="Brand"/>
                             <PropertyValue Property="Value" Path="Brand"/>
                         </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Catalog Field Value"/>
+                            <PropertyValue Property="Value" Path="CatalogFieldValue"/>
+                        </Record>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
+                        <PropertyPath>Brand</PropertyPath>
                         <PropertyPath>CatalogId</PropertyPath>
                         <PropertyPath>SalesOrganization</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZRSD_MobileCatalogType/Delete_mc">
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZI_DefaultSHVHType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="altkn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="storeno"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kunnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="stras"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ort01"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pstlz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="hier1_name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vkorg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zzorig_shipto"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="sm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ss"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZRSD_MOBILECATALOGExclusionType/Delete_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZRSD_MobileCatalogType/Update_mc">
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZRSD_MOBILECATALOGExclusionType/Update_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zsv_c_mobilecatalog.ZRSD_MobileCatalogType">
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZRSD_MOBILECATALOGExclusionType">
                 <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.CollectionFacet">
@@ -182,12 +241,24 @@
                 <Annotation Term="UI.Identification">
                     <Collection>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Catalog ID"/>
+                            <PropertyValue Property="Value" Path="CatalogId"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Sales Organization"/>
                             <PropertyValue Property="Value" Path="SalesOrganization"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Catalog Attribue"/>
                             <PropertyValue Property="Value" Path="CatalogField"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Line Number"/>
+                            <PropertyValue Property="Value" Path="LineId"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Department"/>
+                            <PropertyValue Property="Value" Path="Department"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Material"/>
@@ -212,6 +283,10 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Brand"/>
                             <PropertyValue Property="Value" Path="Brand"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Catalog Field Value"/>
+                            <PropertyValue Property="Value" Path="CatalogFieldValue"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -230,6 +305,14 @@
                             <PropertyValue Property="Value" Path="CatalogField"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Line Number"/>
+                            <PropertyValue Property="Value" Path="LineId"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Department"/>
+                            <PropertyValue Property="Value" Path="Department"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Material"/>
                             <PropertyValue Property="Value" Path="Material"/>
                         </Record>
@@ -253,12 +336,30 @@
                             <PropertyValue Property="Label" String="Brand"/>
                             <PropertyValue Property="Value" Path="Brand"/>
                         </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Catalog Field Value"/>
+                            <PropertyValue Property="Value" Path="CatalogFieldValue"/>
+                        </Record>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>CatalogId</PropertyPath>
                         <PropertyPath>SalesOrganization</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZRSD_MOEGetCatalogType/Department">
+                <Annotation Term="Common.Text" Path="DepartmentName">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_mobilecatalog.ZRSD_MOEGetCatalogType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>SalesOrganization</PropertyPath>
+                        <PropertyPath>CatalogId</PropertyPath>
+                        <PropertyPath>MOEUser</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>

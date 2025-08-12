@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog contentHeight="80%" title="Select Brand">
+
+		<smartFilterBar:SmartFilterBar id="ZBSD_MobileCatalogIncByBrand_sf" entitySet="ZBSD_MobileCatalogIncByBrand" enableBasicSearch="true" useToolbar="false" persistencyKey="ZBSD_MobileCatalogIncByBrand_sf">
+
+
+		</smartFilterBar:SmartFilterBar>
+		<smartTable:SmartTable id="ZBSD_MobileCatalogIncByBrandF4" entitySet="ZBSD_MobileCatalogIncByBrand"
+		 smartFilterId="ZBSD_MobileCatalogIncByBrand_sf"
+		  requestAtLeastFields="Brand,SalesOrganization,BrandCode,BrandName"
+		   beforeRebindTable="onBeforeRebindBrandF4" 
+		   tableType="ResponsiveTable" useExportToExcel="true"
+		    beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" header="Brands" showRowCount="true" persistencyKey="brandssmarttable" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" app:useSmartToggle="true">
+	<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<Label text="Select Department - "></Label>
+				<ComboBox items="{
+					path: '/ZI_DepartmentVH'
+					
+				}" id="brandDepartment">
+				
+					<core:Item key="{Deparatment}" text="{DeparatmentDescription}" />
+				</ComboBox>
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+
+			<Table mode="SingleSelectMaster" itemPress="handleBrandSelection" selectionChange="handleBrandSelection"></Table>
+
+
+
+		</smartTable:SmartTable>
+
+		<SearchField search="handleSearchCustomer" visible="false"></SearchField>
+
+
+
+		<endButton>
+			<Button text="Close" press="onCloseDialogBox" type="Reject"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

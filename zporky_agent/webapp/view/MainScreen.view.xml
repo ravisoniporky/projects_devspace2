@@ -1,0 +1,101 @@
+<mvc:View controllerName="customer.porky.zporkyagent.controller.MainScreen"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page1" title="{i18n>title}">
+
+
+	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Chat Agents"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<content>
+		<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Sales AI Agent"
+		subheader="" press="onNavigateSalesAgent" appShortcut = "Live" systemInfo = "DE2">
+		<TileContent>
+			<ImageContent src="https://svgstack.com/media/img/free-ai-agent-icon-ay2I096983.webp" />
+		</TileContent>
+	</GenericTile>
+
+		<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Vendor AI Agent"
+		subheader="" press="press" appShortcut = "Live" systemInfo = "DE2">
+		<TileContent>
+			<ImageContent src="https://cdn-icons-png.flaticon.com/256/1791/1791685.png" />
+		</TileContent>
+	</GenericTile>
+
+
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Invoice AI Agent"
+		subheader="" press="press" appShortcut = "Live" systemInfo = "DE2">
+		<TileContent>
+			<ImageContent src="https://svgstack.com/media/img/ai-agent-free-icon-lYlN096979.webp" />
+		</TileContent>
+	</GenericTile>
+			</content>
+	</Panel>
+
+
+
+
+
+
+
+
+	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Whatsapp Agents"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<content>
+
+		<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Broadcast Catalog"
+		subheader="Customers" press="openWhatsappBroadcast" appShortcut = "Live" systemInfo = "DE2">
+		<TileContent>
+			<ImageContent src="https://assets.softr-files.com/applications/801f3961-f8a6-4f62-8bce-aa308f10d0da/assets/a89a821d-91cd-4261-bb5a-8692c4cc16ca.webp" />
+		</TileContent>
+	</GenericTile>
+
+
+<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Broadcast Offers"
+		subheader="Customers" press="press" appShortcut = "Live" systemInfo = "DE2">
+		<TileContent>
+			<ImageContent src="https://assets.softr-files.com/applications/801f3961-f8a6-4f62-8bce-aa308f10d0da/assets/a89a821d-91cd-4261-bb5a-8692c4cc16ca.webp" />
+		</TileContent>
+	</GenericTile>
+
+	
+</content>
+	</Panel>
+
+
+
+
+
+
+		<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Email Agents"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<content>
+
+
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Broadcast Email - Customers"
+		subheader="" press="press" appShortcut = "Live" systemInfo = "DE2">
+		<TileContent>
+			<ImageContent src="https://images.vexels.com/media/users/3/135888/isolated/svg/92edb0f36291c17bf125e8a120f08b9b.svg" />
+		</TileContent>
+	</GenericTile>
+</content>
+	</Panel>
+
+
+       	
+
+	
+
+    </Page>
+</mvc:View>

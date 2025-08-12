@@ -3,9 +3,10 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
   "sap/ui/model/Filter",
   "sap/ui/model/FilterOperator",
-  "sap/m/MessageBox"
+  "sap/m/MessageBox",
+  'sap/ui/core/Fragment'
 ],
-function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
+function (Controller,JSONModel,Filter,FilterOperator,MessageBox,Fragment) {
     "use strict";
 
     return Controller.extend("customer.porky.zsdorderentry.controller.View1", {
@@ -30,7 +31,35 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
         this.getOwnerComponent().getModel("userValues").setProperty("/Customer",this.getOwnerComponent().getComponentData().startupParameters.Customer[0]);
       } 
 
+      this.readDefaultValues();
+
         },
+
+
+
+        handlePopoverPress: function (oEvent) {
+          var oButton = oEvent.getSource(),
+            oView = this.getView();
+    
+          // create popover
+          if (!this._pPopover) {
+            this._pPopover = Fragment.load({
+              id: oView.getId(),
+              name: "customer.porky.zsdorderentry.view.settings",
+              controller: this
+            }).then(function(oPopover) {
+              oView.addDependent(oPopover);
+              oPopover.bindElement("/ProductCollection/0");
+              return oPopover;
+            });
+          }
+          this._pPopover.then(function(oPopover) {
+            oPopover.openBy(oButton);
+          });
+        },
+
+
+
         _onRouteMatched: function(oEvent){
 
           if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0]){
@@ -435,6 +464,70 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox) {
           }else{
             this.byId("pageContainer").to(this.getView().createId("root1"));
           }
+        },
+
+        readDefaultValues: function(oEvent){
+             let defaultModel1 = this.getOwnerComponent().getModel();
+          var that = this;
+          
+         
+
+
+          var filters = [];
+
+
+          defaultModel1.read("/ZBSD_OENT_USERSETTINGS", {
+              
+           
+            filters: filters  ,
+              success: function (oData, oResponse) {
+           
+                debugger;
+                var result = JSON.parse(JSON.stringify(oData.results))[0];
+
+                that.getView().setModel(new sap.ui.model.json.JSONModel( result), "settingsModel");
+
+      
+    
+              },
+    
+              error: function (oError) {
+    
+                that.getView().setModel(new sap.ui.model.json.JSONModel({}, "customerData1"));
+              }
+            });
+        },
+
+        onSaveDefaults: function(){
+          var data = this.getView().getModel("settingsModel").getData();
+let defaultModel1 = this.getOwnerComponent().getModel("ZODATA_ORDER_ENTRY_SRV");
+          var that = this;
+          
+         
+delete data.__metadata;
+
+          var filters = [];
+
+
+          defaultModel1.create("/UserSettingsSet", data,{
+              
+           
+            filters: filters  ,
+              success: function (oData, oResponse) {
+           
+              
+       
+                sap.m.MessageBox.success("Default values are saved successfully");
+      
+    
+              },
+    
+              error: function (oError) {
+                 
+    
+              }
+            });
+
         }
 
     });

@@ -8,7 +8,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 
 
 
- <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" enableAutoBinding="true" entitySet="ZCSD_E_MobileCatalogList" useToolbar="true"
+ <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" enableAutoBinding="true" entitySet="ZRSD_MobileCatalogMaint" useToolbar="true"
 			 persistencyKey="catalogmaintenance_f1"   enableBasicSearch="true"
 			  advancedMode="false" filterBarExpanded="false" smartVariant="true" showAllFilters="true"
 			  
@@ -16,16 +16,16 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 				showFilterConfiguration="true"  >
 
 				<smartFilterBar:controlConfiguration>
-        <smartFilterBar:ControlConfiguration key="ZCATALOG" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
+        <smartFilterBar:ControlConfiguration key="CatalogId" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
             
         </smartFilterBar:ControlConfiguration>
 
-		 <smartFilterBar:ControlConfiguration key="BRAND" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
+		 <smartFilterBar:ControlConfiguration key="Brand" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
             
         </smartFilterBar:ControlConfiguration>
 
 
-				 <smartFilterBar:ControlConfiguration key="COMMODITY" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
+				 <smartFilterBar:ControlConfiguration key="MaterialCommodity" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" >
             
         </smartFilterBar:ControlConfiguration>
 
@@ -39,11 +39,11 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 			</smartFilterBar:SmartFilterBar> 
 
 
-<smartTable:SmartTable id="smartTable_custF4_map"  entitySet="ZCSD_E_MobileCatalogList"  smartFilterId="smartFilter_custF4_map"
+<smartTable:SmartTable id="smartTable_custF4_map"  entitySet="ZRSD_MobileCatalogMaint"  smartFilterId="smartFilter_custF4_map"
 				growing="true"
 				growingThreshold ="20"
-				requestAtLeastFields="MATNR,MAKTX,BISMT,ZMOB_MATDESC,ZPACK_SIZE,BRAND,COMMODITY,CATALOG_TXT,SalesOrganization,ZCATALOG,DEPARTMENT"
-				initiallyVisibleFields="MATNR,MAKTX,BISMT,ZMOB_MATDESC,ZPACK_SIZE,BRAND,DEPARTMENT"
+				requestAtLeastFields="Material,MaterialDescription,OldMaterial,CatalogName,MaterialManufacturerPartNumber,Brand,MaterialCommodity,Department,SalesOrganization,CatalogId"
+				initiallyVisibleFields="Material,MaterialDescription,OldMaterial,CatalogName,MaterialManufacturerPartNumber,Brand,MaterialCommodity,Department,SalesOrganization,CatalogId"
 				beforeRebindTable="onBeforeRebindTable"
 			 tableType="Table" useExportToExcel="true"
 			
@@ -60,11 +60,50 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 			<OverflowToolbar design="Transparent">
 				<ToolbarSpacer/>
 								<!-- <Button press="onShowExcludingList" text="Exclude" id="excludingList" enabled="true"/> -->
-				<Button press="onMassExclude" text="{= ${GlobalModel>/CatalogType} === 'E' ? 'Include' : 'Exclude'}" id="excludingList2" enabled="true"/>
+				<!-- <Button press="onMassExclude" text="{= ${GlobalModel>/CatalogType} === 'E' ? 'Exclude' : 'Include'}" id="excludingList2" enabled="true"/> -->
+				<Button press="onCreateCatalog"  text="Add Material to MOE" id="onCreateCatalog" enabled="true"/>
 
-				<Button press="onShowExcludingList" text="Show {= ${GlobalModel>/CatalogType} === 'E' ? 'Including' : 'Excluding'} List" id="excludingList1" enabled="true"/>
+				<Button press="onShowExcludingList"  text="Show {= ${GlobalModel>/CatalogType} === 'E' ? 'Excluding' : 'Including'} List" id="excludingList1" enabled="true"/>
+<!-- 
+				<Button  visible="{= ${GlobalModel>/CatalogType} === 'E' ? false : true}" text="Add Brand"
+				press="onOpenBrandList"
+				  enabled="true"/>
 
-					<MenuButton text="{= ${GlobalModel>/CatalogType} === 'E' ? 'Include' : 'Exclude'}" icon="sap-icon://edit-outside">
+				  				<Button press="onOpenCommodityList" visible="{= ${GlobalModel>/CatalogType} === 'E' ? false : true}"
+								 text="Add Commodity"
+				  enabled="true"/>
+
+				  	<Button press="onOpenMaterialsList" visible="{= ${GlobalModel>/CatalogType} === 'E' ? false : true}" text="Add Material"
+				  enabled="true"/> -->
+
+
+
+
+
+
+
+				  	<MenuButton visible="{= ${GlobalModel>/CatalogType} === 'E' ? false : true}" text="Add" icon="sap-icon://edit-outside">
+			<menu>
+				<Menu>
+					<MenuItem text="By Brand" icon="sap-icon://customer-and-supplier" press="onOpenBrandList" >
+						
+					</MenuItem>
+				
+					<MenuItem text="By Material" icon="sap-icon://product" press="onOpenMaterialsList" />
+					<!-- <MenuItem text="By Catalog Description" icon="sap-icon://text" press="onPressExcludeNewMatDesc" /> -->
+					<MenuItem text="By Commodity" icon="sap-icon://text" press="onOpenCommodityList" />
+					<MenuItem text="By Old Material" icon="sap-icon://text" press="onOpenOldMaterialsList" />
+
+				</Menu>
+			</menu>
+		</MenuButton>
+
+
+
+
+
+
+					<MenuButton visible="{= ${GlobalModel>/CatalogType} === 'E' ? true : false}" text="{= ${GlobalModel>/CatalogType} === 'E' ? 'Exclude' : 'Include'}" icon="sap-icon://edit-outside">
 			<menu>
 				<Menu>
 					<MenuItem text="By Brand" icon="sap-icon://customer-and-supplier" press="OnExcludeBrand" >
@@ -86,8 +125,15 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 		</smartTable:customToolbar>
 
 
-			  <uitable:Table growing="true" growingThreshold="20" mode="MultiSelect">
-			  
+			  <uitable:Table  rowActionCount="1" growing="true" growingThreshold="20" mode="MultiSelect" >
+			   
+			   <uitable:rowActionTemplate>
+        <uitable:RowAction>
+            <uitable:items>
+		<uitable:RowActionItem type="Navigation" press="onClickMaintenanceApp"></uitable:RowActionItem>
+	    </uitable:items>
+	</uitable:RowAction>
+     </uitable:rowActionTemplate>
 			  
 				<uitable:columns>
 
@@ -104,7 +150,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 
 	 <Image
 					
-					src="https://api.porky.com/images/{BISMT}.png"
+					src="https://api.porky.com/images/{OldMaterial}.png"
 					decorative="true"
 					densityAware="false"
 					class="sapUiTinyMargin"
@@ -114,7 +160,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 						<LightBox >
 							<imageContent>
 								<LightBoxItem
-									imageSrc="https://api.porky.com/images/{BISMT}.png"
+									imageSrc="https://api.porky.com/images/{OldMaterial}.png"
 									title="{MAKTX}"/>
 							</imageContent>
 						</LightBox>
