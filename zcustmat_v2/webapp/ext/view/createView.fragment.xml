@@ -1,0 +1,149 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Dialog
+		
+		title="Create Material"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		contentWidth="80%"
+        contentHeight="80%"
+		>
+		
+        <content>
+
+        	<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			
+			columnsXL="2"
+			columnsL="2"
+			columnsM="2"
+			singleContainerFullSize="false" >
+			<f:content>
+            <core:Title text="Material" ></core:Title>
+				<Label text="Select Material" />
+				<Input value="{materialModel>/material}" showValueHelp="true" 	
+                showSuggestion="true"
+                suggest=".onSuggest"
+			showTableSuggestionValueHelp="true"
+			suggestionRows="{mainService>/ZI_MobileCatalog_MaterialVH}"
+            maxSuggestionWidth="80%"
+			suggestionItemSelected=".onSuggestionItemSelected">
+
+                
+                		<suggestionColumns>
+				
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					demandPopin="true"
+					minScreenWidth="Tablet">
+					<Label text="Material" />
+				</Column>
+                <Column
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Sales org" />
+				</Column>
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					minScreenWidth="Tablet">
+					<Label text="Old Material" />
+				</Column>
+				
+                <Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Manufacturing Part Number" />
+				</Column>
+			</suggestionColumns>
+
+			<suggestionRows>
+				<ColumnListItem>
+					<Label text="{mainService>matnr} - {mainService>maktx}" />
+					<Label text="{mainService>vkorg}" />
+
+					<Label text="{mainService>bismt}" />
+                                        <Label text="{mainService>mfrpn}" />
+
+                    
+					
+				</ColumnListItem>
+			</suggestionRows>
+                </Input>
+				<Label text="Price" />
+				<HBox><Input value="{materialModel>/price}"/> <Input value="{materialModel>/priceUOM}" showValueHelp="true"/></HBox>
+				<Label text="Material Base UoM" />
+                <Text text="" />
+                <Label text="MPN" />
+                <Text text="" />
+                  <Label text="Old Material" />
+                <Text text="" />
+                <Label text="Totals Only Invoice" />
+                <Text text="" />
+
+
+                 <core:Title text="Your Reference Data" ></core:Title>
+
+                <Label text="Customer Material" />
+				<Input value="{materialModel>/material}"  />
+
+                <Label text="Customer Material Description" />
+				<Input value="{materialModel>/material}" />
+
+                <Label text="Customer UPC" />
+				<Input value="{materialModel>/material}" />
+
+                <Label text="Customer Location" />
+				<Input value="{materialModel>/material}" />
+
+                 <Label text="Customer Pack" />
+				<Input value="{materialModel>/material}" />
+                 <Label text="BDR Sub Description" />
+				<Input value="{materialModel>/material}" />
+                 <Label text="Default" />
+				<CheckBox selected="true" />
+                <Label text="Include Base Cost" />
+				<CheckBox selected="true" />
+                <Label text="Department" />
+				<Input showValueHelp="true" />
+                <Label text="Department" />
+				<ComboBox />
+			</f:content>
+		</f:SimpleForm>
+        
+		    </content>
+
+
+    <buttons>
+
+		
+			
+			<Button 
+						text="Create"
+						type="Emphasized"
+						press=".covertDraftToVisit_ask"
+						ariaHasPopup="Dialog" />
+				
+					
+					<Button 
+						text="Cancel"
+						type="Reject"
+						press=".onCloseCurrentDialog"
+						ariaHasPopup="Dialog" />
+				
+		</buttons>
+
+
+	</Dialog>
+</core:FragmentDefinition>

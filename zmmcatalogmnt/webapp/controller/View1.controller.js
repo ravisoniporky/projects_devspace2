@@ -16,10 +16,176 @@ sap.ui.define([
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         oRouter.getRoute("RouteView1").attachMatched(this._onRouteMatched, this);
 
-        this.fetchDefaultParameters();
+        var that = this;
+        
+        setTimeout(() => {
+           that.fetchURLParameters();
+        }, 500);
+
+       
+         
+
+
+        
 
 
       },
+
+
+
+          fetchURLParameters: function (oEvent) {
+
+            this.isSalesOrgParam = "";
+            this.isOrgDivParam = "";
+            this.isDistChannelParam = "";
+            var that = this;
+
+                if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization 
+                && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0]  )
+                {
+
+
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "SalesOrganization": this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0]
+
+                });
+
+              
+
+                }
+        
+          
+                if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.OrganizationDivision 
+                && this.getOwnerComponent().getComponentData().startupParameters.OrganizationDivision[0]  )
+                {
+
+
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "OrganizationDivision": this.getOwnerComponent().getComponentData().startupParameters.OrganizationDivision[0]
+
+                });
+
+              
+
+                }
+
+
+
+
+
+                                if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.DistributionChannel 
+                && this.getOwnerComponent().getComponentData().startupParameters.DistributionChannel[0]  )
+                {
+
+
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "DistributionChannel": this.getOwnerComponent().getComponentData().startupParameters.DistributionChannel[0]
+
+                });
+
+              
+
+                }
+
+
+                                                if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.CatalogId 
+                && this.getOwnerComponent().getComponentData().startupParameters.CatalogId[0]  )
+                {
+
+
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "CatalogId": this.getOwnerComponent().getComponentData().startupParameters.CatalogId[0]
+
+                });
+
+              
+
+                }
+
+
+
+
+        let defaultModel = this.getOwnerComponent().getModel("ZCXA_USERDEFAULT_CDS");
+        var that = this;
+        defaultModel.read("/ZCXA_USERDEFAULT", {
+          success: function (oData, oResponse) {
+
+
+            var salesorg = oData.results.find(element => element.parid === "VKO"); // Sales Org
+            var division = oData.results.find(element => element.parid === "SPA"); // Division
+            var kna1Para = oData.results.find(element => element.parid === "VTW"); // Distribution Channel
+
+
+
+            setTimeout(() => {
+
+
+              if(!that.isSalesOrgParam ){
+              if (typeof salesorg !== "undefined") {
+
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "SalesOrganization": salesorg.parva
+
+                });
+
+              }
+            }
+
+
+              if(!that.isOrgDivParam ){
+
+              if (typeof division !== "undefined") {
+
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "OrganizationDivision": division.parva
+
+                });
+
+              } else {
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "OrganizationDivision": "01"
+
+                });
+              }
+            }
+
+                          if(!that.isDistChannelParam ){
+
+
+              if (typeof kna1Para !== "undefined") {
+
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "DistributionChannel": kna1Para.parva
+
+                });
+
+              } else {
+                that.getView().byId("smartFilter_custF4_map").setFilterData({
+                  "DistributionChannel": "01"
+
+                });
+
+              }
+            }
+
+              that.getView().byId("smartFilter_custF4_map").validateMandatoryFields();
+              that.getView().byId("smartTable_custF4_map").rebindTable();
+
+
+            }, 500);
+
+
+
+
+
+
+          },
+
+          error: function (oError) {}
+        });
+      },
+
+
       onCreateCatalog: function(oEvent){
 
         var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation"); // get a handle on the global XAppNav service
@@ -31,8 +197,11 @@ sap.ui.define([
         action: "ZRAP&/ZRSD_MobileCatalogMaint(-)"
         },
         params: {
-        
-   
+        "myActionName":"GetDefaultsForCreate",
+         "preferredMode":"Create",
+        "ResultIsActiveEntity":"true",
+        "myActionName":"GetDefaultsForCreate",
+  
         }
         })) || ""; // generate the Hash to display a Supplier
         oCrossAppNavigator.toExternal({
@@ -379,8 +548,8 @@ sap.ui.define([
         newObj.CatalogFieldValue = fieldvalue;
         newObj.CatalogId = object.CatalogId;
         newObj.Department = object.Department;
+     newObj.DistributionChannel = object.DistributionChannel;     if(newObj.CatalogId === "" || !newObj.CatalogId){
 
-        if(newObj.CatalogId === "" || !newObj.CatalogId){
           newObj.CatalogId = "";
         }
 
@@ -476,13 +645,20 @@ sap.ui.define([
         this.getView().byId("smartFilter_custF4_map").setFilterData({
           "$Parameter.p_kunwe": obj.Shipto,
           "$Parameter.p_vkorg": obj.SalesOrganization,
-          "ZCATALOG": obj.CatalogId,
+          "CatalogId": obj.CatalogId,
           "$Parameter.p_ats": obj.ATS,
           "$Parameter.p_itemproposal": "Y"
 
         });
         this.getView().byId("smartTable_custF4_map").rebindTable();
         this.getView().byId("smartFilter_custF4_map").validateMandatoryFields();
+
+
+
+        var that = this;
+        setTimeout(() => {
+           that.fetchURLParameters(oEvent);
+        }, 500);
 
 
       },
@@ -538,7 +714,7 @@ sap.ui.define([
           zcatalog = "";
         }
 
-        prodSet.read("/ZI_MobileCatalogVH(SalesOrganization='" + vkorg + "',CatalogName='" + zcatalog + "')", {
+        prodSet.read("/ZI_MobileCatalogVH(SalesOrganization='" + vkorg + "',CatalogName='" + encodeURI(zcatalog) + "')", {
           success: function (oData, oResponse) {
             //   debugger;
 
@@ -851,7 +1027,7 @@ sap.ui.define([
         var filterData = this.getView().byId("smartFilter_custF4_map").getFilterData();
         var p_kunwe = filterData['$Parameter.p_kunwe'];
         var p_vkorg = filterData['$Parameter.p_vkorg'];
-        var p_catalog = filterData['ZCATALOG'];
+        var p_catalog = filterData['CatalogId'];
         var p_ats = filterData['$Parameter.p_ats'];
         var p_itemproposal = filterData['$Parameter.p_itemproposal'];
 
@@ -868,7 +1044,7 @@ sap.ui.define([
 
 
         if (p_catalog) {
-          var oFilter = new sap.ui.model.Filter("ZCATALOG", sap.ui.model.FilterOperator.EQ, p_catalog);
+          var oFilter = new sap.ui.model.Filter("CatalogId", sap.ui.model.FilterOperator.EQ, p_catalog);
           oBindingParams.filters.push(oFilter);
 
 
@@ -1330,6 +1506,7 @@ sap.ui.define([
 
         newObj.CatalogId = filterData.CatalogId;
         newObj.SalesOrganization = filterData.SalesOrganization;;
+        newObj.DistributionChannel = filterData.DistributionChannel;
 
 
         var that = this;
@@ -1461,6 +1638,8 @@ sap.ui.define([
 
         newObj.CatalogId = filterData.CatalogId;
         newObj.SalesOrganization = filterData.SalesOrganization;;
+                newObj.DistributionChannel = filterData.DistributionChannel;
+
 
 
         var that = this;
@@ -1543,7 +1722,7 @@ sap.ui.define([
       handleMaterialSelection: function (oEvent) {
 
 
-        this.pDialogUser1.close();
+        
         var department = this.getView().byId("matDepartment").getSelectedKey();
         var departmentName;
         if (this.getView().byId("matDepartment").getSelectedKey() === "") {
@@ -1575,7 +1754,7 @@ sap.ui.define([
             text: "Yes",
             press: function () {
 
-
+            that.pDialogUser1.close();
               that.createMaterialIntoInclusion(Material, department);
               that.exitDialog.close();
             }.bind(that)
@@ -1606,11 +1785,15 @@ sap.ui.define([
           newObj.CatalogFieldValue = Material;
           newObj.CatalogField = 'MATNR';
         }
+
+     //    newObj.CatalogId = object.CatalogId;
         newObj.Department = department;
         var filterData = this.getView().byId("smartFilter_custF4_map").getFilterData();
 
-        newObj.CatalogId = filterData.ZCATALOG;
+        newObj.CatalogId = filterData.CatalogId;
         newObj.SalesOrganization = filterData.SalesOrganization;;
+                newObj.DistributionChannel = filterData.DistributionChannel;
+
 
 
         var that = this;
@@ -1684,29 +1867,27 @@ sap.ui.define([
 
         // window.location.hash = "#CatalogMaintenance-ZRAP&/ZRSD_MobileCatalogMaint(Material='11559',SalesOrganization='3000',DistributionChannel='01',OrganizationDivision='01',Department='',CatalogId='ALL')";
 
-        var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation"); // get a handle on the global XAppNav service
 
-   
-        var hash = (oCrossAppNavigator && oCrossAppNavigator.hrefForExternal({
-        target: {
+
+        var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+// debugger;
+oCrossAppNavigator.toExternal({
+    target: {
         semanticObject: "CatalogMaintenance",
         action: "ZRAP"
-        },
-        params: {
-        
+    },
+    params: {
         "Material": obj.Material,
         "SalesOrganization": obj.SalesOrganization,
         "DistributionChannel": obj.DistributionChannel,
         "OrganizationDivision": obj.OrganizationDivision,
         "Department": obj.Department,
-        "CatalogId": obj.CatalogId,
-        }
-        })) || ""; // generate the Hash to display a Supplier
-        oCrossAppNavigator.toExternal({
-        target: {
-        shellHash: hash
-        }
-        }); // navigate to Supplier application
+        "CatalogId": decodeURIComponent(obj.CatalogId)
+    }
+});
+
+   
+    
       }
     });
   });

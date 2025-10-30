@@ -156,7 +156,7 @@
 			suggestionRows="{/zi_customer_valuehelp}"
 			suggestionItemSelected=".onSuggestionItemSelected"
 			suggest="onSuggestCustomer"
-			maxSuggestionWidth="600px"
+			maxSuggestionWidth="800px"
 			width="150px">
 			<suggestionColumns>
 				<Column
@@ -183,6 +183,30 @@
 					demandPopin="true">
 					<Label text="Address" />
 				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Central Block" />
+				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="CC Block" />
+				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Credit Block" />
+				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Sales Org Block" />
+				</Column>
 			</suggestionColumns>
 
 			<suggestionRows>
@@ -190,7 +214,11 @@
 					<Label text="{Customer}" />
 					<Label text="{CustomerName}" />
 					<Label text="{SalesOrg}" />
-					<Label text="{Street} {City} " />
+					<Label text="{Street}" />
+					<Label text="{CentralBlock}" />
+					<Label text="{CoCodeBlock}" />
+					<Label text="{CreditBLock}" />
+					<Label text="{SorgBlock}" />
 				</ColumnListItem>
 			</suggestionRows>
 			</Input>

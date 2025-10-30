@@ -16,6 +16,8 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox,Fragment) {
       if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0]){
 
         this.getOwnerComponent().getModel("userValues").setProperty("/SalesOrganization",this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0]);
+                    this.getView().byId("idInputCustomer").setEditable(true);
+
 
         this.fetchDeliveryDate();
         this.fetchPlants();
@@ -40,6 +42,7 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox,Fragment) {
         handlePopoverPress: function (oEvent) {
           var oButton = oEvent.getSource(),
             oView = this.getView();
+            this.readDefaultValues()
     
           // create popover
           if (!this._pPopover) {
@@ -65,6 +68,10 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox,Fragment) {
           if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0]){
 
             this.getOwnerComponent().getModel("userValues").setProperty("/SalesOrganization",this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0]);
+            var that = this;
+            that.getView().byId("idInputCustomer").setEditable(true);
+              that.getView().byId("idInputCustomer").setEnabled(true);
+            
           }  
 
           if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.Plant && this.getOwnerComponent().getComponentData().startupParameters.Plant[0]){
@@ -377,25 +384,7 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox,Fragment) {
                 that.getOwnerComponent().getModel("userValues").setProperty("/deldate",null);
 
               }
-                // if(oData.results.length >0){
-                //   that.getView().getModel("cartModel").setProperty(path+"/Material",oData.results[0].Material)
 
-                // that.getView().getModel("cartModel").setProperty(path+"/OldMaterial",oData.results[0].OldMaterial)
-                // that.getView().getModel("cartModel").setProperty(path+"/MaterialDescription",oData.results[0].MaterialDescription)
-                // // that.getView().getModel("cartModel").setProperty(path+"/SalesUnit",'')
-
-                // oEvent.getSource().getParent().getCells()[4].getBinding("items").filter([new Filter({path:'Material',  operator:'EQ',value1:oData.results[0].Material})]);
-
-
-                // }else{
-                //   that.getView().getModel("cartModel").setProperty(path+"/Material","")
-                
-                //   that.getView().getModel("cartModel").setProperty(path+"/OldMaterial","")
-                //   that.getView().getModel("cartModel").setProperty(path+"/MaterialDescription","")
-                //   that.getView().getModel("cartModel").setProperty(path+"/Quantity","1")
-                //   that.getView().getModel("cartModel").setProperty(path+"/SalesUnit","CS")
-
-                // }
   
 
       
@@ -429,7 +418,7 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox,Fragment) {
             filters: filters  ,
               success: function (oData, oResponse) {
            
-                debugger;
+           //     debugger;
                 var result = JSON.parse(JSON.stringify(oData.results));
 
                 that.getView().setModel(new sap.ui.model.json.JSONModel({plants: result}), "plantModel");
@@ -469,23 +458,26 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox,Fragment) {
         readDefaultValues: function(oEvent){
              let defaultModel1 = this.getOwnerComponent().getModel();
           var that = this;
+
           
          
 
 
-          var filters = [];
+          var aFilters = [];
+          //sales org filter
+           aFilters.push(new Filter({path:'SalesOrganization',  operator:'EQ',value1:this.getOwnerComponent().getModel("userValues").getProperty("/SalesOrganization")}));
 
 
           defaultModel1.read("/ZBSD_OENT_USERSETTINGS", {
               
            
-            filters: filters  ,
+            filters: aFilters  ,
               success: function (oData, oResponse) {
            
-                debugger;
+           //     debugger;
                 var result = JSON.parse(JSON.stringify(oData.results))[0];
 
-                that.getView().setModel(new sap.ui.model.json.JSONModel( result), "settingsModel");
+                that.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel( result), "settingsModel");
 
       
     
@@ -499,7 +491,19 @@ function (Controller,JSONModel,Filter,FilterOperator,MessageBox,Fragment) {
         },
 
         onSaveDefaults: function(){
-          var data = this.getView().getModel("settingsModel").getData();
+
+
+
+
+
+          if( !this.getOwnerComponent().getModel("userValues").getProperty("/SalesOrganization")){
+
+            sap.m.MessageBox.error("Please select Sales Organization");
+            return;
+          }
+
+          var data = this.getOwnerComponent().getModel("settingsModel").getData();
+          data.SalesOrganization =  this.getOwnerComponent().getModel("userValues").getProperty("/SalesOrganization")
 let defaultModel1 = this.getOwnerComponent().getModel("ZODATA_ORDER_ENTRY_SRV");
           var that = this;
           

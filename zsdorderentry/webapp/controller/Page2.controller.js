@@ -210,6 +210,9 @@ function (Controller,JSONModel,Filter,FilterOperator) {
 
             }
           });
+          if(!materialObj.CurrentPrice_F){
+materialObj.CurrentPrice_F =materialObj.CurrentPrice;
+          }
           if(!isMatFound){
             materials.unshift(materialObj);
           } 

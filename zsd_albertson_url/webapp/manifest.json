@@ -1,0 +1,152 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "customer.porky.zsdalbertsonurl",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.19.1",
+      "toolsId": "eb1831c6-ef06-4a1e-b87e-038ae9f86803"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_c_customermaterialv4/srvd/sap/zsv_r_customermaterial/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.44",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zsdalbertsonurl.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZCSD_ZKNMTREQUESTPROCESSURLList",
+          "target": "ZCSD_ZKNMTREQUESTPROCESSURLList"
+        },
+        {
+          "pattern": "ZCSD_ZKNMTREQUESTPROCESSURL({key}):?query:",
+          "name": "ZCSD_ZKNMTREQUESTPROCESSURLObjectPage",
+          "target": "ZCSD_ZKNMTREQUESTPROCESSURLObjectPage"
+        }
+      ],
+      "targets": {
+        "ZCSD_ZKNMTREQUESTPROCESSURLList": {
+          "type": "Component",
+          "id": "ZCSD_ZKNMTREQUESTPROCESSURLList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZCSD_ZKNMTREQUESTPROCESSURL",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZCSD_ZKNMTREQUESTPROCESSURL": {
+                  "detail": {
+                    "route": "ZCSD_ZKNMTREQUESTPROCESSURLObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_ZKNMTREQUESTPROCESSURLObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_ZKNMTREQUESTPROCESSURLObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_ZKNMTREQUESTPROCESSURL"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

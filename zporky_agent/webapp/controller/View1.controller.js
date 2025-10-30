@@ -73,8 +73,11 @@ sap.ui.define([
             // debugger;
 
             };
+            var that = this;
+            this.getView().setBusy(true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
+                    that.getView().setBusy(false);
                     var res = JSON.parse(xhr.response);
                 //   debugger;
 
@@ -82,12 +85,15 @@ sap.ui.define([
                 var oDate = new Date();
                 var sDate = oFormat.format(oDate);
                 // create new entry
+                 const textArea = document.createElement('textarea');
+    //   textArea.innerText = res.table;
+      
                 var oEntry = {
                     Author: "Sales Agent",
                     AuthorPicUrl: "sap-icon://customer-and-contacts",
                     Type: "Reply",
                     Date: "" + sDate,
-                    Text: res.output
+                     HTML:  res.html
                 };
     
                 // update model
@@ -99,6 +105,7 @@ sap.ui.define([
                 });
 
                 }else if(xhr.readyState === 4  && (xhr.status === 500 || xhr.status === 501)){
+                    that.getView().setBusy(false);
                 //    sap.m.MessageBox.error("There is an error submitting this note");
 
 
@@ -114,7 +121,7 @@ sap.ui.define([
                     AuthorPicUrl: "sap-icon://customer-and-contacts",
                     Type: "Reply",
                     Date: "" + sDate,
-                    Text: res.message
+                    Text: res.table
                 };
     
                 // update model

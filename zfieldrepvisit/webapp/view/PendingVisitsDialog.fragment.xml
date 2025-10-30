@@ -1,0 +1,80 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+    <Dialog
+        id="pendingVisitsDialog"
+        title="Pending Visits"
+        contentWidth="600px"
+        contentHeight="400px"
+        resizable="true"
+        draggable="true">
+        
+        <content>
+            <List
+                id="pendingVisitsList"
+                items="{pendingVisitsModel>/visits}"
+                noDataText="No pending visits">
+                
+                <items>
+                    <ObjectListItem
+                        title="Visit ID: {pendingVisitsModel>visitId}"
+                        number="{= ${pendingVisitsModel>synced} ? 'Synced' : 'Pending'}"
+                        numberState="{= ${pendingVisitsModel>synced} ? 'Success' : 'Warning'}"
+                        press="onPendingVisitPress">
+                        
+                        <attributes>
+                            <ObjectAttribute
+                                title="Customer"
+                                text="{pendingVisitsModel>data/Customer}"/>
+                            <ObjectAttribute
+                                title="Created"
+                                text="{
+                                    path: 'pendingVisitsModel>timestamp',
+                                    type: 'sap.ui.model.type.DateTime',
+                                    formatOptions: {
+                                        pattern: 'dd/MM/yyyy HH:mm'
+                                    }
+                                }"/>
+                            <ObjectAttribute
+                                title="Sales Org"
+                                text="{pendingVisitsModel>data/Vkorg}"/>
+                        </attributes>
+                        
+                        <firstStatus>
+                            <ObjectStatus
+                                text="{= ${pendingVisitsModel>data/status} === '1' ? 'Draft' : 'Visit'}"
+                                state="{= ${pendingVisitsModel>data/status} === '1' ? 'Warning' : 'Success'}"/>
+                        </firstStatus>
+                        
+                        <secondStatus>
+                            <ObjectStatus
+                                icon="sap-icon://delete"
+                                press="onDeletePendingVisit"
+                                active="true"
+                                state="Error"/>
+                        </secondStatus>
+                        
+                    </ObjectListItem>
+                </items>
+            </List>
+        </content>
+        
+        <beginButton>
+            <Button
+                text="Sync All"
+                icon="sap-icon://synchronize"
+                press="onSyncAllPending"
+                type="Emphasized"
+                enabled="{offlineModel>/isOnline}"/>
+        </beginButton>
+        
+        <endButton>
+            <Button
+                text="Close"
+                press="onClosePendingDialog"/>
+        </endButton>
+        
+    </Dialog>
+    
+</core:FragmentDefinition>

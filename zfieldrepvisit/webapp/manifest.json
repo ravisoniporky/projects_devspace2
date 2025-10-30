@@ -251,6 +251,13 @@
       "prospectModel": {
         "type": "sap.ui.model.json.JSONModel"
       },
+    "offlineModel": {
+        "type": "sap.ui.model.json.JSONModel"
+    },
+    "pendingVisitsModel": {
+        "type": "sap.ui.model.json.JSONModel"
+    },
+
       "": {
         "dataSource": "mainService",
         "preload": true,

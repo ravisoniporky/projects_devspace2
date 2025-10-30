@@ -1,5 +1,6 @@
 <mvc:View controllerName="customer.porky.zporkyagent.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
+    	xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page id="page" title="Sales AI Agent">
         <VBox height="80%">
@@ -14,7 +15,19 @@
                     
            
                 <List showSeparators="Inner" items="{/EntryCollection}">
-                    <FeedListItem sender="{Author}" icon="{AuthorPicUrl}" senderPress="onSenderPress" iconPress="onIconPress" info="{Type}" timestamp="{Date}" text="{Text}" convertLinksToAnchorTags="All"/>
+                	<CustomListItem>
+			<HBox>
+				<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+					<Label text="{Author}"/>
+					<Label text="{Text}"/>
+                    <VBox >
+                    <core:HTML content="{HTML}"/>
+                    </VBox>
+                    
+				</VBox>
+			</HBox>
+		</CustomListItem>
+                    <!-- <FeedListItem sender="{Author}" icon="{AuthorPicUrl}" senderPress="onSenderPress" iconPress="onIconPress" info="{Type}" timestamp="{Date}" text="{Text}" convertLinksToAnchorTags="All"/> -->
                 </List>
                 </content>
 

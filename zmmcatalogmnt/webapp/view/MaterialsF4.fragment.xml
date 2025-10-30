@@ -7,7 +7,7 @@
 	<Dialog contentHeight="80%" title="Select Material">
 
 		<smartFilterBar:SmartFilterBar id="ZBSD_MobileCatalogMaterials_sf" entitySet="ZBSD_MobileCatalogMaterials" 
-		enableBasicSearch="true" useToolbar="false" persistencyKey="ZBSD_MobileCatalogMaterials_sf">
+		enableBasicSearch="true" useToolbar="true" persistencyKey="ZBSD_MobileCatalogMaterials_sf">
 
 
 		</smartFilterBar:SmartFilterBar>
@@ -30,7 +30,11 @@
 				</ComboBox>
 			</OverflowToolbar>
 
-			<Table mode="SingleSelectMaster" itemPress="handleMaterialSelection" selectionChange="handleMaterialSelection"></Table>
+			<Table   mode="SingleSelectMaster"  itemPress="handleMaterialSelection">
+			
+			<columns ></columns>
+			<ColumnListItem type="Active"  press="handleMaterialSelection" detailPress="handleMaterialSelection" detailTap="handleMaterialSelection"></ColumnListItem>
+			</Table>
 
 
 

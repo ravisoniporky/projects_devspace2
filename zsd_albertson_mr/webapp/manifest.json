@@ -1,0 +1,175 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "customer.porky.zsdalbertsonmr",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.19.0",
+      "toolsId": "29a34483-a8c9-4e51-965d-c2437047ea13"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_c_customermaterialv4/srvd/sap/zsv_r_customermaterial/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.44",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zsdalbertsonmr.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZCSD_ZKNMTRequestProcessHeaderList",
+          "target": "ZCSD_ZKNMTRequestProcessHeaderList"
+        },
+        {
+          "pattern": "ZCSD_ZKNMTRequestProcessHeader({key}):?query:",
+          "name": "ZCSD_ZKNMTRequestProcessHeaderObjectPage",
+          "target": "ZCSD_ZKNMTRequestProcessHeaderObjectPage"
+        },
+        {
+          "pattern": "ZCSD_ZKNMTRequestProcessHeader({key})/_Items({key2}):?query:",
+          "name": "ZCSD_ZKNMTRequestProcessObjectPage",
+          "target": "ZCSD_ZKNMTRequestProcessObjectPage"
+        }
+      ],
+      "targets": {
+        "ZCSD_ZKNMTRequestProcessHeaderList": {
+          "type": "Component",
+          "id": "ZCSD_ZKNMTRequestProcessHeaderList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZCSD_ZKNMTRequestProcessHeader",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZCSD_ZKNMTRequestProcessHeader": {
+                  "detail": {
+                    "route": "ZCSD_ZKNMTRequestProcessHeaderObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_ZKNMTRequestProcessHeaderObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_ZKNMTRequestProcessHeaderObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_ZKNMTRequestProcessHeader",
+              "navigation": {
+                "_Items": {
+                  "detail": {
+                    "route": "ZCSD_ZKNMTRequestProcessObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_ZKNMTRequestProcessObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_ZKNMTRequestProcessObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_ZKNMTRequestProcessHeader/_Items"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

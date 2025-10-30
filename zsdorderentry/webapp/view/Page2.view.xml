@@ -573,7 +573,16 @@
 					<uitable:Column width="9rem">
 						<m:Label text="Price" />
 						<uitable:template>
-							<m:Input value="{cartModel>CurrentPrice}" type="Number"/>
+							<m:Input value="{cartModel>CurrentPrice}" type="Number" editable="false"/>
+						</uitable:template>
+					</uitable:Column>
+
+
+
+								<uitable:Column width="9rem">
+						<m:Label text="Price" />
+						<uitable:template>
+							<m:Input value="{cartModel>CurrentPrice_F}" type="Number"/>
 						</uitable:template>
 					</uitable:Column>
 

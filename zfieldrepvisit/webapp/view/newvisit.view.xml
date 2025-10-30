@@ -17,6 +17,12 @@
     				<!-- <tnt:InfoLabel class="sapUiTinyMarginTopBottom"  text="{= ${visitModel>/Visitid} !== 'NEW' ? 'Visit#'+Number(${visitModel>/Visitid}) +' by '+${visitModel>/CreatedFullName} : ' - New Visit' }" renderMode="Loose" colorScheme="6" visible="{= ${visitModel>/Visitid} === 'NEW'? false: true}" width="100%" /> -->
 
     	<headerContent>
+         <Button 
+        text="Pending Visits ({offlineModel>/pendingCount})"
+        icon="sap-icon://download-from-cloud"
+        press="onViewPendingVisits"
+        visible="{= ${offlineModel>/pendingCount} > 0}"
+        type="Transparent"/>
                 <Text text="You are not authorized to view this visit {visitModel>/Visitid}"  visible="{= ${authCustomerModel>/authCustomer} === false ? true : false }"/>
 
                 <Button text="New Visit" press="onCreateVisit_Followup" visible="{= ${visitModel>/Visitid} === 'NEW'? false: ${visitModel>/status} === '2'?  true : false}" /> 

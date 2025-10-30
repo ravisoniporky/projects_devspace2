@@ -19,7 +19,7 @@
 		>
 
 			<smartFilterBar:SmartFilterBar id="exclusionSF"  entitySet="ZCSD_MOBILECATALOGExclusion"
-			   enableBasicSearch="true" useToolbar="false" persistencyKey="catalogexclList_f">
+			   enableBasicSearch="true" useToolbar="true" persistencyKey="catalogexclList_f_excl">
 				
 				
 			</smartFilterBar:SmartFilterBar>

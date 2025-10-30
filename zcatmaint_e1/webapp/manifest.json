@@ -117,7 +117,24 @@
       "forceGlobalRefresh": false,
       "objectPageHeaderType": "Dynamic",
       "considerAnalyticalParameters": true,
-      "showDraftToggle": false
+      "showDraftToggle": false,
+       "inboundParameters": {
+        "GetDefaultsForCreate":{
+         "SalesOrganization": {
+            "useForCreate": true
+         },
+           "Distribution": {
+            "useForCreate": true
+         },
+           "Division": {
+            "useForCreate": true
+         },
+           "Material": {
+            "useForCreate": true
+         }
+        }
+      }
+   
     },
     "pages": {
       "ListReport|ZRSD_MobileCatalogMaint": {

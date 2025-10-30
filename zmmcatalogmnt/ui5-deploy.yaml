@@ -20,6 +20,6 @@ builder:
         app:
           name: ZMMCATALOGMN
           package: zfiori1
-          transport: DE2K905481
+          transport: DE2K905711
         exclude:
           - /test/

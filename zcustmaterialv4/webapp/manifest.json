@@ -1,0 +1,175 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "customer.porky.zcustmaterialv4",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.18.5",
+      "toolsId": "668d81b1-4a90-414f-b8be-e64fe1cb3d29"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_r_customermaterialv4/srvd/sap/zsv_r_customermaterial/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.44",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zcustmaterialv4.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZCSD_CUSTOMERMATERIALList",
+          "target": "ZCSD_CUSTOMERMATERIALList"
+        },
+        {
+          "pattern": "ZCSD_CUSTOMERMATERIAL({key}):?query:",
+          "name": "ZCSD_CUSTOMERMATERIALObjectPage",
+          "target": "ZCSD_CUSTOMERMATERIALObjectPage"
+        },
+        {
+          "pattern": "ZCSD_CUSTOMERMATERIAL({key})/_Items({key2}):?query:",
+          "name": "ZCSD_CUSTOMERMATERIALITEMObjectPage",
+          "target": "ZCSD_CUSTOMERMATERIALITEMObjectPage"
+        }
+      ],
+      "targets": {
+        "ZCSD_CUSTOMERMATERIALList": {
+          "type": "Component",
+          "id": "ZCSD_CUSTOMERMATERIALList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZCSD_CUSTOMERMATERIAL",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZCSD_CUSTOMERMATERIAL": {
+                  "detail": {
+                    "route": "ZCSD_CUSTOMERMATERIALObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_CUSTOMERMATERIALObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_CUSTOMERMATERIALObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_CUSTOMERMATERIAL",
+              "navigation": {
+                "_Items": {
+                  "detail": {
+                    "route": "ZCSD_CUSTOMERMATERIALITEMObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_CUSTOMERMATERIALITEMObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_CUSTOMERMATERIALITEMObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_CUSTOMERMATERIAL/_Items"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

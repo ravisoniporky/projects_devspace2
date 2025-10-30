@@ -213,7 +213,102 @@ sap.ui.define(
           this.getLocation();
 
 
+ 
+    // Initialize online/offline detection
+    this._initializeOnlineOfflineHandlers();
+    
+    // Store initial online status
+    this._isOnline = navigator.onLine;
       },
+
+
+
+
+      _initializeOnlineOfflineHandlers: function() {
+    var that = this;
+    
+    // Listen for online event
+    window.addEventListener('online', function() {
+        that._handleOnlineEvent();
+    });
+    
+    // Listen for offline event
+    window.addEventListener('offline', function() {
+        that._handleOfflineEvent();
+    });
+},
+
+_handleOnlineEvent: function() {
+    var that = this;
+    this._isOnline = true;
+    
+    console.log("Connection restored - checking for pending notes to save");
+    
+    // Small delay to ensure connection is stable
+    setTimeout(function() {
+        that._checkAndSavePendingNotes();
+    }, 1000);
+},
+
+_handleOfflineEvent: function() {
+    this._isOnline = false;
+    console.log("Connection lost - notes will be saved to cookies only");
+    
+    // Optional: Show a subtle message to user
+    sap.m.MessageToast.show("Working offline - your notes are saved locally");
+},
+
+
+_checkAndSavePendingNotes: function() {
+    var that = this;
+    var cookieKey = this.getCookieKey();
+    var savedNotes = this.getCookie(cookieKey);
+    
+    if(!savedNotes || savedNotes.length < 10) {
+        console.log("No pending notes to save or notes too short");
+        return;
+    }
+    
+    var visitId = this.getView().getModel("visitModel")?.getProperty("/Visitid");
+    var customer = this.getView().getModel("customerModel")?.getProperty("/Customer");
+    
+    if(!customer) {
+        console.log("No customer selected - cannot save notes");
+        return;
+    }
+    
+    console.log("Found pending notes - attempting to save to server");
+    
+    // If visit is still NEW, create draft visit
+    if(visitId === 'NEW' || visitId === '' || typeof visitId === 'undefined') {
+        console.log("Visit is NEW - creating draft visit with notes from cookie");
+        
+        this.getView().getModel("visitModel").setProperty("/status","1");
+        this.onCreateVisit_Periodic(that);
+        
+        setTimeout(function() {
+            if(that.getView().byId("CreateProductWizard")) {
+                that.getView().byId("CreateProductWizard").getSteps()[5].setValidated(true);
+            }
+        }, 1000);
+        
+        // Show success message after a delay
+        setTimeout(function() {
+            if(that.visitid && that.visitid !== 'NEW') {
+                sap.m.MessageToast.show("Notes saved successfully - Draft Visit #" + that.visitid + " created");
+            }
+        }, 2000);
+        
+    } else {
+        // Visit already exists, just update notes
+        console.log("Updating existing visit notes from cookie");
+        that.onUpdateNotes_periodic();
+        
+        setTimeout(function() {
+            sap.m.MessageToast.show("Notes saved successfully");
+        }, 1000);
+    }
+},
       onFinishStep: function(){
         var that = this;
 
@@ -831,6 +926,21 @@ clean.forEach(element => {
         this.getMOEData(shipto, vkorg);
 
 
+        var that = this;
+    
+    // After customer data is loaded, check for cookie
+    setTimeout(function() {
+        var cookieKey = that.getCookieKey();
+        var savedNotes = that.getCookie(cookieKey);
+        
+        if(savedNotes) {
+            var notesModel = that.getView().getModel("notesModel");
+            if(notesModel && notesModel.getData().results && notesModel.getData().results[0]) {
+                notesModel.getData().results[0].Notes = savedNotes;
+                notesModel.refresh();
+            }
+        }
+    }, 500);
 
       },
 
@@ -1804,6 +1914,32 @@ clean.forEach(element => {
                          }
         }, 500);
 
+
+
+
+            var that = this;
+
+
+
+
+
+
+    // ... existing code ...
+    
+    // Start periodic check for pending notes
+    this._startPeriodicCheck();
+    
+    // At the very end of the method, after all data is loaded:
+    var that = this;
+    setTimeout(function() {
+        // Recover and auto-save notes from cookie after page refresh
+        that.recoverAndSaveNotesFromCookie();
+        
+        // Also check if we just came back online
+        if(that._isOnline && navigator.onLine) {
+            that._checkAndSavePendingNotes();
+        }
+    }, 2000);
       },
 
       readVisitModel(){
@@ -3198,7 +3334,7 @@ clean.forEach(element => {
           
       },
 
-      onCreateVisit_AutoSave: function (oEvent) {
+      onCreateVisit_AutoSave_old: function (oEvent) {
 
 
         // if(this.setLock && this.setLock === true){
@@ -3233,7 +3369,49 @@ clean.forEach(element => {
 
         
       },
-      onUpdateNotes_periodic: function(text){
+onCreateVisit_AutoSave: function (oEvent) {
+    var that = this;
+    var notesValue = oEvent.getSource().getValue();
+    
+    // ALWAYS store in cookie immediately - this is the source of truth
+    var cookieKey = this.getCookieKey();
+    this.setCookie(cookieKey, notesValue, 7);
+    
+    // Also update the model for UI consistency
+    var notesModel = this.getView().getModel("notesModel");
+    if(notesModel && notesModel.getData().results && notesModel.getData().results[0]) {
+        notesModel.getData().results[0].Notes = notesValue;
+    }
+    
+    var visitId = that.getView().getModel("visitModel").getProperty("/Visitid");
+    
+    // Only attempt server save if online
+    if(!this._isOnline || !navigator.onLine) {
+        console.log("Offline - notes saved to cookie only");
+        return;
+    }
+    
+    // Debounce server save to avoid too many calls
+    if(this._saveTimeout) {
+        clearTimeout(this._saveTimeout);
+    }
+    
+    this._saveTimeout = setTimeout(function() {
+        if(notesValue.length >= 10) {
+            if(visitId === 'NEW' || visitId === '') {
+                that.getView().getModel("visitModel").setProperty("/status","1");
+                that.onCreateVisit_Periodic(that);
+                
+                setTimeout(function() {
+                    that.getView().byId("CreateProductWizard").getSteps()[5].setValidated(true);
+                }, 1000);
+            } else {
+                that.onUpdateNotes_periodic();
+            }
+        }
+    }, 1000); // Wait 1 second after user stops typing
+},
+      onUpdateNotes_periodic_old: function(text){
 
         var that = this;
         let defaultModel1 = this.getOwnerComponent().getModel("ZRMM_FRVISITV2_CDS");
@@ -3270,7 +3448,49 @@ clean.forEach(element => {
           }
         });
       },
-      onCreateVisit_Periodic: function(that,notes){
+
+
+      onUpdateNotes_periodic: function(){
+    var that = this;
+    
+    // READ FROM COOKIE - this is the source of truth
+    var cookieKey = this.getCookieKey();
+    var notesFromCookie = this.getCookie(cookieKey);
+    
+    if(!notesFromCookie) {
+        return; // No cookie data to save
+    }
+    
+    let defaultModel1 = this.getOwnerComponent().getModel("ZRMM_FRVISITV2_CDS");
+    let notesModelData = JSON.parse(JSON.stringify(
+        this.getView().getModel("notesModel").getData().results.find(
+            element => element.Visitid === that.visitid
+        )
+    ));
+
+    // Use cookie data, not model data
+    notesModelData.Notes = notesFromCookie;
+    
+    delete notesModelData.editable;
+    delete notesModelData.originalText;
+    delete notesModelData.visitid_new;
+
+    defaultModel1.update(
+        "/ZRMM_FRVISITV2NOTES(Visitid='" + that.getView().getModel("visitModel").getProperty("/Visitid") + 
+        "',Lineid=" + notesModelData.Lineid + ")", 
+        notesModelData, 
+        {
+            success: function (oData, oResponse) {
+                // Delete cookie after successful update
+                that.deleteCookie(cookieKey);
+            },
+            error: function (oError) {
+                // Cookie remains for retry
+            }
+        }
+    );
+},
+      onCreateVisit_Periodic_old: function(that,notes){
         var that = that;
 
         if(that.getView().getModel("visitModel").getProperty("/Visitid") !== 'NEW' && that.getView().getModel("visitModel").getProperty("/Visitid") !== ''){
@@ -3409,6 +3629,170 @@ clean.forEach(element => {
 
         } 
       },
+
+
+
+
+onCreateVisit_Periodic: function(that){
+    var that = that;
+
+    if(that.getView().getModel("visitModel").getProperty("/Visitid") !== 'NEW' && 
+       that.getView().getModel("visitModel").getProperty("/Visitid") !== ''){
+        console.log("Visit already exists - skipping creation");
+        return;
+    }
+    
+    if (that.visitid === "NEW" || that.visitid === "" || typeof that.visitid === 'undefined') {
+        var dataPayload = that.getView().getModel("visitModel").getData();
+
+        if(typeof dataPayload.Vkorg === 'undefined'){
+            dataPayload.Vkorg = that.getView().getModel("userValues").getData().salesorg;
+        }
+
+        var customerid = "";
+        if (that.getView().getModel("customerModel")) {
+            customerid = that.getView().getModel("customerModel").getProperty("/Customer");
+        } else {
+            customerid = "";
+        }
+        
+        dataPayload.Customer = customerid;
+        if (dataPayload.Customer === "") {
+            console.log("No customer selected - cannot create visit");
+            return;
+        }
+        
+        // READ FROM COOKIE - this is the source of truth
+        var cookieKey = that.getCookieKey();
+        var notesFromCookie = that.getCookie(cookieKey);
+        
+        if(!notesFromCookie || notesFromCookie.length < 10) {
+            console.log("Notes too short or empty - minimum 10 characters required");
+            return;
+        }
+        
+        console.log("Creating draft visit with notes from cookie");
+        
+        let prodSet = that.getOwnerComponent().getModel("ZRMM_FRVISITV2_CDS");
+        let notesModelData = that.getView().getModel("notesModel").getData().results[0];
+        
+        // Use cookie data, not model data
+        notesModelData.Notes = notesFromCookie;
+        
+        delete notesModelData.editable;
+        delete notesModelData.originalText;
+        delete notesModelData.visitid_new;
+        
+        dataPayload.to_notes.results = [notesModelData];
+        dataPayload.status = "1";
+        
+        prodSet.create("/ZRMM_FRVISITV2", dataPayload, {
+            success: function (result) {
+                console.log("Draft visit created successfully: " + result.Visitid);
+                
+                that.getView().byId("CreateProductWizard").getSteps()[5].setValidated(true);
+                that.setLock = false;
+                that.getView().getModel("visitModel").setData(result);
+                that.visitid = result.Visitid;
+                
+                // Delete old cookie (NEW visit)
+                that.deleteCookie(cookieKey);
+                
+                // Create new cookie key for the new visit ID
+                var newCookieKey = "visitNotes_" + customerid + "_" + result.Visitid;
+                that.setCookie(newCookieKey, notesFromCookie, 7);
+                
+                that.getView().setModel(new sap.ui.model.json.JSONModel({}),"commentsModel");
+                that.extractComments(that.visitid);
+                that.getView().byId("CreateProductWizard").getSteps()[5].setValidated(true);
+
+                prodSet.read("/ZRMM_FRVISITV2NOTES", {
+                    urlParameters: {
+                        "$filter": "Kunnr eq '" + result.Customer + "' and Type eq 'N'",
+                    },
+                    success: function (oData, oResponse) {
+                        var oDataResults = oData;
+                        oDataResults.results.forEach(element => {
+                            if(element.Visitid === that.visitid){
+                                element.visitid_new = '9999';
+                                element.editable = true;
+                            } else {
+                                element.visitid_new = element.Visitid;
+                                element.editable = false;
+                            }
+                        });
+                        that.getView().setModel(new sap.ui.model.json.JSONModel(oDataResults), "notesModel");
+                        that.getView().byId("CreateProductWizard").getSteps()[5].setValidated(true);
+                    },
+                    error: function (oError) {
+                        console.error("Error loading notes after visit creation");
+                    }
+                });
+            },
+            error: function (err) {
+                console.error("Error creating draft visit - notes remain in cookie");
+                that.getView().setBusy(false);
+                that.setLock = false;
+                
+                // Mark as offline if network error
+                if(err.statusCode === 0 || err.statusCode === 503) {
+                    that._isOnline = false;
+                }
+                
+                // Cookie remains for retry
+                var errorMessage = "Connection issue - notes saved locally and will be synced when online.";
+                
+                try {
+                    if(JSON.parse(err.responseText).error.message.value){
+                        errorMessage = JSON.parse(err.responseText).error.message.value + " Notes saved locally.";
+                    }
+                } catch(e) {
+                    // Use default message
+                }
+                
+                sap.m.MessageToast.show(errorMessage);
+            }
+        });
+    } 
+},
+
+
+
+
+
+
+_startPeriodicCheck: function() {
+    var that = this;
+    
+    // Check every 30 seconds if online and has pending notes
+    this._periodicCheckInterval = setInterval(function() {
+        if(that._isOnline && navigator.onLine) {
+            var cookieKey = that.getCookieKey();
+            var savedNotes = that.getCookie(cookieKey);
+            var visitId = that.getView().getModel("visitModel")?.getProperty("/Visitid");
+            
+            if(savedNotes && savedNotes.length >= 10 && 
+               (visitId === 'NEW' || visitId === '' || typeof visitId === 'undefined')) {
+                console.log("Periodic check: found pending notes - attempting to save");
+                that._checkAndSavePendingNotes();
+            }
+        }
+    }, 30000); // Check every 30 seconds
+},
+
+_stopPeriodicCheck: function() {
+    if(this._periodicCheckInterval) {
+        clearInterval(this._periodicCheckInterval);
+        this._periodicCheckInterval = null;
+    }
+},
+
+
+
+
+
+
+
 
 
 
@@ -6688,7 +7072,72 @@ clean.forEach(element => {
             }); // navigate to Supplier application
 
 
+        },
+
+        // Cookie utility methods
+setCookie: function(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + encodeURIComponent(value || "") + expires + "; path=/";
+},
+
+getCookie: function(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+},
+
+deleteCookie: function(name) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+},
+
+getCookieKey: function() {
+    var customer = this.getView().getModel("customerModel")?.getProperty("/Customer") || "";
+    var visitId = this.getView().getModel("visitModel")?.getProperty("/Visitid") || "NEW";
+    return "visitNotes_" + customer + "_" + visitId;
+},
+
+
+recoverAndSaveNotesFromCookie: function() {
+    var that = this;
+    var cookieKey = this.getCookieKey();
+    var savedNotes = this.getCookie(cookieKey);
+    
+    if(savedNotes && savedNotes.length >= 10) {
+        // Update the model with cookie data
+        var notesModel = this.getView().getModel("notesModel");
+        if(notesModel && notesModel.getData().results) {
+            var currentNote = notesModel.getData().results.find(
+                element => element.Visitid === that.visitid || element.Visitid === 'NEW'
+            );
+            if(currentNote) {
+                currentNote.Notes = savedNotes;
+                notesModel.refresh();
+            }
         }
+        
+        // Automatically save to server
+        var visitId = this.getView().getModel("visitModel")?.getProperty("/Visitid");
+        
+        setTimeout(function() {
+            if(visitId === 'NEW' || visitId === '' || typeof visitId === 'undefined') {
+                that.getView().getModel("visitModel").setProperty("/status","1");
+                that.onCreateVisit_Periodic(that);
+            } else {
+                that.onUpdateNotes_periodic();
+            }
+        }, 500);
+    }
+},
 
 
 

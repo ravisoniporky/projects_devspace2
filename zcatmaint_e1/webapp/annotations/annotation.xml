@@ -15,7 +15,7 @@
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
 
          <Annotations Target="cds_zsv_c_mobilecatalog.cds_zsv_c_mobilecatalog_Entities/ZRSD_MobileCatalogMaint" >
-      <Annotation Term="Common.DefaultValuesFunction" String="GetDefaultsForCreate">                                   
+      <Annotation Term="Common.DefaultValuesFunction" String="GetDefaultsForCreate" >                                   
       </Annotation>
 </Annotations> 
 

@@ -1,0 +1,33 @@
+{
+  "generationParameters": {
+    "generationDate": "Mon Sep 29 2025 18:12:03 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata4/sap/zsb_c_customermaterialv4/srvd/sap/zsv_r_customermaterial/0001/",
+    "appName": "zsd_albertson_mr",
+    "appTitle": "Albertsons Porky CIC to VPC",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "customer.porky",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.108.44",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.19.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZCSD_ZKNMTRequestProcessHeader"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "_Items"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

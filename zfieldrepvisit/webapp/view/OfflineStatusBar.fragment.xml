@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+    <Bar id="offlineStatusBar" 
+         visible="{offlineModel>/hasPendingVisits}"
+         design="Header">
+        <contentLeft>
+            <core:Icon 
+                src="{= ${offlineModel>/isOnline} ? 'sap-icon://connected' : 'sap-icon://disconnected'}"
+                color="{= ${offlineModel>/isOnline} ? 'green' : 'red'}"/>
+            <Text 
+                text="{= ${offlineModel>/isOnline} ? 'Online' : 'Offline'}"
+                class="sapUiTinyMarginBegin"/>
+        </contentLeft>
+        
+        <contentMiddle>
+            <Text 
+                text="{= ${offlineModel>/pendingCount} + ' visit(s) pending sync'}"
+                visible="{= ${offlineModel>/pendingCount} > 0}"/>
+        </contentMiddle>
+        
+        <contentRight>
+            <Button 
+                text="Sync Now"
+                icon="sap-icon://synchronize"
+                press="onManualSync"
+                enabled="{offlineModel>/isOnline}"
+                visible="{= ${offlineModel>/pendingCount} > 0}"
+                type="Emphasized"/>
+                
+            <Button
+                text="View Pending"
+                icon="sap-icon://list"
+                press="onViewPendingVisits"
+                visible="{= ${offlineModel>/pendingCount} > 0}"/>
+        </contentRight>
+    </Bar>
+    
+</core:FragmentDefinition>

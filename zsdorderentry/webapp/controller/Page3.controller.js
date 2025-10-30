@@ -45,7 +45,7 @@ function (Controller) {
                 obj1.Matnr = element.Material;
                 obj1.Kwmeng = element.Quantity+""; //Order quantity
                 obj1.Vrkme =  element.SalesUnit+""; //Sales Unit
-                obj1.Kbetr =  element.CurrentPrice+""; //Amount
+                obj1.Kbetr =  element.CurrentPrice_F+""; //Amount
                 obj1.Kmein =  element.CurrentPriceUnit; // Price Unit
                 obj1.Inotes =  element.ItemNotes; //Item Notes
                 if(element.Material!== "")
@@ -81,15 +81,14 @@ function (Controller) {
 
             var obj1 = {
                 "Vkorg": this.getOwnerComponent().getModel("userValues").getProperty("/SalesOrganization"),
-                "Werks" :this.getOwnerComponent().getModel("userValues").getProperty("/Plant"),
-                "Kunnr" : this.getOwnerComponent().getModel("userValues").getProperty("/Plant"),
+                // "Werks" :this.getOwnerComponent().getModel("userValues").getProperty("/Plant"),
+                "Kunnr" : this.getOwnerComponent().getModel("userValues").getProperty("/Customer"),
                 "DeliveryDate": this.getOwnerComponent().getModel("userValues").getProperty("/deldate"),
                 "Bstnk" :this.getOwnerComponent().getModel("userValues").getProperty("/ponumber"),
                 "OrdDetInSet" : varray,
-                "Bstnk": "Test PO",
-                "Deptmnt": "",
-                "Emode": "S",
-                "Mattyp": "N",
+                "Deptmnt":this.getOwnerComponent().getModel("settingsModel").getProperty("/Department") ,
+                "Emode": this.getOwnerComponent().getModel("settingsModel").getProperty("/OrderEntryMode") ,
+                "Mattyp": this.getOwnerComponent().getModel("settingsModel").getProperty("/MaterialType"),
                 "ProcessMode": "SP",
                 "OrderOut": [{}],
 "OrderReturn": [{}]
@@ -144,6 +143,9 @@ function (Controller) {
            this.getOwnerComponent().getModel("userValues").setProperty("/Plant","");
            this.getOwnerComponent().getModel("userValues").setProperty("/plantname","");
            this.getOwnerComponent().getModel("userValues").setProperty("/SalesOrganization","");
+           this.getOwnerComponent().getModel("userValues").setData({});
+           this.getOwnerComponent().getModel("proposedModel").setData({});
+           this.getOwnerComponent().getModel("itemSearchModel").setData({});
 
 
            this.getView().getParent().getParent().getCurrentBeginColumnPage().getController().ResetMaterialSelection();

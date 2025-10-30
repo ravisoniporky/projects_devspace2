@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZODATA_GTPVM_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZCSD_GTPVMHierarchyType" sap:label="GT: PVM by Material Group 5" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_vkorg"/>
+                    <PropertyRef Name="p_frkeyname"/>
+                    <PropertyRef Name="p_tokeyname"/>
+                    <PropertyRef Name="p_frdate"/>
+                    <PropertyRef Name="p_todate"/>
+                    <PropertyRef Name="NodeID"/>
+                </Key>
+                <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="p_frkeyname" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Customer Rollup Key"/>
+                <Property Name="p_tokeyname" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Customer Rollup Key"/>
+                <Property Name="p_frdate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Current Date"/>
+                <Property Name="p_todate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Current Date"/>
+                <Property Name="NodeID" Type="Edm.String" Nullable="false" MaxLength="50" sap:hierarchy-node-for="NodeID"/>
+                <Property Name="ParentNodeID" Type="Edm.String" MaxLength="40" sap:hierarchy-parent-node-for="NodeID"/>
+                <Property Name="HierarchyLevel" Type="Edm.Int32" sap:hierarchy-level-for="NodeID"/>
+                <Property Name="NodeType" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="ProductName" Type="Edm.String" MaxLength="40" sap:label="Product Description"/>
+                <Property Name="FifthSalesSpecProductGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Product Group 5"/>
+                <Property Name="IsMarkedForDeletion" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DF distr. chain lvl" sap:quickinfo="Ind.: Flag material for deletion at distribution chain level"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="ZhprSalesFrom" Type="Edm.Decimal" Precision="18" Scale="2"/>
+                <Property Name="NetWeightFrom" Type="Edm.Decimal" Precision="18" Scale="3"/>
+                <Property Name="ShipQuantityFrom" Type="Edm.Decimal" Precision="18" Scale="3"/>
+                <Property Name="ZhprSalesTo" Type="Edm.Decimal" Precision="18" Scale="2"/>
+                <Property Name="NetWeightTo" Type="Edm.Decimal" Precision="18" Scale="3"/>
+                <Property Name="ShipQuantityTo" Type="Edm.Decimal" Precision="18" Scale="3"/>
+                <Property Name="ProductOldID" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old product number" sap:quickinfo="Old Product Number"/>
+                <Property Name="NodeText" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DrillState" Type="Edm.String" MaxLength="8" sap:hierarchy-drill-state-for="NodeID"/>
+                <NavigationProperty Name="Parameters" Relationship="ZODATA_GTPVM_SRV.assoc_74453BC3E9C9FB4D7D23FE2FA922552C" FromRole="ToRole_assoc_74453BC3E9C9FB4D7D23FE2FA922552C" ToRole="FromRole_assoc_74453BC3E9C9FB4D7D23FE2FA922552C" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCSD_GTPVMHierarchyParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_vkorg"/>
+                    <PropertyRef Name="p_frkeyname"/>
+                    <PropertyRef Name="p_tokeyname"/>
+                    <PropertyRef Name="p_frdate"/>
+                    <PropertyRef Name="p_todate"/>
+                </Key>
+                <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_frkeyname" Type="Edm.String" Nullable="false" MaxLength="40" sap:parameter="mandatory" sap:label="Customer Rollup Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_tokeyname" Type="Edm.String" Nullable="false" MaxLength="40" sap:parameter="mandatory" sap:label="Customer Rollup Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_frdate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:label="Current Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_todate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:label="Current Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZODATA_GTPVM_SRV.assoc_74453BC3E9C9FB4D7D23FE2FA922552C" FromRole="FromRole_assoc_74453BC3E9C9FB4D7D23FE2FA922552C" ToRole="ToRole_assoc_74453BC3E9C9FB4D7D23FE2FA922552C"/>
+            </EntityType>
+            <Association Name="assoc_74453BC3E9C9FB4D7D23FE2FA922552C" sap:content-version="1">
+                <End Type="ZODATA_GTPVM_SRV.ZCSD_GTPVMHierarchyParameters" Multiplicity="1" Role="FromRole_assoc_74453BC3E9C9FB4D7D23FE2FA922552C"/>
+                <End Type="ZODATA_GTPVM_SRV.ZCSD_GTPVMHierarchyType" Multiplicity="*" Role="ToRole_assoc_74453BC3E9C9FB4D7D23FE2FA922552C"/>
+            </Association>
+            <EntityContainer Name="ZODATA_GTPVM_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZCSD_GTPVMHierarchySet" EntityType="ZODATA_GTPVM_SRV.ZCSD_GTPVMHierarchyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_GTPVMHierarchy" EntityType="ZODATA_GTPVM_SRV.ZCSD_GTPVMHierarchyParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_74453BC3E9C9FB4D7D23FE2FA922552C" Association="ZODATA_GTPVM_SRV.assoc_74453BC3E9C9FB4D7D23FE2FA922552C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_GTPVMHierarchy" Role="FromRole_assoc_74453BC3E9C9FB4D7D23FE2FA922552C"/>
+                    <End EntitySet="ZCSD_GTPVMHierarchySet" Role="ToRole_assoc_74453BC3E9C9FB4D7D23FE2FA922552C"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZODATA_GTPVM_SRV.ZODATA_GTPVM_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZODATA_GTPVM_SRV.ZODATA_GTPVM_SRV_Entities/ZCSD_GTPVMHierarchy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_vkorg</PropertyPath>
+                                <PropertyPath>p_frkeyname</PropertyPath>
+                                <PropertyPath>p_tokeyname</PropertyPath>
+                                <PropertyPath>p_frdate</PropertyPath>
+                                <PropertyPath>p_todate</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_vkorg</PropertyPath>
+                                <PropertyPath>p_frkeyname</PropertyPath>
+                                <PropertyPath>p_tokeyname</PropertyPath>
+                                <PropertyPath>p_frdate</PropertyPath>
+                                <PropertyPath>p_todate</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_GTPVM_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_GTPVM_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

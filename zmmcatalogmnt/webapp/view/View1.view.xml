@@ -1,18 +1,24 @@
 <mvc:View controllerName="customer.porky.zmmcatalogmnt.controller.View1"
  xmlns:smartTable="sap.ui.comp.smarttable"  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:f="sap.f"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content>
+    <!-- <Page id="page" title="{i18n>title}">
+        <content> -->
+
+<!-- <ScrollContainer vertical="true" height="100%"> -->
 
 
+		<f:DynamicPage id="dynamicPageId" preserveHeaderStateOnScroll="true" headerExpanded="true" showFooter="true" fitContent="true" 
+		headerPinned="true" pinnedStateChange="Success">
+
+ 
+<f:header>
+	<f:DynamicPageHeader pinnable="true">
 
  <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" enableAutoBinding="true" entitySet="ZRSD_MobileCatalogMaint" useToolbar="true"
 			 persistencyKey="catalogmaintenance_f1"   enableBasicSearch="true"
-			  advancedMode="false" filterBarExpanded="false" smartVariant="true" showAllFilters="true"
-			  
-			 
+			  advancedMode="false" filterBarExpanded="false" smartVariant="true" showAllFilters="true"			  
 				showFilterConfiguration="true"  >
 
 				<smartFilterBar:controlConfiguration>
@@ -36,14 +42,15 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
     </smartFilterBar:controlConfiguration>
 				
 
-			</smartFilterBar:SmartFilterBar> 
-
-
+			</smartFilterBar:SmartFilterBar>
+				</f:DynamicPageHeader >
+</f:header>
+<f:content>
 <smartTable:SmartTable id="smartTable_custF4_map"  entitySet="ZRSD_MobileCatalogMaint"  smartFilterId="smartFilter_custF4_map"
 				growing="true"
 				growingThreshold ="20"
-				requestAtLeastFields="Material,MaterialDescription,OldMaterial,CatalogName,MaterialManufacturerPartNumber,Brand,MaterialCommodity,Department,SalesOrganization,CatalogId"
-				initiallyVisibleFields="Material,MaterialDescription,OldMaterial,CatalogName,MaterialManufacturerPartNumber,Brand,MaterialCommodity,Department,SalesOrganization,CatalogId"
+				requestAtLeastFields="Material,MaterialDescription,OldMaterial,CatalogName,MaterialManufacturerPartNumber,Brand,MaterialCommodity,Department,SalesOrganization,CatalogId,DistributionChannel"
+				initiallyVisibleFields="Material,MaterialDescription,OldMaterial,CatalogName,MaterialManufacturerPartNumber,Brand,MaterialCommodity,Department,SalesOrganization,CatalogId,DistributionChannel,OrganizationDivision"
 				beforeRebindTable="onBeforeRebindTable"
 			 tableType="Table" useExportToExcel="true"
 			
@@ -125,7 +132,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 		</smartTable:customToolbar>
 
 
-			  <uitable:Table  rowActionCount="1" growing="true" growingThreshold="20" mode="MultiSelect" >
+			  <uitable:Table visibleRowCountMode="Interactive"  rowActionCount="1"   growing="true" growingThreshold="20" mode="MultiSelect" >
 			   
 			   <uitable:rowActionTemplate>
         <uitable:RowAction>
@@ -138,7 +145,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 				<uitable:columns>
 
 
-	<uitable:Column hAlign="Begin" width="180px">
+	<uitable:Column hAlign="Begin" width="180px" visible="true">
 					<uitable:customData>
 						<core:CustomData key="p13nData"
 										 value='\{"columnKey": "BISMT1",  "columnIndex": 1,  "width": "200px"}' />
@@ -150,12 +157,12 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 
 	 <Image
 					
-					src="https://api.porky.com/images/{OldMaterial}.png"
+					src="https://api.porky.com/thumbnails/{OldMaterial}.png"
 					decorative="true"
 					densityAware="false"
 					class="sapUiTinyMargin"
-					width="180px"
-					height="80px">
+					
+					height="30px">
 					<detailBox>
 						<LightBox >
 							<imageContent>
@@ -242,6 +249,9 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 
 
 					</smartTable:SmartTable>
-        </content>
-    </Page>
+					</f:content>
+					</f:DynamicPage>
+					<!-- </ScrollContainer> -->
+        <!-- </content>
+    </Page> -->
 </mvc:View>

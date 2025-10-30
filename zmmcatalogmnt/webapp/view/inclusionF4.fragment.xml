@@ -18,8 +18,8 @@
         growingThreshold="20"
 		>
 
-			<smartFilterBar:SmartFilterBar  entitySet="ZCSD_E_MobileItemListSet"
-			   enableBasicSearch="true" useToolbar="false" persistencyKey="catalogmaintenance_f">
+			<smartFilterBar:SmartFilterBar  entitySet="ZCSD_E_MobileItemListSet" useVariantManagement="true" useTablePersonalisation="true" 
+			   enableBasicSearch="true" useToolbar="true" persistencyKey="catalogmaintenance_f_incl" >
 			   
 				
 				<smartFilterBar:controlConfiguration>
@@ -91,7 +91,7 @@
 				<!-- layout data used to make the table growing but the filter bar fixed -->
 			
 
-				<uitable:Table mode="SingleSelectMaster"  itemPress="handleSelectCustomer" selectionChange="handleSelectCustomer">
+				<uitable:Table mode="SingleSelectMaster"  cellClick="handleSelectCustomer">
 				<uitable:columns>
 
 
