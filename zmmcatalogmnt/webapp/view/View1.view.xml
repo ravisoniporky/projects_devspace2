@@ -154,6 +154,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 				
 
 					<uitable:template>
+					<HBox>
 
 	 <Image
 					
@@ -173,6 +174,8 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 						</LightBox>
 					</detailBox>
 				</Image>
+				<Button text="Add" press="onUploadImage" icon="sap-icon://add-photo"/>
+					</HBox>
 				
 	</uitable:template>
 	</uitable:Column>

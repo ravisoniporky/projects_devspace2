@@ -23,7 +23,9 @@ sap.ui.define([
         }, 500);
 
        
-         
+              that.successMaterials = [];
+
+             that.failedMaterials = [];
 
 
         
@@ -1831,6 +1833,17 @@ sap.ui.define([
 
       },
 
+
+
+
+
+
+
+
+
+
+
+
       onBeforeRebindBrandF4: function (oEvent) {
 
 
@@ -1888,6 +1901,479 @@ oCrossAppNavigator.toExternal({
 
    
     
-      }
+      },
+
+
+
+// Helper function to format failed materials details
+getFailedMaterialsDetails: function() {
+    if (this.failedMaterials.length === 0) {
+        return "";
+    }
+    
+    return this.failedMaterials.map(item => {
+        return `Material: ${item.material} - Error: ${item.error}`;
+    }).join("\n");
+},
+
+OnAddMassMaterialToInclusionList: async function(oEvent) {
+    var table = this.getView().byId("tableMaterial");
+    var contexts = table.getSelectedContexts();
+    if(contexts.length >200){
+
+       sap.m.MessageBox.error("Please select less than 200 materials");
+        return;
+    }
+
+    if (contexts.length === 0) {
+        sap.m.MessageBox.warning("Please select at least one material");
+        return;
+    }
+
+    var department = this.getView().byId("matDepartment").getSelectedKey();
+    var departmentName;
+    if (this.getView().byId("matDepartment").getSelectedKey() === "") {
+        departmentName = "out";
+    } else {
+        departmentName = " " + this.getView().byId("matDepartment").getSelectedItem().getText();
+    }
+
+    // Reset arrays
+    this.successMaterials = [];
+    this.failedMaterials = [];
+
+    var totalMaterials = contexts.length;
+    var processedCount = 0;
+
+    // Create and open progress dialog
+    this.createProgressDialog(totalMaterials);
+
+    try {
+        // Process materials one by one to update progress
+        for (let context of contexts) {
+            var Material;
+            if (this.isOldMaterial) {
+                Material = context.getObject().OldMaterial;
+            } else {
+                Material = context.getObject().Material;
+            }
+            
+            await this.createMaterialIntoInclusion_mass(Material, department);
+            
+            processedCount++;
+            this.updateProgress(processedCount, totalMaterials, Material);
+        }
+
+        // Close progress dialog
+        this.closeProgressDialog();
+        
+        // Close material selection dialog
+        if (this.pDialogUser1) {
+            this.pDialogUser1.close();
+        }
+        
+        // Show results
+        this.showFinalResults();
+        
+        // Refresh table
+        this.getView().byId("smartTable_custF4_map").rebindTable();
+        
+    } catch (error) {
+        this.closeProgressDialog();
+        sap.m.MessageBox.error("An unexpected error occurred during mass addition");
+    }
+},
+
+createProgressDialog: function(totalCount) {
+    var that = this;
+    
+    this.progressDialog = new sap.m.Dialog({
+        title: "Processing Materials",
+        type: sap.m.DialogType.Message,
+        content: [
+            new sap.m.VBox({
+                items: [
+                    new sap.m.Text({
+                        text: "Processing materials, please wait..."
+                    }).addStyleClass("sapUiSmallMarginBottom"),
+                    new sap.m.ProgressIndicator({
+                        id: "progressIndicator",
+                        percentValue: 0,
+                        displayValue: "0 / " + totalCount,
+                        showValue: true,
+                        state: sap.ui.core.ValueState.Information
+                    }),
+                    new sap.m.Text({
+                        id: "currentMaterialText",
+                        text: ""
+                    }).addStyleClass("sapUiSmallMarginTop")
+                ]
+            }).addStyleClass("sapUiContentPadding")
+        ],
+        beginButton: new sap.m.Button({
+            text: "Cancel",
+            press: function() {
+                that.cancelProcessing = true;
+                that.closeProgressDialog();
+            }
+        })
+    });
+    
+    this.cancelProcessing = false;
+    this.progressDialog.open();
+},
+
+updateProgress: function(processed, total, currentMaterial) {
+    var percentValue = (processed / total) * 100;
+    
+    var progressIndicator = sap.ui.getCore().byId("progressIndicator");
+    if (progressIndicator) {
+        progressIndicator.setPercentValue(percentValue);
+        progressIndicator.setDisplayValue(processed + " / " + total);
+    }
+    
+    var currentMaterialText = sap.ui.getCore().byId("currentMaterialText");
+    if (currentMaterialText) {
+        currentMaterialText.setText("Current: " + currentMaterial);
+    }
+},
+
+closeProgressDialog: function() {
+    if (this.progressDialog) {
+        this.progressDialog.close();
+        this.progressDialog.destroy();
+        this.progressDialog = null;
+    }
+},
+
+showFinalResults: function() {
+    var successCount = this.successMaterials.length;
+    var failedCount = this.failedMaterials.length;
+    var totalCount = successCount + failedCount;
+    
+    if (failedCount === 0) {
+        // All successful
+        sap.m.MessageBox.success(
+            `All ${totalCount} material(s) have been successfully added.`,
+            {
+                title: "Mass Addition Successful"
+            }
+        );
+    } else if (successCount === 0) {
+        // All failed
+        sap.m.MessageBox.error(
+            this.buildFailureMessage(failedCount, totalCount),
+            {
+                title: "Mass Addition Failed",
+                contentWidth: "500px"
+            }
+        );
+    } else {
+        // Mixed results
+        sap.m.MessageBox.warning(
+            this.buildMixedResultMessage(successCount, failedCount, totalCount),
+            {
+                title: "Mass Addition Completed with Errors",
+                contentWidth: "500px"
+            }
+        );
+    }
+},
+
+buildFailureMessage: function(failedCount, totalCount) {
+    var message = `All ${totalCount} material(s) failed to be added.\n\nFailed Materials:\n\n`;
+    
+    this.failedMaterials.forEach((item, index) => {
+        message += `${index + 1}. Material: ${item.material}\n   Error: ${item.error}\n\n`;
+    });
+    
+    return message;
+},
+
+buildMixedResultMessage: function(successCount, failedCount, totalCount) {
+    var message = `Process completed with mixed results.\n\n`;
+    message += `Total: ${totalCount}\n`;
+    message += `Successful: ${successCount}\n`;
+    message += `Failed: ${failedCount}\n\n`;
+    message += `Failed Materials:\n\n`;
+    
+    this.failedMaterials.forEach((item, index) => {
+        message += `${index + 1}. Material: ${item.material}\n   Error: ${item.error}\n\n`;
+    });
+    
+    return message;
+},
+
+// Refactored to return a Promise
+createMaterialIntoInclusion_mass: function(Material, department) {
+    return new Promise((resolve, reject) => {
+        // Check if processing was cancelled
+        if (this.cancelProcessing) {
+            this.failedMaterials.push({
+                material: Material,
+                error: "Process cancelled by user"
+            });
+            resolve();
+            return;
+        }
+
+        var newObj = {};
+
+        if (this.isOldMaterial) {
+            newObj.CatalogFieldValue = Material;
+            newObj.CatalogField = 'BISMT';
+        } else {
+            newObj.CatalogFieldValue = Material;
+            newObj.CatalogField = 'MATNR';
+        }
+
+        newObj.Department = department;
+        var filterData = this.getView().byId("smartFilter_custF4_map").getFilterData();
+
+        newObj.CatalogId = filterData.CatalogId;
+        newObj.SalesOrganization = filterData.SalesOrganization+"01";
+        newObj.DistributionChannel = filterData.DistributionChannel+"01";
+
+        var that = this;
+        let prodSet = this.getOwnerComponent().getModel();
+
+        prodSet.create("/ZCSD_MOBILECATALOGExclusion", newObj, {
+            success: function(result) {
+                that.successMaterials.push({
+                    material: Material,
+                    result: result
+                });
+                resolve(result);
+            },
+            error: function(err) {
+                var errorMessage = "Unknown error";
+                try {
+                    if (err.responseText) {
+                        var parsedError = JSON.parse(err.responseText);
+                        errorMessage = parsedError.error.message.value || errorMessage;
+                    } else if (err.message) {
+                        errorMessage = err.message;
+                    } else if (err.statusText) {
+                        errorMessage = err.statusText;
+                    }
+                } catch (e) {
+                    errorMessage = "Failed to parse error response";
+                }
+                
+                that.failedMaterials.push({
+                    material: Material,
+                    error: errorMessage
+                });
+                
+                // Resolve instead of reject to continue processing other materials
+                resolve();
+            }
+        });
+    });
+},
+
+
+onUploadImage: function(oEvent) {
+    var oButton = oEvent.getSource();
+    var oContext = oButton.getBindingContext();
+    var oldMaterial = oContext.getObject().OldMaterial;
+    
+    if (!oldMaterial) {
+        sap.m.MessageBox.error("Old Material number is not available");
+        return;
+    }
+    
+    this.currentOldMaterial = oldMaterial;
+    
+    // Create file uploader dialog
+    if (!this.imageUploadDialog) {
+        this.imageUploadDialog = new sap.m.Dialog({
+            title: "Upload Image for Material: " + oldMaterial,
+            contentWidth: "500px",
+            contentHeight: "400px",
+            resizable: true,
+            content: [
+                new sap.m.VBox({
+                    items: [
+                        new sap.m.Label({
+                            text: "Select an image file (JPG, PNG)",
+                            design: "Bold"
+                        }).addStyleClass("sapUiTinyMargin"),
+                        new sap.ui.unified.FileUploader({
+                            id: "fileUploader",
+                            name: "imageFile",
+                            uploadUrl: "upload",
+                            fileType: ["jpg", "jpeg", "png"],
+                            maximumFileSize: 5,
+                            change: this.onFileChange.bind(this),
+                            uploadComplete: function() {},
+                            width: "100%"
+                        }).addStyleClass("sapUiTinyMargin"),
+                        new sap.m.Image({
+                            id: "imagePreview",
+                            visible: false,
+                            width: "100%",
+                            height: "250px",
+                            mode: "Image"
+                        }).addStyleClass("sapUiTinyMarginTop"),
+                        new sap.m.CheckBox({
+                            id: "forceCheckbox",
+                            text: "Force upload (override validation)",
+                            visible: false
+                        }).addStyleClass("sapUiTinyMargin")
+                    ]
+                }).addStyleClass("sapUiTinyMarginBegin")
+            ],
+            beginButton: new sap.m.Button({
+                text: "Upload",
+                type: "Emphasized",
+                enabled: false,
+                press: this.onConfirmUpload.bind(this)
+            }),
+            endButton: new sap.m.Button({
+                text: "Cancel",
+                press: function() {
+                    this.imageUploadDialog.close();
+                    this.resetUploadDialog();
+                }.bind(this)
+            }),
+            afterClose: function() {
+                this.resetUploadDialog();
+            }.bind(this)
+        });
+        this.getView().addDependent(this.imageUploadDialog);
+    } else {
+        this.imageUploadDialog.setTitle("Upload Image for Material: " + oldMaterial);
+    }
+    
+    this.imageUploadDialog.open();
+},
+
+onFileChange: function(oEvent) {
+    var oFileUploader = sap.ui.getCore().byId("fileUploader");
+    var file = oEvent.getParameter("files")[0];
+    
+    if (!file) {
+        this.resetUploadDialog();
+        return;
+    }
+    
+    // Validate file type
+    var validTypes = ["image/jpeg", "image/jpg", "image/png"];
+    if (!validTypes.includes(file.type)) {
+        sap.m.MessageBox.error("Please select a valid image file (JPG or PNG)");
+        this.resetUploadDialog();
+        return;
+    }
+    
+    // Validate file size (5MB)
+    if (file.size > 5242880) {
+        sap.m.MessageBox.error("File size should not exceed 5MB");
+        this.resetUploadDialog();
+        return;
+    }
+    
+    // Read file and convert to base64
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var base64String = e.target.result;
+        this.currentImageData = base64String.split(',')[1]; // Remove data:image/jpeg;base64, prefix
+        
+        // Show preview
+        var imagePreview = sap.ui.getCore().byId("imagePreview");
+        imagePreview.setSrc(base64String);
+        imagePreview.setVisible(true);
+        
+        // Enable upload button
+        this.imageUploadDialog.getBeginButton().setEnabled(true);
+    }.bind(this);
+    
+    reader.readAsDataURL(file);
+},
+
+onConfirmUpload: function() {
+    if (!this.currentImageData || !this.currentOldMaterial) {
+        sap.m.MessageBox.error("Missing image data or material number");
+        return;
+    }
+    
+    var forceCheckbox = sap.ui.getCore().byId("forceCheckbox");
+    var forceUpload = forceCheckbox.getVisible() && forceCheckbox.getSelected();
+    
+    var payload = {
+        matnum: this.currentOldMaterial,
+        imageData: this.currentImageData,
+        force: forceUpload
+    };
+    
+    this.imageUploadDialog.setBusy(true);
+    
+    // Make API call
+    jQuery.ajax({
+        url: "https://api.porky.com/mb/image_upload",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(payload),
+        success: function(response) {
+            this.imageUploadDialog.setBusy(false);
+            this.imageUploadDialog.close();
+            sap.m.MessageBox.success("Image uploaded successfully for material: " + this.currentOldMaterial);
+            
+            // Refresh the table to show new image
+            this.getView().byId("smartTable_custF4_map").rebindTable();
+            this.resetUploadDialog();
+        }.bind(this),
+        error: function(xhr) {
+            this.imageUploadDialog.setBusy(false);
+            
+            try {
+                var errorResponse = JSON.parse(xhr.responseText);
+                
+                if (errorResponse.optional && !forceCheckbox.getVisible()) {
+                    // Show force option for optional validation errors
+                    forceCheckbox.setVisible(true);
+                    sap.m.MessageBox.warning(
+                        errorResponse.message + "\n\nYou can check 'Force upload' to override this validation.",
+                        {
+                            title: "Validation Error"
+                        }
+                    );
+                } else {
+                    // Hard error or already tried forcing
+                    sap.m.MessageBox.error(
+                        errorResponse.message || "Failed to upload image",
+                        {
+                            title: "Upload Error"
+                        }
+                    );
+                }
+            } catch (e) {
+                sap.m.MessageBox.error("Failed to upload image. Please try again.");
+            }
+        }.bind(this)
+    });
+},
+
+resetUploadDialog: function() {
+    var fileUploader = sap.ui.getCore().byId("fileUploader");
+    var imagePreview = sap.ui.getCore().byId("imagePreview");
+    var forceCheckbox = sap.ui.getCore().byId("forceCheckbox");
+    
+    if (fileUploader) {
+        fileUploader.clear();
+    }
+    if (imagePreview) {
+        imagePreview.setSrc("");
+        imagePreview.setVisible(false);
+    }
+    if (forceCheckbox) {
+        forceCheckbox.setSelected(false);
+        forceCheckbox.setVisible(false);
+    }
+    
+    this.imageUploadDialog.getBeginButton().setEnabled(false);
+    this.currentImageData = null;
+    this.currentOldMaterial = null;
+}
     });
   });

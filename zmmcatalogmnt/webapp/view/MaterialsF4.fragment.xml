@@ -20,6 +20,8 @@
 			 persistencyKey="ZBSD_MobileCatalogMaterials_st" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" app:useSmartToggle="true">
 <OverflowToolbar design="Transparent">
 				<ToolbarSpacer/>
+				<Button text="Mass Add" press="OnAddMassMaterialToInclusionList"></Button>
+
 				<Label text="Select Department - "></Label>
 				<ComboBox items="{
 					path: '/ZI_DepartmentVH'
@@ -30,7 +32,7 @@
 				</ComboBox>
 			</OverflowToolbar>
 
-			<Table   mode="SingleSelectMaster"  itemPress="handleMaterialSelection">
+			<Table   itemPress="handleMaterialSelection" id="tableMaterial" multiSelectMode="Default" mode="MultiSelect" growingThreshold="100" growing="true" growingScrollToLoad="true">
 			
 			<columns ></columns>
 			<ColumnListItem type="Active"  press="handleMaterialSelection" detailPress="handleMaterialSelection" detailTap="handleMaterialSelection"></ColumnListItem>
