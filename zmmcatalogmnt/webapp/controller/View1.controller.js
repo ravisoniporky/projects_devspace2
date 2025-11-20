@@ -2131,8 +2131,8 @@ createMaterialIntoInclusion_mass: function(Material, department) {
         var filterData = this.getView().byId("smartFilter_custF4_map").getFilterData();
 
         newObj.CatalogId = filterData.CatalogId;
-        newObj.SalesOrganization = filterData.SalesOrganization+"01";
-        newObj.DistributionChannel = filterData.DistributionChannel+"01";
+        newObj.SalesOrganization = filterData.SalesOrganization;
+        newObj.DistributionChannel = filterData.DistributionChannel;
 
         var that = this;
         let prodSet = this.getOwnerComponent().getModel();
@@ -2312,7 +2312,17 @@ onConfirmUpload: function() {
     jQuery.ajax({
         url: "https://api.porky.com/mb/image_upload",
         type: "POST",
+        headers: {
+        'X-PORKY-SYSID': 'PRD',
+        'X-PORKY-APPID': 'Catalog Maint',
+        'Authorization': 'Basic YmF0Y2h1c2VyOnBvcmt5c2Fw',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'X-PORKY-APIKEY':'6bb0b04a-0466-490e-a8a5-53278b3df025',
+        'X-PORKY-AUTH':'YmF0Y2h1c2VyOnBvcmt5c2Fw'
+    },
         contentType: "application/json",
+        
         data: JSON.stringify(payload),
         success: function(response) {
             this.imageUploadDialog.setBusy(false);

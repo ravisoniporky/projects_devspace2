@@ -559,6 +559,8 @@ clean.forEach(element => {
 
       checkAuthorization: function (user) {
 
+        // to check
+
         var that = this;
         if (user === sap.ushell.Container.getService("UserInfo").getId()) {
           that.getView().setModel(new sap.ui.model.json.JSONModel({ changeMode: true })
@@ -4598,7 +4600,11 @@ _stopPeriodicCheck: function() {
       },
 
       onUploadCompleted: function (oEvent) {
-        var item = oEvent.mParameters.item;
+
+        if(this._isOnline && navigator.onLine) {
+            
+        
+       var item = oEvent.mParameters.item;
         var uploadSet = this.getView().byId("UploadSet");
         //   oEvent.mParameters.item.getParent().removeItem(oEvent.mParameters.item);
         this.removeFileItem(item, uploadSet);
@@ -4607,6 +4613,13 @@ _stopPeriodicCheck: function() {
 
         this.fetchVisitDetails(this.visitid);
         this.getView().setBusy(false);
+
+         }else{
+
+            sap.m.MessageToast.show("Working offline - Please come online to perform this action");
+            return;
+         }
+       
       },
 
       onSelectionChangeUpload: function (oEvent) {
@@ -4624,11 +4637,24 @@ _stopPeriodicCheck: function() {
 
       },
       onAfterUploadItemAdded: function (oEvent) {
+
+
+        // online offline 
+
+         if(this._isOnline && navigator.onLine) {
+            
+        
         var fobj = oEvent.mParameters.item.getFileObject();
         var fileItem = oEvent.mParameters.item;
         var that = this;
 
            that.updateFile(fileItem,that.visitid);
+
+         }else{
+
+            sap.m.MessageToast.show("Working offline - Please come online to perform this action");
+            return;
+         }
 
 
         // var type = fobj.type;
