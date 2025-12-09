@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1765302778100_0_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "customer.porky.zsbselector",
+    "packageName": "",
+    "content": {
+        "property": "growingThreshold",
+        "newValue": 200
+    },
+    "selector": {
+        "id": "customer.porky.zsbselector::sap.suite.ui.generic.template.ListReport.view.ListReport::ZCSD_SELECTOR_BILLER_PARTNER--responsiveTable",
+        "idIsLocal": false,
+        "type": "sap.m.Table"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/customer.porky.zsbselector/changes/",
+    "projectId": "",
+    "creation": 1765302778100,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.108.44",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

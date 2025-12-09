@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.core"
+    xmlns:pdf="sap.m.PDFViewer">
+    <Dialog
+        id="pdfPreviewDialog"
+        title="Document Preview"
+        contentWidth="80%"
+        contentHeight="90%"
+        resizable="true"
+        draggable="true">
+        <content>
+            <pdf:PDFViewer
+                id="pdfViewer"
+                width="100%"
+                height="800px"
+                showDownloadButton="true" />
+        </content>
+        <beginButton>
+            <Button
+                text="Close"
+                press=".onClosePDFDialog" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

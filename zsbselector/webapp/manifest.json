@@ -23,13 +23,6 @@
           "localUri": "localService/mainService/ZSB_SELECTOR_V2_VAN.xml"
         }
       },
-      "annotation": {
-        "type": "ODataAnnotation",
-        "uri": "annotations/annotation.xml",
-        "settings": {
-          "localUri": "annotations/annotation.xml"
-        }
-      },
       "mainService": {
         "uri": "/sap/opu/odata/sap/ZSB_SELECTOR_V2/",
         "type": "OData",
@@ -74,6 +67,28 @@
         "sap.suite.ui.generic.template": {}
       }
     },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+            "controllerName": "customer.porky.zsbselector.ext.controller.ListReportExt",
+            "sap.ui.generic.app": {
+              "ZCSD_SELECTOR_BILLER_PARTNER": {
+                "EntitySet": "ZCSD_SELECTOR_BILLER_PARTNER",
+                "Actions": {
+                  "PreviewAction": {
+                    "id": "previewButton",
+                    "text": "Print Preview",
+                    "press": "onPreviewPress",
+                    "requiresSelection": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "contentDensities": {
       "compact": true,
       "cozy": true
@@ -92,9 +107,7 @@
           "defaultBindingMode": "TwoWay",
           "defaultCountMode": "Inline",
           "refreshAfterChange": false,
-          "metadataUrlParams": {
-            "sap-value-list": "none"
-          }
+          "metadataUrlParams": {}
         }
       },
       "@i18n": {
@@ -135,7 +148,14 @@
               }
             },
             "tableSettings": {
-              "type": "ResponsiveTable"
+              "type": "ResponsiveTable",
+              "multiSelect": true
+      
+              ,
+              "selectAll": true
+            },
+            "dataLoadSettings": {
+              "loadDataOnAppLaunch": "ifAnyFilterExist"
             }
           }
         },
