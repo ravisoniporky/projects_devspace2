@@ -1,0 +1,75 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+    <Dialog id="calendarDialog" title="Create Calendar Event" stretch="false" contentWidth="520px" resizable="true" draggable="true">
+        <content>
+            <form:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+                columnsXL="1" columnsL="1" columnsM="1">
+
+                <Label text="Subject" required="true"/>
+                <Input value="{calendarEventModel>/Subject}" placeholder="Enter subject"/>
+                
+                <Label text="Body"/>
+                <TextArea value="{calendarEventModel>/Body}" rows="4" width="100%" placeholder="Enter meeting body/description"/>
+                
+                <Label text="All Day"/>
+                <CheckBox selected="{calendarEventModel>/Isallday}"/>
+
+                <Label text="Start" required="true"/>
+                <HBox width="100%" alignItems="Center">
+                    <DatePicker
+                        value="{path: 'calendarEventModel>/Startdate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MM/dd/yyyy', UTC: true}}"
+                        displayFormat="MM/dd/yyyy"
+                        change="onChangeStartDate"
+                        width="100%"/>
+                    <TimePicker
+                        visible="{= !${calendarEventModel>/Isallday}}"
+                        value="{calendarEventModel>/StarttimeStr}"
+                        displayFormat="HH:mm"
+                        valueFormat="HH:mm"
+                        change="onChangeStartTime"
+                        class="sapUiSmallMarginBegin"
+                        width="100%"/>
+                </HBox>
+
+                <Label text="End" required="true"/>
+                <HBox width="100%" alignItems="Center">
+                    <DatePicker
+                        id="endDatePicker"
+                        value="{path: 'calendarEventModel>/Enddate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MM/dd/yyyy', UTC: true}}"
+                        displayFormat="MM/dd/yyyy"
+                        change="onChangeEndDate"
+                        width="100%"/>
+                    <TimePicker
+                        visible="{= !${calendarEventModel>/Isallday}}"
+                        value="{calendarEventModel>/EndtimeStr}"
+                        displayFormat="HH:mm"
+                        valueFormat="HH:mm"
+                        change="onChangeEndTime"
+                        class="sapUiSmallMarginBegin"
+                        width="100%"/>
+                </HBox>
+
+                <Label text=""/>
+                <Text 
+                    text="{calendarEventModel>/dateError}" 
+                    visible="{= !!${calendarEventModel>/dateError}}"
+                    class="sapUiSmallMarginTop"
+                    renderWhitespace="true">
+                    <customData>
+                        <core:CustomData key="style" value="color: #bb0000; font-size: 0.875rem;"/>
+                    </customData>
+                </Text>
+
+            </form:SimpleForm>
+        </content>
+        <buttons>
+            <Button text="Send Calendar Invite" type="Emphasized" icon="sap-icon://appointment-2" press="onCreateCalendarEvent"/>
+            <Button text="Cancel" press="onCloseCalendarDialog"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

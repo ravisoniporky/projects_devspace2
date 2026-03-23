@@ -100,7 +100,11 @@ xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
 						title="Payment Terms"
 						/>
 					<Input
-						value="{customerData>/PmntTerms}" 
+						value="{customerData>/PmntTerms}"
+						valueState="{valueStateModel>/PmntTerms}" 
+						valueStateText="{valueStateModel>/PmntTermsText}" 
+
+						change="onChangePaymentTerms"
 						showValueHelp="true"
 						valueHelpRequest="onPaymentTermsValueHelp"
 						editable="true"
@@ -165,9 +169,14 @@ xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
 						/>
 					<Input
 						value="{customerData>/SalesLead}" 
+						valueState="{valueStateModel>/SalesLead}" 
+						valueStateText="{valueStateModel>/SalesLeadText}" 
+
+						change="onChangeSalesLead"
 						showValueHelp="true"
 						valueHelpRequest="onSalesLeadValueHelp"
 						editable="true"
+					
 						placeholder="Select Sales Lead..." />
 
 						<ObjectIdentifier titleActive="true"
@@ -175,6 +184,25 @@ xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
 						/>
 					<Text
 						text="{customerData>/OwnerName}" />
+						
+
+
+				</cells>
+			</ColumnListItem>
+
+
+
+
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					
+
+						<ObjectIdentifier titleActive="true"
+						title="Credit Limit"
+						/>
+					<Text
+						text="$ { path: 'customerData>/CreditLimit',
+        type: 'sap.ui.model.type.Float'}" />
 						
 
 

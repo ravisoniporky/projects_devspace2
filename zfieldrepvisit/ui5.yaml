@@ -24,11 +24,10 @@ server:
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
             destination: DE2
-          - path: /sap/opu/odata/sap/ZODATA_FR_SRV
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+          - url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
             destination: DE2
-            authenticationType: BasicAuthentication
+            path: /sap/opu/odata/sap/ZODATA_FR_SRV
           - path: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'

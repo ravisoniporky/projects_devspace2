@@ -23,7 +23,7 @@ xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
 				afterVariantApply="onAfterVariantApply1"
 				growingThreshold="20"
 				showFullScreenButton = "true"
-								
+						enableCopy="false"		
 
 
 			>

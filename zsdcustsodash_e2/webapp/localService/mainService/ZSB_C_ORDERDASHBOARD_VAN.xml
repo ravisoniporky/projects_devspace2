@@ -225,6 +225,66 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHVMType/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHVMType/CategoryId">
+                <Annotation Term="Common.Text" Path="MaterialRollup">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextLast"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHVMType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Material Rollup"/>
+                            <PropertyValue Property="Value" Path="MaterialRollup"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Material"/>
+                            <PropertyValue Property="Value" Path="Material"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="MaterialDescritpion"/>
+                            <PropertyValue Property="Value" Path="MaterialDescritpion"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Current Weight"/>
+                            <PropertyValue Property="Criticality" Path="CriticalitySales"/>
+                            <PropertyValue Property="Value" Path="CurrentWeight"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Previous Weight"/>
+                            <PropertyValue Property="Value" Path="PreviousWeight"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Criticality"/>
+                            <PropertyValue Property="Value" Path="CriticalitySales"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Material Group"/>
+                            <PropertyValue Property="Value" Path="MaterialGroup"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="MaterialGroup"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="GroupBy">
+                            <Collection>
+                                <PropertyPath>MaterialRollup</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSOITEMDASHType">
                 <Annotation Term="UI.PresentationVariant">
                     <Record>
@@ -310,101 +370,6 @@
                             <PropertyValue Property="Label" String="URL"/>
                             <PropertyValue Property="Value" Path="GetUrl"/>
                         </Record>
-                    </Collection>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="cds_zsv_c_orderdashboard.ZRSD_CUSTSODASHVMType/ID">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_zsv_c_orderdashboard.ZRSD_CUSTSODASHVMType">
-                <Annotation Term="UI.LineItem">
-                    <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Material"/>
-                            <PropertyValue Property="Value" Path="Material"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="MaterialDescritpion"/>
-                            <PropertyValue Property="Value" Path="MaterialDescritpion"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Material Rollup"/>
-                            <PropertyValue Property="Value" Path="MaterialRollup"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Old Material"/>
-                            <PropertyValue Property="Value" Path="OldMaterial"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Material Rollup Key"/>
-                            <PropertyValue Property="Value" Path="MaterialRollupKey"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Product Hierarchy"/>
-                            <PropertyValue Property="Value" Path="ProductHierarchy"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Current Sales"/>
-                            <PropertyValue Property="Value" Path="CurrentSales"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Previous Sales"/>
-                            <PropertyValue Property="Value" Path="PreviousSales"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Current Weight"/>
-                            <PropertyValue Property="Value" Path="CurrentWeight"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Previous Weight"/>
-                            <PropertyValue Property="Value" Path="PreviousWeight"/>
-                        </Record>
-                        <Record Type="UI.DataFieldWithIntentBasedNavigation">
-                            <PropertyValue Property="SemanticObject" String="Sales"/>
-                            <PropertyValue Property="Action" String="ZSALESLEAD_DSB"/>
-                            <PropertyValue Property="Value" Path="TimeRollup"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Customer"/>
-                            <PropertyValue Property="Value" Path="Customer"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Sales Organization"/>
-                            <PropertyValue Property="Value" Path="SalesOrganization"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Company Code"/>
-                            <PropertyValue Property="Value" Path="CompanyCode"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="UI.PresentationVariant">
-                    <Record>
-                        <PropertyValue Property="SortOrder">
-                            <Collection>
-                                <Record Type="Common.SortOrderType">
-                                    <PropertyValue Property="Property" PropertyPath="MaterialRollup"/>
-                                    <PropertyValue Property="Descending" Bool="false"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="GroupBy">
-                            <Collection>
-                                <PropertyPath>Material</PropertyPath>
-                                <PropertyPath>MaterialRollup</PropertyPath>
-                                <PropertyPath>TimeRollup</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="Visualizations">
-                            <Collection>
-                                <AnnotationPath>@UI.LineItem</AnnotationPath>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="UI.SelectionFields">
-                    <Collection>
-                        <PropertyPath>TimeRollup</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>

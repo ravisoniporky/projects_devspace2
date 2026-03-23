@@ -6,11 +6,17 @@
     // controller class name can be like app.ovp.ext.customList.CustomList where app.ovp can be replaced with your application namespace
     sap.ui.define([], function() {
         return {
-            onInit: function () {
+             onInit: function () {
+                
+                this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
 
-          
 
             },
+
+             onGlobalfilterApply: function(oEvent){
+ this.extractRequest();
+             },
 
             onAfterRendering: function () {
 

@@ -21,6 +21,6 @@ builder:
           name: ZPROSPECTDB2
           description: Prospect Management
           package: ZFIORI1
-          transport: DE2K906690
+          transport: DE2K906781
         exclude:
           - /test/

@@ -1,0 +1,208 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "customer.porky.zmmparisxref2",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.2",
+      "toolsId": "0b9bd548-93c7-437e-bb6a-0d0c76266b53"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_r_parisxrefv4/srvd/sap/zsv_r_parisxref/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.44",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zmmparisxref2.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZC_ParisMaterialCrossRefList",
+          "target": "ZC_ParisMaterialCrossRefList"
+        },
+        {
+          "pattern": "ZC_ParisMaterialCrossRef({key}):?query:",
+          "name": "ZC_ParisMaterialCrossRefObjectPage",
+          "target": "ZC_ParisMaterialCrossRefObjectPage"
+        }
+      ],
+      "targets": {
+        "ZC_ParisMaterialCrossRefList": {
+          "type": "Component",
+          "id": "ZC_ParisMaterialCrossRefList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "liveMode": true,
+              "contextPath": "/ZC_ParisMaterialCrossRef",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZC_ParisMaterialCrossRef": {
+                  "detail": {
+                    "route": "ZC_ParisMaterialCrossRefObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZC_ParisMaterialCrossRefObjectPage": {
+          "type": "Component",
+          "id": "ZC_ParisMaterialCrossRefObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZC_ParisMaterialCrossRef",
+              "controllerName": "customer.porky.zmmparisxref2.ext.controller.ObjectPageExt",
+              "content": {
+                "header": {
+                  "actions": {
+                    "uploadImageAction": {
+                      "press": ".extension.customer.porky.zmmparisxref2.ext.controller.ObjectPageExt.UploadImageEA",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Image EA",
+                      "position": {
+                        "anchor": "EditAction",
+                        "placement": "Before"
+                      }
+                    },
+                    "showImageAction": {
+                      "press": ".extension.customer.porky.zmmparisxref2.ext.controller.ObjectPageExt.UploadImageCS",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Image CS",
+                      "position": {
+                        "anchor": "uploadImageAction",
+                        "placement": "Before"
+                      }
+                    }
+                  }
+                },
+                "body": {
+                  "sections": {
+                    "myCustomSection": {
+                      "template": "customer.porky.zmmparisxref2.ext.fragment.images",
+                      "title": "Photos ({= Number(${viewModel>/currentObject/CSImageCount})+ Number(${viewModel>/currentObject/EAImageCount})})",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "COLLFAC3"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "customer.porky.zmmparisxref2.ext.controller.ObjectPageExt"
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}

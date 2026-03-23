@@ -32,7 +32,7 @@ xmlns:core="sap.ui.core"
 				<!-- <Label text="{ZODATA_FR_SRV>/#ZRMM_DEPARTMENTCONACTType/DepartmentName/@sap:label}" />
 				<Input value="{selectedKeyPeople>/DepartmentName}"/> -->
                 <Label text="Department" />
-				<ComboBox selectedKey="{selectedKeyPeople>/Department}" items="{ZODATA_FR_SRV>/ZBMM_CUSTOMERDEPARTMENT}" editable="{chageModeModel>/changeMode}" selectionChange="onSelectedDepartmentEvent">
+				<ComboBox selectedKey="{selectedKeyPeople>/Department}" items="{ZODATA_FR_SRV>/ZI_CustomerDepartment}" editable="{chageModeModel>/changeMode}" selectionChange="onSelectedDepartmentEvent">
 						<core:Item key="{ZODATA_FR_SRV>Value}" text="{ZODATA_FR_SRV>Description}" />
 				</ComboBox>
 
@@ -43,7 +43,8 @@ xmlns:core="sap.ui.core"
 						<core:Item key="{ZODATA_FR_SRV>zproperty}" text="{ZODATA_FR_SRV>Description}" />
 				</ComboBox>
 				<Label text="Property Value" visible="{= ${selectedKeyPeople>/Department} === 'D' ? true : ${selectedKeyPeople>/Department} === 'S' ? true : false}"/>
-				<ComboBox selectedKey="{selectedKeyPeople>/PropertyIntValue}" editable="{chageModeModel>/changeMode}" visible="{= ${selectedKeyPeople>/Department} === 'D' ? true : ${selectedKeyPeople>/Department} === 'S' ? true : false}">
+				<ComboBox selectedKey="{selectedKeyPeople>/PropertyIntValue}"
+				 editable="{chageModeModel>/changeMode}" visible="{= ${selectedKeyPeople>/Department} === 'D' ? true : ${selectedKeyPeople>/Department} === 'S' ? true : false}">
 						<core:Item key="Y" text="Yes" />
 						<core:Item key="N" text="No" />
 				</ComboBox>

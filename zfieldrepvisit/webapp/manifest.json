@@ -21,10 +21,10 @@
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZODATA_FR_SRV_Annotation",
+            "ZODATA_FR_ANNO_MDL",
             "annotation_ZODATA_FR_SRV"
           ],
-          "localUri": "localService/ZODATA_FR_SRV/metadata.xml",
+          "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
         }
       },
@@ -46,19 +46,12 @@
           "odataVersion": "2.0"
         }
       },
-      "ZODATA_FR_SRV_Annotation": {
-        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/ZODATA_FR_SRV/ZODATA_FR_SRV_Annotation.xml"
-        }
-      },
       "ZODATA_FR_SRV": {
         "uri": "/sap/opu/odata/sap/ZODATA_FR_SRV",
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZODATA_FR_SRV_Annotation"
+            "ZODATA_FR_ANNO_MDL"
           ],
           "localUri": "localService/ZODATA_FR_SRV/metadata.xml",
           "odataVersion": "2.0"
@@ -187,6 +180,13 @@
         "settings": {
           "localUri": "localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_VAN.xml"
         }
+      },
+      "ZODATA_FR_ANNO_MDL": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/ZODATA_FR_ANNO_MDL.xml"
+        }
       }
     }
   },
@@ -251,13 +251,12 @@
       "prospectModel": {
         "type": "sap.ui.model.json.JSONModel"
       },
-    "offlineModel": {
+      "offlineModel": {
         "type": "sap.ui.model.json.JSONModel"
-    },
-    "pendingVisitsModel": {
+      },
+      "pendingVisitsModel": {
         "type": "sap.ui.model.json.JSONModel"
-    },
-
+      },
       "": {
         "dataSource": "mainService",
         "preload": true,

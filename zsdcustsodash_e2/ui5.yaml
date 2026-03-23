@@ -19,7 +19,6 @@ server:
           - path: /sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD/
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
-            authenticationType: BasicAuthentication
             destination: DE2
           - path: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
             url: http://pkynj-de2app.porkyproducts.loc:8000
@@ -30,8 +29,12 @@ server:
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
             destination: DE2
-            authenticationType: BasicAuthentication
           - path: /sap/opu/odata/sap/ZODATA_ORDERDASHFI_SRV
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
+            authenticationType: BasicAuthentication
+            destination: DE2
+          - path: /sap/opu/odata/sap/ZODATA_ORDERDASH_SRV
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
             authenticationType: BasicAuthentication

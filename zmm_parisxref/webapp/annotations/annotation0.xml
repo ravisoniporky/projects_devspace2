@@ -1,0 +1,45 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata4/sap/zsb_r_parisxrefv4/default/iwbep/common/0001/$metadata">
+        <edmx:Include Namespace="com.sap.gateway.default.iwbep.common.v0001" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local1">
+          <Annotations Target="cds_zsv_r_parisxref.ZC_ParisMaterialCrossRefType">
+    <Annotation Term="Common.SideEffects" Qualifier="sideeffect1">
+        <Record Type="Common.SideEffectsType">
+            <PropertyValue Property="TriggerAction" String="SELECT_TRIGGER_ACTION"/>
+            <PropertyValue Property="SourceProperties">
+                <Collection>
+                    <PropertyPath>Pariscode</PropertyPath>
+                </Collection>
+            </PropertyValue>
+            <PropertyValue Property="SourceEntities">
+                <Collection>
+                    <NavigationPropertyPath>SELECT_SOURCE_NAVIGATION_PROPERTY</NavigationPropertyPath>
+                </Collection>
+            </PropertyValue>
+            <PropertyValue Property="TargetProperties">
+                <Collection>
+                    <String>Material</String>
+                </Collection>
+            </PropertyValue>
+            <PropertyValue Property="TargetEntities">
+                <Collection>
+                    <NavigationPropertyPath>SELECT_TARGET_ENTITY</NavigationPropertyPath>
+                </Collection>
+        </PropertyValue>
+        </Record>
+    </Annotation>
+</Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

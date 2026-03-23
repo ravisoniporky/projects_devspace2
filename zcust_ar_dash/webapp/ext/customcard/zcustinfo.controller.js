@@ -43,6 +43,17 @@
                 this.GloabalEventBus = sap.ui.getCore().getEventBus();
                 this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
 
+
+                
+ var oModel = new sap.ui.model.json.JSONModel({
+    "PmntTerms" : "None",
+    "SalesLead": "None"
+ }); 
+
+            // Set the model to the view (optionally with a name, e.g., "myModel")
+            this.getView().setModel(oModel, "valueStateModel"); // Setting
+                
+
             },
 
             onGlobalfilterApply: function(oEvent){
@@ -129,6 +140,7 @@
             // Sales Lead Value Help
             onSalesLeadValueHelp: function(oEvent) {
                 var that = this;
+                this.salesLeadInput = oEvent.getSource();
                 var oInput = oEvent.getSource();
                 
                 if (!this._oSalesLeadDialog) {
@@ -207,11 +219,14 @@
               //      this._updateCustomerData("SalesLead", sCustomer);
                 }
                 this._resetSalesLeadDialog();
+                            this.getView().getModel("valueStateModel").setProperty("/SalesLead","Success"); // Setting
+this.salesLeadInput.addStyleClass("customColor");
             },
 
             // Payment Terms Value Help
             onPaymentTermsValueHelp: function(oEvent) {
                 var that = this;
+                this.oPaymentInput = oEvent.getSource();
                 var oInput = oEvent.getSource();
                 
                 if (!this._oPaymentTermsDialog) {
@@ -266,6 +281,11 @@
                 //    this._updateCustomerData("PmntTerms", sPaymentTerms);
                 }
                 this._resetPaymentTermsDialog();
+
+
+            // Set the model to the view (optionally with a name, e.g., "myModel")
+            this.getView().getModel("valueStateModel").setProperty("/PmntTerms","Success"); // Setting
+            this.oPaymentInput.addStyleClass("customColor");
             },
             onSaveUpdate: function(){
 
@@ -360,7 +380,7 @@
                   oCustomerData.CompanyCode + "',SalesOrg='" + oCustomerData.SalesOrg + 
                   "',Customer='" + oCustomerData.Customer + "')";
         
-       
+                    var that = this;
         
         $.ajax({
             url: sUrl,
@@ -373,6 +393,15 @@
             },
             success: function(oData) {
                 sap.m.MessageToast.show("Updated successfully");
+
+                          that.getView().getModel("valueStateModel").setProperty("/SalesLead","None"); // Setting
+    
+       
+                        that.getView().getModel("valueStateModel").setProperty("/PmntTerms","None"); // Setting
+                        if(that.oPaymentInput)
+                        that.oPaymentInput.removeStyleClass("customColor")
+                     if(that.salesLeadInput)
+                        that.salesLeadInput.removeStyleClass("customColor")
             },
             error: function(oError) {
                 var sErrorMessage = "Error updating data";
@@ -390,7 +419,20 @@
             _getCSRFToken: function() {
     var oModel = this.getOwnerComponent().getModel("ZODATA_CUSTOMER_BLOCKS_SRV");
     return oModel.getSecurityToken();
-}
+},
+
+ onChangeSalesLead: function(oEvent){
+
+
+            // Set the model to the view (optionally with a name, e.g., "myModel")
+            this.getView().getModel("valueStateModel").setProperty("/SalesLead","Success"); // Setting
+    this.salesLeadInput.addStyleClass("customColor")
+        },
+        onChangePaymentTerms: function(oEvent){
+                        this.getView().getModel("valueStateModel").setProperty("/PmntTerms","Success"); // Setting
+                        this.oPaymentInput.addStyleClass("customColor")
+
+        }
             
         }
     });

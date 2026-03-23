@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Fri Feb 06 2026 15:14:44 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZSB_R_PARISXREF",
+    "appName": "zmm_parisxref",
+    "appTitle": "App Title",
+    "appDescription": "Paris Porky XREF",
+    "appNamespace": "customer.porky",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.108.44",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.20.2",
+    "template": "Worklist Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZC_ParisMaterialCrossRef"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

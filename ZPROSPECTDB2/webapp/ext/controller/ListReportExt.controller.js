@@ -8,11 +8,11 @@ sap.ui.define([
         onInit: function(oEvent){
 
             var that = this;
-            // setTimeout(() => {
+            setTimeout(() => {
                 
-            //     console.log(that.getView())
-                that.getView().byId("zprospectdb2.zprospectdb2::sap.suite.ui.generic.template.ListReport.view.ListReport::ZCSD_PROSPECT_MANAGEMENT--addEntry").setVisible(false);
-            // }, 500);
+                console.log(that.getView())
+               that.getView().byId("zprospectdb2.zprospectdb2::sap.suite.ui.generic.template.ListReport.view.ListReport::ZCSD_PROSPECT_MANAGEMENT--addEntry").setVisible(false);
+            }, 500);
 
 
             // Hook into the model to intercept function import calls
@@ -76,6 +76,7 @@ sap.ui.define([
 
                                                                         sap.ui.getCore().byId("ActionUtil-cds_zsd_prospect_db.cds_zsd_prospect_db_Entities-prospect-CustomerHierarchyL3").setValue(oDefaults.CustomerHierarchyL3);
                                                                         sap.ui.getCore().byId("ActionUtil-cds_zsd_prospect_db.cds_zsd_prospect_db_Entities-prospect-RefCustomerName").setValue(oDefaults.RefCustomerName);
+                                                                        sap.ui.getCore().byId("ActionUtil-cds_zsd_prospect_db.cds_zsd_prospect_db_Entities-prospect-RefCustomerName").setEditable(false);
 
                 // Continue with your logic here
             } else {

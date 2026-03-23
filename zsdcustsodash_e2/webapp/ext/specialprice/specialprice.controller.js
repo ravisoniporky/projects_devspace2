@@ -6,49 +6,18 @@
     // controller class name can be like app.ovp.ext.customList.CustomList where app.ovp can be replaced with your application namespace
     sap.ui.define([], function() {
         return {
-            onInit: function () {
-                // var that = this;
-                // this.getModel().attachRequestCompleted(function(oEvent){
+              onInit: function () {
+                
+                this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
 
 
-                //   var filter = decodeURI(oEvent.mParameters.url.split("$filter=")[1]);
-                //   if(filter.includes("CompanyCode") && filter.includes("SalesOrganization") && filter.includes("Customer")  && oEvent.mParameters.url.includes("ZBSD_CUSTSODASH")){
-                      
-                //   }else{
-                //     return;
-                //   }
-    
-                //     var filters = decodeURI(oEvent.mParameters.url.split("$filter=")[1]);
-                //     if(filters.includes("&"))
-                //       {
-                //         filters = filters.split("&")[0];
-                //       }
-                //       let defaultModel1 = that.getOwnerComponent().getModel();
-
- 
-                //     defaultModel1.read("/ZCSD_CUSTSODASHSPPRICE", {
-                //       urlParameters: {
-                //         "$filter" : filters,
-                //         "$top" :5
-                        
-            
-                //       },
-                //       success: function (oData, oResponse) {
-                   
-                //         that.getView().setModel(new sap.ui.model.json.JSONModel(oData), "specialPriceModel");
-            
-              
-            
-                //       },
-            
-                //       error: function (oError) {
-            
-                //         that.getView().setModel(new sap.ui.model.json.JSONModel({}, "specialPriceModel"));
-                //       }
-                //     });
-
-                // });
             },
+
+             onGlobalfilterApply: function(oEvent){
+ this.extractRequest();
+             },
+
     
             onAfterRendering: function () {
 

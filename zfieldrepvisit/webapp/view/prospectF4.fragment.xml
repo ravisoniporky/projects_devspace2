@@ -225,6 +225,9 @@
 		<Label text="Sales Org For Prospect" />
 		 <Input editable="false" value="{newProspect>/Vkorg}"></Input>
 		 
+
+		 	<Label text="Company Code For Prospect" />
+		 <Input editable="false" value="{newProspect>/Bukrs}"></Input>
 		  <Label text="Parvw" visible="false"/>
 
 		  <Input editable="false" value="{newProspect>/Parvw}" visible="false"></Input>

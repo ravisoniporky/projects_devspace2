@@ -1,48 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='SAP__SELF',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='SAP__SELF',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="cds_zsd_prospect_db" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="I_ContactPersondepartmentType" sap:label="Value Help for Department of Contact Person" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ContactPersonDepartment"/>
+                </Key>
+                <Property Name="ContactPersonDepartment" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="ContactPersonDepartment_Text" sap:label="Department"/>
+                <Property Name="ContactPersonDepartment_Text" Type="Edm.String" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_ContactPersonFunctionType" sap:label="Value Help for Function of Contact Person" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ContactPersonFunction"/>
+                </Key>
+                <Property Name="ContactPersonFunction" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="ContactPersonFunction_Text" sap:label="Function" sap:quickinfo="Function of partner"/>
+                <Property Name="ContactPersonFunction_Text" Type="Edm.String" MaxLength="30" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
             <EntityType Name="I_CreditRiskClassType" sap:label="Credit Management Risk Class" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="CreditRiskClass"/>
@@ -92,6 +106,26 @@
                 <Property Name="OrderIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Order block" sap:quickinfo="Central order block for customer"/>
                 <Property Name="SM" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Account Number of Supplier"/>
                 <Property Name="CustomerName2" Type="Edm.String" MaxLength="35" sap:label="Customer Name 2" sap:quickinfo="Name 2"/>
+                <Property Name="ProjectedSales" Type="Edm.Decimal" Precision="15" Scale="2" sap:label="Projected Weekly Sales"/>
+                <Property Name="ProjectedDelivery" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Projected 1st Delivery Date" sap:quickinfo="Projected Delivery"/>
+                <Property Name="PriceExists" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Given Prices" sap:quickinfo="Checkbox"/>
+            </EntityType>
+            <EntityType Name="ZCSD_PROSPECT_BPDEFAULTSType" sap:label="BP Default values for Prospect Dashboard" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="ReferenceCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerPaymentTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Terms of Payment" sap:quickinfo="Terms of Payment Key"/>
+                <Property Name="Department" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Sales Order type" sap:quickinfo="Sales order type for order entry"/>
+                <Property Name="CustomerHierarchyL3" Type="Edm.String" MaxLength="10"/>
+                <Property Name="RiskCategory" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Risk Class"/>
+                <Property Name="CreditLimit" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Credit Limit" sap:quickinfo="Customer's credit limit"/>
+                <Property Name="CustomerConditionZone" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Condition group 2" sap:quickinfo="Customer condition group 2"/>
+                <Property Name="CreditGroup" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Credit Group" sap:quickinfo="Customer Credit Group"/>
+                <Property Name="CreditCheckRule" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Check Rule" sap:quickinfo="Rule for Credit Check"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="RefCustomerName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
             </EntityType>
             <EntityType Name="ZCSD_PROSPECT_MANAGEMENTType" sap:label="CDS view for Prospect Dashboard" sap:content-version="1">
                 <Key>
@@ -100,24 +134,89 @@
                     <PropertyRef Name="DistributionChannel"/>
                     <PropertyRef Name="Division"/>
                 </Key>
+                <Property Name="creditapp_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="prospect_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Prospect" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Prospect" sap:quickinfo="Customer Number" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
                 <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
-                <Property Name="ProspectName" Type="Edm.String" Nullable="false" MaxLength="220" sap:display-format="UpperCase" sap:label="Prospect Name" sap:quickinfo="Customer Full Name"/>
-                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner" sap:updatable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="ProspectName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Prospect Name" sap:quickinfo="Customer Full Name" sap:updatable="false"/>
+                <Property Name="ProspectName1" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Name1" sap:quickinfo="Name 1"/>
+                <Property Name="ProspectName2" Type="Edm.String" MaxLength="35" sap:label="Name2" sap:quickinfo="Name 2"/>
+                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street Name" sap:quickinfo="Street and House Number"/>
                 <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
-                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="State" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="State" sap:quickinfo="Region (State, Province, County)" sap:value-list="standard"/>
                 <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Phone Number" sap:quickinfo="First Telephone No.: Dialing Code + Number"/>
                 <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="Email Address" sap:quickinfo="E-Mail Address"/>
                 <Property Name="CentralDeletion" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Deletion" sap:quickinfo="Central Deletion Flag for Master Record" sap:updatable="false"/>
                 <Property Name="SorgDeletion" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sales Org Deletion" sap:quickinfo="Deletion flag for customer (sales level)" sap:updatable="false"/>
                 <Property Name="Visitid" Type="Edm.String" MaxLength="10" sap:label="Visit ID"/>
                 <Property Name="Createdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Create Date Time" sap:updatable="false"/>
-                <Property Name="VisitURL" Type="Edm.String" MaxLength="170"/>
+                <Property Name="VisitURL" Type="Edm.String" MaxLength="149"/>
+                <NavigationProperty Name="to_Contacts" Relationship="cds_zsd_prospect_db.assoc_D2C4BE008674816DCB697E15F36B1E46" FromRole="FromRole_assoc_D2C4BE008674816DCB697E15F36B1E46" ToRole="ToRole_assoc_D2C4BE008674816DCB697E15F36B1E46"/>
+            </EntityType>
+            <EntityType Name="ZCXA_USERDEFAULTType" sap:label="Consumption View for User Default" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="parid"/>
+                </Key>
+                <Property Name="parid" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Parameter ID" sap:quickinfo="Set/Get parameter ID"/>
+                <Property Name="bname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="parva" Type="Edm.String" MaxLength="40" sap:label="Parameter value"/>
+            </EntityType>
+            <EntityType Name="ZC_PROSPECT_CONTACTSType" sap:label="Prospect Contact Persons" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="Division"/>
+                    <PropertyRef Name="Prospect"/>
+                    <PropertyRef Name="ContactPerson"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Division" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Prospect" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ContactPerson" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address"/>
+                <Property Name="ContactDepartment" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="ContactPersonDepartmentName" sap:label="Department" sap:value-list="standard"/>
+                <Property Name="ContactFunction" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="ContactPersonFunctionName" sap:label="Function" sap:quickinfo="Function of partner" sap:value-list="standard"/>
+                <Property Name="ContactAuthority" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="BPContactPersonAuthorityText" sap:label="Authority" sap:quickinfo="Partner's Authority" sap:value-list="standard"/>
+                <Property Name="BPContactPersonAuthorityText" Type="Edm.String" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ContactPersonFunctionName" Type="Edm.String" MaxLength="30" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ContactPersonDepartmentName" Type="Edm.String" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Parent" Relationship="cds_zsd_prospect_db.assoc_D2C4BE008674816DCB697E15F36B1E46" FromRole="ToRole_assoc_D2C4BE008674816DCB697E15F36B1E46" ToRole="FromRole_assoc_D2C4BE008674816DCB697E15F36B1E46"/>
+            </EntityType>
+            <EntityType Name="ZI_BPContactPersonAuthorityVHType" sap:label="Contact Person Authority VH" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ContactPersonAuthorityType"/>
+                </Key>
+                <Property Name="ContactPersonAuthorityType" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="BPContactPersonAuthorityText" sap:label="Authority" sap:quickinfo="Partner's Authority"/>
+                <Property Name="BPContactPersonAuthorityText" Type="Edm.String" MaxLength="20" sap:label="Description"/>
+            </EntityType>
+            <EntityType Name="ZI_BUPACUSTOMER_VHType" sap:label="Customer value help for Prospect Dashboard" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="CustomerConditionGroup1" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Condition group 1" sap:quickinfo="Customer condition group 1"/>
+                <Property Name="CheckRule" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Check Rule" sap:quickinfo="Rule for Credit Check"/>
+                <Property Name="CreditGroup" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Credit Group" sap:quickinfo="Customer Credit Group"/>
+                <Property Name="RiskClass" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Risk Class"/>
+                <Property Name="CustomerPaymentTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Terms of Payment" sap:quickinfo="Terms of Payment Key"/>
+                <Property Name="Department" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Sales Order type" sap:quickinfo="Sales order type for order entry"/>
+                <Property Name="CustomerHierarchyL3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="HgLvCust." sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
+                <Property Name="CreditLimit" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Credit Limit"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
             </EntityType>
             <EntityType Name="ZI_CREDITGROUP_VHType" sap:label="Customer Credit Group Value Help" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -133,6 +232,38 @@
                 <Property Name="CheckRule" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Check Rule" sap:quickinfo="Rule for Credit Check"/>
                 <Property Name="CheckRuleText" Type="Edm.String" MaxLength="50" sap:label="Check Rule" sap:quickinfo="Name of Check Rule"/>
             </EntityType>
+            <EntityType Name="ZI_CUSTOMERCONDITIONGRP_VHType" sap:label="Customer Condition Group Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomerConditionGroup"/>
+                </Key>
+                <Property Name="CustomerConditionGroup" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Customer Condition Group" sap:quickinfo="Customer Attribute for Condition Groups"/>
+                <Property Name="CustomerConditionGroupText" Type="Edm.String" MaxLength="20" sap:label="Description"/>
+            </EntityType>
+            <EntityType Name="ZI_CUSTOMERHIERARCHYL3_VHType" sap:label="Customer Hierarchy Level 3 value help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="CustomerHierarchyL3"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="CustomerHierarchyL3" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerHierarchyL3Name" sap:label="Customer Hierarchy L3" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerHierarchyL3Name" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+            </EntityType>
+            <EntityType Name="ZI_CUSTOMER_GOOGLEPLACESType" sap:label="Use Google Places to find Customer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SearchTerm"/>
+                    <PropertyRef Name="ProspectName1"/>
+                </Key>
+                <Property Name="SearchTerm" Type="Edm.String" Nullable="false" MaxLength="256" sap:display-format="UpperCase" sap:label="Search String"/>
+                <Property Name="ProspectName1" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Name 1" sap:quickinfo="Name"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="30" sap:label="Street and House No." sap:quickinfo="Street and House Number"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="25" sap:label="City"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="PhooneNumber" Type="Edm.String" MaxLength="16" sap:label="Telephone 1" sap:quickinfo="First telephone number"/>
+                <Property Name="PhotoURL" Type="Edm.String" MaxLength="1056"/>
+                <Property Name="PlacesPhoto" Type="Edm.String" MaxLength="1056"/>
+                <Property Name="locallastchangedat" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time"/>
+            </EntityType>
             <EntityType Name="ZI_DepartmentVHType" sap:label="Catalog Deparatment Value Help" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Deparatment"/>
@@ -146,6 +277,13 @@
                 </Key>
                 <Property Name="Department" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Sales Order type" sap:quickinfo="Sales order type for order entry"/>
                 <Property Name="DeparatmentDescription" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZI_REGION_VHType" sap:label="Region Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Region"/>
+                </Key>
+                <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="RegionName" Type="Edm.String" MaxLength="20" sap:label="Description"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
                 <Key>
@@ -308,25 +446,56 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
+            <Association Name="assoc_D2C4BE008674816DCB697E15F36B1E46" sap:content-version="1">
+                <End Type="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType" Multiplicity="1" Role="FromRole_assoc_D2C4BE008674816DCB697E15F36B1E46">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType" Multiplicity="*" Role="ToRole_assoc_D2C4BE008674816DCB697E15F36B1E46"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_D2C4BE008674816DCB697E15F36B1E46">
+                        <PropertyRef Name="Division"/>
+                        <PropertyRef Name="DistributionChannel"/>
+                        <PropertyRef Name="Prospect"/>
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_D2C4BE008674816DCB697E15F36B1E46">
+                        <PropertyRef Name="Division"/>
+                        <PropertyRef Name="DistributionChannel"/>
+                        <PropertyRef Name="Prospect"/>
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
             <EntityContainer Name="cds_zsd_prospect_db_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
+                <EntitySet Name="SAP__Currencies" EntityType="cds_zsd_prospect_db.SAP__Currency" sap:content-version="1"/>
+                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zsd_prospect_db.SAP__UnitOfMeasure" sap:content-version="1"/>
+                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_zsd_prospect_db.SAP__DocumentDescription" sap:content-version="1"/>
                 <EntitySet Name="SAP__FormatSet" EntityType="cds_zsd_prospect_db.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__PDFStandardSet" EntityType="cds_zsd_prospect_db.SAP__PDFStandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_zsd_prospect_db.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__CoverPageSet" EntityType="cds_zsd_prospect_db.SAP__CoverPage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__SignatureSet" EntityType="cds_zsd_prospect_db.SAP__Signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_zsd_prospect_db.SAP__ValueHelp" sap:content-version="1"/>
+                <EntitySet Name="I_ContactPersondepartment" EntityType="cds_zsd_prospect_db.I_ContactPersondepartmentType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_ContactPersonFunction" EntityType="cds_zsd_prospect_db.I_ContactPersonFunctionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_CreditRiskClass" EntityType="cds_zsd_prospect_db.I_CreditRiskClassType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="I_CustomerPaymentTerms" EntityType="cds_zsd_prospect_db.I_CustomerPaymentTermsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_SalesOrganization" EntityType="cds_zsd_prospect_db.I_SalesOrganizationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZBSD_PropectVH" EntityType="cds_zsd_prospect_db.ZBSD_PropectVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZCSD_PROSPECT_MANAGEMENT" EntityType="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType" sap:deletable="false" sap:content-version="1" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZCSD_PROSPECT_BPDEFAULTS" EntityType="cds_zsd_prospect_db.ZCSD_PROSPECT_BPDEFAULTSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_PROSPECT_MANAGEMENT" EntityType="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType" sap:deletable="false" sap:searchable="true" sap:content-version="1" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZCXA_USERDEFAULT" EntityType="cds_zsd_prospect_db.ZCXA_USERDEFAULTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_PROSPECT_CONTACTS" EntityType="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZI_BPContactPersonAuthorityVH" EntityType="cds_zsd_prospect_db.ZI_BPContactPersonAuthorityVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_BUPACUSTOMER_VH" EntityType="cds_zsd_prospect_db.ZI_BUPACUSTOMER_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_CREDITGROUP_VH" EntityType="cds_zsd_prospect_db.ZI_CREDITGROUP_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_CREDIT_CHECKRULE_VH" EntityType="cds_zsd_prospect_db.ZI_CREDIT_CHECKRULE_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_CUSTOMERCONDITIONGRP_VH" EntityType="cds_zsd_prospect_db.ZI_CUSTOMERCONDITIONGRP_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_CUSTOMERHIERARCHYL3_VH" EntityType="cds_zsd_prospect_db.ZI_CUSTOMERHIERARCHYL3_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CUSTOMER_GOOGLEPLACES" EntityType="cds_zsd_prospect_db.ZI_CUSTOMER_GOOGLEPLACESType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_DepartmentVH" EntityType="cds_zsd_prospect_db.ZI_DepartmentVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_DEPARTMENT_VH" EntityType="cds_zsd_prospect_db.ZI_DEPARTMENT_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__Currencies" EntityType="cds_zsd_prospect_db.SAP__Currency" sap:content-version="1"/>
-                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zsd_prospect_db.SAP__UnitOfMeasure" sap:content-version="1"/>
-                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_zsd_prospect_db.SAP__DocumentDescription" sap:content-version="1"/>
+                <EntitySet Name="ZI_REGION_VH" EntityType="cds_zsd_prospect_db.ZI_REGION_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <AssociationSet Name="to_formatSet" Association="cds_zsd_prospect_db.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/>
                     <End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/>
@@ -347,20 +516,34 @@
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/>
                     <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
                 </AssociationSet>
+                <AssociationSet Name="assoc_D2C4BE008674816DCB697E15F36B1E46" Association="cds_zsd_prospect_db.assoc_D2C4BE008674816DCB697E15F36B1E46" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_PROSPECT_MANAGEMENT" Role="FromRole_assoc_D2C4BE008674816DCB697E15F36B1E46"/>
+                    <End EntitySet="ZC_PROSPECT_CONTACTS" Role="ToRole_assoc_D2C4BE008674816DCB697E15F36B1E46"/>
+                </AssociationSet>
+                <FunctionImport Name="creditapp" ReturnType="cds_zsd_prospect_db.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType" sap:applicable-path="creditapp_ac">
+                    <Parameter Name="Prospect" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Customer"/>
+                    <Parameter Name="SalesOrganization" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Sales Organization"/>
+                    <Parameter Name="DistributionChannel" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Distribution Channel"/>
+                    <Parameter Name="Division" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Division"/>
+                </FunctionImport>
                 <FunctionImport Name="prospect" ReturnType="cds_zsd_prospect_db.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType" sap:applicable-path="prospect_ac">
                     <Parameter Name="Prospect" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Customer"/>
                     <Parameter Name="SalesOrganization" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Sales Organization"/>
                     <Parameter Name="DistributionChannel" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Distribution Channel"/>
                     <Parameter Name="Division" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Division"/>
+                    <Parameter Name="ReferenceCustomer" Type="Edm.String" Mode="In" MaxLength="10" Nullable="true" sap:value-list="standard" sap:label="Reference Customer"/>
+                    <Parameter Name="RefCustomerName" Type="Edm.String" Mode="In" MaxLength="30" Nullable="true" sap:label="Ref Customer Name"/>
                     <Parameter Name="PreviousAccount" Type="Edm.String" Mode="In" MaxLength="20" Nullable="true" sap:label="Previous Account"/>
                     <Parameter Name="CustomerPaymentTerms" Type="Edm.String" Mode="In" MaxLength="4" sap:value-list="standard" sap:label="Payment Terms"/>
                     <Parameter Name="Department" Type="Edm.String" Mode="In" MaxLength="1" Nullable="true" sap:value-list="standard" sap:label="Department"/>
                     <Parameter Name="StoreNo" Type="Edm.String" Mode="In" MaxLength="10" Nullable="true" sap:label="Store Number"/>
-                    <Parameter Name="RiskCategory" Type="Edm.String" Mode="In" MaxLength="3" Nullable="true" sap:value-list="standard" sap:label="Risk Category"/>
-                    <Parameter Name="CreditLimit" Type="Edm.Decimal" Mode="In" Precision="24" Scale="3" Nullable="true" sap:label="Credit Limit" sap:unit="P15CD735A2B3E58FEE6965DA010F8387D" sap:variable-scale="true"/>
+                    <Parameter Name="CustomerHierarchyL3" Type="Edm.String" Mode="In" MaxLength="10" Nullable="true" sap:value-list="standard" sap:label="Customer Hierarchy L3"/>
+                    <Parameter Name="CustomerConditionZone" Type="Edm.String" Mode="In" MaxLength="2" Nullable="true" sap:value-list="standard" sap:label="Condition Zone"/>
+                    <Parameter Name="RiskCategory" Type="Edm.String" Mode="In" MaxLength="3" sap:value-list="standard" sap:label="Risk Category"/>
+                    <Parameter Name="CreditLimit" Type="Edm.Decimal" Mode="In" Precision="24" Scale="3" sap:label="Credit Limit" sap:unit="P15CD735A2B3E58FEE6965DA010F8387D" sap:variable-scale="true"/>
                     <Parameter Name="Currency" Type="Edm.String" Mode="In" MaxLength="5" Nullable="true" sap:label="Currency"/>
                     <Parameter Name="CreditGroup" Type="Edm.String" Mode="In" MaxLength="4" Nullable="true" sap:value-list="standard" sap:label="Credit Group"/>
-                    <Parameter Name="CreditCheckRule" Type="Edm.String" Mode="In" MaxLength="10" Nullable="true" sap:value-list="standard" sap:label="Credit Check Rule"/>
+                    <Parameter Name="CreditCheckRule" Type="Edm.String" Mode="In" MaxLength="10" sap:value-list="standard" sap:label="Credit Check Rule"/>
                 </FunctionImport>
             </EntityContainer>
             <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/Prospect" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -392,6 +575,132 @@
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProjectedSales"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProjectedDelivery"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PriceExists"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DistributionChannel"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Division"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PostalCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PhoneNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PhoneNumberExtension"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MobileNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmailAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BillingIsBlockedForCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrderIsBlockedForCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SM"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
+                <Annotation Term="Common.SemanticObject" String="ZSEMOBJ_ZXD01"/>
+                <Annotation Term="Common.SemanticObjectMapping">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="LocalProperty" PropertyPath="SalesOrganization"/>
+                            <PropertyValue Property="SemanticObjectProperty" String="RefSalesOrganization"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/SalesLead" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Lead"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_PropectVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesLead"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StreetName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Region"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProjectedSales"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProjectedDelivery"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PriceExists"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="DistributionChannel"/>
@@ -429,38 +738,84 @@
                 </Annotation>
                 <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
-            <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/Region" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Sales Organization"/>
-                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
-                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Label" String="State"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_REGION_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
-                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Region"/>
+                                    <PropertyValue Property="ValueListProperty" String="Region"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                    <PropertyValue Property="ValueListProperty" String="RegionName"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
-                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/ReferenceCustomer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_BUPACUSTOMER_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ReferenceCustomer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RefCustomerName"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreditLimit"/>
+                                    <PropertyValue Property="ValueListProperty" String="CreditLimit"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerHierarchyL3"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerHierarchyL3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Department"/>
+                                    <PropertyValue Property="ValueListProperty" String="Department"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerPaymentTerms"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerPaymentTerms"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RiskCategory"/>
+                                    <PropertyValue Property="ValueListProperty" String="RiskClass"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreditCheckRule"/>
+                                    <PropertyValue Property="ValueListProperty" String="CheckRule"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreditGroup"/>
+                                    <PropertyValue Property="ValueListProperty" String="CreditGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerConditionZone"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerConditionGroup1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
             <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/CustomerPaymentTerms" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
@@ -503,6 +858,49 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/CustomerHierarchyL3" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CUSTOMERHIERARCHYL3_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerHierarchyL3"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerHierarchyL3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerHierarchyL3Name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/CustomerConditionZone" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CUSTOMERCONDITIONGRP_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerConditionZone"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerConditionGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerConditionGroupText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/RiskCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -522,6 +920,7 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
             </Annotations>
             <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/CreditGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
@@ -562,15 +961,116 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/ContactDepartment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Department"/>
+                        <PropertyValue Property="CollectionPath" String="I_ContactPersondepartment"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ContactDepartment"/>
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonDepartment"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonDepartment_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/ContactFunction" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Function"/>
+                        <PropertyValue Property="CollectionPath" String="I_ContactPersonFunction"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ContactFunction"/>
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonFunction"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonFunction_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/ContactAuthority" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Authority"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_BPContactPersonAuthorityVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ContactAuthority"/>
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonAuthorityType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BPContactPersonAuthorityText"/>
+                                    <PropertyValue Property="ValueListProperty" String="BPContactPersonAuthorityText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
             <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/to_Contacts" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/CreditLimit" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
             </Annotations>
             <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/ZCSD_PROSPECT_MANAGEMENT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.FilterRestrictions">
                     <Record>
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
+                                <PropertyPath>creditapp_ac</PropertyPath>
                                 <PropertyPath>prospect_ac</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
@@ -581,7 +1081,23 @@
                     <Record>
                         <PropertyValue Property="RequiredProperties">
                             <Collection>
-                                <PropertyPath>ProspectName</PropertyPath>
+                                <PropertyPath>ProspectName1</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Contacts"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -593,7 +1109,49 @@
                     <Record>
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
+                                <PropertyPath>creditapp_ac</PropertyPath>
                                 <PropertyPath>prospect_ac</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/ZC_PROSPECT_CONTACTS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Parent"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -606,7 +1164,7 @@
             <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/Createdate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
-            <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/SalesLead" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/ProspectName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/SorgDeletion" xmlns="http://docs.oasis-open.org/odata/ns/edm">

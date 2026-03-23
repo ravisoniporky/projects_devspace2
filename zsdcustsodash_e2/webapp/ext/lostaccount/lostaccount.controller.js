@@ -16,7 +16,7 @@
               onGlobalfilterApply: function(oEvent){
  this.extractRequest();
 
-    that.getView().byId("LineItemsSmartTable_lostaccount").rebindTable();
+    this.getView().byId("LineItemsSmartTable_lostaccount").rebindTable();
   
 
                         },
@@ -112,7 +112,7 @@
                    var oFilter = new sap.ui.model.Filter("TimeRollup", sap.ui.model.FilterOperator.EQ,this.timerollup);
                 binding.filters.push(oFilter);
                 }else{
-                  var oFilter = new sap.ui.model.Filter("TimeRollup", sap.ui.model.FilterOperator.EQ,"CWK");
+                  var oFilter = new sap.ui.model.Filter("TimeRollup", sap.ui.model.FilterOperator.EQ,"4O4");
                 binding.filters.push(oFilter);
                 }
           // For AnalyticalTable - ensure proper binding parameters
@@ -123,6 +123,8 @@
     binding.length = binding.length || 100;
     binding.startIndex = binding.startIndex || 0;
                     
+
+    
             },
 
             onSearchContacts: function(oEvent){

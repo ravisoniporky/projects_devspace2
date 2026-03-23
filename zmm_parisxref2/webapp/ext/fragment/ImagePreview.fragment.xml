@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog
+        id="idImagePreviewDialog"
+        title="{previewModel>/imageName}"
+        contentWidth="600px"
+        contentHeight="500px"
+        resizable="true"
+        draggable="true">
+
+        <content>
+            <FlexBox
+                justifyContent="Center"
+                alignItems="Center"
+                height="100%"
+                width="100%"
+                class="sapUiSmallMargin">
+                <Image
+                    id="idPreviewImage"
+                    src="{previewModel>/imageUrl}"
+                    width="auto"
+                    height="430px"
+                    densityAware="false"/>
+            </FlexBox>
+        </content>
+
+        <endButton>
+            <Button
+                text="Close"
+                press=".onImagePreviewClose"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>

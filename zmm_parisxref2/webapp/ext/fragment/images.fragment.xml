@@ -1,0 +1,111 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns="sap.m"
+    xmlns:macros="sap.fe.macros">
+    
+    <VBox class="sapUiSmallMargin">
+        <Table
+            id="imageGalleryTable"
+            items="{viewModel>/images}"
+            mode="None"
+            noDataText="No images available"
+            busy="{viewModel>/busy}"
+            growing="true"
+            growingThreshold="20"
+            class="sapUiResponsiveMargin">
+            
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="Images ({= ${viewModel>/images}.length})" level="H4"/>
+                    <ToolbarSpacer/>
+                    <Button
+                        icon="sap-icon://refresh"
+                        tooltip="Refresh Images"
+                        press=".extension.customer.porky.zmmparisxref2.ext.controller.ObjectPageExt.onRefreshImages"/>
+                    <!-- <Button
+                        icon="sap-icon://add"
+                        text="Upload Image"
+                        type="Emphasized"
+                        press=".extension.customer.porky.zmmparisxref2.ext.controller.ObjectPageExt.UploadImage"/> -->
+                </OverflowToolbar>
+            </headerToolbar>
+            
+            <columns>
+                <Column width="150px">
+                    <Text text="Preview"/>
+                </Column>
+                <Column>
+                    <Text text="Image Name"/>
+                </Column>
+                <Column width="100px">
+                    <Text text="Unit"/>
+                </Column>
+                <Column width="80px">
+                    <Text text="Item"/>
+                </Column>
+                <Column width="150px">
+                    <Text text="Type"/>
+                </Column>
+                <Column width="100px" hAlign="Center">
+                    <Text text="Actions"/>
+                </Column>
+            </columns>
+            
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <!-- Image Thumbnail with LightBox -->
+                        <Image
+                            src="{viewModel>ThumbnailUrl}"
+                            width="100px"
+                            height="100px"
+                            densityAware="false"
+                            decorative="false"
+                            alt="{viewModel>ImageName}">
+                            <detailBox>
+                                <LightBox>
+                                    <LightBoxItem
+                                        imageSrc="{viewModel>ImageUrl}"
+                                        alt="{viewModel>ImageName}"
+                                        title="{viewModel>ImageName}"
+                                        subtitle="Unit: {viewModel>Uom} | Item: {viewModel>Imageitem}" />
+                                </LightBox>
+                            </detailBox>
+                        </Image>
+                        
+                        <!-- Image Name -->
+                        <VBox>
+                            <Text text="{viewModel>ImageName}" class="sapUiSmallMarginBottom"/>
+                            <Text text="Paris Code: {viewModel>Pariscode}" class="sapUiTinyText"/>
+                        </VBox>
+                        
+                        <!-- Unit -->
+                        <ObjectStatus 
+                            text="{viewModel>Uom}" 
+                            state="Information"/>
+                        
+                        <!-- Item Number -->
+                        <ObjectNumber
+                            number="{viewModel>Imageitem}"/>
+                        
+                        <!-- MIME Type -->
+                        <HBox alignItems="Center">
+                            <core:Icon 
+                                src="sap-icon://document-text" 
+                                size="1rem"
+                                class="sapUiTinyMarginEnd"/>
+                            <Text text="{viewModel>Mimetype}"/>
+                        </HBox>
+                        
+                        <!-- Delete Button -->
+                        <Button
+                            icon="sap-icon://delete"
+                            type="Reject"
+                            press=".extension.customer.porky.zmmparisxref2.ext.controller.ObjectPageExt.onDeleteImageButton"
+                            tooltip="Delete Image"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
+</core:FragmentDefinition>

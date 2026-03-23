@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog
+        title="{viewModel>/lightbox/title}"
+        contentWidth="90%"
+        contentHeight="90%"
+        resizable="true"
+        draggable="true"
+        class="lightboxDialog">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title text="{viewModel>/lightbox/title}"/>
+                </contentLeft>
+                <contentMiddle>
+                    <HBox alignItems="Center">
+                        <core:Icon 
+                            src="sap-icon://product" 
+                            class="sapUiTinyMarginEnd"/>
+                        <Text text="Unit: {viewModel>/lightbox/unit} | Item: {viewModel>/lightbox/item}"/>
+                    </HBox>
+                </contentMiddle>
+                <contentRight>
+                    <Button
+                        icon="sap-icon://decline"
+                        press=".onCloseLightbox"
+                        tooltip="Close"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <ScrollContainer
+                width="100%"
+                height="100%"
+                horizontal="true"
+                vertical="true">
+                <VBox 
+                    alignItems="Center"
+                    justifyContent="Center"
+                    width="100%"
+                    height="100%"
+                    class="sapUiSmallMargin">
+                    <Image
+                        src="{viewModel>/lightbox/src}"
+                        width="auto"
+                        maxWidth="100%"
+                        densityAware="false"
+                        decorative="false"
+                        alt="{viewModel>/lightbox/title}"/>
+                </VBox>
+            </ScrollContainer>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

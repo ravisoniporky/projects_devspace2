@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
         <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
     </edmx:Reference>
-    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
     </edmx:Reference>
     <edmx:Reference Uri="../../../sap/zsb_prospect_db/$metadata">
@@ -53,8 +53,20 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="SalesOrganization"/>
                         </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProjectedSales"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProjectedDelivery"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PriceExists"/>
+                        </Record>
                     </Collection>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/creditapp_ac">
+                <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zsd_prospect_db.ZCSD_PROSPECT_MANAGEMENTType/prospect_ac">
                 <Annotation Term="UI.Hidden"/>
@@ -69,6 +81,11 @@
                             <PropertyValue Property="Label" String="Prospect Info"/>
                             <PropertyValue Property="ID" String="GeneralInfo"/>
                             <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Contacts"/>
+                            <PropertyValue Property="ID" String="Items"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_Contacts/@UI.LineItem"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -96,6 +113,14 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Prospect Name"/>
                             <PropertyValue Property="Value" Path="ProspectName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Name1"/>
+                            <PropertyValue Property="Value" Path="ProspectName1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Name2"/>
+                            <PropertyValue Property="Value" Path="ProspectName2"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Sales Lead"/>
@@ -138,18 +163,39 @@
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataFieldForAction">
-                            <PropertyValue Property="Label" String="Convert to Customer"/>
+                            <PropertyValue Property="Label" String="Convert w/ Default Values"/>
                             <PropertyValue Property="Action" String="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="Prospect"/>
-                        </Record>
-                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="SalesOrganization"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Launch ZXD01-&gt;Convert w/ Reference"/>
+                            <PropertyValue Property="SemanticObject" String="ZSEMOBJ_ZXD01"/>
+                            <PropertyValue Property="Action" String="display"/>
+                            <PropertyValue Property="RequiresContext" Bool="true"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Create Prospect"/>
+                            <PropertyValue Property="SemanticObject" String="Sales"/>
+                            <PropertyValue Property="Action" String="ZProspect_cr_c"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="ProspectName"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Send Credit App"/>
+                            <PropertyValue Property="Action" String="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/creditapp"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProspectName1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProspectName2"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="SalesLead"/>
@@ -189,15 +235,100 @@
                     </Collection>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/BPContactPersonAuthorityText">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/ContactPersonFunctionName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/ContactPersonDepartmentName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType/ContactAuthority">
+                <Annotation Term="Common.Text" Path="BPContactPersonAuthorityText">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextLast"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZC_PROSPECT_CONTACTSType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ContactPerson"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FirstName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LastName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PhoneNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="EmailAddress"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ContactDepartment"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ContactFunction"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ContactAuthority"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.ZI_CUSTOMER_GOOGLEPLACESType">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Place"/>
+                        <PropertyValue Property="TypeNamePlural" String="Places"/>
+                        <PropertyValue Property="ImageUrl" Path="PhotoURL"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Prospect Name"/>
+                            <PropertyValue Property="Value" Path="ProspectName1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Street"/>
+                            <PropertyValue Property="Value" Path="StreetName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="City"/>
+                            <PropertyValue Property="Value" Path="CityName"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/RiskCategory">
                 <Annotation Term="UI.ParameterDefaultValue" String="001"/>
             </Annotations>
             <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/Currency">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect/ReferenceCustomer">
+                <Annotation Term="Common.Text" Path="RefCustomerName">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextLast"/>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsd_prospect_db.cds_zsd_prospect_db_Entities/prospect">
                 <Annotation Term="UI.Facets">
                     <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Customer Information"/>
+                            <PropertyValue Property="ID" String="CustomerInfo"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#CustomerGroup"/>
+                        </Record>
                         <Record Type="UI.ReferenceFacet">
                             <PropertyValue Property="Label" String="Credit Information"/>
                             <PropertyValue Property="ID" String="Group2">
@@ -227,6 +358,20 @@
                             <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
                         </Record>
                     </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="CustomerGroup">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ReferenceCustomer"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="RefCustomerName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
         </Schema>

@@ -22,11 +22,10 @@ server:
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: "100"
             destination: DE2
-          - path: /sap/opu/odata/sap/ZODATA_FR_SRV
-            url: http://pkynj-de2app.porkyproducts.loc:8000
-            client: "100"
+          - url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
             destination: DE2
-            authenticationType: BasicAuthentication
+            path: /sap/opu/odata/sap/ZODATA_FR_SRV
           - path: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: "100"
@@ -72,7 +71,7 @@ server:
         mountPath: /
         services:
           - urlPath: /sap/opu/odata/sap/ZODATA_FR_SRV
-            metadataPath: ./webapp/localService/ZODATA_FR_SRV/metadata.xml
+            metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
           - urlPath: /sap/opu/odata/sap/ZBSD_MOE_CDS
@@ -114,8 +113,6 @@ server:
         annotations:
           - localPath: ./webapp/localService/ZBSD_MOE_CDS/ZBSD_MOE_CDS_Annotation.xml
             urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBSD_MOE_CDS_VAN',Version='0001')/$value/
-          - localPath: ./webapp/localService/ZODATA_FR_SRV/ZODATA_FR_SRV_Annotation.xml
-            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/
           - localPath: ./webapp/localService/ZBMM_FRVISITDEFSUPP_CDS/ZBMM_FRVISITDEFSUPP_CDS_Annotation.xml
             urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBMM_FRVISITDEFSUPP_CDS_VAN',Version='0001')/$value/
           - localPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_Annotation.xml
@@ -128,3 +125,5 @@ server:
             urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_FRVISIT2_VAN',Version='0001')/$value/
           - localPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_VAN.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRMM_FRVISITV2_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/mainService/ZODATA_FR_ANNO_MDL.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/

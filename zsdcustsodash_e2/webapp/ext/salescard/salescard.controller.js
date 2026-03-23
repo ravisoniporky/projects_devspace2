@@ -16,9 +16,15 @@
 
                 });
                 this.customer = "";
-
+ this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
 
             },
+          
+
+             onGlobalfilterApply: function(oEvent){
+ this.extractRequest();
+             },
             onAfterRendering: function () {
 
 

@@ -3557,8 +3557,8 @@ _getSalesOrgsFromURL: function() {
                 this.uLat = 'abc';
                 this.filterListBySalesOrg();
             },
-            onClickMap1: function(oEvent){
-                debugger;
+            onClickMap: function(oEvent){
+              //  debugger;
 
                 var dataArray = this.getOwnerComponent().getModel("latlongModel").getData()
 

@@ -7,13 +7,16 @@
     sap.ui.define([], function() {
         return {
             onInit: function () {
-
-
-             
-
+                
+                this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
 
 
             },
+
+             onGlobalfilterApply: function(oEvent){
+ this.extractRequest();
+             },
 
             onPressMaterial: function(oEvent){
 

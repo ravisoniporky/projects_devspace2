@@ -152,7 +152,10 @@
             }
         },
         "resources": {
-            "css": []
+            "css": [
+                               { "uri": "css/index.css"}
+
+            ]
         },
         "routing": {
             "config": {},

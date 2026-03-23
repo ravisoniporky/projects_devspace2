@@ -17,7 +17,6 @@ server:
           - path: /sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD/
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
-            authenticationType: BasicAuthentication
             destination: DE2
           - path: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
             url: http://pkynj-de2app.porkyproducts.loc:8000
@@ -26,10 +25,14 @@ server:
             authenticationType: BasicAuthentication
           - path: /sap/opu/odata/sap/ZODATA_FR_SRV
             url: http://pkynj-de2app.porkyproducts.loc:8000
-            client: "100"
+            client: '100'
             destination: DE2
-            authenticationType: BasicAuthentication
           - path: /sap/opu/odata/sap/ZODATA_ORDERDASHFI_SRV
+            url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
+            authenticationType: BasicAuthentication
+            destination: DE2
+          - path: /sap/opu/odata/sap/ZODATA_ORDERDASH_SRV
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
             authenticationType: BasicAuthentication
@@ -61,12 +64,18 @@ server:
             metadataPath: ./webapp/localService/ZODATA_ORDERDASHFI_SRV/metadata.xml
             mockdataPath: ./webapp/localService/ZODATA_ORDERDASHFI_SRV/data
             generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZODATA_ORDERDASH_SRV
+            metadataPath: ./webapp/localService/ZODATA_ORDERDASH_SRV/metadata.xml
+            mockdataPath: ./webapp/localService/ZODATA_ORDERDASH_SRV/data
+            generateMockData: true
         annotations:
           - localPath: ./webapp/localService/mainService/ZSB_C_ORDERDASHBOARD_VAN.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_ORDERDASHBOARD_VAN',Version='0001')/$value/
           - localPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_Annotation.xml
             urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRMM_FRVISITV2_CDS_VAN',Version='0001')/$value/
-          - localPath: ./webapp/localService/ZODATA_FR_SRV/ZODATA_FR_SRV_Annotation.xml
-            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/
           - localPath: ./webapp/localService/ZODATA_ORDERDASHFI_SRV/ZODATA_ORDERDASHFI_ANNO_MDL.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_ORDERDASHFI_ANNO_MDL',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZODATA_ORDERDASH_SRV/ZODATA_ORDERDASH_ANNO_MDL.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_ORDERDASH_ANNO_MDL',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZODATA_FR_SRV/ZODATA_FR_ANNO_MDL.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/

@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Wed Mar 18 2026 15:04:19 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_MATVERIFY_SRV",
+    "appName": "zmmmatverify2",
+    "appTitle": "App Title",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "customer.porky",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.108.44",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.20.4",
+    "template": "List Report Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZC_Product"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

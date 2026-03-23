@@ -14,7 +14,15 @@
                 var Customer = filterData.Customer;
                 var data = {"SalesOrganization":SalesOrganization, "Customer" : Customer,"URL" :"https://pkynj-de2app.porky.com:44300/sap/bc/ui2/flp?sap-client=100&amp;sap-language=EN#Launch_Tcodes-ZVIP?SalesOrganization="+SalesOrganization+"&amp;Customer="+Customer+""}
                 this.getView().setModel(new sap.ui.model.json.JSONModel(data), "ZVIPMODEL");
+
+
+                 this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
             },
+
+             onGlobalfilterApply: function(oEvent){
+ this.extractRequest();
+             },
     
             onAfterRendering: function () {
 

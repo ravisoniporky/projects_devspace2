@@ -38,7 +38,12 @@
 
                 <Button icon="sap-icon://visits" type="Emphasized" text="Prospect Visit" enabled="false"  visible="{= ${prospectModel>/prospect} === true ? true : false}"></Button>
 
-                 
+                 <Button 
+    text="Reminder" 
+    icon="sap-icon://appointment-2" 
+    press="onOpenCalendarDialog"
+    type="Accept"
+    visible="{= ${customerModel>/Customer} === '' ? false : true}"/>
 		</headerContent>
         
         <content >
@@ -250,6 +255,13 @@
             <Title text="Prospect Pipeline" level="H2"/>
             <ToolbarSpacer/>
             <Button 
+                id="btnProspectPipeline"
+                icon="sap-icon://appointment-2" 
+                text="Add Reminder"
+                press="onProspectReminder"
+                type="Accept"
+            />
+            <Button 
                 id="btnEditProspectPipeline"
                 icon="sap-icon://edit"
                 text="{= ${prospectPipelineModel>/editMode} ? 'Display' : 'Edit'}"
@@ -359,8 +371,9 @@
             <Button text="Sales Dashboard"  press="openSalesDashboard_1"  icon="sap-icon://bbyd-dashboard" type="Accept" class="sapUiSmallMargin" visible="{= ${customerModel>/Customer} === '' ? false: ${prospectModel>/prospect} === true ? false : true}"/>
 
         <Button text="Map View"  press="openMap"  icon="sap-icon://map" type="Emphasized" class="sapUiSmallMargin" visible="{= ${customerModel>/Customer} === '' ? false: true}"/>
+    <Button text="Go to MOE"  press="onGoTOMOE" visible="{= ${customerModel>/Customer} === '' ? false: true}" class="sapUiSmallMargin" type="Neutral" icon="sap-icon://notes"/>
 
-    <Button text="Go Directly To Notes"  press="onEnterNotes1" visible="{= ${customerModel>/Customer} === '' ? false: true}" class="sapUiSmallMargin" type="Attention" icon="sap-icon://notes"/>
+    <Button text="Go Directly to Notes"  press="onEnterNotes1" visible="{= ${customerModel>/Customer} === '' ? false: true}" class="sapUiSmallMargin" type="Attention" icon="sap-icon://notes"/>
           </HBox>
                     <!-- <form:SimpleForm
                         editable="true"
@@ -483,6 +496,12 @@
                                     />
                                     <ToolbarSpacer />
 
+                                    <Label text="Order Dept Only - "></Label>
+                                    <Switch id="stateDeptOnly" customTextOn="On" customTextOff="Off"  change="onSliderOrdDept" state="true" enabled="{chageModeModel>/changeMode}">
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</Switch>	
                                     <ToggleButton 
                                         text="Add"
                                         press="onAddNewKeyPeople"
@@ -747,7 +766,7 @@
                                     <ToolbarSpacer />
                                     <Label text="Active Only " />
                                     <core:Icon  src="sap-icon://arrow-right"></core:Icon>
-<Switch  customTextOn="On" customTextOff="Off"  change="onFilterActiveMOE" state="{userValues>/moe}" enabled="{chageModeModel>/changeMode}">
+<Switch  id="stateMOEOnly" customTextOn="On" customTextOff="Off"  change="onFilterActiveMOE" state="{userValues>/moe}" enabled="{chageModeModel>/changeMode}">
 				<layoutData>
 					<FlexItemData growFactor="1" />
 				</layoutData>

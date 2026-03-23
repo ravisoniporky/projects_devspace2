@@ -109,6 +109,16 @@
       "config": {},
       "routes": [],
       "targets": {}
+    },
+
+     "extends": {
+        "extensions": {
+            "sap.ui.controllerExtensions": {
+                "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                    "controllerName": "customer.porky.zfrvisitreportv2.ext.controller.ListReportExt"
+                }
+            }
+        }
     }
   },
   "sap.ui.generic.app": {

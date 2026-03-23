@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+   <Image
+                            src="{GetThumpUrl}"
+                            width="100px"
+                            height="100px"
+                            densityAware="false"
+                            decorative="false"
+                            alt="{Pariscode}">
+                            <detailBox>
+                                <LightBox>
+                                    <LightBoxItem
+                                        imageSrc="{GetUrl}"
+                                        alt="{Pariscode}"
+                                        title="{Pariscode}"
+                                        subtitle="{Pariscode}" />
+                                </LightBox>
+                            </detailBox>
+                        </Image>
+
+
+
+                        <!-- <Image
+    src="{GetThumpUrl}"
+    width="60px"
+    height="60px"
+    densityAware="false"
+    alt="Click to preview"
+    press=".extension.customer.porky.zmmparisxref2.ext.controller.ObjectPageExt.onThumbnailPress"
+    class="sapUiTinyMargin"
+    /> -->
+
+</core:FragmentDefinition>

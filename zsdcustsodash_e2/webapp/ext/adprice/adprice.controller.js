@@ -7,56 +7,16 @@
     sap.ui.define([], function() {
         return {
             onInit: function () {
-
-
                 
-                // this.getModel().attachRequestCompleted(function(oEvent){
+                this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
 
-
-                //   var filter = decodeURI(oEvent.mParameters.url.split("$filter=")[1]);
-                //   if(filter.includes("CompanyCode") && filter.includes("SalesOrganization") && filter.includes("Customer") && oEvent.mParameters.url.includes("ZBSD_CUSTSODASH") ){
-                      
-                //   }else{
-                //     return;
-                //   }
-    
-                //     var filters = decodeURI(oEvent.mParameters.url.split("$filter=")[1]);
-                //     if(filters.includes("&"))
-                //       {
-                //         filters = filters.split("&")[0];
-                //       }
-
-                //       filters = "Customer eq '"+this.getOwnerComponent().getModel("filterModel").getProperty("/Customer")+"' ";
-                //       filters = filters+"CompanyCode eq '"+this.getOwnerComponent().getModel("filterModel").getProperty("/CompanyCode")+"' ";
-                //       filters = filters+"SalesOrganization eq '"+this.getOwnerComponent().getModel("filterModel").getProperty("/SalesOrganization")+"' ";
-
-                //     let defaultModel1 = that.getOwnerComponent().getModel();
-
- 
-                //     defaultModel1.read("/ZCSD_CUSTSODASHADPRICE", {
-                //       urlParameters: {
-                //         "$filter" : filters,
-                //         "$top" :5
-                        
-            
-                //       },
-                //       success: function (oData, oResponse) {
-                   
-                //         that.getView().setModel(new sap.ui.model.json.JSONModel(oData), "adPriceModel");
-            
-              
-            
-                //       },
-            
-                //       error: function (oError) {
-            
-                //         that.getView().setModel(new sap.ui.model.json.JSONModel({}, "adPriceModel"));
-                //       }
-                //     });
-
-                // });
 
             },
+
+             onGlobalfilterApply: function(oEvent){
+ this.extractRequest();
+             },
             onAfterRendering: function () {
 
 

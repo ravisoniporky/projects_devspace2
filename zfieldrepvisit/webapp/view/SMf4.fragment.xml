@@ -17,6 +17,7 @@
 					<!-- <ObjectIdentifier title="{ZSB_C_FRVISIT2>Username}"  /> -->
 					<Text text="{ZODATA_FR_SRV>SalesleadName} ({ZODATA_FR_SRV>Saleslead})" />
 					<Text text="{ZODATA_FR_SRV>SalesOrganization}" />
+					<Text text="{ZODATA_FR_SRV>CompanyCode}" />
 
 					<!-- <Text text="{ZSB_C_FRVISIT2>SalesOrganization}" /> -->
 			</cells>
@@ -66,6 +67,15 @@
 				hAlign="Begin">
 				<header>
 					<Text text="Sales Org" />
+				</header>
+			</Column>
+
+				<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Begin">
+				<header>
+					<Text text="Company Code" />
 				</header>
 			</Column>
 			
