@@ -8,69 +8,36 @@
         return {
             onInit: function () {
 
-                var that = this;
-                this.getModel().attachRequestCompleted(function(oEvent){
-
-
-                    // var filter = decodeURI(oEvent.mParameters.url.split("$filter=")[1]);
-                    // if(filter.includes("CompanyCode") && filter.includes("SalesOrganization") && filter.includes("Customer") && oEvent.mParameters.url.includes("ZBSD_CUSTSODASH")){
-                        
-                    // }else{
-                    //   return;
-                    // }
-    
-                    // var filters = decodeURI(oEvent.mParameters.url.split("$filter=")[1]);
-                    // if(filters.includes("&"))
-                    //     {
-                    //       filters = filters.split("&")[0];
-                    //     }
-                    // var oSmartTable = that.getView().byId("LineItemsSmartTable2");
-                    //  oSmartTable.setModel(that.getOwnerComponent().getModel());
-                    // var p_bukrs = filters.split("CompanyCode eq '")[1].split("'")[0];
-                    // var p_Vkorg = filters.split("SalesOrganization eq '")[1].split("'")[0];
-                    // var p_ship = filters.split("Customer eq '")[1].split("'")[0];
-                    // var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({
-
-                    //     pattern: "yyyy-MM-ddTHH:mm:ss"
-                    // });
-    
-    
-    
-                    // var pwkenddate = oDateFormat.format(new Date());
-                    // that.p_bukrs = p_bukrs;
-                    // that.p_Vkorg = p_Vkorg;
-                    // that.p_ship = p_ship;
-                    // that.pwkenddate = pwkenddate;
-
-                    // if(typeof p_bukrs === 'undefined' || p_bukrs === 'undefined'){
-                    //     return;
-                    // }
-
-                    // oSmartTable.setTableBindingPath("" + ("/ZCFI_ARPROFIT_SHIPTO1(p_Wknd=datetime'"
-                    // + encodeURIComponent(pwkenddate) + "',p_bukrs='" + p_bukrs + "',p_Vkorg='" + p_Vkorg + "',p_ship='" + p_ship + "',p_weeks=13)/Results"));
-                    // oSmartTable.rebindTable();
-                    // that.extractSoldTo(p_ship,p_Vkorg);
-
- 
-          
-
-                });
-
+           
+  this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
             },
+
+
+                onGlobalfilterApply: function(oEvent){
+ this.extractRequest();
+
+    
+  
+
+                        },
+
+                       
             onAfterRendering: function () {
 
 
-                this.extractRequest();
+            this.extractRequest();
 
-                var that = this;
-                this.getModel().attachRequestCompleted(function(oEvent){
-  
-  
-                  if(oEvent.mParameters.url.includes("ZCSD_CUSTSODASHAGGR"))
-                  that.extractRequest();
-              
-  
-                });
+              var that = this;
+              this.getModel().attachRequestCompleted(function(oEvent){
+
+
+                if(oEvent.mParameters.url.includes("ZCSD_CUSTSODASHAGGR")  )
+                that.extractRequest();
+            
+
+              });
+
   
   
   
@@ -105,7 +72,7 @@
 
 
                     var oSmartTable = that.getView().byId("LineItemsSmartTable2");
-                     oSmartTable.setModel(that.getOwnerComponent().getModel());
+                     oSmartTable.setModel(that.getOwnerComponent().getModel("ZODATA_ORDERDASHFI_SRV"));
                     var p_bukrs = CompanyCode;
                     var p_Vkorg = SalesOrganization;
                     var p_ship = Customer;
@@ -206,7 +173,7 @@
                
             },
             extractSoldTo: function (p_ship,p_Vkorg) {
-                let defaultModel = this.getOwnerComponent().getModel();
+                let defaultModel = this.getOwnerComponent().getModel("ZODATA_ORDERDASHFI_SRV");
                 var that = this;
                 defaultModel.read("/ZCFI_shipto_soldto(p_vkorg='" + p_Vkorg + "',p_shipto='" + p_ship + "')/Set", {
                     success: function (oData, oResponse) {

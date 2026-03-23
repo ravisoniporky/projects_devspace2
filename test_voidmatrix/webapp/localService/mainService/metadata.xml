@@ -1,0 +1,2218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='SAP__SELF',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zsv_c_orderdashboard" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="I_CompanyCodeVHType" sap:label="Company Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="25" sap:label="City"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="ChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Chart of Accounts"/>
+                <Property Name="FiscalYearVariant" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Fiscal Year Variant"/>
+                <Property Name="Company" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Company"/>
+                <Property Name="CreditControlArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Credit Control Area"/>
+                <Property Name="CountryChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Alternative Chart of Accounts" sap:quickinfo="Alternative Chart of Accounts for Country/Region"/>
+                <Property Name="FinancialManagementArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="FM Area" sap:quickinfo="Financial Management Area"/>
+            </EntityType>
+            <EntityType Name="I_PlantStdVHType" sap:label="Plant" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PlantName" sap:label="Plant"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/>
+            </EntityType>
+            <EntityType Name="ZBSD_CUSTSODASHType" sap:label="Customer Order - Information" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="name1" sap:label="Ship-to" sap:quickinfo="Customer Number"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="altkn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
+                <Property Name="cu_hier1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier1_name" sap:label="Customer Hierarchy L1" sap:quickinfo="Customer Number"/>
+                <Property Name="sm" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer Number"/>
+                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name1" sap:quickinfo="Name 1"/>
+                <Property Name="name2" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name2" sap:quickinfo="Name 1"/>
+                <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Ship-to Address" sap:quickinfo="Street and House Number"/>
+                <Property Name="ort01" Type="Edm.String" MaxLength="40" sap:label="Ship-to City" sap:quickinfo="City"/>
+                <Property Name="regio" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Ship-to Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="pstlz" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Postal Code" sap:quickinfo="Postal Code"/>
+                <Property Name="telf1" Type="Edm.String" MaxLength="16" sap:label="Ship-to Telephone" sap:quickinfo="First telephone number" sap:semantics="tel"/>
+                <Property Name="hier1_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L1 Name" sap:quickinfo="Name 1"/>
+                <Property Name="zzlongitude" Type="Edm.String" MaxLength="20" sap:label="Longitude"/>
+                <Property Name="zzlatitude" Type="Edm.String" MaxLength="20" sap:label="Latitude"/>
+                <Property Name="storeno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Store Number" sap:quickinfo="Customer Store Number"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="ss" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SS Partner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="zzorig_shipto" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="cu_hier3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier3_name" sap:label="Customer Hierarchy L3" sap:quickinfo="Customer Number"/>
+                <Property Name="hier3_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L3 Name" sap:quickinfo="Name 1"/>
+                <Property Name="cu_hier2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier2_name" sap:label="Customer Hierarchy L2" sap:quickinfo="Customer Number"/>
+                <Property Name="hier2_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L2 Name" sap:quickinfo="Name 1"/>
+                <Property Name="ow" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Owner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address" sap:semantics="email"/>
+                <Property Name="CentralBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record" sap:value-list="fixed-values"/>
+                <Property Name="SalesOrganizationBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_c" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_orgordblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Org Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_companypostblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Posting Block" sap:quickinfo="Central posting block" sap:value-list="fixed-values"/>
+                <Property Name="loevm_archblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Archiving Block" sap:quickinfo="Central Archiving Flag" sap:value-list="fixed-values"/>
+                <Property Name="loevm_postblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co Code Posting Block" sap:quickinfo="Posting block for company code" sap:value-list="fixed-values"/>
+                <Property Name="loevm_ordblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="CreditBLock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Credit Management Block" sap:quickinfo="Blocked by Credit Management" sap:value-list="fixed-values"/>
+                <Property Name="ADRNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+            </EntityType>
+            <EntityType Name="ZBSD_GETDEFAULTSHMOREType" sap:label="Get Ship-tos from Customer Rollup" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="kunnr"/>
+                    <PropertyRef Name="vkorg"/>
+                </Key>
+                <Property Name="kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="name1" sap:label="Ship-to" sap:quickinfo="Customer Number"/>
+                <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="altkn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
+                <Property Name="cu_hier1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L1" sap:quickinfo="Customer Number"/>
+                <Property Name="sm" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer Number"/>
+                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name1" sap:quickinfo="Name 1"/>
+                <Property Name="name2" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name2" sap:quickinfo="Name 1"/>
+                <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Ship-to Address" sap:quickinfo="Street and House Number"/>
+                <Property Name="ort01" Type="Edm.String" MaxLength="40" sap:label="Ship-to City" sap:quickinfo="City"/>
+                <Property Name="regio" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Ship-to Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="pstlz" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Postal Code" sap:quickinfo="Postal Code"/>
+                <Property Name="telf1" Type="Edm.String" MaxLength="16" sap:label="Ship-to Telephone" sap:quickinfo="First telephone number"/>
+                <Property Name="hier1_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L1 Name" sap:quickinfo="Name 1"/>
+                <Property Name="zzlongitude" Type="Edm.String" MaxLength="20" sap:label="Longitude"/>
+                <Property Name="zzlatitude" Type="Edm.String" MaxLength="20" sap:label="Latitude"/>
+                <Property Name="storeno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Store Number" sap:quickinfo="Customer Store Number"/>
+                <Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="ss" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SS Partner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="zzorig_shipto" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="cu_hier3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L3" sap:quickinfo="Customer Number"/>
+                <Property Name="hier3_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L3 Name" sap:quickinfo="Name 1"/>
+                <Property Name="cu_hier2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L2" sap:quickinfo="Customer Number"/>
+                <Property Name="hier2_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L2 Name" sap:quickinfo="Name 1"/>
+                <Property Name="ow" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Owner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address"/>
+                <Property Name="smvkorg" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="ADRNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+            </EntityType>
+            <EntityType Name="ZBSD_SalesOrganizationType" sap:label="Sales Organization" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="salesorgname" sap:label="Sales Organization"/>
+                <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing"/>
+                <Property Name="ltext" Type="Edm.String" MaxLength="40" sap:attribute-for="SalesOrganization" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="mtext" Type="Edm.String" MaxLength="20" sap:attribute-for="SalesOrganization" sap:display-format="UpperCase" sap:label="Search Term 1"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="salesorgname" Type="Edm.String" MaxLength="20" sap:label="Name"/>
+            </EntityType>
+            <EntityType Name="ZBSD_TIMEROLLUPType" sap:label="Time Rollup Text" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="timerollup"/>
+                </Key>
+                <Property Name="timerollup" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="timerolluptext" sap:label="Time Rollup Key"/>
+                <Property Name="timerolluptext" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Field Name"/>
+            </EntityType>
+            <EntityType Name="ZBXA_YesNoType" sap:label="Yes/No Flag" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Flag"/>
+                </Key>
+                <Property Name="Flag" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:text="DomainValue" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="DomainValue" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZCSD_CUSTSODASHType" sap:label="Sales Customer Dashboard" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="SalesDocument"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:required-in-filter="true" sap:label="Company Code" sap:quickinfo="Company code of the sales organization" sap:value-list="standard"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:required-in-filter="true" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:required-in-filter="true" sap:label="Customer" sap:quickinfo="Ship-to Party" sap:value-list="standard"/>
+                <Property Name="SalesDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="SalesDocumentType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Document Type"/>
+                <Property Name="DeliveryDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Delivery Date" sap:quickinfo="Requested Delivery Date"/>
+                <Property Name="Ordertype" Type="Edm.String" MaxLength="20" sap:label="Order Type"/>
+                <Property Name="Delivery" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery"/>
+                <Property Name="Sales" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Sales"/>
+                <Property Name="NetWtLB" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="WeightUnit" sap:label="Net Weight"/>
+                <Property Name="ShipQtyCS" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="SalesUnit" sap:label="Ship Quantity"/>
+                <Property Name="MarketCostGP" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Market Cost GP"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="WeightUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="SalesUnit" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="WeekEnding" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Week Ending"/>
+                <NavigationProperty Name="to_Item" Relationship="cds_zsv_c_orderdashboard.assoc_B2AB9FEF68EC4793103976C07843AB98" FromRole="FromRole_assoc_B2AB9FEF68EC4793103976C07843AB98" ToRole="ToRole_assoc_B2AB9FEF68EC4793103976C07843AB98"/>
+            </EntityType>
+            <EntityType Name="ZCSD_CUSTSODASHADPRICEType" sap:label="Customer Order Ad Price" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="AccessLevel" Type="Edm.String" MaxLength="3" sap:label="Access Level"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:text="MaterialDescription" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="ValidEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity End" sap:quickinfo="Valid To Date"/>
+                <Property Name="ValidStart" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity Start" sap:quickinfo="Valid-From Date"/>
+                <Property Name="ConditionAmount" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Amount" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="ConditionPriceUnit" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="Price Unt" sap:quickinfo="Condition Pricing Unit"/>
+                <Property Name="ConditionUnit" Type="Edm.String" MaxLength="3" sap:label="UoM" sap:quickinfo="Condition Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Condition Unit (Currency or Percentage)" sap:semantics="currency-code"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+                <Property Name="OldMaterial" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old Material" sap:quickinfo="Old material number"/>
+            </EntityType>
+            <EntityType Name="ZCSD_CUSTSODASHAGGRType" sap:label="Aggregated Values for Customer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="TimeRollup"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:required-in-filter="true" sap:label="Customer" sap:quickinfo="Ship-to Party" sap:value-list="standard"/>
+                <Property Name="TimeRollup" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Time Rollup"/>
+                <Property Name="Sales" Type="Edm.Decimal" Precision="13" Scale="0" sap:unit="Currency" sap:variable-scale="true" sap:label="Sales"/>
+                <Property Name="NetWtLB" Type="Edm.Decimal" Precision="13" Scale="0" sap:unit="WeightUnit" sap:label="Net Weight"/>
+                <Property Name="ShipQtyCS" Type="Edm.Decimal" Precision="13" Scale="0" sap:unit="SalesUnit" sap:label="Ship Qty"/>
+                <Property Name="MarketCostGP" Type="Edm.Decimal" Precision="13" Scale="0" sap:unit="Currency" sap:variable-scale="true" sap:label="Net Mkt Cost GP"/>
+                <Property Name="MarketCostGPLB" Type="Edm.Decimal" Precision="10" Scale="4" sap:label="Net Market Cost GP Per LB"/>
+                <Property Name="SalesLB" Type="Edm.Decimal" Precision="10" Scale="4" sap:label="Sales Per LB"/>
+                <Property Name="TPLB" Type="Edm.Decimal" Precision="10" Scale="4" sap:label="True Profit Per LB"/>
+                <Property Name="NoofDeliveries" Type="Edm.Int32" sap:label="No. of Deliveries" sap:quickinfo="No.of Delv"/>
+                <Property Name="AvgNoofDeliveries" Type="Edm.Decimal" Precision="10" Scale="2" sap:label="Avg No. of Deliveries" sap:quickinfo="Avg.No of Delv"/>
+                <Property Name="MarketCostGPPerc" Type="Edm.Decimal" Precision="13" Scale="2" sap:unit="PercentageUoM" sap:label="Net Mkt Cost GP%"/>
+                <Property Name="TrueProfitPerc" Type="Edm.Decimal" Precision="13" Scale="2" sap:unit="PercentageUoM" sap:label="True Profit%"/>
+                <Property Name="PercentageUoM" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="SalesUnit" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="WeightUnit" Type="Edm.String" MaxLength="3" sap:label="Weight Unit" sap:quickinfo="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="rundt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Run Date"/>
+                <Property Name="TrueProfit" Type="Edm.Decimal" Precision="13" Scale="0"/>
+                <Property Name="TrueProfitPerDrop" Type="Edm.Decimal" Precision="10" Scale="0" sap:label="TP Per Drop"/>
+                <Property Name="WeightPerDrop" Type="Edm.Decimal" Precision="10" Scale="0" sap:label="Weight Per Drop" sap:quickinfo="Wt Per Drop"/>
+                <Property Name="MarketCostPerDrop" Type="Edm.Decimal" Precision="10" Scale="0" sap:label="Net Market Cost GP Per Drop" sap:quickinfo="MC GP Per Drop"/>
+                <Property Name="SalesPerDrop" Type="Edm.Decimal" Precision="10" Scale="0" sap:label="Sales Per Drop"/>
+                <Property Name="LineSequence" Type="Edm.Byte"/>
+            </EntityType>
+            <EntityType Name="ZCSD_CUSTSODASHDELIVERYType" sap:label="Customer Order Delivery - Information" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="Delivery"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="Delivery" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery"/>
+                <Property Name="DeliveryDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Delivery Date"/>
+                <Property Name="Shipment" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Shipment" sap:quickinfo="Shipment Number"/>
+                <Property Name="lprio" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Delv Priority" sap:quickinfo="Delivery Priority"/>
+                <Property Name="datbg" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="uatbg" Type="Edm.Time" Precision="0" sap:label="Start Time"/>
+                <Property Name="daten" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="uaten" Type="Edm.Time" Precision="0" sap:label="End Time"/>
+                <Property Name="duration" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="Duration(Seconds)"/>
+                <Property Name="arrivalinsec" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="Arrival(Seconds)"/>
+                <Property Name="durationdiff" Type="Edm.String" MaxLength="8" sap:label="Duration"/>
+                <Property Name="SalesDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ref Doc" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="CustomerPO" Type="Edm.String" MaxLength="20" sap:label="Cust Ref" sap:quickinfo="Customer Reference"/>
+            </EntityType>
+            <EntityType Name="ZCSD_CUSTSODASHSPPRICEType" sap:label="Customer Order Ad Price" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:text="MaterialDescription" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="AccessLevel" Type="Edm.String" MaxLength="3" sap:label="Access Level"/>
+                <Property Name="ValidEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity End" sap:quickinfo="Valid To Date"/>
+                <Property Name="ValidStart" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity Start" sap:quickinfo="Valid-From Date"/>
+                <Property Name="ConditionAmount" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Amount" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="ConditionPriceUnit" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="Price Unt" sap:quickinfo="Condition Pricing Unit"/>
+                <Property Name="ConditionUnit" Type="Edm.String" MaxLength="3" sap:label="UoM" sap:quickinfo="Condition Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Condition Unit (Currency or Percentage)" sap:semantics="currency-code"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+                <Property Name="OldMaterial" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old Material" sap:quickinfo="Old material number"/>
+            </EntityType>
+            <EntityType Name="ZCSD_CUSTSOITEMDASHType" sap:label="Customer Sales Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="SalesDocument"/>
+                    <PropertyRef Name="SalesDocumentItem"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Ship-to Party"/>
+                <Property Name="SalesDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="SalesDocumentItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item number of the SD document"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:text="MaterialDescription" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="OldMaterialId" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old Material" sap:quickinfo="Old Product Number"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:quickinfo="Product Description"/>
+                <Property Name="Delivery" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery"/>
+                <Property Name="Sales" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Sales Price" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="NetWtLB" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="WeightUnit" sap:label="Net Weight"/>
+                <Property Name="ShipQtyCS" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="SalesUnit" sap:label="Ship Quantity"/>
+                <Property Name="MarketCostGP" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Net Market Cost GP Value" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="MarketCostPerc" Type="Edm.Decimal" Precision="10" Scale="2" sap:unit="PercentageUoM" sap:label="Net Market Cost GP%"/>
+                <Property Name="MarketCostLB" Type="Edm.Decimal" Precision="18" Scale="4" sap:label="Net Market Cost GP Per LB"/>
+                <Property Name="PercentageUoM" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="SalesUnit" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="WeightUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="PriceUoM" Type="Edm.String" MaxLength="3" sap:label="Price UoM" sap:quickinfo="Condition Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="WeekEnding" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Week Ending"/>
+                <NavigationProperty Name="to_Header" Relationship="cds_zsv_c_orderdashboard.assoc_E1BC9DDA65FC639A97E83355DC5BAC7A" FromRole="FromRole_assoc_E1BC9DDA65FC639A97E83355DC5BAC7A" ToRole="ToRole_assoc_E1BC9DDA65FC639A97E83355DC5BAC7A"/>
+            </EntityType>
+            <EntityType Name="ZCSD_CUSTSOSHIPMENTType" sap:label="Customer Order Shipment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="Tknum"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
+                <Property Name="Tknum" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Shipment" sap:quickinfo="Shipment Number"/>
+                <Property Name="shipmentdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="PlannedShipmntStart" sap:quickinfo="Planned date for start of shipment"/>
+                <Property Name="tplst" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="TransportPlanningPt" sap:quickinfo="Transportation planning point"/>
+                <Property Name="route" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:text="routetext" sap:label="Route" sap:quickinfo="Shipment route"/>
+                <Property Name="driver" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="drivername" sap:label="Driver" sap:quickinfo="Driver 1"/>
+                <Property Name="vehicle" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:text="vehicletext" sap:label="Vehicle"/>
+                <Property Name="trailer" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:text="trailertext" sap:label="Trailer"/>
+                <Property Name="timeprinted" Type="Edm.Time" Precision="0" sap:label="Time Printed" sap:quickinfo="Time of transportation processing"/>
+                <Property Name="starttime" Type="Edm.Time" Precision="0" sap:label="Start Time" sap:quickinfo="Actual transport start time"/>
+                <Property Name="endtime" Type="Edm.Time" Precision="0" sap:label="End Time" sap:quickinfo="Actual shipment end time"/>
+                <Property Name="laststoptime" Type="Edm.Time" Precision="0" sap:label="Last Stop"/>
+                <Property Name="shipcomplete" Type="Edm.String" MaxLength="3" sap:label="Comp"/>
+                <Property Name="routetext" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Route Text" sap:quickinfo="Route"/>
+                <Property Name="drivername" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Driver Name" sap:quickinfo="Customer Full Name"/>
+                <Property Name="vehicletext" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Vehicle Text" sap:quickinfo="Equipment Number"/>
+                <Property Name="trailertext" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Trailer Text" sap:quickinfo="Equipment Number"/>
+                <Property Name="shipcompletecriticality" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative"/>
+                <Property Name="ShipmentHeaderStatus" Type="Edm.Byte" sap:label="Status" sap:quickinfo="Header Status"/>
+            </EntityType>
+            <EntityType Name="ZCSD_E_ItemProposalType" sap:label="Item Proposal" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_vkorg"/>
+                    <PropertyRef Name="p_kunwe"/>
+                    <PropertyRef Name="MATNR"/>
+                </Key>
+                <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="p_kunwe" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer"/>
+                <Property Name="MATNR" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="PRDHA" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="PHL1" sap:quickinfo="Product Hierarchy"/>
+                <Property Name="VTEXT1" Type="Edm.String" MaxLength="40" sap:label="PHL1 Name" sap:quickinfo="Description"/>
+                <Property Name="GRPSEQ" Type="Edm.String" MaxLength="70" sap:label="Group Sequence" sap:quickinfo="Characteristic Value"/>
+                <Property Name="CODESEQ" Type="Edm.String" MaxLength="70" sap:label="Code Sequence" sap:quickinfo="Characteristic Value"/>
+                <Property Name="PMATN" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Pricing Reference Material"/>
+                <Property Name="PMATN_TXT" Type="Edm.String" MaxLength="40" sap:label="Pricing Reference Material Descriprion" sap:quickinfo="Material Description"/>
+                <Property Name="BISMT" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old Material" sap:quickinfo="Old material number"/>
+                <Property Name="KDMAT" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Customer Material"/>
+                <Property Name="MAKTX" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+                <Property Name="PURDT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Purchase Date"/>
+                <Property Name="PURQTY" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Last Purchase Quantity" sap:quickinfo="Last Purhcase Quantity"/>
+                <Property Name="PURUOM" Type="Edm.String" MaxLength="3" sap:label="Last Purchase UoM" sap:quickinfo="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="EXTWG" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="External Material Group"/>
+                <Property Name="KBETR" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="KONWA" sap:variable-scale="true" sap:label="ZHPR Price" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="KPEIN" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="ZHPR Price Unit" sap:quickinfo="Condition Pricing Unit"/>
+                <Property Name="KMEIN" Type="Edm.String" MaxLength="3" sap:label="ZHPR Price UoM" sap:quickinfo="Condition Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="PRICELEVEL" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ZHPR Price Level" sap:quickinfo="3-Byte field"/>
+                <Property Name="DATBI" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ZHPR Valid To Date" sap:quickinfo="Valid To Date"/>
+                <Property Name="DATAB" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ZHPR Valid From Date" sap:quickinfo="Valid-From Date"/>
+                <Property Name="KBETR_O" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="KONWA_O" sap:variable-scale="true" sap:label="ZHPR Previous Price" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="KPEIN_O" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="ZHPR Previous Price Unit" sap:quickinfo="Condition Pricing Unit"/>
+                <Property Name="KMEIN_O" Type="Edm.String" MaxLength="3" sap:label="ZHPR Previous Price UoM" sap:quickinfo="Condition Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="EBELN" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchase Order" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="PO_EINDT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="PO Delivery Date" sap:quickinfo="Item Delivery Date"/>
+                <Property Name="PO_MENGE" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PO_MEINS" sap:label="PO Quantity" sap:quickinfo="Quantity"/>
+                <Property Name="PO_MEINS" Type="Edm.String" MaxLength="3" sap:label="PO Plant" sap:quickinfo="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="MFRTXT" Type="Edm.String" MaxLength="200" sap:display-format="UpperCase" sap:label="Manuf. Description" sap:quickinfo="Text field length 200"/>
+                <Property Name="MFRPN" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="MPN" sap:quickinfo="Manufacturer Part Number"/>
+                <Property Name="MVGR5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Material Group 5"/>
+                <Property Name="MVGR5_T" Type="Edm.String" MaxLength="40" sap:label="Material Group 5 Description" sap:quickinfo="Description"/>
+                <Property Name="KONWA" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Condition Unit (Currency or Percentage)" sap:semantics="currency-code"/>
+                <Property Name="KONWA_O" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency Previous" sap:quickinfo="Condition Unit (Currency or Percentage)" sap:semantics="currency-code"/>
+                <Property Name="ZHPR_LB" Type="Edm.Decimal" Precision="18" Scale="2" sap:label="ZHPR Per LB"/>
+                <Property Name="KBETR_ZMO" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="KONWA_ZMO" sap:variable-scale="true" sap:label="ZMCO Previous Price" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="KPEIN_ZMO" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="ZMCO Previous Price Unit" sap:quickinfo="Condition Pricing Unit"/>
+                <Property Name="KMEIN_ZMO" Type="Edm.String" MaxLength="3" sap:label="ZMCO Previous Price UoM" sap:quickinfo="Condition Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="DATBI_ZMO" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ZMCO Previous Valid To" sap:quickinfo="Valid To Date"/>
+                <Property Name="DATAB_ZMO" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ZMCO Previous Valid From" sap:quickinfo="Valid-From Date"/>
+                <Property Name="ZMCO_LB" Type="Edm.Decimal" Precision="18" Scale="2" sap:label="ZMCO Per LB"/>
+                <Property Name="KBETR_ZMC" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="KONWA_ZMC" sap:variable-scale="true" sap:label="ZMCO Price" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="KPEIN_ZMC" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="ZMCO Price Unit" sap:quickinfo="Condition Pricing Unit"/>
+                <Property Name="KMEIN_ZMC" Type="Edm.String" MaxLength="3" sap:label="ZMCO Price UoM" sap:quickinfo="Condition Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="DATBI_ZMC" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ZMCO Valid To" sap:quickinfo="Valid To Date"/>
+                <Property Name="DATAB_ZMC" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ZMCO Valid From" sap:quickinfo="Valid-From Date"/>
+                <Property Name="KONWA_ZMC" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="ZMCO Currency" sap:quickinfo="Condition Unit (Currency or Percentage)" sap:semantics="currency-code"/>
+                <Property Name="KONWA_ZMO" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="ZMCO Previous Currency" sap:quickinfo="Condition Unit (Currency or Percentage)" sap:semantics="currency-code"/>
+                <Property Name="BRAND" Type="Edm.String" MaxLength="70" sap:label="Brand" sap:quickinfo="Characteristic Value"/>
+                <Property Name="ZZORGMATNR" Type="Edm.String" MaxLength="18" sap:label="Sales Org Material"/>
+                <Property Name="ATS" Type="Edm.String" MaxLength="1" sap:label="Available to Sell (ATS)"/>
+                <Property Name="SIZECOMMENT" Type="Edm.String" MaxLength="50" sap:label="Item Notes"/>
+                <NavigationProperty Name="Parameters" Relationship="cds_zsv_c_orderdashboard.assoc_BCFBE57BC0FFD382B1CF4555DED8E402" FromRole="ToRole_assoc_BCFBE57BC0FFD382B1CF4555DED8E402" ToRole="FromRole_assoc_BCFBE57BC0FFD382B1CF4555DED8E402" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCSD_E_ItemProposalParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_vkorg"/>
+                    <PropertyRef Name="p_kunwe"/>
+                </Key>
+                <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
+                <Property Name="p_kunwe" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="cds_zsv_c_orderdashboard.assoc_BCFBE57BC0FFD382B1CF4555DED8E402" FromRole="FromRole_assoc_BCFBE57BC0FFD382B1CF4555DED8E402" ToRole="ToRole_assoc_BCFBE57BC0FFD382B1CF4555DED8E402"/>
+            </EntityType>
+            <EntityType Name="ZI_DefaultSHVHType" sap:label="Default SH Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="kunnr"/>
+                    <PropertyRef Name="vkorg"/>
+                </Key>
+                <Property Name="kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="name1" sap:label="Ship-to" sap:quickinfo="Customer Number"/>
+                <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="Deleted" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deleted" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')" sap:value-list="fixed-values"/>
+                <Property Name="CreditBLock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Credit Management Block" sap:quickinfo="Deletion Indicator" sap:value-list="fixed-values"/>
+                <Property Name="altkn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
+                <Property Name="cu_hier1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier1_name" sap:label="Customer Hierarchy L1" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
+                <Property Name="sm" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name1" sap:quickinfo="Name 1"/>
+                <Property Name="name2" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name2" sap:quickinfo="Name 2"/>
+                <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Ship-to Address" sap:quickinfo="Street and House Number"/>
+                <Property Name="ort01" Type="Edm.String" MaxLength="35" sap:label="Ship-to City" sap:quickinfo="City"/>
+                <Property Name="regio" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Ship-to Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="pstlz" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Postal Code" sap:quickinfo="Postal Code"/>
+                <Property Name="telf1" Type="Edm.String" MaxLength="16" sap:label="Ship-to Telephone" sap:quickinfo="First telephone number" sap:semantics="tel"/>
+                <Property Name="hier1_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L1 Name" sap:quickinfo="Name 1"/>
+                <Property Name="zzlongitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Longitude" sap:quickinfo="Geo location longitude"/>
+                <Property Name="zzlatitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Latitude" sap:quickinfo="Geo location latitude"/>
+                <Property Name="storeno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Store Number" sap:quickinfo="Customer Store Number"/>
+                <Property Name="ss" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SS Partner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="zzorig_shipto" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Original Ship-to" sap:quickinfo="Ship-to Party"/>
+                <Property Name="cu_hier3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier3_name" sap:label="Customer Hierarchy L3" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
+                <Property Name="hier3_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L3 Name" sap:quickinfo="Name 1"/>
+                <Property Name="cu_hier2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier2_name" sap:label="Customer Hierarchy L2" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
+                <Property Name="hier2_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L2 Name" sap:quickinfo="Name 1"/>
+                <Property Name="ow" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Owner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address" sap:semantics="email"/>
+                <Property Name="IsDefaultEmailAddress" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Standard addr." sap:quickinfo="Flag: this address is the default address"/>
+                <Property Name="CentralBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record" sap:value-list="fixed-values"/>
+                <Property Name="SalesOrganizationBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_c" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_orgordblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_companypostblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Posting Block" sap:quickinfo="Central posting block" sap:value-list="fixed-values"/>
+                <Property Name="loevm_archblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Archiving Block" sap:quickinfo="Central Archiving Flag" sap:value-list="fixed-values"/>
+                <Property Name="loevm_postblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co Code Posting Block" sap:quickinfo="Posting block for company code" sap:value-list="fixed-values"/>
+                <Property Name="loevm_ordblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="ADRNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="smvkorg" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerName3" Type="Edm.String" MaxLength="35" sap:label="Name 3"/>
+                <Property Name="CustomerName4" Type="Edm.String" MaxLength="35" sap:label="Name 4"/>
+                <Property Name="Status_Criticality" Type="Edm.Byte"/>
+                <Property Name="GetUrl" Type="Edm.String" MaxLength="128" sap:label="URL"/>
+                <Property Name="OpenCustomerSalesDashboard" Type="Edm.String" MaxLength="20" sap:label="Overview"/>
+            </EntityType>
+            <EntityType Name="ZRSD_CUSTSODASHCONTACTSType" sap:label="Customer Sales Contacts" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="ContactPeson"/>
+                    <PropertyRef Name="RelationshipNumber"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Business Partner Number"/>
+                <Property Name="ContactPeson" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Contact Person" sap:quickinfo="Business Partner Number"/>
+                <Property Name="RelationshipNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="BP Relationship No." sap:quickinfo="BP Relationship Number"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid To" sap:quickinfo="Validity Date (Valid To)"/>
+                <Property Name="ContactPersonName" Type="Edm.String" MaxLength="81" sap:label="Contact Person Name"/>
+                <Property Name="ContactPhone" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Contact Person Phone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
+                <Property Name="ContactEmail" Type="Edm.String" MaxLength="241" sap:label="Contact Person E-Mail" sap:quickinfo="E-Mail Address"/>
+                <Property Name="ContactPersonFunctionName" Type="Edm.String" MaxLength="30" sap:label="Contact Person Function" sap:quickinfo="Description"/>
+                <Property Name="ContactPersonDepartmentName" Type="Edm.String" MaxLength="20" sap:label="Contact Person Department" sap:quickinfo="Description"/>
+            </EntityType>
+            <EntityType Name="ZRSD_CUSTSODASHVMType" sap:semantics="aggregate" sap:label="Void Matrix in Dashboard" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="true" sap:label="Customer" sap:quickinfo="Ship-to Party" sap:value-list="standard"/>
+                <Property Name="TimeRollup" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Time Rollup" sap:quickinfo="Time Rollup Key" sap:value-list="standard"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="ProductHierarchy" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:label="Product Hierarchy" sap:quickinfo="Product Hierarchy 1"/>
+                <Property Name="OldMaterial" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Old Material" sap:quickinfo="Old material number"/>
+                <Property Name="MaterialDescritpion" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Material Description"/>
+                <Property Name="CurrentSales" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:unit="ZHPRCurrency" sap:variable-scale="true" sap:label="Current Sales" sap:quickinfo="Current Net Sales Price Value" sap:filterable="false"/>
+                <Property Name="PreviousSales" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:unit="ZHPRCurrency" sap:variable-scale="true" sap:label="Previous Sales" sap:quickinfo="Previous Net Sales Price Value" sap:filterable="false"/>
+                <Property Name="ZHPRCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="CurrentWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="dimension" sap:label="Current Weight"/>
+                <Property Name="PreviousWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="dimension" sap:label="Previous Weight"/>
+                <Property Name="MaterialRollup" Type="Edm.String" MaxLength="30" sap:aggregation-role="dimension" sap:label="Material Rollup" sap:quickinfo="Material  Rollup Key"/>
+                <Property Name="MaterialRollupKey" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Material Rollup Key"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Salesman" sap:quickinfo="Salesman Number"/>
+                <Property Name="SalesmanName" Type="Edm.String" MaxLength="35" sap:aggregation-role="dimension" sap:label="SalesmanName" sap:quickinfo="Salesman Name"/>
+            </EntityType>
+            <EntityType Name="SAP__Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CurrencyCode"/>
+                </Key>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Short text"/>
+                <Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Decimals"/>
+            </EntityType>
+            <EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitCode"/>
+                </Key>
+                <Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:semantics="unit-of-measure"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO Code"/>
+                <Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Commercial"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Measurement Unit Txt"/>
+                <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
+            </EntityType>
+            <EntityType Name="SAP__DocumentDescription" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <NavigationProperty Name="Format" Relationship="cds_zsv_c_orderdashboard.to_format" FromRole="FromRole_to_format" ToRole="ToRole_to_format"/>
+                <NavigationProperty Name="TableColumns" Relationship="cds_zsv_c_orderdashboard.to_tablecolumns" FromRole="FromRole_to_tablecolumns" ToRole="ToRole_to_tablecolumns"/>
+                <NavigationProperty Name="CoverPage" Relationship="cds_zsv_c_orderdashboard.to_coverpage" FromRole="FromRole_to_coverpage" ToRole="ToRole_to_coverpage"/>
+                <NavigationProperty Name="Signature" Relationship="cds_zsv_c_orderdashboard.to_signature" FromRole="FromRole_to_signature" ToRole="ToRole_to_signature"/>
+                <NavigationProperty Name="PDFStandard" Relationship="cds_zsv_c_orderdashboard.to_pdfstandard" FromRole="FromRole_to_pdfstandard" ToRole="ToRole_to_pdfstandard"/>
+            </EntityType>
+            <EntityType Name="SAP__Format" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="FitToPage" Type="cds_zsv_c_orderdashboard.SAP__FitToPage" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orientation" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaperSize" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BorderSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MarginSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontName" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Font Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFStandard" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UsePDFAConformance" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoEnableAccessibility" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__TableColumns" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                    <PropertyRef Name="Header"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Header" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HorizontalAlignment" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__CoverPage" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Title"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                </Key>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__Signature" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoSign" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reason" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__ValueHelp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="VALUEHELP"/>
+                </Key>
+                <Property Name="VALUEHELP" Type="Edm.String" Nullable="false"/>
+                <Property Name="FIELD_VALUE" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="DESCRIPTION" Type="Edm.String"/>
+            </EntityType>
+            <ComplexType Name="SAP__FitToPage">
+                <Property Name="ErrorRecoveryBehavior" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Error behavior" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsEnabled" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MinimumFontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="to_format" sap:content-version="1">
+                <End Type="cds_zsv_c_orderdashboard.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_format"/>
+                <End Type="cds_zsv_c_orderdashboard.SAP__Format" Multiplicity="1" Role="ToRole_to_format"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_tablecolumns" sap:content-version="1">
+                <End Type="cds_zsv_c_orderdashboard.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_tablecolumns"/>
+                <End Type="cds_zsv_c_orderdashboard.SAP__TableColumns" Multiplicity="*" Role="ToRole_to_tablecolumns"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_coverpage" sap:content-version="1">
+                <End Type="cds_zsv_c_orderdashboard.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_coverpage"/>
+                <End Type="cds_zsv_c_orderdashboard.SAP__CoverPage" Multiplicity="*" Role="ToRole_to_coverpage"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_signature" sap:content-version="1">
+                <End Type="cds_zsv_c_orderdashboard.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_signature"/>
+                <End Type="cds_zsv_c_orderdashboard.SAP__Signature" Multiplicity="1" Role="ToRole_to_signature"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_pdfstandard" sap:content-version="1">
+                <End Type="cds_zsv_c_orderdashboard.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_pdfstandard"/>
+                <End Type="cds_zsv_c_orderdashboard.SAP__PDFStandard" Multiplicity="1" Role="ToRole_to_pdfstandard"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_pdfstandard">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_pdfstandard">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_E1BC9DDA65FC639A97E83355DC5BAC7A" sap:content-version="1">
+                <End Type="cds_zsv_c_orderdashboard.ZCSD_CUSTSOITEMDASHType" Multiplicity="1" Role="FromRole_assoc_E1BC9DDA65FC639A97E83355DC5BAC7A"/>
+                <End Type="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHType" Multiplicity="1" Role="ToRole_assoc_E1BC9DDA65FC639A97E83355DC5BAC7A"/>
+            </Association>
+            <Association Name="assoc_BCFBE57BC0FFD382B1CF4555DED8E402" sap:content-version="1">
+                <End Type="cds_zsv_c_orderdashboard.ZCSD_E_ItemProposalParameters" Multiplicity="1" Role="FromRole_assoc_BCFBE57BC0FFD382B1CF4555DED8E402"/>
+                <End Type="cds_zsv_c_orderdashboard.ZCSD_E_ItemProposalType" Multiplicity="*" Role="ToRole_assoc_BCFBE57BC0FFD382B1CF4555DED8E402"/>
+            </Association>
+            <Association Name="assoc_B2AB9FEF68EC4793103976C07843AB98" sap:content-version="1">
+                <End Type="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHType" Multiplicity="1" Role="FromRole_assoc_B2AB9FEF68EC4793103976C07843AB98"/>
+                <End Type="cds_zsv_c_orderdashboard.ZCSD_CUSTSOITEMDASHType" Multiplicity="*" Role="ToRole_assoc_B2AB9FEF68EC4793103976C07843AB98"/>
+            </Association>
+            <EntityContainer Name="cds_zsv_c_orderdashboard_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
+                <EntitySet Name="SAP__Currencies" EntityType="cds_zsv_c_orderdashboard.SAP__Currency" sap:content-version="1"/>
+                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zsv_c_orderdashboard.SAP__UnitOfMeasure" sap:content-version="1"/>
+                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_zsv_c_orderdashboard.SAP__DocumentDescription" sap:content-version="1"/>
+                <EntitySet Name="SAP__FormatSet" EntityType="cds_zsv_c_orderdashboard.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFStandardSet" EntityType="cds_zsv_c_orderdashboard.SAP__PDFStandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_zsv_c_orderdashboard.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__CoverPageSet" EntityType="cds_zsv_c_orderdashboard.SAP__CoverPage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__SignatureSet" EntityType="cds_zsv_c_orderdashboard.SAP__Signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_zsv_c_orderdashboard.SAP__ValueHelp" sap:content-version="1"/>
+                <EntitySet Name="I_CompanyCodeVH" EntityType="cds_zsv_c_orderdashboard.I_CompanyCodeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_PlantStdVH" EntityType="cds_zsv_c_orderdashboard.I_PlantStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_CUSTSODASH" EntityType="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_GETDEFAULTSHMORE" EntityType="cds_zsv_c_orderdashboard.ZBSD_GETDEFAULTSHMOREType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_SalesOrganization" EntityType="cds_zsv_c_orderdashboard.ZBSD_SalesOrganizationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_TIMEROLLUP" EntityType="cds_zsv_c_orderdashboard.ZBSD_TIMEROLLUPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBXA_YesNo" EntityType="cds_zsv_c_orderdashboard.ZBXA_YesNoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_CUSTSODASH" EntityType="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_CUSTSODASHADPRICE" EntityType="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHADPRICEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_CUSTSODASHAGGR" EntityType="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHAGGRType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_CUSTSODASHDELIVERY" EntityType="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHDELIVERYType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_CUSTSODASHSPPRICE" EntityType="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHSPPRICEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_CUSTSOITEMDASH" EntityType="cds_zsv_c_orderdashboard.ZCSD_CUSTSOITEMDASHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_CUSTSOSHIPMENT" EntityType="cds_zsv_c_orderdashboard.ZCSD_CUSTSOSHIPMENTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_E_ItemProposalSet" EntityType="cds_zsv_c_orderdashboard.ZCSD_E_ItemProposalType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCSD_E_ItemProposal" EntityType="cds_zsv_c_orderdashboard.ZCSD_E_ItemProposalParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_DefaultSHVH" EntityType="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZRSD_CUSTSODASHCONTACTS" EntityType="cds_zsv_c_orderdashboard.ZRSD_CUSTSODASHCONTACTSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZRSD_CUSTSODASHVM" EntityType="cds_zsv_c_orderdashboard.ZRSD_CUSTSODASHVMType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:requires-filter="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_BCFBE57BC0FFD382B1CF4555DED8E402" Association="cds_zsv_c_orderdashboard.assoc_BCFBE57BC0FFD382B1CF4555DED8E402" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_E_ItemProposal" Role="FromRole_assoc_BCFBE57BC0FFD382B1CF4555DED8E402"/>
+                    <End EntitySet="ZCSD_E_ItemProposalSet" Role="ToRole_assoc_BCFBE57BC0FFD382B1CF4555DED8E402"/>
+                </AssociationSet>
+                <AssociationSet Name="to_formatSet" Association="cds_zsv_c_orderdashboard.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/>
+                    <End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/>
+                </AssociationSet>
+                <AssociationSet Name="to_pdfstandardSet" Association="cds_zsv_c_orderdashboard.to_pdfstandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_pdfstandard"/>
+                    <End EntitySet="SAP__PDFStandardSet" Role="ToRole_to_pdfstandard"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B2AB9FEF68EC4793103976C07843AB98" Association="cds_zsv_c_orderdashboard.assoc_B2AB9FEF68EC4793103976C07843AB98" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_CUSTSODASH" Role="FromRole_assoc_B2AB9FEF68EC4793103976C07843AB98"/>
+                    <End EntitySet="ZCSD_CUSTSOITEMDASH" Role="ToRole_assoc_B2AB9FEF68EC4793103976C07843AB98"/>
+                </AssociationSet>
+                <AssociationSet Name="to_tablecolumnsSet" Association="cds_zsv_c_orderdashboard.to_tablecolumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/>
+                    <End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E1BC9DDA65FC639A97E83355DC5BAC7A" Association="cds_zsv_c_orderdashboard.assoc_E1BC9DDA65FC639A97E83355DC5BAC7A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCSD_CUSTSOITEMDASH" Role="FromRole_assoc_E1BC9DDA65FC639A97E83355DC5BAC7A"/>
+                    <End EntitySet="ZCSD_CUSTSODASH" Role="ToRole_assoc_E1BC9DDA65FC639A97E83355DC5BAC7A"/>
+                </AssociationSet>
+                <AssociationSet Name="to_signatureSet" Association="cds_zsv_c_orderdashboard.to_signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/>
+                    <End EntitySet="SAP__SignatureSet" Role="ToRole_to_signature"/>
+                </AssociationSet>
+                <AssociationSet Name="to_coverpageSet" Association="cds_zsv_c_orderdashboard.to_coverpage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/>
+                    <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/CentralBlock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CentralBlock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/SalesOrganizationBlock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Org Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganizationBlock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/loevm_c" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Co Code Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_c"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/loevm_orgordblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Org Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_orgordblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/loevm_companypostblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Posting Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_companypostblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/loevm_archblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Archiving Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_archblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/loevm_postblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Co Code Posting Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_postblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/loevm_ordblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Order Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_ordblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/CreditBLock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Credit Management Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreditBLock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FiscalYearVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinancialManagementArea"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="mtext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHType/Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_DefaultSHVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="altkn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="storeno"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
+                                    <PropertyValue Property="ValueListProperty" String="kunnr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="stras"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ort01"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="pstlz"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier1_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="vkorg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzorig_shipto"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="sm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ss"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OpenCustomerSalesDashboard"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ow"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier2_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier3_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="bukrs"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzlatitude"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzlongitude"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="telf1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="regio"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Deleted"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditBLock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmailAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Status_Criticality"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName4"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="smvkorg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ADRNR"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="loevm_ordblock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="loevm_postblock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="loevm_archblock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="loevm_companypostblock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="loevm_orgordblock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="loevm_c"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationBlock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CentralBlock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsDefaultEmailAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterConstant">
+                                    <PropertyValue Property="Constant" Bool="true"/>
+                                    <PropertyValue Property="ValueListProperty" String="IsDefaultEmailAddress"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHAGGRType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FiscalYearVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinancialManagementArea"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHAGGRType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="mtext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHAGGRType/Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_GETDEFAULTSHMORE"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
+                                    <PropertyValue Property="ValueListProperty" String="kunnr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="altkn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="storeno"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="stras"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ort01"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="regio"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="pstlz"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="telf1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="sm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ss"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier1_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier2_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier3_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ow"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="bukrs"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="smvkorg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmailAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ADRNR"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzorig_shipto"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzlatitude"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzlongitude"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="vkorg"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_E_ItemProposalParameters/p_vkorg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="I_PlantStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_vkorg"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/vkorg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="vkorg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="mtext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/Deleted" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Deleted"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Deleted"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/CreditBLock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Credit Management Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreditBLock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/CentralBlock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CentralBlock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/SalesOrganizationBlock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Org Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganizationBlock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/loevm_c" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Co Code Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_c"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/loevm_orgordblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Order Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_orgordblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/loevm_companypostblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Posting Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_companypostblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/loevm_archblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Archiving Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_archblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/loevm_postblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Co Code Posting Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_postblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/loevm_ordblock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Order Block"/>
+                        <PropertyValue Property="CollectionPath" String="ZBXA_YesNo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="loevm_ordblock"/>
+                                    <PropertyValue Property="ValueListProperty" String="Flag"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZRSD_CUSTSODASHVMType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FiscalYearVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinancialManagementArea"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZRSD_CUSTSODASHVMType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="mtext"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZRSD_CUSTSODASHVMType/Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_GETDEFAULTSHMORE"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
+                                    <PropertyValue Property="ValueListProperty" String="kunnr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="altkn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="storeno"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="stras"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ort01"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="regio"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="pstlz"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="telf1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="sm"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ss"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier1_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier2_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cu_hier3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hier3_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ow"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="bukrs"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="smvkorg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmailAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ADRNR"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzorig_shipto"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzlatitude"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzlongitude"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="vkorg"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZRSD_CUSTSODASHVMType/TimeRollup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Time Rollup"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_TIMEROLLUP"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TimeRollup"/>
+                                    <PropertyValue Property="ValueListProperty" String="timerollup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="timerolluptext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.cds_zsv_c_orderdashboard_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHType/to_Item" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.cds_zsv_c_orderdashboard_Entities/ZCSD_CUSTSODASH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiresFilter" Bool="true"/>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>CompanyCode</PropertyPath>
+                                <PropertyPath>SalesOrganization</PropertyPath>
+                                <PropertyPath>Customer</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Customer"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Item"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.cds_zsv_c_orderdashboard_Entities/ZCSD_CUSTSODASHAGGR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiresFilter" Bool="true"/>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>Customer</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.cds_zsv_c_orderdashboard_Entities/ZCSD_E_ItemProposal" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_vkorg</PropertyPath>
+                                <PropertyPath>p_kunwe</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_vkorg</PropertyPath>
+                                <PropertyPath>p_kunwe</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.cds_zsv_c_orderdashboard_Entities/ZRSD_CUSTSODASHVM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiresFilter" Bool="true"/>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>CurrentSales</PropertyPath>
+                                <PropertyPath>PreviousSales</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>Customer</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.cds_zsv_c_orderdashboard_Entities/ZCSD_CUSTSOITEMDASH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Header"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Shipto"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Communication.Contact">
+                    <Record>
+                        <PropertyValue Property="tel">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred Communication.PhoneType/work"/>
+                                    <PropertyValue Property="uri" Path="telf1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="email">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="address" Path="EmailAddress"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_GETDEFAULTSHMOREType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Shipto"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Shipto"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Communication.Contact">
+                    <Record>
+                        <PropertyValue Property="tel">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred Communication.PhoneType/work"/>
+                                    <PropertyValue Property="uri" Path="telf1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="email">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="address" Path="EmailAddress"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/EmailAddress" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.IsEmailAddress"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZBSD_CUSTSODASHType/telf1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.IsPhoneNumber"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZCSD_CUSTSODASHAGGRType/TimeRollup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="Sales"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/EmailAddress" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.IsEmailAddress"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.ZI_DefaultSHVHType/telf1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.IsPhoneNumber"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.cds_zsv_c_orderdashboard_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="./$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="SAP__MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.SAP__DocumentDescription">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__MyDocumentDescriptions"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__UnitOfMeasure/UnitCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+                <Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.AlternateKeys">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Key">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="Name" Path="ExternalCode"/>
+                                        <PropertyValue Property="Alias" String="ExternalCode"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__DocumentDescription/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__DocumentDescription/CreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__DocumentDescription" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__capabilties.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Format/Orientation"/>
+                                    <PropertyValue Property="AllowedExpressions" String="Multivalue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Format/PaperSize"/>
+                                    <PropertyValue Property="AllowedExpressions" String="Multivalue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__Format/FitToPage/ErrorRecoveryBehavior" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="../../../../SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27ErrorRecoveryBehaviour%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__Format/FontName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__Format/PaperSize" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27PaperSize%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__Format/Orientation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_c_orderdashboard.SAP__TableColumns/HorizontalAlignment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HorizontalAlignment%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZSB_C_ORDERDASHBOARD/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

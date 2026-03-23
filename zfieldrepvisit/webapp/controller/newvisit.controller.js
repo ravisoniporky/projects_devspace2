@@ -11,6 +11,8 @@ sap.ui.define(
     "use strict";
 
     return BaseController.extend("customer.porky.zfieldrepvisit.controller.newvisit", {
+
+
       onInit: function () {
 
 
@@ -28,7 +30,8 @@ sap.ui.define(
         this.getView().setModel(new sap.ui.model.json.JSONModel(
           {
             "salesorg": "",
-            "moe": false
+            "moe": false,
+            "milesSet" : 3
 
           }
         ), "userValues");
@@ -219,7 +222,226 @@ sap.ui.define(
     
     // Store initial online status
     this._isOnline = navigator.onLine;
+
+
+
+
+                this.getOwnerComponent().getModel().attachRequestCompleted(function (oEvent) {
+
+                    if (oEvent.mParameters.url.includes("ZBMM_FieldRepNearbyCustomer") && !oEvent.mParameters.url.includes("$count")) {
+
+                        //  debugger;
+                        try{
+                        that.getView().byId("idSpots").removeAllItems()
+                        }catch(e){
+                          
+                        }
+
+                        var jsArray = [];
+                        var jObjArray = JSON.parse(oEvent.mParameters.response.responseText).d.results;
+
+                        that.getView().getModel("userValues").setProperty("/countShipTo", jObjArray.length)
+
+                        for (var count = 0; count < jObjArray.length; count++) {
+                            var dist = that.getDistanceFromLatLonInKm(jObjArray[count].zzlatitude, jObjArray[count].zzlongitude, that.uLat, that.uLon);
+                            dist = Math.round((dist + Number.EPSILON) * 100) / 100;
+                            if (dist === null) {
+                                sap.m.MessageToast.show("Fetching location...");
+                                return;
+                            }
+                            jsArray.push({
+                                "pos": jObjArray[count].zzlongitude + ";" + jObjArray[count].zzlatitude + ";0",
+                                "lat": jObjArray[count].zzlatitude,
+                                "long": jObjArray[count].zzlongitude,
+                                "tooltip": jObjArray[count].name1 + " " + jObjArray[count].DistanceInMiles + "miles",
+                                "type": "Error",
+                                "text": jObjArray[count].kunnr,
+                                "distance": Number(jObjArray[count].DistanceInMiles),
+                                "Shipto": jObjArray[count].kunnr,
+                                "ShiptoName": jObjArray[count].name1,
+                                "stras": jObjArray[count].stras,
+                                "Salesman": jObjArray[count].sm,
+                                "Scale": "1;1;1",
+                                "selected": true,
+                                "city": jObjArray[count].ort01,
+                                "level": jObjArray[count].hier1_name,
+                                "altkn": jObjArray[count].altkn,
+                                "sorg": jObjArray[count].vkorg,
+                                "CreditBLock": jObjArray[count].CreditBLock,
+                                "Deleted": jObjArray[count].Deleted,
+                                "CompanyCode": jObjArray[count].bukrs
+
+
+
+
+                            })
+
+                        }
+
+                        jsArray = that.insertAtIndex(jsArray, 0, {
+                            "pos": that.uLon + ";" + that.uLat + ";0",
+                            "tooltip": that.getView().getModel("customerModel").getProperty("/CustomerFullName"),
+                            "type": "Success",
+                            "text": that.getView().getModel("customerModel").getProperty("/CustomerFullName").length>15 ? that.getView().getModel("customerModel").getProperty("/CustomerFullName").substring(0,15)+"..." :that.getView().getModel("customerModel").getProperty("/CustomerFullName"),
+                            "Shipto": that.getView().getModel("customerModel").getProperty("/Customer"),
+                            "ShiptoName": that.getView().getModel("customerModel").getProperty("/CustomerFullName"),
+                            "stras": that.getView().getModel("customerModel").getProperty("/StreetName"),
+                            "Salesman": "",
+                            "distance": 0,
+                            "scale": "3;3;3",
+                            "selected": false,
+                            "city": that.getView().getModel("customerModel").getProperty("/CityName"),
+                            "level": "",
+                            "altkn": "",
+                            "sorg": that.getView().getModel("customerModel").getProperty("/SalesOrganization"),
+                            "CreditBLock": false,
+                            "Deleted": false,
+                            "CompanyCode": that.getView().getModel("customerModel").getProperty("/CompanyCode")
+
+
+
+                        });
+
+
+                        var jsObj = {
+                            "Spots": {
+                                "items": jsArray
+
+
+                            }
+                        };
+
+                        that.getView().setModel(new sap.ui.model.json.JSONModel(
+                            JSON.parse(JSON.stringify(jsObj))
+                        ), "latlongModel");
+                        that.getView().getModel("latlongModel").setSizeLimit("9999");
+                        that.getView().getModel("latlongModel").setData(jsObj);
+
+
+
+
+                           that.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel(
+                            JSON.parse(JSON.stringify(jsObj))
+                        ), "latlongModel");
+                        that.getOwnerComponent().getModel("latlongModel").setSizeLimit("9999");
+                        that.getOwnerComponent().getModel("latlongModel").setData(jsObj);
+
+                    }
+                });
+
+// Initialize prospect pipeline edit mode model
+    this.getView().setModel(new sap.ui.model.json.JSONModel({
+        editMode: false,
+        originalData: {}
+    }), "prospectPipelineModel");
+
       },
+
+      onNavBack: function(oEvent){
+  history.go(-1);
+      },
+
+
+
+      onToggleProspectEdit: function() {
+    var oProspectPipelineModel = this.getView().getModel("prospectPipelineModel");
+    var oCustomerModel = this.getView().getModel("customerModel");
+    var bCurrentEditMode = oProspectPipelineModel.getProperty("/editMode");
+    
+    if (!bCurrentEditMode) {
+        // Entering edit mode - store original values
+        oProspectPipelineModel.setProperty("/originalData", {
+            PriceExists: oCustomerModel.getProperty("/PriceExists"),
+            ProjectedSales: oCustomerModel.getProperty("/ProjectedSales"),
+            ProjectedDelivery: oCustomerModel.getProperty("/ProjectedDelivery")
+        });
+        oProspectPipelineModel.setProperty("/editMode", true);
+    } else {
+        // Exiting edit mode - restore original values
+        this.onCancelProspectEdit();
+    }
+},
+onCancelProspectEdit: function() {
+    var oProspectPipelineModel = this.getView().getModel("prospectPipelineModel");
+    var oCustomerModel = this.getView().getModel("customerModel");
+    var oOriginalData = oProspectPipelineModel.getProperty("/originalData");
+    
+    // Restore original values
+    oCustomerModel.setProperty("/PriceExists", oOriginalData.PriceExists);
+    oCustomerModel.setProperty("/ProjectedSales", oOriginalData.ProjectedSales);
+    oCustomerModel.setProperty("/ProjectedDelivery", oOriginalData.ProjectedDelivery);
+    
+    oProspectPipelineModel.setProperty("/editMode", false);
+},
+
+onSaveProspectPipeline: function() {
+    var that = this;
+    var oView = this.getView();
+    var oCustomerModel = oView.getModel("customerModel");
+    var oProspectPipelineModel = oView.getModel("prospectPipelineModel");
+    
+    // Get values from the model
+    var sKunnr = oCustomerModel.getProperty("/Customer");
+    var fProjectedSales = oCustomerModel.getProperty("/ProjectedSales");
+    var dProjectedDelivery = oCustomerModel.getProperty("/ProjectedDelivery");
+    var bPriceExists = oCustomerModel.getProperty("/PriceExists");
+    
+    // Validation
+    if (!sKunnr) {
+        sap.m.MessageBox.error("Customer number is required");
+        return;
+    }
+    
+    // Convert date to SAP format /Date(timestamp)/
+    var sDateString = "";
+    if (dProjectedDelivery) {
+        var timestamp = new Date(dProjectedDelivery).getTime();
+        sDateString = "/Date(" + timestamp + ")/";
+    }
+    
+    // Prepare payload
+    var oPayload = {
+        "Prospect": {
+            "Kunnr": sKunnr,
+            "Zzprojectedsales": fProjectedSales ? fProjectedSales.toString() : "0",
+            "Zzprojecteddelv": sDateString === "" ? null : sDateString,
+            "Zzpriceexists": bPriceExists ? "X" : ""
+        },
+        "Testrun": "N"
+    };
+    
+    // Get OData model
+    var oDataModel = this.getOwnerComponent().getModel("ZODATA_FR_SRV");
+    
+    // Show busy indicator
+    oView.setBusy(true);
+    
+    // Call OData service
+    oDataModel.update("/ProspectUpdateSet('N')", oPayload, {
+        success: function(oData, response) {
+            oView.setBusy(false);
+            oProspectPipelineModel.setProperty("/editMode", false);
+            
+            sap.m.MessageToast.show("Prospect pipeline data updated successfully");
+            
+            // Refresh customer data
+            that.fetchCustomer(sKunnr, that.vkorg);
+        },
+        error: function(oError) {
+            oView.setBusy(false);
+            
+            var sErrorMessage = "Error updating prospect pipeline data";
+            try {
+                var oErrorResponse = JSON.parse(oError.responseText);
+                sErrorMessage = oErrorResponse.error.message.value || sErrorMessage;
+            } catch (e) {
+                // Use default error message
+            }
+            
+            sap.m.MessageBox.error(sErrorMessage);
+        }
+    });
+},
 
 
 
@@ -264,7 +486,7 @@ _checkAndSavePendingNotes: function() {
     var cookieKey = this.getCookieKey();
     var savedNotes = this.getCookie(cookieKey);
     
-    if(!savedNotes || savedNotes.length < 10) {
+    if(!savedNotes ) {
         console.log("No pending notes to save or notes too short");
         return;
     }
@@ -733,6 +955,41 @@ clean.forEach(element => {
             }
           });
       },
+      updateVisit_Type: function(visitid, Customer,vkorg){
+
+        debugger;
+       
+        var visittype = this.getView().getModel("visitModel").getData().Visittype;
+        var visitid = this.getView().getModel("visitModel").getData().Visitid;
+
+         var obj = {
+            Visittype :visittype
+        }
+        let defaultModel1 = this.getOwnerComponent().getModel("ZRMM_FRVISITV2_CDS");
+        // defaultModel1.setHeaders({"If-Match":"*",
+        //   "Content-Type" : "application/json",
+        //   "Prefer": "handling=strict",
+        //   "sap-message-scope": "BusinessObject",
+        //   "sap-contextid-accept" :"header",
+        //   "Accept-Language": "en"});
+        var that = this;
+
+        defaultModel1.update("/ZRMM_FRVISITV2('"+visitid+"')",obj, {
+            success: function (oData, oResponse) {
+              that.getView().setBusy(false);
+              // that.getView().byId("smartTable_visitF4_draft").rebindTable();
+             
+              // that.getView().byId("smartTable_visitF4_prospect_draft").rebindTable();
+
+
+              that.fetchCustomer(Customer,vkorg);
+            },
+
+            error: function (oError) {
+        //      sap.m.MessageBox.error("There in issue with this action.");
+            }
+          });
+      },
       covertDraftToVisit_ask: function(oEvent){
 
 
@@ -997,10 +1254,35 @@ clean.forEach(element => {
                 // ), "notesModel");
                   }
 
-                  if (that.visitid === "" || that.visitid === "NEW" || typeof that.visitid === 'undefined') {
+                  if ((that.visitid === "" || that.visitid === "NEW" || typeof that.visitid === 'undefined') && (!that.visitType || that.visitType === '')) {
                    if(that.visittype && that.visittype === 'SR' ){
 
                   that.getView().getModel("visitModel").setProperty("/Visittype", "SR"); // New Visit Type SR
+                   }
+
+                    if(that.visittype && that.visittype === 'F' ){
+
+                  that.getView().getModel("visitModel").setProperty("/Visittype", "F"); // New Visit Type SR
+                   }
+
+                     if(that.visittype && that.visittype === 'N' ){
+
+                  that.getView().getModel("visitModel").setProperty("/Visittype", "N"); // New Visit Type SR
+                   }
+
+                     if(that.visittype && that.visittype === 'R' ){
+
+                  that.getView().getModel("visitModel").setProperty("/Visittype", "R"); // New Visit Type SR
+                   }
+
+                    if(that.visittype && that.visittype === 'S' ){
+
+                  that.getView().getModel("visitModel").setProperty("/Visittype", "S"); // New Visit Type SR
+                   }
+
+                   if(that.visittype && that.visittype === 'RV' ){
+
+                  that.getView().getModel("visitModel").setProperty("/Visittype", "RV"); // New Visit Type SR
                    }
                    }
                   // }
@@ -1008,6 +1290,11 @@ clean.forEach(element => {
                 //   that.getView().setModel(new sap.ui.model.json.JSONModel({"authCustomer":true}
                 // ), "authCustomerModel");
                 that.onEnterNotes();
+
+                if(that.visitType === 'RV'){
+                  that.onEnterNotes1();
+                     that.getView().getModel("visitModel").setProperty("/Visittype", "RV"); // New Visit Type SR
+                }
               },
     
               error: function (oError) {
@@ -1429,6 +1716,10 @@ clean.forEach(element => {
       //  this.getView().byId("page").scrollToElement(this.getView().byId("CreateProductWizard"))
       //  this.getView().byId("CreateProductWizard").nextStep();
       },
+      onActivateNotes: function(oEvent){
+ this.onCreateVisit_AutoSave("");
+      //  debugger;
+      },
       onEnterNotes1: function(oEvent){
         // this.getView().byId("CreateProductWizard").nextStep();
         // this.getView().byId("CreateProductWizard").nextStep();
@@ -1470,14 +1761,76 @@ clean.forEach(element => {
         // }, 100);
       //  this.getView().byId("page").scrollToElement(this.getView().byId("CreateProductWizard"))
       //  this.getView().byId("CreateProductWizard").nextStep();
+
+      this.onCreateVisit_AutoSave("");
       },
 
+ 
+                 _setSalesOrgsToURL: function() {
+    var salesOrgData = this.getOwnerComponent().getModel("salesOrgCentralModel").getData();
+    if (salesOrgData && salesOrgData.length > 0) {
+        var salesOrgsString = salesOrgData.join(',');
+        var currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('salesOrgs', salesOrgsString);
+        window.history.replaceState({}, '', currentUrl.toString());
+    }
+},
+
+_getSalesOrgsFromURL: function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var salesOrgsParam = urlParams.get('salesOrgs');
+    if (salesOrgsParam) {
+        var salesOrgArray = salesOrgsParam.split(',');
+        this.getOwnerComponent().getModel("salesOrgCentralModel").setData(salesOrgArray);
+                            this.getView().getModel("userValues").setProperty("/salesOrgList",salesOrgArray)
+
+    }
+},
+
+
       _onRouteMatched: function (oEvent) {
+
+
+        var that = this;
         var shipto = oEvent.getParameter("arguments").shipto;
         var visitid = oEvent.getParameter("arguments").visitid;
         var vkorg = oEvent.getParameter("arguments").vkorg;
         var isnew = oEvent.getParameter("arguments").isnew;
         var isProspect = oEvent.getParameter("arguments").prospect;
+        that.visitType = undefined;
+
+
+        var currentUrl = window.location.href;
+var url = new URL(currentUrl);
+
+// Extract specific parameters
+var salesOrganization = url.searchParams.get("vkorg");
+var customer = url.searchParams.get("kunwe");
+
+
+if(!shipto && customer && !vkorg && salesOrganization){
+    shipto = customer;
+vkorg = salesOrganization;
+
+  isProspect = false;
+  isnew = true;
+  visitid = 'NEW';
+  that.visitType = 'RV'
+}
+        this.currentVisitID = visitid;
+         this.currentSalesOrg = vkorg;
+         this.currentShipto = shipto;
+
+             this._getSalesOrgsFromURL();
+
+            var salesOrgData = that.getOwnerComponent().getModel("salesOrgCentralModel") ? that.getOwnerComponent().getModel("salesOrgCentralModel").getData() : null;
+
+
+   if(salesOrgData && salesOrgData.length > 0){
+                            
+                            }else{
+
+                            }
 
         this.readSRVisitDefaultParam();
         if(!shipto && !vkorg && visitid){
@@ -1521,6 +1874,11 @@ clean.forEach(element => {
                 that.salesorg = salesorg.parva;
                 that.vkorg = salesorg.parva;
 
+                   if(salesOrgData && salesOrgData.length > 0){
+                            
+                            }else{
+
+                            
                 if(typeof that.getOwnerComponent().getModel("salesOrgCentralModel").getData().length === 'undefined' || that.getOwnerComponent().getModel("salesOrgCentralModel").getData().length === 0){
                 that.getOwnerComponent().getModel("salesOrgCentralModel").setData([that.vkorg]);
                 }else{
@@ -1528,6 +1886,8 @@ clean.forEach(element => {
 
                 //  [that.vkorg]
                 }
+
+              }
 
                 
                 that.getView().getModel("userValues").setProperty("/salesorg",that.vkorg)
@@ -2020,8 +2380,8 @@ clean.forEach(element => {
         that.getView().setModel(new sap.ui.model.json.JSONModel(JSON.parse(JSON.stringify(obj))
         ), "selectedKeyPeople");
         this.pDialogKeyPeople.then(function (oDialog) {
-
-
+          
+          that.pDialogKeyPeople_d = oDialog;
           oDialog.open();
 
 
@@ -2061,9 +2421,20 @@ clean.forEach(element => {
     
 
       onDialogCloseKeyPeople: function (oEvent) {
+//ddd
 
+        try{
 
+         this.pDialogOpenProspect_d.close();
+         this.pDialogOpenProspect_d.destroy();
+         this.pDialogOpenProspect_d = undefined;
+         this.pDialogOpenProspect = undefined;
+        }catch(e){
         oEvent.getSource().getParent().close();
+
+          this.pDialogKeyPeople_d.close()
+        }
+
    //     oEvent.getSource().getParent().destroy();
       },
 
@@ -2378,6 +2749,17 @@ clean.forEach(element => {
                 var oFilter = new sap.ui.model.Filter("vkorg", sap.ui.model.FilterOperator.EQ, element);
                 oBindingParams.filters.push(oFilter);              
               });
+
+
+
+                           oBindingParams.filters.push(new sap.ui.model.Filter("Deleted", sap.ui.model.FilterOperator.NE, true));
+
+
+          
+
+
+
+            //  oBindingParams.filters.push(new sap.ui.model.Filter("CreditBLock", sap.ui.model.FilterOperator.NE, true));
         
 
       },
@@ -2396,6 +2778,15 @@ clean.forEach(element => {
                 var oFilter = new sap.ui.model.Filter("SalesOrganization", sap.ui.model.FilterOperator.EQ, element);
                 oBindingParams.filters.push(oFilter);              
               });
+  // oBindingParams.filters.push(new sap.ui.model.Filter("Deleted", sap.ui.model.FilterOperator.NE, true));
+
+
+          
+
+
+
+            //  oBindingParams.filters.push(new sap.ui.model.Filter("CreditBLock", sap.ui.model.FilterOperator.NE, true));
+              
         
 
       },
@@ -3373,6 +3764,10 @@ clean.forEach(element => {
       },
 onCreateVisit_AutoSave: function (oEvent) {
     var that = this;
+
+    if(typeof oEvent !== 'object'){
+         var notesValue = oEvent;
+    }else
     var notesValue = oEvent.getSource().getValue();
     
     // ALWAYS store in cookie immediately - this is the source of truth
@@ -3384,8 +3779,13 @@ onCreateVisit_AutoSave: function (oEvent) {
     if(notesModel && notesModel.getData().results && notesModel.getData().results[0]) {
         notesModel.getData().results[0].Notes = notesValue;
     }
+var visitId;
+    try{
     
-    var visitId = that.getView().getModel("visitModel").getProperty("/Visitid");
+     visitId = that.getView().getModel("visitModel").getProperty("/Visitid");
+    }catch(e){
+       return false;
+    }
     
     // Only attempt server save if online
     if(!this._isOnline || !navigator.onLine) {
@@ -3399,7 +3799,7 @@ onCreateVisit_AutoSave: function (oEvent) {
     }
     
     this._saveTimeout = setTimeout(function() {
-        if(notesValue.length >= 10) {
+        // if(notesValue.length >= 10) {
             if(visitId === 'NEW' || visitId === '') {
                 that.getView().getModel("visitModel").setProperty("/status","1");
                 that.onCreateVisit_Periodic(that);
@@ -3410,7 +3810,7 @@ onCreateVisit_AutoSave: function (oEvent) {
             } else {
                 that.onUpdateNotes_periodic();
             }
-        }
+        // }
     }, 1000); // Wait 1 second after user stops typing
 },
       onUpdateNotes_periodic_old: function(text){
@@ -3668,10 +4068,10 @@ onCreateVisit_Periodic: function(that){
         var cookieKey = that.getCookieKey();
         var notesFromCookie = that.getCookie(cookieKey);
         
-        if(!notesFromCookie || notesFromCookie.length < 10) {
-            console.log("Notes too short or empty - minimum 10 characters required");
-            return;
-        }
+        // if(!notesFromCookie ) {
+        //     console.log("Notes too short or empty - minimum 10 characters required");
+        //     return;
+        // }
         
         console.log("Creating draft visit with notes from cookie");
         
@@ -3687,9 +4087,11 @@ onCreateVisit_Periodic: function(that){
         
         dataPayload.to_notes.results = [notesModelData];
         dataPayload.status = "1";
+        this.getView().setBusy(true);
         
         prodSet.create("/ZRMM_FRVISITV2", dataPayload, {
             success: function (result) {
+               that.getView().setBusy(false);
                 console.log("Draft visit created successfully: " + result.Visitid);
                 
                 that.getView().byId("CreateProductWizard").getSteps()[5].setValidated(true);
@@ -3773,7 +4175,7 @@ _startPeriodicCheck: function() {
             var savedNotes = that.getCookie(cookieKey);
             var visitId = that.getView().getModel("visitModel")?.getProperty("/Visitid");
             
-            if(savedNotes && savedNotes.length >= 10 && 
+            if(savedNotes  && 
                (visitId === 'NEW' || visitId === '' || typeof visitId === 'undefined')) {
                 console.log("Periodic check: found pending notes - attempting to save");
                 that._checkAndSavePendingNotes();
@@ -4360,6 +4762,11 @@ _stopPeriodicCheck: function() {
         this.getView().setBusy(true);
      
         var object = this.getView().getModel("selectedKeyPeople").getData();
+        if(this.getView().getModel("chageModeModel").getData().valueStateEmail === "Error"){
+
+          sap.m.MessageBox.error("Please enter a valid email");
+          return;
+        }
 
 
 
@@ -4821,7 +5228,7 @@ _stopPeriodicCheck: function() {
           sap.m.MessageBox.show(email + " is not a valid email address");
 
           oEvent.getSource().setValueState(sap.ui.core.ValueState.Error);
-          oEvent.getSource().setValue('')
+         // oEvent.getSource().setValue('')
           return;
         } else {
           oEvent.getSource().setValueState(sap.ui.core.ValueState.None);
@@ -4853,7 +5260,7 @@ _stopPeriodicCheck: function() {
           sap.m.MessageBox.show(email + " is not a valid email address");
 
           oEvent.getSource().setValueState(sap.ui.core.ValueState.Error);
-          oEvent.getSource().setValue('')
+         // oEvent.getSource().setValue('')
           return;
         } else {
           oEvent.getSource().setValueState(sap.ui.core.ValueState.None);
@@ -4947,14 +5354,20 @@ _stopPeriodicCheck: function() {
           this._oGlobalFilter = new sap.ui.model.Filter([
             //         var oFilter = new sap.ui.model.Filter("Prodh1", sap.ui.model.FilterOperator.Contains,keyterm);
             new sap.ui.model.Filter("Name1", sap.ui.model.FilterOperator.Contains, sQuery),
-
-          ], false);
+             new sap.ui.model.Filter("SalesOrganization", sap.ui.model.FilterOperator.EQ, ''
+)
+          ], true);
 
           list.getBinding("items").filter(this._oGlobalFilter, "Application");
         } else {
 
-          list.getBinding("items").filter(null, "Application");
+             this._oGlobalFilter = new sap.ui.model.Filter([
+            //         var oFilter = new sap.ui.model.Filter("Prodh1", sap.ui.model.FilterOperator.Contains,keyterm);
+             new sap.ui.model.Filter("SalesOrganization", sap.ui.model.FilterOperator.EQ, ''
+)
+          ], true);
 
+          list.getBinding("items").filter(this._oGlobalFilter, "Application");
         }
       },
 
@@ -5050,7 +5463,15 @@ _stopPeriodicCheck: function() {
         this.oDefaultDialog.open();
 
         var aFilters = [];
-        var filter = new sap.ui.model.Filter("SalesOrganization", sap.ui.model.FilterOperator.EQ, '');
+        
+
+         var filter = new sap.ui.model.Filter([
+          //         var oFilter = new sap.ui.model.Filter("Prodh1", sap.ui.model.FilterOperator.Contains,keyterm);
+          new sap.ui.model.Filter("SalesOrganization", sap.ui.model.FilterOperator.EQ, '')
+
+
+        ], false);
+
 
         aFilters.push(filter);
 
@@ -6714,12 +7135,23 @@ _stopPeriodicCheck: function() {
           this.getView().byId("searchBoxGoogle").setValue("");
        
         }
+        if( this.getView().getModel("prospectModelPlaces"))
+           this.getView().getModel("prospectModelPlaces").setData({"places": []});
           if (!this.pDialogOpenProspect) {
             this.pDialogOpenProspect = this.loadFragment({
               name: "customer.porky.zfieldrepvisit.view.prospectF4"
             });
           } else {
+                    if( this.getView().getModel("prospectModelPlaces"))
+
+            this.getView().getModel("prospectModelPlaces").setData({"places": []});
   
+             that.pDialogOpenProspect_d.destroy();
+                that.pDialogOpenProspect_d = undefined;
+
+           this.pDialogOpenProspect = this.loadFragment({
+              name: "customer.porky.zfieldrepvisit.view.prospectF4"
+            });
           }
        
         
@@ -6727,6 +7159,7 @@ _stopPeriodicCheck: function() {
   
   
             oDialog.open();
+oDialog.getContent()[0].setSelectedKey("Search");
 
 
             let prodSet = that.getOwnerComponent().getModel("ZODATA_FR_SRV");
@@ -6820,15 +7253,68 @@ _stopPeriodicCheck: function() {
       });
         },
 
+
+         splitDisplayName: function(displayName, maxLength = 35) {
+    const text = displayName.text || displayName; // Handle both object and string
+    
+    if (text.length <= maxLength) {
+        return {
+            Name1: text,
+            Name2: ""
+        };
+    }
+    
+    // Find the last space within the maxLength limit
+    let splitIndex = maxLength;
+    let lastSpaceIndex = text.lastIndexOf(' ', maxLength);
+    
+    // If we found a space within the limit, use that as split point
+    if (lastSpaceIndex > 0) {
+        splitIndex = lastSpaceIndex;
+    } else {
+        // If no space found within limit, find the first space after maxLength
+        let firstSpaceAfter = text.indexOf(' ', maxLength);
+        if (firstSpaceAfter !== -1) {
+            splitIndex = firstSpaceAfter;
+        } else {
+            // No spaces at all, use original logic as fallback
+            splitIndex = maxLength;
+        }
+    }
+    
+    const name1 = text.substring(0, splitIndex).trim();
+    const name2 = text.substring(splitIndex).trim();
+    
+    // Handle case where Name2 might still be too long
+    let finalName2 = name2;
+    if (name2.length > maxLength) {
+        const secondSplit = name2.lastIndexOf(' ', maxLength);
+        if (secondSplit > 0) {
+            finalName2 = name2.substring(0, secondSplit).trim();
+        } else {
+            finalName2 = name2.substring(0, maxLength).trim();
+        }
+    }
+    
+    return {
+        Name1: name1,
+        Name2: finalName2
+    };
+},
+
         onClickProspectGoogleSearch: function(oEvent){
 
      //     debugger;
           var obj = oEvent.getSource().getBindingContext("prospectModelPlaces").getObject();
 
           var obj1 = {};
-        obj1.Name1 =  obj.displayName.text.substring(0,35) ;
-        if(obj.displayName.text.length > 35)
-        obj1.Name2 =  obj.displayName.text.substring(35,obj.displayName.text.length) ;
+        // obj1.Name1 =  obj.displayName.text.substring(0,35) ;
+        // if(obj.displayName.text.length > 35)
+        // obj1.Name2 =  obj.displayName.text.substring(35,obj.displayName.text.length) ;
+
+        const splitResult = this.splitDisplayName(obj.displayName, 35);
+obj1.Name1 = splitResult.Name1;
+obj1.Name2 = splitResult.Name2;
         obj1.Street =  obj.formattedAddress.split(",")[0] ;
         obj1.Ort01 =   obj.formattedAddress.split(",")[1] ;
         obj1.Regio = obj.formattedAddress.split(",")[2].trim().split(" ")[0]  ;
@@ -6842,6 +7328,7 @@ _stopPeriodicCheck: function() {
         this.getView().getModel("newProspect").setProperty("/Regio",obj1.Regio);
         this.getView().getModel("newProspect").setProperty("/TelNumber",obj1.TelNumber);
         this.getView().getModel("newProspect").setProperty("/Pstlz",obj1.Zip);
+        this.getView().getModel("newProspect").setProperty("/Land1",'US');
 
         oEvent.getSource().getParent().getParent().getParent().getParent().setSelectedKey("Heavy")
 
@@ -6860,9 +7347,19 @@ _stopPeriodicCheck: function() {
         return;
 
        }
+
+       if(data1.Zzpriceexists && data1.Zzpriceexists === true){
+        data1.Zzpriceexists = 'X'
+       }else{
+         data1.Zzpriceexists = ''
+       }
+
+        if(data1.Zzprojectedsales && Array.isArray(data1.Zzprojectedsales)){
+        data1.Zzprojectedsales = data1.Zzprojectedsales[0]+"";
+       }
           this.dialogProspect = oEvent.getSource().getParent().getParent().getParent().getParent().getParent().getParent().getParent().getParent();
 
-          var data = {Prospect:data1,Testrun:'' };
+          var data = {Prospect:data1,Testrun:'N' };
           var that = this;
           let prodSet = this.getOwnerComponent().getModel("ZODATA_FR_SRV");
 
@@ -6890,11 +7387,15 @@ _stopPeriodicCheck: function() {
                     that.fetchCustomer(result.Prospect.Kunnr, that.vkorg);
                     that.pDialogOpenProspect_d.close();
                     
+                  }else{
+                    that.getView().byId("prospectIconTab").setSelectedKey("Ok")
                   }
                 },
                 dependentOn: that.getView()
               });
               that.getView().getModel("newProspect").setData({});
+                  that.getView().setModel(new sap.ui.model.json.JSONModel({"Land1":"US"}
+              ), "newProspect");
               that.dialogProspect.setBusy(false);
 
   
@@ -6903,24 +7404,34 @@ _stopPeriodicCheck: function() {
             error: function (err) {
               // some error occuerd 
               that.dialogProspect.setBusy(false);
-              
-  
-  
-  
-  
+
               if(JSON.parse(err.responseText).error.message.value){
-                sap.m.MessageBox.error(JSON.parse(err.responseText).error.message.value );
+
+                var jsmsg = JSON.parse(err.responseText).error.message.value;
+                var splitArray = jsmsg.split("<>");
+                if(jsmsg.split("<>").length>1){
+                  var msg1 = splitArray[0];
+                  var msg2 = splitArray[1];
+                  var msg3 = splitArray[2];
+                  var msg4 = splitArray[3];
+                     var msg5 = splitArray[4];
+
+                }
+                sap.m.MessageBox.error(msg1 +"\n"+msg2+"\n"+msg3+"\n"+msg4 +"\n"+msg5 );
   
               }else{
                 sap.m.MessageBox.error("There is an issue in creating new customer prospect. Please check data and try again." );
               }
-  
-              
-  
+
             }
           }
   
           );
+
+
+
+
+          
         },
 
         onOpenSMF4Help: function(oEvent){
@@ -7138,7 +7649,7 @@ recoverAndSaveNotesFromCookie: function() {
     var cookieKey = this.getCookieKey();
     var savedNotes = this.getCookie(cookieKey);
     
-    if(savedNotes && savedNotes.length >= 10) {
+    if(savedNotes ) {
         // Update the model with cookie data
         var notesModel = this.getView().getModel("notesModel");
         if(notesModel && notesModel.getData().results) {
@@ -7165,6 +7676,392 @@ recoverAndSaveNotesFromCookie: function() {
     }
 },
 
+    openMap: function (oEvent) {
+
+
+
+                if (!this.uLat) {
+
+                    sap.m.MessageToast.show("Fetching location...");
+                    this.getLocation_init();
+                    return;
+                }
+                if (this.getView().getModel("userValues").getProperty("/milesSet") === '') {
+                    this.getView().getModel("userValues").setProperty("/milesSet", 3);
+                }
+
+                //   this.extractShipto1();
+                this.getView().setModel(new sap.ui.model.json.JSONModel({
+                    deleted: false,
+                    creditBlock: false
+                }), "searchModel");
+                // create dialog lazily
+                if (!this.pDialogMap) {
+                    this.pDialogMap = this.loadFragment({
+                        name: "customer.porky.zfieldrepvisit.view.mapview1"
+                    });
+                } else {
+
+                }
+                var that = this;
+                this.pDialogMap.then(function (oDialog) {
+
+                  that.mapDialog = oDialog;
+
+                    oDialog.open();
+
+
+                    var filter = new sap.ui.model.Filter([
+                        new sap.ui.model.Filter("Deleted", sap.ui.model.FilterOperator.NE, true),
+                        new sap.ui.model.Filter("CreditBLock", sap.ui.model.FilterOperator.NE, true)
+
+                    ], true);
+
+
+
+
+                    //     that.byId("idProductsTable").getBinding("items").filter(filter, "Application");
+
+                    // //    that.getView().getModel("userValues").setProperty("/userValues",  that.byId("idProductsTable").getItems())
+                    //     setTimeout(() => {
+                    //         that._oGlobalFilter = new sap.ui.model.Filter([
+                    //             //         var oFilter = new sap.ui.model.Filter("Prodh1", sap.ui.model.FilterOperator.Contains,keyterm);
+
+
+                    //             new sap.ui.model.Filter("Deleted", sap.ui.model.FilterOperator.NE, true),
+                    //             new sap.ui.model.Filter("CreditBLock", sap.ui.model.FilterOperator.NE, true)
+
+                    //         ], true);
+
+
+
+                    //         that.byId("idProductsTable").getBinding("items").filter(that._oGlobalFilter, "Application");
+                    //     that.getView().getModel("userValues").setProperty("/countShipTo",  that.byId("idProductsTable").getItems().length)
+
+                    //   }, 200);
+
+                    that.getView().byId("mapSlider").setValue(3);
+
+                    var oMap = that.getView().byId("vbi");
+                    // that.getLocation();
+
+                    var oMapConfig = {
+                        "MapProvider": [{
+                            "name": "GMAP",
+                            "Source": [{
+                                "id": "s1",
+                                "url": "https://mt.google.com/vt/lyrs=m&x={X}&y={Y}&z={LOD}"
+                            }]
+                        }],
+                        "MapLayerStacks": [{
+                            "name": "DEFAULT",
+                            "MapLayer": {
+                                "name": "layer1",
+                                "refMapProvider": "GMAP",
+                                "opacity": "1",
+                                "colBkgnd": "RGB(255,255,255)"
+                            }
+                        }]
+                    };
+                    
+                    oMap.setMapConfiguration(oMapConfig);
+                    oMap.setRefMapLayerStack("DEFAULT");
+                    oMap.setCenterPosition(that.getView().getModel("customerModel").getProperty("/Longitude") + ";" + that.getView().getModel("customerModel").getProperty("/Latitude"));
+
+                    that.onSearchCustomersMapCenter(that.getView().getModel("customerModel").getProperty("/Longitude"),that.getView().getModel("customerModel").getProperty("/Latitude"));
+                });
+                //   setTimeout(() => {
+                //    that.getView().byId("vbi").setCenterPosition(that.uLon + ";" + that.uLat);
+
+                //   }, 1500);
+
+                this.getView().addDependent(this.pDialogMap);
+
+
+
+
+
+
+
+
+            },
+
+                onSearchCustomersMapCenter: function (long,lat) {
+
+                //  debugger;
+                var oMap = this.getView().byId("vbi");
+
+                var centerLoc = oMap.getCenterPosition();
+
+
+                this.uLat = lat;
+                this.uLon = long;
+ this.getView().byId("smartTable_custF4_map").rebindTable();
+            },
+
+                      onBeforeRebindCustomerF4_map: function (oEvent) {
+
+
+                if (this.getView().getModel("userValues").getProperty("/milesSet") === '') {
+                    this.getView().getModel("userValues").setProperty("/milesSet", 3);
+                }
+                var stringPath = "/ZBMM_FieldRepNearbyCustomer(p_lat=" + encodeURIComponent(Number(this.uLat)) + "m,p_long=" + encodeURIComponent(Number(this.uLon)) + "m,p_distinm=" + this.getView().getModel("userValues").getProperty("/milesSet") + ")/Set";
+
+                stringPath = (stringPath);
+                oEvent.getSource().setTableBindingPath(stringPath);
+
+                var oBindingParams = oEvent.getParameter("bindingParams");
+
+
+
+
+                var salesOrgList = this.getOwnerComponent().getModel("salesOrgCentralModel").getData();
+
+
+                salesOrgList.forEach(element => {
+                    var oFilter = new sap.ui.model.Filter("vkorg", sap.ui.model.FilterOperator.EQ, element);
+                    oBindingParams.filters.push(oFilter);
+                });
+
+
+            },
+
+                  getDistanceFromLatLonInKm: function (lat1, lon1, lat2, lon2) {
+                var R = 6371; // Radius of the earth in km
+                var dLat = deg2rad(lat2 - lat1); // deg2rad below
+                var dLon = deg2rad(lon2 - lon1);
+                var a =
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                var d = R * c; // Distance in km
+                // conversion factor
+                const factor = 0.621371
+
+                // calculate miles
+                d = d * factor;
+
+                function deg2rad(deg) {
+                    return deg * (Math.PI / 180)
+                }
+                return d;
+            },
+                 insertAtIndex: function (arr, index, newItem) {
+                const insert = (arr, index, newItem) => [
+                    // part of the array before the specified index
+                    ...arr.slice(0, index),
+                    // inserted item
+                    newItem,
+                    // part of the array after the specified index
+                    ...arr.slice(index)
+                ]
+
+                return insert(arr, index, newItem);
+
+            },    closeDialog: function (oEvent) {
+                oEvent.getSource().getParent().getParent().close();
+
+            },
+
+             handlePopoverPress: function (oEvent) {
+
+
+                if (!this.oEscapePreventDialog) {
+                    var obj = oEvent.getSource().getBindingContext("latlongModel").getObject();
+                    this.oEscapePreventDialog = new Dialog({
+                        title: obj.ShiptoName,
+                        content: new sap.m.Text({
+                            text: obj.sorg + " - " + obj.Shipto + " - " + obj.ShiptoName + "; Street: " + obj.stras + "; Distance: " + obj.distance
+                        }).addStyleClass("sapUiSmallMargin"),
+                        buttons: [
+                            new sap.m.Button({
+                                text: "Close",
+                                press: function () {
+                                    this.oEscapePreventDialog.close();
+                                    // this.oEscapePreventDialog.destroyContents();
+                                    this.oEscapePreventDialog.destroy();
+                                    this.oEscapePreventDialog = undefined;
+                                }.bind(this)
+                            }),
+                            new sap.m.Button({
+                                text: "Directions",
+                                press: function () {
+                                    this.oEscapePreventDialog.close();
+                                    // this.oEscapePreventDialog.destroyContents();
+                                    this.oEscapePreventDialog.destroy();
+                                    this.oEscapePreventDialog = undefined;
+                                    this.mapsSelector(obj);
+                                }.bind(this)
+                            }),
+
+                            new sap.m.Button({
+                                text: "Sales Dashboard",
+                                press: function () {
+                                      this.oEscapePreventDialog.close();
+                                    // this.oEscapePreventDialog.destroyContents();
+                                    this.oEscapePreventDialog.destroy();
+                                    this.oEscapePreventDialog = undefined;
+                                    this.openSalesDashboard(obj);
+                                }.bind(this)
+                            }),
+                            new sap.m.Button({
+                                text: "New Visit",
+                                press: function () {
+                                    this.oEscapePreventDialog.close();
+                                    // this.oEscapePreventDialog.destroyContents();
+                                    this.oEscapePreventDialog.destroy();
+                                    this.oEscapePreventDialog = undefined;
+                                    this.openMapNewVisit(obj,this);
+                                }.bind(this)
+                            }),
+                            // ,
+                            // new sap.m.Button({
+                            //     text: "Filter Visit",
+                            //     press: function () {
+                            //         this.filterVisitByCustomer(obj.Shipto);
+                            //     }.bind(this)
+                            // })
+                        ]
+                        //,
+                        // escapeHandler: function (oPromise) {
+                        //     if (!this.oConfirmEscapePreventDialog) {
+                        //         this.oConfirmEscapePreventDialog = new Dialog({
+                        //             title: "Are you sure?",
+                        //             content: new sap.m.Text({ text: "Your unsaved changes will be lost" }),
+                        //             type: DialogType.Message,
+                        //             icon: IconPool.getIconURI("message-information"),
+                        //             buttons: [
+                        //                 new sap.m.Button({
+                        //                     text: "Yes",
+                        //                     press: function () {
+                        //                         this.oConfirmEscapePreventDialog.close();
+                        //                         oPromise.resolve();
+                        //                     }.bind(this)
+                        //                 }),
+                        //                 new sap.m.Button({
+                        //                     text: "No",
+                        //                     press: function () {
+                        //                         this.oConfirmEscapePreventDialog.close();
+                        //                         oPromise.reject();
+                        //                     }.bind(this)
+                        //                 })
+                        //             ]
+                        //         });
+                        //     }
+
+                        //     this.oConfirmEscapePreventDialog.open();
+                        // }.bind(this)
+                    });
+                }
+
+                this.oEscapePreventDialog.open();
+            },
+
+            mapsSelector: function (objectVar) {
+
+
+                var orgPosition = this.resetuLat + "," + this.resetuLong;
+                if /* if we're on iOS, open in Apple Maps */ ((navigator.platform.indexOf("iPhone") != -1) ||
+                    (navigator.platform.indexOf("iPad") != -1) ||
+                    (navigator.platform.indexOf("iPod") != -1))
+                    //   window.open("https://maps.google.com/maps?saddr="+orgPosition+"+&daddr="+objectVar.pos.split(";")[1]+","+objectVar.pos.split(";")[0]);
+                    window.open("https://maps.google.com/maps?saddr=" + orgPosition + "+&daddr=" + objectVar.stras + "+" + objectVar.city);
+
+                else /* else use Google */
+                    window.open("https://maps.google.com/maps?saddr=" + orgPosition + "+&daddr=" + objectVar.stras + "+" + objectVar.city);
+            },
+                    openMapNewVisit: function (obj,_view) {
+
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("newvisit", {
+                    visitid: 'NEW',
+                    shipto: obj.Shipto,
+                    vkorg: obj.sorg
+                });
+                _view.mapDialog.close()
+            },
+
+             openSalesDashboard: function (obj) {
+                //      debugger;
+                var shipto = obj.Shipto;
+                var vkorg = obj.sorg;
+
+
+
+
+
+                sap.ushell.Container.getServiceAsync("CrossApplicationNavigation").then(function (oService) {
+		oService.hrefForExternalAsync({
+			target: {
+			    semanticObject: "Sales",
+                        action: "ZSDCUSTDASH_OVP"
+			},
+			params: {
+
+                        "Customer": shipto,
+                        "SalesOrganization": vkorg,
+                        "CompanyCode": obj.CompanyCode
+
+
+                    }
+		}).then(function (sHref) {
+
+
+			oService.toExternal({
+				target: {
+					shellHash: sHref
+				}
+			});
+            setTimeout(() => {
+            location.reload();
+                
+            }, 1000);
+		});
+	});
+
+            },
+
+
+                        onChangeDistance: function (oEvent) {
+                var miles = oEvent.mParameters.value;
+                this.miles = miles;
+                this.getView().getModel("userValues").setProperty("/milesSet", miles);
+                //   this.setMilesShipto(miles);
+                var that = this;
+
+                // setTimeout(() => {
+                //     that._oGlobalFilter = new sap.ui.model.Filter([
+                //         //         var oFilter = new sap.ui.model.Filter("Prodh1", sap.ui.model.FilterOperator.Contains,keyterm);
+
+
+                //         new sap.ui.model.Filter("Deleted", sap.ui.model.FilterOperator.NE, true),
+                //         new sap.ui.model.Filter("CreditBLock", sap.ui.model.FilterOperator.NE, true)
+
+                //     ], true);
+
+
+
+                //     that.byId("idProductsTable").getBinding("items").filter(this._oGlobalFilter, "Application");
+                //     that.getView().getModel("userValues").setProperty("/countShipTo",  that.byId("idProductsTable").getItems().length)
+
+                //   }, 200);
+
+                this.getView().byId("smartTable_custF4_map").rebindTable();
+
+            },
+
+            openSalesDashboard_1: function(){
+
+              var obj = {}; 
+
+                     obj.Shipto = this.getView().getModel("customerModel").getData().Customer;
+obj.CompanyCode =this.getView().getModel("customerModel").getData().CompanyCode;
+obj.sorg = this.getView().getModel("customerModel").getData().SalesOrganization;
+this.openSalesDashboard (obj) ;
+           
+            
+            }
 
 
 

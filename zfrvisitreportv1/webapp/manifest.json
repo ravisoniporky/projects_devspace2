@@ -133,74 +133,30 @@
               "dateSettings": {
                 "useDateRange": true,
                 "selectedValues": "DAYS,WEEK,MONTH,DATERANGE ",
-                    "fields": {
-                        "CreatedDate": {
-                            "selectedValues": "TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4",
-                            "exclude": true
-                        },
-                        "DateProperty2": {
-                            "customDateRangeImplementation": "SOMULTIENTITY.ext.controller.customDateRangeType",
-                            "selectedValues": "FROM,TO,DAYS,WEEK,MONTH,DATERANGE,TODAY,TOMORROW,YEAR,YESTERDAY",
-                            "exclude": true
-                        },
-                        "DateProperty3": { 
-                            "selectedValues": "YESTERDAY",
-                            "exclude": false 
-                        },
-		            "DateTimeProperty1": { 
-                            "selectedValues": "MONTH",
-                            "exclude": true 
-                        }
-
-                        }
-                    
+                "fields": {
+                  "CreatedDate": {
+                    "selectedValues": "TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4",
+                    "exclude": true
+                  },
+                  "DateProperty2": {
+                    "customDateRangeImplementation": "SOMULTIENTITY.ext.controller.customDateRangeType",
+                    "selectedValues": "FROM,TO,DAYS,WEEK,MONTH,DATERANGE,TODAY,TOMORROW,YEAR,YESTERDAY",
+                    "exclude": true
+                  },
+                  "DateProperty3": {
+                    "selectedValues": "YESTERDAY",
+                    "exclude": false
+                  },
+                  "DateTimeProperty1": {
+                    "selectedValues": "MONTH",
+                    "exclude": true
+                  }
+                }
               }
             },
             "tableSettings": {
-              "type": "AnalyticalTable"
-            }
-          }
-        },
-        "pages": {
-          "ObjectPage|ZCMM_FRVISIT_Report": {
-            "entitySet": "ZCMM_FRVISIT_Report",
-            "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
-            "component": {
-              "name": "sap.suite.ui.generic.template.ObjectPage",
-              "settings": {
-            "condensedTableLayout": true,
-            "smartVariantManagement": true,
-            "enableTableFilterInPageVariant": true,
-            "filterSettings": {
-              "dateSettings": {
-                "selectedValues": "DAYS,WEEK,MONTH,DATERANGE ",
-                    "fields": {
-                        "CreatedDate": {
-                            "selectedValues": "TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4",
-                            "exclude": true
-                        },
-                        "DateProperty2": {
-                            "customDateRangeImplementation": "SOMULTIENTITY.ext.controller.customDateRangeType",
-                            "selectedValues": "FROM,TO,DAYS,WEEK,MONTH,DATERANGE,TODAY,TOMORROW,YEAR,YESTERDAY",
-                            "exclude": true
-                        },
-                        "DateProperty3": { 
-                            "selectedValues": "YESTERDAY",
-                            "exclude": false 
-                        },
-		            "DateTimeProperty1": { 
-                            "selectedValues": "MONTH",
-                            "exclude": true 
-                        }
-
-                        }
-                    
-              }
-            },
-            "tableSettings": {
-              "type": "AnalyticalTable"
-            }
-          }
+              "type": "AnalyticalTable",
+              "navigation": null
             }
           }
         }
@@ -212,3 +168,5 @@
     "archeType": "transactional"
   }
 }
+
+

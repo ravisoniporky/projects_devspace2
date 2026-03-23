@@ -262,7 +262,8 @@
 			<OverflowToolbar
 				active="true"
 				press="handleInfobarPress" >
-				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${salesorgModel>/salesorg} + ''}. {= ${userValues>/milesSet} === '' ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+				
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesOrgString} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
 			</OverflowToolbar>
 		</infoToolbar>
 		
@@ -351,7 +352,7 @@
 			<OverflowToolbar
 				active="true"
 				press="handleInfobarPress" >
-				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesOrgString} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
 
 			
 			</OverflowToolbar>
@@ -458,7 +459,7 @@
 			<OverflowToolbar
 				active="true"
 				press="handleInfobarPress" >
-				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/milesSet} === '' ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesOrgString} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
 			</OverflowToolbar>
 		</infoToolbar>
 		
@@ -537,7 +538,7 @@
 			<OverflowToolbar
 				active="true"
 				press="handleInfobarPress" >
-				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesOrgString} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
 			</OverflowToolbar>
 		</infoToolbar>
 
@@ -622,7 +623,7 @@
 			<OverflowToolbar
 				active="true"
 				press="handleInfobarPress" >
-				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/milesSet} === '' ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesOrgString} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
 			</OverflowToolbar>
 		</infoToolbar>
 		
@@ -742,7 +743,7 @@
 			<OverflowToolbar
 				active="true"
 				press="handleInfobarPress" >
-				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesorg} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
+				<Label text="{= ${userValues>/salesorg} ==='' ? 'No Sales Org set' : 'Sales Org set to '+ ${userValues>/salesOrgString} + ''}. {= ${userValues>/location} === false ? 'No miles radius set' : 'Radius set to '+ ${userValues>/milesSet} + ' miles'}. " />
 			</OverflowToolbar>
 		</infoToolbar>
 

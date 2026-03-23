@@ -12,7 +12,7 @@
      xmlns:upload="sap.m.upload"
      	xmlns:tnt="sap.tnt"
 >
-    <Page id="page"  title="{i18n>title} {= ${visitModel>/Visitid} !== 'NEW' ? ' - Visit#'+Number(${visitModel>/Visitid}) +' on '+  ${path: 'visitModel>/Createdatetime', type:'sap.ui.model.type.Date', constraints:{displayFormat:'Date'}}+' by '+${visitModel>/CreatedFullName} : ' - New Visit' }"
+    <Page id="page"  title="{i18n>title} {= ${visitModel>/Visitid} !== 'NEW' ? ' - Visit#'+Number(${visitModel>/Visitid}) +' on '+  ${path: 'visitModel>/Createdatetime', type:'sap.ui.model.type.Date', constraints:{displayFormat:'Date'}}+' by '+${visitModel>/CreatedFullName} : ' - New Visit' } for {customerModel>/CustomerFullName}"
         enableScrolling="false" >
     				<!-- <tnt:InfoLabel class="sapUiTinyMarginTopBottom"  text="{= ${visitModel>/Visitid} !== 'NEW' ? 'Visit#'+Number(${visitModel>/Visitid}) +' by '+${visitModel>/CreatedFullName} : ' - New Visit' }" renderMode="Loose" colorScheme="6" visible="{= ${visitModel>/Visitid} === 'NEW'? false: true}" width="100%" /> -->
 
@@ -232,7 +232,134 @@
            
 		</items>
 	</Table>
+
+
+
+
+
+
+
+
+       <Table id="idProductsTable3"
+    inset="false"
+    headerText="Prospect Pipeline"
+    visible="{=  ${customerModel>/Customer} === '' ? false: ${customerModel>/Customer} === 'undefined' ? false: ${prospectModel>/prospect} === true ? true : false}"
+>
+    <headerToolbar>
+        <OverflowToolbar>
+            <Title text="Prospect Pipeline" level="H2"/>
+            <ToolbarSpacer/>
+            <Button 
+                id="btnEditProspectPipeline"
+                icon="sap-icon://edit"
+                text="{= ${prospectPipelineModel>/editMode} ? 'Display' : 'Edit'}"
+                press="onToggleProspectEdit"
+                visible="{= ${chageModeModel>/changeMode} === true}"
+                type="{= ${prospectPipelineModel>/editMode} ? 'Emphasized' : 'Default'}"
+            />
+            <Button 
+                id="btnSaveProspectPipeline"
+                icon="sap-icon://save"
+                text="Save"
+                type="Emphasized"
+                press="onSaveProspectPipeline"
+                visible="{= ${prospectPipelineModel>/editMode} === true}"
+            />
+            <Button 
+                id="btnCancelProspectPipeline"
+                icon="sap-icon://decline"
+                text="Cancel"
+                press="onCancelProspectEdit"
+                visible="{= ${prospectPipelineModel>/editMode} === true}"
+            />
+        </OverflowToolbar>
+    </headerToolbar>
+    
+    <columns>
+        <Column width="33%">
+            <Text text="Given Prices"/>
+        </Column>
+        <Column width="33%">
+            <Text text="Proj. Weekly Sales"/>
+        </Column>
+        <Column width="34%">
+            <Text text="Proj. 1st Delv Date"/>
+        </Column>
+    </columns>
+    
+    <items>
+        <ColumnListItem vAlign="Middle">
+            <cells>
+                <!-- Given Price Field -->
+                <VBox>
+                    <Text 
+                        text="{= ${customerModel>/PriceExists} === true ? 'Yes' : 'No'}"
+                        visible="{= !${prospectPipelineModel>/editMode}}"
+                    />
+                    <CheckBox 
+                        selected="{customerModel>/PriceExists}"
+                        visible="{prospectPipelineModel>/editMode}"
+                        editable="true"
+                    />
+                </VBox>
+
+                <!-- Projected Weekly Sales Field -->
+                <VBox>
+                    <Text
+                        text="{
+                            path: 'customerModel>/ProjectedSales',
+                            type: 'sap.ui.model.type.Float'
+                        }"
+                        visible="{= !${prospectPipelineModel>/editMode}}"
+                    />
+                    <Input
+                        value="{
+                            path: 'customerModel>/ProjectedSales'
+                        }"
+                        visible="{prospectPipelineModel>/editMode}"
+                        type="Number"
+                        width="100%"
+                    />
+                </VBox>
+
+                <!-- Projected First Delivery Date Field -->
+                <VBox>
+                    <Text
+                        text="{
+                            path: 'customerModel>/ProjectedDelivery',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {
+                                pattern: 'MM/dd/yyyy',
+                                UTC: true
+                            }
+                        }"
+                        visible="{= !${prospectPipelineModel>/editMode}}"
+                    />
+                    <DatePicker
+                        value="{
+                            path: 'customerModel>/ProjectedDelivery',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {
+                                pattern: 'MM/dd/yyyy',
+                                UTC: true
+                            }
+                        }"
+                        visible="{prospectPipelineModel>/editMode}"
+                        width="100%"
+                        displayFormat="MM/dd/yyyy"
+                    />
+                </VBox>
+            </cells>
+        </ColumnListItem>
+    </items>
+</Table>
+
+
     <HBox justifyContent="End">
+            <Button text="Sales Dashboard"  press="openSalesDashboard_1"  icon="sap-icon://bbyd-dashboard" type="Accept" class="sapUiSmallMargin" visible="{= ${customerModel>/Customer} === '' ? false: ${prospectModel>/prospect} === true ? false : true}"/>
+
+        <Button text="Map View"  press="openMap"  icon="sap-icon://map" type="Emphasized" class="sapUiSmallMargin" visible="{= ${customerModel>/Customer} === '' ? false: true}"/>
+
     <Button text="Go Directly To Notes"  press="onEnterNotes1" visible="{= ${customerModel>/Customer} === '' ? false: true}" class="sapUiSmallMargin" type="Attention" icon="sap-icon://notes"/>
           </HBox>
                     <!-- <form:SimpleForm
@@ -614,7 +741,7 @@
                             <OverflowToolbar>
                                 <content>
                                     <Title
-                                        text="MOE List"
+                                        text="Existing MOE List"
                                         level="H2"
                                     />
                                     <ToolbarSpacer />
@@ -770,7 +897,8 @@
                         <!-- <Label text="Visit ID" class="porkythemelabel" />
                         <Text text="{visitModel>/Visitid}" class="porkythemebg "/> -->
                         <Label text="Visit Type" class="porkythemelabel" />
-                        <ComboBox selectedKey="{visitModel>/Visittype}" class="porkythemebg" items="{ZRMM_FRVISITV2_CDS>/ZBMM_VISITTYPE}"  editable="{= ${visitModel>/Visitid} === 'NEW'? true: false}">
+                        <ComboBox selectedKey="{visitModel>/Visittype}" selectionChange="updateVisit_Type"
+                         class="porkythemebg" items="{ZRMM_FRVISITV2_CDS>/ZBMM_VISITTYPE}"  editable="{= ${chageModeModel>/changeMode} === true? true : false}">
                             <core:Item
                                 key="{ZRMM_FRVISITV2_CDS>Value}"
                                 text="{ZRMM_FRVISITV2_CDS>Description}"
@@ -867,7 +995,9 @@
   visible="{= ${notesModel>status} === '1' ? Number(${visitModel>/Visitid}) === Number(${notesModel>Visitid}) ? true : false : true}"
 				key="{notesModel>Visitid}"
 				>
-				<TextArea value="{notesModel>Notes}"  editable="{= ${chageModeModel>/changeMode} === true? ${notesModel>editable} === true ? true : false : false}" valueState="{translateModel>valueState}" width="100%" height="200px" liveChange="onCreateVisit_AutoSave" />
+				<TextArea value="{notesModel>Notes}"  
+                editable="{= ${chageModeModel>/changeMode} === true? ${notesModel>editable} === true ? ${visitModel>/Visitid} !== 'NEW' ? true : false : false : false}" 
+                valueState="{translateModel>valueState}" width="100%" height="200px" liveChange="onCreateVisit_AutoSave" />
               <HBox>  
               
               <Button text="Spanish" press="translateCallES" class="sapUiSmallMarginEnd" enabled="{= ${translateModel>/lang} === 'English' ?  false : true}"></Button>

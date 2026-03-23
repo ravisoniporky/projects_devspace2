@@ -32,6 +32,72 @@
   
             },
 
+   setURL1: function(oFilterData) {
+    try {
+        if (!oFilterData) {
+            return;
+        }
+        
+        var sCurrentHash = window.location.hash;
+        var sBaseHash = sCurrentHash.split('?')[0]; // Get hash before any existing parameters
+        var sHashParams = sCurrentHash.split('?')[1] || ''; // Get existing hash parameters
+        
+        // Parse existing hash parameters
+        var oExistingParams = new URLSearchParams(sHashParams);
+        
+        // Check if the required parameters already exist with the same values
+        var bCompanyCodeExists = oFilterData.CompanyCode ? 
+            oExistingParams.get('CompanyCode') === oFilterData.CompanyCode : 
+            !oExistingParams.has('CompanyCode');
+            
+        var bSalesOrgExists = oFilterData.SalesOrganization ? 
+            (oExistingParams.get('SalesOrganization') === oFilterData.SalesOrganization && 
+             oExistingParams.get('vkorg') === oFilterData.SalesOrganization) : 
+            (!oExistingParams.has('SalesOrganization') && !oExistingParams.has('vkorg'));
+            
+        var bCustomerExists = oFilterData.Customer ? 
+            (oExistingParams.get('Customer') === oFilterData.Customer && 
+             oExistingParams.get('kunwe') === oFilterData.Customer) : 
+            (!oExistingParams.has('Customer') && !oExistingParams.has('kunwe'));
+        
+        // If all parameters already exist with the same values, don't update
+        if (bCompanyCodeExists && bSalesOrgExists && bCustomerExists) {
+            console.log("URL parameters already up to date, skipping reload");
+            return;
+        }
+        
+        // Create new URLSearchParams object for modifications
+        var oHashParams = new URLSearchParams(sHashParams);
+        
+        // Add/update filter parameters in the hash
+        if (oFilterData.CompanyCode) {
+            oHashParams.set('CompanyCode', oFilterData.CompanyCode);
+        }
+        if (oFilterData.SalesOrganization) {
+            oHashParams.set('SalesOrganization', oFilterData.SalesOrganization);
+            oHashParams.set('vkorg', oFilterData.SalesOrganization);
+        }
+        if (oFilterData.Customer) {
+            oHashParams.set('Customer', oFilterData.Customer);
+            oHashParams.set('kunwe', oFilterData.Customer);
+        }
+        
+        // Construct new hash with parameters
+        var sNewHashParams = oHashParams.toString();
+        var sNewHash = sBaseHash + (sNewHashParams ? '?' + sNewHashParams : '');
+        
+        // Update URL without page reload
+        var sNewUrl = window.location.origin + window.location.pathname + window.location.search + sNewHash;
+        window.history.replaceState(null, null, sNewUrl);
+        
+        console.log("URL hash updated with filters:", sNewHash);
+        location.reload(); // This will only execute if parameters changed
+        
+    } catch (e) {
+        console.error("Error updating URL hash with filters:", e);
+    }
+},
+
             extractRequest: function(){
 
                 var that = this;
@@ -41,8 +107,15 @@
                // let defaultModel1 = that.getOwnerComponent().getModel("ZRMM_FRVISITV2_CDS");
                 let defaultModel1 =   new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/ZRMM_FRVISITV2_CDS");
   
+                if(sap.ui.getCore().byId("application-Launch_TX-ZSDCUSTDASH_OVP-component---mainView--ovpGlobalFilter")){
+
+                
   
-                var filterData = this.getView().getParent().getComponentData().mainComponent.getGlobalFilter().getFilterData();
+                var filterData = sap.ui.getCore().byId("application-Launch_TX-ZSDCUSTDASH_OVP-component---mainView--ovpGlobalFilter").getFilterData();
+                }else{
+                  return null;
+                }
+             //   this.setURL(filterData);
                 var CompanyCode = filterData.CompanyCode;
                 var SalesOrganization = filterData.SalesOrganization;
                 var Customer = filterData.Customer;

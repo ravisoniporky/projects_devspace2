@@ -5,7 +5,7 @@ xmlns:core="sap.ui.core"
 	xmlns:f="sap.ui.layout.form"
 	xmlns="sap.m">
 	<Dialog
-		title="{selectedKeyPeople>/DepartmentName} {selectedKeyPeople>/Customer}" stretch="true">
+		title="{selectedKeyPeople>/DepartmentName} {selectedKeyPeople>/Customer} {customerModel>/CustomerFullName} / {customerModel>/StreetName}, {customerModel>/CityName}, {customerModel>/PostalCode}" stretch="true">
 		<content>
 		<f:SimpleForm 
 			editable="true"
@@ -47,6 +47,16 @@ xmlns:core="sap.ui.core"
 						<core:Item key="Y" text="Yes" />
 						<core:Item key="N" text="No" />
 				</ComboBox>
+
+
+
+				      <Label text="Position" />
+				<ComboBox selectedKey="{selectedKeyPeople>/Function}" items="{ZODATA_FR_SRV>/ZBMM_ContactFucntion}" editable="{chageModeModel>/changeMode}" selectionChange="onSelectedFunctionEvent">
+						<core:Item key="{ZODATA_FR_SRV>FunctionofPartner}" text="{ZODATA_FR_SRV>FunctionofPartnerName}" />
+				</ComboBox>
+
+
+
                <Label text="First Name" />
 				<Input value="{selectedKeyPeople>/ContactFirstName}" editable="{chageModeModel>/changeMode}"/>
 				<Label text="Last Name" />

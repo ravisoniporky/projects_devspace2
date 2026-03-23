@@ -14,8 +14,8 @@ xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 				</layoutData>
 			</Switch> -->
 			<Button icon="sap-icon://employee-lookup"   text="{= ${device>/system/phone} ? 'Cust.' : 'Search Customers'}" press="onSearchCustomersMapCenter" />
-				<Button icon="sap-icon://reset"  text="{= ${device>/system/phone} ? 'Reset' : 'Reset Map'}" press="onResetMap" />
-								<Label  text="{= ${device>/system/phone} ? 'Loc' : 'Location'}" ></Label>
+				<Button icon="sap-icon://reset"  text="{= ${device>/system/phone} ? 'Use My Loc' : 'Use My Location'}" press="onResetMap" />
+								<Label  text="{= ${device>/system/phone} ? 'Set Radius' : 'Set Search Radius'}" ></Label>
 
 			<CheckBox selected="{userValues>/location}" select="onChangeSwitchState1" >
 				<layoutData>
@@ -60,7 +60,7 @@ xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 						<Panel height="1000px">
 						
 <vbm:GeoMap id="vbi" width="100%" 
-				height="1000px" initialZoom="12" openWindow="onOpenDetail" closeWindow="onCloseDetail"  scaleVisible="false">
+				height="1000px" initialZoom="12" openWindow="onOpenDetail" closeWindow="onCloseDetail"  scaleVisible="false" click="onClickMap">
 				
 				<vbm:vos>
 					<vbm:Spots click="onClickItem" posChangeable="true"
@@ -140,7 +140,7 @@ xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 
 			</smartFilterBar:SmartFilterBar> 
 			<smartTable:SmartTable id="smartTable_custF4_map" entitySet="ZBMM_FieldRepNearbyCustomerSet"  smartFilterId="smartFilter_custF4_map"
-				requestAtLeastFields="altkn, storeno,kunnr,stras,ort01,regio,pstlz,DistanceInMiles,vkorg,hier1_name,sm,ss,altkn, kunnr,vkorg, zzlongitude,zzlatitude,name1,DistanceInMiles,kunnr,stras,sm,ort01,hier1_name,vkorg,CreditBLock,Deleted"
+				requestAtLeastFields="bukrs,altkn, storeno,kunnr,stras,ort01,regio,pstlz,DistanceInMiles,vkorg,hier1_name,sm,ss,altkn, kunnr,vkorg, zzlongitude,zzlatitude,name1,DistanceInMiles,kunnr,stras,sm,ort01,hier1_name,vkorg,CreditBLock,Deleted"
 				beforeRebindTable="onBeforeRebindCustomerF4_map"
 			 tableType="ResponsiveTable" useExportToExcel="true"
 			 
@@ -171,6 +171,15 @@ xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 					</customData>
 					<Label text="New Visit" />
 				</Column>
+
+
+				<Column hAlign="Begin">
+					<customData>
+						<core:CustomData key="p13nData"
+										 value='\{"columnKey": "altkn3", "columnIndex": 10}' />
+					</customData>
+					<Label text="Sales Dashboard" />
+				</Column>
 				
 			</columns>
 			<items>
@@ -178,6 +187,7 @@ xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 					<cells>
 					<Button text="Directions" press="shareMapDirection" icon="sap-icon://map-2" width="120px" type="Emphasized"/>
 					<Button text="New Visit" press="shareNewVisit" icon="sap-icon://visits" width="120px" type="Emphasized"/>
+					<Button text="Sales Dashboard" press="openSalesDashboardFromTable" icon="sap-icon://visits" width="180px" type="Emphasized"/>
 
 					</cells>
 					

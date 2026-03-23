@@ -20,6 +20,6 @@ builder:
         app:
           name: ZFIORIREPORTV2
           package: zfiori1
-          transport: DE2K904432
+          transport: DE2K906613
         exclude:
           - /test/

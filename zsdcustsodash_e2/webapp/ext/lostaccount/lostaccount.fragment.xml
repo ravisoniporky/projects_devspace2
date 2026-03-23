@@ -1,0 +1,61 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui" xmlns:smartTable="sap.ui.comp.smarttable" 
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1" xmlns:ui="sap.ui.table"	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+            <!-- Card's Content area code goes here -->
+<ScrollContainer  horizontal="true" vertical="true" focusable="true" height="500px">
+
+             <smartTable:SmartTable
+				tableType="ResponsiveTable"
+				initiallyVisibleFields="TimeRollup,Material,ProductHierarchy,OldMaterial,MaterialDescritpion"
+				requestAtLeastFields="TimeRollup,Material,ProductHierarchy,OldMaterial,MaterialDescritpion"
+				id="LineItemsSmartTable_lostaccount"
+				entitySet="ZCSD_CUSTSODASHVM"
+				smartFilterId="smartFilterBar"
+				useExportToExcel="true"
+				beforeExport="onBeforeExport"
+				useVariantManagement="true"
+				header="Void Matrix"
+				beforeRebindTable="onBeforeRebindTable"
+				showFullScreenButton = "true"
+				persistencyKey="tablearprofit_voidmatrx"
+							
+			>
+			<Table  sticky="ColumnHeaders,HeaderToolbar">
+
+
+	<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer/>
+					<ComboBox
+					id="comboBox"
+					placeholder="Select Timerollup"
+					selectionChange="onSelectTimeRollup"
+					selectedKey="CWK"
+				items="{/ZBSD_TIMEROLLUP}">
+				<core:Item key="{timerollup}" text="{timerollup} - {timerolluptext}" />
+			</ComboBox>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+			</Table>
+
+			 
+
+				<!-- <smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+					<ComboBox
+					id="comboBox1"
+					placeholder="Select Timerollup"
+					selectionChange="onSelectTimeRollup"
+					selectedKey="CWK"
+				items="{/ZBSD_TIMEROLLUP}">
+				<core:Item key="{timerollup}" text="{timerollup} - {timerolluptext}" />
+			</ComboBox>
+			</OverflowToolbar>
+		</smartTable:customToolbar> -->
+		</smartTable:SmartTable>
+
+
+</ScrollContainer>
+</core:FragmentDefinition>

@@ -7,7 +7,7 @@
 	xmlns:core="sap.ui.core">
 	<Dialog  contentHeight="100%" contentWidth="80%" title="Find Prospect">
 	<content>
-	<IconTabBar>
+	<IconTabBar id="prospectIconTab">
 		<items>
 
 	<IconTabFilter
@@ -171,8 +171,33 @@
 				 placeholder="Enter 10-digit number" showClearIcon="true" liveChange="validatePhoneNumber_prospect"
 				     />
 				<Label text="Email" />
-				<!-- <Input  value="{newProspect>/SmtpAddr}" maxLength="241"/> -->
 								<Input maxLength="241" value="{newProspect>/SmtpAddr}"  type="Email" change="validateEmail_prospect" /> 
+
+
+				<Label text="Proj. Weekly Sales" />
+								<Input
+    value="{
+        path: 'newProspect>/Zzprojectedsales',
+        type: 'sap.ui.model.type.Currency',
+        formatOptions: {
+            showMeasure: false
+        },
+        constraints: {
+            minimum: 0,
+            maximum: 1000000
+        }
+    }"
+    description="USD"
+    textAlign="Right"
+/>
+
+
+												<Label text="Proj. 1st Delv Date" />
+								<DatePicker  dateValue="{newProspect>/Zzprojecteddelv}"   /> 
+
+								<Label text="Given Prices" />
+								<CheckBox selected="{newProspect>/Zzpriceexists}"   /> 
+
 
 								<Label text="Sales Lead" required="true"/>
 				<!-- <Input  value="{newProspect>/SmtpAddr}" maxLength="241"/> -->
@@ -198,16 +223,15 @@
 		  <Input valueHelpRequest="onOpenSMF4Help" value="{newProspect>/Kunn2_name} {newProspect>/Kunn2}" valueHelpOnly="true" showValueHelp="true" id="idInputSM"></Input>
 
 		<Label text="Sales Org For Prospect" />
-		  <Input editable="false" value="{newProspect>/Vkorg}"></Input>
+		 <Input editable="false" value="{newProspect>/Vkorg}"></Input>
+		 
+		  <Label text="Parvw" visible="false"/>
 
-<Label text="Parvw" visible="false"/>
 		  <Input editable="false" value="{newProspect>/Parvw}" visible="false"></Input>
-
+		  <Label text="" />
 
 		  
-
-				<Label text="" />
-				<Button  text="Create Prospect" width="50%" press="onCreateProspect"/>
+			<Button  text="Create Prospect" width="50%" press="onCreateProspect"/>
 			</f:content>
 		</f:SimpleForm>
 				</IconTabFilter>

@@ -59,7 +59,12 @@
                 "settings": {
                     "annotations": [],
                     "localUri": "localService/ZODATA_CUSTOMER_BLOCKS_SRV/metadata.xml",
-                    "odataVersion": "2.0"
+                    "odataVersion": "2.0",
+                     "defaultOperationMode": "Server",
+                "defaultBindingMode": "TwoWay",
+                "useBatch": true,
+                "refreshAfterChange": true,
+                "defaultUpdateMethod": "Put"
                 }
             }
         }

@@ -1,0 +1,1165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZODATA_ORDERDASHFI_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="I_CompanyCodeType" sap:label="Company Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="25" sap:label="City"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="ChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Chart of Accounts"/>
+                <Property Name="FiscalYearVariant" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Fiscal Year Variant"/>
+                <Property Name="Company" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Company"/>
+                <Property Name="CreditControlArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="CreditControlArea_Text" sap:label="Credit Control Area"/>
+                <Property Name="CreditControlArea_Text" Type="Edm.String" MaxLength="35" sap:label="Description" sap:quickinfo="Description of the credit control area" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CountryChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Alternative COA" sap:quickinfo="Alternative Chart of Accounts"/>
+                <Property Name="FinancialManagementArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="FM Area" sap:quickinfo="Financial Management Area"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="TaxableEntity" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Taxes on Sls/Purc." sap:quickinfo="Taxes on Sales/Purchases Group"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="VAT Registration No." sap:quickinfo="VAT Registration Number"/>
+                <Property Name="ExtendedWhldgTaxIsActive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Extended WTax Active" sap:quickinfo="Indicator: Extended Withholding Tax Active"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="ControllingArea_Text" sap:label="Controlling Area"/>
+                <Property Name="ControllingArea_Text" Type="Edm.String" MaxLength="25" sap:label="Controlling Area Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FieldStatusVariant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Field status variant" sap:quickinfo="Field Status Variant"/>
+                <Property Name="NonTaxableTransactionTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Output Tax Code" sap:quickinfo="Output Tax Code for Non-Taxable Transactions"/>
+                <Property Name="DocDateIsUsedForTaxDetn" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Tax Determ.with Doc.Date" sap:quickinfo="Indicator: Document Date As the Basis for Tax Determination"/>
+                <Property Name="TaxRptgDateIsActive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Tax Date" sap:quickinfo="Tax Reporting Date Active in Documents"/>
+                <Property Name="CashDiscountBaseAmtIsNetAmt" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Net Discount Base" sap:quickinfo="Indicator: Discount base amount is the net value"/>
+            </EntityType>
+            <EntityType Name="I_SalesOrganizationType" sap:label="Sales Organization" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="SalesOrganization_Text" sap:label="Sales Organization"/>
+                <Property Name="SalesOrganization_Text" Type="Edm.String" MaxLength="20" sap:label="Sales Organization Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+            </EntityType>
+            <EntityType Name="ZBSD_ARPFT_SHIPTOVHType" sap:label="CDS view Ship-to value help for AR Profit" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Shipto"/>
+                    <PropertyRef Name="SalesOrg"/>
+                </Key>
+                <Property Name="Shipto" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="SalesOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Org" sap:quickinfo="Sales Organization" sap:value-list="standard"/>
+                <Property Name="ShiptoName" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name" sap:quickinfo="Name 1"/>
+                <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Ship-to Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="ort01" Type="Edm.String" MaxLength="35" sap:label="Ship-to City" sap:quickinfo="City"/>
+                <Property Name="PrevAcct" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Prev Acct" sap:quickinfo="Previous Master Record Number"/>
+                <Property Name="Sman" Type="Edm.String" MaxLength="10" sap:label="Salesman"/>
+            </EntityType>
+            <EntityType Name="ZCFI_ARPFT_HEADType" sap:label="AR Profit CDS view to get Header info" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_ship"/>
+                    <PropertyRef Name="p_bukrs"/>
+                    <PropertyRef Name="p_Vkorg"/>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="p_ship" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer"/>
+                <Property Name="p_bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="p_Vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="35" sap:label="Customer Name" sap:quickinfo="Name 1"/>
+                <Property Name="Street" Type="Edm.String" MaxLength="75" sap:label="Address"/>
+                <Property Name="Phone" Type="Edm.String" MaxLength="16" sap:label="Phone" sap:quickinfo="First telephone number"/>
+                <Property Name="PrevAcct" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account No." sap:quickinfo="Previous Master Record Number"/>
+                <Property Name="CreditTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Credit Terms" sap:quickinfo="Terms of Payment Key"/>
+                <Property Name="TermsText" Type="Edm.String" MaxLength="50" sap:label="Own Explanation" sap:quickinfo="Own Explanation of Term of Payment"/>
+                <Property Name="Salesman" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="Curr" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="CreditLimit" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Curr" sap:label="Credit Limit"/>
+                <Property Name="openBal" Type="Edm.Decimal" Precision="29" Scale="3" sap:unit="Curr" sap:label="Open Balance"/>
+                <NavigationProperty Name="Parameters" Relationship="ZODATA_ORDERDASHFI_SRV.assoc_0C8ECD8A3355DFEED92FA431943ECB2E" FromRole="ToRole_assoc_0C8ECD8A3355DFEED92FA431943ECB2E" ToRole="FromRole_assoc_0C8ECD8A3355DFEED92FA431943ECB2E" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCFI_ARPFT_HEADParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_ship"/>
+                    <PropertyRef Name="p_bukrs"/>
+                    <PropertyRef Name="p_Vkorg"/>
+                </Key>
+                <Property Name="p_ship" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_Vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZODATA_ORDERDASHFI_SRV.assoc_0C8ECD8A3355DFEED92FA431943ECB2E" FromRole="FromRole_assoc_0C8ECD8A3355DFEED92FA431943ECB2E" ToRole="ToRole_assoc_0C8ECD8A3355DFEED92FA431943ECB2E"/>
+            </EntityType>
+            <EntityType Name="ZCFI_ARPROFIT_SHIPTOResult" sap:semantics="aggregate" sap:label="Consumption View for AR Profit" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="Weekending" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Weekending"/>
+                <Property Name="OpenAmount" Type="Edm.Decimal" Precision="29" Scale="3" sap:aggregation-role="measure" sap:unit="P071C0CD074B65162E69F8FF89E94B503" sap:label="Balance" sap:filterable="false"/>
+                <Property Name="NetSalesVAlue" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="P071C0CD074B65162E69F8FF89E94B503" sap:label="Sales Value" sap:filterable="false"/>
+                <Property Name="CashAdj" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="P071C0CD074B65162E69F8FF89E94B503" sap:label="Cash Adjustment" sap:filterable="false"/>
+                <Property Name="DelDays" Type="Edm.Decimal" Precision="10" Scale="2" sap:aggregation-role="measure" sap:label="Del Days" sap:filterable="false"/>
+                <Property Name="AvgGrossPft" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Avg Gross Profit" sap:filterable="false"/>
+                <Property Name="MarketCostGPVal" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="P071C0CD074B65162E69F8FF89E94B503" sap:label="Net Market Cost GP Value" sap:filterable="false"/>
+                <Property Name="AdjMarketCostGPVal" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="measure" sap:unit="P071C0CD074B65162E69F8FF89E94B503" sap:label="Adj Net Market Cost GP Value" sap:filterable="false"/>
+                <Property Name="MCGPperLB" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Net Market Cost GP perLB" sap:filterable="false"/>
+                <Property Name="AdjMCGPperLB" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Adj Net Market Cost GP perLB" sap:filterable="false"/>
+                <Property Name="MovAvgperLB" Type="Edm.Decimal" Precision="17" Scale="4" sap:aggregation-role="measure" sap:label="Moving Average GP per LB" sap:filterable="false"/>
+                <Property Name="AdjMovAvgperLB" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Adj Moving Average GP per LB" sap:filterable="false"/>
+                <Property Name="MovingAvgGPVal" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="P071C0CD074B65162E69F8FF89E94B503" sap:label="Moving Average GP Value" sap:filterable="false"/>
+                <Property Name="AdjMovingAvgGPVal" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="measure" sap:unit="P071C0CD074B65162E69F8FF89E94B503" sap:label="Adj Moving Average GP Value" sap:filterable="false"/>
+                <Property Name="NetWeght" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:unit="P9B7731A664C3646296E619D19D982E86" sap:label="Net Weight" sap:filterable="false"/>
+                <Property Name="TrueProfitPercent" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:label="True Profit %"/>
+                <Property Name="TrueProfitperLB" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="True Profit per LB" sap:filterable="false"/>
+                <Property Name="TrueProfitValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="P071C0CD074B65162E69F8FF89E94B503" sap:label="True Profit Value" sap:filterable="false"/>
+                <Property Name="currWK" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Current Weekending"/>
+                <Property Name="navdate" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Conv Weekending" sap:quickinfo="CHAR08"/>
+                <Property Name="modcontrol" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension"/>
+                <Property Name="Shipto" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Customer" sap:quickinfo="Customer Number" sap:value-list="standard"/>
+                <Property Name="SalesOrg" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="NumWeeks" Type="Edm.Byte" sap:aggregation-role="dimension" sap:filter-restriction="single-value" sap:label="No. of Weeks" sap:quickinfo="Number of days in a period"/>
+                <NavigationProperty Name="Parameters" Relationship="ZODATA_ORDERDASHFI_SRV.assoc_0C677FBB07BDD74ACE72CCC942714992" FromRole="ToRole_assoc_0C677FBB07BDD74ACE72CCC942714992" ToRole="FromRole_assoc_0C677FBB07BDD74ACE72CCC942714992" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCFI_ARPROFIT_SHIPTOParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_bukrs"/>
+                    <PropertyRef Name="p_Vkorg"/>
+                    <PropertyRef Name="p_ship"/>
+                    <PropertyRef Name="p_Wknd"/>
+                    <PropertyRef Name="p_weeks"/>
+                </Key>
+                <Property Name="p_bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
+                <Property Name="p_Vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
+                <Property Name="p_ship" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Ship-to" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_Wknd" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:label="Run Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_weeks" Type="Edm.Byte" Nullable="false" DefaultValue="13" sap:parameter="mandatory" sap:label="No. of Weeks" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZODATA_ORDERDASHFI_SRV.assoc_0C677FBB07BDD74ACE72CCC942714992" FromRole="FromRole_assoc_0C677FBB07BDD74ACE72CCC942714992" ToRole="ToRole_assoc_0C677FBB07BDD74ACE72CCC942714992"/>
+            </EntityType>
+            <EntityType Name="ZCFI_ARPROFIT_SHIPTO1Result" sap:semantics="aggregate" sap:label="Consumption View for AR Profit" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="Weekending" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Weekending"/>
+                <Property Name="OpenAmount" Type="Edm.Decimal" Precision="29" Scale="3" sap:aggregation-role="measure" sap:unit="waers" sap:label="Balance" sap:filterable="false"/>
+                <Property Name="NetSalesVAlue" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="waers" sap:label="Sales Value" sap:filterable="false"/>
+                <Property Name="CashAdj" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:unit="waers" sap:label="Cash Adjustment" sap:filterable="false"/>
+                <Property Name="waers" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="gewei" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="DelDays" Type="Edm.Decimal" Precision="10" Scale="2" sap:aggregation-role="measure" sap:label="Del Days" sap:filterable="false"/>
+                <Property Name="AvgGrossPft" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Avg Gross Profit" sap:filterable="false"/>
+                <Property Name="MarketCostGPVal" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="waers" sap:label="Net Market Cost GP Value" sap:filterable="false"/>
+                <Property Name="AdjMarketCostGPVal" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="measure" sap:unit="waers" sap:label="Adj Net Market Cost GP Value" sap:filterable="false"/>
+                <Property Name="MCGPperLB" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Net Market Cost GP perLB" sap:filterable="false"/>
+                <Property Name="AdjMCGPperLB" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Adj Net Market Cost GP perLB" sap:filterable="false"/>
+                <Property Name="MovAvgperLB" Type="Edm.Decimal" Precision="17" Scale="4" sap:aggregation-role="measure" sap:label="Moving Average GP per LB" sap:filterable="false"/>
+                <Property Name="AdjMovAvgperLB" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Adj Moving Average GP per LB" sap:filterable="false"/>
+                <Property Name="MovingAvgGPVal" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="waers" sap:label="Moving Average GP Value" sap:filterable="false"/>
+                <Property Name="AdjMovingAvgGPVal" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="measure" sap:unit="waers" sap:label="Adj Moving Average GP Value" sap:filterable="false"/>
+                <Property Name="NetWeght" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:unit="gewei" sap:label="Net Weight" sap:filterable="false"/>
+                <Property Name="TrueProfitPercent" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:label="True Profit %"/>
+                <Property Name="TrueProfitperLB" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="True Profit per LB" sap:filterable="false"/>
+                <Property Name="TrueProfitValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="waers" sap:label="True Profit Value" sap:filterable="false"/>
+                <Property Name="currWK" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Current Weekending"/>
+                <Property Name="navdate" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Conv Weekending" sap:quickinfo="CHAR08"/>
+                <Property Name="modcontrol" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension"/>
+                <Property Name="Shipto" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Customer" sap:quickinfo="Customer Number" sap:value-list="standard"/>
+                <Property Name="SalesOrg" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="NumWeeks" Type="Edm.Byte" sap:aggregation-role="dimension" sap:filter-restriction="single-value" sap:label="No. of Weeks" sap:quickinfo="Number of days in a period"/>
+                <NavigationProperty Name="Parameters" Relationship="ZODATA_ORDERDASHFI_SRV.assoc_A6C301F886D2005E3DB83195F6A28963" FromRole="ToRole_assoc_A6C301F886D2005E3DB83195F6A28963" ToRole="FromRole_assoc_A6C301F886D2005E3DB83195F6A28963" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCFI_ARPROFIT_SHIPTO1Parameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_bukrs"/>
+                    <PropertyRef Name="p_Vkorg"/>
+                    <PropertyRef Name="p_ship"/>
+                    <PropertyRef Name="p_Wknd"/>
+                    <PropertyRef Name="p_weeks"/>
+                </Key>
+                <Property Name="p_bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
+                <Property Name="p_Vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
+                <Property Name="p_ship" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Ship-to" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_Wknd" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:label="Run Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_weeks" Type="Edm.Byte" Nullable="false" DefaultValue="13" sap:parameter="mandatory" sap:label="No. of Weeks" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZODATA_ORDERDASHFI_SRV.assoc_A6C301F886D2005E3DB83195F6A28963" FromRole="FromRole_assoc_A6C301F886D2005E3DB83195F6A28963" ToRole="ToRole_assoc_A6C301F886D2005E3DB83195F6A28963"/>
+            </EntityType>
+            <EntityType Name="ZCFI_shipto_soldtoType" sap:label="CDS view for list of Sold-tos by Ship-to" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_vkorg"/>
+                    <PropertyRef Name="p_shipto"/>
+                    <PropertyRef Name="kunnr"/>
+                    <PropertyRef Name="vkorg"/>
+                </Key>
+                <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="p_shipto" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer"/>
+                <Property Name="kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sold-to" sap:quickinfo="Customer Number"/>
+                <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Org" sap:quickinfo="Sales Organization"/>
+                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Sold-to Name" sap:quickinfo="Name 1"/>
+                <Property Name="kunn2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to" sap:quickinfo="Customer number of business partner"/>
+                <NavigationProperty Name="Parameters" Relationship="ZODATA_ORDERDASHFI_SRV.assoc_AFBC19B7C60267804A4679BCC97F9338" FromRole="ToRole_assoc_AFBC19B7C60267804A4679BCC97F9338" ToRole="FromRole_assoc_AFBC19B7C60267804A4679BCC97F9338" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCFI_shipto_soldtoParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_vkorg"/>
+                    <PropertyRef Name="p_shipto"/>
+                </Key>
+                <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_shipto" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZODATA_ORDERDASHFI_SRV.assoc_AFBC19B7C60267804A4679BCC97F9338" FromRole="FromRole_assoc_AFBC19B7C60267804A4679BCC97F9338" ToRole="ToRole_assoc_AFBC19B7C60267804A4679BCC97F9338"/>
+            </EntityType>
+            <Association Name="assoc_AFBC19B7C60267804A4679BCC97F9338" sap:content-version="1">
+                <End Type="ZODATA_ORDERDASHFI_SRV.ZCFI_shipto_soldtoParameters" Multiplicity="1" Role="FromRole_assoc_AFBC19B7C60267804A4679BCC97F9338"/>
+                <End Type="ZODATA_ORDERDASHFI_SRV.ZCFI_shipto_soldtoType" Multiplicity="*" Role="ToRole_assoc_AFBC19B7C60267804A4679BCC97F9338"/>
+            </Association>
+            <Association Name="assoc_0C677FBB07BDD74ACE72CCC942714992" sap:content-version="1">
+                <End Type="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOParameters" Multiplicity="1" Role="FromRole_assoc_0C677FBB07BDD74ACE72CCC942714992"/>
+                <End Type="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOResult" Multiplicity="*" Role="ToRole_assoc_0C677FBB07BDD74ACE72CCC942714992"/>
+            </Association>
+            <Association Name="assoc_0C8ECD8A3355DFEED92FA431943ECB2E" sap:content-version="1">
+                <End Type="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPFT_HEADParameters" Multiplicity="1" Role="FromRole_assoc_0C8ECD8A3355DFEED92FA431943ECB2E"/>
+                <End Type="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPFT_HEADType" Multiplicity="*" Role="ToRole_assoc_0C8ECD8A3355DFEED92FA431943ECB2E"/>
+            </Association>
+            <Association Name="assoc_A6C301F886D2005E3DB83195F6A28963" sap:content-version="1">
+                <End Type="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Parameters" Multiplicity="1" Role="FromRole_assoc_A6C301F886D2005E3DB83195F6A28963"/>
+                <End Type="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Result" Multiplicity="*" Role="ToRole_assoc_A6C301F886D2005E3DB83195F6A28963"/>
+            </Association>
+            <EntityContainer Name="ZODATA_ORDERDASHFI_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_CompanyCode" EntityType="ZODATA_ORDERDASHFI_SRV.I_CompanyCodeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_SalesOrganization" EntityType="ZODATA_ORDERDASHFI_SRV.I_SalesOrganizationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_ARPFT_SHIPTOVH" EntityType="ZODATA_ORDERDASHFI_SRV.ZBSD_ARPFT_SHIPTOVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZCFI_ARPFT_HEADSet" EntityType="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPFT_HEADType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCFI_ARPFT_HEAD" EntityType="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPFT_HEADParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCFI_ARPROFIT_SHIPTOResults" EntityType="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCFI_ARPROFIT_SHIPTO" EntityType="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCFI_ARPROFIT_SHIPTO1Results" EntityType="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Result" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCFI_ARPROFIT_SHIPTO1" EntityType="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Parameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCFI_shipto_soldtoSet" EntityType="ZODATA_ORDERDASHFI_SRV.ZCFI_shipto_soldtoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCFI_shipto_soldto" EntityType="ZODATA_ORDERDASHFI_SRV.ZCFI_shipto_soldtoParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_AFBC19B7C60267804A4679BCC97F9338" Association="ZODATA_ORDERDASHFI_SRV.assoc_AFBC19B7C60267804A4679BCC97F9338" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCFI_shipto_soldto" Role="FromRole_assoc_AFBC19B7C60267804A4679BCC97F9338"/>
+                    <End EntitySet="ZCFI_shipto_soldtoSet" Role="ToRole_assoc_AFBC19B7C60267804A4679BCC97F9338"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A6C301F886D2005E3DB83195F6A28963" Association="ZODATA_ORDERDASHFI_SRV.assoc_A6C301F886D2005E3DB83195F6A28963" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCFI_ARPROFIT_SHIPTO1" Role="FromRole_assoc_A6C301F886D2005E3DB83195F6A28963"/>
+                    <End EntitySet="ZCFI_ARPROFIT_SHIPTO1Results" Role="ToRole_assoc_A6C301F886D2005E3DB83195F6A28963"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0C8ECD8A3355DFEED92FA431943ECB2E" Association="ZODATA_ORDERDASHFI_SRV.assoc_0C8ECD8A3355DFEED92FA431943ECB2E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCFI_ARPFT_HEAD" Role="FromRole_assoc_0C8ECD8A3355DFEED92FA431943ECB2E"/>
+                    <End EntitySet="ZCFI_ARPFT_HEADSet" Role="ToRole_assoc_0C8ECD8A3355DFEED92FA431943ECB2E"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0C677FBB07BDD74ACE72CCC942714992" Association="ZODATA_ORDERDASHFI_SRV.assoc_0C677FBB07BDD74ACE72CCC942714992" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCFI_ARPROFIT_SHIPTO" Role="FromRole_assoc_0C677FBB07BDD74ACE72CCC942714992"/>
+                    <End EntitySet="ZCFI_ARPROFIT_SHIPTOResults" Role="ToRole_assoc_0C677FBB07BDD74ACE72CCC942714992"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZBSD_ARPFT_SHIPTOVHType/SalesOrg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOResult/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCode"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FiscalYearVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinancialManagementArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TaxableEntity"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="VATRegistration"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ExtendedWhldgTaxIsActive"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FieldStatusVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="NonTaxableTransactionTaxCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocDateIsUsedForTaxDetn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TaxRptgDateIsActive"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CashDiscountBaseAmtIsNetAmt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOResult/Shipto" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="CDS view Ship-to value help for AR Profit"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_ARPFT_SHIPTOVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Shipto"/>
+                                    <PropertyValue Property="ValueListProperty" String="Shipto"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ShiptoName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="stras"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ort01"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PrevAcct"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sman"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOResult/SalesOrg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_bukrs"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOParameters/p_bukrs" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCode"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_bukrs"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FiscalYearVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinancialManagementArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TaxableEntity"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="VATRegistration"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ExtendedWhldgTaxIsActive"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FieldStatusVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="NonTaxableTransactionTaxCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocDateIsUsedForTaxDetn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TaxRptgDateIsActive"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CashDiscountBaseAmtIsNetAmt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTOParameters/p_Vkorg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_Vkorg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Result/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCode"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FiscalYearVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinancialManagementArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TaxableEntity"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="VATRegistration"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ExtendedWhldgTaxIsActive"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FieldStatusVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="NonTaxableTransactionTaxCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocDateIsUsedForTaxDetn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TaxRptgDateIsActive"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CashDiscountBaseAmtIsNetAmt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Result/Shipto" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="CDS view Ship-to value help for AR Profit"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_ARPFT_SHIPTOVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Shipto"/>
+                                    <PropertyValue Property="ValueListProperty" String="Shipto"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ShiptoName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="stras"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ort01"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PrevAcct"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sman"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Result/SalesOrg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_bukrs"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Parameters/p_bukrs" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCode"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_bukrs"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FiscalYearVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinancialManagementArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TaxableEntity"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="VATRegistration"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ExtendedWhldgTaxIsActive"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FieldStatusVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="NonTaxableTransactionTaxCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocDateIsUsedForTaxDetn"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TaxRptgDateIsActive"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CashDiscountBaseAmtIsNetAmt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZCFI_ARPROFIT_SHIPTO1Parameters/p_Vkorg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_Vkorg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationCurrency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IntercompanyBillingCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZODATA_ORDERDASHFI_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZODATA_ORDERDASHFI_SRV_Entities/ZCFI_ARPFT_HEAD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_ship</PropertyPath>
+                                <PropertyPath>p_bukrs</PropertyPath>
+                                <PropertyPath>p_Vkorg</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_ship</PropertyPath>
+                                <PropertyPath>p_bukrs</PropertyPath>
+                                <PropertyPath>p_Vkorg</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZODATA_ORDERDASHFI_SRV_Entities/ZCFI_ARPROFIT_SHIPTO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_bukrs</PropertyPath>
+                                <PropertyPath>p_Vkorg</PropertyPath>
+                                <PropertyPath>p_ship</PropertyPath>
+                                <PropertyPath>p_Wknd</PropertyPath>
+                                <PropertyPath>p_weeks</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_bukrs</PropertyPath>
+                                <PropertyPath>p_Vkorg</PropertyPath>
+                                <PropertyPath>p_ship</PropertyPath>
+                                <PropertyPath>p_Wknd</PropertyPath>
+                                <PropertyPath>p_weeks</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZODATA_ORDERDASHFI_SRV_Entities/ZCFI_ARPROFIT_SHIPTO1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_bukrs</PropertyPath>
+                                <PropertyPath>p_Vkorg</PropertyPath>
+                                <PropertyPath>p_ship</PropertyPath>
+                                <PropertyPath>p_Wknd</PropertyPath>
+                                <PropertyPath>p_weeks</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_bukrs</PropertyPath>
+                                <PropertyPath>p_Vkorg</PropertyPath>
+                                <PropertyPath>p_ship</PropertyPath>
+                                <PropertyPath>p_Wknd</PropertyPath>
+                                <PropertyPath>p_weeks</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZODATA_ORDERDASHFI_SRV_Entities/ZCFI_ARPROFIT_SHIPTO1Results" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>OpenAmount</PropertyPath>
+                                <PropertyPath>NetSalesVAlue</PropertyPath>
+                                <PropertyPath>CashAdj</PropertyPath>
+                                <PropertyPath>DelDays</PropertyPath>
+                                <PropertyPath>AvgGrossPft</PropertyPath>
+                                <PropertyPath>MarketCostGPVal</PropertyPath>
+                                <PropertyPath>AdjMarketCostGPVal</PropertyPath>
+                                <PropertyPath>MCGPperLB</PropertyPath>
+                                <PropertyPath>AdjMCGPperLB</PropertyPath>
+                                <PropertyPath>MovAvgperLB</PropertyPath>
+                                <PropertyPath>AdjMovAvgperLB</PropertyPath>
+                                <PropertyPath>MovingAvgGPVal</PropertyPath>
+                                <PropertyPath>AdjMovingAvgGPVal</PropertyPath>
+                                <PropertyPath>NetWeght</PropertyPath>
+                                <PropertyPath>TrueProfitperLB</PropertyPath>
+                                <PropertyPath>TrueProfitValue</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Shipto"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SalesOrg"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="NumWeeks"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZODATA_ORDERDASHFI_SRV_Entities/ZCFI_ARPROFIT_SHIPTOResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>OpenAmount</PropertyPath>
+                                <PropertyPath>NetSalesVAlue</PropertyPath>
+                                <PropertyPath>CashAdj</PropertyPath>
+                                <PropertyPath>DelDays</PropertyPath>
+                                <PropertyPath>AvgGrossPft</PropertyPath>
+                                <PropertyPath>MarketCostGPVal</PropertyPath>
+                                <PropertyPath>AdjMarketCostGPVal</PropertyPath>
+                                <PropertyPath>MCGPperLB</PropertyPath>
+                                <PropertyPath>AdjMCGPperLB</PropertyPath>
+                                <PropertyPath>MovAvgperLB</PropertyPath>
+                                <PropertyPath>AdjMovAvgperLB</PropertyPath>
+                                <PropertyPath>MovingAvgGPVal</PropertyPath>
+                                <PropertyPath>AdjMovingAvgGPVal</PropertyPath>
+                                <PropertyPath>NetWeght</PropertyPath>
+                                <PropertyPath>TrueProfitperLB</PropertyPath>
+                                <PropertyPath>TrueProfitValue</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Shipto"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SalesOrg"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="NumWeeks"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZODATA_ORDERDASHFI_SRV_Entities/ZCFI_shipto_soldto" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_vkorg</PropertyPath>
+                                <PropertyPath>p_shipto</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_vkorg</PropertyPath>
+                                <PropertyPath>p_shipto</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.I_CompanyCodeType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="CompanyCode"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_ORDERDASHFI_SRV.ZBSD_ARPFT_SHIPTOVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Shipto"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_ORDERDASHFI_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_ORDERDASHFI_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

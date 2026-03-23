@@ -73,3 +73,6 @@ server:
       configuration:
         component: customer.porky.zfieldrepvisit
         ui5Theme: sap_horizon
+framework:
+  name: SAPUI5
+  version: "1.143.0"

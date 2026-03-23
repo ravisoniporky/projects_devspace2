@@ -8,11 +8,15 @@ sap.ui.define([], function () {
 			var oGlobalFilter = this.getView().byId("ovpGlobalFilter");
 			
 
+			try{
             var oData = {"Customer" : oGlobalFilter.getFilterData().Customer.items[0].key,
 				"CompanyCode":oGlobalFilter.getFilterData().CompanyCode.items[0].key,
 				"SalesOrganization":oGlobalFilter.getFilterData().SalesOrganization.items[0].key
 			};
             this.getOwnerComponent().getModel("filterModel").setData(oData)
+		}catch(e){
+			
+		}
 
 			// //Create JSON data to be defaulted
 			// var oToday = new Date();
