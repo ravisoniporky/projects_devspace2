@@ -1,0 +1,191 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "customer.porky.zmmmatverify3",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.4",
+      "toolsId": "05f049e5-53a5-4390-b663-4d6c47e5fdfd"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_materialverifyv4/srvd/sap/zsv_materialverify/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.44",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zmmmatverify3.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZC_ProductList",
+          "target": "ZC_ProductList"
+        },
+        {
+          "pattern": "ZC_Product({key}):?query:",
+          "name": "ZC_ProductObjectPage",
+          "target": "ZC_ProductObjectPage"
+        }
+      ],
+      "targets": {
+        "ZC_ProductList": {
+          "type": "Component",
+          "id": "ZC_ProductList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZC_Product",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZC_Product": {
+                  "detail": {
+                    "route": "ZC_ProductObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  },
+                  "actions": {
+                    "ListReportExt": {
+                      "press": "customer.porky.zmmmatverify3.ext.controller.ListReportExt.onScanBarcode",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Scan Barcode"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZC_ProductObjectPage": {
+          "type": "Component",
+          "id": "ZC_ProductObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZC_Product",
+              "controlConfiguration": {
+                "_Images/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "columns": {
+                    "CustomLightbox": {
+                      "header": "Preview",
+                      "template": "customer.porky.zmmmatverify3.ext.fragment.ImageLightbox",
+                      "position": {
+                        "placement": "Beginning"
+                      }
+                    }
+                  }
+                }
+              },
+              "content": {
+                "header": {
+                  "actions": {
+                    "UploadPhoto": {
+                      "press": "customer.porky.zmmmatverify3.ext.controller.ObjectPageExt.onUploadPhoto",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Upload Photo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}

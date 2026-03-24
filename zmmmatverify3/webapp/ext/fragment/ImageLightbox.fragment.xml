@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Image
+        src="{GetUrl}"
+        width="80px"
+        height="80px"
+        densityAware="false"
+        class="sapUiTinyMargin">
+        <detailBox>
+            <LightBox>
+                <imageContent>
+                    <LightBoxItem
+                        imageSrc="{GetUrl}"
+                        imageTitle="{ImageName}"/>
+                </imageContent>
+            </LightBox>
+        </detailBox>
+    </Image>
+</core:FragmentDefinition>

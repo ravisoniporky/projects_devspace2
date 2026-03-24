@@ -102,6 +102,12 @@
                     <PropertyRef Name="Product"/>
                     <PropertyRef Name="Plant"/>
                 </Key>
+                <Property Name="Csean_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReassignEan_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_EAN_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_Images_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_UOM_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Product Number"/>
                 <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:value-list="standard"/>
                 <Property Name="ProductOldID" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old product number" sap:quickinfo="Old Product Number"/>
@@ -144,6 +150,7 @@
                 <Property Name="Aisle" Type="Edm.String" MaxLength="1"/>
                 <Property Name="POText" Type="Edm.String" sap:label="Long Text"/>
                 <Property Name="CodeDateTypeDescription" Type="Edm.String" MaxLength="70" sap:label="Value description" sap:quickinfo="Characteristic value description"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
                 <NavigationProperty Name="to_EAN" Relationship="cds_zsv_materialverify.assoc_A4D3CBA353097D02C6B70EA3A9DFC8EA" FromRole="FromRole_assoc_A4D3CBA353097D02C6B70EA3A9DFC8EA" ToRole="ToRole_assoc_A4D3CBA353097D02C6B70EA3A9DFC8EA"/>
                 <NavigationProperty Name="to_Images" Relationship="cds_zsv_materialverify.assoc_742E2902BD0325A96037093FB3397B95" FromRole="FromRole_assoc_742E2902BD0325A96037093FB3397B95" ToRole="ToRole_assoc_742E2902BD0325A96037093FB3397B95"/>
                 <NavigationProperty Name="to_UOM" Relationship="cds_zsv_materialverify.assoc_07854D9222915FAB3461D3BE23D112CA" FromRole="FromRole_assoc_07854D9222915FAB3461D3BE23D112CA" ToRole="ToRole_assoc_07854D9222915FAB3461D3BE23D112CA"/>
@@ -155,8 +162,9 @@
                     <PropertyRef Name="UnitsOfMeasure"/>
                     <PropertyRef Name="LineId"/>
                 </Key>
-                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
-                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="UnitsOfMeasure" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Display Unit/Measure" sap:quickinfo="Unit of Measure for Display" sap:semantics="unit-of-measure"/>
                 <Property Name="LineId" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Consecutive number" sap:quickinfo="Consecutive Number"/>
                 <Property Name="EAN" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="EAN/UPC" sap:quickinfo="International Article Number (EAN/UPC)"/>
@@ -177,9 +185,10 @@
                     <PropertyRef Name="AlternativeUnit"/>
                     <PropertyRef Name="Plant"/>
                 </Key>
-                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Product Number"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Product Number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="AlternativeUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="AlternativeUnit" sap:quickinfo="Alternative Unit of Measure for Stockkeeping Unit" sap:semantics="unit-of-measure"/>
-                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ProductForEdit" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Product Number"/>
                 <Property Name="AlternativeUnitForEdit" Type="Edm.String" MaxLength="3" sap:text="UnitOfMeasureLongName" sap:label="AlternativeUnit" sap:quickinfo="Alternative Unit of Measure for Stockkeeping Unit" sap:value-list="standard" sap:semantics="unit-of-measure"/>
                 <Property Name="QuantityNumerator" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="Units / Quantity - Base Unit of Measure" sap:quickinfo="Numerator for Conversion to Base Units of Measure"/>
@@ -204,9 +213,11 @@
                     <PropertyRef Name="Plant"/>
                     <PropertyRef Name="Imageitem"/>
                 </Key>
-                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Material Number"/>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Material Number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Uom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
-                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Imageitem" Type="Edm.Int32" Nullable="false" sap:label="INT4" sap:quickinfo="4 Byte Signed Integer"/>
                 <Property Name="ImageUrl" Type="Edm.String" MaxLength="200" sap:label="File Name"/>
                 <Property Name="ThumbnailUrl" Type="Edm.String" MaxLength="200" sap:label="File Name"/>
@@ -340,6 +351,9 @@
                 <Property Name="FIELD_VALUE" Type="Edm.String" Nullable="false" MaxLength="10"/>
                 <Property Name="DESCRIPTION" Type="Edm.String"/>
             </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
             <ComplexType Name="SAP__FitToPage">
                 <Property Name="ErrorRecoveryBehavior" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Error behavior" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IsEnabled" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -470,10 +484,10 @@
                 <EntitySet Name="C_Weightuom" EntityType="cds_zsv_materialverify.C_WeightuomType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_ProductGroup_2" EntityType="cds_zsv_materialverify.I_ProductGroup_2Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_ProductTypeVH" EntityType="cds_zsv_materialverify.I_ProductTypeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZC_Product" EntityType="cds_zsv_materialverify.ZC_ProductType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZC_ProductEan" EntityType="cds_zsv_materialverify.ZC_ProductEanType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-                <EntitySet Name="ZC_ProductUoM" EntityType="cds_zsv_materialverify.ZC_ProductUoMType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-                <EntitySet Name="ZC_ProductVerifyImages" EntityType="cds_zsv_materialverify.ZC_ProductVerifyImagesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_Product" EntityType="cds_zsv_materialverify.ZC_ProductType" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZC_ProductEan" EntityType="cds_zsv_materialverify.ZC_ProductEanType" sap:deletable="false" sap:content-version="1" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZC_ProductUoM" EntityType="cds_zsv_materialverify.ZC_ProductUoMType" sap:deletable="false" sap:content-version="1" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZC_ProductVerifyImages" EntityType="cds_zsv_materialverify.ZC_ProductVerifyImagesType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="ZI_BrandVH" EntityType="cds_zsv_materialverify.ZI_BrandVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_ProductEan" EntityType="cds_zsv_materialverify.ZI_ProductEanType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <AssociationSet Name="to_formatSet" Association="cds_zsv_materialverify.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
@@ -508,6 +522,18 @@
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/>
                     <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
                 </AssociationSet>
+                <FunctionImport Name="CSEAN" ReturnType="cds_zsv_materialverify.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zsv_materialverify.ZC_ProductType" sap:applicable-path="Csean_ac">
+                    <Parameter Name="Product" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Product"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
+                    <Parameter Name="UnitofMeasure" Type="Edm.String" Mode="In" MaxLength="3" sap:value-list="standard" sap:label="Base Unit of Measure"/>
+                    <Parameter Name="EAN" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="ReassignEan" ReturnType="cds_zsv_materialverify.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zsv_materialverify.ZC_ProductType" sap:applicable-path="ReassignEan_ac">
+                    <Parameter Name="Product" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Product"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
+                    <Parameter Name="UnitofMeasure" Type="Edm.String" Mode="In" MaxLength="3" sap:value-list="standard" sap:label="Base Unit of Measure"/>
+                    <Parameter Name="EAN" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
             </EntityContainer>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductType/Plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
@@ -699,9 +725,31 @@
             <Annotations Target="cds_zsv_materialverify.ZC_ProductType/to_UOM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Composition"/>
             </Annotations>
+            <Annotations Target="cds_zsv_materialverify.cds_zsv_materialverify_Entities/CSEAN/EAN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.cds_zsv_materialverify_Entities/CSEAN/UnitofMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.cds_zsv_materialverify_Entities/ReassignEan/EAN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.cds_zsv_materialverify_Entities/ReassignEan/UnitofMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
             <Annotations Target="cds_zsv_materialverify.cds_zsv_materialverify_Entities/ZC_Product" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.FilterRestrictions">
                     <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Csean_ac</PropertyPath>
+                                <PropertyPath>ReassignEan_ac</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_EAN_oc</PropertyPath>
+                                <PropertyPath>to_Images_oc</PropertyPath>
+                                <PropertyPath>to_UOM_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
                         <PropertyValue Property="FilterExpressionRestrictions">
                             <Collection>
                                 <Record>
@@ -720,7 +768,7 @@
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_EAN"/>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                            <PropertyValue Property="Insertable" Path="to_EAN_oc"/>
                                         </Record>
                                     </PropertyValue>
                                 </Record>
@@ -728,7 +776,7 @@
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Images"/>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                            <PropertyValue Property="Insertable" Path="to_Images_oc"/>
                                         </Record>
                                     </PropertyValue>
                                 </Record>
@@ -736,7 +784,7 @@
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_UOM"/>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                            <PropertyValue Property="Insertable" Path="to_UOM_oc"/>
                                         </Record>
                                     </PropertyValue>
                                 </Record>
@@ -744,10 +792,19 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
                 <Annotation Term="Capabilities.SortRestrictions">
                     <Record>
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
+                                <PropertyPath>Csean_ac</PropertyPath>
+                                <PropertyPath>ReassignEan_ac</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_EAN_oc</PropertyPath>
+                                <PropertyPath>to_Images_oc</PropertyPath>
+                                <PropertyPath>to_UOM_oc</PropertyPath>
                                 <PropertyPath>POText</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -755,6 +812,15 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="cds_zsv_materialverify.cds_zsv_materialverify_Entities/ZC_ProductEan" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
                 <Annotation Term="Capabilities.NavigationRestrictions">
                     <Record>
                         <PropertyValue Property="RestrictedProperties">
@@ -767,12 +833,33 @@
                                         </Record>
                                     </PropertyValue>
                                 </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
             </Annotations>
             <Annotations Target="cds_zsv_materialverify.cds_zsv_materialverify_Entities/ZC_ProductUoM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
                 <Annotation Term="Capabilities.NavigationRestrictions">
                     <Record>
                         <PropertyValue Property="RestrictedProperties">
@@ -789,8 +876,30 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
             <Annotations Target="cds_zsv_materialverify.cds_zsv_materialverify_Entities/ZC_ProductVerifyImages" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
                 <Annotation Term="Capabilities.NavigationRestrictions">
                     <Record>
                         <PropertyValue Property="RestrictedProperties">
@@ -803,6 +912,19 @@
                                         </Record>
                                     </PropertyValue>
                                 </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>

@@ -38,6 +38,24 @@
                     </Collection>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/Csean_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/ReassignEan_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/to_EAN_oc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/to_Images_oc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/to_UOM_oc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductType">
                 <Annotation Term="UI.HeaderFacets">
                     <Collection>
@@ -298,6 +316,12 @@
                             <PropertyValue Property="Value" Path="Product"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Verify Barcode"/>
+                            <PropertyValue Property="Action" String="cds_zsv_materialverify.cds_zsv_materialverify_Entities/CSEAN"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Emphasized"/>
+                        </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Plant"/>
                             <PropertyValue Property="Value" Path="Plant"/>
@@ -307,6 +331,12 @@
                             <PropertyValue Property="Label" String="Product"/>
                             <PropertyValue Property="Value" Path="ProductOldID"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Reassign"/>
+                            <PropertyValue Property="Action" String="cds_zsv_materialverify.cds_zsv_materialverify_Entities/ReassignEan"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Emphasized"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="ProductType"/>
@@ -402,32 +432,32 @@
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Group Sequence"/>
+                            <PropertyValue Property="Label" String="Code Sequence"/>
                             <PropertyValue Property="Value" Path="CodeSequence"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Group Sequence"/>
+                            <PropertyValue Property="Label" String="Hi"/>
                             <PropertyValue Property="Value" Path="Hi"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Group Sequence"/>
+                            <PropertyValue Property="Label" String="Ti"/>
                             <PropertyValue Property="Value" Path="Ti"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Group Sequence"/>
+                            <PropertyValue Property="Label" String="Material Condition"/>
                             <PropertyValue Property="Value" Path="MaterialCondition"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Group Sequence"/>
+                            <PropertyValue Property="Label" String="Brand"/>
                             <PropertyValue Property="Value" Path="ZBrand"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Group Sequence"/>
+                            <PropertyValue Property="Label" String="Code Date Type"/>
                             <PropertyValue Property="Value" Path="CodeDateType"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
@@ -441,6 +471,9 @@
                         <PropertyPath>ProductGroup</PropertyPath>
                     </Collection>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductEanType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductEanType">
                 <Annotation Term="UI.Facets">
@@ -504,6 +537,9 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductUoMType/ProductForEdit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductUoMType/Update_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductUoMType">
@@ -629,6 +665,12 @@
                         </Record>
                     </Collection>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductVerifyImagesType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductVerifyImagesType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductVerifyImagesType">
                 <Annotation Term="UI.HeaderInfo">

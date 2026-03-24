@@ -14,21 +14,31 @@ sap.ui.define(
     return BaseController.extend("customer.porky.zfieldrepvisit.controller.newvisit", {
 
 
+      /**
+       * Controller lifecycle hook called when the view is initialized.
+       * Sets up all JSON models, router event bindings, shell back-navigation,
+       * grouping functions, OData listeners, and geolocation services.
+       */
       onInit: function () {
 
-
-
+        // --- Device Model ---
+        // Bind SAP UI5 Device API data (screen size, OS, browser) for responsive rendering
         var oDeviceModel = new JSONModel(Device);
         oDeviceModel.setDefaultBindingMode("OneWay");
         this.getView().setModel(oDeviceModel, "device");
 
-
+        // --- Router ---
+        // Attach the route-matched handler so the view reacts when "newvisit" is navigated to
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         oRouter.getRoute("newvisit").attachMatched(this._onRouteMatched, this);
+        // --- Flag Model ---
+        // Tracks whether the user's mobile number has been validated
         this.getView().setModel(new sap.ui.model.json.JSONModel({
           "mobileNumberValidated": false
         }), "flagValueModel");
 
+        // --- User Values Model ---
+        // Stores per-user settings: sales org, miles-of-engagement toggle, and search radius
         this.getView().setModel(new sap.ui.model.json.JSONModel({
           "salesorg": "",
           "moe": false,
@@ -36,25 +46,33 @@ sap.ui.define(
 
         }), "userValues");
 
+        // --- Google Places Model ---
+        // Holds the currently selected place type from Google Places autocomplete
         this.getView().setModel(new sap.ui.model.json.JSONModel({
           "selectedType": ""
 
         }), "googlePlacesModel");
 
+        // --- Auth Customer Model ---
+        // Controls whether the current customer is authorized; defaults to true
         this.getView().setModel(new sap.ui.model.json.JSONModel({
           "authCustomer": true
 
         }), "authCustomerModel");
 
-
         var that = this;
 
+        // --- Shell Back Navigation ---
+        // Override the Fiori Launchpad back button to intercept navigation when the view
+        // is in change mode, prompting the user to confirm, create, or save as draft.
         this.getOwnerComponent().getService("ShellUIService").then(function (oShellService) {
           oShellService.setBackNavigation(function () {
             //either do nothing to disable it, or add your own nav back logic for having the navigation
 
             if (that.getView().getModel("chageModeModel").getProperty("/changeMode")) {
+              // User has unsaved changes — show a confirmation dialog before leaving
               if (!that.exitDialog) {
+                // First time showing the dialog — create and cache it
                 that.exitDialog = new Dialog({
                   type: sap.m.DialogType.Message,
                   title: "Confirm",
@@ -63,26 +81,25 @@ sap.ui.define(
                   }),
                   buttons: [new sap.m.Button({
                     width: "100px",
+                    // "Yes" shown for new visits (Visitid === 'NEW') or completed visits (status === '2')
                     visible: that.getView().getModel("visitModel").getProperty("/Visitid") === 'NEW' || that.getView().getModel("visitModel").getProperty("/status") === '2',
 
                     type: sap.m.ButtonType.Emphasized,
                     text: "Yes",
                     press: function () {
-                      // var oRouter = that.getOwnerComponent().getRouter();
-                      // oRouter.navTo("RouteView1");
-
+                      // Close dialog and navigate back in browser history
                       this.exitDialog.close();
                       history.go(-1);
 
                     }.bind(that)
                   }), new sap.m.Button({
                     width: "100px",
+                    // "Create Visit" shown for existing draft visits (status === '1')
                     visible: that.getView().getModel("visitModel").getProperty("/Visitid") !== 'NEW' && that.getView().getModel("visitModel").getProperty("/status") === '1',
                     type: sap.m.ButtonType.Emphasized,
                     text: "Create Visit",
                     press: function () {
-                      // var oRouter = that.getOwnerComponent().getRouter();
-                      // oRouter.navTo("RouteView1");
+                      // Submit the visit before navigating away
                       that.setLock = false;
                       that.onCreateVisit();
                       this.exitDialog.close();
@@ -90,13 +107,13 @@ sap.ui.define(
                     }.bind(that)
                   }), new sap.m.Button({
                     type: sap.m.ButtonType.Emphasized,
+                    // "Save Draft" shown for existing draft visits (status === '1')
                     visible: that.getView().getModel("visitModel").getProperty("/Visitid") !== 'NEW' && that.getView().getModel("visitModel").getProperty("/status") === '1',
 
                     width: "100px",
                     text: "Save Draft",
                     press: function () {
-                      // var oRouter = that.getOwnerComponent().getRouter();
-                      // oRouter.navTo("RouteView1");
+                      // Save as draft and close dialog
                       that.onCreateDraftVisit_Exit();
                       this.exitDialog.close();
 
@@ -106,12 +123,13 @@ sap.ui.define(
                     type: 'Negative',
                     text: "No",
                     press: function () {
+                      // Cancel — close without navigating
                       this.exitDialog.close();
                     }.bind(that)
                   })]
                 });
               } else {
-
+                // Dialog already exists — destroy and recreate to reflect latest model state
                 that.exitDialog.close()
                 that.exitDialog.destroy();
                 that.exitDialog = null;
@@ -179,6 +197,7 @@ sap.ui.define(
               that.exitDialog.open();
 
             } else {
+              // No unsaved changes — navigate back to the main view directly
               var oRouter = that.getOwnerComponent().getRouter();
               oRouter.navTo("RouteView1");
             }
@@ -190,14 +209,18 @@ sap.ui.define(
 
 
 
+        // Cache a reference to the view for convenience
         this._view = this.getView();
 
+        // --- Change Mode Model ---
+        // Tracks whether the view is in edit/change mode (used by the back-nav guard above)
         this.getView().setModel(new sap.ui.model.json.JSONModel({
           changeMode: false
         }), "chageModeModel");
         // this.selectSuppliers();
 
-
+        // --- Grouping Functions ---
+        // Used by list bindings to group customers by their department name
         this.mGroupFunctions = {
           DepartmentName: function (oContext) {
             var name = oContext.getProperty("DepartmentName");
@@ -207,13 +230,19 @@ sap.ui.define(
             };
           }
         };
+
+        // Refresh the CSRF security token for the image upload OData service
         let defaultModel1 = that.getOwnerComponent().getModel("ZODATA_FIELDREP_IMAGES_V2_SRV");
         defaultModel1.refreshSecurityToken();
 
+        // --- Search Filter Model ---
+        // Controls "deleted" and "credit block" filters on customer search results
         this.getView().setModel(new sap.ui.model.json.JSONModel({
           deleted: false,
           creditBlock: false
         }), "searchModel");
+
+        // Trigger geolocation lookup to populate the user's current lat/lon
         this.getLocation();
 
 
@@ -227,26 +256,33 @@ sap.ui.define(
 
 
 
+        // --- Nearby Customers OData Listener ---
+        // Listens for completed OData requests and processes nearby-customer results
+        // to build the map spot model used by the VBI map control.
         this.getOwnerComponent().getModel().attachRequestCompleted(function (oEvent) {
 
           if (oEvent.mParameters.url.includes("ZBMM_FieldRepNearbyCustomer") && !oEvent.mParameters.url.includes("$count")) {
 
+            // Clear existing map spots before repopulating
             //  debugger;
             try {
               that.getView().byId("idSpots").removeAllItems()
             } catch (e) {
-
+              // Ignore if the map control is not yet rendered
             }
 
             var jsArray = [];
             var jObjArray = JSON.parse(oEvent.mParameters.response.responseText).d.results;
 
+            // Update the total nearby ship-to count displayed in the UI
             that.getView().getModel("userValues").setProperty("/countShipTo", jObjArray.length)
 
+            // Build an array of map spot objects from each nearby customer record
             for (var count = 0; count < jObjArray.length; count++) {
               var dist = that.getDistanceFromLatLonInKm(jObjArray[count].zzlatitude, jObjArray[count].zzlongitude, that.uLat, that.uLon);
               dist = Math.round((dist + Number.EPSILON) * 100) / 100;
               if (dist === null) {
+                // Location not yet available — abort and prompt the user
                 sap.m.MessageToast.show("Fetching location...");
                 return;
               }
@@ -279,10 +315,12 @@ sap.ui.define(
 
             }
 
+            // Prepend the currently selected customer as the first (highlighted) spot on the map
             jsArray = that.insertAtIndex(jsArray, 0, {
               "pos": that.uLon + ";" + that.uLat + ";0",
               "tooltip": that.getView().getModel("customerModel").getProperty("/CustomerFullName"),
               "type": "Success",
+              // Truncate long names to 15 characters for the map label
               "text": that.getView().getModel("customerModel").getProperty("/CustomerFullName").length > 15 ? that.getView().getModel("customerModel").getProperty("/CustomerFullName").substring(0, 15) + "..." : that.getView().getModel("customerModel").getProperty("/CustomerFullName"),
               "Shipto": that.getView().getModel("customerModel").getProperty("/Customer"),
               "ShiptoName": that.getView().getModel("customerModel").getProperty("/CustomerFullName"),
@@ -312,14 +350,13 @@ sap.ui.define(
               }
             };
 
+            // Set the map spot data on both the view-level and component-level models
+            // so the map control and any other consumers stay in sync
             that.getView().setModel(new sap.ui.model.json.JSONModel(
               JSON.parse(JSON.stringify(jsObj))
             ), "latlongModel");
             that.getView().getModel("latlongModel").setSizeLimit("9999");
             that.getView().getModel("latlongModel").setData(jsObj);
-
-
-
 
             that.getOwnerComponent().setModel(new sap.ui.model.json.JSONModel(
               JSON.parse(JSON.stringify(jsObj))
