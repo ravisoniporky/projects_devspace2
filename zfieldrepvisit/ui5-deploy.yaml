@@ -20,6 +20,6 @@ builder:
         app:
           name: ZFIELDREPVISIT
           package: zfiori1
-          transport: DE2K907003
+          transport: DE2K907172
         exclude:
           - /test/

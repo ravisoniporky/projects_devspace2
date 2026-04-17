@@ -1347,6 +1347,8 @@ sap.ui.define(
 
 
                 var oFilter = new sap.ui.model.Filter("Department", sap.ui.model.FilterOperator.BT, "A", "Z");
+
+                if(that.getView().byId("stateDeptOnly").getState())
                 oBinding.filter(oFilter, sap.ui.model.FilterType.Application);
 
               },
@@ -1769,7 +1771,12 @@ sap.ui.define(
         //  this.getView().byId("CreateProductWizard").nextStep();
       },
       onActivateNotes: function (oEvent) {
+        if(this.visitid && this.visitid !== "NEW"){
+
         this.onCreateVisit_AutoSave("");
+        }else if(!this.visitid){
+          this.onCreateVisit_AutoSave("");
+        }
         //  debugger;
       },
       onEnterNotes1: function (oEvent) {
@@ -7999,9 +8006,15 @@ sap.ui.define(
       },
 
       getCookieKey: function () {
+        if(this.getView().getModel("customerModel")){
         var customer = this.getView().getModel("customerModel") .getProperty("/Customer") || "";
         var visitId = this.getView().getModel("visitModel") .getProperty("/Visitid") || "NEW";
+        
         return "visitNotes_" + customer + "_" + visitId;
+        }else {
+           return "visitNotes_" + this.currentShipto + "_" + this.visitid;
+          
+        }
       },
 
 
