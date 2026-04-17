@@ -14,11 +14,10 @@ server:
             - /test-resources
           url: https://ui5.sap.com
         backend:
-          - path: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
-            client: "100"
+          - url: http://pkynj-de2app.porkyproducts.loc:8000
+            client: '100'
             destination: DE2
-            authenticationType: BasicAuthentication
+            path: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
           - path: /sap
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: "100"
@@ -41,19 +40,19 @@ server:
         mountPath: /
         services:
           - urlPath: /sap/opu/odata/sap/ZODATA_WEBEXDASH_BPCONTACT_SRV
+            metadataPath: ./webapp/localService/mainService/metadata.xml
+            mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
-            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
-            mockdataRootPath: ./webapp/localService/data
           - urlPath: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
             metadataPath: ./webapp/localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/metadata.xml
-            mockdataPath: ./webapp/localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/mockdata
+            mockdataPath: ./webapp/localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/data
             generateMockData: true
           - urlPath: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS
+            metadataPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/data
             generateMockData: true
-            metadataXmlPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/metadata.xml
-            mockdataRootPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/mockdata
         annotations:
-          - localPath: ./webapp/localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/ZCFI_WEBEXDASH_BPCONTACT_CDS_Annotation.xml
-            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCFI_WEBEXDASH_BPCONTACT_CDS_VAN',Version='0001')/$value/
           - localPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_Annotation.xml
             urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/ZCFI_WEBEXDASH_BPCONTACT_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCFI_WEBEXDASH_BPCONTACT_CDS_VAN',Version='0001')/$value/

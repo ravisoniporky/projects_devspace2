@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
-    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
@@ -206,28 +206,43 @@
                 <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="SalesOrganizationText" sap:label="Sales Organization"/>
                 <Property Name="SalesOrganizationText" Type="Edm.String" MaxLength="20" sap:label="Name"/>
             </EntityType>
-            <EntityType Name="ZCFI_WEBEXDASH_BPCONTACTType" sap:label="Web service to add BP Contact" sap:content-version="1">
+            <EntityType Name="ZBSD_SalesOrganizationType" sap:label="Sales Organization" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Customer"/>
-                    <PropertyRef Name="ContactPeson"/>
-                    <PropertyRef Name="CompanyCode"/>
                     <PropertyRef Name="SalesOrganization"/>
                 </Key>
-                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:text="CustomerName" sap:label="Business Partner" sap:quickinfo="Business Partner Number" sap:value-list="standard"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="salesorgname" sap:label="Sales Organization"/>
+                <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
+                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing"/>
+                <Property Name="ltext" Type="Edm.String" MaxLength="40" sap:attribute-for="SalesOrganization" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="mtext" Type="Edm.String" MaxLength="20" sap:attribute-for="SalesOrganization" sap:display-format="UpperCase" sap:label="Search Term 1"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="salesorgname" Type="Edm.String" MaxLength="20" sap:label="Name"/>
+            </EntityType>
+            <EntityType Name="ZCFI_WEBEXDASH_BPCONTACTType" sap:label="Web service to add BP Contact" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ContactPeson"/>
+                    <PropertyRef Name="Customer"/>
+                </Key>
                 <Property Name="ContactPeson" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
-                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Company Code" sap:value-list="standard"/>
-                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:text="CustomerName" sap:label="Business Partner" sap:quickinfo="Business Partner Number" sap:value-list="standard"/>
                 <Property Name="CustomerName" Type="Edm.String" MaxLength="81"/>
-                <Property Name="ContactPersonName" Type="Edm.String" MaxLength="81"/>
+                <Property Name="CustomerAddress" Type="Edm.String" MaxLength="72"/>
+                <Property Name="ContactPersonName" Type="Edm.String" MaxLength="80" sap:label="Full Name"/>
                 <Property Name="ContactPersonFirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
                 <Property Name="ContactPersonLastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
-                <Property Name="ContactPhone" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
-                <Property Name="ContactPhoneFormatted" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Telephone" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
+                <Property Name="MobilePhone" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
+                <Property Name="PreferredPhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
+                <Property Name="PreferredPhoneType" Type="Edm.String" MaxLength="1"/>
+                <Property Name="TelephoneFormatted" Type="Edm.String" MaxLength="30"/>
+                <Property Name="MobilePhoneFormatted" Type="Edm.String" MaxLength="30"/>
                 <Property Name="ContactPersonEmail" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address"/>
                 <Property Name="ContactPersonDepartment" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Department" sap:value-list="standard"/>
                 <Property Name="ContactPersonFunction" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Function" sap:quickinfo="Function of partner" sap:value-list="standard"/>
                 <Property Name="Department" Type="Edm.String" MaxLength="20" sap:label="Description"/>
-                <Property Name="Language" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Sales Organization" sap:value-list="standard"/>
             </EntityType>
             <EntityType Name="ZI_BPCONTACTDEPARTMENT_VHType" sap:label="BP contact person department value help" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -247,13 +262,13 @@
                 <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
                 <Property Name="ContactPersonFunctionName" Type="Edm.String" MaxLength="30" sap:label="Description"/>
             </EntityType>
-            <EntityType Name="zi_customer_valuehelpType" sap:label="Customer Value help search help" sap:value-list="true" sap:content-version="1">
+            <EntityType Name="ZI_BP_VALUEHELPType" sap:label="Customer Value help search help" sap:value-list="true" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Customer"/>
                     <PropertyRef Name="SalesOrg"/>
+                    <PropertyRef Name="Customer"/>
                 </Key>
+                <Property Name="SalesOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="to_SaleOrganization/salesorgname" sap:label="Sales Org" sap:quickinfo="Sales Organization" sap:value-list="standard"/>
                 <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
-                <Property Name="SalesOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Org" sap:quickinfo="Sales Organization"/>
                 <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Customer Name" sap:quickinfo="Name 1"/>
                 <Property Name="PrevAcct" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
                 <Property Name="Street" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
@@ -262,8 +277,33 @@
                 <Property Name="CentralBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record"/>
                 <Property Name="CoCodeBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Company Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)"/>
                 <Property Name="SorgBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)"/>
+                <Property Name="CreditBLock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Credit Block" sap:quickinfo="Blocked by Credit Management"/>
                 <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="IsProspect" Type="Edm.String" MaxLength="1" sap:label="Is this a Prospect?"/>
+                <Property Name="LevelAG" Type="Edm.String" MaxLength="10" sap:label=""/>
+                <Property Name="AGName" Type="Edm.String" MaxLength="35"/>
+                <Property Name="LevelOW" Type="Edm.String" MaxLength="10"/>
+                <Property Name="OWName" Type="Edm.String" MaxLength="35"/>
+                <Property Name="Level1B" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Level1BName" Type="Edm.String" MaxLength="35"/>
+                <Property Name="Level1D" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Level1DName" Type="Edm.String" MaxLength="35"/>
+                <Property Name="Level1C" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Level1CName" Type="Edm.String" MaxLength="35"/>
+                <NavigationProperty Name="to_SaleOrganization" Relationship="ZCFI_WEBEXDASH_BPCONTACT_CDS.assoc_529E588D8459BA85C2DE6215EAB96F21" FromRole="FromRole_assoc_529E588D8459BA85C2DE6215EAB96F21" ToRole="ToRole_assoc_529E588D8459BA85C2DE6215EAB96F21"/>
             </EntityType>
+            <Association Name="assoc_529E588D8459BA85C2DE6215EAB96F21" sap:content-version="1">
+                <End Type="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZI_BP_VALUEHELPType" Multiplicity="1" Role="FromRole_assoc_529E588D8459BA85C2DE6215EAB96F21"/>
+                <End Type="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZBSD_SalesOrganizationType" Multiplicity="0..1" Role="ToRole_assoc_529E588D8459BA85C2DE6215EAB96F21"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_529E588D8459BA85C2DE6215EAB96F21">
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_529E588D8459BA85C2DE6215EAB96F21">
+                        <PropertyRef Name="SalesOrg"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
             <Association Name="assoc_FF0B440153BEF5F06AA49E8DBBFFFD7B" sap:content-version="1">
                 <End Type="ZCFI_WEBEXDASH_BPCONTACT_CDS.I_CompanyCodeType" Multiplicity="1" Role="FromRole_assoc_FF0B440153BEF5F06AA49E8DBBFFFD7B"/>
                 <End Type="ZCFI_WEBEXDASH_BPCONTACT_CDS.I_CountryType" Multiplicity="0..1" Role="ToRole_assoc_FF0B440153BEF5F06AA49E8DBBFFFD7B"/>
@@ -347,10 +387,11 @@
                 <EntitySet Name="I_FiscalYearVariant" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.I_FiscalYearVariantType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_Language" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.I_LanguageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_SalesOrganizationValueHelp" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.I_SalesOrganizationValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZBSD_SalesOrganization" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZBSD_SalesOrganizationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZCFI_WEBEXDASH_BPCONTACT" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZCFI_WEBEXDASH_BPCONTACTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_BPCONTACTDEPARTMENT_VH" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZI_BPCONTACTDEPARTMENT_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_BPCONTACTFUNCTION_VH" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZI_BPCONTACTFUNCTION_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-                <EntitySet Name="zi_customer_valuehelp" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.zi_customer_valuehelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_BP_VALUEHELP" EntityType="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZI_BP_VALUEHELPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <AssociationSet Name="assoc_3B874FB44DA3983736B16F212EB774FB" Association="ZCFI_WEBEXDASH_BPCONTACT_CDS.assoc_3B874FB44DA3983736B16F212EB774FB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="I_CompanyCode" Role="FromRole_assoc_3B874FB44DA3983736B16F212EB774FB"/>
                     <End EntitySet="I_FieldStatusVariant" Role="ToRole_assoc_3B874FB44DA3983736B16F212EB774FB"/>
@@ -370,6 +411,10 @@
                 <AssociationSet Name="assoc_FF0B440153BEF5F06AA49E8DBBFFFD7B" Association="ZCFI_WEBEXDASH_BPCONTACT_CDS.assoc_FF0B440153BEF5F06AA49E8DBBFFFD7B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="I_CompanyCode" Role="FromRole_assoc_FF0B440153BEF5F06AA49E8DBBFFFD7B"/>
                     <End EntitySet="I_Country" Role="ToRole_assoc_FF0B440153BEF5F06AA49E8DBBFFFD7B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_529E588D8459BA85C2DE6215EAB96F21" Association="ZCFI_WEBEXDASH_BPCONTACT_CDS.assoc_529E588D8459BA85C2DE6215EAB96F21" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_BP_VALUEHELP" Role="FromRole_assoc_529E588D8459BA85C2DE6215EAB96F21"/>
+                    <End EntitySet="ZBSD_SalesOrganization" Role="ToRole_assoc_529E588D8459BA85C2DE6215EAB96F21"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_EB26AE0D6C991652829AA26C5CF177EE" Association="ZCFI_WEBEXDASH_BPCONTACT_CDS.assoc_EB26AE0D6C991652829AA26C5CF177EE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="I_CompanyCode" Role="FromRole_assoc_EB26AE0D6C991652829AA26C5CF177EE"/>
@@ -520,17 +565,17 @@
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Customer Value help search help"/>
-                        <PropertyValue Property="CollectionPath" String="zi_customer_valuehelp"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_BP_VALUEHELP"/>
                         <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
-                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterInOut">
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
                                     <PropertyValue Property="ValueListProperty" String="SalesOrg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="CustomerName"/>
@@ -557,7 +602,89 @@
                                     <PropertyValue Property="ValueListProperty" String="SorgBlock"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditBLock"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="SalesLead"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsProspect"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LevelAG"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AGName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LevelOW"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OWName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Level1B"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Level1BName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Level1D"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Level1DName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Level1C"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Level1CName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZCFI_WEBEXDASH_BPCONTACTType/ContactPersonDepartment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="BP contact person department value help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_BPCONTACTDEPARTMENT_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ContactPersonDepartment"/>
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonDepartment"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonDepartmentName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZCFI_WEBEXDASH_BPCONTACTType/ContactPersonFunction" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="BP contact person function value help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_BPCONTACTFUNCTION_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ContactPersonFunction"/>
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonFunction"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ContactPersonFunctionName"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -670,46 +797,26 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZCFI_WEBEXDASH_BPCONTACTType/ContactPersonDepartment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZI_BP_VALUEHELPType/SalesOrg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="BP contact person department value help"/>
-                        <PropertyValue Property="CollectionPath" String="ZI_BPCONTACTDEPARTMENT_VH"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="ZBSD_SalesOrganization"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ContactPersonDepartment"/>
-                                    <PropertyValue Property="ValueListProperty" String="ContactPersonDepartment"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="ContactPersonDepartmentName"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZCFI_WEBEXDASH_BPCONTACTType/ContactPersonFunction" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String="BP contact person function value help"/>
-                        <PropertyValue Property="CollectionPath" String="ZI_BPCONTACTFUNCTION_VH"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ContactPersonFunction"/>
-                                    <PropertyValue Property="ValueListProperty" String="ContactPersonFunction"/>
+                                    <PropertyValue Property="ValueListProperty" String="mtext"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Language"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="ContactPersonFunctionName"/>
+                                    <PropertyValue Property="ValueListProperty" String="salesorgname"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -799,6 +906,24 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZCFI_WEBEXDASH_BPCONTACT_CDS_Entities/ZI_BP_VALUEHELP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SaleOrganization"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.I_CompanyCodeType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.SAPObjectNodeType">
                     <Record>
@@ -820,7 +945,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.zi_customer_valuehelpType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZI_BP_VALUEHELPType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.SAPObjectNodeType">
                     <Record>
                         <PropertyValue Property="Name" String="Customer"/>

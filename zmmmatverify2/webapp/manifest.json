@@ -106,6 +106,30 @@
     "extends": {
       "extensions": {
         "sap.ui.controllerExtensions": {
+          "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+            "controllerName": "customer.porky.zmmmatverify2.ext.controller.ObjectPageExt",
+            "sap.ui.generic.app": {
+              "ZC_Product": {
+                "EntitySet": "ZC_Product",
+                "Header": {
+                  "Actions": {
+                    "uploadPhoto": {
+                      "id": "uploadPhotoButton",
+                      "text": "Upload Photo",
+                      "press": "_UploadPhoto",
+                      "requiresSelection": false
+                    },
+                    "verifyScan": {
+                      "id": "verifyScanButton",
+                      "text": "Verify",
+                      "press": "onVerifyScan",
+                      "requiresSelection": false
+                    }
+                  }
+                }
+              }
+            }
+          },
           "sap.suite.ui.generic.template.ListReport.view.ListReport": {
             "controllerName": "customer.porky.zmmmatverify2.ext.controller.ListReportExt",
             "sap.ui.generic.app": {
@@ -121,6 +145,16 @@
                   }
                 }
               }
+            }
+          }
+        },
+        "sap.ui.viewExtensions": {
+          "sap.suite.ui.generic.template.ListReport.view.ListReport": {},
+          "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+            "AfterFacet|ZC_Product|idLineItemImage": {
+              "className": "sap.ui.core.Fragment",
+              "fragmentName": "customer.porky.zmmmatverify2.ext.fragment.ImageTableSection",
+              "type": "XML"
             }
           }
         }
@@ -160,7 +194,39 @@
             "entitySet": "ZC_Product",
             "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
             "component": {
-              "name": "sap.suite.ui.generic.template.ObjectPage"
+              "name": "sap.suite.ui.generic.template.ObjectPage",
+              "settings": {
+                "header": {
+                  "actions": {
+                    "UploadPhoto": {
+                      "id": "uploadPhotoButton",
+                      "text": "Upload Photo",
+                      "press": "onUploadPhoto",
+                      "requiresSelection": false
+                    }
+                  }
+                },
+                "sections": {
+                  "idLineItemImage": {
+                    "tableSettings": {
+                      "type": "ResponsiveTable",
+                      "customColumns": {
+                        "imagePreview": {
+                          "template": "customer.porky.zmmmatverify2.ext.fragment.ImageColumn",
+                          "leadingProperty": "GetThumpUrl",
+                          "additionalProperties": [
+                            "GetUrl",
+                            "ImageName"
+                          ],
+                          "width": "5rem",
+                          "pos": 2,
+                          "label": "Preview"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }

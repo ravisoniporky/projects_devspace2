@@ -1,5 +1,5 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"  xmlns:sfb="sap.ui.comp.smartfilterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.comp.smartform" xmlns:sf="sap.ui.comp.smartfield" controllerName="customer.porky.zbpcontactcreate.controller.CreateContact" displayBlock="true">
-    <Page xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="page" title="{i18n>title}" cd:w5g.dt.context="ZCFI_WEBEXDASH_BPCONTACT_CDS&gt;/ZCFI_WEBEXDASH_BPCONTACT">
+    <Page xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="page" title="{= ${customerAddressModel>/IsProspect} === 'X' ? 'Create Contact Person for Prospect' : 'Create Contact Person for Customer'}" cd:w5g.dt.context="ZCFI_WEBEXDASH_BPCONTACT_CDS&gt;/ZCFI_WEBEXDASH_BPCONTACT">
         <content>
                 <sfb:SmartFilterBar
 				entitySet="ZCFI_WEBEXDASH_BPCONTACT"

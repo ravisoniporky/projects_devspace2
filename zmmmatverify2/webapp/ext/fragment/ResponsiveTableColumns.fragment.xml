@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<Column id="thumbnailColumn">
+		<Text id="thumbnailColumnHeader" text="Preview" />
+		<customData>
+			<core:CustomData key="p13nData"
+				value='\{"columnKey": "GetThumpUrl", "leadingProperty":"GetThumpUrl", "columnIndex" : "101"}' />
+		</customData>
+	</Column>
+</core:FragmentDefinition>

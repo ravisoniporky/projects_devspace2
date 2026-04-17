@@ -66,6 +66,31 @@ function (Controller) {
                     }, 500);
                     return;
                 }
+
+                    if(this.getOwnerComponent().getComponentData().startupParameters && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization && this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0]  
+        
+            && this.getOwnerComponent().getComponentData().startupParameters.CompanyCode[0]  &&  this.getOwnerComponent().getComponentData().startupParameters.Customer
+        
+            &&  this.getOwnerComponent().getComponentData().startupParameters.Customer[0] )
+                {
+
+                    var that = this;
+                    setTimeout(() => {
+                        that.getView().byId("smartFilterBar").setFilterData({SalesOrganization: this.getOwnerComponent().getComponentData().startupParameters.SalesOrganization[0] ,
+                            CompanyCode :this.getOwnerComponent().getComponentData().startupParameters.CompanyCode[0],
+                            Customer :this.getOwnerComponent().getComponentData().startupParameters.Customer[0]
+                        })
+                         that.getView().getModel("contactModel").setProperty("/Businesspartner",this.getOwnerComponent().getComponentData().startupParameters.Customer[0]);
+                         that.extractCustomer(this.getOwnerComponent().getComponentData().startupParameters.Customer[0]);
+
+                       // that.getView().getModel("contactModel").setProperty("/Businesspartner",this.getOwnerComponent().getComponentData().startupParameters.Customer[0]);
+                       // that.getView().getModel("contactModel").setProperty("/Bpcontactphone",this.getOwnerComponent().getComponentData().startupParameters.Telephone[0]);
+
+                        
+
+                    }, 500);
+                    return;
+                }
             defaultModel.read("/ZCXA_USERDEFAULT", {
                 success: function (oData, oResponse) {
 
@@ -505,7 +530,7 @@ function (Controller) {
 
             var Filter = new sap.ui.model.Filter('Customer', 'EQ', customer);
 
-            defaultModel.read("/zi_customer_valuehelp", 
+            defaultModel.read("/ZI_BP_VALUEHELP", 
                 {
                     filters: [Filter]  ,
 

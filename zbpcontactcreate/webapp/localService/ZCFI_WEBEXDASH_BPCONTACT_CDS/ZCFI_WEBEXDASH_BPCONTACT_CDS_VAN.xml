@@ -29,6 +29,9 @@
             <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.I_FiscalYearVariantType/FiscalYearVariant">
                 <Annotation Term="Common.IsFiscalYearVariant"/>
             </Annotations>
+            <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZBSD_SalesOrganizationType/AddressID">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
             <Annotations Target="ZCFI_WEBEXDASH_BPCONTACT_CDS.ZCFI_WEBEXDASH_BPCONTACTType">
                 <Annotation Term="UI.SelectionFields">
                     <Collection>

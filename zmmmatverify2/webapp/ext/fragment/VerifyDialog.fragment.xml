@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
+    <Dialog id="verifyDialog" title="Verify" >
+        <content>
+            <l:VerticalLayout id="verifyDialogLayout"  class="sapUiLargeMarginBegin">
+                <Label id="verifyUoMLabel" text="Base Unit of Measure:" required="true" class="sapUiTinyMarginBottom sapUiTinyMarginTop"/>
+                <Input id="verifyUoMInput" value="{verifyModel>/unitOfMeasure}" 
+                    showValueHelp="true"
+                    valueHelpRequest=".onUoMValueHelpRequest"/>
+                <Label id="verifyBarcodeLabel" text="Barcode:" required="true" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+                <Input id="verifyBarcodeInput" value="{verifyModel>/barcode}" class="sapUiTinyMarginBottom"/>
+            </l:VerticalLayout>
+        </content>
+        <beginButton>
+            <Button id="verifyConfirmButton" text="Verify" type="Emphasized" press=".onVerifyDialogConfirm"/>
+        </beginButton>
+        <endButton>
+            <Button id="verifyCancelButton" text="Cancel" press=".onVerifyDialogCancel"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

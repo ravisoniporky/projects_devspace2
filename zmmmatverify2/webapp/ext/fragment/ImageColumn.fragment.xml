@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Image
+        src="{GetThumpUrl}"
+        densityAware="false"
+        width="4rem"
+        height="4rem"
+        press="_onImagePreviewPress"
+        decorative="false"
+        alt="{ImageName}"
+        tooltip="{ImageName}"/>
+</core:FragmentDefinition>

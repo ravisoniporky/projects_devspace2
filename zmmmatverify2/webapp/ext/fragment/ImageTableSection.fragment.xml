@@ -1,0 +1,58 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Table
+        id="customImageTable"
+        items="{to_Images}"
+        noDataText="No images available"
+        mode="None">
+        <headerToolbar>
+            <Toolbar id="customImageToolbar">
+                <Title id="customImageTitle" text="Image Preview" />
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <Column id="colPreview" width="6rem">
+                <Text id="colPreviewHeader" text="Preview" />
+            </Column>
+            <Column id="colImageName">
+                <Text id="colImageNameHeader" text="Image Name" />
+            </Column>
+            <Column id="colUom" width="6rem">
+                <Text id="colUomHeader" text="UoM" />
+            </Column>
+            <Column id="colMimetype">
+                <Text id="colMimetypeHeader" text="Mimetype" />
+            </Column>
+            <Column id="colDelete" width="6rem" hAlign="Center">
+                <Text id="colDeleteHeader" text="Action" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem id="customImageRow">
+                <cells>
+                    <Image
+                        id="customImageThumb"
+                        src="{GetThumpUrl}"
+                        width="4rem"
+                        height="4rem"
+                        densityAware="false"
+                        decorative="false"
+                        alt="{ImageName}"
+                        tooltip="{ImageName}"
+                        press="_onImagePreviewPress" />
+                    <Text id="customImageNameCell" text="{ImageName}" />
+                    <Text id="customUomCell" text="{Uom}" />
+                    <Text id="customMimetypeCell" text="{Mimetype}" />
+                    <Button
+                        id="customDeleteBtn"
+                        icon="sap-icon://delete"
+                        type="Reject"
+                        tooltip="Delete"
+                        enabled="{Delete_mc}"
+                        press="_onDeleteImage" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>

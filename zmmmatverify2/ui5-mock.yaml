@@ -21,6 +21,7 @@ server:
             destination: DE2
           - url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
+            authenticationType: BasicAuthentication
             destination: DE2
             path: /sap/opu/odata/sap/ZSB_MATERIALVERIFY/
     - name: fiori-tools-appreload

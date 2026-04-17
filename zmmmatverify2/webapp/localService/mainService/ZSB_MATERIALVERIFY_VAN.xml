@@ -38,10 +38,13 @@
                     </Collection>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZCE_BarcodeParserType/p_barcode">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductType/Csean_ac">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/ReassignEan_ac">
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/Nobc_ac">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductType/Update_mc">
@@ -56,19 +59,10 @@
             <Annotations Target="cds_zsv_materialverify.ZC_ProductType/to_UOM_oc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZC_ProductType/POText">
+                <Annotation Term="UI.MultiLineText"/>
+            </Annotations>
             <Annotations Target="cds_zsv_materialverify.ZC_ProductType">
-                <Annotation Term="UI.HeaderFacets">
-                    <Collection>
-                        <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="idHEADERCOLLFAC1"/>
-                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Head_BasicData1"/>
-                        </Record>
-                        <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="idHEADERCOLLFAC2"/>
-                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Head_BasicData2"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
                 <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.CollectionFacet">
@@ -138,6 +132,18 @@
                         </Record>
                     </Collection>
                 </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="idHEADERCOLLFAC1"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Head_BasicData1"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="idHEADERCOLLFAC2"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Head_BasicData2"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
                 <Annotation Term="UI.FieldGroup" Qualifier="BasicData1">
                     <Record>
                         <PropertyValue Property="Data">
@@ -177,6 +183,30 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Label" String="Dimension (LxWxH)"/>
                                     <PropertyValue Property="Value" Path="ProductDimension"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Length"/>
+                                    <PropertyValue Property="Value" Path="BaseUnitSpecificProductLength"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Width"/>
+                                    <PropertyValue Property="Value" Path="BaseUnitSpecificProductWidth"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Height"/>
+                                    <PropertyValue Property="Value" Path="BaseUnitSpecificProductHeight"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Pack"/>
+                                    <PropertyValue Property="Value" Path="PackSize"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Size"/>
+                                    <PropertyValue Property="Value" Path="ItemSize"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Size UoM"/>
+                                    <PropertyValue Property="Value" Path="SizeUoM"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -309,6 +339,22 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Verify"/>
+                            <PropertyValue Property="Action" String="cds_zsv_materialverify.cds_zsv_materialverify_Entities/CSEAN"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Emphasized"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="No Barcode"/>
+                            <PropertyValue Property="Action" String="cds_zsv_materialverify.cds_zsv_materialverify_Entities/NOBC"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Emphasized"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
@@ -317,7 +363,7 @@
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataFieldForAction">
-                            <PropertyValue Property="Label" String="Verify Barcode"/>
+                            <PropertyValue Property="Label" String="Verify"/>
                             <PropertyValue Property="Action" String="cds_zsv_materialverify.cds_zsv_materialverify_Entities/CSEAN"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                             <Annotation Term="UI.Emphasized"/>
@@ -333,8 +379,8 @@
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataFieldForAction">
-                            <PropertyValue Property="Label" String="Reassign"/>
-                            <PropertyValue Property="Action" String="cds_zsv_materialverify.cds_zsv_materialverify_Entities/ReassignEan"/>
+                            <PropertyValue Property="Label" String="No Barcode"/>
+                            <PropertyValue Property="Action" String="cds_zsv_materialverify.cds_zsv_materialverify_Entities/NOBC"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                             <Annotation Term="UI.Emphasized"/>
                         </Record>
@@ -355,6 +401,36 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Net Weight"/>
                             <PropertyValue Property="Value" Path="NetWeight"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Length"/>
+                            <PropertyValue Property="Value" Path="BaseUnitSpecificProductLength"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Pack"/>
+                            <PropertyValue Property="Value" Path="PackSize"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Width"/>
+                            <PropertyValue Property="Value" Path="BaseUnitSpecificProductWidth"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Height"/>
+                            <PropertyValue Property="Value" Path="BaseUnitSpecificProductHeight"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Size"/>
+                            <PropertyValue Property="Value" Path="ItemSize"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Size UoM"/>
+                            <PropertyValue Property="Value" Path="SizeUoM"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -746,6 +822,18 @@
                             </Collection>
                         </PropertyValue>
                     </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsv_materialverify.ZI_CAWNTType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="atwrt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="atwtb"/>
+                        </Record>
+                    </Collection>
                 </Annotation>
             </Annotations>
         </Schema>

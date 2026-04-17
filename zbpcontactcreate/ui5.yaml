@@ -16,11 +16,10 @@ server:
             - /test-resources
           url: https://ui5.sap.com
         backend:
-          - path: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+          - url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
             destination: DE2
-            authenticationType: BasicAuthentication
+            path: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
           - path: /sap
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'

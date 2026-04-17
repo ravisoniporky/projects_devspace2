@@ -25,11 +25,10 @@ server:
       configuration:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
-          - path: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+          - url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
             destination: DE2
-            authenticationType: BasicAuthentication
+            path: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
           - path: /sap
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
@@ -46,10 +45,22 @@ server:
         mountPath: /
         services:
           - urlPath: /sap/opu/odata/sap/ZODATA_WEBEXDASH_BPCONTACT_SRV
-            metadataPath: ./webapp/localService/metadata.xml
-            mockdataPath: ./webapp/localService/data
+            metadataPath: ./webapp/localService/mainService/metadata.xml
+            mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
-        annotations: []
+          - urlPath: /sap/opu/odata/sap/ZCFI_WEBEXDASH_BPCONTACT_CDS
+            metadataPath: ./webapp/localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS
+            metadataPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/metadata.xml
+            mockdataPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/data
+            generateMockData: true
+        annotations:
+          - localPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_Annotation.xml
+            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZCFI_WEBEXDASH_BPCONTACT_CDS/ZCFI_WEBEXDASH_BPCONTACT_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCFI_WEBEXDASH_BPCONTACT_CDS_VAN',Version='0001')/$value/
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
