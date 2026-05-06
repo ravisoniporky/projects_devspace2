@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Apr 21 2026 15:20:07 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://pkytx-devapp.porkyproducts.loc:8000/sap/opu/odata/sap/ZC_ATTRITIONCOMPARESALES_CDS",
+    "appName": "zattritionbas",
+    "appTitle": "Attirition BAS",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "customer.porky",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.136.16",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.22.0",
+    "template": "Analytical List Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZC_AttritionCompareSales"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}
