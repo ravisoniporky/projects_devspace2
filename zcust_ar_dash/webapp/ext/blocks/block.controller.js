@@ -15,79 +15,45 @@
             onInit: function () {
 
                 var that = this;
-                this.getModel().attachRequestCompleted(function(oEvent){
 
-                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")){
-                        return;
-                    } 
-                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")){
-                        return;
-                    }
-                    if(!oEvent.mParameters.url.includes("ZCFI_CUSTARDASH")){
-                        return;
-                    }
+                this._handleRequestCompleted = function(oEvent) {
+                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")) return;
+                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")) return;
+                    if(!oEvent.mParameters.url.includes("ZCFI_CUSTARDASH")) return;
+
                     var response = JSON.parse(oEvent.getParameter("response").responseText).d.results[0];
-                    if(typeof response === 'undefined')
-                        {
-                            that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData");
-                            return;
-                        }
-               
-
+                    if(typeof response === 'undefined') {
+                        that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData");
+                        return;
+                    }
                     that.getView().setModel(new sap.ui.model.json.JSONModel(response), "customerData");
-                });
+                };
 
                 this.getView().setModel(new sap.ui.model.json.JSONModel({"editMode": false}), "blockModel");
                 this.getView().setModel(new sap.ui.model.json.JSONModel({"creditNote": '',"creditNoteNotify":true}), "creditNoteModel");
-
 
                 this.GloabalEventBus = sap.ui.getCore().getEventBus();
                 this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
 
             },
 
-            onGlobalfilterApply: function(oEvent){
-
-                var that = this;
-                this.getModel().attachRequestCompleted(function(oEvent){
-
-                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")){
-                        return;
-                    } 
-                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")){
-                        return;
-                    }
-                    if(!oEvent.mParameters.url.includes("ZCFI_CUSTARDASH")){
-                        return;
-                    }
-                    var response = JSON.parse(oEvent.getParameter("response").responseText).d.results[0];
-                    if(typeof response === 'undefined')
-                        {
-                            that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData");
-                            return;
-                        }
-               
-
-                    that.getView().setModel(new sap.ui.model.json.JSONModel(response), "customerData");
-                });
-
+            onGlobalfilterApply: function(){
                 this.getView().setModel(new sap.ui.model.json.JSONModel({"editMode": false}), "blockModel");
                 this.getView().setModel(new sap.ui.model.json.JSONModel({"creditNote": '',"creditNoteNotify":true}), "creditNoteModel");
-
-
-               
             },
-    
-            onAfterRendering: function (oEvent) {
-            //    debugger;
+
+            onAfterRendering: function () {
+                if(!this._handlerAttached && this.getModel()) {
+                    this.getModel().attachRequestCompleted(this._handleRequestCompleted);
+                    this._handlerAttached = true;
+                }
             },
 
             onExit: function () {},
             setRelevantFilters: function (oFilters) {
-                debugger;
                 var oView = this.getView().byId("cardView");
+                if (!oView) return;
                 if (oFilters[0] && oFilters[0].aFilters && oFilters[0].aFilters.length > 0) {
-                    // Apply filters to the card
                     oView.getBinding("items").filter(oFilters);
                 } else {
                     oView.getBinding("items").filter([]);

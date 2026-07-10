@@ -14,11 +14,11 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: DE2
-          url: http://pkynj-de2app.porkyproducts.loc:8000
+          destination: DEV
+          url: https://dev.porky.com
         app:
           name: ZCUST_AR_DASH
           package: zfiori1
-          transport: DE2K906700
+          transport: DEVK915175
         exclude:
           - /test/

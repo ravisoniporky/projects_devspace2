@@ -28,19 +28,12 @@
           "odataVersion": "2.0"
         }
       },
-      "ZBSD_MOE_CDS_Annotation": {
-        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBSD_MOE_CDS_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/ZBSD_MOE_CDS/ZBSD_MOE_CDS_Annotation.xml"
-        }
-      },
       "ZBSD_MOE_CDS": {
         "uri": "/sap/opu/odata/sap/ZBSD_MOE_CDS",
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZBSD_MOE_CDS_Annotation"
+            "ZBSD_MOE_CDS_VAN"
           ],
           "localUri": "localService/ZBSD_MOE_CDS/metadata.xml",
           "odataVersion": "2.0"
@@ -68,29 +61,15 @@
           "odataVersion": "2.0"
         }
       },
-      "ZBMM_FRVISITDEFSUPP_CDS_Annotation": {
-        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBMM_FRVISITDEFSUPP_CDS_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/ZBMM_FRVISITDEFSUPP_CDS/ZBMM_FRVISITDEFSUPP_CDS_Annotation.xml"
-        }
-      },
       "ZBMM_FRVISITDEFSUPP_CDS": {
         "uri": "/sap/opu/odata/sap/ZBMM_FRVISITDEFSUPP_CDS",
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZBMM_FRVISITDEFSUPP_CDS_Annotation"
+            "ZBMM_FRVISITDEFSUPP_CDS_VAN"
           ],
           "localUri": "localService/ZBMM_FRVISITDEFSUPP_CDS/metadata.xml",
           "odataVersion": "2.0"
-        }
-      },
-      "ZCXA_USERDEFAULT_CDS_Annotation": {
-        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_Annotation.xml"
         }
       },
       "ZCXA_USERDEFAULT_CDS": {
@@ -98,17 +77,10 @@
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZCXA_USERDEFAULT_CDS_Annotation"
+            "ZCXA_USERDEFAULT_CDS_VAN"
           ],
           "localUri": "localService/ZCXA_USERDEFAULT_CDS/metadata.xml",
           "odataVersion": "2.0"
-        }
-      },
-      "ZCXA_USERAUTH_CDS_Annotation": {
-        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERAUTH_CDS_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/ZCXA_USERAUTH_CDS/ZCXA_USERAUTH_CDS_Annotation.xml"
         }
       },
       "ZCXA_USERAUTH_CDS": {
@@ -116,7 +88,7 @@
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZCXA_USERAUTH_CDS_Annotation"
+            "ZCXA_USERAUTH_CDS_VAN"
           ],
           "localUri": "localService/ZCXA_USERAUTH_CDS/metadata.xml",
           "odataVersion": "2.0"
@@ -131,19 +103,12 @@
           "odataVersion": "2.0"
         }
       },
-      "ZI_DEFAULTSHVH_CDS_Annotation": {
-        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZI_DEFAULTSHVH_CDS_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/ZI_DEFAULTSHVH_CDS/ZI_DEFAULTSHVH_CDS_Annotation.xml"
-        }
-      },
       "ZI_DEFAULTSHVH_CDS": {
         "uri": "/sap/opu/odata/sap/ZI_DEFAULTSHVH_CDS",
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZI_DEFAULTSHVH_CDS_Annotation"
+            "ZI_DEFAULTSHVH_CDS_VAN"
           ],
           "localUri": "localService/ZI_DEFAULTSHVH_CDS/metadata.xml",
           "odataVersion": "2.0"
@@ -156,19 +121,12 @@
           "localUri": "annotations/annotation_ZODATA_FR_SRV.xml"
         }
       },
-      "ZSB_C_FRVISIT2_Annotation": {
-        "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_FRVISIT2_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/ZSB_C_FRVISIT2/ZSB_C_FRVISIT2_Annotation.xml"
-        }
-      },
       "ZSB_C_FRVISIT2": {
         "uri": "/sap/opu/odata/sap/ZSB_C_FRVISIT2",
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZSB_C_FRVISIT2_Annotation"
+            "ZSB_C_FRVISIT2_VAN"
           ],
           "localUri": "localService/ZSB_C_FRVISIT2/metadata.xml",
           "odataVersion": "2.0"
@@ -186,6 +144,48 @@
         "type": "ODataAnnotation",
         "settings": {
           "localUri": "localService/mainService/ZODATA_FR_ANNO_MDL.xml"
+        }
+      },
+      "ZBSD_MOE_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBSD_MOE_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZBSD_MOE_CDS/ZBSD_MOE_CDS_VAN.xml"
+        }
+      },
+      "ZBMM_FRVISITDEFSUPP_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBMM_FRVISITDEFSUPP_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZBMM_FRVISITDEFSUPP_CDS/ZBMM_FRVISITDEFSUPP_CDS_VAN.xml"
+        }
+      },
+      "ZCXA_USERDEFAULT_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_VAN.xml"
+        }
+      },
+      "ZCXA_USERAUTH_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERAUTH_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZCXA_USERAUTH_CDS/ZCXA_USERAUTH_CDS_VAN.xml"
+        }
+      },
+      "ZI_DEFAULTSHVH_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZI_DEFAULTSHVH_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZI_DEFAULTSHVH_CDS/ZI_DEFAULTSHVH_CDS_VAN.xml"
+        }
+      },
+      "ZSB_C_FRVISIT2_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_FRVISIT2_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZSB_C_FRVISIT2/ZSB_C_FRVISIT2_VAN.xml"
         }
       }
     }

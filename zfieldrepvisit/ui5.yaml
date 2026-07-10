@@ -17,31 +17,29 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: http://pkytx-devapp.porkyproducts.loc:8000
             client: '100'
-            destination: DE2
+            destination: DEV
           - path: /sap
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
             destination: DE2
-          - url: http://pkynj-de2app.porkyproducts.loc:8000
+          - path: /sap/opu/odata/sap/ZODATA_FR_SRV
+            url: http://pkytx-devapp.porkyproducts.loc:8000
             client: '100'
-            destination: DE2
-            path: /sap/opu/odata/sap/ZODATA_FR_SRV
+            destination: DEV
           - path: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: http://pkytx-devapp.porkyproducts.loc:8000
             client: '100'
-            destination: DE2
-            authenticationType: BasicAuthentication
+            destination: DEV
           - path: /sap/opu/odata/sap/ZBMM_FRVISITDEFSUPP_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: http://pkytx-devapp.porkyproducts.loc:8000
             client: '100'
-            destination: DE2
-            authenticationType: BasicAuthentication
+            destination: DEV
           - path: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: http://pkytx-devapp.porkyproducts.loc:8000
             client: '100'
-            destination: DE2
+            destination: DEV
           - path: /sap/opu/odata/sap/ZCXA_USERAUTH_CDS
             url: http://pkynj-de2app.porkyproducts.loc:8000
             client: '100'
@@ -52,15 +50,13 @@ server:
             destination: DE2
             authenticationType: BasicAuthentication
           - path: /sap/opu/odata/sap/ZI_DEFAULTSHVH_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: http://pkytx-devapp.porkyproducts.loc:8000
             client: '100'
-            destination: DE2
-            authenticationType: BasicAuthentication
+            destination: DEV
           - path: /sap/opu/odata/sap/ZSB_C_FRVISIT2
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: http://pkytx-devapp.porkyproducts.loc:8000
             client: '100'
-            destination: DE2
-            authenticationType: BasicAuthentication
+            destination: DEV
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

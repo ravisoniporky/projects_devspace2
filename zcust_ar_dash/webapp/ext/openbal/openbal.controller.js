@@ -9,67 +9,103 @@
             onInit: function () {
 
                 var that = this;
-                this.getModel().attachRequestCompleted(function(oEvent){
 
-                //     if(!oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")){
-                //         return;
-                //     }
-                //     var response = JSON.parse(oEvent.getParameter("response").responseText).d.results[0];
-                //     if(typeof response === 'undefined')
-                //         {
-                //             that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData");
+                this._handleRequestCompleted = function(oEvent) {
+                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")) return;
 
-                //             return;
-                //         }
-                //    if(response.Customer)
-                //     that.getView().setModel(new sap.ui.model.json.JSONModel(response), "customerData1");
+                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH") && !oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")) {
+                        var sUrl = decodeURI(oEvent.mParameters.url);
+                        if (!sUrl.includes("$filter=")) { return; }
 
+                        var sRawFilter = sUrl.split("$filter=")[1].split("&")[0];
+                        var aFilterParts = [];
+                        var oMatch;
 
-                if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")){
+                        oMatch = sRawFilter.match(/CompanyCode\s+eq\s+'([^']+)'/);
+                        if (oMatch) { aFilterParts.push("CompanyCode eq '" + oMatch[1] + "'"); }
+
+                        oMatch = sRawFilter.match(/Customer\s+eq\s+'([^']+)'/);
+                        if (oMatch) { aFilterParts.push("Customer eq '" + oMatch[1] + "'"); }
+
+                        oMatch = sRawFilter.match(/ProfitCenter\s+eq\s+'([^']+)'/);
+                        if (oMatch) { aFilterParts.push("ProfitCenter eq '" + oMatch[1] + "'"); }
+
+                        if (aFilterParts.length === 0) { return; }
+
+                        var filters = aFilterParts.join(" and ");
+                        var defaultModel1 = that.getOwnerComponent().getModel();
+
+                        defaultModel1.read("/ZCFI_CUSTARDASH_ARBAL", {
+                            urlParameters: { "$filter": filters },
+                            success: function (oData) {
+                                that.getView().setModel(new sap.ui.model.json.JSONModel(oData.results[0]), "customerData1");
+                            },
+                            error: function () {
+                                that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData1");
+                            }
+                        });
+                    }
+                };
+
+                this.GloabalEventBus = sap.ui.getCore().getEventBus();
+                this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
+
+            },
+
+               onGlobalfilterApply: function(sChannelId, sEventId, oGlobalFilter){ // eslint-disable-line no-unused-vars
+
+                var that = this;
+                var oFilterData = {};
+
+                try {
+                    oFilterData = oGlobalFilter && oGlobalFilter.getFilterData ? oGlobalFilter.getFilterData() : {};
+                } catch (e) {
                     return;
-                } 
+                }
 
-               if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH") &&  !oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")){
-                var filters = decodeURI(oEvent.mParameters.url.split("$filter=")[1]);
+                var aFilterParts = [];
 
-                filters =  decodeURI(oEvent.mParameters.url.split("$filter=")[1]).split("and")[0] +"and"+decodeURI(oEvent.mParameters.url.split("$filter=")[1]).split("and")[2];
-                let defaultModel1 = that.getOwnerComponent().getModel();
+                if (oFilterData.CompanyCode && oFilterData.CompanyCode.items && oFilterData.CompanyCode.items.length > 0) {
+                    aFilterParts.push("CompanyCode eq '" + oFilterData.CompanyCode.items[0].key + "'");
+                }
+                if (oFilterData.Customer && oFilterData.Customer.items && oFilterData.Customer.items.length > 0) {
+                    aFilterParts.push("Customer eq '" + oFilterData.Customer.items[0].key + "'");
+                }
+                if (oFilterData.ProfitCenter && oFilterData.ProfitCenter.items && oFilterData.ProfitCenter.items.length > 0) {
+                    aFilterParts.push("ProfitCenter eq '" + oFilterData.ProfitCenter.items[0].key + "'");
+                }
 
+                if (aFilterParts.length === 0) { return; }
+
+                var sFilter = aFilterParts.join(" and ");
+                var defaultModel1 = that.getOwnerComponent().getModel();
 
                 defaultModel1.read("/ZCFI_CUSTARDASH_ARBAL", {
                   urlParameters: {
-                    "$filter" : filters
-                    
-        
+                    "$filter": sFilter
                   },
-                  success: function (oData, oResponse) {
-               
-                    that.getView().setModel(new sap.ui.model.json.JSONModel(oData.results[0]                    ), "customerData1");
-        
-          
-        
+                  success: function (oData) {
+                    that.getView().setModel(new sap.ui.model.json.JSONModel(oData.results[0]), "customerData1");
                   },
-        
-                  error: function (oError) {
-        
-                    that.getView().setModel(new sap.ui.model.json.JSONModel({}, "customerData1"));
+                  error: function () {
+                    that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData1");
                   }
                 });
-                }
-            
-                    
-                });
 
-            },
-    
-            onAfterRendering: function (oEvent) {
-            //    debugger;
+               },
+
+            onAfterRendering: function () {
+                if(!this._handlerAttached && this.getModel()) {
+                    this.getModel().attachRequestCompleted(this._handleRequestCompleted);
+                    this._handlerAttached = true;
+                }
             },
 
             onExit: function () {},
             setRelevantFilters: function (oFilters) {
-                debugger;
                 var oView = this.getView().byId("cardView");
+                                if(oView)
+
                 if (oFilters[0] && oFilters[0].aFilters && oFilters[0].aFilters.length > 0) {
                     // Apply filters to the card
                     oView.getBinding("items").filter(oFilters);
@@ -79,11 +115,11 @@
             },
             onClickHeader: function(){
                 var mParams = {
-                
+
                     "DD_KUNNR" : this.getView().getModel("customerData1").getData().Customer,
                     "DD_BUKRS": this.getView().getModel("customerData1").getData().CompanyCode
-                   
-                   
+
+
                 };
 
                 sap.ushell.Container.getServiceAsync("CrossApplicationNavigation").then(function (oService) {

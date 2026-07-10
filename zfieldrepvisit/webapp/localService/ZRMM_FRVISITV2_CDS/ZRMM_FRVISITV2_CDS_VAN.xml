@@ -21,11 +21,66 @@
     <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
     </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
     <edmx:Reference Uri="../../../sap/zrmm_frvisitv2_cds/$metadata">
         <edmx:Include Namespace="ZRMM_FRVISITV2_CDS" Alias="SAP"/>
     </edmx:Reference>
     <edmx:DataServices>
         <Schema Namespace="zrmm_frvisitv2_cds_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataControllerSet">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController1">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController2">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController3">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController4">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController5">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController6">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController7">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController8">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController9">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_CustomerType/DataController10">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/BPAddrCityName">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/BPAddrStreetName">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/CustomerAccountGroup">
                 <Annotation Term="UI.HiddenFilter"/>
                 <Annotation Term="UI.Hidden"/>
@@ -39,6 +94,50 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/BusinessPartnerType">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataControllerSet">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController1">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController2">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController3">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController4">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController5">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController6">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController7">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController8">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController9">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZRMM_FRVISITV2_CDS.I_Customer_VHType/DataController10">
                 <Annotation Term="UI.HiddenFilter"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -129,6 +228,11 @@
             <Annotations Target="ZRMM_FRVISITV2_CDS.ZRMM_FRVISITV2Type">
                 <Annotation Term="UI.Facets">
                     <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Team Members"/>
+                            <PropertyValue Property="ID" String="Team"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_team/@UI.LineItem#Team"/>
+                        </Record>
                         <Record Type="UI.CollectionFacet">
                             <PropertyValue Property="Label" String="Visit Info"/>
                             <PropertyValue Property="ID" String="Visit"/>
@@ -143,9 +247,9 @@
                             </PropertyValue>
                         </Record>
                         <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String="Team Members"/>
-                            <PropertyValue Property="ID" String="Team"/>
-                            <PropertyValue Property="Target" AnnotationPath="to_team/@UI.LineItem#Team"/>
+                            <PropertyValue Property="Label" String="Notes"/>
+                            <PropertyValue Property="ID" String="Notes"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_notes/@UI.LineItem#Notes"/>
                         </Record>
                         <Record Type="UI.CollectionFacet">
                             <PropertyValue Property="Label" String="Additional Information"/>
@@ -153,11 +257,6 @@
                             <PropertyValue Property="Facets">
                                 <Collection/>
                             </PropertyValue>
-                        </Record>
-                        <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String="Notes"/>
-                            <PropertyValue Property="ID" String="Notes"/>
-                            <PropertyValue Property="Target" AnnotationPath="to_notes/@UI.LineItem#Notes"/>
                         </Record>
                         <Record Type="UI.ReferenceFacet">
                             <PropertyValue Property="Label" String="Images"/>
@@ -237,6 +336,22 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Label" String="Visit Status"/>
                                     <PropertyValue Property="Value" Path="status"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Owner"/>
+                                    <PropertyValue Property="Value" Path="Owner"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Owner Name"/>
+                                    <PropertyValue Property="Value" Path="OwnerName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CHL3"/>
+                                    <PropertyValue Property="Value" Path="CustomerHierarchyL3"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="CHL3 Name"/>
+                                    <PropertyValue Property="Value" Path="CustomerHierarchyL3Name"/>
                                 </Record>
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Label" String="Visit Type"/>
@@ -357,8 +472,20 @@
                             <PropertyValue Property="Value" Path="SaleSupportName"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Visit Status"/>
-                            <PropertyValue Property="Value" Path="status"/>
+                            <PropertyValue Property="Label" String="Owner"/>
+                            <PropertyValue Property="Value" Path="Owner"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Owner Name"/>
+                            <PropertyValue Property="Value" Path="OwnerName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="CHL3"/>
+                            <PropertyValue Property="Value" Path="CustomerHierarchyL3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="CHL3 Name"/>
+                            <PropertyValue Property="Value" Path="CustomerHierarchyL3Name"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Visit Type"/>
@@ -463,6 +590,22 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Visit Status"/>
                             <PropertyValue Property="Value" Path="status"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Owner"/>
+                            <PropertyValue Property="Value" Path="Owner"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Owner Name"/>
+                            <PropertyValue Property="Value" Path="OwnerName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="CHL3"/>
+                            <PropertyValue Property="Value" Path="CustomerHierarchyL3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="CHL3 Name"/>
+                            <PropertyValue Property="Value" Path="CustomerHierarchyL3Name"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Visit Type"/>
@@ -786,6 +929,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="_Entities"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

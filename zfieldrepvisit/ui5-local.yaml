@@ -31,50 +31,46 @@ server:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
           - path: /sap
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
+            destination: DEV
           - path: /sap
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
-          - url: http://pkynj-de2app.porkyproducts.loc:8000
+            destination: DEV
+          - path: /sap/opu/odata/sap/ZODATA_FR_SRV
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
-            path: /sap/opu/odata/sap/ZODATA_FR_SRV
+            destination: DEV
           - path: /sap/opu/odata/sap/ZRMM_FRVISITV2_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
-            authenticationType: BasicAuthentication
+            destination: DEV
           - path: /sap/opu/odata/sap/ZBMM_FRVISITDEFSUPP_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
-            authenticationType: BasicAuthentication
+            destination: DEV
           - path: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
+            destination: DEV
           - path: /sap/opu/odata/sap/ZCXA_USERAUTH_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
+            destination: DEV
           - path: /sap/opu/odata/sap/ZODATA_FIELDREP_IMAGES_V2_SRV
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
+            destination: DEV
             authenticationType: BasicAuthentication
           - path: /sap/opu/odata/sap/ZI_DEFAULTSHVH_CDS
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
-            authenticationType: BasicAuthentication
+            destination: DEV
           - path: /sap/opu/odata/sap/ZSB_C_FRVISIT2
-            url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
             client: '100'
-            destination: DE2
-            authenticationType: BasicAuthentication
+            destination: DEV
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
@@ -120,23 +116,24 @@ server:
             metadataPath: ./webapp/localService/ZSB_C_FRVISIT2/metadata.xml
             mockdataPath: ./webapp/localService/ZSB_C_FRVISIT2/data
             generateMockData: true
+            resolveExternalServiceReferences: true
         annotations:
-          - localPath: ./webapp/localService/ZBSD_MOE_CDS/ZBSD_MOE_CDS_Annotation.xml
-            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBSD_MOE_CDS_VAN',Version='0001')/$value/
-          - localPath: ./webapp/localService/ZBMM_FRVISITDEFSUPP_CDS/ZBMM_FRVISITDEFSUPP_CDS_Annotation.xml
-            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBMM_FRVISITDEFSUPP_CDS_VAN',Version='0001')/$value/
-          - localPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_Annotation.xml
-            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/
-          - localPath: ./webapp/localService/ZCXA_USERAUTH_CDS/ZCXA_USERAUTH_CDS_Annotation.xml
-            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERAUTH_CDS_VAN',Version='0001')/$value/
-          - localPath: ./webapp/localService/ZI_DEFAULTSHVH_CDS/ZI_DEFAULTSHVH_CDS_Annotation.xml
-            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZI_DEFAULTSHVH_CDS_VAN',Version='0001')/$value/
-          - localPath: ./webapp/localService/ZSB_C_FRVISIT2/ZSB_C_FRVISIT2_Annotation.xml
-            urlPath: /destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_FRVISIT2_VAN',Version='0001')/$value/
           - localPath: ./webapp/localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_VAN.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRMM_FRVISITV2_CDS_VAN',Version='0001')/$value/
           - localPath: ./webapp/localService/mainService/ZODATA_FR_ANNO_MDL.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZBSD_MOE_CDS/ZBSD_MOE_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBSD_MOE_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZBMM_FRVISITDEFSUPP_CDS/ZBMM_FRVISITDEFSUPP_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZBMM_FRVISITDEFSUPP_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZCXA_USERAUTH_CDS/ZCXA_USERAUTH_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERAUTH_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZI_DEFAULTSHVH_CDS/ZI_DEFAULTSHVH_CDS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZI_DEFAULTSHVH_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/ZSB_C_FRVISIT2/ZSB_C_FRVISIT2_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_C_FRVISIT2_VAN',Version='0001')/$value/
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:

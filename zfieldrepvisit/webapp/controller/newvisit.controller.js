@@ -1521,6 +1521,7 @@ sap.ui.define(
           urlParameters: {
             "$filter": "Visitid eq '" + visitID + "' and Type eq 'C'",
 
+        "$orderby": "Createdatetime desc"
           },
           success: function (oData, oResponse) {
             // var plant = oData.results.find(element => element.parid === "WRK");
@@ -7461,6 +7462,8 @@ sap.ui.define(
 
         if (obj1.Zip)
           this.getView().getModel("newProspect").setProperty("/Pstlz", obj1.Zip.trim());
+
+        this.getView().getModel("newProspect").setProperty("/Placeid", obj.id.trim());
 
         this.getView().getModel("newProspect").setProperty("/Land1", 'US');
 

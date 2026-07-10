@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: customer.porky.zonenote
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: DEV
+          url: http://pkytx-devapp.porkyproducts.loc:8000
+          client: '100'
+        app:
+          name: ZONENOTE
+          package: $TMP
+          transport: ''
+        exclude:
+          - /test/
+          - /localService/

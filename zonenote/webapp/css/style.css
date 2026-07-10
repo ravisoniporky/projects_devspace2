@@ -1,0 +1,226 @@
+/* ── OneNote Explorer Layout ─────────────────────────────────────────────── */
+
+.noteExplorerRoot {
+    height: calc(100vh - 8rem);
+    overflow: hidden;
+}
+
+.noteExplorerBody {
+    flex: 1;
+    height: calc(100% - 3rem);
+    overflow: hidden;
+}
+
+/* Three narrow list columns */
+.noteColumn {
+    width: 20%;
+    min-width: 160px;
+    border-right: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Wide content column */
+.contentColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+/* Column header strip */
+.noteColumnHeader {
+    padding: 0.5rem 0.75rem;
+    background: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
+    min-height: 2.5rem;
+    flex-shrink: 0;
+}
+
+.contentHeader {
+    background: #ededf4;
+    border-bottom: 1px solid #d0d0e0;
+}
+
+.columnIcon {
+    font-size: 1rem !important;
+    color: #6264A7;
+    margin-right: 0.4rem;
+    flex-shrink: 0;
+}
+
+.columnTitle {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #32363a;
+}
+
+/* Lists fill remaining space and scroll */
+.noteList {
+    flex: 1;
+    overflow-y: auto !important;
+    height: 100%;
+}
+
+.noteList .sapMLIBContent {
+    padding: 0.4rem 0.75rem;
+}
+
+.noteList .sapMSLITitle {
+    font-size: 0.8125rem;
+}
+
+/* Selected item accent */
+.noteList .sapMLIBSelected {
+    background-color: #eef0fb !important;
+    border-left: 3px solid #6264A7;
+}
+
+/* ── Content area ─────────────────────────────────────────────────────────── */
+
+.contentScroll {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+}
+
+/* Placeholder shown before a page is selected */
+.contentPlaceholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+    color: #9e9e9e;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Rendered OneNote HTML wrapper */
+.pageContent {
+    font-family: "Segoe UI", Calibri, Arial, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #323130;
+    max-width: 900px;
+}
+
+.pageContent h1,
+.pageContent h2,
+.pageContent h3,
+.pageContent h4 {
+    color: #201f1e;
+    margin-top: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.pageContent table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.75rem 0;
+}
+
+.pageContent td,
+.pageContent th {
+    border: 1px solid #d0d0d0;
+    padding: 0.4rem 0.6rem;
+}
+
+.pageContent th {
+    background: #f3f2f1;
+    font-weight: 600;
+}
+
+.pageContent img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.pageContent ul,
+.pageContent ol {
+    padding-left: 1.5rem;
+}
+
+.pageContent a {
+    color: #6264A7;
+}
+
+/* ── Image gallery (appended below page content) ─────────────────────────── */
+
+.imageGallery {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #e0e0e0;
+}
+
+.galleryTitle {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #6264A7;
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.galleryGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.galleryItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 0.4rem;
+    background: #fff;
+    transition: box-shadow 0.15s;
+}
+
+.galleryItem:hover {
+    box-shadow: 0 2px 8px rgba(98, 100, 167, 0.3);
+    border-color: #6264A7;
+}
+
+.galleryItem img {
+    width: 100%;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 4px;
+    background: #f5f5f5;
+}
+
+.galleryName {
+    font-size: 0.7rem;
+    color: #555;
+    margin-top: 0.3rem;
+    word-break: break-all;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* ── Status strip ─────────────────────────────────────────────────────────── */
+
+.statusStrip {
+    margin: 0.25rem 0.5rem;
+    flex-shrink: 0;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+
+.footerText {
+    font-size: 0.75rem;
+    color: #666;
+}

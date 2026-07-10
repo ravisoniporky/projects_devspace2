@@ -16,7 +16,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 <f:header>
 	<f:DynamicPageHeader pinnable="true">
 
- <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" enableAutoBinding="true" entitySet="ZRSD_MobileCatalogMaint" useToolbar="true"
+ <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" enableAutoBinding="true" entitySet="ZCSD_MobileCatalogMaint" useToolbar="true"
 			 persistencyKey="catalogmaintenance_f1"   enableBasicSearch="true"
 			  advancedMode="false" filterBarExpanded="false" smartVariant="true" showAllFilters="true"			  
 				showFilterConfiguration="true"  >
@@ -46,7 +46,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 				</f:DynamicPageHeader >
 </f:header>
 <f:content>
-<smartTable:SmartTable id="smartTable_custF4_map"  entitySet="ZRSD_MobileCatalogMaint"  smartFilterId="smartFilter_custF4_map"
+<smartTable:SmartTable id="smartTable_custF4_map"  entitySet="ZCSD_MobileCatalogMaint"  smartFilterId="smartFilter_custF4_map"
 				growing="true"
 				growingThreshold ="20"
 				requestAtLeastFields="Material,MaterialDescription,OldMaterial,CatalogName,MaterialManufacturerPartNumber,Brand,MaterialCommodity,Department,SalesOrganization,CatalogId,DistributionChannel"
@@ -174,7 +174,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 						</LightBox>
 					</detailBox>
 				</Image>
-				<Button text="Add" press="onUploadImage" icon="sap-icon://add-photo"/>
+				<Button text="Add" press="onUploadImage" icon="sap-icon://add-photo"  visible="{viewModel>/showImageButton}"/>
 					</HBox>
 				
 	</uitable:template>

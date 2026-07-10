@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
-    <edmx:Reference Uri="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZODATA_FR_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
             <EntityType Name="FRVISITCUSTSUPP" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Kunnr"/>
@@ -232,7 +234,7 @@
                 <Property Name="SalesOrganization_Text" Type="Edm.String" MaxLength="20" sap:label="Sales Organization Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
                 <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
-                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing"/>
+                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Interc. Bl." sap:quickinfo="Customer Number for Intercompany Billing"/>
                 <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
             </EntityType>
             <EntityType Name="Rv_I_Rspm_Yes_NoType" sap:value-list="true" sap:content-version="1">
@@ -252,23 +254,23 @@
                 <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/>
                 <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
                 <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
-                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="35" sap:label="Name"/>
                 <Property Name="MostRecentVisit" Type="Edm.Decimal" Precision="15" Scale="0"/>
                 <Property Name="TotalVisit" Type="Edm.Int32"/>
                 <Property Name="Last12Visit" Type="Edm.Int32"/>
                 <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer number of business partner"/>
-                <Property Name="SalesLeadName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
-                <Property Name="SaleSupportName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="SalesLeadName" Type="Edm.String" MaxLength="35" sap:label="Name"/>
+                <Property Name="SaleSupportName" Type="Edm.String" MaxLength="35" sap:label="Name"/>
                 <Property Name="SalesSupport" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer number of business partner"/>
                 <Property Name="CHL1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
-                <Property Name="CHL1Name" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="CHL1Name" Type="Edm.String" MaxLength="35" sap:label="Name"/>
                 <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
                 <Property Name="Latitude" Type="Edm.String" MaxLength="20"/>
                 <Property Name="Longitude" Type="Edm.String" MaxLength="20"/>
                 <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
                 <Property Name="ProjectedSales" Type="Edm.Decimal" Precision="15" Scale="2"/>
                 <Property Name="ProjectedDelivery" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Projected Delivery"/>
-                <Property Name="PriceExists" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Checkbox" sap:heading=""/>
+                <Property Name="PriceExists" Type="Edm.Boolean" sap:label="Checkbox" sap:heading=""/>
                 <NavigationProperty Name="to_Dep" Relationship="ZODATA_FR_SRV.assoc_D9F4D2BB86538872074C952BC65563F5" FromRole="FromRole_assoc_D9F4D2BB86538872074C952BC65563F5" ToRole="ToRole_assoc_D9F4D2BB86538872074C952BC65563F5"/>
                 <NavigationProperty Name="to_Moe" Relationship="ZODATA_FR_SRV.assoc_2BD768DDBB25639722FFAAB6C2D9BF1B" FromRole="FromRole_assoc_2BD768DDBB25639722FFAAB6C2D9BF1B" ToRole="ToRole_assoc_2BD768DDBB25639722FFAAB6C2D9BF1B"/>
                 <NavigationProperty Name="to_SM" Relationship="ZODATA_FR_SRV.assoc_571038AE93227FEE4DF116C912A7E907" FromRole="FromRole_assoc_571038AE93227FEE4DF116C912A7E907" ToRole="ToRole_assoc_571038AE93227FEE4DF116C912A7E907"/>
@@ -279,7 +281,7 @@
                 <Key>
                     <PropertyRef Name="FunctionofPartner"/>
                 </Key>
-                <Property Name="FunctionofPartner" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Function" sap:quickinfo="Function of partner"/>
+                <Property Name="FunctionofPartner" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Function" sap:quickinfo="Function of Partner"/>
                 <Property Name="FunctionofPartnerName" Type="Edm.String" MaxLength="30" sap:text="FunctionofPartnerName" sap:label="Description"/>
             </EntityType>
             <EntityType Name="ZBMM_CUSTOMERDEPARTMENTType" sap:label="Customer Department List" sap:value-list="true" sap:content-version="1">
@@ -323,7 +325,7 @@
                 <Property Name="Changedatetime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Visit Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="Locallastchangedat" Type="Edm.DateTimeOffset" Precision="7" sap:label="Local Changed On" sap:quickinfo="Local Instance Last Change Date Time"/>
                 <Property Name="status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Field Visit Status" sap:quickinfo="Field Rep Visit Status"/>
-                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="35" sap:label="Customer Name" sap:quickinfo="Name 1"/>
+                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="35" sap:label="Customer Name" sap:quickinfo="Name"/>
                 <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Customer Address" sap:quickinfo="Street and House Number"/>
                 <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
                 <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
@@ -334,17 +336,17 @@
                 <Property Name="CreatedFullName" Type="Edm.String" MaxLength="80" sap:label="Created By Name" sap:quickinfo="Full Name of Person"/>
                 <Property Name="ChangedFullName" Type="Edm.String" MaxLength="80" sap:label="Changed By Name" sap:quickinfo="Full Name of Person"/>
                 <Property Name="CHL1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hiearchy L1" sap:quickinfo="Customer Number"/>
-                <Property Name="CHL1Name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy" sap:quickinfo="Name 1"/>
+                <Property Name="CHL1Name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy" sap:quickinfo="Name"/>
                 <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner"/>
-                <Property Name="SalesLeadName" Type="Edm.String" MaxLength="35" sap:label="Sales Lead Name" sap:quickinfo="Name 1"/>
+                <Property Name="SalesLeadName" Type="Edm.String" MaxLength="35" sap:label="Sales Lead Name" sap:quickinfo="Name"/>
                 <Property Name="SalesLeadName2" Type="Edm.String" MaxLength="35" sap:label="Sales Lead Name 2" sap:quickinfo="Name 2"/>
-                <Property Name="SaleSupportName" Type="Edm.String" MaxLength="35" sap:label="Sales Support Name" sap:quickinfo="Name 1"/>
+                <Property Name="SaleSupportName" Type="Edm.String" MaxLength="35" sap:label="Sales Support Name" sap:quickinfo="Name"/>
                 <Property Name="SaleSupportName2" Type="Edm.String" MaxLength="35" sap:label="Sales Support Name 2" sap:quickinfo="Name 2"/>
                 <Property Name="SalesSupport" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Support" sap:quickinfo="Customer number of business partner"/>
                 <Property Name="CustomerFullName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
                 <Property Name="ProjectedSales" Type="Edm.Decimal" Precision="15" Scale="2" sap:label="Projected Weekly Sales"/>
                 <Property Name="ProjectedDelivery" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Projected 1st Delivery" sap:quickinfo="Projected Delivery"/>
-                <Property Name="PriceExists" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Given Prices" sap:quickinfo="Checkbox"/>
+                <Property Name="PriceExists" Type="Edm.Boolean" sap:label="Given Prices" sap:quickinfo="Checkbox"/>
                 <NavigationProperty Name="Parameters" Relationship="ZODATA_FR_SRV.assoc_1DE17ED766AD6B5EFBBE6981E0F7E5EA" FromRole="ToRole_assoc_1DE17ED766AD6B5EFBBE6981E0F7E5EA" ToRole="FromRole_assoc_1DE17ED766AD6B5EFBBE6981E0F7E5EA" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="ZBMM_FieldRepNearbyParameters" sap:semantics="parameters" sap:content-version="1">
@@ -371,19 +373,19 @@
                 <Property Name="p_distinm" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:label="Distance Miles/Kms"/>
                 <Property Name="kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="name1" sap:label="Ship-to" sap:quickinfo="Customer Number"/>
                 <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization" sap:value-list="standard"/>
-                <Property Name="Deleted" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deleted" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')" sap:value-list="fixed-values"/>
-                <Property Name="CreditBLock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Credit Management Block" sap:quickinfo="Deletion Indicator" sap:value-list="fixed-values"/>
+                <Property Name="Deleted" Type="Edm.Boolean" sap:label="Deleted" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')" sap:value-list="fixed-values"/>
+                <Property Name="CreditBLock" Type="Edm.Boolean" sap:label="Credit Management Block" sap:quickinfo="Deletion Indicator" sap:value-list="fixed-values"/>
                 <Property Name="altkn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
                 <Property Name="cu_hier1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier1_name" sap:label="Customer Hierarchy L1" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
                 <Property Name="sm" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner"/>
-                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name1" sap:quickinfo="Name 1"/>
+                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name1" sap:quickinfo="Name"/>
                 <Property Name="name2" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name2" sap:quickinfo="Name 2"/>
                 <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Ship-to Address" sap:quickinfo="Street and House Number"/>
                 <Property Name="ort01" Type="Edm.String" MaxLength="35" sap:label="Ship-to City" sap:quickinfo="City"/>
                 <Property Name="regio" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Ship-to Region" sap:quickinfo="Region (State, Province, County)"/>
                 <Property Name="pstlz" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Postal Code" sap:quickinfo="Postal Code"/>
                 <Property Name="telf1" Type="Edm.String" MaxLength="16" sap:label="Ship-to Telephone" sap:quickinfo="First telephone number" sap:semantics="tel"/>
-                <Property Name="hier1_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L1 Name" sap:quickinfo="Name 1"/>
+                <Property Name="hier1_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L1 Name" sap:quickinfo="Name"/>
                 <Property Name="zzlongitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Longitude" sap:quickinfo="Geo location longitude"/>
                 <Property Name="zzlatitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Latitude" sap:quickinfo="Geo location latitude"/>
                 <Property Name="storeno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Store Number" sap:quickinfo="Customer Store Number"/>
@@ -391,20 +393,20 @@
                 <Property Name="ss" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SS Partner" sap:quickinfo="Customer number of business partner"/>
                 <Property Name="zzorig_shipto" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Party"/>
                 <Property Name="cu_hier3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier3_name" sap:label="Customer Hierarchy L3" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
-                <Property Name="hier3_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L3 Name" sap:quickinfo="Name 1"/>
+                <Property Name="hier3_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L3 Name" sap:quickinfo="Name"/>
                 <Property Name="cu_hier2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier2_name" sap:label="Customer Hierarchy L2" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
-                <Property Name="hier2_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L2 Name" sap:quickinfo="Name 1"/>
+                <Property Name="hier2_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L2 Name" sap:quickinfo="Name"/>
                 <Property Name="ow" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Owner" sap:quickinfo="Customer number of business partner"/>
                 <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address" sap:semantics="email"/>
-                <Property Name="IsDefaultEmailAddress" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Standard addr." sap:quickinfo="Flag: this address is the default address"/>
-                <Property Name="CentralBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record" sap:value-list="fixed-values"/>
-                <Property Name="SalesOrganizationBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
-                <Property Name="loevm_c" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)" sap:value-list="fixed-values"/>
-                <Property Name="loevm_orgordblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
-                <Property Name="loevm_companypostblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Posting Block" sap:quickinfo="Central posting block" sap:value-list="fixed-values"/>
-                <Property Name="loevm_archblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Archiving Block" sap:quickinfo="Central Archiving Flag" sap:value-list="fixed-values"/>
-                <Property Name="loevm_postblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co Code Posting Block" sap:quickinfo="Posting block for company code" sap:value-list="fixed-values"/>
-                <Property Name="loevm_ordblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="IsDefaultEmailAddress" Type="Edm.Boolean" sap:label="Standard addr." sap:quickinfo="Flag: this address is the default address"/>
+                <Property Name="CentralBlock" Type="Edm.Boolean" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record" sap:value-list="fixed-values"/>
+                <Property Name="SalesOrganizationBlock" Type="Edm.Boolean" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_c" Type="Edm.Boolean" sap:label="Co Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_orgordblock" Type="Edm.Boolean" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_companypostblock" Type="Edm.Boolean" sap:label="Central Posting Block" sap:quickinfo="Central posting block" sap:value-list="fixed-values"/>
+                <Property Name="loevm_archblock" Type="Edm.Boolean" sap:label="Archiving Block" sap:quickinfo="Central Archiving Flag" sap:value-list="fixed-values"/>
+                <Property Name="loevm_postblock" Type="Edm.Boolean" sap:label="Co Code Posting Block" sap:quickinfo="Posting block for company code" sap:value-list="fixed-values"/>
+                <Property Name="loevm_ordblock" Type="Edm.Boolean" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
                 <Property Name="ADRNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
                 <Property Name="smvkorg" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
                 <Property Name="DistanceInMiles" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Distance in Miles"/>
@@ -463,11 +465,11 @@
                 </Key>
                 <Property Name="BPConactPerson" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
                 <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
-                <Property Name="ContactFirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
-                <Property Name="ContactLastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
+                <Property Name="ContactFirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First Name of Business Partner (Person)"/>
+                <Property Name="ContactLastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last Name of Business Partner (Person)"/>
                 <Property Name="ContactPersonName" Type="Edm.String" MaxLength="80" sap:label="Full Name"/>
                 <Property Name="ContactPersonEmail" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address"/>
-                <Property Name="ContactPersonMobile" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
+                <Property Name="ContactPersonMobile" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code and Number"/>
                 <Property Name="CustomerName" Type="Edm.String" MaxLength="81"/>
                 <Property Name="ContactPersonAddressId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Person Number"/>
                 <Property Name="CustomerFullName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Customer Name" sap:quickinfo="Customer Full Name"/>
@@ -488,8 +490,8 @@
                 <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
                 <Property Name="parvw" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Partner Function"/>
                 <Property Name="kunn2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer number of business partner"/>
-                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
-                <Property Name="PartnerName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Name"/>
+                <Property Name="PartnerName" Type="Edm.String" MaxLength="35" sap:label="Name"/>
                 <Property Name="CustomerName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
                 <Property Name="PartnerName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
             </EntityType>
@@ -542,14 +544,14 @@
                 <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
                 <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
                 <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
-                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Name"/>
                 <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
                 <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
                 <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
                 <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
-                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code and Number"/>
                 <Property Name="PhoneNumberExtension" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="TelePhone Extension" sap:quickinfo="Telephone no.: Extension"/>
-                <Property Name="MobileNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Mobile" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
+                <Property Name="MobileNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Mobile" sap:quickinfo="Telephone No.: Dialing Code and Number"/>
                 <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="EMail" sap:quickinfo="E-Mail Address"/>
                 <Property Name="BillingIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Billing block" sap:quickinfo="Central billing block for customer"/>
                 <Property Name="OrderIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Order block" sap:quickinfo="Central order block for customer"/>
@@ -557,7 +559,7 @@
                 <Property Name="CustomerName2" Type="Edm.String" MaxLength="35" sap:label="Customer Name 2" sap:quickinfo="Name 2"/>
                 <Property Name="ProjectedSales" Type="Edm.Decimal" Precision="15" Scale="2" sap:label="Projected Weekly Sales"/>
                 <Property Name="ProjectedDelivery" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Projected 1st Delivery Date" sap:quickinfo="Projected Delivery"/>
-                <Property Name="PriceExists" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Given Prices" sap:quickinfo="Checkbox" sap:value-list="fixed-values"/>
+                <Property Name="PriceExists" Type="Edm.Boolean" sap:label="Given Prices" sap:quickinfo="Checkbox" sap:value-list="fixed-values"/>
             </EntityType>
             <EntityType Name="ZBSD_SalesOrganizationType" sap:label="Sales Organization" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -566,7 +568,7 @@
                 <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="salesorgname" sap:label="Sales Organization"/>
                 <Property Name="SalesOrganizationCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/>
                 <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
-                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing"/>
+                <Property Name="IntercompanyBillingCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Interc. Bl." sap:quickinfo="Customer Number for Intercompany Billing"/>
                 <Property Name="ltext" Type="Edm.String" MaxLength="40" sap:attribute-for="SalesOrganization" sap:label="Name" sap:quickinfo="Name 1"/>
                 <Property Name="mtext" Type="Edm.String" MaxLength="20" sap:attribute-for="SalesOrganization" sap:display-format="UpperCase" sap:label="Search Term 1"/>
                 <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
@@ -576,24 +578,24 @@
                 <Key>
                     <PropertyRef Name="Flag"/>
                 </Key>
-                <Property Name="Flag" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:text="DomainValue" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="Flag" Type="Edm.Boolean" Nullable="false" sap:text="DomainValue" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
                 <Property Name="DomainValue" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
             </EntityType>
             <EntityType Name="ZCSD_E_MobileItemListType" sap:label="Item Proposal" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="p_vkorg"/>
                     <PropertyRef Name="p_kunwe"/>
-                    <PropertyRef Name="p_catalog"/>
                     <PropertyRef Name="p_ats"/>
                     <PropertyRef Name="p_itemproposal"/>
                     <PropertyRef Name="MATNR"/>
+                    <PropertyRef Name="zcatalog"/>
                 </Key>
                 <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
                 <Property Name="p_kunwe" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to"/>
-                <Property Name="p_catalog" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Catalog"/>
                 <Property Name="p_ats" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="ATS"/>
                 <Property Name="p_itemproposal" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Item Proposal"/>
                 <Property Name="MATNR" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="zcatalog" Type="Edm.String" Nullable="false" MaxLength="30" sap:filter-restriction="single-value" sap:label="Catalog" sap:value-list="standard"/>
                 <Property Name="MAKTX" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
                 <Property Name="BISMT" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old Material" sap:quickinfo="Old material number"/>
                 <Property Name="ZMOB_MATDESC" Type="Edm.String" MaxLength="40" sap:label="Mobile Material Description"/>
@@ -628,13 +630,11 @@
                 <Key>
                     <PropertyRef Name="p_vkorg"/>
                     <PropertyRef Name="p_kunwe"/>
-                    <PropertyRef Name="p_catalog"/>
                     <PropertyRef Name="p_ats"/>
                     <PropertyRef Name="p_itemproposal"/>
                 </Key>
                 <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
                 <Property Name="p_kunwe" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Ship-to" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
-                <Property Name="p_catalog" Type="Edm.String" Nullable="false" MaxLength="30" sap:parameter="mandatory" sap:label="Catalog" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
                 <Property Name="p_ats" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="ATS" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
                 <Property Name="p_itemproposal" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Item Proposal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard"/>
                 <NavigationProperty Name="Set" Relationship="ZODATA_FR_SRV.assoc_E702787A6735D3D615F5B93C420D2B58" FromRole="FromRole_assoc_E702787A6735D3D615F5B93C420D2B58" ToRole="ToRole_assoc_E702787A6735D3D615F5B93C420D2B58"/>
@@ -653,15 +653,15 @@
                 </Key>
                 <Property Name="SalesOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Org" sap:quickinfo="Sales Organization"/>
                 <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
-                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Customer Name" sap:quickinfo="Name 1"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Customer Name" sap:quickinfo="Name"/>
                 <Property Name="PrevAcct" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
                 <Property Name="Street" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
                 <Property Name="City" Type="Edm.String" MaxLength="35" sap:label="City"/>
                 <Property Name="Phone" Type="Edm.String" MaxLength="16" sap:label="PHone" sap:quickinfo="First telephone number"/>
-                <Property Name="CentralBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record"/>
-                <Property Name="CoCodeBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Company Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)"/>
-                <Property Name="SorgBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)"/>
-                <Property Name="CreditBLock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Credit Block" sap:quickinfo="Blocked by Credit Management"/>
+                <Property Name="CentralBlock" Type="Edm.Boolean" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record"/>
+                <Property Name="CoCodeBlock" Type="Edm.Boolean" sap:label="Company Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)"/>
+                <Property Name="SorgBlock" Type="Edm.Boolean" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)"/>
+                <Property Name="CreditBLock" Type="Edm.Boolean" sap:label="Credit Block" sap:quickinfo="Blocked by Credit Management"/>
                 <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner"/>
                 <Property Name="LevelAG" Type="Edm.String" MaxLength="10" sap:label=""/>
                 <Property Name="AGName" Type="Edm.String" MaxLength="35"/>
@@ -674,51 +674,55 @@
                 <Property Name="Level1C" Type="Edm.String" MaxLength="10"/>
                 <Property Name="Level1CName" Type="Edm.String" MaxLength="35"/>
             </EntityType>
-            <EntityType Name="ZI_DefaultSHVHType" sap:label="Default SH Value Help" sap:content-version="1">
+            <EntityType Name="ZI_DefaultSHVHType" sap:label="Advanced" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="kunnr"/>
                     <PropertyRef Name="vkorg"/>
                 </Key>
-                <Property Name="kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="name1" sap:label="Ship-to" sap:quickinfo="Customer Number"/>
-                <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to" sap:quickinfo="Customer Number"/>
+                <Property Name="vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="SalesOrganizationName" sap:label="Sales Organization" sap:value-list="standard"/>
                 <Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
-                <Property Name="Deleted" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deleted" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')" sap:value-list="fixed-values"/>
-                <Property Name="CreditBLock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Credit Management Block" sap:quickinfo="Deletion Indicator" sap:value-list="fixed-values"/>
+                <Property Name="Deleted" Type="Edm.Boolean" sap:label="Deleted" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')" sap:value-list="fixed-values"/>
+                <Property Name="CreditBLock" Type="Edm.Boolean" sap:label="Credit Management Block" sap:quickinfo="Deletion Indicator" sap:value-list="fixed-values"/>
                 <Property Name="altkn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
-                <Property Name="cu_hier1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier1_name" sap:label="Customer Hierarchy L1" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
+                <Property Name="cu_hier1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L1" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
                 <Property Name="sm" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer number of business partner"/>
-                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name1" sap:quickinfo="Name 1"/>
+                <Property Name="SalesLeadName" Type="Edm.String" MaxLength="80" sap:label="Sales Lead Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name1" sap:quickinfo="Name"/>
                 <Property Name="name2" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name2" sap:quickinfo="Name 2"/>
+                <Property Name="CustomerName3" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name3" sap:quickinfo="Name 3"/>
+                <Property Name="CustomerName4" Type="Edm.String" MaxLength="35" sap:label="Ship-to Name4" sap:quickinfo="Name 4"/>
                 <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Ship-to Address" sap:quickinfo="Street and House Number"/>
                 <Property Name="ort01" Type="Edm.String" MaxLength="35" sap:label="Ship-to City" sap:quickinfo="City"/>
                 <Property Name="regio" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Ship-to Region" sap:quickinfo="Region (State, Province, County)"/>
                 <Property Name="pstlz" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-to Postal Code" sap:quickinfo="Postal Code"/>
                 <Property Name="telf1" Type="Edm.String" MaxLength="16" sap:label="Ship-to Telephone" sap:quickinfo="First telephone number" sap:semantics="tel"/>
-                <Property Name="hier1_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L1 Name" sap:quickinfo="Name 1"/>
+                <Property Name="hier1_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L1 Name" sap:quickinfo="Name"/>
                 <Property Name="zzlongitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Longitude" sap:quickinfo="Geo location longitude"/>
                 <Property Name="zzlatitude" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Latitude" sap:quickinfo="Geo location latitude"/>
                 <Property Name="storeno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Store Number" sap:quickinfo="Customer Store Number"/>
                 <Property Name="ss" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SS Partner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="ssname" Type="Edm.String" MaxLength="30" sap:label="SS Partner Name" sap:quickinfo="Name"/>
                 <Property Name="zzorig_shipto" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Original Ship-to" sap:quickinfo="Ship-to Party"/>
-                <Property Name="cu_hier3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier3_name" sap:label="Customer Hierarchy L3" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
-                <Property Name="hier3_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L3 Name" sap:quickinfo="Name 1"/>
-                <Property Name="cu_hier2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="hier2_name" sap:label="Customer Hierarchy L2" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
-                <Property Name="hier2_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L2 Name" sap:quickinfo="Name 1"/>
+                <Property Name="cu_hier3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L3" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
+                <Property Name="hier3_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L3 Name" sap:quickinfo="Name"/>
+                <Property Name="cu_hier2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L2" sap:quickinfo="Customer number of the higher-level customer hierarchy"/>
+                <Property Name="hier2_name" Type="Edm.String" MaxLength="35" sap:label="Customer Hierarchy L2 Name" sap:quickinfo="Name"/>
                 <Property Name="ow" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Owner" sap:quickinfo="Customer number of business partner"/>
+                <Property Name="owname" Type="Edm.String" MaxLength="30" sap:label="Owner Name" sap:quickinfo="Name"/>
                 <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address" sap:semantics="email"/>
-                <Property Name="IsDefaultEmailAddress" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Standard addr." sap:quickinfo="Flag: this address is the default address"/>
-                <Property Name="CentralBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record" sap:value-list="fixed-values"/>
-                <Property Name="SalesOrganizationBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
-                <Property Name="loevm_c" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)" sap:value-list="fixed-values"/>
-                <Property Name="loevm_orgordblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
-                <Property Name="loevm_companypostblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Posting Block" sap:quickinfo="Central posting block" sap:value-list="fixed-values"/>
-                <Property Name="loevm_archblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Archiving Block" sap:quickinfo="Central Archiving Flag" sap:value-list="fixed-values"/>
-                <Property Name="loevm_postblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Co Code Posting Block" sap:quickinfo="Posting block for company code" sap:value-list="fixed-values"/>
-                <Property Name="loevm_ordblock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="IsDefaultEmailAddress" Type="Edm.Boolean" sap:label="Standard addr." sap:quickinfo="Flag: this address is the default address"/>
+                <Property Name="CentralBlock" Type="Edm.Boolean" sap:label="Central Block" sap:quickinfo="Central Deletion Flag for Master Record" sap:value-list="fixed-values"/>
+                <Property Name="SalesOrganizationBlock" Type="Edm.Boolean" sap:label="Sales Org Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_c" Type="Edm.Boolean" sap:label="Co Code Block" sap:quickinfo="Deletion Flag for Master Record (Company Code Level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_orgordblock" Type="Edm.Boolean" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
+                <Property Name="loevm_companypostblock" Type="Edm.Boolean" sap:label="Central Posting Block" sap:quickinfo="Central posting block" sap:value-list="fixed-values"/>
+                <Property Name="loevm_archblock" Type="Edm.Boolean" sap:label="Archiving Block" sap:quickinfo="Central Archiving Flag" sap:value-list="fixed-values"/>
+                <Property Name="loevm_postblock" Type="Edm.Boolean" sap:label="Co Code Posting Block" sap:quickinfo="Posting block for company code" sap:value-list="fixed-values"/>
+                <Property Name="loevm_ordblock" Type="Edm.Boolean" sap:label="Central Order Block" sap:quickinfo="Deletion flag for customer (sales level)" sap:value-list="fixed-values"/>
                 <Property Name="ADRNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
                 <Property Name="smvkorg" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
-                <Property Name="CustomerName3" Type="Edm.String" MaxLength="35" sap:label="Name 3"/>
-                <Property Name="CustomerName4" Type="Edm.String" MaxLength="35" sap:label="Name 4"/>
+                <Property Name="SalesOrganizationName" Type="Edm.String" MaxLength="20" sap:label="Sales Organization Name" sap:quickinfo="Name"/>
                 <Property Name="Status_Criticality" Type="Edm.Byte"/>
                 <Property Name="GetUrl" Type="Edm.String" MaxLength="128" sap:label="URL"/>
                 <Property Name="OpenCustomerSalesDashboard" Type="Edm.String" MaxLength="20" sap:label="Overview"/>
@@ -746,7 +750,7 @@
                 <Property Name="Vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
                 <Property Name="Property" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Department Info" sap:quickinfo="Field Rep Deparment Property"/>
                 <Property Name="BPConactPerson" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
-                <Property Name="IsStandardRelationship" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Is Key" sap:quickinfo="Standard Relationship"/>
+                <Property Name="IsStandardRelationship" Type="Edm.Boolean" sap:label="Is Key" sap:quickinfo="Standard Relationship"/>
                 <Property Name="DepartmentName" Type="Edm.String" MaxLength="20" sap:label="Description"/>
                 <Property Name="PropertyName" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Description field length 40"/>
                 <Property Name="PropertyValue" Type="Edm.String" MaxLength="102"/>
@@ -757,9 +761,9 @@
                 <Property Name="Email" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Email Marketing" sap:quickinfo="Contact person: Attribute 2" sap:value-list="standard"/>
                 <Property Name="Whatsapp" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Mobile Marketing" sap:quickinfo="Contact person: Attribute 1" sap:value-list="standard"/>
                 <Property Name="ContactPersonEmail" Type="Edm.String" MaxLength="241" sap:label="E-Mail Address"/>
-                <Property Name="ContactPersonMobile" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number"/>
-                <Property Name="ContactFirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
-                <Property Name="ContactLastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
+                <Property Name="ContactPersonMobile" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code and Number"/>
+                <Property Name="ContactFirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First Name of Business Partner (Person)"/>
+                <Property Name="ContactLastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last Name of Business Partner (Person)"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
                 <Property Name="Changedby" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Last Changed By User"/>
                 <Property Name="Createdatetime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
@@ -773,7 +777,7 @@
                 <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
                 <Property Name="ContactPersonEmailSequence" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Sequence Number"/>
                 <Property Name="ContactPersonMobileSequence" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Sequence Number"/>
-                <Property Name="Function" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Function" sap:quickinfo="Function of partner" sap:value-list="fixed-values"/>
+                <Property Name="Function" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Function" sap:quickinfo="Function of Partner" sap:value-list="fixed-values"/>
                 <Property Name="RequestMoeStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="ZBILL Status"/>
                 <Property Name="RequestMoeTicket" Type="Edm.String" MaxLength="20" sap:display-format="NonNegative" sap:label="Ticket Number"/>
             </EntityType>
@@ -787,12 +791,14 @@
                 <Property Name="Saleslead" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer Number"/>
                 <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
                 <Property Name="Username" Type="Edm.String" MaxLength="80" sap:label="User Name" sap:quickinfo="Full Name of Person"/>
-                <Property Name="SalesleadName" Type="Edm.String" MaxLength="35" sap:label="Sales Lead Name" sap:quickinfo="Name 1"/>
+                <Property Name="SalesleadName" Type="Edm.String" MaxLength="35" sap:label="Sales Lead Name" sap:quickinfo="Name"/>
                 <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:quickinfo="Company code of the sales organization"/>
             </EntityType>
             <ComplexType Name="Prospect">
                 <Property Name="Ktokd" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Account group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Placeid" Type="Edm.String" Nullable="false" MaxLength="512" sap:label="Place ID of Establis" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Parvw" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Partner Functn" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Locationid" Type="Edm.String" Nullable="false" MaxLength="512" sap:label="Location ID of Physi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SsKunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Sales Support" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Kunn2" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -1018,6 +1024,7 @@
                     <End EntitySet="ZBMM_FRMOE" Role="ToRole_assoc_2BD768DDBB25639722FFAAB6C2D9BF1B"/>
                 </AssociationSet>
             </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
             <Annotations Target="ZODATA_FR_SRV.ZBMMCUSTOMERVISITType/SalesOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -1319,6 +1326,33 @@
                 </Annotation>
                 <Annotation Term="Common.ValueListWithFixedValues"/>
             </Annotations>
+            <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListType/zcatalog" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Mobile Catalog Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_MobileCatalogVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_vkorg"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="zcatalog"/>
+                                    <PropertyValue Property="ValueListProperty" String="CatalogName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CatalogDesc"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IeFlag"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListParameters/p_vkorg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -1358,9 +1392,11 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListParameters/p_kunwe" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Customer Value help search help"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
                         <PropertyValue Property="CollectionPath" String="zi_customer_valuehelp"/>
                         <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">
@@ -1432,33 +1468,6 @@
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Level1CName"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListParameters/p_catalog" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String="Mobile Catalog Value Help"/>
-                        <PropertyValue Property="CollectionPath" String="ZI_MobileCatalogVH"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_vkorg"/>
-                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_catalog"/>
-                                    <PropertyValue Property="ValueListProperty" String="CatalogName"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="CatalogDesc"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="IeFlag"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -1972,7 +1981,6 @@
                             <Collection>
                                 <PropertyPath>p_vkorg</PropertyPath>
                                 <PropertyPath>p_kunwe</PropertyPath>
-                                <PropertyPath>p_catalog</PropertyPath>
                                 <PropertyPath>p_ats</PropertyPath>
                                 <PropertyPath>p_itemproposal</PropertyPath>
                             </Collection>
@@ -2001,9 +2009,22 @@
                             <Collection>
                                 <PropertyPath>p_vkorg</PropertyPath>
                                 <PropertyPath>p_kunwe</PropertyPath>
-                                <PropertyPath>p_catalog</PropertyPath>
                                 <PropertyPath>p_ats</PropertyPath>
                                 <PropertyPath>p_itemproposal</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZODATA_FR_SRV.ZODATA_FR_SRV_Entities/ZCSD_E_MobileItemListSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="zcatalog"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -2066,6 +2087,13 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="ZODATA_FR_SRV.I_SalesOrganizationType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="SalesOrganization"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZBSD_PropectVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.SAPObjectNodeType">
                     <Record>
@@ -2087,8 +2115,9 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_FR_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_FR_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <Annotations Target="ZODATA_FR_SRV.ZODATA_FR_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="/sap/opu/odata/sap/ZODATA_FR_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/sap/ZODATA_FR_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

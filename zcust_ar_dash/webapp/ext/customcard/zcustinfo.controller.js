@@ -9,95 +9,56 @@
             onInit: function () {
 
                 var that = this;
-                this.getModel().attachRequestCompleted(function(oEvent){
 
-                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")){
-                        return;
-                    } 
-                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")){
-                        return;
-                    }
-                    if(!oEvent.mParameters.url.includes("ZCFI_CUSTARDASH")){
-                        return;
-                    }
+                this._handleRequestCompleted = function(oEvent) {
+                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")) return;
+                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")) return;
+                    if(!oEvent.mParameters.url.includes("ZCFI_CUSTARDASH")) return;
+
                     var response = JSON.parse(oEvent.getParameter("response").responseText).d.results[0];
-                    if(typeof response === 'undefined')
-                        {
-                            that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData");
-
-                            return;
-                        }
+                    if(typeof response === 'undefined') {
+                        that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData");
+                        return;
+                    }
                     if(response.LastSaleDt && response.LastSaleDt !== null)
-                    response.LastSaleDt = new Date(Number(response.LastSaleDt.split("Date(")[1].split(")/")[0]));
-
+                        response.LastSaleDt = new Date(Number(response.LastSaleDt.split("Date(")[1].split(")/")[0]));
                     if(response.LastPmntDt && response.LastPmntDt !== null)
-                    response.LastPmntDt = new Date(Number(response.LastPmntDt.split("Date(")[1].split(")/")[0]));
-
+                        response.LastPmntDt = new Date(Number(response.LastPmntDt.split("Date(")[1].split(")/")[0]));
                     if(response.LastRetChkDt && response.LastRetChkDt !== null)
-                    response.LastRetChkDt = new Date(Number(response.LastRetChkDt.split("Date(")[1].split(")/")[0]));
+                        response.LastRetChkDt = new Date(Number(response.LastRetChkDt.split("Date(")[1].split(")/")[0]));
 
                     that.getView().setModel(new sap.ui.model.json.JSONModel(response), "customerData");
-                });
-
+                };
 
                 this.GloabalEventBus = sap.ui.getCore().getEventBus();
                 this.GloabalEventBus.subscribe("OVPGlobalfilter", "OVPGlobalFilterSeacrhfired", this.onGlobalfilterApply.bind(this));
 
-
-                
- var oModel = new sap.ui.model.json.JSONModel({
-    "PmntTerms" : "None",
-    "SalesLead": "None"
- }); 
-
-            // Set the model to the view (optionally with a name, e.g., "myModel")
-            this.getView().setModel(oModel, "valueStateModel"); // Setting
-                
+                var oModel = new sap.ui.model.json.JSONModel({
+                    "PmntTerms" : "None",
+                    "SalesLead": "None"
+                });
+                this.getView().setModel(oModel, "valueStateModel");
 
             },
 
             onGlobalfilterApply: function(oEvent){
-
-                var that = this;
-                this.getModel().attachRequestCompleted(function(oEvent){
-
-                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_CONTACTS")){
-                        return;
-                    } 
-                    if(oEvent.mParameters.url.includes("ZCFI_CUSTARDASH_ARBAL")){
-                        return;
-                    }
-                    if(!oEvent.mParameters.url.includes("ZCFI_CUSTARDASH")){
-                        return;
-                    }
-                    var response = JSON.parse(oEvent.getParameter("response").responseText).d.results[0];
-                    if(typeof response === 'undefined')
-                        {
-                            that.getView().setModel(new sap.ui.model.json.JSONModel({}), "customerData");
-
-                            return;
-                        }
-                    if(response.LastSaleDt && response.LastSaleDt !== null)
-                    response.LastSaleDt = new Date(Number(response.LastSaleDt.split("Date(")[1].split(")/")[0]));
-
-                    if(response.LastPmntDt && response.LastPmntDt !== null)
-                    response.LastPmntDt = new Date(Number(response.LastPmntDt.split("Date(")[1].split(")/")[0]));
-
-                    if(response.LastRetChkDt && response.LastRetChkDt !== null)
-                    response.LastRetChkDt = new Date(Number(response.LastRetChkDt.split("Date(")[1].split(")/")[0]));
-
-                    that.getView().setModel(new sap.ui.model.json.JSONModel(response), "customerData");
-                });
+                // Handler is attached once in onAfterRendering; nothing extra needed here.
             },
-    
-            onAfterRendering: function (oEvent) {
-            //    debugger;
+
+            onAfterRendering: function () {
+                // Attach once here — fires before OVP sends its initial OData request,
+                // so the handler is in place for the first automatic data load.
+                if(!this._handlerAttached && this.getModel()) {
+                    this.getModel().attachRequestCompleted(this._handleRequestCompleted);
+                    this._handlerAttached = true;
+                }
             },
 
             onExit: function () {},
             setRelevantFilters: function (oFilters) {
-                debugger;
+              //  debugger;
                 var oView = this.getView().byId("cardView");
+                if(oView)
                 if (oFilters[0] && oFilters[0].aFilters && oFilters[0].aFilters.length > 0) {
                     // Apply filters to the card
                     oView.getBinding("items").filter(oFilters);

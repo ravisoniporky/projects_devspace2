@@ -1,0 +1,204 @@
+<mvc:View
+    controllerName="customer.porky.zonenote.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+    <App id="app">
+        <pages>
+            <Page title="OneNote Data Extractor">
+                <content>
+                    <IconTabBar expandable="false" class="sapUiResponsiveContentPadding">
+                        <items>
+                            <IconTabFilter text="My Notes" key="myNotes">
+                                <content>
+                                    <VBox class="sapUiMediumMargin">
+                                        <Title text="Extract Your Own Notes" level="H3" titleStyle="H4" class="sapUiTinyMarginBottom"/>
+                                        <Button text="Sign in with Microsoft" press="onExtractViaLoginPress" type="Emphasized" class="sapUiSmallMarginBottom"/>
+<Button text="Debug: List Notebooks" press="onDebugListNotebooksPress" />
+
+                                        <Label text="Section" class="sapUiTinyMarginBottom"/>
+                                        <ComboBox id="myNotesSectionSelect" selectedKey="{onenote>/selectedSectionId}" selectionChange="onMyNotesSectionChange" width="20rem" class="sapUiSmallMarginBottom"/>
+
+                                        <Label text="Page" class="sapUiTinyMarginBottom"/>
+                                        <HBox class="sapUiSmallMarginBottom">
+                                            <ComboBox id="myNotesPageSelect" selectedKey="{onenote>/selectedPageId}" width="20rem" class="sapUiTinyMarginEnd"/>
+                                            <Button text="Extract Selected Page" press="onExtractSelectedPagePress"/>
+                                        </HBox>
+
+                                        <Title text="Extracted Content" level="H3" titleStyle="H4" class="sapUiSmallMarginBottom" visible="false"/>
+                                        <Table items="{onenote>/selectedPageItems}" noDataText="No data" class="sapUiMediumMarginBottom" visible="false">
+                                            <columns>
+                                                <Column><Text text="Type"/></Column>
+                                                <Column><Text text="Content"/></Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <Text text="{onenote>type}"/>
+                                                        <VBox>
+                                                            <Text text="{onenote>content}" visible="{= ${onenote>type} === 'text'}"/>
+                                                            <Image src="{onenote>src}" width="150px" alt="OneNote Asset" visible="{= ${onenote>type} === 'image'}"/>
+                                                        </VBox>
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+
+                                        <Title text="Page Preview" level="H3" titleStyle="H4" class="sapUiSmallMarginBottom"/>
+                                        <ScrollContainer height="500px" vertical="true" horizontal="false" class="sapUiMediumMarginBottom" visible="{= !!${onenote>/selectedPageHtmlRendered}}">
+                                            <core:HTML content="{onenote>/selectedPageHtmlRendered}" />
+                                        </ScrollContainer>
+
+                                        <Button text="Download as PDF" press="onDownloadPdfPress" type="Emphasized" class="sapUiSmallMarginTop sapUiTinyMarginEnd"/>
+                                        <Button text="Download Original Format" press="onDownloadOriginalPdfPress" type="Emphasized" class="sapUiSmallMarginTop sapUiTinyMarginEnd"/>
+                                        <Button text="Analyze PDF" press="onAnalyzePdfPress" type="Default" class="sapUiSmallMarginTop sapUiTinyMarginEnd"/>
+                                        <Button text="Analyze Note" press="onAnalyzeNotePress" type="Default" class="sapUiSmallMarginTop"/>
+                                        <MessageStrip text="{onenote>/pdfExtractionError}" type="Error" showIcon="true" class="sapUiSmallMarginTop" visible="{= !!${onenote>/pdfExtractionError}}"/>
+
+                                        <Panel headerText="Extracted Data" visible="{= !!${onenote>/pdfExtraction}}" class="sapUiSmallMarginTop">
+                                            <content>
+                                                <HBox wrap="Wrap" class="sapUiSmallMarginBottom">
+                                                    <ObjectStatus title="Section" text="{onenote>/pdfExtraction/header/section_name}" class="sapUiTinyMarginEnd"/>
+                                                    <ObjectStatus title="Page" text="{onenote>/pdfExtraction/header/page_name}" class="sapUiTinyMarginEnd"/>
+                                                    <ObjectStatus title="User" text="{onenote>/pdfExtraction/header/user_display_name}" class="sapUiTinyMarginEnd"/>
+                                                    <ObjectStatus title="Generated" text="{onenote>/pdfExtraction/header/generated_timestamp}" class="sapUiTinyMarginEnd"/>
+                                                    <ObjectStatus title="Records" text="{onenote>/pdfExtraction/header/record_count}"/>
+                                                </HBox>
+                                                <Table items="{onenote>/pdfExtraction/data}" noDataText="No records extracted">
+                                                    <columns>
+                                                        <Column><Text text="Weight"/></Column>
+                                                        <Column><Text text="Unit"/></Column>
+                                                        <Column><Text text="Material Name"/></Column>
+                                                        <Column><Text text="Lot #"/></Column>
+                                                        <Column><Text text="Item #"/></Column>
+                                                        <Column><Text text="Barcode"/></Column>
+                                                        <Column><Text text="Date"/></Column>
+                                                        <Column><Text text="Material Ref"/></Column>
+                                                    </columns>
+                                                    <items>
+                                                        <ColumnListItem>
+                                                            <cells>
+                                                                <Text text="{onenote>weight}"/>
+                                                                <Text text="{onenote>weight_unit}"/>
+                                                                <Text text="{onenote>material_name}"/>
+                                                                <Text text="{onenote>lot_number}"/>
+                                                                <Text text="{onenote>item_number}"/>
+                                                                <Text text="{onenote>barcode_value}"/>
+                                                                <Text text="{onenote>date}"/>
+                                                                <Text text="{onenote>material_reference}"/>
+                                                            </cells>
+                                                        </ColumnListItem>
+                                                    </items>
+                                                </Table>
+                                            </content>
+                                        </Panel>
+                                    </VBox>
+                                </content>
+                            </IconTabFilter>
+
+                            <IconTabFilter text="Extract from URL" key="urlNotes">
+                                <content>
+                                    <VBox class="sapUiMediumMargin">
+                                        <Title text="Extract Notes from a URL" level="H3" titleStyle="H4" class="sapUiTinyMarginBottom"/>
+                                        <Label text="Paste a OneNote/SharePoint link (owning user and section/notebook are parsed from it). Requires Microsoft sign-in - if you haven't signed in on the My Notes tab yet, this will prompt it." class="sapUiTinyMarginBottom"/>
+                                        <Input value="{onenote>/urlNoteUrl}" width="100%" placeholder="https://.../personal/.../Doc.aspx?...&amp;wd=target(Section.one|...)" class="sapUiTinyMarginBottom"/>
+                                        <Button text="Extract from URL" press="onExtractFromUrlPress" type="Emphasized" class="sapUiSmallMarginBottom"/>
+
+                                        <Label text="Section" class="sapUiTinyMarginBottom"/>
+                                        <ComboBox id="urlSectionSelect" selectedKey="{onenote>/urlSelectedSectionId}" selectionChange="onUrlSectionChange" width="20rem" class="sapUiSmallMarginBottom"/>
+
+                                        <Label text="Page" class="sapUiTinyMarginBottom"/>
+                                        <HBox class="sapUiSmallMarginBottom">
+                                            <ComboBox id="urlPageSelect" selectedKey="{onenote>/urlSelectedPageId}" width="20rem" class="sapUiTinyMarginEnd"/>
+                                            <Button text="Extract Selected Page" press="onExtractUrlSelectedPagePress"/>
+                                        </HBox>
+
+                                        <Title text="Extracted Content" level="H3" titleStyle="H4" class="sapUiSmallMarginBottom" visible="false"/>
+                                        <Table items="{onenote>/urlSelectedPageItems}" noDataText="No data" class="sapUiMediumMarginBottom" visible="false">
+                                            <columns>
+                                                <Column><Text text="Type"/></Column>
+                                                <Column><Text text="Content"/></Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <Text text="{onenote>type}"/>
+                                                        <VBox>
+                                                            <Text text="{onenote>content}" visible="{= ${onenote>type} === 'text'}"/>
+                                                            <Image src="{onenote>src}" width="150px" alt="OneNote Asset" visible="{= ${onenote>type} === 'image'}"/>
+                                                        </VBox>
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+
+                                        <Title text="Page Preview" level="H3" titleStyle="H4" class="sapUiSmallMarginBottom"/>
+                                        <ScrollContainer height="500px" vertical="true" horizontal="false" class="sapUiMediumMarginBottom" visible="{= !!${onenote>/urlSelectedPageHtmlRendered}}">
+                                            <core:HTML content="{onenote>/urlSelectedPageHtmlRendered}" />
+                                        </ScrollContainer>
+
+                                        <Button text="Download as PDF" press="onDownloadUrlPdfPress" type="Emphasized" class="sapUiSmallMarginTop sapUiTinyMarginEnd"/>
+                                        <Button text="Download Original Format" press="onDownloadUrlOriginalPdfPress" type="Emphasized" class="sapUiSmallMarginTop sapUiTinyMarginEnd"/>
+                                        <Button text="Analyze PDF" press="onAnalyzeUrlPdfPress" type="Default" class="sapUiSmallMarginTop sapUiTinyMarginEnd"/>
+                                        <Button text="Analyze Note" press="onAnalyzeUrlNotePress" type="Default" class="sapUiSmallMarginTop"/>
+                                        <MessageStrip text="{onenote>/urlPdfExtractionError}" type="Error" showIcon="true" class="sapUiSmallMarginTop" visible="{= !!${onenote>/urlPdfExtractionError}}"/>
+
+                                        <Panel headerText="Extracted Data" visible="{= !!${onenote>/urlPdfExtraction}}" class="sapUiSmallMarginTop">
+                                            <content>
+                                                <HBox wrap="Wrap" class="sapUiSmallMarginBottom">
+                                                    <ObjectStatus title="Section" text="{onenote>/urlPdfExtraction/header/section_name}" class="sapUiTinyMarginEnd"/>
+                                                    <ObjectStatus title="Page" text="{onenote>/urlPdfExtraction/header/page_name}" class="sapUiTinyMarginEnd"/>
+                                                    <ObjectStatus title="User" text="{onenote>/urlPdfExtraction/header/user_display_name}" class="sapUiTinyMarginEnd"/>
+                                                    <ObjectStatus title="Generated" text="{onenote>/urlPdfExtraction/header/generated_timestamp}" class="sapUiTinyMarginEnd"/>
+                                                    <ObjectStatus title="Records" text="{onenote>/urlPdfExtraction/header/record_count}"/>
+                                                </HBox>
+                                                <Table items="{onenote>/urlPdfExtraction/data}" noDataText="No records extracted">
+                                                    <columns>
+                                                        <Column><Text text="Weight"/></Column>
+                                                        <Column><Text text="Unit"/></Column>
+                                                        <Column><Text text="Material Name"/></Column>
+                                                        <Column><Text text="Lot #"/></Column>
+                                                        <Column><Text text="Item #"/></Column>
+                                                        <Column><Text text="Barcode"/></Column>
+                                                        <Column><Text text="Date"/></Column>
+                                                        <Column><Text text="Material Ref"/></Column>
+                                                        <Column ><Text text="Section"/></Column>
+                                                        <Column ><Text text="Page"/></Column>
+                                                        <Column ><Text text="User"/></Column>
+                                                        <Column ><Text text="Generated Time Stamp"/></Column>
+                                                        <Column ><Text text="User Email"/></Column>
+                                                    </columns>
+                                                    <items>
+                                                        <ColumnListItem>
+                                                            <cells>
+                                                                <Text text="{onenote>weight}"/>
+                                                                <Text text="{onenote>weight_unit}"/>
+                                                                <Text text="{onenote>material_name}"/>
+                                                                <Text text="{onenote>lot_number}"/>
+                                                                <Text text="{onenote>item_number}"/>
+                                                                <Text text="{onenote>barcode_value}"/>
+                                                                <Text text="{onenote>date}"/>
+                                                                <Text text="{onenote>material_reference}"/> 
+                                                                <Text text="{onenote>sectionname}"></Text>
+                                                                <Text text="{onenote>pagename}"></Text>
+                                                                <Text text="{onenote>user_display_name}"></Text>
+                                                                <Text text="{onenote>generated_timestamp}"></Text>
+                                                                <Text text="{onenote>user_email}"></Text>
+                                                            </cells>
+                                                        </ColumnListItem>
+                                                    </items>
+                                                </Table>
+                                            </content>
+                                        </Panel>
+                                    </VBox>
+                                </content>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

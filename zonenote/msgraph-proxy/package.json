@@ -1,0 +1,15 @@
+{
+  "name": "msgraph-proxy",
+  "version": "1.0.0",
+  "description": "Same-origin proxy that forwards /msgraph/v1.0/* to Microsoft Graph, handling OAuth2 client-credentials token retrieval server-side.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

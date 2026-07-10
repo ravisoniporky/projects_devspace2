@@ -6,8 +6,8 @@
         <content >
 
 
- <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" entitySet="ZCSD_E_MobileItemListSet" useToolbar="true"
-			 persistencyKey="smarttableCustF4_filter144"   enableBasicSearch="true" advancedMode="false" filterBarExpanded="false" smartVariant="true" showAllFilters="true"
+ <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" entitySet="ZCSD_E_MobileItemListSet" 
+			 persistencyKey="smarttableCustF4_filter144"   enableBasicSearch="true"  filterBarExpanded="false"  
 			 
 				showFilterConfiguration="true"  >
 
@@ -59,6 +59,7 @@
 			  <items>
 			  		<ColumnListItem press="onClickItemVisitList" type="Navigation">
 					<cells>
+					<HBox>
 			 <Image
 					
 					src="https://api.porky.com/images/{BISMT}.png"
@@ -77,6 +78,13 @@
 						</LightBox>
 					</detailBox>
 				</Image>
+								<Button id="addImageBtn" text="Add" press="onUploadImage" icon="sap-icon://add-photo" visible="{viewModel>/showImageButton}">
+								<layoutData>
+									<FlexItemData alignSelf="Center"/>
+								</layoutData>
+								</Button>
+
+				</HBox>
 				</cells>
 					
 				</ColumnListItem>

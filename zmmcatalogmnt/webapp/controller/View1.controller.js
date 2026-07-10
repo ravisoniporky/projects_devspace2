@@ -31,6 +31,27 @@ sap.ui.define([
         
 
 
+                  var that = this;
+
+            var oViewModel = new JSONModel({ showImageButton: false });
+            this.getView().setModel(oViewModel, "viewModel");
+
+            var defaultModel = this.getOwnerComponent().getModel("ZCXA_USERDEFAULT_CDS");
+            defaultModel.read("/ZCXA_USERDEFAULT", {
+                filters: [new Filter("parid", FilterOperator.EQ, "ZCATALOGIMAGE")],
+                success: function(oData) {
+                    var bVisible = false;
+                    if (oData.results && oData.results.length > 0) {
+                        var sValue = oData.results[0].parva;
+                        bVisible = (sValue === "H" || sValue === "V");
+                    }
+                    that.getView().getModel("viewModel").setProperty("/showImageButton", bVisible);
+                },
+                error: function() {
+                    that.getView().getModel("viewModel").setProperty("/showImageButton", false);
+                }
+            });
+
       },
 
 
@@ -349,7 +370,6 @@ sap.ui.define([
 
 
               that.exitDialog.close();
-              // that.createExclusinBrandRecord(object,"MATNR",object.MATNR)
               that.onMassExclude("MATNR");
 
             }.bind(that)
@@ -394,7 +414,6 @@ sap.ui.define([
 
 
               that.exitDialog.close();
-              // that.createExclusinBrandRecord(object,"BISMT",object.BISMT)
               that.onMassExclude("BISMT");
 
             }.bind(that)
@@ -535,6 +554,8 @@ sap.ui.define([
 
         //     table.getTable().getBinding("rows").getContextByIndex(table.getTable().getSelectedIndices()[0])
 
+        this.selectedIndices = selectedIndices.length;
+                this.selectedIndices_original = selectedIndices.length;
 
         selectedIndices.forEach(element => {
 
@@ -564,7 +585,17 @@ sap.ui.define([
             success: function (result) {
               // everything is OK 
               that.getView().setBusy(false);
-              sap.m.MessageBox.success("The exclusion by " + field + " - " + fieldvalue + " is successfully completed");
+              that.getView().setBusy(false);
+              if(that.selectedIndices_original === 1){
+                                sap.m.MessageBox.success("The exclusion by " + field + " - " + fieldvalue + " is successfully completed");
+
+              }else{
+
+              that.selectedIndices--;
+              if(that.selectedIndices === 0){
+                sap.m.MessageBox.success("The exclusion by " + field + " is successfully completed");
+              }
+            }
 
               that.getView().byId("smartTable_custF4_map").rebindTable();
 
@@ -1319,7 +1350,8 @@ sap.ui.define([
         var that = this;
 
         var objects = table.getTable().getSelectedIndices();
-
+        this.selectedIndices = objects.length;
+                this.selectedIndices_original = objects.length;
         objects.forEach(element => {
 
           if (catalogfield === "BISMT") {

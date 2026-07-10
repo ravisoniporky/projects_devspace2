@@ -45,6 +45,13 @@
           "localUri": "localService/ZSB_C_FRVISIT2/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "ZCXA_USERDEFAULT_CDS": {
+        "uri": "/sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
       }
     }
   },
@@ -93,6 +100,11 @@
       },
       "ZSB_C_FRVISIT2": {
         "dataSource": "ZSB_C_FRVISIT2",
+        "preload": true,
+        "settings": {}
+      },
+      "ZCXA_USERDEFAULT_CDS": {
+        "dataSource": "ZCXA_USERDEFAULT_CDS",
         "preload": true,
         "settings": {}
       }

@@ -14,12 +14,12 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: DE2
-          url: http://pkynj-de2app.porkyproducts.loc:8000
+          destination: DEV
+          url: https://dev.porky.com
           client: '100'
         app:
           name: ZSD_MOECATS
           package: zfiori1
-          transport: DE2K905449
+          transport: DEVK915119
         exclude:
           - /test/

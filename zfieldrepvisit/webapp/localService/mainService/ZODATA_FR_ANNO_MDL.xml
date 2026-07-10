@@ -21,6 +21,9 @@
     <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
         <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
     </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
     <edmx:Reference Uri="../../../sap/zodata_fr_srv/$metadata">
         <edmx:Include Namespace="ZODATA_FR_SRV" Alias="SAP"/>
     </edmx:Reference>
@@ -127,7 +130,7 @@
                         <PropertyValue Property="tel">
                             <Collection>
                                 <Record>
-                                    <PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred Communication.PhoneType/work"/>
+                                    <PropertyValue Property="type" EnumMember="Communication.PhoneType/work Communication.PhoneType/preferred"/>
                                     <PropertyValue Property="uri" Path="telf1"/>
                                 </Record>
                             </Collection>
@@ -193,14 +196,18 @@
             <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListType/p_kunwe">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListType/p_catalog">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListType/p_ats">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListType/p_itemproposal">
                 <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZODATA_FR_SRV.ZCSD_E_MobileItemListType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>zcatalog</PropertyPath>
+                    </Collection>
+                </Annotation>
             </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZI_DefaultSHVHType/EmailAddress">
                 <Annotation Term="Communication.IsEmailAddress"/>
@@ -208,12 +215,23 @@
             <Annotations Target="ZODATA_FR_SRV.ZI_DefaultSHVHType/Status_Criticality">
                 <Annotation Term="UI.HiddenFilter"/>
             </Annotations>
+            <Annotations Target="ZODATA_FR_SRV.ZI_DefaultSHVHType/IsDefaultEmailAddress">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZODATA_FR_SRV.ZI_DefaultSHVHType/smvkorg">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZI_DefaultSHVHType/GetUrl">
                 <Annotation Term="UI.Hidden"/>
                 <Annotation Term="UI.IsImageURL"/>
             </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZI_DefaultSHVHType/telf1">
                 <Annotation Term="Communication.IsPhoneNumber"/>
+            </Annotations>
+            <Annotations Target="ZODATA_FR_SRV.ZI_DefaultSHVHType/vkorg">
+                <Annotation Term="Common.Text" Path="SalesOrganizationName">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/>
+                </Annotation>
             </Annotations>
             <Annotations Target="ZODATA_FR_SRV.ZI_DefaultSHVHType">
                 <Annotation Term="UI.LineItem">
@@ -225,7 +243,11 @@
                             <PropertyValue Property="Value" Path="storeno"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to"/>
                             <PropertyValue Property="Value" Path="kunnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name1"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="stras"/>
@@ -234,27 +256,136 @@
                             <PropertyValue Property="Value" Path="ort01"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="regio"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="pstlz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="telf1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="EmailAddress"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="IsDefaultEmailAddress"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Sales Lead"/>
+                            <PropertyValue Property="Value" Path="sm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Sales Lead Name"/>
+                            <PropertyValue Property="Value" Path="SalesLeadName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ss"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ssname"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Sales Organization"/>
+                            <PropertyValue Property="Value" Path="vkorg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Customer Hierarchy L1"/>
+                            <PropertyValue Property="Value" Path="cu_hier1"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="hier1_name"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="vkorg"/>
+                            <PropertyValue Property="Label" String="Customer Hierarchy L2"/>
+                            <PropertyValue Property="Value" Path="cu_hier2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Customer Hierarchy L2 Name"/>
+                            <PropertyValue Property="Value" Path="hier2_name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Customer Hierarchy L3"/>
+                            <PropertyValue Property="Value" Path="cu_hier3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Customer Hierarchy L3 Name"/>
+                            <PropertyValue Property="Value" Path="hier3_name"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Owner"/>
+                            <PropertyValue Property="Value" Path="ow"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Owner Name"/>
+                            <PropertyValue Property="Value" Path="owname"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerName3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerName4"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CreditBLock"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Deleted"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bukrs"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CentralBlock"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrganizationBlock"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="loevm_c"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="loevm_orgordblock"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="loevm_companypostblock"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="loevm_archblock"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="loevm_postblock"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="loevm_ordblock"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zzlongitude"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zzlatitude"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="zzorig_shipto"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="sm"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="ss"/>
                         </Record>
                         <Record Type="UI.DataFieldWithUrl">
                             <PropertyValue Property="Criticality" Path="Status_Criticality"/>
                             <PropertyValue Property="Value" Path="OpenCustomerSalesDashboard"/>
                             <PropertyValue Property="Url" Path="GetUrl"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ADRNR"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Status_Criticality"/>
+                            <PropertyValue Property="Value" Path="Status_Criticality"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="smvkorg"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="URL"/>
@@ -267,7 +398,7 @@
                         <PropertyValue Property="tel">
                             <Collection>
                                 <Record>
-                                    <PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred Communication.PhoneType/work"/>
+                                    <PropertyValue Property="type" EnumMember="Communication.PhoneType/work Communication.PhoneType/preferred"/>
                                     <PropertyValue Property="uri" Path="telf1"/>
                                 </Record>
                             </Collection>
@@ -571,6 +702,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="_Entities"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

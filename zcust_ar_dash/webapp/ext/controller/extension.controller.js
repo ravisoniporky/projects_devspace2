@@ -25,6 +25,15 @@ sap.ui.define([], function () {
 
 			// //Default the Goabl filter values
 			// oGlobalFilter.setFilterData(oDefaultFilter);
+		},
+		     onAfterRendering: function() {
+			if (this._autoSearchDone) { return; }
+			this._autoSearchDone = true;
+			var oGlobalFilter = this.getView().byId("ovpGlobalFilter");
+			if (!oGlobalFilter) { return; }
+			setTimeout(function() {
+				oGlobalFilter.search();
+			}, 0);
 		}
     
     });

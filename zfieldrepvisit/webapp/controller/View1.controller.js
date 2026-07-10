@@ -438,22 +438,22 @@ sap.ui.define([
 
             },
             func1: function () {
-                this.getView().getModel("countModel").setProperty("/countList", this.getView().byId("smartTable_visitF4")._getRowCount());
+                this.getView().getModel("countModel").setProperty("/countList", this.getView().byId("smartTable_visitF4").getTable().getMaxItemsCount());
 
             },
 
             func2: function () {
-                this.getView().getModel("countModel").setProperty("/countList_prospect_draft", this.getView().byId("smartTable_visitF4_prospect_draft")._getRowCount());
+                this.getView().getModel("countModel").setProperty("/countList_prospect_draft", this.getView().byId("smartTable_visitF4_prospect_draft").getTable().getMaxItemsCount());
 
             },
 
             func3: function () {
-                this.getView().getModel("countModel").setProperty("/countList_prospect", this.getView().byId("smartTable_visitF4_prospect")._getRowCount());
+                this.getView().getModel("countModel").setProperty("/countList_prospect", this.getView().byId("smartTable_visitF4_prospect").getTable().getMaxItemsCount());
 
             },
 
             func4: function () {
-                this.getView().getModel("countModel").setProperty("/countList_draft", this.getView().byId("smartTable_visitF4_draft")._getRowCount());
+                this.getView().getModel("countModel").setProperty("/countList_draft", this.getView().byId("smartTable_visitF4_draft").getTable().getMaxItemsCount());
 
             },
             onFinishedVisits: function (oEvent) {

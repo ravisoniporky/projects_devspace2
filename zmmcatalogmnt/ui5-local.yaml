@@ -31,12 +31,12 @@ server:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
           - path: /sap
-            url: http://pkynj-de2app.porkyproducts.loc:8000
-            destination: DE2
-          - url: http://pkynj-de2app.porkyproducts.loc:8000
+            url: https://dev.porky.com
+            destination: DEV
+          - url: https://dev.porky.com
             client: '100'
             authenticationType: BasicAuthentication
-            destination: DE2
+            destination: DEV
             path: /sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS/
     - name: sap-fe-mockserver
       beforeMiddleware: csp

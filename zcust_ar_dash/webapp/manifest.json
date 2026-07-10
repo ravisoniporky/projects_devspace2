@@ -1,273 +1,283 @@
 {
-    "_version": "1.48.0",
-    "sap.app": {
-        "id": "customer.porky.zcustardash",
-        "type": "application",
-        "i18n": "i18n/i18n.properties",
-        "applicationVersion": {
-            "version": "0.0.1"
-        },
-        "title": "{{appTitle}}",
-        "description": "{{appDescription}}",
-        "resources": "resources.json",
-        "sourceTemplate": {
-            "id": "@sap/generator-fiori:ovp",
-            "version": "1.14.2",
-            "toolsId": "56be3803-86f1-4a35-b18b-45ca37b4d1bc"
-        },
-        "dataSources": {
-            "mainService": {
-                "uri": "/sap/opu/odata/sap/ZSB_CUSTARDASH/",
-                "type": "OData",
-                "settings": {
-                    "annotations": [
-                        "ZSB_CUSTARDASH_Annotation",
-                        "annotation"
-                    ],
-                    "localUri": "localService/mainService/metadata.xml",
-                    "odataVersion": "2.0"
-                }
-            },
-            "annotation": {
-                "type": "ODataAnnotation",
-                "uri": "annotations/annotation.xml",
-                "settings": {
-                    "localUri": "annotations/annotation.xml"
-                }
-            },
-            "ZSB_CUSTARDASH_Annotation": {
-                "uri": "/destinations/DE2/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_CUSTARDASH_VAN',Version='0001')/$value/",
-                "type": "ODataAnnotation",
-                "settings": {
-                    "localUri": "localService/ZSB_CUSTARDASH/ZSB_CUSTARDASH_Annotation.xml"
-                }
-            },
-            "ZSB_CUSTARDASH": {
-                "uri": "/sap/opu/odata/sap/ZSB_CUSTARDASH",
-                "type": "OData",
-                "settings": {
-                    "annotations": [
-                        "ZSB_CUSTARDASH_Annotation"
-                    ],
-                    "localUri": "localService/ZSB_CUSTARDASH/metadata.xml",
-                    "odataVersion": "2.0"
-                }
-            },
-            "ZODATA_CUSTOMER_BLOCKS_SRV": {
-                "uri": "/sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV",
-                "type": "OData",
-                "settings": {
-                    "annotations": [],
-                    "localUri": "localService/ZODATA_CUSTOMER_BLOCKS_SRV/metadata.xml",
-                    "odataVersion": "2.0",
-                     "defaultOperationMode": "Server",
-                "defaultBindingMode": "TwoWay",
-                "useBatch": true,
-                "refreshAfterChange": true,
-                "defaultUpdateMethod": "Put"
-                }
-            }
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "customer.porky.zcustardash",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:ovp",
+      "version": "1.14.2",
+      "toolsId": "56be3803-86f1-4a35-b18b-45ca37b4d1bc"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZSB_CUSTARDASH/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZSB_CUSTARDASH_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
         }
-    },
-    "sap.ui": {
-        "technology": "UI5",
-        "icons": {
-            "icon": "",
-            "favIcon": "",
-            "phone": "",
-            "phone@2": "",
-            "tablet": "",
-            "tablet@2": ""
-        },
-        "deviceTypes": {
-            "desktop": true,
-            "tablet": true,
-            "phone": true
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
         }
-    },
-    "sap.ui5": {
-        "flexEnabled": true,
-        "dependencies": {
-            "minUI5Version": "1.108.28",
-            "libs": {
-                "sap.m": {},
-                "sap.ui.core": {},
-                "sap.ushell": {},
-                "sap.f": {},
-                "sap.ui.comp": {},
-                "sap.ui.generic.app": {},
-                "sap.suite.ui.generic.template": {},
-                "sap.ovp": {},
-                "sap.ui.rta": {},
-                "sap.ui.layout": {}
-            }
-        },
-        "contentDensities": {
-            "compact": true,
-            "cozy": true
-        },
-        "models": {
-            "i18n": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "settings": {
-                    "bundleName": "customer.porky.zcustardash.i18n.i18n",
-                    "useBatch": false
-                }
-            },
-            "mainModel": {
-                "dataSource": "mainService",
-                "preload": true,
-                "settings": {
-                    "defaultBindingMode": "TwoWay",
-                    "defaultCountMode": "Inline",
-                    "useBatch": false,
-                    "refreshAfterChange": false,
-                    "metadataUrlParams": {
-                        "sap-value-list": "none"
-                    }
-                }
-            },
-            "filterModel": {
-                "type": "sap.ui.model.json.JSONModel"
-            },
-            "@i18n": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "uri": "i18n/i18n.properties"
-            },
-            "ZSB_CUSTARDASH": {
-                "dataSource": "ZSB_CUSTARDASH",
-                "preload": true,
-                "settings": {
-                    "useBatch": false,
-                    "defaultCountMode": "Inline"
-                }
-            },
-            "ZODATA_CUSTOMER_BLOCKS_SRV": {
-                "dataSource": "ZODATA_CUSTOMER_BLOCKS_SRV",
-                "preload": true,
-                "settings": {
-                    "useBatch": false,
-                    "defaultCountMode": "Inline"
-                }
-            }
-        },
-        "resources": {
-            "css": [
-                               { "uri": "css/index.css"}
-
-            ]
-        },
-        "routing": {
-            "config": {},
-            "routes": [],
-            "targets": {}
-        },
-        "extends": {
-            "extensions": {
-                "sap.ui.controllerExtensions": {
-                    "sap.ovp.app.Main": {
-                        "controllerName": "customer.porky.zcustardash.ext.controller.extension"
-                    }
-                }
-            }
+      },
+      "ZSB_CUSTARDASH": {
+        "uri": "/sap/opu/odata/sap/ZSB_CUSTARDASH",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZSB_CUSTARDASH_VAN"
+          ],
+          "localUri": "localService/ZSB_CUSTARDASH/metadata.xml",
+          "odataVersion": "2.0"
         }
-    },
-    "sap.ovp": {
-        "globalFilterModel": "mainModel",
-        "globalFilterEntityType": "ZCFI_CUSTARDASH_FILTERSType",
-        "containerLayout": "resizable",
-        "enableLiveFilter": false,
-        "considerAnalyticalParameters": false,
-        "cards": {
-            "a1customerinfo": {
-                "template": "customer.porky.zcustardash.ext.customcard",
-                "model": "mainModel",
-                "settings": {
-                    "entitySet": "ZCFI_CUSTARDASH",
-                    "title": "Customer Info",
-                    "defaultSpan": {
-                        "cols": 3,
-                        "rows": 7
-                    }
-                }
-            },
-            "a2customerinfocard1": {
-                "template": "sap.ovp.cards.table",
-                "model": "mainModel",
-                "settings": {
-                    "listFlavor": "standard",
-                    "listType": "condensed",
-                    "entitySet": "ZCFI_CUSTARDASH",
-                    "title": "Customer Info Table Card",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#customerdetails",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
-                }
-            },
-            "a3salesInfoCard2": {
-                "template": "customer.porky.zcustardash.ext.customcard2",
-                "model": "mainModel",
-                "settings": {
-                    "entitySet": "ZCFI_CUSTARDASH",
-                    "title": "Sales Info"
-                }
-            },
-            "a4lastPaymentCard": {
-                "template": "customer.porky.zcustardash.ext.customcard3",
-                "settings": {
-                    "entitySet": "ZCFI_CUSTARDASH",
-                    "title": "Last Payment"
-                }
-            },
-            "a5paymentreturncard": {
-                "template": "customer.porky.zcustardash.ext.customcard4",
-                "settings": {
-                    "entitySet": "ZCFI_CUSTARDASH",
-                    "title": "Payment Return",
-                    "showFilterInHeader": true
-                }
-            },
-            "a6openBalCard_c": {
-                "template": "customer.porky.zcustardash.ext.openbal",
-                "settings": {
-                    "title": "Open Balance"
-                }
-            },
-            "a7blockCard": {
-                "template": "customer.porky.zcustardash.ext.blocks",
-                "settings": {
-                    "title": "Block"
-                }
-            },
-            "a8contactcard": {
-                "template": "sap.ovp.cards.table",
-                "model": "mainModel",
-                "settings": {
-                    "entitySet": "ZCFI_CUSTARDASH_CONTACTS",
-                    "title": "Customer Contacts",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#contactscard",
-                    "sortBy": "ContactPeson",
-                    "sortOrder": "descending"
-                }
-            },
-            "a9ZChart13WAR": {
-                "template": "sap.ovp.cards.charts.analytical",
-                "model": "mainModel",
-                "settings": {
-                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Chart13WAR",
-                    "entitySet": "ZCFI_13WKARVAL_CUS",
-                    "title": "AR DAYS by Week Ending",
-                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#C13WChartQ",
-                    "defaultSpan": {
-                        "cols": 3,
-                        "rows": 7
-                    }
-                }
-            }
-        },
-        "chartSettings": {}
-    },
-    "sap.fiori": {
-        "registrationIds": [],
-        "archeType": "analytical"
+      },
+      "ZODATA_CUSTOMER_BLOCKS_SRV": {
+        "uri": "/sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZODATA_CUSTOMER_BLOCKS_ANNO_MDL"
+          ],
+          "localUri": "localService/ZODATA_CUSTOMER_BLOCKS_SRV/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZSB_CUSTARDASH_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_CUSTARDASH_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZSB_CUSTARDASH/ZSB_CUSTARDASH_VAN.xml"
+        }
+      },
+      "ZODATA_CUSTOMER_BLOCKS_ANNO_MDL": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_CUSTOMER_BLOCKS_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZODATA_CUSTOMER_BLOCKS_SRV/ZODATA_CUSTOMER_BLOCKS_ANNO_MDL.xml"
+        }
+      }
     }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.28",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ovp": {},
+        "sap.ui.rta": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zcustardash.i18n.i18n",
+          "useBatch": false
+        }
+      },
+      "mainModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "useBatch": false,
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "filterModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+      "ZSB_CUSTARDASH": {
+        "dataSource": "ZSB_CUSTARDASH",
+        "preload": true,
+        "settings": {
+          "useBatch": false,
+          "defaultCountMode": "Inline"
+        }
+      },
+      "ZODATA_CUSTOMER_BLOCKS_SRV": {
+        "dataSource": "ZODATA_CUSTOMER_BLOCKS_SRV",
+        "preload": true,
+        "settings": {
+          "useBatch": false,
+          "defaultCountMode": "Inline"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/index.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.ovp.app.Main": {
+            "controllerName": "customer.porky.zcustardash.ext.controller.extension"
+          }
+        }
+      }
+    }
+  },
+  "sap.ovp": {
+    "globalFilterModel": "mainModel",
+    "globalFilterEntityType": "ZCFI_CUSTARDASH_FILTERSType",
+    "containerLayout": "resizable",
+    "enableLiveFilter": false,
+    "considerAnalyticalParameters": false,
+    "cards": {
+      "a1customerinfo": {
+        "template": "customer.porky.zcustardash.ext.customcard",
+        "model": "mainModel",
+        "settings": {
+          "entitySet": "ZCFI_CUSTARDASH",
+          "title": "Customer Info",
+          "defaultSpan": {
+            "cols": 3,
+            "rows": 7
+          }
+        }
+      },
+      "a2customerinfocard1": {
+        "template": "sap.ovp.cards.table",
+        "model": "mainModel",
+        "settings": {
+          "listFlavor": "standard",
+          "listType": "condensed",
+          "entitySet": "ZCFI_CUSTARDASH",
+          "title": "Customer Info Table Card",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#customerdetails",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+        }
+      },
+      "a3salesInfoCard2": {
+        "template": "customer.porky.zcustardash.ext.customcard2",
+        "model": "mainModel",
+        "settings": {
+          "entitySet": "ZCFI_CUSTARDASH",
+          "title": "Sales Info"
+        }
+      },
+      "a4lastPaymentCard": {
+        "template": "customer.porky.zcustardash.ext.customcard3",
+        "settings": {
+          "entitySet": "ZCFI_CUSTARDASH",
+          "title": "Last Payment"
+        }
+      },
+      "a5paymentreturncard": {
+        "template": "customer.porky.zcustardash.ext.customcard4",
+        "settings": {
+          "entitySet": "ZCFI_CUSTARDASH",
+          "title": "Payment Return",
+          "showFilterInHeader": true
+        }
+      },
+      "a6openBalCard_c": {
+        "template": "customer.porky.zcustardash.ext.openbal",
+        "settings": {
+          "title": "Open Balance"
+        }
+      },
+      "a7blockCard": {
+        "template": "customer.porky.zcustardash.ext.blocks",
+        "settings": {
+          "title": "Block"
+        }
+      },
+      "a8contactcard": {
+        "template": "sap.ovp.cards.table",
+        "model": "mainModel",
+        "settings": {
+          "entitySet": "ZCFI_CUSTARDASH_CONTACTS",
+          "title": "Customer Contacts",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#contactscard",
+          "sortBy": "ContactPeson",
+          "sortOrder": "descending"
+        }
+      },
+      "a9ZChart13WAR": {
+        "template": "sap.ovp.cards.charts.analytical",
+        "model": "mainModel",
+        "settings": {
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Chart13WAR",
+          "entitySet": "ZCFI_13WKARVAL_CUS",
+          "title": "AR DAYS by Week Ending",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#C13WChartQ",
+          "defaultSpan": {
+            "cols": 3,
+            "rows": 7
+          }
+        }
+      }
+    },
+    "chartSettings": {}
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  }
 }

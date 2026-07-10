@@ -1,27 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZODATA_CUSTOMER_BLOCKS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
             <EntityType Name="customerblocks" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Cocode"/>
                     <PropertyRef Name="Customer"/>
                     <PropertyRef Name="Salesorg"/>
                 </Key>
+                <Property Name="Blockreason" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Block Reason" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Blockfield" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="CHAR35" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Blocknotify" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Blockvalin" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Cocode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Salesorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales Org." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Blockvalout" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Errormessage" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Success" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
-            <EntityContainer Name="ZODATA_CUSTOMER_BLOCKS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+            <EntityType Name="ZRFI_CUSTARDASHType" sap:label="Composite View for Customer AR Dashboard" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="SalesOrg"/>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="SalesOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Org" sap:quickinfo="Sales Organization"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Customer Name" sap:quickinfo="Name"/>
+                <Property Name="PrevAcct" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous Account" sap:quickinfo="Previous Master Record Number"/>
+                <Property Name="StoreNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Store No" sap:quickinfo="Customer Store Number"/>
+                <Property Name="CustHierL1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Hierarchy L1" sap:quickinfo="Customer Number"/>
+                <Property Name="Address" Type="Edm.String" MaxLength="72" sap:label="Address"/>
+                <Property Name="EmailId" Type="Edm.String" MaxLength="241" sap:label="Email" sap:quickinfo="E-Mail Address"/>
+                <Property Name="Telephone" Type="Edm.String" MaxLength="16" sap:label="Phone" sap:quickinfo="First telephone number"/>
+                <Property Name="CentralBlock" Type="Edm.String" MaxLength="1" sap:label="Central Block"/>
+                <Property Name="CoCodeBlock" Type="Edm.String" MaxLength="2" sap:label="Co Code Block"/>
+                <Property Name="SorgBlock" Type="Edm.String" MaxLength="4" sap:label="Sales Org Block"/>
+                <Property Name="cblock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Single-Character Flag"/>
+                <Property Name="cblock_but" Type="Edm.String" MaxLength="50" sap:label="Cebtral Block Button" sap:quickinfo="Comment"/>
+                <Property Name="ccblock" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Co Code Block" sap:quickinfo="Component of the Version Number"/>
+                <Property Name="ccblock_but" Type="Edm.String" MaxLength="50" sap:label="Co Code Block Button" sap:quickinfo="Comment"/>
+                <Property Name="orgblock" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Sales Org Block" sap:quickinfo="3-Byte field"/>
+                <Property Name="orgblock_but" Type="Edm.String" MaxLength="50" sap:label="Sales Org Block Button" sap:quickinfo="Comment"/>
+                <Property Name="cordblock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Central Order Block" sap:quickinfo="Single-Character Flag"/>
+                <Property Name="cordblock_but" Type="Edm.String" MaxLength="50" sap:label="Central Order Block Button" sap:quickinfo="Comment"/>
+                <Property Name="cpostblock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Central Posting Block" sap:quickinfo="Single-Character Flag"/>
+                <Property Name="cpostblock_but" Type="Edm.String" MaxLength="50" sap:label="Central Posting Block Button" sap:quickinfo="Comment"/>
+                <Property Name="archblock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Archiving Block" sap:quickinfo="Single-Character Flag"/>
+                <Property Name="archblock_but" Type="Edm.String" MaxLength="50" sap:label="Archiving Block Button" sap:quickinfo="Comment"/>
+                <Property Name="ccpostblock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Co Code Posting Block" sap:quickinfo="Single-Character Flag"/>
+                <Property Name="ccpostblock_but" Type="Edm.String" MaxLength="50" sap:label="Co Code Posting Block Button" sap:quickinfo="Comment"/>
+                <Property Name="CreditLimit" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Currency" sap:label="Credit Limit"/>
+                <Property Name="orgordblock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Sales Org Order Block" sap:quickinfo="Single-Character Flag"/>
+                <Property Name="orgordblock_but" Type="Edm.String" MaxLength="50" sap:label="Sales Org Order Block Button" sap:quickinfo="Comment"/>
+                <Property Name="CreditBlock" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Credit Block" sap:quickinfo="Single-Character Flag"/>
+                <Property Name="creditblock_but" Type="Edm.String" MaxLength="50" sap:label="Credit Block Button" sap:quickinfo="Comment"/>
+                <Property Name="YTDSales" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="Currency" sap:label="YTD Sales" sap:quickinfo="Condition Value"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="LastSaleDt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Sale Date" sap:quickinfo="Schedule Line Date"/>
+                <Property Name="LastSaleAmt" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="Currency" sap:label="Last Sale Amount" sap:quickinfo="Condition Value"/>
+                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Lead" sap:quickinfo="Customer Number"/>
+                <Property Name="SalesSupport" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Support" sap:quickinfo="Customer Number"/>
+                <Property Name="OwnerName" Type="Edm.String" MaxLength="35" sap:label="Owner Name" sap:quickinfo="Name"/>
+                <Property Name="PmntTerms" Type="Edm.String" MaxLength="37" sap:label="Payment Terms"/>
+                <Property Name="LastPmntDt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Payment Date" sap:quickinfo="Posting Date in the Document"/>
+                <Property Name="LastPmntChkAmt" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="Currency" sap:label="Last Payment Amount" sap:quickinfo="Amount in local currency"/>
+                <Property Name="LastRetChkDt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Return Check Date" sap:quickinfo="Posting Date in the Document"/>
+                <Property Name="LastRetChkAmt" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="Currency" sap:label="Last Return Check Amount" sap:quickinfo="Amount in local currency"/>
+                <Property Name="waerk" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityContainer Name="ZODATA_CUSTOMER_BLOCKS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="customerblocksSet" EntityType="ZODATA_CUSTOMER_BLOCKS_SRV.customerblocks" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZRFI_CUSTARDASH" EntityType="ZODATA_CUSTOMER_BLOCKS_SRV.ZRFI_CUSTARDASHType" sap:deletable="false" sap:content-version="1"/>
             </EntityContainer>
-            <atom:link rel="self" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="ZODATA_CUSTOMER_BLOCKS_SRV.ZODATA_CUSTOMER_BLOCKS_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZODATA_CUSTOMER_BLOCKS_SRV.ZODATA_CUSTOMER_BLOCKS_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="/sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/sap/ZODATA_CUSTOMER_BLOCKS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
