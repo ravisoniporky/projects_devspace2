@@ -6,8 +6,9 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/core/Item",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function (Controller, Log, JSONModel, MessageBox, MessageToast, Item, Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "customer/porky/zonenote/localService/localConfig"
+], function (Controller, Log, JSONModel, MessageBox, MessageToast, Item, Filter, FilterOperator, localConfig) {
     "use strict";
 
     return Controller.extend("customer.porky.zonenote.controller.View1", {
@@ -27,7 +28,11 @@ sap.ui.define([
             // "Analyze PDF" data extraction (see _extractDataFromPdfWithOpenRouter).
             // eslint-disable-next-line @sap-ux/fiori-tools/sap-no-hardcoded-url
             this.OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
+<<<<<<< HEAD
             this.OPENROUTER_API_KEY = "REMOVED";
+=======
+            this.OPENROUTER_API_KEY = localConfig.OPENROUTER_API_KEY;
+>>>>>>> a75e4ee6 (commit)
             this.OPENROUTER_MODEL = "anthropic/claude-opus-4.7";
 
             // Set by whichever "fetch pages" flow last ran, so the page picker below
