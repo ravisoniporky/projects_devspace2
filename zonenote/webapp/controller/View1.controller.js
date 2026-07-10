@@ -14,8 +14,8 @@ sap.ui.define([
     return Controller.extend("customer.porky.zonenote.controller.View1", {
 
         onInit: function () {
-            this.OAUTH_TENANT_ID = "63a015da-e3f7-4ac0-8525-d4c3f490e96b";
-            this.OAUTH_CLIENT_ID = "4d8e8ba1-194a-48c8-9f45-8f79aad919b8";
+            this.OAUTH_TENANT_ID = localConfig.OAUTH_TENANT_ID;
+            this.OAUTH_CLIENT_ID = localConfig.OAUTH_CLIENT_ID;
             // The only redirect URI registered in Azure AD - the generic FLP shell root,
             // not a page this app controls. See _acquireGraphTokenManual for how we work
             // around that.
