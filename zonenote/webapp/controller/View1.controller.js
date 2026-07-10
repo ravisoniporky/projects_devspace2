@@ -28,11 +28,7 @@ sap.ui.define([
             // "Analyze PDF" data extraction (see _extractDataFromPdfWithOpenRouter).
             // eslint-disable-next-line @sap-ux/fiori-tools/sap-no-hardcoded-url
             this.OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
-<<<<<<< HEAD
-            this.OPENROUTER_API_KEY = "REMOVED";
-=======
             this.OPENROUTER_API_KEY = localConfig.OPENROUTER_API_KEY;
->>>>>>> a75e4ee6 (commit)
             this.OPENROUTER_MODEL = "anthropic/claude-opus-4.7";
 
             // Set by whichever "fetch pages" flow last ran, so the page picker below
@@ -899,6 +895,7 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
                     barcode_value: "<barcode or GS1 value>",
                     date: "<sell by, use by, freeze by, best before, packed date, whichever applies>",
                     material_reference: "<number shown next to the image or barcode block, e.g. 81269>",
+                    author: "<page-level last modifier from metadata, copied from header.page_modified_by>",
                     sectionname: oHeaderContext.section,
                     pagename: oHeaderContext.page,
                     user_id: oHeaderContext.user_id,
@@ -917,6 +914,7 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
                 "- Use the material number appearing beside each image/label as material_reference.\n" +
                 "- Weight should contain only the numeric value.\n" +
                 "- Weight unit should contain only the unit.\n" +
+                "- For \"author\": do NOT infer from handwriting or OCR context. Use page-level metadata only and set author = header.page_modified_by for every record.\n" +
                 "- Set \"record_count\" in the header to the number of records in \"data\".\n\n" +
                 "Return only valid JSON, no markdown code fences, no commentary.";
         },
@@ -933,6 +931,21 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
             var oParsed;
             try {
                 oParsed = JSON.parse(sJson);
+                oParsed.data.forEach(element => {
+                    element.author = oParsed.header.page_modified_by || null;
+                    element.sectionname = oParsed.header.section_name;
+                    element.pagename = oParsed.header.page_name;
+                    element.user_id = oParsed.header.user_id;
+                    element.timestamp = oParsed.header.generated_timestamp;
+                    element.email = oParsed.header.user_email;
+                    element.sectionid = oParsed.header.section_id;
+                    element.pageid = oParsed.header.page_id;
+                    element.user_display_name = oParsed.header.user_display_name;
+                    element.page_created_date = oParsed.header.page_created_date;
+                    element.page_modified_date = oParsed.header.page_modified_date;
+                    element.page_created_by = oParsed.header.page_created_by;
+                    element.page_modified_by = oParsed.header.page_modified_by;
+                });
             } catch (oError) {
                 throw new Error("Model did not return valid JSON: " + oError.message);
             }
@@ -1202,6 +1215,10 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
                 section_id: oPage._sectionId || null,
                 page_name: oPage.title || null,
                 page_id: oPage.id || null,
+                page_created_date: oPage.createdDateTime || null,
+                page_modified_date: oPage.lastModifiedDateTime || null,
+                page_created_by: (oPage.createdBy && oPage.createdBy.user && oPage.createdBy.user.displayName) || null,
+                page_modified_by: (oPage.lastModifiedBy && oPage.lastModifiedBy.user && oPage.lastModifiedBy.user.displayName) || null,
                 user_id: oUser.id || null,
                 user_email: oUser.email || null,
                 user_display_name: oUser.displayName || null,
