@@ -9,7 +9,7 @@ builder:
     excludes:
       - /test/**
       - /localService/**
-  customTasks:
+  customTasks: 
     - name: deploy-to-abap
       afterTask: generateCachebusterInfo
       configuration:

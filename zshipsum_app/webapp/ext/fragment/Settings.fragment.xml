@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Dialog id="settingsDialog" title="{i18n>dlgSettingsTitle}" contentWidth="30rem">
+        <content>
+            <f:SimpleForm layout="ResponsiveGridLayout" editable="true">
+                <Label text="{i18n>odataUrlLabel}"/>
+                <Input id="odataUrlInput" value="{settings>/odataUrl}"/>
+                <Label text="{i18n>odataUserLabel}"/>
+                <Input id="odataUserInput" value="{settings>/odataUser}"/>
+                <Label text="{i18n>odataPasswordLabel}"/>
+                <Input id="odataPasswordInput" value="{settings>/odataPassword}" type="Password"/>
+                <Label text="{i18n>odataEntitySetLabel}"/>
+                <Input id="odataEntitySetInput" value="{settings>/odataEntitySet}"/>
+                <Label text="{i18n>openrouterKeyLabel}"/>
+                <Input id="openrouterKeyInput" value="{settings>/openrouterKey}" type="Password"/>
+                <Label text="{i18n>openrouterModelLabel}"/>
+                <Input id="openrouterModelInput" value="{settings>/openrouterModel}"/>
+                <Label text="{i18n>systemPromptLabel}"/>
+                <TextArea id="systemPromptInput" value="{settings>/systemPrompt}" rows="4" width="100%"/>
+            </f:SimpleForm>
+            <Text id="testResultText" text="{settings>/testResult}" class="sapUiSmallMarginBegin"/>
+        </content>
+        <buttons>
+            <Button id="testConnectionButton" text="{i18n>btnTestConnection}" press="onTestConnection"/>
+            <Button id="saveSettingsButton" text="{i18n>btnSave}" type="Emphasized" press="onSaveSettings"/>
+            <Button id="cancelSettingsButton" text="{i18n>btnCancel}" press="onCancelSettings"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

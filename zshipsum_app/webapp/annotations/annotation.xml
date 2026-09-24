@@ -1,0 +1,163 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Aggregation.xml">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+   
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Capabilities.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata4/sap/zsb_shipmentblotterv4/srvd/sap/zsv_shipmentblotter/0001/$metadata">
+        <edmx:Include Namespace="com.sap.gateway.srvd.zsv_shipmentblotter.v0001" Alias="SAP__self"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+    
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+
+    <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType">
+        <!-- Re-declare ApplySupported adding the "search" transformation so Fiori Elements
+             enables the basic search field on the analytical (aggregating) table.
+             Transformations + GroupableProperties are copied verbatim from the backend
+             $metadata; only <String>search</String> is added. -->
+        <Annotation Term="Aggregation.ApplySupported">
+            <Record>
+                <PropertyValue Property="Transformations">
+                    <Collection>
+                        <String>filter</String>
+                        <String>identity</String>
+                        <String>orderby</String>
+                        <String>search</String>
+                        <String>skip</String>
+                        <String>top</String>
+                        <String>groupby</String>
+                        <String>aggregate</String>
+                        <String>concat</String>
+                    </Collection>
+                </PropertyValue>
+                <PropertyValue Property="GroupableProperties">
+                    <Collection>
+                        <PropertyPath>AcceptableArrivalTime</PropertyPath>
+                        <PropertyPath>BillingStatus</PropertyPath>
+                        <PropertyPath>CAcceptableArrivalTime</PropertyPath>
+                        <PropertyPath>CBillingStatus</PropertyPath>
+                        <PropertyPath>CDeliveryPriorityStatus</PropertyPath>
+                        <PropertyPath>CWeighingStatus</PropertyPath>
+                        <PropertyPath>Delivery</PropertyPath>
+                        <PropertyPath>DeliveryPriorityStatus</PropertyPath>
+                        <PropertyPath>DeliveryTypeDescription</PropertyPath>
+                        <PropertyPath>Duration</PropertyPath>
+                        <PropertyPath>DurationinSeconds</PropertyPath>
+                        <PropertyPath>MorningEndTime</PropertyPath>
+                        <PropertyPath>MorningStartTime</PropertyPath>
+                        <PropertyPath>Shipment</PropertyPath>
+                        <PropertyPath>Shiptocity</PropertyPath>
+                        <PropertyPath>Shiptoname</PropertyPath>
+                        <PropertyPath>ShipToParty</PropertyPath>
+                        <PropertyPath>Shiptopostalcode</PropertyPath>
+                        <PropertyPath>Shiptostreet</PropertyPath>
+                        <PropertyPath>Shiptotelephone</PropertyPath>
+                        <PropertyPath>StageEndDate</PropertyPath>
+                        <PropertyPath>StageEndTime</PropertyPath>
+                        <PropertyPath>StageStartDate</PropertyPath>
+                        <PropertyPath>StageStartTime</PropertyPath>
+                        <PropertyPath>Stop</PropertyPath>
+                        <PropertyPath>TransportPlanningPoint</PropertyPath>
+                        <PropertyPath>WeighingStatus</PropertyPath>
+                    </Collection>
+                </PropertyValue>
+            </Record>
+        </Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="table">
+            <Record Type="UI.PresentationVariantType">
+                <PropertyValue Property="Visualizations">
+                    <Collection>
+                        <AnnotationPath>@UI.LineItem</AnnotationPath>
+                    </Collection>
+                </PropertyValue>
+                <PropertyValue Property="Total">
+                    <Collection>
+                        <PropertyPath>ActualCases</PropertyPath>
+                        <PropertyPath>ActualEaches</PropertyPath>
+                        <PropertyPath>ActualOthers</PropertyPath>
+                        <PropertyPath>NetWeight</PropertyPath>
+                    </Collection>
+                </PropertyValue>
+            </Record>
+        </Annotation>
+    </Annotations>
+
+    <!-- Mark the ShipmentItem entity set as searchable so the table search field is offered.
+         Requires @Search.searchable on the backing CDS view for $search to actually work. -->
+    <Annotations Target="SAP__self.Container/ZC_ShipmentBlotter_Item">
+        <Annotation Term="Capabilities.SearchRestrictions">
+            <Record>
+                <PropertyValue Property="Searchable" Bool="true"/>
+            </Record>
+        </Annotation>
+    </Annotations>
+
+    <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType">
+        <Annotation Term="UI.Facets">
+            <Collection>
+                <Record Type="UI.CollectionFacet">
+                    <PropertyValue Property="Label" String="General Information"/>
+                    <PropertyValue Property="ID" String="GeneralSection"/>
+                    <PropertyValue Property="Facets">
+                        <Collection>
+                            <Record Type="UI.ReferenceFacet">
+                                <PropertyValue Property="Label" String="Transport"/>
+                                <PropertyValue Property="ID" String="TransportFG"/>
+                                <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TransportGroup"/>
+                            </Record>
+                            <Record Type="UI.ReferenceFacet">
+                                <PropertyValue Property="Label" String="Payload Summary"/>
+                                <PropertyValue Property="ID" String="QuantitiesFG"/>
+                                <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PayloadGroup"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+                <Record Type="UI.CollectionFacet">
+                    <PropertyValue Property="Label" String="Execution &amp; Deadlines"/>
+                    <PropertyValue Property="ID" String="MilestoneSection"/>
+                    <PropertyValue Property="Facets">
+                        <Collection>
+                            <Record Type="UI.ReferenceFacet">
+                                <PropertyValue Property="Label" String="Planned Schedule"/>
+                                <PropertyValue Property="ID" String="PlannedFG"/>
+                                <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PlannedGroup"/>
+                            </Record>
+                            <Record Type="UI.ReferenceFacet">
+                                <PropertyValue Property="Label" String="Actual Progress"/>
+                                <PropertyValue Property="ID" String="ActualFG"/>
+                                <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ActualGroup"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+                <Record Type="UI.ReferenceFacet">
+                    <PropertyValue Property="Label" String="Processing Status"/>
+                    <PropertyValue Property="ID" String="StatusSection"/>
+                    <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#StatusGroup"/>
+                </Record>
+                <Record Type="UI.ReferenceFacet">
+                    <PropertyValue Property="Label" String="Vehicle Tracking"/>
+                    <PropertyValue Property="ID" String="TrackingSection"/>
+                    <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#VehicleTracking"/>
+                </Record>
+
+                <!-- this is the one that matters -->
+                <Record Type="UI.ReferenceFacet">
+                    <PropertyValue Property="Label" String="Shipment Items"/>
+                    <PropertyValue Property="ID" String="ShipmentItemsFacet"/>
+                    <PropertyValue Property="Target" AnnotationPath="_ShipmentItem/@UI.PresentationVariant#table"/>
+                </Record>
+            </Collection>
+        </Annotation>
+    </Annotations>
+
+</Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

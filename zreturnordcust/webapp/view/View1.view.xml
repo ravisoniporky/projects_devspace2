@@ -1,0 +1,163 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:uiTable="sap.ui.table"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    controllerName="customer.porky.zreturnordcust.controller.View1">
+    <Page id="page" title="{i18n>title}">
+    <content>
+        <VBox width="100%" direction="Column" id="vbox0">
+            <items>
+                <smartFilterBar:SmartFilterBar class="sapContrastPlus" smartVariant="Element sap.ui.comp.smartvariants.SmartVariantManagement#__bar315-variant" filterBarExpanded="true" showGoOnFB="true" id="bar315" entityType="ZC_RETURNORDERSUMMARY_VEType">
+                    <smartFilterBar:controlConfiguration>
+                        <smartFilterBar:ControlConfiguration id="configuration1"/>
+                    </smartFilterBar:controlConfiguration>
+                </smartFilterBar:SmartFilterBar>
+                <IconTabBar id="itbViews" expanded="true" stretchContentHeight="true" class="sapUiResponsiveContentPadding">
+                    <items>
+                        <IconTabFilter id="tabList" text="{i18n>tabDetails}" key="list" icon="sap-icon://list">
+                            <content>
+                                <smartTable:SmartTable
+                                    width="100%"
+                                    fitContainer="true"
+                                    tableType="ResponsiveTable"
+                                    header="Smart Table"
+                                    enableAutoBinding="true"
+                                    useTablePersonalisation="true"
+                                    persistencyKey="zreturnordcust_table0"
+                                    id="table0"
+                                    entitySet="ZC_RETURNORDERSUMMARY_VE"
+                                    smartFilterId="bar315"
+                                    beforeRebindTable="onBeforeRebindTable">
+                                    <Table id="innerTable0" growing="true" alternateRowColors="true" inset="false" mode="None" >
+                                        <columns>
+                                            <Column id="colOrderQuantity" hAlign="End">
+                                                <customData>
+                                                    <core:CustomData id="cdOrderQuantity" key="p13nData" value='\{"columnKey": "OrderQuantity", "leadingProperty": "OrderQuantity", "additionalProperty": "OrderQuantityUnit", "sortProperty": "OrderQuantity", "filterProperty": "OrderQuantity", "columnIndex": 90, "type": "Numeric"\}' />
+                                                </customData>
+                                                <header>
+                                                    <Label id="hdrOrderQuantity" text="{i18n>orderQuantity}" />
+                                                </header>
+                                                <footer>
+                                                    <ObjectNumber id="ftrOrderQuantity" number="{totals>/orderQuantity}" unit="{totals>/quantityUnit}" emphasized="true" />
+                                                </footer>
+                                            </Column>
+                                            <Column id="colDeliveryQuantity" hAlign="End">
+                                                <customData>
+                                                    <core:CustomData id="cdDeliveryQuantity" key="p13nData" value='\{"columnKey": "DeliveryQuantity", "leadingProperty": "DeliveryQuantity", "additionalProperty": "OrderQuantityUnit", "sortProperty": "DeliveryQuantity", "filterProperty": "DeliveryQuantity", "columnIndex": 91, "type": "Numeric"\}' />
+                                                </customData>
+                                                <header>
+                                                    <Label id="hdrDeliveryQuantity" text="{i18n>deliveryQuantity}" />
+                                                </header>
+                                                <footer>
+                                                    <ObjectNumber id="ftrDeliveryQuantity" number="{totals>/deliveryQuantity}" unit="{totals>/quantityUnit}" emphasized="true" />
+                                                </footer>
+                                            </Column>
+                                            <Column id="colOrderQuantityUnit" hAlign="Begin">
+                                                <customData>
+                                                    <core:CustomData id="cdOrderQuantityUnit" key="p13nData" value='\{"columnKey": "OrderQuantityUnit", "leadingProperty": "OrderQuantityUnit", "sortProperty": "OrderQuantityUnit", "filterProperty": "OrderQuantityUnit", "columnIndex": 92, "type": "String"\}' />
+                                                </customData>
+                                                <header>
+                                                    <Label id="hdrOrderQuantityUnit" text="{i18n>salesUnit}" />
+                                                </header>
+                                                <footer>
+                                                    <Text id="ftrOrderQuantityUnit" text="{totals>/quantityUnit}" />
+                                                </footer>
+                                            </Column>
+                                            <Column id="colNetWeight" hAlign="End">
+                                                <customData>
+                                                    <core:CustomData id="cdNetWeight" key="p13nData" value='\{"columnKey": "NetWeight", "leadingProperty": "NetWeight", "additionalProperty": "WeightUnit", "sortProperty": "NetWeight", "filterProperty": "NetWeight", "columnIndex": 93, "type": "Numeric"\}' />
+                                                </customData>
+                                                <header>
+                                                    <Label id="hdrNetWeight" text="{i18n>netWeight}" />
+                                                </header>
+                                                <footer>
+                                                    <ObjectNumber id="ftrNetWeight" number="{totals>/netWeight}" unit="{totals>/weightUnit}" emphasized="true" />
+                                                </footer>
+                                            </Column>
+                                            <Column id="colSalesPriceAmount" hAlign="End">
+                                                <customData>
+                                                    <core:CustomData id="cdSalesPriceAmount" key="p13nData" value='\{"columnKey": "SalesPriceAmount", "leadingProperty": "SalesPriceAmount", "additionalProperty": "SalesPriceCurrency", "sortProperty": "SalesPriceAmount", "filterProperty": "SalesPriceAmount", "columnIndex": 94, "type": "Numeric"\}' />
+                                                </customData>
+                                                <header>
+                                                    <Label id="hdrSalesPriceAmount" text="{i18n>salesPriceAmount}" />
+                                                </header>
+                                                <footer>
+                                                    <ObjectNumber id="ftrSalesPriceAmount" number="{totals>/salesPriceAmount}" unit="{totals>/currency}" emphasized="true" />
+                                                </footer>
+                                            </Column>
+                                            <Column id="colSalesPriceCurrency" hAlign="Begin">
+                                                <customData>
+                                                    <core:CustomData id="cdSalesPriceCurrency" key="p13nData" value='\{"columnKey": "SalesPriceCurrency", "leadingProperty": "SalesPriceCurrency", "sortProperty": "SalesPriceCurrency", "filterProperty": "SalesPriceCurrency", "columnIndex": 95, "type": "String"\}' />
+                                                </customData>
+                                                <header>
+                                                    <Label id="hdrSalesPriceCurrency" text="{i18n>salesPriceCurrency}" />
+                                                </header>
+                                                <footer>
+                                                    <Text id="ftrSalesPriceCurrency" text="{totals>/currency}" />
+                                                </footer>
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem id="innerTableItem0">
+                                                <cells>
+                                                    <ObjectNumber id="cellOrderQuantity" number="{ path: 'OrderQuantity', type: 'sap.ui.model.odata.type.Decimal', formatOptions: { minFractionDigits: 3, maxFractionDigits: 3 } }" unit="{OrderQuantityUnit}" />
+                                                    <ObjectNumber id="cellDeliveryQuantity" number="{ path: 'DeliveryQuantity', type: 'sap.ui.model.odata.type.Decimal', formatOptions: { minFractionDigits: 3, maxFractionDigits: 3 } }" unit="{OrderQuantityUnit}" />
+                                                    <Text id="cellOrderQuantityUnit" text="{OrderQuantityUnit}" />
+                                                    <ObjectNumber id="cellNetWeight" number="{ path: 'NetWeight', type: 'sap.ui.model.odata.type.Decimal', formatOptions: { minFractionDigits: 3, maxFractionDigits: 3 } }" unit="{WeightUnit}" />
+                                                    <ObjectNumber id="cellSalesPriceAmount" number="{ path: 'SalesPriceAmount', type: 'sap.ui.model.odata.type.Decimal', formatOptions: { minFractionDigits: 3, maxFractionDigits: 3 } }" unit="{SalesPriceCurrency}" />
+                                                    <Text id="cellSalesPriceCurrency" text="{SalesPriceCurrency}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </smartTable:SmartTable>
+                            </content>
+                        </IconTabFilter>
+                        <IconTabFilter id="tabGrid" text="{i18n>tabSummary}" key="grid" icon="sap-icon://table-view">
+                            <content>
+                                <smartTable:SmartTable
+                                    width="100%"
+                                    fitContainer="true"
+                                    tableType="Table"
+                                    header="{i18n>tabSummary}"
+                                    enableAutoBinding="true"
+                                    useTablePersonalisation="true"
+                                    useVariantManagement="false"
+                                    showRowCount="true"
+                                    persistencyKey="zreturnordcust_table1"
+                                    id="table1"
+                                    entitySet="ZC_RETURNORDERSUMMARY_VE"
+                                    smartFilterId="bar315"
+                                    beforeRebindTable="onBeforeRebindTable">
+                                    <uiTable:Table id="innerGrid1" selectionMode="None" rowMode="AutoRowMode" visibleRowCountMode="Auto" minAutoRowCount="10" enableBusyIndicator="true" busy="{/busy}" enableColumnReordering="true" enableColumnFreeze="true" enableSelectAll="false" showNoData="true">
+                                        <uiTable:footer>
+                                            <OverflowToolbar id="tbGridTotals" design="Info" busy="{totals>/busy}" busyIndicatorDelay="0">
+                                                <Title id="ttlGridTotals" text="{i18n>totalsSummary}" level="H3"/>
+                                                <ToolbarSpacer id="tsGridTotals"/>
+                                                <Label id="lblGridOrderQuantity" text="{i18n>orderQuantity}" design="Bold"/>
+                                                <ObjectNumber id="onGridOrderQuantity" number="{totals>/orderQuantity}" unit="{totals>/quantityUnit}" emphasized="true"/>
+                                                <ToolbarSeparator id="sepGrid1"/>
+                                                <Label id="lblGridDeliveryQuantity" text="{i18n>deliveryQuantity}" design="Bold"/>
+                                                <ObjectNumber id="onGridDeliveryQuantity" number="{totals>/deliveryQuantity}" unit="{totals>/quantityUnit}" emphasized="true"/>
+                                                <ToolbarSeparator id="sepGrid2"/>
+                                                <Label id="lblGridNetWeight" text="{i18n>netWeight}" design="Bold"/>
+                                                <ObjectNumber id="onGridNetWeight" number="{totals>/netWeight}" unit="{totals>/weightUnit}" emphasized="true"/>
+                                                <ToolbarSeparator id="sepGrid3"/>
+                                                <Label id="lblGridSalesPriceAmount" text="{i18n>salesPriceAmount}" design="Bold"/>
+                                                <ObjectNumber id="onGridSalesPriceAmount" number="{totals>/salesPriceAmount}" unit="{totals>/currency}" emphasized="true"/>
+                                            </OverflowToolbar>
+                                        </uiTable:footer>
+                                    </uiTable:Table>
+                                </smartTable:SmartTable>
+                            </content>
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </items>
+        </VBox>
+    </content>
+    </Page>
+</mvc:View>

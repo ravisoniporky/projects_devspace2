@@ -1,0 +1,42 @@
+<mvc:View
+    controllerName="customer.porky.zshipsumapp.ext.controller.Stops"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <IconTabBar id="stopsIconTabBar" items="{stopsModel>/stops}" expandable="false" stretchContentHeight="false">
+        <items>
+            <IconTabFilter
+                key="{stopsModel>stop}"
+                text="{stopsModel>text}"
+                count="{stopsModel>count}"
+                icon="sap-icon://shipping-status"
+            >
+                <Table items="{stopsModel>items}" inset="false" noDataText="No items for this stop">
+                    <columns>
+                        <Column><Text text="Delivery"/></Column>
+                        <Column><Text text="Ship-to Party"/></Column>
+                        <Column><Text text="Ship-to Party Name"/></Column>
+                        <Column><Text text="Street"/></Column>
+                        <Column><Text text="City"/></Column>
+                        <Column hAlign="End"><Text text="Cases"/></Column>
+                        <Column hAlign="End"><Text text="Net Weight (LB)"/></Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press="onItemPress">
+                            <cells>
+                                <Text text="{stopsModel>Delivery}"/>
+                                <Text text="{stopsModel>ShipToParty}"/>
+                                <Text text="{stopsModel>Shiptoname}"/>
+                                <Text text="{stopsModel>Shiptostreet}"/>
+                                <Text text="{stopsModel>Shiptocity}"/>
+                                <Text text="{stopsModel>ActualCases}"/>
+                                <Text text="{stopsModel>NetWeight}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</mvc:View>

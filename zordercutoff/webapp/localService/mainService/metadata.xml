@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_ORDERCUTOFFQV1_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_ORDERCUTOFFQV1Result" sap:label="Late Orders" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SalesDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Sales Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ShipToPartyName" Type="Edm.String" MaxLength="80" sap:aggregation-role="dimension" sap:label="Ship To Party Name" sap:quickinfo="Name of Customer" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Sold To Party" sap:quickinfo="Sold-to Party" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesLeadName" Type="Edm.String" MaxLength="80" sap:aggregation-role="dimension" sap:label="SalesLead Name" sap:quickinfo="Name of Customer" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OrganizationDivision" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:label="Division" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesLead" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="SalesLead" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:aggregation-role="dimension" sap:text="CreationTime_T" sap:label="Creation Time" sap:quickinfo="Time at Which Record Was Created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationTime_T" Type="Edm.String" MaxLength="10" sap:label="Creation Time (Description)" sap:quickinfo="Time at Which Record Was Created" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="CreationDate" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Creation Date" sap:quickinfo="Record Created On" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="CreationDate_T" Type="Edm.String" MaxLength="10" sap:label="Creation Date (Description)" sap:quickinfo="Record Created On" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="NextDayDate" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Next Delivery Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="NextDayDate_T" Type="Edm.String" MaxLength="10" sap:label="Next Delivery Date (Description)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="ShipToParty" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Ship To Party" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SoldToPartyName" Type="Edm.String" MaxLength="80" sap:aggregation-role="dimension" sap:label="Sold To Party Name" sap:quickinfo="Name of Customer" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:label="Distribution Channel" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RequestedDeliveryDate" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Delivery Date" sap:quickinfo="Requested Delivery Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="RequestedDeliveryDate_T" Type="Edm.String" MaxLength="10" sap:label="Delivery Date (Description)" sap:quickinfo="Requested Delivery Date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Route" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:label="Route" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Counter" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="Counter_F" sap:updatable="false" sap:label="Counter" sap:creatable="false"/>
+                <Property Name="Counter_F" Type="Edm.String" MaxLength="60" sap:label="Counter (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Parameters" Relationship="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1ParametersToResult" FromRole="ToRole_ZC_ORDERCUTOFFQV1ParametersToResult" ToRole="FromRole_ZC_ORDERCUTOFFQV1ParametersToResult"/>
+            </EntityType>
+            <EntityType Name="ZC_ORDERCUTOFFQV1Labels" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Name"/>
+                </Key>
+                <Property Name="Name" Type="Edm.String" Nullable="false"/>
+                <Property Name="Label" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="ZC_ORDERCUTOFFQV1Parameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_vkorg"/>
+                    <PropertyRef Name="p_CutoffTime"/>
+                    <PropertyRef Name="p_FromDate"/>
+                    <PropertyRef Name="p_ToDate"/>
+                </Key>
+                <Property Name="p_vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:parameter="mandatory" sap:text="p_vkorgText" sap:label="Sales Organization" sap:value-list="standard"/>
+                <Property Name="p_vkorgText" Type="Edm.String" MaxLength="60" sap:label="Sales Organization (Description) "/>
+                <Property Name="p_CutoffTime" Type="Edm.Time" Nullable="false" Precision="0" sap:parameter="mandatory" sap:text="p_CutoffTimeText" sap:label="Cutoff Time" sap:sortable="false"/>
+                <Property Name="p_CutoffTimeText" Type="Edm.String" MaxLength="60" sap:label="Cutoff Time (Description) " sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_FromDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:text="p_FromDateText" sap:label="From Date" sap:sortable="false"/>
+                <Property Name="p_FromDateText" Type="Edm.String" MaxLength="60" sap:label="From Date (Description) " sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_ToDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:text="p_ToDateText" sap:label="To Date" sap:sortable="false"/>
+                <Property Name="p_ToDateText" Type="Edm.String" MaxLength="60" sap:label="To Date (Description) " sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="p_vkorgDetails" Relationship="ZC_ORDERCUTOFFQV1_CDS.p_vkorgToListOfValues" FromRole="ToRole_p_vkorgToListOfValues" ToRole="FromRole_p_vkorgToListOfValues"/>
+                <NavigationProperty Name="Results" Relationship="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1ParametersToResult" FromRole="FromRole_ZC_ORDERCUTOFFQV1ParametersToResult" ToRole="ToRole_ZC_ORDERCUTOFFQV1ParametersToResult"/>
+                <NavigationProperty Name="Labels" Relationship="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1ParametersToLabels" FromRole="FromRole_ZC_ORDERCUTOFFQV1ParametersToLabels" ToRole="ToRole_ZC_ORDERCUTOFFQV1ParametersToLabels"/>
+            </EntityType>
+            <EntityType Name="p_vkorg" sap:label="Sales Organization" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_vkorg_ID"/>
+                </Key>
+                <Property Name="p_vkorg_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:sortable="false" sap:text="p_vkorg_TEXT" sap:label="Sales Organization" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="p_vkorg_TEXT" Type="Edm.String" sap:sortable="false" sap:label="Sales Organization (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="p_vkorgToListOfValues" sap:content-version="1">
+                <End Type="ZC_ORDERCUTOFFQV1_CDS.p_vkorg" Multiplicity="1" Role="FromRole_p_vkorgToListOfValues"/>
+                <End Type="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Parameters" Multiplicity="*" Role="ToRole_p_vkorgToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_p_vkorgToListOfValues">
+                        <PropertyRef Name="p_vkorg_ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_p_vkorgToListOfValues">
+                        <PropertyRef Name="p_vkorg"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ZC_ORDERCUTOFFQV1ParametersToResult" sap:content-version="1">
+                <End Type="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Parameters" Multiplicity="1" Role="FromRole_ZC_ORDERCUTOFFQV1ParametersToResult"/>
+                <End Type="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Result" Multiplicity="*" Role="ToRole_ZC_ORDERCUTOFFQV1ParametersToResult"/>
+            </Association>
+            <Association Name="ZC_ORDERCUTOFFQV1ParametersToLabels" sap:content-version="1">
+                <End Type="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Parameters" Multiplicity="1" Role="FromRole_ZC_ORDERCUTOFFQV1ParametersToLabels"/>
+                <End Type="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Labels" Multiplicity="*" Role="ToRole_ZC_ORDERCUTOFFQV1ParametersToLabels"/>
+            </Association>
+            <EntityContainer Name="ZC_ORDERCUTOFFQV1_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="AdditionalMetadata" EntityType="ZC_ORDERCUTOFFQV1_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_ORDERCUTOFFQV1Results" EntityType="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Result" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_ORDERCUTOFFQV1Labels" EntityType="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Labels" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_ORDERCUTOFFQV1" EntityType="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Parameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="p_vkorg" EntityType="ZC_ORDERCUTOFFQV1_CDS.p_vkorg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="ZC_ORDERCUTOFFQV1ParametersToResult_Asso" Association="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1ParametersToResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_ORDERCUTOFFQV1" Role="FromRole_ZC_ORDERCUTOFFQV1ParametersToResult"/>
+                    <End EntitySet="ZC_ORDERCUTOFFQV1Results" Role="ToRole_ZC_ORDERCUTOFFQV1ParametersToResult"/>
+                </AssociationSet>
+                <AssociationSet Name="p_vkorgToListOfValues_AssocSet" Association="ZC_ORDERCUTOFFQV1_CDS.p_vkorgToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="p_vkorg" Role="FromRole_p_vkorgToListOfValues"/>
+                    <End EntitySet="ZC_ORDERCUTOFFQV1" Role="ToRole_p_vkorgToListOfValues"/>
+                </AssociationSet>
+                <AssociationSet Name="ZC_ORDERCUTOFFQV1ParametersToLabels_Asso" Association="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1ParametersToLabels" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_ORDERCUTOFFQV1" Role="FromRole_ZC_ORDERCUTOFFQV1ParametersToLabels"/>
+                    <End EntitySet="ZC_ORDERCUTOFFQV1Labels" Role="ToRole_ZC_ORDERCUTOFFQV1ParametersToLabels"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1Parameters/p_vkorg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="p_vkorg"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="p_vkorg"/>
+                                    <PropertyValue Property="ValueListProperty" String="p_vkorg_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="p_vkorg_TEXT"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_ORDERCUTOFFQV1_CDS.ZC_ORDERCUTOFFQV1_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="/sap/opu/odata/sap/ZC_ORDERCUTOFFQV1_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/sap/ZC_ORDERCUTOFFQV1_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

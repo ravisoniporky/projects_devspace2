@@ -1,0 +1,2310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="com.sap.gateway.srvd.zsv_shipmentblotter.v0001" Alias="SAP__self">
+            <Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
+            <EntityType Name="ZC_ShipmentBlotter_ItemType">
+                <Key>
+                    <PropertyRef Name="Shipment"/>
+                    <PropertyRef Name="TransportPlanningPoint"/>
+                    <PropertyRef Name="Stop"/>
+                    <PropertyRef Name="Delivery"/>
+                </Key>
+                <Property Name="Shipment" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="TransportPlanningPoint" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Stop" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Delivery" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="ShipToParty" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="ActualCases" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="ActualEaches" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="ActualOthers" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="NetWeight" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="DeliveryTypeDescription" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="Shiptoname" Type="Edm.String" Nullable="false" MaxLength="35"/>
+                <Property Name="Shiptostreet" Type="Edm.String" Nullable="false" MaxLength="35"/>
+                <Property Name="Shiptocity" Type="Edm.String" Nullable="false" MaxLength="35"/>
+                <Property Name="Shiptotelephone" Type="Edm.String" Nullable="false" MaxLength="16"/>
+                <Property Name="Shiptopostalcode" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="BillingStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="WeighingStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="CBillingStatus" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="CWeighingStatus" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="StageStartDate" Type="Edm.Date"/>
+                <Property Name="StageEndDate" Type="Edm.Date"/>
+                <Property Name="StageStartTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="StageEndTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="DurationinSeconds" Type="Edm.Decimal" Nullable="false" Precision="15"/>
+                <Property Name="Duration" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="MorningStartTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="MorningEndTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="CDeliveryPriorityStatus" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="DeliveryPriorityStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="CAcceptableArrivalTime" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="AcceptableArrivalTime" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <NavigationProperty Name="_ShipmentHeader" Type="com.sap.gateway.srvd.zsv_shipmentblotter.v0001.ZC_ShipmentBlotter_HeaderType" Nullable="false" Partner="_ShipmentItem"/>
+            </EntityType>
+            <EntityType Name="I_NominationTranspPlanPtVHType">
+                <Key>
+                    <PropertyRef Name="TransportationPlanningPoint"/>
+                </Key>
+                <Property Name="TransportationPlanningPoint" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="TranspPlanningPointDesc" Type="Edm.String" Nullable="false" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="ZC_ShipmentBlotter_HeaderType">
+                <Key>
+                    <PropertyRef Name="Shipment"/>
+                    <PropertyRef Name="TransportPlanningPoint"/>
+                </Key>
+                <Property Name="Shipment" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="TransportPlanningPoint" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Route" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="Driver" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Vehicle" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="Trailer" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="ActualCases" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="ActualEaches" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="ActualOthers" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="NetWeight" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="NumberOfStops" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="LastStop" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="LastStopTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="PlannedStartDate" Type="Edm.Date"/>
+                <Property Name="PlannedStartTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="Timeprinted" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="ActualStartTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="ActualEndTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="ShipmentCompleted" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="ActualEndtDate" Type="Edm.Date"/>
+                <Property Name="ActualStartDate" Type="Edm.Date"/>
+                <Property Name="ActualCheckinDate" Type="Edm.Date"/>
+                <Property Name="ActualCheckinTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="DeliveredinSequence" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="DeliveryTimeExceeded" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="FirstStopArrival" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="Tracking" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OntimeDeparture" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="VehicleNoTracking" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="VehicleTypeTracking" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="CDeliveredinSequence" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="CDeliveryTimeExceeded" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="CFirstStopArrival" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="CTracking" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="COntimeDeparture" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="CHighLightFields" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="RouteName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="DriverName" Type="Edm.String" Nullable="false" MaxLength="220"/>
+                <Property Name="VehicleName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="TrailerName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <NavigationProperty Name="_ShipmentItem" Type="Collection(com.sap.gateway.srvd.zsv_shipmentblotter.v0001.ZC_ShipmentBlotter_ItemType)" Partner="_ShipmentHeader">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_TransportPoint" Type="com.sap.gateway.srvd.zsv_shipmentblotter.v0001.I_NominationTranspPlanPtVHType"/>
+            </EntityType>
+            <EntityType Name="C_OutboundDeliveryFsType">
+                <Key>
+                    <PropertyRef Name="OutboundDelivery"/>
+                </Key>
+                <Property Name="OutboundDelivery" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="DeliveryDocumentTypeName" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="ShipToParty" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="ShipToPartyFullName" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="SoldToParty" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SoldToPartyFullName" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="ShippingPoint" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="OverallSDProcessStatusDesc" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="OvrlSDProcessStatusCriticality" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="DeliveryDate" Type="Edm.Date"/>
+                <Property Name="DeliveryDateCriticality" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="HeaderGrossWeight" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="HeaderNetWeight" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="HeaderWeightUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="HeaderVolume" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="HeaderVolumeUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="DocumentDate" Type="Edm.Date"/>
+                <Property Name="DeliveryDocumentType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="PickingDate" Type="Edm.Date"/>
+                <Property Name="PickingDateCriticality" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="TransportationPlanningDate" Type="Edm.Date"/>
+                <Property Name="LoadingDate" Type="Edm.Date"/>
+                <Property Name="PlannedGoodsIssueDate" Type="Edm.Date"/>
+                <Property Name="PlannedGIDateCriticality" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="ActualGoodsMovementDate" Type="Edm.Date"/>
+                <Property Name="ActualGIDateCriticality" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="OverallPickingStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OverallWarehouseActivityStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OverallPickingConfStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OverallPackingStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OverallGoodsMovementStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OvrlGdsMovementStsCriticality" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="DelivAdvncdShipgRcvgRlvnce" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="ReadyForWarehouseExecStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OverallChmlCmplncStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OvrlChmlCmplncStsCriticality" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="OverallDangerousGoodsStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OvrlDngrsGdsStsCriticality" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="OverallSafetyDataSheetStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="IntcoExtTransfOfCtrlDteTmeTmzn" Type="Edm.String" Nullable="false" MaxLength="64"/>
+                <Property Name="IntcoExtActlTransfOfCtrlDteTme" Type="Edm.DateTimeOffset"/>
+                <Property Name="IntcoExtPlndTransfOfCtrlDteTme" Type="Edm.DateTimeOffset"/>
+                <Property Name="IntcoIntTransfOfCtrlDteTmeTmzn" Type="Edm.String" Nullable="false" MaxLength="64"/>
+                <Property Name="IntcoIntActlTransfOfCtrlDteTme" Type="Edm.DateTimeOffset"/>
+                <Property Name="IntcoIntPlndTransfOfCtrlDteTme" Type="Edm.DateTimeOffset"/>
+                <Property Name="ExtPlndTransfOfCtrlFrmdDTVal" Type="Edm.String" Nullable="false" MaxLength="64"/>
+                <Property Name="ExtActlTransfOfCtrlFrmdDTVal" Type="Edm.String" Nullable="false" MaxLength="64"/>
+                <Property Name="IntPlndTransfOfCtrlFrmdDTVal" Type="Edm.String" Nullable="false" MaxLength="64"/>
+                <Property Name="IntActlTransfOfCtrlFrmdDTVal" Type="Edm.String" Nullable="false" MaxLength="64"/>
+                <Property Name="OutbDelivIsMultistageIntcoRlvt" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="OvrlSftyDataSheetStsCritlty" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="EU_DeliveryARCStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="IsActive" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="ExciseMovementIsActive" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="IntTransfOfCtrlDteAreRelevant" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="ExtTransfOfCtrlDteAreRelevant" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="ProposedDeliveryRoute" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="OvrlTrdCmplncLegalCtrlChkSts" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OverallTrdCmplncEmbargoSts" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="OvrlTrdCmplncSnctndListChkSts" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="TradeComplianceIsInactive" Type="Edm.Boolean" Nullable="false"/>
+            </EntityType>
+            <EntityContainer Name="Container">
+                <EntitySet Name="C_OutboundDeliveryFs" EntityType="com.sap.gateway.srvd.zsv_shipmentblotter.v0001.C_OutboundDeliveryFsType"/>
+                <EntitySet Name="I_NominationTranspPlanPtVH" EntityType="com.sap.gateway.srvd.zsv_shipmentblotter.v0001.I_NominationTranspPlanPtVHType"/>
+                <EntitySet Name="ZC_ShipmentBlotter_Header" EntityType="com.sap.gateway.srvd.zsv_shipmentblotter.v0001.ZC_ShipmentBlotter_HeaderType">
+                    <NavigationPropertyBinding Path="_ShipmentItem" Target="ZC_ShipmentBlotter_Item"/>
+                    <NavigationPropertyBinding Path="_TransportPoint" Target="I_NominationTranspPlanPtVH"/>
+                </EntitySet>
+                <EntitySet Name="ZC_ShipmentBlotter_Item" EntityType="com.sap.gateway.srvd.zsv_shipmentblotter.v0001.ZC_ShipmentBlotter_ItemType">
+                    <NavigationPropertyBinding Path="_ShipmentHeader" Target="ZC_ShipmentBlotter_Header"/>
+                </EntitySet>
+            </EntityContainer>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/Shipment">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Shipment Number"/>
+                <Annotation Term="SAP__common.Heading" String="Shipment"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TKNUM"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/TransportPlanningPoint">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="TransportPlanningPt"/>
+                <Annotation Term="SAP__common.Heading" String="TPPt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Transportation planning point"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TPLST"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/Stop">
+                <Annotation Term="SAP__common.Label" String="Stop"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Heading" String="DPrio"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Delivery Priority"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=LPRIO"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/Delivery">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.SemanticObject" String="OutboundDelivery"/>
+                <Annotation Term="SAP__common.Label" String="Delivery"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=VBELN_VL"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/ShipToParty">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Ship-to Party"/>
+                <Annotation Term="SAP__common.Heading" String="Ship-to"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KUNWE"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/Shiptopostalcode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Postal Code"/>
+                <Annotation Term="SAP__common.Heading" String="PostalCode"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=PSTLZ"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZC_ShipmentBlotter_Item">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_ShipmentHeader"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
+                        <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>_ShipmentHeader</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType">
+                <Annotation Term="SAP__common.Label" String="Shipment Blotter Item View"/>
+                <Annotation Term="SAP__aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>filter</String>
+                                <String>identity</String>
+                                <String>orderby</String>
+                                <String>search</String>
+                                <String>skip</String>
+                                <String>top</String>
+                                <String>groupby</String>
+                                <String>aggregate</String>
+                                <String>concat</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="GroupableProperties">
+                            <Collection>
+                                <PropertyPath>AcceptableArrivalTime</PropertyPath>
+                                <PropertyPath>BillingStatus</PropertyPath>
+                                <PropertyPath>CAcceptableArrivalTime</PropertyPath>
+                                <PropertyPath>CBillingStatus</PropertyPath>
+                                <PropertyPath>CDeliveryPriorityStatus</PropertyPath>
+                                <PropertyPath>CWeighingStatus</PropertyPath>
+                                <PropertyPath>Delivery</PropertyPath>
+                                <PropertyPath>DeliveryPriorityStatus</PropertyPath>
+                                <PropertyPath>DeliveryTypeDescription</PropertyPath>
+                                <PropertyPath>Duration</PropertyPath>
+                                <PropertyPath>DurationinSeconds</PropertyPath>
+                                <PropertyPath>MorningEndTime</PropertyPath>
+                                <PropertyPath>MorningStartTime</PropertyPath>
+                                <PropertyPath>Shipment</PropertyPath>
+                                <PropertyPath>Shiptocity</PropertyPath>
+                                <PropertyPath>Shiptoname</PropertyPath>
+                                <PropertyPath>ShipToParty</PropertyPath>
+                                <PropertyPath>Shiptopostalcode</PropertyPath>
+                                <PropertyPath>Shiptostreet</PropertyPath>
+                                <PropertyPath>Shiptotelephone</PropertyPath>
+                                <PropertyPath>StageEndDate</PropertyPath>
+                                <PropertyPath>StageEndTime</PropertyPath>
+                                <PropertyPath>StageStartDate</PropertyPath>
+                                <PropertyPath>StageStartTime</PropertyPath>
+                                <PropertyPath>Stop</PropertyPath>
+                                <PropertyPath>TransportPlanningPoint</PropertyPath>
+                                <PropertyPath>WeighingStatus</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="ID" String="GeneralInformationTab"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Header Details"/>
+                                        <PropertyValue Property="ID" String="GeneralHeaderGroup"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#GeneralHeader"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Partner"/>
+                                        <PropertyValue Property="ID" String="ShipToPartyGroup"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#ShipToAddress"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Quantities"/>
+                                        <PropertyValue Property="ID" String="QuantitiesStatusGroup"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#QuantitiesAndStatus"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Delivery Timings"/>
+                            <PropertyValue Property="ID" String="StageTimeTab"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Delivery Timings"/>
+                                        <PropertyValue Property="ID" String="StageTimingsGroup"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#StageTimings"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Status"/>
+                                        <PropertyValue Property="ID" String="StageStatus"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#StageStatus"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="GeneralHeader">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Shipment"/>
+                                    <PropertyValue Property="Value" Path="Shipment"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Delivery"/>
+                                    <PropertyValue Property="Value" Path="Delivery"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Stop"/>
+                                    <PropertyValue Property="Value" Path="Stop"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Transportation Point"/>
+                                    <PropertyValue Property="Value" Path="TransportPlanningPoint"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Delivery Type"/>
+                                    <PropertyValue Property="Value" Path="DeliveryTypeDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="QuantitiesAndStatus">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Cases"/>
+                                    <PropertyValue Property="Value" Path="ActualCases"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Eaches"/>
+                                    <PropertyValue Property="Value" Path="ActualEaches"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Other UoM"/>
+                                    <PropertyValue Property="Value" Path="ActualOthers"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Net Weight (LB)"/>
+                                    <PropertyValue Property="Value" Path="NetWeight"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="ShipToAddress">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Ship-to Party"/>
+                                    <PropertyValue Property="Value" Path="ShipToParty"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Name"/>
+                                    <PropertyValue Property="Value" Path="Shiptoname"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Street"/>
+                                    <PropertyValue Property="Value" Path="Shiptostreet"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="City"/>
+                                    <PropertyValue Property="Value" Path="Shiptocity"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Postal Code"/>
+                                    <PropertyValue Property="Value" Path="Shiptopostalcode"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Telephone"/>
+                                    <PropertyValue Property="Value" Path="Shiptotelephone"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="StageStatus">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Billing Status"/>
+                                    <PropertyValue Property="Criticality" Path="CBillingStatus"/>
+                                    <PropertyValue Property="Value" Path="BillingStatus"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Weight Status"/>
+                                    <PropertyValue Property="Criticality" Path="CWeighingStatus"/>
+                                    <PropertyValue Property="Value" Path="WeighingStatus"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Delivery Priority Status"/>
+                                    <PropertyValue Property="Criticality" Path="CDeliveryPriorityStatus"/>
+                                    <PropertyValue Property="Value" Path="DeliveryPriorityStatus"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="StageTimings">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Stage Start Date"/>
+                                    <PropertyValue Property="Value" Path="StageStartDate"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Stage Start Time"/>
+                                    <PropertyValue Property="Value" Path="StageStartTime"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Stage End Date"/>
+                                    <PropertyValue Property="Value" Path="StageEndDate"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Stage End Time"/>
+                                    <PropertyValue Property="Value" Path="StageEndTime"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Duration (HH:MM)"/>
+                                    <PropertyValue Property="Value" Path="Duration"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Duration (Seconds)"/>
+                                    <PropertyValue Property="Value" Path="DurationinSeconds"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Morning Start Time"/>
+                                    <PropertyValue Property="Value" Path="MorningStartTime"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Morning End Time"/>
+                                    <PropertyValue Property="Value" Path="MorningEndTime"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="WindowAndPriority">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Acceptable Arrival Status"/>
+                                    <PropertyValue Property="Criticality" Path="CAcceptableArrivalTime"/>
+                                    <PropertyValue Property="Value" Path="AcceptableArrivalTime"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Shipment"/>
+                        <PropertyValue Property="TypeNamePlural" String="Shipments"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="Shipment"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="Delivery"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.Identification">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Shipment"/>
+                            <PropertyValue Property="Value" Path="Shipment"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Delivery"/>
+                            <PropertyValue Property="Value" Path="Delivery"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stop"/>
+                            <PropertyValue Property="Value" Path="Stop"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Transportation Point"/>
+                            <PropertyValue Property="Value" Path="TransportPlanningPoint"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Delivery Type"/>
+                            <PropertyValue Property="Value" Path="DeliveryTypeDescription"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party"/>
+                            <PropertyValue Property="Value" Path="ShipToParty"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party Name"/>
+                            <PropertyValue Property="Value" Path="Shiptoname"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party Street"/>
+                            <PropertyValue Property="Value" Path="Shiptostreet"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party City"/>
+                            <PropertyValue Property="Value" Path="Shiptocity"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party Postal"/>
+                            <PropertyValue Property="Value" Path="Shiptopostalcode"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party Telephone"/>
+                            <PropertyValue Property="Value" Path="Shiptotelephone"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Cases"/>
+                            <PropertyValue Property="Value" Path="ActualCases"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Eaches"/>
+                            <PropertyValue Property="Value" Path="ActualEaches"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Other UoM"/>
+                            <PropertyValue Property="Value" Path="ActualOthers"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Net Weight (LB)"/>
+                            <PropertyValue Property="Value" Path="NetWeight"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Billing Status"/>
+                            <PropertyValue Property="Criticality" Path="CBillingStatus"/>
+                            <PropertyValue Property="Value" Path="BillingStatus"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Weight Status"/>
+                            <PropertyValue Property="Criticality" Path="CWeighingStatus"/>
+                            <PropertyValue Property="Value" Path="WeighingStatus"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stage Start Date"/>
+                            <PropertyValue Property="Value" Path="StageStartDate"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stage Start Time"/>
+                            <PropertyValue Property="Value" Path="StageStartTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stage End Date"/>
+                            <PropertyValue Property="Value" Path="StageEndDate"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stage End Time"/>
+                            <PropertyValue Property="Value" Path="StageEndTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Duration (HH:MM)"/>
+                            <PropertyValue Property="Value" Path="Duration"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Duration (Sec)"/>
+                            <PropertyValue Property="Value" Path="DurationinSeconds"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Morning Start Time"/>
+                            <PropertyValue Property="Value" Path="MorningStartTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Morning End Time"/>
+                            <PropertyValue Property="Value" Path="MorningEndTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Delivery Priority Status"/>
+                            <PropertyValue Property="Criticality" Path="CDeliveryPriorityStatus"/>
+                            <PropertyValue Property="Value" Path="DeliveryPriorityStatus"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Acceptable Arrival Status"/>
+                            <PropertyValue Property="Criticality" Path="CAcceptableArrivalTime"/>
+                            <PropertyValue Property="Value" Path="AcceptableArrivalTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Shipment"/>
+                            <PropertyValue Property="Value" Path="Shipment"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Delivery Type"/>
+                            <PropertyValue Property="Value" Path="DeliveryTypeDescription"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Delivery"/>
+                            <PropertyValue Property="SemanticObject" String="OutboundDelivery"/>
+                            <PropertyValue Property="Action" String="displayFactSheet"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stop"/>
+                            <PropertyValue Property="Value" Path="Stop"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Transportation Point"/>
+                            <PropertyValue Property="Value" Path="TransportPlanningPoint"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party"/>
+                            <PropertyValue Property="Value" Path="ShipToParty"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party Name"/>
+                            <PropertyValue Property="Value" Path="Shiptoname"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party Street"/>
+                            <PropertyValue Property="Value" Path="Shiptostreet"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party City"/>
+                            <PropertyValue Property="Value" Path="Shiptocity"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party Telephone"/>
+                            <PropertyValue Property="Value" Path="Shiptotelephone"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Ship-to Party Postal"/>
+                            <PropertyValue Property="Value" Path="Shiptopostalcode"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Cases"/>
+                            <PropertyValue Property="Value" Path="ActualCases"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Eaches"/>
+                            <PropertyValue Property="Value" Path="ActualEaches"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Net Weight(LB)"/>
+                            <PropertyValue Property="Value" Path="NetWeight"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Other UoM"/>
+                            <PropertyValue Property="Value" Path="ActualOthers"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Billing Status"/>
+                            <PropertyValue Property="Criticality" Path="CBillingStatus"/>
+                            <PropertyValue Property="Value" Path="BillingStatus"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Weight Status"/>
+                            <PropertyValue Property="Criticality" Path="CWeighingStatus"/>
+                            <PropertyValue Property="Value" Path="WeighingStatus"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stage Start Date"/>
+                            <PropertyValue Property="Value" Path="StageStartDate"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stage End Date"/>
+                            <PropertyValue Property="Value" Path="StageEndDate"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stage Start Time"/>
+                            <PropertyValue Property="Value" Path="StageStartTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Stage End Time"/>
+                            <PropertyValue Property="Value" Path="StageEndTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Duration (Sec)"/>
+                            <PropertyValue Property="Value" Path="DurationinSeconds"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Duration (HH:MM)"/>
+                            <PropertyValue Property="Value" Path="Duration"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Morning Start Time"/>
+                            <PropertyValue Property="Value" Path="MorningStartTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Morning End Time"/>
+                            <PropertyValue Property="Value" Path="MorningEndTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Delivery Priority Status"/>
+                            <PropertyValue Property="Criticality" Path="CDeliveryPriorityStatus"/>
+                            <PropertyValue Property="Value" Path="DeliveryPriorityStatus"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Acceptable Arrival Status"/>
+                            <PropertyValue Property="Criticality" Path="CAcceptableArrivalTime"/>
+                            <PropertyValue Property="Value" Path="AcceptableArrivalTime"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="SAP__common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Stop"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                                <Record Type="SAP__common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Delivery"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__aggregation.CustomAggregate" Qualifier="ActualCases" String="Edm.Decimal"/>
+                <Annotation Term="SAP__aggregation.CustomAggregate" Qualifier="ActualEaches" String="Edm.Decimal"/>
+                <Annotation Term="SAP__aggregation.CustomAggregate" Qualifier="ActualOthers" String="Edm.Decimal"/>
+                <Annotation Term="SAP__aggregation.CustomAggregate" Qualifier="NetWeight" String="Edm.Decimal"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_NominationTranspPlanPtVHType/TransportationPlanningPoint">
+                <Annotation Term="SAP__common.Label" String="Transportation Planning Point"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="TPPt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Transportation planning point"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TPLST"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_NominationTranspPlanPtVHType/TranspPlanningPointDesc">
+                <Annotation Term="SAP__common.Label" String="Description"/>
+                <Annotation Term="SAP__common.Heading" String="Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_NominationTranspPlanPtVHType">
+                <Annotation Term="SAP__common.Label" String="Nomination Transportation Planning Point"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/I_NominationTranspPlanPtVH">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
+                        <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/Shipment">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Shipment Number"/>
+                <Annotation Term="SAP__common.Heading" String="Shipment"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TKNUM"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/TransportPlanningPoint">
+                <Annotation Term="SAP__common.Label" String="Transportation Planning Point"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_nominationtranspplanptvh/0001;ps='srvd-zsv_shipmentblotter-0001';va='com.sap.gateway.srvd.zsv_shipmentblotter.v0001.et-zc_shipmentblotter_header.transportplanningpoint'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Heading" String="TPPt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Transportation planning point"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TPLST"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/Route">
+                <Annotation Term="SAP__common.Text" Path="RouteName"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Shipment Route"/>
+                <Annotation Term="SAP__common.Heading" String="Route"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Shipment route"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ROUTR"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/Driver">
+                <Annotation Term="SAP__common.Text" Path="DriverName"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Driver 1"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=%2FDSD%2FRP_DRIVER1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/Vehicle">
+                <Annotation Term="SAP__common.Text" Path="VehicleName"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Vehicle"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/Trailer">
+                <Annotation Term="SAP__common.Text" Path="TrailerName"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Trailer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/LastStop">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Stage of transp.no."/>
+                <Annotation Term="SAP__common.Heading" String="STNo"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Stage of transport number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/PlannedStartDate">
+                <Annotation Term="SAP__common.Label" String="Shipment Start Date"/>
+                <Annotation Term="SAP__common.Heading" String="PlanShipSt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Planned date for start of shipment"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DPTBG"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/DriverName">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__aggregation.ContextDefiningProperties">
+                    <Collection>
+                        <PropertyPath>Driver</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Customer Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Customer Full Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/_ShipmentItem">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZC_ShipmentBlotter_Header">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_ShipmentItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_TransportPoint"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
+                        <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="TransportPlanningPoint"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="PlannedStartDate"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>TransportPlanningPoint</PropertyPath>
+                                <PropertyPath>PlannedStartDate</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>_ShipmentItem</PropertyPath>
+                                <PropertyPath>_TransportPoint</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType">
+                <Annotation Term="SAP__common.Label" String="Shipment Blotter Header View"/>
+                <Annotation Term="SAP__aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>filter</String>
+                                <String>identity</String>
+                                <String>orderby</String>
+                                <String>search</String>
+                                <String>skip</String>
+                                <String>top</String>
+                                <String>groupby</String>
+                                <String>aggregate</String>
+                                <String>concat</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="GroupableProperties">
+                            <Collection>
+                                <PropertyPath>ActualCheckinDate</PropertyPath>
+                                <PropertyPath>ActualCheckinTime</PropertyPath>
+                                <PropertyPath>ActualEndtDate</PropertyPath>
+                                <PropertyPath>ActualEndTime</PropertyPath>
+                                <PropertyPath>ActualStartDate</PropertyPath>
+                                <PropertyPath>ActualStartTime</PropertyPath>
+                                <PropertyPath>CDeliveredinSequence</PropertyPath>
+                                <PropertyPath>CDeliveryTimeExceeded</PropertyPath>
+                                <PropertyPath>CFirstStopArrival</PropertyPath>
+                                <PropertyPath>CHighLightFields</PropertyPath>
+                                <PropertyPath>COntimeDeparture</PropertyPath>
+                                <PropertyPath>CTracking</PropertyPath>
+                                <PropertyPath>DeliveredinSequence</PropertyPath>
+                                <PropertyPath>DeliveryTimeExceeded</PropertyPath>
+                                <PropertyPath>Driver</PropertyPath>
+                                <PropertyPath>DriverName</PropertyPath>
+                                <PropertyPath>FirstStopArrival</PropertyPath>
+                                <PropertyPath>LastStop</PropertyPath>
+                                <PropertyPath>LastStopTime</PropertyPath>
+                                <PropertyPath>NumberOfStops</PropertyPath>
+                                <PropertyPath>OntimeDeparture</PropertyPath>
+                                <PropertyPath>PlannedStartDate</PropertyPath>
+                                <PropertyPath>PlannedStartTime</PropertyPath>
+                                <PropertyPath>Route</PropertyPath>
+                                <PropertyPath>RouteName</PropertyPath>
+                                <PropertyPath>Shipment</PropertyPath>
+                                <PropertyPath>ShipmentCompleted</PropertyPath>
+                                <PropertyPath>Timeprinted</PropertyPath>
+                                <PropertyPath>Tracking</PropertyPath>
+                                <PropertyPath>Trailer</PropertyPath>
+                                <PropertyPath>TrailerName</PropertyPath>
+                                <PropertyPath>TransportPlanningPoint</PropertyPath>
+                                <PropertyPath>Vehicle</PropertyPath>
+                                <PropertyPath>VehicleName</PropertyPath>
+                                <PropertyPath>VehicleNoTracking</PropertyPath>
+                                <PropertyPath>VehicleTypeTracking</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.DataPoint" Qualifier="NumberOfStopsPoint">
+                    <Record>
+                        <PropertyValue Property="Value" Path="NumberOfStops"/>
+                        <PropertyValue Property="Title" String="Total Stops"/>
+                        <PropertyValue Property="Criticality" Path="CHighLightFields"/>
+                        <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithoutIcon"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.DataPoint" Qualifier="ShipmentCompletedPoint">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ShipmentCompleted"/>
+                        <PropertyValue Property="Title" String="Shipment Complete"/>
+                        <PropertyValue Property="Criticality" Path="CHighLightFields"/>
+                        <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithoutIcon"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderCompletion"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#ShipmentCompletedPoint"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderStops"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#NumberOfStopsPoint"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="ID" String="GeneralSection"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Transport"/>
+                                        <PropertyValue Property="ID" String="TransportFG"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#TransportGroup"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Payload Summary"/>
+                                        <PropertyValue Property="ID" String="QuantitiesFG"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#PayloadGroup"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Deadlines"/>
+                            <PropertyValue Property="ID" String="MilestoneSection"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Planning"/>
+                                        <PropertyValue Property="ID" String="PlannedFG"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#PlannedGroup"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Execution"/>
+                                        <PropertyValue Property="ID" String="ActualFG"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#ActualGroup"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Processing Status"/>
+                            <PropertyValue Property="ID" String="StatusSection"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#StatusGroup"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Vehicle Tracking"/>
+                            <PropertyValue Property="ID" String="TrackingSection"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#VehicleTracking"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Shipment Items"/>
+                            <PropertyValue Property="ID" String="ShipmentItemsFacet"/>
+                            <PropertyValue Property="Target" AnnotationPath="_ShipmentItem/@SAP__UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="ActualGroup">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Actual Check-in Date"/>
+                                    <PropertyValue Property="Value" Path="ActualCheckinDate"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Actual Check-in Time"/>
+                                    <PropertyValue Property="Value" Path="ActualCheckinTime"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Actual Start Date"/>
+                                    <PropertyValue Property="Value" Path="ActualStartDate"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Actual Start Time"/>
+                                    <PropertyValue Property="Value" Path="ActualStartTime"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Actual End Date"/>
+                                    <PropertyValue Property="Value" Path="ActualEndtDate"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Actual End Time"/>
+                                    <PropertyValue Property="Value" Path="ActualEndTime"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Last Stop"/>
+                                    <PropertyValue Property="Value" Path="LastStop"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Last Stop Time"/>
+                                    <PropertyValue Property="Value" Path="LastStopTime"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="PayloadGroup">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="ActualCases"/>
+                                    <PropertyValue Property="Value" Path="ActualCases"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="ActualEaches"/>
+                                    <PropertyValue Property="Value" Path="ActualEaches"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Other UoMs"/>
+                                    <PropertyValue Property="Value" Path="ActualOthers"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="NetWeight"/>
+                                    <PropertyValue Property="Value" Path="NetWeight"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="PlannedGroup">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Planned Start Date"/>
+                                    <PropertyValue Property="Value" Path="PlannedStartDate"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Planned Start Time"/>
+                                    <PropertyValue Property="Value" Path="PlannedStartTime"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Time Printed"/>
+                                    <PropertyValue Property="Value" Path="Timeprinted"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="StatusGroup">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Delivered in Sequence"/>
+                                    <PropertyValue Property="Criticality" Path="CDeliveredinSequence"/>
+                                    <PropertyValue Property="Value" Path="DeliveredinSequence"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Delivery Time Exceeded"/>
+                                    <PropertyValue Property="Criticality" Path="CDeliveryTimeExceeded"/>
+                                    <PropertyValue Property="Value" Path="DeliveryTimeExceeded"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="First Stop Arrival"/>
+                                    <PropertyValue Property="Criticality" Path="CFirstStopArrival"/>
+                                    <PropertyValue Property="Value" Path="FirstStopArrival"/>
+                                    <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Ontime Departure"/>
+                                    <PropertyValue Property="Criticality" Path="COntimeDeparture"/>
+                                    <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithIcon"/>
+                                    <PropertyValue Property="Value" Path="OntimeDeparture"/>
+                                    <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="TransportGroup">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Shipment"/>
+                                    <PropertyValue Property="Value" Path="Shipment"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Transportation Planning Point"/>
+                                    <PropertyValue Property="Value" Path="TransportPlanningPoint"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Route"/>
+                                    <PropertyValue Property="Criticality" Path="CHighLightFields"/>
+                                    <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithoutIcon"/>
+                                    <PropertyValue Property="Value" Path="Route"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Driver"/>
+                                    <PropertyValue Property="Value" Path="Driver"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Vehicle"/>
+                                    <PropertyValue Property="Value" Path="Vehicle"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Trailer"/>
+                                    <PropertyValue Property="Value" Path="Trailer"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="VehicleTracking">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Tracking"/>
+                                    <PropertyValue Property="Criticality" Path="CTracking"/>
+                                    <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithIcon"/>
+                                    <PropertyValue Property="Value" Path="Tracking"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Vehicle Number Tracking"/>
+                                    <PropertyValue Property="Value" Path="VehicleNoTracking"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Vehicle Type Tracking"/>
+                                    <PropertyValue Property="Value" Path="VehicleTypeTracking"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Shipment"/>
+                        <PropertyValue Property="TypeNamePlural" String="Shipments"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="Shipment"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="RouteName"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Shipment"/>
+                            <PropertyValue Property="Value" Path="Shipment"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Transportation Planning Point"/>
+                            <PropertyValue Property="Value" Path="TransportPlanningPoint"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Route"/>
+                            <PropertyValue Property="Value" Path="Route"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Driver"/>
+                            <PropertyValue Property="Value" Path="Driver"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Vehicle"/>
+                            <PropertyValue Property="Value" Path="Vehicle"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Trailer"/>
+                            <PropertyValue Property="Value" Path="Trailer"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Shipment Complete"/>
+                            <PropertyValue Property="Value" Path="ShipmentCompleted"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Total Stops"/>
+                            <PropertyValue Property="Value" Path="NumberOfStops"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>TransportPlanningPoint</PropertyPath>
+                        <PropertyPath>PlannedStartDate</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__aggregation.CustomAggregate" Qualifier="ActualCases" String="Edm.Decimal"/>
+                <Annotation Term="SAP__aggregation.CustomAggregate" Qualifier="ActualEaches" String="Edm.Decimal"/>
+                <Annotation Term="SAP__aggregation.CustomAggregate" Qualifier="ActualOthers" String="Edm.Decimal"/>
+                <Annotation Term="SAP__aggregation.CustomAggregate" Qualifier="NetWeight" String="Edm.Decimal"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/RouteName">
+                <Annotation Term="SAP__aggregation.ContextDefiningProperties">
+                    <Collection>
+                        <PropertyPath>Route</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Route Description"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ROUTBEZ"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/TrailerName">
+                <Annotation Term="SAP__aggregation.ContextDefiningProperties">
+                    <Collection>
+                        <PropertyPath>Trailer</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Object Description"/>
+                <Annotation Term="SAP__common.Heading" String="Description of technical object"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description of technical object"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KTX01"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/VehicleName">
+                <Annotation Term="SAP__aggregation.ContextDefiningProperties">
+                    <Collection>
+                        <PropertyPath>Vehicle</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Object Description"/>
+                <Annotation Term="SAP__common.Heading" String="Description of technical object"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description of technical object"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KTX01"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OutboundDelivery">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.SemanticObject" String="OutboundDelivery"/>
+                <Annotation Term="SAP__common.Label" String="Outbound Delivery"/>
+                <Annotation Term="SAP__common.Heading" String="Outb.Dlv."/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ShipToParty">
+                <Annotation Term="SAP__common.Text" Path="ShipToPartyFullName">
+                    <Annotation Term="SAP__UI.TextArrangement" EnumMember="SAP__UI.TextArrangementType/TextFirst"/>
+                </Annotation>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_customer_vh/0001;ps='srvd-zsv_shipmentblotter-0001';va='com.sap.gateway.srvd.zsv_shipmentblotter.v0001.et-c_outbounddeliveryfs.shiptoparty'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.SemanticObject" String="Customer"/>
+                <Annotation Term="SAP__common.Label" String="Ship-to Party"/>
+                <Annotation Term="SAP__common.Heading" String="Ship-to"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KUNWE"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ShipToPartyFullName">
+                <Annotation Term="SAP__common.Label" String="Full Name Ship-to Party"/>
+                <Annotation Term="SAP__common.Heading" String="Full Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Full Name of Person"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=AD_NAMTEXT"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/SoldToParty">
+                <Annotation Term="SAP__common.Text" Path="SoldToPartyFullName">
+                    <Annotation Term="SAP__UI.TextArrangement" EnumMember="SAP__UI.TextArrangementType/TextFirst"/>
+                </Annotation>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_customer_vh/0001;ps='srvd-zsv_shipmentblotter-0001';va='com.sap.gateway.srvd.zsv_shipmentblotter.v0001.et-c_outbounddeliveryfs.soldtoparty'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.SemanticObject" String="Customer"/>
+                <Annotation Term="SAP__common.Label" String="Sold-to Party"/>
+                <Annotation Term="SAP__common.Heading" String="Sold-to"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KUNAG"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/SoldToPartyFullName">
+                <Annotation Term="SAP__common.Label" String="Full Name Sold-to Party"/>
+                <Annotation Term="SAP__common.Heading" String="Full Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Full Name of Person"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=AD_NAMTEXT"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ShippingPoint">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_shippingpointstdvh/0001;ps='srvd-zsv_shipmentblotter-0001';va='com.sap.gateway.srvd.zsv_shipmentblotter.v0001.et-c_outbounddeliveryfs.shippingpoint'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Shipping Point"/>
+                <Annotation Term="SAP__common.Heading" String="ShPt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Shipping Point / Receiving Point"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=VSTEL"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/SalesOrganization">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sales Organization"/>
+                <Annotation Term="SAP__common.Heading" String="SOrg."/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=VKORG"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/HeaderGrossWeight">
+                <Annotation Term="SAP__measures.Unit" Path="HeaderWeightUnit"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Gross Weight"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/HeaderNetWeight">
+                <Annotation Term="SAP__measures.Unit" Path="HeaderWeightUnit"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Net Weight"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=NTGEW_15"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/HeaderWeightUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Unit of Weight"/>
+                <Annotation Term="SAP__common.Heading" String="WUn"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=GEWEI"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/HeaderVolume">
+                <Annotation Term="SAP__measures.Unit" Path="HeaderVolumeUnit"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Volume"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=VOLUM_15"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/HeaderVolumeUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Volume Unit"/>
+                <Annotation Term="SAP__common.Heading" String="VUn"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=VOLEH"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/DeliveryDocumentType">
+                <Annotation Term="SAP__common.Text" Path="DeliveryDocumentTypeName"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Delivery Type"/>
+                <Annotation Term="SAP__common.Heading" String="DlvTy"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=LFART"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallPickingStatus">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Picking Status"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Overall Picking Status"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallWarehouseActivityStatus">
+                <Annotation Term="SAP__common.Label" String="Warehouse Management Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Heading" String="WM"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Status of Warehouse Management Activities (All Items)"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=LVSTK"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallPickingConfStatus">
+                <Annotation Term="SAP__common.Label" String="Pick Confirmation Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="C"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Status of Pick Confirmation"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KOQUK"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallPackingStatus">
+                <Annotation Term="SAP__common.Label" String="Packing Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="PS"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Packing Status (All Items)"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=PKSTK"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallGoodsMovementStatus">
+                <Annotation Term="SAP__common.Label" String="Goods Movement Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="GM"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Goods Movement Status (All Items)"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=WBSTK"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/DelivAdvncdShipgRcvgRlvnce">
+                <Annotation Term="SAP__common.Label" String="Advanced Shipping and Receiving Relevance"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Advanced Shipping and Receiving Relevance"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Advanced Shipping and Receiving Relevance"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=%2FSCMTMS%2FADV_SHP_RECV_RLV"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ReadyForWarehouseExecStatus">
+                <Annotation Term="SAP__common.Label" String="Warehouse Execution Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Warehouse Execution"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Warehouse Execution Status"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=LE_TM_WHSE_EXEC"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallChmlCmplncStatus">
+                <Annotation Term="SAP__common.Label" String="Product Marketability Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="ProdMarktabltyS"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Total Product Marketability Check Status"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TDD_TOTAL_PCSTA_LE"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallDangerousGoodsStatus">
+                <Annotation Term="SAP__common.Label" String="Dangerous Goods Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Dngrs Goods Sts"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Total Dangerous Goods Check Status"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TDD_TOTAL_DGSTA_LE"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallSafetyDataSheetStatus">
+                <Annotation Term="SAP__common.Label" String="Safety Data Sheet Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="SftyDataSheetS"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Total Safety Data Sheet Check Status"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TDD_TOTAL_SDSSTA_LE"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntcoExtTransfOfCtrlDteTmeTmzn">
+                <Annotation Term="SAP__common.Label" String="External Time Zone"/>
+                <Annotation Term="SAP__common.IsTimezone"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Time zone for external TOCD"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Time zone for external Transfer of Control Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntcoExtActlTransfOfCtrlDteTme">
+                <Annotation Term="SAP__common.Timezone" Path="IntcoExtTransfOfCtrlDteTmeTmzn"/>
+                <Annotation Term="SAP__common.Label" String="Ext. act. date"/>
+                <Annotation Term="SAP__common.Heading" String="External Actual ToC Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="External Actual Transfer of Control Date"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=EXT_ACT_DATE_TOCD"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntcoExtPlndTransfOfCtrlDteTme">
+                <Annotation Term="SAP__common.Timezone" Path="IntcoExtTransfOfCtrlDteTmeTmzn"/>
+                <Annotation Term="SAP__common.Label" String="Ext. plan. date"/>
+                <Annotation Term="SAP__common.Heading" String="External Planned ToC Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="External Planned Transfer of Control Date"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=EXT_PLAN_DATE_TOCD"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntcoIntTransfOfCtrlDteTmeTmzn">
+                <Annotation Term="SAP__common.Label" String="Internal Time Zone"/>
+                <Annotation Term="SAP__common.IsTimezone"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Time zone for internal TOCD"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Time zone for internal Transfer of Control Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntcoIntActlTransfOfCtrlDteTme">
+                <Annotation Term="SAP__common.Timezone" Path="IntcoIntTransfOfCtrlDteTmeTmzn"/>
+                <Annotation Term="SAP__common.Label" String="Int. act. date"/>
+                <Annotation Term="SAP__common.Heading" String="Internal Actual ToC Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Internal Actual Transfer of Control Date"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=INT_ACT_DATE_TOCD"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntcoIntPlndTransfOfCtrlDteTme">
+                <Annotation Term="SAP__common.Timezone" Path="IntcoIntTransfOfCtrlDteTmeTmzn"/>
+                <Annotation Term="SAP__common.Label" String="Int. plan. date"/>
+                <Annotation Term="SAP__common.Heading" String="Internal Planned ToC Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Internal Planned Transfer of Control Date"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=INT_PLAN_DATE_TOCD"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ExtPlndTransfOfCtrlFrmdDTVal">
+                <Annotation Term="SAP__common.Label" String="External Planned Date"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Character string (64 characters)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Character string - 64 user-defined characters"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ExtActlTransfOfCtrlFrmdDTVal">
+                <Annotation Term="SAP__common.Label" String="External Actual Date"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Character string (64 characters)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Character string - 64 user-defined characters"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntPlndTransfOfCtrlFrmdDTVal">
+                <Annotation Term="SAP__common.Label" String="Internal Planned Date"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Character string (64 characters)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Character string - 64 user-defined characters"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntActlTransfOfCtrlFrmdDTVal">
+                <Annotation Term="SAP__common.Label" String="Internal Actual Date"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Character string (64 characters)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Character string - 64 user-defined characters"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/EU_DeliveryARCStatus">
+                <Annotation Term="SAP__common.Label" String="Excise Tax ARC Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="ET ARC Status"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Excise Tax Total ARC Status (on Delivery Header Level)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IsActive">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Character005"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Character (length 5)"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=CHAR005"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ExciseMovementIsActive">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Checkbox"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/IntTransfOfCtrlDteAreRelevant">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Checkbox"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ExtTransfOfCtrlDteAreRelevant">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Checkbox"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ProposedDeliveryRoute">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Route"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ROUTE"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OvrlTrdCmplncLegalCtrlChkSts">
+                <Annotation Term="SAP__common.Label" String="Legal Control Check Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Legal Ctrl Sts"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Legal Control Status"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TDD_TOTAL_LCCST"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallTrdCmplncEmbargoSts">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Embargo Status"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Embargo Status (All Items)"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TDD_TOTAL_EMCST"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OvrlTrdCmplncSnctndListChkSts">
+                <Annotation Term="SAP__common.Label" String="Watch List Screening Status"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Screening Sts"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Screening Status (All Items)"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=TDD_TOTAL_SLCST"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/TradeComplianceIsInactive">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="TRUE"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType">
+                <Annotation Term="SAP__common.Label" String="Outbound Delivery Object Page"/>
+                <Annotation Term="SAP__common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>OutboundDelivery</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.DataPoint" Qualifier="DeliveryDate">
+                    <Record>
+                        <PropertyValue Property="Value" Path="DeliveryDate"/>
+                        <PropertyValue Property="Title" String="Delivery Date"/>
+                        <PropertyValue Property="Description" String="Delivery Date"/>
+                        <PropertyValue Property="Criticality" Path="DeliveryDateCriticality"/>
+                        <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithIcon"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FilterFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="GenericFilter"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#GenericFilter"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderFacet-Column1"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#HeaderColumn1"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderFacet-Column2"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#HeaderColumn2"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderFacet-DeliveryDate"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#DeliveryDate"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="ID" String="GeneralInformation"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="GeneralInfoBlock1-ID"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#GeneralInfoBlock1"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="GeneralInfoBlock2-ID"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#GeneralInfoBlock2"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="GeneralInfoBlock3-ID"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#GeneralInfoBlock3"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Trade Compliance Status"/>
+                                        <PropertyValue Property="ID" String="FG:TradeCompliance-ID"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#FG:TradeCompliance"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Transfer of Control Dates"/>
+                            <PropertyValue Property="ID" String="msico_tocd"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="SAP__UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Receiving Company"/>
+                                        <PropertyValue Property="ID" String="rec_company"/>
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="SAP__UI.ReferenceFacet">
+                                                    <PropertyValue Property="Label" String="Internal Transfer of Control Dates"/>
+                                                    <PropertyValue Property="ID" String="tocd_int"/>
+                                                    <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#block_int"/>
+                                                </Record>
+                                                <Record Type="SAP__UI.ReferenceFacet">
+                                                    <PropertyValue Property="Label" String="External Transfer of Control Dates"/>
+                                                    <PropertyValue Property="ID" String="tocd_ext"/>
+                                                    <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#block_ext"/>
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="SAP__UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Multistage Transfer of Control"/>
+                                        <PropertyValue Property="ID" String="msico_tocd_table"/>
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="SAP__UI.ReferenceFacet">
+                                                    <PropertyValue Property="Label" String="MSICO transfer of Control"/>
+                                                    <PropertyValue Property="ID" String="MSICO"/>
+                                                    <PropertyValue Property="Target" String="UI.FACET$18$">
+                                                        <Annotation Term="SAP__core.Messages">
+                                                            <Collection>
+                                                                <Record>
+                                                                    <PropertyValue Property="code" String="SY-530"/>
+                                                                    <PropertyValue Property="message" String="An exception was raised"/>
+                                                                    <PropertyValue Property="severity" String="error"/>
+                                                                </Record>
+                                                            </Collection>
+                                                        </Annotation>
+                                                    </PropertyValue>
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Items"/>
+                            <PropertyValue Property="ID" String="Items-ID"/>
+                            <PropertyValue Property="Target" String="UI.FACET$10$">
+                                <Annotation Term="SAP__core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="code" String="SY-530"/>
+                                            <PropertyValue Property="message" String="An exception was raised"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Output"/>
+                            <PropertyValue Property="ID" String="OutputManagement"/>
+                            <PropertyValue Property="Facets">
+                                <Collection/>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Business Partners"/>
+                            <PropertyValue Property="ID" String="BusinessPartners-ID"/>
+                            <PropertyValue Property="Target" String="UI.FACET$11$">
+                                <Annotation Term="SAP__core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="code" String="SY-530"/>
+                                            <PropertyValue Property="message" String="An exception was raised"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Outbound Delivery"/>
+                        <PropertyValue Property="TypeNamePlural" String="Outbound Deliveries"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="OutboundDelivery"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="DeliveryDocumentTypeName"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="OutboundDelivery"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.SemanticObject" String="OutboundDelivery"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/C_OutboundDeliveryFs">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
+                        <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ShipToPartyFullName</PropertyPath>
+                                <PropertyPath>SoldToPartyFullName</PropertyPath>
+                                <PropertyPath>ExtPlndTransfOfCtrlFrmdDTVal</PropertyPath>
+                                <PropertyPath>ExtActlTransfOfCtrlFrmdDTVal</PropertyPath>
+                                <PropertyPath>IntPlndTransfOfCtrlFrmdDTVal</PropertyPath>
+                                <PropertyPath>IntActlTransfOfCtrlFrmdDTVal</PropertyPath>
+                                <PropertyPath>IsActive</PropertyPath>
+                                <PropertyPath>ExciseMovementIsActive</PropertyPath>
+                                <PropertyPath>IntTransfOfCtrlDteAreRelevant</PropertyPath>
+                                <PropertyPath>ExtTransfOfCtrlDteAreRelevant</PropertyPath>
+                                <PropertyPath>TradeComplianceIsInactive</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ShipToPartyFullName</PropertyPath>
+                                <PropertyPath>SoldToPartyFullName</PropertyPath>
+                                <PropertyPath>ExtPlndTransfOfCtrlFrmdDTVal</PropertyPath>
+                                <PropertyPath>ExtActlTransfOfCtrlFrmdDTVal</PropertyPath>
+                                <PropertyPath>IntPlndTransfOfCtrlFrmdDTVal</PropertyPath>
+                                <PropertyPath>IntActlTransfOfCtrlFrmdDTVal</PropertyPath>
+                                <PropertyPath>IsActive</PropertyPath>
+                                <PropertyPath>ExciseMovementIsActive</PropertyPath>
+                                <PropertyPath>IntTransfOfCtrlDteAreRelevant</PropertyPath>
+                                <PropertyPath>ExtTransfOfCtrlDteAreRelevant</PropertyPath>
+                                <PropertyPath>TradeComplianceIsInactive</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container">
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="SAP__capabilities.FilterFunctions">
+                    <Collection>
+                        <String>eq</String>
+                        <String>ne</String>
+                        <String>gt</String>
+                        <String>ge</String>
+                        <String>lt</String>
+                        <String>le</String>
+                        <String>and</String>
+                        <String>or</String>
+                        <String>contains</String>
+                        <String>startswith</String>
+                        <String>endswith</String>
+                        <String>any</String>
+                        <String>all</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SupportedFormats">
+                    <Collection>
+                        <String>application/json</String>
+                        <String>application/pdf</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="IANATimezoneFormat" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="TextDirectionLayout" Bool="true"/>
+                        <PropertyValue Property="Treeview" Bool="true"/>
+                        <PropertyValue Property="UploadToFileShare" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
+                <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/DeliveryDocumentTypeName">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OvrlSDProcessStatusCriticality">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/DeliveryDateCriticality">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/PickingDateCriticality">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/PlannedGIDateCriticality">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ActualGIDateCriticality">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OvrlGdsMovementStsCriticality">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OvrlChmlCmplncStsCriticality">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OvrlDngrsGdsStsCriticality">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OutbDelivIsMultistageIntcoRlvt">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="TRUE"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OvrlSftyDataSheetStsCritlty">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/CDeliveredinSequence">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/CDeliveryTimeExceeded">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/CFirstStopArrival">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/CTracking">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/COntimeDeparture">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/CHighLightFields">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/CBillingStatus">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/CWeighingStatus">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/CDeliveryPriorityStatus">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/CAcceptableArrivalTime">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/DeliveryTypeDescription">
+                <Annotation Term="SAP__common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/Shiptoname">
+                <Annotation Term="SAP__common.Label" String="Name"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=NAME1_GP"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/Shiptostreet">
+                <Annotation Term="SAP__common.Label" String="Street"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Street and House Number"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=STRAS_GP"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/Shiptocity">
+                <Annotation Term="SAP__common.Label" String="City"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ORT01_GP"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/Shiptotelephone">
+                <Annotation Term="SAP__common.Label" String="Telephone 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="First telephone number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/StageStartDate">
+                <Annotation Term="SAP__common.Label" String="Stage:CShptStartTime"/>
+                <Annotation Term="SAP__common.Heading" String="CurrShipSt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Stage: Current date for start of shipment"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATBGS"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/StageEndDate">
+                <Annotation Term="SAP__common.Label" String="Stage:CuShipmEndTime"/>
+                <Annotation Term="SAP__common.Heading" String="ActShipEnd"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Stage: Actual Date for End of Shipment"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATENDS"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/StageStartTime">
+                <Annotation Term="SAP__common.Label" String="Stage:CShptStartTime"/>
+                <Annotation Term="SAP__common.Heading" String="AcTrST"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Stage: Current shipment start time"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=UATBGS"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/StageEndTime">
+                <Annotation Term="SAP__common.Label" String="Stg: ActShipEndTime"/>
+                <Annotation Term="SAP__common.Heading" String="AcShET"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Stage: Actual shipment end time"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=UATENDS"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/MorningStartTime">
+                <Annotation Term="SAP__common.Label" String="Monday"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Goods receipt times: Monday morning from ..."/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_ItemType/MorningEndTime">
+                <Annotation Term="SAP__common.Label" String="Monday"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Goods receiving hours: Monday morning until ..."/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/LastStopTime">
+                <Annotation Term="SAP__common.Label" String="Stg: ActShipEndTime"/>
+                <Annotation Term="SAP__common.Heading" String="AcShET"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Stage: Actual shipment end time"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=UATENDS"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/PlannedStartTime">
+                <Annotation Term="SAP__common.Label" String="PlandTransStrtTime"/>
+                <Annotation Term="SAP__common.Heading" String="PlTrST"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Planned transport start time"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=UPTBG"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/Timeprinted">
+                <Annotation Term="SAP__common.Label" String="ActTranspProcTime"/>
+                <Annotation Term="SAP__common.Heading" String="TimeTrPr"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Time of transportation processing"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=UZABF"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/ActualStartTime">
+                <Annotation Term="SAP__common.Label" String="ActTranspStartTime"/>
+                <Annotation Term="SAP__common.Heading" String="AcTrST"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Actual transport start time"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=UATBG"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/ActualEndTime">
+                <Annotation Term="SAP__common.Label" String="Act.shipmnt end time"/>
+                <Annotation Term="SAP__common.Heading" String="AcShET"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Actual shipment end time"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=UATEND"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/ActualEndtDate">
+                <Annotation Term="SAP__common.Label" String="ActualShipmentEnd"/>
+                <Annotation Term="SAP__common.Heading" String="ActShipEnd"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Actual Date for End of Shipment"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATEND"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/ActualStartDate">
+                <Annotation Term="SAP__common.Label" String="CurrShipmentStart"/>
+                <Annotation Term="SAP__common.Heading" String="CurrShipSt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Current date for start of shipment"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATBG"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/ActualCheckinDate">
+                <Annotation Term="SAP__common.Label" String="Actual check-in date"/>
+                <Annotation Term="SAP__common.Heading" String="ActDteChIn"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Actual date of check-in"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DAREG"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZC_ShipmentBlotter_HeaderType/ActualCheckinTime">
+                <Annotation Term="SAP__common.Label" String="Act. check-in time"/>
+                <Annotation Term="SAP__common.Heading" String="CurTmChI"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Current time of check-in"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=UAREG"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/OverallSDProcessStatusDesc">
+                <Annotation Term="SAP__common.Label" String="Overall Status"/>
+                <Annotation Term="SAP__common.Heading" String="Overall Processing Status Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Overall Processing Status Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/DeliveryDate">
+                <Annotation Term="SAP__common.Label" String="Delivery Date"/>
+                <Annotation Term="SAP__common.Heading" String="Deliv.Date"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=LFDAT_V"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/DocumentDate">
+                <Annotation Term="SAP__common.Label" String="Document Date"/>
+                <Annotation Term="SAP__common.Heading" String="Doc. Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Document Date in Document"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BLDAT"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/PickingDate">
+                <Annotation Term="SAP__common.Label" String="Picking Date"/>
+                <Annotation Term="SAP__common.Heading" String="Pick Date"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KODAT"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/TransportationPlanningDate">
+                <Annotation Term="SAP__common.Label" String="Transport Planning Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/LoadingDate">
+                <Annotation Term="SAP__common.Label" String="Loading Date"/>
+                <Annotation Term="SAP__common.Heading" String="Loadg Date"/>
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=LDDAT"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/PlannedGoodsIssueDate">
+                <Annotation Term="SAP__common.Label" String="Planned Goods Movement Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.C_OutboundDeliveryFsType/ActualGoodsMovementDate">
+                <Annotation Term="SAP__common.Label" String="Actual Goods Movement Date"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

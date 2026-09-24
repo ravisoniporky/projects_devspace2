@@ -1,1 +1,10 @@
 /* Enter your custom styles here */
+
+.imageUploadPreview {
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}

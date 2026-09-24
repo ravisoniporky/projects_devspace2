@@ -16,7 +16,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 <f:header>
 	<f:DynamicPageHeader pinnable="true">
 
- <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" enableAutoBinding="true" entitySet="ZCSD_MobileCatalogMaint" useToolbar="true"
+ <smartFilterBar:SmartFilterBar id="smartFilter_custF4_map" enableAutoBinding="true" entitySet="ZCSD_MOBILECATALOGMAINTListSet" useToolbar="true"
 			 persistencyKey="catalogmaintenance_f1"   enableBasicSearch="true"
 			  advancedMode="false" filterBarExpanded="false" smartVariant="true" showAllFilters="true"			  
 				showFilterConfiguration="true"  >
@@ -37,7 +37,11 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 
 
 		<smartFilterBar:ControlConfiguration key="$parameter.p_vkorg" mandatory="notMandatory" filterType="single" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false">
-            
+
+        </smartFilterBar:ControlConfiguration>
+
+		<smartFilterBar:ControlConfiguration key="$parameter.p_days" label="Number of Days" mandatory="mandatory" filterType="single" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false">
+
         </smartFilterBar:ControlConfiguration>
     </smartFilterBar:controlConfiguration>
 				
@@ -46,7 +50,7 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 				</f:DynamicPageHeader >
 </f:header>
 <f:content>
-<smartTable:SmartTable id="smartTable_custF4_map"  entitySet="ZCSD_MobileCatalogMaint"  smartFilterId="smartFilter_custF4_map"
+<smartTable:SmartTable id="smartTable_custF4_map"  entitySet="ZCSD_MOBILECATALOGMAINTListSet"  smartFilterId="smartFilter_custF4_map"
 				growing="true"
 				growingThreshold ="20"
 				requestAtLeastFields="Material,MaterialDescription,OldMaterial,CatalogName,MaterialManufacturerPartNumber,Brand,MaterialCommodity,Department,SalesOrganization,CatalogId,DistributionChannel"
@@ -145,24 +149,24 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 				<uitable:columns>
 
 
-	<uitable:Column hAlign="Begin" width="180px" visible="true">
+	<uitable:Column hAlign="Begin" width="160px" visible="true">
 					<uitable:customData>
 						<core:CustomData key="p13nData"
 										 value='\{"columnKey": "BISMT1",  "columnIndex": 1,  "width": "200px"}' />
 					</uitable:customData>
 					<Text text="Image" />
-				
+
 
 					<uitable:template>
-					<HBox>
+					<HBox alignItems="Center" width="100%">
 
+	 <HBox width="40%" justifyContent="Start" alignItems="Start">
 	 <Image
-					
+
 					src="https://api.porky.com/thumbnails/{OldMaterial}.png"
 					decorative="true"
 					densityAware="false"
-					class="sapUiTinyMargin"
-					
+
 					height="30px">
 					<detailBox>
 						<LightBox >
@@ -174,9 +178,13 @@ xmlns:uitable="sap.ui.table" xmlns:core="sap.ui.core"
 						</LightBox>
 					</detailBox>
 				</Image>
-				<Button text="Add" press="onUploadImage" icon="sap-icon://add-photo"  visible="{viewModel>/showImageButton}"/>
+				</HBox>
+				<HBox width="60%" justifyContent="SpaceAround" alignItems="Center">
+				<Button tooltip="Add Image" press="onUploadImage" icon="sap-icon://add-photo" type="Transparent" visible="{viewModel>/showImageButton}"/>
+				<Button tooltip="Delete Image" press="onDeleteImage" icon="sap-icon://delete" type="Transparent" visible="{viewModel>/showImageButton}"/>
+				</HBox>
 					</HBox>
-				
+
 	</uitable:template>
 	</uitable:Column>
 

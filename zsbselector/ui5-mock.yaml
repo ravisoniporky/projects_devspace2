@@ -17,8 +17,9 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: http://pkynj-de2app.porkyproducts.loc:8000
-            destination: DE2
+            url: http://pkytx-devapp.porkyproducts.loc:8000
+            client: '100'
+            destination: DEV
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -39,6 +40,12 @@ server:
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
+            resolveExternalServiceReferences: true
         annotations:
           - localPath: ./webapp/localService/mainService/ZSB_SELECTOR_V2_VAN.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_SELECTOR_V2_VAN',Version='0001')/$value/
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

@@ -1,0 +1,11 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="customer.porky.zmatverapp.controller.View1">
+    <Page id="page" title="{i18n>title}">
+    <content>
+        <Input id="barcodeInput" placeholder="Scan or enter a barcode" editable="true"/>
+        <Button id="scanButton" text="Scan" icon="sap-icon://bar-code" press="onSoftwareScanPress"/>
+        <Button id="clearLogButton" text="Clear Log" press="onClearLog" type="Transparent"/>
+        <TextArea id="logArea" value="{logModel>/text}" editable="false" width="100%" rows="20"
+            growing="true" growingMaxLines="40"/>
+    </content>
+    </Page>
+</mvc:View>

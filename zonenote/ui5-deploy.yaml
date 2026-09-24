@@ -19,8 +19,8 @@ builder:
           client: '100'
         app:
           name: ZONENOTE
-          package: $TMP
-          transport: ''
+          package: ZFIORI1
+          transport: DEVK915579
         exclude:
           - /test/
           - /localService/

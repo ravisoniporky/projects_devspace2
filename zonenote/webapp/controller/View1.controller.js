@@ -14,13 +14,18 @@ sap.ui.define([
     return Controller.extend("customer.porky.zonenote.controller.View1", {
 
         onInit: function () {
-            this.OAUTH_TENANT_ID = localConfig.OAUTH_TENANT_ID;
-            this.OAUTH_CLIENT_ID = localConfig.OAUTH_CLIENT_ID;
+            this.OAUTH_TENANT_ID = "63a015da-e3f7-4ac0-8525-d4c3f490e96b";
+            this.OAUTH_CLIENT_ID = "4d8e8ba1-194a-48c8-9f45-8f79aad919b8";
             // The only redirect URI registered in Azure AD - the generic FLP shell root,
             // not a page this app controls. See _acquireGraphTokenManual for how we work
             // around that.
             // eslint-disable-next-line @sap-ux/fiori-tools/sap-no-hardcoded-url
-            this.OAUTH_REDIRECT_URI = "https://dev.porky.com/sap/bc/ui2/flp";
+            //this.OAUTH_REDIRECT_URI = "https://dev.porky.com/sap/bc/ui2/flp";
+            const url = new URL(location.href);
+            const hostname = url.hostname;
+
+            this.OAUTH_REDIRECT_URI = "https://" + hostname + "/sap/bc/ui2/flp";
+
 
             // INSECURE - LOCAL TEST ONLY: paste your own OpenRouter API key here for
             // local testing. Never commit a real key here - anyone viewing the deployed
@@ -28,6 +33,7 @@ sap.ui.define([
             // "Analyze PDF" data extraction (see _extractDataFromPdfWithOpenRouter).
             // eslint-disable-next-line @sap-ux/fiori-tools/sap-no-hardcoded-url
             this.OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
+            // this.OPENROUTER_API_KEY = "sk-or-v1-...";
             this.OPENROUTER_API_KEY = localConfig.OPENROUTER_API_KEY;
             this.OPENROUTER_MODEL = "anthropic/claude-opus-4.7";
 
@@ -123,10 +129,30 @@ sap.ui.define([
 
         onMyNotesSectionChange: function () {
             this._filterPagesForSection(this.byId("myNotesPageSelect"), "/pages", "/selectedSectionId", "/selectedPageId");
+            this.getView().getModel("onenote").setProperty("/pdfExtraction", null);
+                        this.getView().getModel("onenote").setProperty("/selectedPageHtmlRendered", null);
+
         },
+
+        onMyPagesSectionChange: function () {
+        //    this._filterPagesForSection(this.byId("myNotesPageSelect"), "/pages", "/selectedSectionId", "/selectedPageId");
+            this.getView().getModel("onenote").setProperty("/pdfExtraction", null);
+                        this.getView().getModel("onenote").setProperty("/selectedPageHtmlRendered", null);
+
+        },
+      
+
+        onUrlPageChange: function () {
+                        this.getView().getModel("onenote").setProperty("/urlSelectedPageHtmlRendered", null);
+            this.getView().getModel("onenote").setProperty("/urlPdfExtraction", null);
+
+        }, 
 
         onUrlSectionChange: function () {
             this._filterPagesForSection(this.byId("urlPageSelect"), "/urlPages", "/urlSelectedSectionId", "/urlSelectedPageId");
+                                    this.getView().getModel("onenote").setProperty("/urlSelectedPageHtmlRendered", null);
+            this.getView().getModel("onenote").setProperty("/urlPdfExtraction", null);
+
         },
 
         /**
@@ -145,7 +171,7 @@ sap.ui.define([
             this._filterPagesForSection(this.byId("myNotesPageSelect"), "/pages", "/selectedSectionId", "/selectedPageId");
         },
 
-        _extractSelectedPage1: function () {
+        _extractSelectedPage: function () {
             var sPageId = this.getView().getModel("onenote").getProperty("/selectedPageId");
             if (!sPageId) {
                 return MessageBox.warning("No page selected.");
@@ -878,46 +904,54 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
          * raw HTML + images) so the instructions still make sense regardless of transport.
          */
         /* eslint-disable camelcase */
-        _buildDataExtractorPrompt: function (oHeaderContext, sSourceDescription) {
-            return "You are a Data Extractor. Analyze " + sSourceDescription +
-                " and generate a JSON payload.\n\n" +
-                "Return a single JSON object with two sections: \"header\" and \"data\".\n\n" +
-                "Use exactly this object, unmodified, as \"header\" (it is already known - do not change any values):\n" +
-                JSON.stringify(oHeaderContext, null, 2) + "\n\n" +
-                "Extract all product/label records found in the document and create one JSON " +
-                "object per product in the \"data\" array. For each product extract:\n" +
-                JSON.stringify({
-                    weight: "<numeric value>",
-                    weight_unit: "<lb, oz, kg, etc>",
-                    material_name: "<product/material description>",
-                    lot_number: "<lot number>",
-                    item_number: "<item number>",
-                    barcode_value: "<barcode or GS1 value>",
-                    date: "<sell by, use by, freeze by, best before, packed date, whichever applies>",
-                    material_reference: "<number shown next to the image or barcode block, e.g. 81269>",
-                    author: "<page-level last modifier from metadata, copied from header.page_modified_by>",
-                    sectionname: oHeaderContext.section,
-                    pagename: oHeaderContext.page,
-                    user_id: oHeaderContext.user_id,
-                    timestamp: oHeaderContext.timestamp,
-                    email: oHeaderContext.email,
-                    sectionid: oHeaderContext.sectionid,
-                    pageid: oHeaderContext.pageid,
-                    user_display_name: oHeaderContext.user_display_name
-                }, null, 2) + "\n\n" +
-                "Extraction rules:\n" +
-                "- Extract all records found in the document.\n" +
-                "- Remove duplicate records caused by OCR duplication.\n" +
-                "- Preserve barcode values exactly as shown.\n" +
-                "- Normalize dates to MM/DD/YYYY when possible.\n" +
-                "- Use null for missing values.\n" +
-                "- Use the material number appearing beside each image/label as material_reference.\n" +
-                "- Weight should contain only the numeric value.\n" +
-                "- Weight unit should contain only the unit.\n" +
-                "- For \"author\": do NOT infer from handwriting or OCR context. Use page-level metadata only and set author = header.page_modified_by for every record.\n" +
-                "- Set \"record_count\" in the header to the number of records in \"data\".\n\n" +
-                "Return only valid JSON, no markdown code fences, no commentary.";
-        },
+
+
+/* eslint-disable camelcase */
+_buildDataExtractorPrompt: function (oHeaderContext, sSourceDescription) {
+    return "You are a Data Extractor. Analyze " + sSourceDescription +
+        " and generate a JSON payload.\n\n" +
+        "Return a single JSON object with two sections: \"header\" and \"data\".\n\n" +
+        "Use exactly this object, unmodified, as \"header\" (it is already known - do not change any values):\n" +
+        JSON.stringify(oHeaderContext, null, 2) + "\n\n" +
+        "Extract all product/label records found in the document and create one JSON " +
+        "object per product in the \"data\" array. For each product extract:\n" +
+        JSON.stringify({
+            weight: "<numeric value>",
+            weight_unit: "<lb, oz, kg, etc>",
+            material_name: "<product/material description>",
+            lot_number: "<lot number>",
+            item_number: "<item number>",
+            barcode_value: "<barcode or GS1 value>",
+            date: "<sell by, use by, freeze by, best before, packed date, whichever applies>",
+            material_reference: "<number shown next to the image or barcode block, e.g. 81269>",
+            source_image_index: "<0-based index, in attachment order, of the attached image this record's label/barcode was read from; null if the source is a PDF, or no specific image corresponds to this record>",
+            author: "<page-level last modifier from metadata, copied from header.page_modified_by>",
+            data_author: "<value of the nearest data-author attribute on the HTML element(s) this record was extracted from, if the source is HTML; null if not present or source is a PDF>",
+            data_author_date: "<value of the nearest data-author-date attribute on that same element, verbatim, if present; null otherwise>",
+            change_date: "<date portion of data_author_date, normalized to MM/DD/YYYY; null if data_author_date is null>",
+            change_time: "<time portion of data_author_date, as shown in the attribute (24h or as given); null if data_author_date is null or carries no time component>",
+            sectionname: oHeaderContext.section_name,
+            pagename: oHeaderContext.page_name,
+            owner_id: oHeaderContext.owner_id,
+            owner_display_name: oHeaderContext.owner_display_name,
+            timestamp: oHeaderContext.generated_timestamp
+        }, null, 2) + "\n\n" +
+        "Extraction rules:\n" +
+        "- Extract all records found in the document.\n" +
+        "- Remove duplicate records caused by OCR duplication.\n" +
+        "- Preserve barcode values exactly as shown.\n" +
+        "- Normalize dates to MM/DD/YYYY when possible.\n" +
+        "- Use null for missing values.\n" +
+        "- Use the material number appearing beside each image/label as material_reference.\n" +
+        "- Weight should contain only the numeric value.\n" +
+        "- Weight unit should contain only the unit.\n" +
+        "- For \"source_image_index\": only meaningful when images are attached as separate images alongside the text (not for a PDF). Set it to the 0-based position, in the order the images were attached, of the specific image this record's label/barcode was read from. Multiple records may share the same index if they came from the same image. Use null if the source is a PDF or no image applies.\n" +
+        "- For \"author\": do NOT infer from handwriting or OCR context. Use page-level metadata only and set author = header.page_modified_by for every record.\n" +
+        "- For \"data_author\"/\"data_author_date\": if the source is the raw OneNote page HTML, look for a data-author and data-author-date attribute on the specific <p>/<div> element (or its nearest ancestor) that this record's text or image came from, and copy those verbatim. Different records on the same page can have different data_author values if different paragraphs carry different attributes. If the source is a PDF (no HTML attributes available), set all four of these fields to null.\n" +
+        "- Set \"record_count\" in the header to the number of records in \"data\".\n\n" +
+        "Return only valid JSON, no markdown code fences, no commentary.";
+},
+/* eslint-enable camelcase */
         /* eslint-enable camelcase */
 
         /**
@@ -925,37 +959,47 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
          * throwing a clear error if the result isn't the { header, data: [...] } shape the
          * Data Extractor prompt asked for.
          */
-        _parseDataExtractorResponse: function (sText) {
-            var sJson = (sText || "").trim().replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "").trim();
+_parseDataExtractorResponse: function (sText, aImageDataUrls) {
+    var sJson = (sText || "").trim().replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "").trim();
 
-            var oParsed;
-            try {
-                oParsed = JSON.parse(sJson);
-                oParsed.data.forEach(element => {
-                    element.author = oParsed.header.page_modified_by || null;
-                    element.sectionname = oParsed.header.section_name;
-                    element.pagename = oParsed.header.page_name;
-                    element.user_id = oParsed.header.user_id;
-                    element.timestamp = oParsed.header.generated_timestamp;
-                    element.email = oParsed.header.user_email;
-                    element.sectionid = oParsed.header.section_id;
-                    element.pageid = oParsed.header.page_id;
-                    element.user_display_name = oParsed.header.user_display_name;
-                    element.page_created_date = oParsed.header.page_created_date;
-                    element.page_modified_date = oParsed.header.page_modified_date;
-                    element.page_created_by = oParsed.header.page_created_by;
-                    element.page_modified_by = oParsed.header.page_modified_by;
-                });
-            } catch (oError) {
-                throw new Error("Model did not return valid JSON: " + oError.message);
-            }
+    var oParsed;
+    try {
+        oParsed = JSON.parse(sJson);
+        console.log("RAW EXTRACTOR DATA:", JSON.stringify(oParsed.data, null, 2));
 
-            if (!oParsed || !Array.isArray(oParsed.data)) {
-                throw new Error("Model response is missing a \"data\" array.");
-            }
+        oParsed.data.forEach(element => {
+            element.author = oParsed.header.page_modified_by || null;
+            element.sectionname = oParsed.header.section_name;
+            element.pagename = oParsed.header.page_name;
+            element.owner_id = oParsed.header.owner_id;
+            element.owner_display_name = oParsed.header.owner_display_name;
+            element.timestamp = oParsed.header.generated_timestamp;
+            element.page_created_date = oParsed.header.page_created_date;
+            element.page_modified_date = oParsed.header.page_modified_date;
+            element.page_created_by = oParsed.header.page_created_by;
+            element.page_modified_by = oParsed.header.page_modified_by;
 
-            return oParsed;
-        },
+            // Resolve the model's reported index against the images we actually sent -
+            // never trust the model to return image bytes/urls itself, only an index
+            // into the array we control.
+            var iIdx = element.source_image_index;
+if (typeof iIdx === "string" && iIdx.trim() !== "") {
+    iIdx = parseInt(iIdx, 10);
+}
+element.image_src = (Array.isArray(aImageDataUrls) && Number.isInteger(iIdx) && aImageDataUrls[iIdx])
+    ? aImageDataUrls[iIdx]
+    : null;
+        });
+    } catch (oError) {
+        throw new Error("Model did not return valid JSON: " + oError.message);
+    }
+
+    if (!oParsed || !Array.isArray(oParsed.data)) {
+        throw new Error("Model response is missing a \"data\" array.");
+    }
+
+    return oParsed;
+},
 
         /**
          * Sends a generated PDF (as a base64 data URL) to OpenRouter's chat completions
@@ -975,7 +1019,7 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
                 { type: "text", text: this._buildDataExtractorPrompt(oHeaderContext, "the attached PDF (exported from a OneNote page)") },
                 { type: "file", file: { filename: "onenote-export.pdf", file_data: sPdfDataUrl } }
             ]);
-            return this._parseDataExtractorResponse(sText);
+            return this._parseDataExtractorResponse(sText, aImageDataUrls);
         },
         /* eslint-enable camelcase */
 
@@ -990,22 +1034,28 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
          * OpenRouter can't fetch on its own (they require our bearer token).
          */
         /* eslint-disable camelcase */
-        _extractDataFromHtmlWithOpenRouter: async function (sHtml, aImageDataUrls, oHeaderContext) {
-            if (!this.OPENROUTER_API_KEY) {
-                throw new Error("OpenRouter API key not configured");
-            }
+_extractDataFromHtmlWithOpenRouter: async function (sHtml, aImageDataUrls, oHeaderContext) {
+    if (!this.OPENROUTER_API_KEY) {
+        throw new Error("OpenRouter API key not configured");
+    }
 
-            var aContentBlocks = [
-                { type: "text", text: this._buildDataExtractorPrompt(oHeaderContext, "the raw OneNote page HTML below, followed by its images in document order") },
-                { type: "text", text: sHtml }
-            ];
-            aImageDataUrls.forEach(function (sDataUrl) {
-                aContentBlocks.push({ type: "image_url", image_url: { url: sDataUrl } });
-            });
+    // Downscale before sending - keeps the request well under size/timeout limits
+    // even on pages with a dozen+ full-resolution photos.
+    var aDownscaledUrls = await Promise.all(
+        aImageDataUrls.map(function (sUrl) { return this._downscaleImageDataUrl(sUrl, 1600, 0.82); }.bind(this))
+    );
 
-            var sText = await this._callOpenRouter(aContentBlocks);
-            return this._parseDataExtractorResponse(sText);
-        },
+    var aContentBlocks = [
+        { type: "text", text: this._buildDataExtractorPrompt(oHeaderContext, "the raw OneNote page HTML below, followed by its images in document order") },
+        { type: "text", text: sHtml }
+    ];
+    aDownscaledUrls.forEach(function (sDataUrl) {
+        aContentBlocks.push({ type: "image_url", image_url: { url: sDataUrl } });
+    });
+
+    var sText = await this._callOpenRouter(aContentBlocks);
+    return this._parseDataExtractorResponse(sText, aDownscaledUrls);
+},
         /* eslint-enable camelcase */
 
         /**
@@ -1194,38 +1244,111 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
             await this._extractDataFromNoteHtml(sHtml, aItems, "/urlPages", "/urlSelectedPageId", "/urlPdfExtraction", "/urlPdfExtractionError");
         },
 
-        /**
-         * Assembles the Data Extractor's "header" section from data the app already has -
-         * the selected page's own metadata (looked up by id in the given pages list) plus
-         * the signed-in user's Graph profile - since none of that is present in the PDF/
-         * HTML content itself for the model to read.
+   /**
+ * Assembles the Data Extractor's "header" section purely from the selected page's own
+ * Graph metadata (looked up by id in the given pages list) - no signed-in user call.
+ * "Owner" here means whoever created the page (page.createdBy.user), which is the
+ * closest thing OneNote's page metadata gives us to a note owner; page-level created/
+ * modified date+time come straight from createdDateTime/lastModifiedDateTime.
+ */
+_buildExtractionHeaderContext: async function (sPagesPath, sSelectedPageIdPath, sHtml) {
+    var oModel = this.getView().getModel("onenote");
+    var aPages = oModel.getProperty(sPagesPath) || [];
+    var sPageId = oModel.getProperty(sSelectedPageIdPath);
+    var oPage = aPages.find(function (p) { return p.id === sPageId; }) || {};
+
+    var oFirstAuthor = this._findFirstDataAuthor(sHtml);
+
+    return {
+        section_name: oPage._sectionName || null,
+        section_id: oPage._sectionId || null,
+        page_name: oPage.title || null,
+        page_id: oPage.id || null,
+        page_created_date: oPage.createdDateTime || null,
+        page_modified_date: oPage.lastModifiedDateTime || null,
+        page_owner: oFirstAuthor.author,
+        page_owner_date: oFirstAuthor.authorDate,
+        generated_timestamp: new Date().toISOString(),
+        source_type: "OneNote"
+    };
+},
+
+/**
+ * Scans the page's exported HTML for the first element carrying a data-author
+ * attribute (OneNote stamps these on individual content blocks, not on the page as a
+ * whole) and returns { author, authorDate }, both null if none is found - e.g. when
+ * sHtml wasn't passed (PDF-only flow) or the page has no author metadata at all.
+ */
+_findFirstDataAuthor: function (sHtml) {
+    if (!sHtml) {
+        return { author: null, authorDate: null };
+    }
+    var oDoc = new DOMParser().parseFromString(sHtml, "text/html");
+    var oEl = oDoc.body.querySelector("[data-author]");
+    return {
+        author: oEl ? oEl.getAttribute("data-author") : null,
+        authorDate: oEl ? oEl.getAttribute("data-author-date") : null
+    };
+},
+
+_runDataExtraction: async function (sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath, fnExtract) {
+    var oView = this.getView();
+    var oModel = oView.getModel("onenote");
+
+    oModel.setProperty(sErrorPath, "");
+    oModel.setProperty(sResultPath, null);
+    oView.setBusy(true);
+    try {
+        var oHeaderContext = await this._buildExtractionHeaderContext(sPagesPath, sSelectedPageIdPath);
+        var oResult = await fnExtract(oHeaderContext);
+        // Preserve any extra header fields fnExtract attached (e.g. images_used) while
+        // still keeping oHeaderContext authoritative and record_count freshly computed.
+        oResult.header = Object.assign({}, oHeaderContext, oResult.header, { record_count: oResult.data.length });
+        oModel.setProperty(sResultPath, oResult);
+    } catch (oError) {
+        Log.error("OpenRouter data extraction failed: " + oError.message);
+        oModel.setProperty(sErrorPath, "Extraction failed: " + oError.message);
+    } finally {
+        oView.setBusy(false);
+    }
+},
+
+_extractDataFromItemsAsPdf: async function (aItems, sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath) {
+    if (aItems.length === 0) {
+        MessageBox.warning("Nothing to analyze yet - extract a page first.");
+        return;
+    }
+
+    // No raw HTML in this flow (PDF is built from flattened items) - header's
+    // page_owner/page_owner_date will come back null, which is expected here.
+    await this._runDataExtraction(sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath, null, async function (oHeaderContext) {
+        var oDoc = this._buildPdfDocument(aItems);
+        var sPdfDataUrl = await this._blobToDataUrl(oDoc.output("blob"));
+        return this._extractDataFromPdfWithOpenRouter(sPdfDataUrl, oHeaderContext);
+    }.bind(this));
+},
+
+      /**
+         * Runs the page's raw HTML (plus its already-fetched image data URLs) through
+         * _runDataExtraction / _extractDataFromHtmlWithOpenRouter - no PDF is built.
          */
-        /* eslint-disable camelcase */
-        _buildExtractionHeaderContext: async function (sPagesPath, sSelectedPageIdPath) {
-            var oModel = this.getView().getModel("onenote");
-            var aPages = oModel.getProperty(sPagesPath) || [];
-            var sPageId = oModel.getProperty(sSelectedPageIdPath);
-            var oPage = aPages.find(function (p) { return p.id === sPageId; }) || {};
+_extractDataFromNoteHtml: async function (sHtml, aItems, sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath) {
+    if (!sHtml) {
+        MessageBox.warning("Nothing to analyze yet - extract a page first.");
+        return;
+    }
 
-            var sToken = await this._acquireGraphTokenManual();
-            var oUser = await this._fetchSignedInUserProfile(sToken);
+    var aImageDataUrls = aItems
+        .filter(function (oItem) { return oItem.type === "image"; })
+        .map(function (oItem) { return oItem.src; });
 
-            return {
-                section_name: oPage._sectionName || null,
-                section_id: oPage._sectionId || null,
-                page_name: oPage.title || null,
-                page_id: oPage.id || null,
-                page_created_date: oPage.createdDateTime || null,
-                page_modified_date: oPage.lastModifiedDateTime || null,
-                page_created_by: (oPage.createdBy && oPage.createdBy.user && oPage.createdBy.user.displayName) || null,
-                page_modified_by: (oPage.lastModifiedBy && oPage.lastModifiedBy.user && oPage.lastModifiedBy.user.displayName) || null,
-                user_id: oUser.id || null,
-                user_email: oUser.email || null,
-                user_display_name: oUser.displayName || null,
-                generated_timestamp: new Date().toISOString(),
-                source_type: "OneNote"
-            };
-        },
+    await this._runDataExtraction(sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath, async function (oHeaderContext) {
+        var oResult = await this._extractDataFromHtmlWithOpenRouter(sHtml, aImageDataUrls, oHeaderContext);
+        oResult.header = oResult.header || {};
+        oResult.header.images_used = aImageDataUrls;
+        return oResult;
+    }.bind(this));
+},
         /* eslint-enable camelcase */
 
         /**
@@ -1263,22 +1386,25 @@ _extractDriveItemPageContent: async function (sToken, sPathSegment, sPageId) {
          * _exportItemsToPdf), converts it to a base64 data URL, and runs it through
          * _runDataExtraction / _extractDataFromPdfWithOpenRouter.
          */
-        _extractDataFromItemsAsPdf: async function (aItems, sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath) {
-            if (aItems.length === 0) {
-                MessageBox.warning("Nothing to analyze yet - extract a page first.");
-                return;
-            }
+    _extractDataFromItemsAsPdf: async function (aItems, sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath) {
+    if (aItems.length === 0) {
+        MessageBox.warning("Nothing to analyze yet - extract a page first.");
+        return;
+    }
 
-            await this._runDataExtraction(sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath, async function (oHeaderContext) {
-                var oDoc = this._buildPdfDocument(aItems);
-                // jsPDF's "datauristring" output embeds a non-standard "filename=" segment
-                // (data:application/pdf;filename=...;base64,...) that OpenRouter/Anthropic's
-                // data-URL parser rejects. Going through a Blob + FileReader instead yields
-                // a clean "data:application/pdf;base64,..." string.
-                var sPdfDataUrl = await this._blobToDataUrl(oDoc.output("blob"));
-                return this._extractDataFromPdfWithOpenRouter(sPdfDataUrl, oHeaderContext);
-            }.bind(this));
-        },
+    var aImageDataUrls = aItems
+        .filter(function (oItem) { return oItem.type === "image"; })
+        .map(function (oItem) { return oItem.src; });
+
+    await this._runDataExtraction(sPagesPath, sSelectedPageIdPath, sResultPath, sErrorPath, async function (oHeaderContext) {
+        var oDoc = this._buildPdfDocument(aItems);
+        var sPdfDataUrl = await this._blobToDataUrl(oDoc.output("blob"));
+        var oResult = await this._extractDataFromPdfWithOpenRouter(sPdfDataUrl, oHeaderContext);
+        oResult.header = oResult.header || {};
+        oResult.header.images_used = aImageDataUrls; // no per-record mapping, but visible for reference
+        return oResult;
+    }.bind(this));
+},
 
         /**
          * Runs the page's raw HTML (plus its already-fetched image data URLs) through
@@ -1694,6 +1820,460 @@ _downloadOriginalFormatPdf: async function (sPageId, sPathSegment) {
     } finally {
         oView.setBusy(false);
     }
-}
+},
+
+
+onSaveExtractionPress: async function () {
+    var oModel = this.getView().getModel("onenote");
+    var oResult = oModel.getProperty("/urlPdfExtraction"); // switch to /urlPdfExtraction for the URL tab's handler
+    if(oResult && oResult.data && oResult.data.length > 0) {
+    await this._saveExtractionToBackend(oResult);
+    } else {
+        oResult = oModel.getProperty("/pdfExtraction");
+        if(oResult && oResult.data && oResult.data.length > 0) {
+            await this._saveExtractionToBackend(oResult);
+        } else {
+            MessageBox.warning("No extraction data available to save.");
+        }
+    }
+},
+
+_saveExtractionToBackend_works: async function (oExtractionResult) {
+    var oView = this.getView();
+    var oOneNoteModel = oView.getModel("onenote");
+    oOneNoteModel.setProperty("/saveError", "");
+   // oView.setBusy(true);
+
+    try {
+        var oZoneNoteModel = this.getOwnerComponent().getModel("zonenote");
+        var oListBinding = oZoneNoteModel.bindList("/ZoneNoteHdr");
+        var oHeader = oExtractionResult.header;
+        var aImageDataUrls = oHeader.images_used || [];
+
+        var aItems = oExtractionResult.data.map(function (r) {
+            var iIdx = r.source_image_index;
+            if (typeof iIdx === "string" && iIdx.trim() !== "") {
+                iIdx = parseInt(iIdx, 10);
+            }
+            var oImage = Number.isInteger(iIdx) && aImageDataUrls[iIdx]
+                ? this._splitDataUrl(aImageDataUrls[iIdx])
+                : { mimeType: null, imageData: null };
+
+            return this._stripNulls({
+                Weight: r.weight != null ? String(r.weight) : null,
+                WeightUnit: r.weight_unit,
+                MaterialName: r.material_name,
+                LotNumber: r.lot_number,
+                ItemNumber: r.item_number,
+                BarcodeValue: r.barcode_value,
+                ExpiryDate: this._normalizeDateForOData(r.date),
+                MaterialReference: r.material_reference,
+                Author: r.author,
+                AuthorEmail: r.author_email,
+                ChangeDate: this._normalizeDateForOData(r.change_date),
+                ChangeTime: r.change_time || null,
+                mime_type: oImage.mimeType,
+                image_data: oImage.imageData
+            });
+        }.bind(this));
+
+        var oPayload = this._stripNulls({
+            SectionName: oHeader.section_name,
+            PageName: oHeader.page_name,
+            PageId: oHeader.page_id,
+            OwnerId: oHeader.owner_id,
+            OwnerDisplayName: oHeader.page_owner_display_name || oHeader.owner_display_name,
+            OwnerEmail: oHeader.owner_email,
+            PageCreatedDate: oHeader.page_created_date,
+            PageModifiedDate: oHeader.page_modified_date,
+            GeneratedTimestamp: oHeader.generated_timestamp,
+            RecordCount: oHeader.record_count,
+            SourceType: oHeader.source_type
+        });
+        oPayload._Items = aItems;
+
+        var oNewContext = oListBinding.create(oPayload);
+        await oZoneNoteModel.submitBatch("zonenoteGroup");
+        await oNewContext.created();
+
+        MessageToast.show("Saved to SAP successfully.");
+    } catch (oError) {
+        Log.error("Save to SAP failed: " + oError.message);
+        oOneNoteModel.setProperty("/saveError", "Save failed: " + oError.message);
+         oView.setBusy(true);
+    } finally {
+        oView.setBusy(false);
+    }
+},
+
+
+_saveExtractionToBackend: async function (oExtractionResult) {
+    var oView = this.getView();
+    var oOneNoteModel = oView.getModel("onenote");
+    oOneNoteModel.setProperty("/saveError", "");
+
+    try {
+        var oModel = this.getOwnerComponent().getModel("materialVerify");
+        var oListBinding = oModel.bindList("/ZC_MaterialVerifyOneNote", undefined, undefined, undefined, {
+            "$$groupId": "materialVerifyGroup"
+        });
+
+        var oHeader = oExtractionResult.header;
+        var aContexts = [];
+        var aImagesByContext = [];
+
+        // Resolved once per save, not per row - _extractOwnerEmailFromUrl needs the
+        // actual pasted URL string (was previously called with no argument, which
+        // always returned "").
+        var sNoteUrl = oOneNoteModel.getProperty("/urlNoteUrl") || "";
+        var sOwnerEmail = this._extractOwnerEmailFromUrl(sNoteUrl) || "";
+
+        oExtractionResult.data.forEach(function (r, idx) {
+            var oImage = r.image_src
+                ? this._splitDataUrl(r.image_src)
+                : { mimeType: null, imageData: null };
+
+            var sMatnr = r.material_reference || r.barcode_value || ("NOREF-" + (idx + 1));
+
+            var oPayload = this._stripNulls({
+                Matnr: sMatnr,
+                Znote: r.material_name || "",
+                Weight: r.weight != null ? String(r.weight) : null,
+                WeightUnit: r.weight_unit,
+                MaterialName: r.material_name,
+                LotNumber: r.lot_number,
+                BarcodeValue: r.barcode_value,
+                DateofManufacture: this._normalizeDateForOData(r.date),
+                OnePage: oHeader.page_name || "",
+                OneSection: oHeader.section_name || "",
+                CreatedByEmail: sOwnerEmail,
+                PageCreatedBy: sOwnerEmail,
+                PageChangedBy: sOwnerEmail,
+                PageCreatedOn: this._truncateToWholeSeconds(oHeader.page_created_date) || null,
+                PageChangedOn: this._truncateToWholeSeconds(oHeader.page_modified_date) || null,
+                Mimetype: oImage.mimeType,
+                Filename: oImage.mimeType ? "image." + (oImage.mimeType.split("/")[1] || "jpg") : null
+            });
+
+            var oContext = oListBinding.create(oPayload);
+            aContexts.push(oContext);
+            aImagesByContext.push(oImage);
+        }.bind(this));
+
+        await oModel.submitBatch("materialVerifyGroup");
+        await Promise.all(aContexts.map(function (oContext) { return oContext.created(); }));
+
+        aContexts.forEach(function (oContext) {
+            var oActionBinding = oModel.bindContext(
+                "com.sap.gateway.srvd.zsv_materialverifyv4.v0001.Activate(...)",
+                oContext,
+                { "$$groupId": "materialVerifyGroup" }
+            );
+            oActionBinding.execute("materialVerifyGroup");
+        });
+        await oModel.submitBatch("materialVerifyGroup");
+
+        for (var i = 0; i < aContexts.length; i++) {
+            var oImg = aImagesByContext[i];
+            if (oImg && oImg.imageData) {
+                try {
+                    await this._uploadAttachmentStream(aContexts[i], oImg.mimeType, oImg.imageData);
+                } catch (oImgError) {
+                    Log.error("Image upload failed for row " + i + ": " + oImgError.message);
+                }
+            }
+        }
+
+        MessageToast.show("Saved to SAP successfully.");
+    } catch (oError) {
+        Log.error("Save to SAP failed: " + oError.message);
+        oOneNoteModel.setProperty("/saveError", "Save failed: " + oError.message);
+    } finally {
+        oView.setBusy(false);
+    }
+},
+
+_extractOwnerEmailFromUrl: function () {
+
+    var sUrl = this.getView().getModel("onenote").getProperty("/urlNoteUrl") || "";
+     var oUrl;
+    try {
+        oUrl = new URL(sUrl);
+    } catch (oError) { // eslint-disable-line no-unused-vars
+        return "";
+    }
+
+    var oMatch = /\/personal\/([^/]+)\//.exec(oUrl.pathname);
+    if (!oMatch) {
+        return "";
+    }
+
+    var aParts = oMatch[1].split("_");
+    if (aParts.length < 3) {
+        return "";
+    }
+
+    var sDomain = aParts.slice(-2).join(".");          // "porky_com" -> "porky.com"
+    var sLocalPart = aParts.slice(0, -2).join(".");     // "ismael_rodriguez" -> "ismael.rodriguez"
+
+    return sLocalPart + "@" + sDomain;
+},
+
+/**
+ * Truncates fractional seconds from an ISO 8601 datetime string, since some backend
+ * DateTimeOffset fields are declared with Precision=0 and reject any milliseconds
+ * component (e.g. "2019-09-28T10:59:18.713Z" -> "2019-09-28T10:59:18Z").
+ * Returns null if the input is falsy or not a recognizable ISO string.
+ */
+_truncateToWholeSeconds: function (sIsoDateTime) {
+    if (!sIsoDateTime) {
+        return null;
+    }
+    // Strip ".nnn" (any number of fractional digits) right before the timezone marker.
+    return sIsoDateTime.replace(/\.\d+(Z|[+-]\d{2}:\d{2})?$/, function (sMatch, sTz) {
+        return sTz || "Z";
+    });
+},
+
+_uploadAttachmentStream: async function (oContext, sMimeType, sBase64Data) {
+    var oModel = oContext.getModel();
+    var sServiceUrl = oModel.getServiceUrl();
+
+    var sMatnr = oContext.getProperty("Matnr");
+    var iImageitem = oContext.getProperty("Imageitem");
+
+    // Always true here - this only runs after the Activate batch above has already
+    // succeeded, at which point the draft row (IsActiveEntity=false) no longer
+    // exists; reading IsActiveEntity off the context is stale and causes 404s.
+    var sKeyPredicate = "Matnr='" + encodeURIComponent(sMatnr) + "',Imageitem=" + iImageitem +
+        ",IsActiveEntity=true";
+    var sStreamUrl = sServiceUrl.replace(/\/$/, "") + "/ZC_MaterialVerifyOneNote(" + sKeyPredicate + ")/Attachment";
+
+    var sCsrfToken = await this._fetchCsrfToken(sServiceUrl);
+    var aBinary = this._base64ToUint8Array(sBase64Data);
+
+    var oResponse = await fetch(sStreamUrl, {
+        method: "PUT",
+        headers: {
+            "Content-Type": sMimeType || "application/octet-stream",
+            "X-CSRF-Token": sCsrfToken
+        },
+        credentials: "same-origin",
+        body: aBinary
+    });
+
+    if (!oResponse.ok) {
+        throw new Error("Image upload failed for " + sMatnr + " (" + oResponse.status + ").");
+    }
+},
+
+
+
+/**
+ * Fetches a fresh CSRF token via a GET with "X-CSRF-Token: Fetch" - required for
+ * the binary PUT above, since that's a separate raw fetch() call outside the V4
+ * model's own request pipeline and won't reuse the model's internally cached token.
+ */
+_fetchCsrfToken: async function (sServiceUrl) {
+    var oResponse = await fetch(sServiceUrl, {
+        method: "GET",
+        headers: { "X-CSRF-Token": "Fetch" },
+        credentials: "same-origin"
+    });
+    var sToken = oResponse.headers.get("X-CSRF-Token");
+    if (!sToken) {
+        throw new Error("Could not obtain CSRF token for image upload.");
+    }
+    return sToken;
+},
+
+_base64ToUint8Array: function (sBase64) {
+    var sBinary = window.atob(sBase64);
+    var aBytes = new Uint8Array(sBinary.length);
+    for (var i = 0; i < sBinary.length; i++) {
+        aBytes[i] = sBinary.charCodeAt(i);
+    }
+    return aBytes;
+},
+
+
+
+
+// _saveExtractionToBackend: async function (oExtractionResult) {
+//     var oView = this.getView();
+//     var oOneNoteModel = oView.getModel("onenote");
+//     oOneNoteModel.setProperty("/saveError", "");
+
+//     try {
+//         var oZoneNoteModel = this.getOwnerComponent().getModel("zonenote");
+//         var oListBinding = oZoneNoteModel.bindList("/ZoneNoteHdr");
+//         var oHeader = oExtractionResult.header;
+//         var aImageDataUrls = oHeader.images_used || [];
+
+//         var oHeaderPayload = this._stripNulls({
+//             SectionName: oHeader.section_name,
+//             PageName: oHeader.page_name,
+//             PageId: oHeader.page_id,
+//             OwnerId: oHeader.owner_id,
+//             OwnerDisplayName: oHeader.page_owner_display_name || oHeader.owner_display_name,
+//             OwnerEmail: oHeader.owner_email,
+//             PageCreatedDate: oHeader.page_created_date,
+//             PageModifiedDate: oHeader.page_modified_date,
+//             GeneratedTimestamp: oHeader.generated_timestamp,
+//             RecordCount: oHeader.record_count,
+//             SourceType: oHeader.source_type
+//         });
+
+//         // Create the header - do NOT attach _Items here.
+//         var oNewHeaderContext = oListBinding.create(oHeaderPayload);
+
+//         // Bind the composition from the new (transient) header context, then create
+//         // each item through THAT nested binding - this is what makes the V4 model
+//         // generate a distinct %cid per item and bundle them into the same deep-insert
+//         // changeset as the header.
+//         var oItemsBinding = oZoneNoteModel.bindList("_Items", oNewHeaderContext);
+
+//         oExtractionResult.data.forEach(function (r) {
+//             var iIdx = r.source_image_index;
+//             if (typeof iIdx === "string" && iIdx.trim() !== "") {
+//                 iIdx = parseInt(iIdx, 10);
+//             }
+//             var oImage = Number.isInteger(iIdx) && aImageDataUrls[iIdx]
+//                 ? this._splitDataUrl(aImageDataUrls[iIdx])
+//                 : { mimeType: null, imageData: null };
+
+//             var oItemPayload = this._stripNulls({
+//                 Weight: r.weight != null ? String(r.weight) : null,
+//                 WeightUnit: r.weight_unit,
+//                 MaterialName: r.material_name,
+//                 LotNumber: r.lot_number,
+//                 ItemNumber: r.item_number,
+//                 BarcodeValue: r.barcode_value,
+//                 ExpiryDate: this._normalizeDateForOData(r.date),
+//                 MaterialReference: r.material_reference,
+//                 Author: r.author,
+//                 AuthorEmail: r.author_email,
+//                 ChangeDate: this._normalizeDateForOData(r.change_date),
+//                 ChangeTime: r.change_time || null,
+//                 mime_type: oImage.mimeType,
+//                 image_data: oImage.imageData
+//             });
+
+//             oItemsBinding.create(oItemPayload);
+//         }.bind(this));
+
+//         await oZoneNoteModel.submitBatch("zonenoteGroup");
+//         await oNewHeaderContext.created();
+
+//         MessageToast.show("Saved to SAP successfully.");
+//     } catch (oError) {
+//         Log.error("Save to SAP failed: " + oError.message);
+//         oOneNoteModel.setProperty("/saveError", "Save failed: " + oError.message);
+//     } finally {
+//         oView.setBusy(false);
+//     }
+// },
+
+
+
+
+/**
+ * Builds the _Images payload for one item: looks up the actual image data URL
+ * from the header's images_used array by source_image_index, strips the data URL
+ * prefix to get raw base64, and includes ExtractionUuid directly on the image row
+ * as the flattened Img->Header relationship now requires.
+ */
+_buildImagePayload: function (oRecord, oHeader) {
+    var aImages = oHeader.images_used || [];
+    var iIdx = oRecord.source_image_index;
+    if (typeof iIdx === "string" && iIdx.trim() !== "") {
+        iIdx = parseInt(iIdx, 10);
+    }
+    if (!Number.isInteger(iIdx) || !aImages[iIdx]) {
+        return [];
+    }
+
+    var oMatch = /^data:(.+?);base64,(.+)$/.exec(aImages[iIdx]);
+    if (!oMatch) {
+        return [];
+    }
+
+    return [{
+        MimeType: oMatch[1],
+        ImageData: oMatch[2],
+        ExtractionUuid: oHeader.extraction_uuid // required directly on Img per the flattened lock/auth chain
+    }];
+},
+
+_stripNulls: function (oObj) {
+    var oClean = {};
+    Object.keys(oObj).forEach(function (sKey) {
+        if (oObj[sKey] !== null && oObj[sKey] !== undefined) {
+            oClean[sKey] = oObj[sKey];
+        }
+    });
+    return oClean;
+},
+_normalizeDateForOData: function (sDate) {
+    // Extractor prompt should ask for YYYY-MM-DD directly (see prompt note below);
+    // this handles MM/DD/YYYY defensively in case older extractions still use it.
+    if (!sDate) { return null; }
+    if (/^\d{4}-\d{2}-\d{2}$/.test(sDate)) { return sDate; }
+    var aParts = sDate.split("/");
+    if (aParts.length !== 3) { return null; }
+    return aParts[2] + "-" + aParts[0].padStart(2, "0") + "-" + aParts[1].padStart(2, "0");
+},
+/**
+ * Splits a "data:<mime>;base64,<data>" string into { mimeType, imageData } for
+ * direct assignment onto an item row (image fields now live flat on ZoneNoteItm,
+ * no separate Img entity).
+ */
+_splitDataUrl: function (sDataUrl) {
+    var oMatch = /^data:(.+?);base64,(.+)$/.exec(sDataUrl || "");
+    return oMatch ? { mimeType: oMatch[1], imageData: oMatch[2] } : { mimeType: null, imageData: null };
+},
+
+
+/**
+ * Downscales a data URL image to at most maxDimension on its longest side, re-encoding
+ * as JPEG at the given quality. Vision models don't need full-resolution photos to
+ * read text/barcodes, and this can cut a multi-MB image down to a few hundred KB -
+ * critical for pages with many photos, where sending full-res images can blow past
+ * request size limits (seen as net::ERR_SSL_BAD_RECORD_MAC_ALERT / connection drops
+ * on ~30MB+ payloads).
+ */
+_downscaleImageDataUrl: function (sDataUrl, iMaxDimension, fQuality) {
+    iMaxDimension = iMaxDimension || 1600;
+    fQuality = fQuality || 0.82;
+
+    // eslint-disable-next-line no-undef
+    return new Promise(function (resolve) {
+        var oImg = new Image();
+        oImg.onload = function () {
+            var iWidth = oImg.naturalWidth;
+            var iHeight = oImg.naturalHeight;
+
+            if (iWidth <= iMaxDimension && iHeight <= iMaxDimension) {
+                resolve(sDataUrl); // already small enough, skip re-encoding
+                return;
+            }
+
+            var fScale = iMaxDimension / Math.max(iWidth, iHeight);
+            var iNewWidth = Math.round(iWidth * fScale);
+            var iNewHeight = Math.round(iHeight * fScale);
+
+            // eslint-disable-next-line @sap-ux/fiori-tools/sap-no-element-creation
+            var oCanvas = document.createElement("canvas");
+            oCanvas.width = iNewWidth;
+            oCanvas.height = iNewHeight;
+            var oCtx = oCanvas.getContext("2d");
+            oCtx.drawImage(oImg, 0, 0, iNewWidth, iNewHeight);
+
+            resolve(oCanvas.toDataURL("image/jpeg", fQuality));
+        };
+        oImg.onerror = function () { resolve(sDataUrl); }; // fall back to original if decode fails
+        oImg.src = sDataUrl;
+    });
+},
     });
 });

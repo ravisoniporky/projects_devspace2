@@ -1,0 +1,216 @@
+{
+  "_version": "1.73.1",
+  "sap.app": {
+    "id": "customer.porky.zshipsumapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.31.1",
+      "toolsId": "7139ab3b-5e74-4cb1-838b-49dd1b66644e"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_shipmentblotterv4/srvd/sap/zsv_shipmentblotter/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "customer.porky.zshipsumapp.ext.controller.ShipmentItemsExtension"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "minUI5Version": "1.136.16",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zshipsumapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZC_ShipmentBlotter_HeaderList",
+          "target": "ZC_ShipmentBlotter_HeaderList"
+        },
+        {
+          "pattern": "ZC_ShipmentBlotter_Header({key}):?query:",
+          "name": "ZC_ShipmentBlotter_HeaderObjectPage",
+          "target": "ZC_ShipmentBlotter_HeaderObjectPage"
+        },
+        {
+          "pattern": "ZC_ShipmentBlotter_Header({key})/_ShipmentItem({key2}):?query:",
+          "name": "ZC_ShipmentBlotter_ItemObjectPage",
+          "target": "ZC_ShipmentBlotter_ItemObjectPage"
+        }
+      ],
+      "targets": {
+        "ZC_ShipmentBlotter_HeaderList": {
+          "type": "Component",
+          "id": "ZC_ShipmentBlotter_HeaderList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZC_ShipmentBlotter_Header",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZC_ShipmentBlotter_Header": {
+                  "detail": {
+                    "route": "ZC_ShipmentBlotter_HeaderObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "AnalyticalTable"
+                  },
+                  "actions": {
+                    "ToggleSidePanel": {
+                      "press": "customer.porky.zshipsumapp.ext.controller.CustomActions.onToggleSidePanel",
+                      "text": "{i18n>toggleSidePanelText}",
+                      "requiresSelection": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZC_ShipmentBlotter_HeaderObjectPage": {
+          "type": "Component",
+          "id": "ZC_ShipmentBlotter_HeaderObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZC_ShipmentBlotter_Header",
+              "navigation": {
+                "_ShipmentItem": {
+                  "detail": {
+                    "route": "ZC_ShipmentBlotter_ItemObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "_ShipmentItem/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "enableExport": true,
+                    "rowCountMode": "Interactive",
+                    "rowCount": 10,
+                    "enableFullScreen": true,
+                    "condensedTableLayout": true,
+                    "personalization": {
+                      "filter": true,
+                      "column": true,
+                      "sort": true,
+                      "group": true,
+                      "aggregate": true
+                    }
+                  }
+                }
+              },
+              "variantManagement": "Control"
+            }
+          }
+        },
+        "ZC_ShipmentBlotter_ItemObjectPage": {
+          "type": "Component",
+          "id": "ZC_ShipmentBlotter_ItemObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZC_ShipmentBlotter_Header/_ShipmentItem"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}

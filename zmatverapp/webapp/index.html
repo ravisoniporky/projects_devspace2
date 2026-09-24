@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Material Verification App</title>
+    <style>
+        html, body, body > div, #container, #container-uiarea {
+            height: 100%;
+        }
+    </style>
+    <script
+        id="sap-ui-bootstrap"
+        src="resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-resource-roots='{
+            "customer.porky.zmatverapp": "./"
+        }'
+        data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
+        data-sap-ui-compat-version="edge"
+        data-sap-ui-async="true"
+        data-sap-ui-frame-options="trusted"
+    ></script>
+    <script type="text/javascript">
+        // ebapi-modules.js makes a synchronous native call as soon as it is parsed and
+        // hard-crashes when there is no real Enterprise Browser native layer to intercept it
+        // (e.g. previewed in a normal browser or a Fiori Launchpad tile). Only load it when
+        // we are actually running inside the Zebra Enterprise Browser client.
+        if (/EnterpriseBrowser/i.test(navigator.userAgent)) {
+            document.write('<script type="text/javascript" src="js/ebapi-modules.js"><\/script>');
+        }
+    </script>
+</head>
+<body class="sapUiBody sapUiSizeCompact" id="content">
+    <div
+        data-sap-ui-component
+        data-name="customer.porky.zmatverapp"
+        data-id="container"
+        data-settings='{"id" : "customer.porky.zmatverapp"}'
+        data-handle-validation="true"
+    ></div>
+</body>
+</html>

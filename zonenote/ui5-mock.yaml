@@ -9,7 +9,7 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertErrors: false
         ui5:
           path:
             - /resources
@@ -19,6 +19,10 @@ server:
           - path: /sap
             url: http://pkynj-de2app.porkyproducts.loc:8000
             destination: DE2
+          - path: /sap/opu/odata4/sap/zsb_materialverifyv4/srvd/sap/v4/0001/
+            url: http://pkytx-devapp.porkyproducts.loc:8000
+            client: '100'
+            destination: DEV
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -47,6 +51,19 @@ server:
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
+          - urlPath: /sap/opu/odata4/sap/zui_zonenotehdr_o4/srvd/sap/zui_zonenotehdr_o4/0001
+            metadataPath: ./webapp/localService/zoneNoteService/metadata.xml
+            mockdataPath: ./webapp/localService/zoneNoteService/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata4/sap/zsb_materialverifyv4/srvd/sap/v4/0001
+            metadataPath: ./webapp/localService/v4/metadata.xml
+            mockdataPath: ./webapp/localService/v4/data
+            generateMockData: true
         annotations:
           - localPath: ./webapp/localService/mainService/ZCXA_USERDEFAULT_CDS_VAN.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

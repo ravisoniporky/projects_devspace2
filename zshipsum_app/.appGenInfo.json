@@ -1,0 +1,32 @@
+{
+  "generationParameters": {
+    "generationDate": "Mon Aug 24 2026 16:12:42 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://pkytx-devapp.porkyproducts.loc:8000/sap/opu/odata4/sap/zsb_shipmentblotterv4/srvd/sap/zsv_shipmentblotter/0001/",
+    "appName": "zshipsum_app",
+    "appTitle": "Ship Sum",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "customer.porky",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.136.16",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.31.1",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZC_ShipmentBlotter_Header"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "_ShipmentItem"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

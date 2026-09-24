@@ -1,0 +1,192 @@
+{
+  "_version": "1.73.1",
+  "sap.app": {
+    "id": "customer.porky.zfieldappchat",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.28.0",
+      "toolsId": "e52a07af-bae2-45c7-8399-9bd85027f586"
+    },
+    "dataSources": {
+      "ZODATA_FR_ANNO_MDL": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZODATA_FR_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/ZODATA_FR_ANNO_MDL.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZODATA_FR_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZODATA_FR_ANNO_MDL"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZRMM_FRVISITV2_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRMM_FRVISITV2_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZRMM_FRVISITV2_CDS/ZRMM_FRVISITV2_CDS_VAN.xml"
+        }
+      },
+      "ZRMM_FRVISITV2_CDS": {
+        "uri": "/sap/opu/odata/sap/ZRMM_FRVISITV2_CDS/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZRMM_FRVISITV2_CDS_VAN"
+          ],
+          "localUri": "localService/ZRMM_FRVISITV2_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZI_DEFAULTSHVH_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZI_DEFAULTSHVH_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZI_DEFAULTSHVH_CDS/ZI_DEFAULTSHVH_CDS_VAN.xml"
+        }
+      },
+      "ZI_DEFAULTSHVH_CDS": {
+        "uri": "/sap/opu/odata/sap/ZI_DEFAULTSHVH_CDS/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZI_DEFAULTSHVH_CDS_VAN"
+          ],
+          "localUri": "localService/ZI_DEFAULTSHVH_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZCXA_USERDEFAULT_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZCXA_USERDEFAULT_CDS/ZCXA_USERDEFAULT_CDS_VAN.xml"
+        }
+      },
+      "ZCXA_USERDEFAULT_CDS": {
+        "uri": "/sap/opu/odata/sap/ZCXA_USERDEFAULT_CDS/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZCXA_USERDEFAULT_CDS_VAN"
+          ],
+          "localUri": "localService/ZCXA_USERDEFAULT_CDS/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.16",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "customer.porky.zfieldappchat.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "ZRMM_FRVISITV2_CDS": {
+        "dataSource": "ZRMM_FRVISITV2_CDS",
+        "preload": true,
+        "settings": {}
+      },
+      "ZI_DEFAULTSHVH_CDS": {
+        "dataSource": "ZI_DEFAULTSHVH_CDS",
+        "preload": true,
+        "settings": {}
+      },
+      "ZCXA_USERDEFAULT_CDS": {
+        "dataSource": "ZCXA_USERDEFAULT_CDS",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "customer.porky.zfieldappchat.view",
+        "async": true,
+        "viewPath": "customer.porky.zfieldappchat.view"
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "id": "View1",
+          "name": "View1"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "customer.porky.zfieldappchat.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

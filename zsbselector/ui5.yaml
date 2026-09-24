@@ -17,8 +17,9 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: http://pkynj-de2app.porkyproducts.loc:8000
-            destination: DE2
+            url: http://pkytx-devapp.porkyproducts.loc:8000
+            client: '100'
+            destination: DEV
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -30,3 +31,8 @@ server:
       configuration:
         flp:
           theme: sap_horizon
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

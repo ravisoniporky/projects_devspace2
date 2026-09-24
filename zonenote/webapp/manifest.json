@@ -16,7 +16,6 @@
       "toolsId": "65142db8-8f05-43e7-8082-2bef9fb9239d"
     },
     "dataSources": {
-
       "ZCXA_USERDEFAULT_CDS_VAN": {
         "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCXA_USERDEFAULT_CDS_VAN',Version='0001')/$value/",
         "type": "ODataAnnotation",
@@ -33,6 +32,22 @@
           ],
           "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
+        }
+      },
+      "zoneNoteService": {
+        "uri": "/sap/opu/odata4/sap/zui_zonenotehdr_o4/srvd/sap/zui_zonenotehdr_o4/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "materialVerify": {
+        "uri": "/sap/opu/odata4/sap/zsb_materialverifyv4/srvd/sap/v4/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/v4/metadata.xml",
+          "odataVersion": "4.0"
         }
       }
     }
@@ -54,7 +69,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.108.44",
       "libs": {
@@ -73,10 +88,37 @@
           "bundleName": "customer.porky.zonenote.i18n.i18n"
         }
       },
+      "zonenote": {
+        "dataSource": "zoneNoteService",
+        "settings": {
+                    "groupId": "$direct",
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "groupProperties": {
+            "zonenoteGroup": {
+              "submit": "API"
+            }
+          }
+        }
+      },
       "": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {}
+        "settings": {
+        }
+      },
+      "materialVerify": {
+        "dataSource": "materialVerify",
+        "preload": true,
+        "settings": {
+          "groupId": "$direct",
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
       }
     },
     "resources": {

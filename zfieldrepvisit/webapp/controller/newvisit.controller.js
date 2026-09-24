@@ -1263,7 +1263,7 @@ sap.ui.define(
 
 
             let defaultModel = that.getOwnerComponent().getModel("ZODATA_FR_SRV");
-            defaultModel.read("/ZBMMCUSTOMERVISIT(Customer='" + shipto + "',SalesOrganization='" + that.vkorg + "')", {
+            defaultModel.read("/ZBMMCUSTOMERVISIT(Customer='" + shipto + "',SalesOrganization='" + vkorg + "')", {
               urlParameters: {
                 "$expand": "to_SM,to_SS,to_Supp,to_Dep",
 
@@ -7360,18 +7360,73 @@ sap.ui.define(
             Accept: "application/json",
             "Content-Type": "application/json",
             "X-Goog-Api-Key": 'AIzaSyARq_VIDUxAl-xrs9bV_921ZzSggNjHAzE',
-            "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.id,places.location,places.photos,places.types,places.nationalPhoneNumber,places.websiteUri"
+            "X-Goog-FieldMask": "places.addressComponents,places.displayName,places.formattedAddress,places.id,places.location,places.photos,places.types,places.nationalPhoneNumber,places.websiteUri"
           },
           data: data,
           success: function (response) {
             //   debugger;
 
-            that.getView().setModel(new sap.ui.model.json.JSONModel(
-              response), "prospectModelPlaces");
+            // that.getView().setModel(new sap.ui.model.json.JSONModel(
+            //   response), "prospectModelPlaces");
+
+            var aPlaces = (response && response.places) || [];
+
+    var aMapped = aPlaces.map(function (oPlace) {
+      var oAddr = that._mapAddressComponents(oPlace.addressComponents);
+
+      return Object.assign({}, oPlace, oAddr, {
+        PlaceId:          oPlace.id,
+        Placeid:          oPlace.id,                                   // alias, if a binding already uses this casing
+        Name1:            oPlace.displayName ? oPlace.displayName.text : "",
+        DisplayName:      oPlace.displayName ? oPlace.displayName.text : "",
+        TelNumber:        oPlace.nationalPhoneNumber || "",
+        FormattedAddress: oPlace.formattedAddress || "",
+        WebsiteUri:       oPlace.websiteUri || "",
+        Latitude:         oPlace.location ? oPlace.location.latitude  : null,
+        Longitude:        oPlace.location ? oPlace.location.longitude : null
+      });
+    });
+
+    that.getView().setModel(
+      new sap.ui.model.json.JSONModel({ places: aMapped, count: aMapped.length }),
+      "prospectModelPlaces"
+    );
 
           }
         });
       },
+
+
+      /**
+ * Flattens Google Places (New) addressComponents into SAP-ish fields.
+ */
+_mapAddressComponents: function (aComponents) {
+  var mParts = {};
+
+  (aComponents || []).forEach(function (oComp) {
+    (oComp.types || []).forEach(function (sType) {
+      // first occurrence wins — Google returns most-specific first
+      if (!mParts[sType]) {
+        mParts[sType] = { long: oComp.longText, short: oComp.shortText };
+      }
+    });
+  });
+
+  var fnLong  = function (s) { return mParts[s] ? mParts[s].long  : ""; };
+  var fnShort = function (s) { return mParts[s] ? mParts[s].short : ""; };
+
+  return {
+    Stras: [fnShort("street_number"), fnLong("route")].filter(Boolean).join(" "),
+    Ort01: fnLong("neighborhood")
+        || fnLong("locality")
+        || fnLong("postal_town")
+        || fnLong("sublocality_level_1")
+        || fnLong("administrative_area_level_2"),
+    Regio: fnShort("administrative_area_level_1"),
+    Pstlz: fnShort("postal_code"),
+    Land1: fnShort("country")
+  };
+},
 
 
       splitDisplayName: function (displayName, maxLength = 35) {
@@ -7427,6 +7482,8 @@ sap.ui.define(
         //     debugger;
         var obj = oEvent.getSource().getBindingContext("prospectModelPlaces").getObject();
 
+        var addressComponent = this._mapAddressComponents(obj.addressComponents)
+
         var obj1 = {};
         // obj1.Name1 =  obj.displayName.text.substring(0,35) ;
         // if(obj.displayName.text.length > 35)
@@ -7435,11 +7492,28 @@ sap.ui.define(
         const splitResult = this.splitDisplayName(obj.displayName, 35);
         obj1.Name1 = splitResult.Name1;
         obj1.Name2 = splitResult.Name2;
-        obj1.Street = obj.formattedAddress.split(",")[0];
-        obj1.Ort01 = obj.formattedAddress.split(",")[1];
-        obj1.Regio = obj.formattedAddress.split(",")[2].trim().split(" ")[0];
+        // if( obj.formattedAddress.split(",").length > 3){
+
+        //    obj1.Street = obj.formattedAddress.split(",")[1];
+        // obj1.Ort01 = obj.formattedAddress.split(",")[2];
+        // obj1.Regio = obj.formattedAddress.split(",")[3].trim().split(" ")[0];
+        // obj1.TelNumber = obj.nationalPhoneNumber;
+        // obj1.Zip = obj.formattedAddress.split(",")[3].substring(3, 9).trim();
+
+        // }else{
+        // obj1.Street = obj.formattedAddress.split(",")[0];
+        // obj1.Ort01 = obj.formattedAddress.split(",")[1];
+        // obj1.Regio = obj.formattedAddress.split(",")[2].trim().split(" ")[0];
+        // obj1.TelNumber = obj.nationalPhoneNumber;
+        // obj1.Zip = obj.formattedAddress.split(",")[2].substring(3, 9).trim();
+
+        // }
+
+         obj1.Street = addressComponent.Stras;
+        obj1.Ort01 = addressComponent.Ort01;
+        obj1.Regio = addressComponent.Regio;
         obj1.TelNumber = obj.nationalPhoneNumber;
-        obj1.Zip = obj.formattedAddress.split(",")[2].substring(3, 9).trim();
+        obj1.Zip = addressComponent.Pstlz;
 
 
         if (obj1.Name1)
@@ -7524,7 +7598,7 @@ sap.ui.define(
                 onClose: function (sAction) {
                   if (sAction === 'Create Visit') {
 
-                    that.fetchCustomer(result.Prospect.Kunnr, that.vkorg);
+                    that.fetchCustomer(result.Prospect.Kunnr, result.Prospect.Vkorg);
                     that.pDialogOpenProspect_d.close();
 
                   } else {

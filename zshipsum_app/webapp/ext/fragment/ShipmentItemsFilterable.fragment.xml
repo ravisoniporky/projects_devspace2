@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:macros="sap.fe.macros"
+    xmlns:m="sap.m"
+>
+    <m:VBox id="shipmentItemsFilterableBox">
+        <macros:VariantManagement
+            id="shipmentItemsVariantManagement"
+            for="shipmentItemsFilterBar,shipmentItemsFilterableTable"
+            showSetAsDefault="true"
+        />
+         <macros:FilterBar
+            id="shipmentItemsFilterBar"
+            metaPath="_ShipmentItem/@com.sap.vocabularies.UI.v1.SelectionFields"
+            liveMode="true"
+            showClearButton="true"
+        />
+        <!-- <m:Toolbar id="shipmentItemsSearchToolbar">
+        <m:ToolbarSpacer />
+            <m:SearchField
+                id="shipmentItemsSearchField"
+                width="20rem"
+                placeholder="Search Shipment Items"
+                liveChange=".extension.customer.porky.zshipsumapp.ext.controller.ShipmentItemsExtension.onShipmentItemsSearch"
+            />
+        </m:Toolbar> -->
+        <macros:Table
+            id="shipmentItemsFilterableTable"
+            metaPath="_ShipmentItem/@com.sap.vocabularies.UI.v1.LineItem"
+            type="AnalyticalTable"
+            personalization="Sort,Column,Filter"
+            isSearchable="true"
+            enableExport="true"
+            filterBar="shipmentItemsFilterBar"
+            enableFullScreen="true"
+            condensedTableLayout="true"
+            rowPress=".extension.customer.porky.zshipsumapp.ext.controller.ShipmentItemsExtension.onShipmentItemRowPress"
+        />
+    </m:VBox>
+</core:FragmentDefinition>

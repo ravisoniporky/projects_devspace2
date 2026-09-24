@@ -30,3 +30,8 @@ server:
       configuration:
         component: customer.porky.zsdtrnreport
         ui5Theme: sap_horizon
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

@@ -1,0 +1,15 @@
+/* Enter your custom styles here */
+.chatPage {
+	background-color: #eef0f3;
+}
+
+/* frames the chat widget as a card instead of a flat, edge-to-edge panel */
+#deepChatHost {
+	padding: 0.5rem;
+	box-sizing: border-box;
+}
+
+#deepChatHost deep-chat {
+	border-radius: 14px !important;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
+}

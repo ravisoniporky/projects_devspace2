@@ -703,7 +703,7 @@ sap.ui.define([
         var filterData = this.getView().byId("smartFilter_custF4_map").getFilterData();
         var p_vkorg = filterData['SalesOrganization'];
         var ZCATALOG = filterData['CatalogId'];
-       
+        var p_days = filterData['$Parameter.p_days'];
 
         this.setEorIFlag(p_vkorg, ZCATALOG);
         var oBindingParams = oEvent.getParameter("bindingParams");
@@ -718,16 +718,8 @@ sap.ui.define([
           oBindingParams.filters.push(oFilter);
         }
 
-
-
-
-
-
-        // var stringPath = "/ZCSD_E_MobileItemList(p_vkorg='" + p_vkorg +"',p_kunwe='"+p_kunwe+"',p_ats='"+p_ats+"',p_itemproposal='"+p_itemproposal+"')/Set";
-
-        // stringPath= (stringPath);
-        // oEvent.getSource().setTableBindingPath(stringPath);
-
+        var stringPath = "/ZCSD_MOBILECATALOGMAINTList(p_days=" + p_days + ")/Set";
+        oEvent.getSource().setTableBindingPath(stringPath);
 
       },
 
@@ -2205,6 +2197,67 @@ createMaterialIntoInclusion_mass: function(Material, department) {
 },
 
 
+onDeleteImage: function(oEvent) {
+    var oButton = oEvent.getSource();
+    var oContext = oButton.getBindingContext();
+    var oldMaterial = oContext.getObject().OldMaterial;
+
+    if (!oldMaterial) {
+        sap.m.MessageBox.error("Old Material number is not available");
+        return;
+    }
+
+    var that = this;
+
+    sap.m.MessageBox.confirm(
+        "Do you want to delete the image for material: " + oldMaterial + "?",
+        {
+            title: "Delete Image",
+            actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+            emphasizedAction: sap.m.MessageBox.Action.NO,
+            onClose: function(sAction) {
+                if (sAction !== sap.m.MessageBox.Action.YES) {
+                    return;
+                }
+
+                oButton.setBusy(true);
+
+                jQuery.ajax({
+                    url: "https://api.porky.com/mb/image_delete/" + encodeURIComponent(oldMaterial),
+                    type: "DELETE",
+                    headers: {
+                        'X-PORKY-SYSID': 'PRD',
+                        'X-PORKY-APPID': 'Catalog Maint',
+                        'Authorization': 'Basic YmF0Y2h1c2VyOnBvcmt5c2Fw',
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
+                        'X-PORKY-APIKEY': '6bb0b04a-0466-490e-a8a5-53278b3df025',
+                        'X-PORKY-AUTH': 'YmF0Y2h1c2VyOnBvcmt5c2Fw'
+                    },
+                    success: function() {
+                        oButton.setBusy(false);
+                        sap.m.MessageBox.success("Image deleted successfully for material: " + oldMaterial);
+                        that.getView().byId("smartTable_custF4_map").rebindTable();
+                    },
+                    error: function(xhr) {
+                        oButton.setBusy(false);
+
+                        var errorMessage = "Failed to delete image";
+                        try {
+                            var errorResponse = JSON.parse(xhr.responseText);
+                            errorMessage = errorResponse.message || errorMessage;
+                        } catch (e) {}
+
+                        sap.m.MessageBox.error(errorMessage, {
+                            title: "Delete Error"
+                        });
+                    }
+                });
+            }
+        }
+    );
+},
+
 onUploadImage: function(oEvent) {
     var oButton = oEvent.getSource();
     var oContext = oButton.getBindingContext();
@@ -2221,8 +2274,8 @@ onUploadImage: function(oEvent) {
     if (!this.imageUploadDialog) {
         this.imageUploadDialog = new sap.m.Dialog({
             title: "Upload Image for Material: " + oldMaterial,
-            contentWidth: "500px",
-            contentHeight: "400px",
+            contentWidth: "600px",
+            contentHeight: "500px",
             resizable: true,
             content: [
                 new sap.m.VBox({
@@ -2239,15 +2292,12 @@ onUploadImage: function(oEvent) {
                             maximumFileSize: 5,
                             change: this.onFileChange.bind(this),
                             uploadComplete: function() {},
-                            width: "100%"
                         }).addStyleClass("sapUiTinyMargin"),
                         new sap.m.Image({
                             id: "imagePreview",
                             visible: false,
-                            width: "100%",
-                            height: "250px",
                             mode: "Image"
-                        }).addStyleClass("sapUiTinyMarginTop"),
+                        }).addStyleClass("sapUiTinyMarginTop imageUploadPreview"),
                         new sap.m.CheckBox({
                             id: "forceCheckbox",
                             text: "Force upload (override validation)",
@@ -2309,13 +2359,14 @@ onFileChange: function(oEvent) {
     var reader = new FileReader();
     reader.onload = function(e) {
         var base64String = e.target.result;
+        this.currentImageDataUrl = base64String;
         this.currentImageData = base64String.split(',')[1]; // Remove data:image/jpeg;base64, prefix
-        
+
         // Show preview
         var imagePreview = sap.ui.getCore().byId("imagePreview");
         imagePreview.setSrc(base64String);
         imagePreview.setVisible(true);
-        
+
         // Enable upload button
         this.imageUploadDialog.getBeginButton().setEnabled(true);
     }.bind(this);
@@ -2370,7 +2421,12 @@ onConfirmUpload: function() {
             
             try {
                 var errorResponse = JSON.parse(xhr.responseText);
-                
+
+                if (errorResponse.optional && errorResponse.resizedImage) {
+                    this.showResizedImagePrompt(errorResponse);
+                    return;
+                }
+
                 if (errorResponse.optional && !forceCheckbox.getVisible()) {
                     // Show force option for optional validation errors
                     forceCheckbox.setVisible(true);
@@ -2396,11 +2452,46 @@ onConfirmUpload: function() {
     });
 },
 
+showResizedImagePrompt: function(errorResponse) {
+    var imagePreview = sap.ui.getCore().byId("imagePreview");
+    var forceCheckbox = sap.ui.getCore().byId("forceCheckbox");
+    var sResizedDataUrl = "data:image/png;base64," + errorResponse.resizedImage;
+
+    sap.m.MessageBox.confirm(
+        (errorResponse.message || "The image needs to be resized.") + "\n\nA resized version of the image is available. Do you want to use it instead?",
+        {
+            title: "Image Validation",
+            actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+            emphasizedAction: sap.m.MessageBox.Action.YES,
+            onClose: function(sAction) {
+                if (sAction === sap.m.MessageBox.Action.YES) {
+                    this.currentImageDataUrl = sResizedDataUrl;
+                    this.currentImageData = errorResponse.resizedImage;
+
+                    if (imagePreview) {
+                        imagePreview.setSrc(sResizedDataUrl);
+                        imagePreview.setVisible(true);
+                    }
+                    if (forceCheckbox) {
+                        forceCheckbox.setSelected(false);
+                        forceCheckbox.setVisible(false);
+                    }
+
+                    this.imageUploadDialog.getBeginButton().setEnabled(true);
+                    sap.m.MessageToast.show("Resized image applied. Review the preview and click Upload to submit.");
+                } else if (errorResponse.optional && forceCheckbox) {
+                    forceCheckbox.setVisible(true);
+                }
+            }.bind(this)
+        }
+    );
+},
+
 resetUploadDialog: function() {
     var fileUploader = sap.ui.getCore().byId("fileUploader");
     var imagePreview = sap.ui.getCore().byId("imagePreview");
     var forceCheckbox = sap.ui.getCore().byId("forceCheckbox");
-    
+
     if (fileUploader) {
         fileUploader.clear();
     }
@@ -2412,9 +2503,10 @@ resetUploadDialog: function() {
         forceCheckbox.setSelected(false);
         forceCheckbox.setVisible(false);
     }
-    
+
     this.imageUploadDialog.getBeginButton().setEnabled(false);
     this.currentImageData = null;
+    this.currentImageDataUrl = null;
     this.currentOldMaterial = null;
 }
     });

@@ -1,0 +1,32 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Sep 01 2026 16:42:58 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://pkytx-devapp.porkyproducts.loc:8000/sap/opu/odata/sap/ZC_RETURNORDERSUMMARY_CDS",
+    "appName": "zreturnorder_felp",
+    "appTitle": "Return Orders",
+    "appDescription": "Return Orders",
+    "appNamespace": "customer.porky",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.136.16",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.31.1",
+    "template": "List Report Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZC_RETURNORDERSUMMARY"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "None"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

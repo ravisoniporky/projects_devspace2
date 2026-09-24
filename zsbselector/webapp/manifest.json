@@ -28,8 +28,7 @@
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZSB_SELECTOR_V2_VAN",
-            "annotation"
+            "ZSB_SELECTOR_V2_VAN"
           ],
           "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
@@ -149,9 +148,7 @@
             },
             "tableSettings": {
               "type": "ResponsiveTable",
-              "multiSelect": true
-      
-              ,
+              "multiSelect": true,
               "selectAll": true
             },
             "dataLoadSettings": {
